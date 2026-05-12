@@ -1,5 +1,5 @@
 import { app, ipcMain, BrowserWindow, shell } from "electron";
-import { join } from "path";
+import { join, resolve } from "path";
 import { electronApp, optimizer, is } from "@electron-toolkit/utils";
 import Database from "better-sqlite3";
 import { existsSync, mkdirSync } from "fs";
@@ -186,6 +186,7 @@ const settingsRepo = {
   }
 };
 function createWindow() {
+  const iconPath = process.platform === "win32" ? resolve(process.cwd(), "build/icon.ico") : resolve(process.cwd(), "build/icon.png");
   const mainWindow = new BrowserWindow({
     width: 1100,
     height: 750,
@@ -193,6 +194,7 @@ function createWindow() {
     autoHideMenuBar: true,
     titleBarStyle: "hiddenInset",
     trafficLightPosition: { x: 15, y: 15 },
+    icon: iconPath,
     webPreferences: {
       preload: join(__dirname, "../preload/index.js"),
       sandbox: false
@@ -213,6 +215,9 @@ function createWindow() {
 }
 app.whenReady().then(() => {
   electronApp.setAppUserModelId("com.taskoverflow");
+  if (process.platform === "darwin") {
+    app.dock.setIcon(resolve(process.cwd(), "build/icon.png"));
+  }
   app.on("browser-window-created", (_, window) => {
     optimizer.watchWindowShortcuts(window);
   });

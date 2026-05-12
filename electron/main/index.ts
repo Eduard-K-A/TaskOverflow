@@ -1,9 +1,14 @@
 import { app, shell, BrowserWindow, ipcMain } from 'electron';
-import { join } from 'path';
+import { join, resolve } from 'path';
 import { electronApp, optimizer, is } from '@electron-toolkit/utils';
 import { initDb, groupsRepo, tasksRepo, subtasksRepo, tagsRepo, settingsRepo } from './db';
 
 function createWindow(): void {
+  const iconPath =
+    process.platform === 'win32'
+      ? resolve(process.cwd(), 'build/icon.ico')
+      : resolve(process.cwd(), 'build/icon.png');
+
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     width: 1100,
@@ -12,6 +17,7 @@ function createWindow(): void {
     autoHideMenuBar: true,
     titleBarStyle: 'hiddenInset',
     trafficLightPosition: { x: 15, y: 15 },
+    icon: iconPath,
     webPreferences: {
       preload: join(__dirname, '../preload/index.js'),
       sandbox: false
@@ -42,6 +48,10 @@ function createWindow(): void {
 app.whenReady().then(() => {
   // Set app user model id for windows
   electronApp.setAppUserModelId('com.taskoverflow');
+
+  if (process.platform === 'darwin') {
+    app.dock.setIcon(resolve(process.cwd(), 'build/icon.png'));
+  }
 
   // Default open or close DevTools by F12 in development
   // and ignore CommandOrControl + R in production.
