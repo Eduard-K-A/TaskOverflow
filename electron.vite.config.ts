@@ -3,13 +3,15 @@ import { defineConfig, externalizeDepsPlugin } from 'electron-vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
+const root = process.cwd()
+
 export default defineConfig({
   main: {
     plugins: [externalizeDepsPlugin()],
     build: {
       rollupOptions: {
         input: {
-          index: resolve(__dirname, 'electron/main/index.ts')
+          index: resolve(root, 'electron/main/index.ts')
         }
       }
     }
@@ -19,16 +21,16 @@ export default defineConfig({
     build: {
       rollupOptions: {
         input: {
-          index: resolve(__dirname, 'electron/preload/index.ts')
+          index: resolve(root, 'electron/preload/index.ts')
         }
       }
     }
   },
   renderer: {
-    root: resolve(__dirname, 'src/renderer'),
+    root: resolve(root, 'src/renderer'),
     resolve: {
       alias: {
-        '@': resolve(__dirname, 'src/renderer')
+        '@': resolve(root, 'src/renderer')
       }
     },
     plugins: [
@@ -39,7 +41,7 @@ export default defineConfig({
         resolveId(id) {
           if (id.startsWith('figma:asset/')) {
             const filename = id.replace('figma:asset/', '')
-            return resolve(__dirname, 'src/renderer/assets', filename)
+            return resolve(root, 'src/renderer/assets', filename)
           }
         }
       }
