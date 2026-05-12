@@ -1,4 +1,4 @@
-import { useMemo, useRef } from "react";
+import { useMemo, useRef, useEffect } from "react";
 import { Plus } from "lucide-react";
 import { Toaster } from "./components/ui/sonner";
 import { Button } from "./components/ui/button";
@@ -27,6 +27,8 @@ import { useKeyboardShortcuts } from "./hooks/useKeyboardShortcuts";
 export default function App() {
   useTheme();
 
+  const hydrate = useStore((s) => s.hydrate);
+  const isHydrated = useStore((s) => s.isHydrated);
   const activeGroupId = useStore((s) => s.activeGroupId);
   const groups = useStore((s) => s.groups);
   const tasks = useStore((s) => s.tasks);
@@ -123,6 +125,10 @@ export default function App() {
   const addTaskRef = useRef<AddTaskInlineHandle>(null);
   const searchRef = useRef<SearchBarHandle>(null);
 
+  useEffect(() => {
+    hydrate();
+  }, [hydrate]);
+
   useKeyboardShortcuts(
     () => addTaskRef.current?.focus(),
     () => searchRef.current?.focus(),
@@ -203,6 +209,14 @@ export default function App() {
     totalInGroup,
     visibleTasks,
   ]);
+
+  if (!isHydrated) {
+    return (
+      <div className="flex h-screen items-center justify-center bg-background text-muted-foreground animate-in fade-in duration-500">
+        Loading...
+      </div>
+    );
+  }
 
   return (
     <div className="h-full w-full flex bg-background text-foreground overflow-hidden">
