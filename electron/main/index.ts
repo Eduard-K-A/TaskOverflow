@@ -19,7 +19,7 @@ function createWindow(): void {
     trafficLightPosition: { x: 15, y: 15 },
     icon: iconPath,
     webPreferences: {
-      preload: join(__dirname, '../preload/index.js'),
+      preload: join(__dirname, '../preload/index.mjs'),
       sandbox: false
     }
   });

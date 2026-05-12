@@ -83,16 +83,30 @@ function migrate() {
 
 // Group Repository
 export const groupsRepo = {
-  getAll: () => db.prepare('SELECT * FROM groups ORDER BY position').all(),
+  getAll: () => {
+    const groups = db.prepare('SELECT * FROM groups ORDER BY position').all() as any[];
+    return groups.map(g => ({
+      id: g.id,
+      name: g.name,
+      emoji: g.emoji,
+      accent: g.accent,
+      position: g.position,
+      createdAt: g.created_at
+    }));
+  },
   create: (group: any) => {
     return db.prepare(`
       INSERT INTO groups (id, name, emoji, accent, position, created_at)
-      VALUES (@id, @name, @emoji, @accent, @position, @created_at)
+      VALUES (@id, @name, @emoji, @accent, @position, @createdAt)
     `).run(group);
   },
   update: (id: string, patch: any) => {
     const keys = Object.keys(patch);
-    const setClause = keys.map(k => `${k} = @${k}`).join(', ');
+    if (keys.length === 0) return;
+    const setClause = keys.map(k => {
+      const dbKey = k === 'createdAt' ? 'created_at' : k;
+      return `${dbKey} = @${k}`;
+    }).join(', ');
     return db.prepare(`UPDATE groups SET ${setClause} WHERE id = @id`).run({ ...patch, id });
   },
   delete: (id: string) => db.prepare('DELETE FROM groups WHERE id = ?').run(id),
@@ -110,13 +124,28 @@ export const tasksRepo = {
   getAll: () => {
     const tasks = db.prepare('SELECT * FROM tasks ORDER BY position').all() as any[];
     return tasks.map(t => {
-      const subtasks = db.prepare('SELECT id, title, is_done as done FROM subtasks WHERE task_id = ? ORDER BY position').all(t.id);
+      const subtasks = db.prepare('SELECT id, title, is_done as done FROM subtasks WHERE task_id = ? ORDER BY position').all(t.id).map((st: any) => ({
+        ...st,
+        done: st.done === 1
+      }));
       const tags = db.prepare(`
         SELECT t.name FROM tags t
         JOIN task_tags tt ON t.id = tt.tag_id
         WHERE tt.task_id = ?
       `).all(t.id).map((row: any) => row.name);
-      return { ...t, subtasks, tags, dueDate: t.due_date, createdAt: t.created_at, completedAt: t.completed_at };
+      return {
+        id: t.id,
+        groupId: t.group_id,
+        title: t.title,
+        notes: t.notes,
+        status: t.status,
+        dueDate: t.due_date,
+        position: t.position,
+        createdAt: t.created_at,
+        completedAt: t.completed_at,
+        subtasks,
+        tags
+      };
     });
   },
   create: (task: any) => {
@@ -129,7 +158,7 @@ export const tasksRepo = {
     const keys = Object.keys(patch).filter(k => !['subtasks', 'tags'].includes(k));
     if (keys.length > 0) {
       const setClause = keys.map(k => {
-        const dbKey = k === 'dueDate' ? 'due_date' : k === 'createdAt' ? 'created_at' : k === 'completedAt' ? 'completed_at' : k;
+        const dbKey = k === 'groupId' ? 'group_id' : k === 'dueDate' ? 'due_date' : k === 'createdAt' ? 'created_at' : k === 'completedAt' ? 'completed_at' : k;
         return `${dbKey} = @${k}`;
       }).join(', ');
       db.prepare(`UPDATE tasks SET ${setClause} WHERE id = @id`).run({ ...patch, id });
