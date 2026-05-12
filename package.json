@@ -81,13 +81,13 @@
     "@tailwindcss/vite": "4.1.12",
     "@types/better-sqlite3": "^7.6.11",
     "@types/node": "^20.17.6",
-    "@vitejs/plugin-react": "4.7.0",
+    "@vitejs/plugin-react": "^4.3.1",
     "electron": "^33.0.2",
     "electron-builder": "^24.13.3",
     "electron-vite": "^2.3.0",
     "tailwindcss": "4.1.12",
     "typescript": "^5.6.3",
-    "vite": "6.3.5"
+    "vite": "^5.4.2"
   },
   "peerDependencies": {
     "react": "18.3.1",

@@ -25,9 +25,10 @@ export default defineConfig({
     }
   },
   renderer: {
+    root: resolve(__dirname, 'src/renderer'),
     resolve: {
       alias: {
-        '@': resolve(__dirname, 'src')
+        '@': resolve(__dirname, 'src/renderer')
       }
     },
     plugins: [
@@ -38,7 +39,7 @@ export default defineConfig({
         resolveId(id) {
           if (id.startsWith('figma:asset/')) {
             const filename = id.replace('figma:asset/', '')
-            return resolve(__dirname, 'src/assets', filename)
+            return resolve(__dirname, 'src/renderer/assets', filename)
           }
         }
       }

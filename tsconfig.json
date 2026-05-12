@@ -17,9 +17,9 @@
     "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/renderer/*"]
     }
   },
-  "include": ["src", "electron", "src/env.d.ts"],
+  "include": ["src/renderer", "electron", "src/renderer/env.d.ts"],
   "node_modules": ["node_modules"]
 }
