@@ -133,13 +133,34 @@ export const useStore = create<Store>()((set, get) => ({
   isHydrated: false,
 
   hydrate: async () => {
-    if (typeof window !== 'undefined' && window.api) {
-      const { groups, tasks, settings } = await window.api.getInitialState();
+    try {
+      if (typeof window !== 'undefined' && window.api) {
+        const { groups, tasks, settings } = await window.api.getInitialState();
+        set({
+          groups,
+          tasks,
+          settings: { ...DEFAULT_SETTINGS, ...settings },
+          activeGroupId: groups[0]?.id ?? null,
+          isHydrated: true
+        });
+        return;
+      }
+
+      // Fall back to an empty in-memory state if the Electron bridge is unavailable.
       set({
-        groups,
-        tasks,
-        settings: { ...DEFAULT_SETTINGS, ...settings },
-        activeGroupId: groups[0]?.id ?? null,
+        groups: [],
+        tasks: [],
+        settings: DEFAULT_SETTINGS,
+        activeGroupId: null,
+        isHydrated: true
+      });
+    } catch (error) {
+      console.error('Failed to hydrate app state:', error);
+      set({
+        groups: [],
+        tasks: [],
+        settings: DEFAULT_SETTINGS,
+        activeGroupId: null,
         isHydrated: true
       });
     }
