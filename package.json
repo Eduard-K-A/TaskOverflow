@@ -2,6 +2,8 @@
   "name": "TaskOverflow",
   "private": true,
   "version": "0.0.1",
+  "description": "A minimalist, industry-grade task management desktop application built with Electron, React, and SQLite.",
+  "author": "Eduard King Anterola",
   "main": "out/main/index.js",
   "type": "module",
   "scripts": {
