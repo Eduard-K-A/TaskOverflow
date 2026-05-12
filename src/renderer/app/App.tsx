@@ -23,9 +23,18 @@ import { useStore } from "./store/useStore";
 import type { Task } from "./types";
 import { useTheme } from "./hooks/useTheme";
 import { useKeyboardShortcuts } from "./hooks/useKeyboardShortcuts";
+import taskOverflowDarkIcon from "../taskoverflow-dark-icon.svg";
+import taskOverflowLightIcon from "../taskoverflow-light-icon.svg";
 
 export default function App() {
-  useTheme();
+  const { resolvedTheme } = useTheme();
+
+  useEffect(() => {
+    const favicon = document.querySelector<HTMLLinkElement>('link[rel="icon"]');
+    if (favicon) {
+      favicon.href = resolvedTheme === "dark" ? taskOverflowDarkIcon : taskOverflowLightIcon;
+    }
+  }, [resolvedTheme]);
 
   const hydrate = useStore((s) => s.hydrate);
   const isHydrated = useStore((s) => s.isHydrated);

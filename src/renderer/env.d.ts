@@ -1,4 +1,10 @@
+/// <reference types="vite/client" />
 import { ElectronAPI } from '@electron-toolkit/preload'
+
+declare module '*.svg' {
+  const src: string
+  export default src
+}
 
 declare global {
   interface Window {

@@ -1,5 +1,8 @@
-import { motion, AnimatePresence } from "motion/react";
-import { Plus, PanelLeftClose, PanelLeft, Settings, HelpCircle, CheckSquare } from "lucide-react";
+import { motion } from "motion/react";
+import { Plus, PanelLeftClose, PanelLeft, Settings, HelpCircle } from "lucide-react";
+import { useTheme } from "../hooks/useTheme";
+import taskOverflowDarkIcon from "../../taskoverflow-dark-icon.svg";
+import taskOverflowLightIcon from "../../taskoverflow-light-icon.svg";
 import { useStore } from "../store/useStore";
 import { ACCENT_PALETTE } from "../lib/tokens";
 import { Button } from "./ui/button";
@@ -8,6 +11,7 @@ import { ThemeToggle } from "./ThemeToggle";
 import { cn } from "./ui/utils";
 
 export const Sidebar = () => {
+  const { resolvedTheme } = useTheme();
   const collapsed = useStore((s) => s.sidebarCollapsed);
   const toggle = useStore((s) => s.toggleSidebar);
   const groups = useStore((s) => s.groups);
@@ -39,8 +43,13 @@ export const Sidebar = () => {
         >
           {!collapsed && (
             <div className="flex items-center gap-2 overflow-hidden">
-              <div className="size-8 rounded-lg bg-primary text-primary-foreground flex items-center justify-center shrink-0">
-                <CheckSquare className="size-4" />
+              <div className="size-8 rounded-lg bg-primary/10 ring-1 ring-border/60 flex items-center justify-center shrink-0 overflow-hidden">
+                <img
+                  src={resolvedTheme === "dark" ? taskOverflowDarkIcon : taskOverflowLightIcon}
+                  alt=""
+                  aria-hidden="true"
+                  className="size-full object-cover"
+                />
               </div>
               <span className="truncate">TaskOverflow</span>
             </div>
