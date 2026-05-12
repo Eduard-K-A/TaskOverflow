@@ -1,0 +1,11 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="512" height="512" rx="115" fill="url(#lightGradient)" stroke="#e5e7eb" stroke-width="4"/>
+  <rect x="154" y="154" width="204" height="204" rx="8" stroke="#111827" stroke-width="16" fill="none"/>
+  <polyline points="194,256 234,296 318,212" stroke="#111827" stroke-width="16" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <defs>
+    <linearGradient id="lightGradient" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f9fafb"/>
+    </linearGradient>
+  </defs>
+</svg>
