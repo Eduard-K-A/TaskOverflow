@@ -23,6 +23,7 @@ import { useStore } from "./store/useStore";
 import type { Task } from "./types";
 import { useTheme } from "./hooks/useTheme";
 import { useKeyboardShortcuts } from "./hooks/useKeyboardShortcuts";
+import { useDueDateReminders } from "./hooks/useDueDateReminders";
 import taskOverflowDarkIcon from "../taskoverflow-dark-icon.svg";
 import taskOverflowLightIcon from "../taskoverflow-light-icon.svg";
 
@@ -93,7 +94,7 @@ export default function App() {
         if (!q) return true;
         return (
           t.title.toLowerCase().includes(q) ||
-          t.notes.toLowerCase().includes(q) ||
+          (t.notes ?? "").toLowerCase().includes(q) ||
           t.tags.some((tag) => tag.toLowerCase().includes(q))
         );
       });
@@ -138,6 +139,15 @@ export default function App() {
     hydrate();
   }, [hydrate]);
 
+  useEffect(() => {
+    if (!window.api?.subscribeReloadState) return;
+    return window.api.subscribeReloadState(() => {
+      void hydrate();
+    });
+  }, [hydrate]);
+
+  useDueDateReminders();
+
   useKeyboardShortcuts(
     () => addTaskRef.current?.focus(),
     () => searchRef.current?.focus(),
@@ -170,7 +180,7 @@ export default function App() {
         </div>
 
         <div className="flex-1 overflow-y-auto px-8 pb-8">
-          <div className="max-w-3xl mx-auto space-y-2">
+          <div className="flex-1 overflow-y-auto px-8 pb-8">
             <AddTaskInline
               ref={addTaskRef}
               groupId={activeGroup.id}
