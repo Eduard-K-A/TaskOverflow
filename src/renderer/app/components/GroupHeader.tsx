@@ -1,4 +1,4 @@
-import { MoreHorizontal, Pencil, Download, FileJson, FileText } from "lucide-react";
+import { Download } from "lucide-react";
 import type { Group } from "../types";
 import { useStore } from "../store/useStore";
 import { ACCENT_PALETTE } from "../lib/tokens";
@@ -7,10 +7,6 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 
@@ -21,7 +17,6 @@ interface Props {
 }
 
 export const GroupHeader = ({ group, totalCount, doneCount }: Props) => {
-  const openGroupDialog = useStore((s) => s.openGroupDialog);
   const exportGroup = useStore((s) => s.exportGroup);
   const palette = ACCENT_PALETTE[group.accent];
 
@@ -39,28 +34,25 @@ export const GroupHeader = ({ group, totalCount, doneCount }: Props) => {
 
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="ghost" size="icon" className="size-9" aria-label="Group options">
-            <MoreHorizontal className="size-4" />
+          <Button
+            variant="ghost"
+            className="h-9 gap-2 px-3"
+            aria-label="Export group"
+            title="Export group"
+          >
+            <Download className="size-4" />
+            <span>Export</span>
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
-          <DropdownMenuItem onClick={() => openGroupDialog(group.id)}>
-            <Pencil className="size-4 mr-2" /> Edit group
+          <DropdownMenuItem onClick={() => exportGroup(group.id, "json")}>
+            <Download className="mr-2 size-4" />
+            JSON
           </DropdownMenuItem>
-          <DropdownMenuSeparator />
-          <DropdownMenuSub>
-            <DropdownMenuSubTrigger>
-              <Download className="size-4 mr-2" /> Export
-            </DropdownMenuSubTrigger>
-            <DropdownMenuSubContent>
-              <DropdownMenuItem onClick={() => exportGroup(group.id, "json")}>
-                <FileJson className="size-4 mr-2" /> JSON
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => exportGroup(group.id, "csv")}>
-                <FileText className="size-4 mr-2" /> CSV
-              </DropdownMenuItem>
-            </DropdownMenuSubContent>
-          </DropdownMenuSub>
+          <DropdownMenuItem onClick={() => exportGroup(group.id, "csv")}>
+            <Download className="mr-2 size-4" />
+            CSV
+          </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
     </div>

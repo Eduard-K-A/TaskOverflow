@@ -243,7 +243,7 @@ export const SettingsDialog = () => {
             </nav>
             <Separator className="bg-border/60" />
             <div className="px-5 py-3 text-[11px] text-muted-foreground/70 leading-snug">
-              Created for you by Eduard King
+              Created for you by Eduard King.
             </div>
           </aside>
 

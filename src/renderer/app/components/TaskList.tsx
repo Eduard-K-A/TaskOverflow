@@ -1,4 +1,4 @@
-import { AnimatePresence } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import {
   DndContext,
   PointerSensor,
@@ -7,6 +7,7 @@ import {
   useSensors,
   closestCenter,
   type DragEndEvent,
+  type Modifier,
 } from "@dnd-kit/core";
 import {
   SortableContext,
@@ -31,6 +32,24 @@ export const TaskList = ({ tasks, accent, groupId }: Props) => {
     useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates }),
   );
 
+  const restrictToVerticalAxis: Modifier = ({ transform }) => {
+    return {
+      ...transform,
+      x: 0,
+    };
+  };
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.01,
+        delayChildren: 0.05,
+      },
+    },
+  };
+
   const handleDragEnd = async (event: DragEndEvent) => {
     const { active, over } = event;
     if (!over || active.id === over.id) return;
@@ -45,15 +64,26 @@ export const TaskList = ({ tasks, accent, groupId }: Props) => {
   };
 
   return (
-    <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
+    <DndContext 
+      sensors={sensors} 
+      collisionDetection={closestCenter} 
+      onDragEnd={handleDragEnd}
+      modifiers={[restrictToVerticalAxis]}
+      autoScroll={false}
+    >
       <SortableContext items={tasks.map((t) => t.id)} strategy={verticalListSortingStrategy}>
-        <div className="flex flex-col divide-y divide-border/60">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="flex flex-col divide-y divide-border/60"
+        >
           <AnimatePresence initial={false}>
             {tasks.map((t) => (
               <TaskRow key={t.id} task={t} accent={accent} />
             ))}
           </AnimatePresence>
-        </div>
+        </motion.div>
       </SortableContext>
     </DndContext>
   );

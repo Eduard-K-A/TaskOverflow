@@ -1,7 +1,6 @@
-import { motion } from "motion/react";
+import { motion, Variants } from "motion/react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import { GripVertical } from "lucide-react";
 import type { Task, AccentColor } from "../types";
 import { useStore } from "../store/useStore";
 import { TaskCheckbox } from "./TaskCheckbox";
@@ -27,6 +26,27 @@ export const TaskRow = ({ task, accent }: Props) => {
   const style = {
     transform: CSS.Transform.toString(transform),
     transition,
+    zIndex: isDragging ? 50 : undefined,
+  };
+
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 8 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        duration: 0.25,
+        ease: "easeOut"
+      }
+    },
+    exit: { 
+      opacity: 0, 
+      height: 0,
+      transition: {
+        duration: 0.15,
+        ease: "easeIn"
+      }
+    }
   };
 
   const subtaskProgress =
@@ -40,34 +60,22 @@ export const TaskRow = ({ task, accent }: Props) => {
     <motion.div
       ref={setNodeRef}
       style={style}
-      layout
-      initial={{ opacity: 0, y: 4 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, height: 0 }}
-      transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+      variants={itemVariants}
+      exit="exit"
       onClick={() => selectTask(task.id)}
+      {...attributes}
+      {...listeners}
       className={cn(
-        "group relative flex items-start gap-3 px-3 cursor-pointer transition-colors",
+        "group relative flex items-start gap-3 px-3 cursor-grab active:cursor-grabbing transition-colors",
         density === "compact" && "py-1.5",
         density === "comfortable" && "py-3",
         density === "spacious" && "py-4",
         "hover:bg-accent/40",
         selected && "bg-accent/60",
-        isDragging && "opacity-50 z-10",
+        isDragging && "shadow-lg bg-background ring-1 ring-border/50 scale-[1.02] z-50",
       )}
     >
-      <button
-        type="button"
-        {...attributes}
-        {...listeners}
-        onClick={(e) => e.stopPropagation()}
-        className="opacity-0 group-hover:opacity-100 transition-opacity cursor-grab active:cursor-grabbing self-center -ml-1"
-        aria-label="Drag to reorder"
-      >
-        <GripVertical className="size-4 text-muted-foreground" />
-      </button>
-
-      <div className="pt-0.5">
+      <div className="pt-0.5 relative z-10" onClick={(e) => e.stopPropagation()}>
         <TaskCheckbox
           checked={done}
           onToggle={() => toggle(task.id)}
@@ -75,7 +83,7 @@ export const TaskRow = ({ task, accent }: Props) => {
         />
       </div>
 
-      <div className="flex-1 min-w-0">
+      <div className="flex-1 min-w-0 pointer-events-none">
         <div className="flex items-center gap-2 min-w-0">
           <span
             className={cn(
