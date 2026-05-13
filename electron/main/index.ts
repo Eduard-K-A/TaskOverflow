@@ -1,3 +1,11 @@
+// ── Catch-all error handlers (must be first) ─────────────────────────────
+process.on('uncaughtException', (err) => {
+  console.error('[UNCAUGHT EXCEPTION]', err);
+});
+process.on('unhandledRejection', (reason) => {
+  console.error('[UNHANDLED REJECTION]', reason);
+});
+
 import {
   app,
   shell,
@@ -57,7 +65,7 @@ function getIconPath(): { win: string; other: string } {
   };
 }
 
-function loadTrayImage(): nativeImage {
+function loadTrayImage(): Electron.NativeImage {
   const iconPath = resolve(__dirname, '../../src/renderer/taskoverflow-dark-icon.svg');
   try {
     return nativeImage.createFromPath(iconPath);
@@ -288,31 +296,37 @@ function attachMainWindowListeners(win: BrowserWindow): void {
 
 function loadMainWindowUrl(win: BrowserWindow): void {
   if (is.dev && process.env['ELECTRON_RENDERER_URL']) {
+    console.log('[MAIN] Loading renderer from dev server:', process.env['ELECTRON_RENDERER_URL']);
     win.loadURL(process.env['ELECTRON_RENDERER_URL']);
   } else {
-    win.loadFile(join(__dirname, '../renderer/index.html'));
+    const filePath = join(__dirname, '../renderer/index.html');
+    console.log('[MAIN] Loading renderer from file:', filePath);
+    win.loadFile(filePath);
   }
 }
 
 function createMainWindow(): void {
   const iconPath = process.platform === 'win32' ? getIconPath().win : getIconPath().other;
   const bounds = getMainWindowBounds();
+  console.log('[MAIN] Creating window with bounds:', bounds);
+
+  const isMac = process.platform === 'darwin';
 
   const win = new BrowserWindow({
     x: bounds.x,
     y: bounds.y,
     width: bounds.width,
     height: bounds.height,
-    show: false,
+    show: true,
     autoHideMenuBar: true,
-    titleBarStyle: 'hiddenInset',
-    trafficLightPosition: { x: 15, y: 15 },
+    ...(isMac ? { titleBarStyle: 'hiddenInset', trafficLightPosition: { x: 15, y: 15 } } : {}),
     icon: iconPath,
     webPreferences: {
-      preload: join(__dirname, '../preload/index.mjs'),
+      preload: join(__dirname, '../preload/index.js'),
       sandbox: false
     }
   });
+  console.log('[MAIN] BrowserWindow created, id:', win.id);
 
   mainWindow = win;
   attachMainWindowListeners(win);
@@ -320,6 +334,16 @@ function createMainWindow(): void {
   win.webContents.setWindowOpenHandler((details) => {
     shell.openExternal(details.url);
     return { action: 'deny' };
+  });
+
+  win.webContents.on('did-fail-load', (_e, code, desc, url) => {
+    console.error('[RENDERER] did-fail-load', { code, desc, url });
+  });
+  win.webContents.on('render-process-gone', (_e, details) => {
+    console.error('[RENDERER] render-process-gone', details);
+  });
+  win.webContents.on('did-finish-load', () => {
+    console.log('[RENDERER] did-finish-load — page loaded successfully');
   });
 
   loadMainWindowUrl(win);
@@ -349,7 +373,7 @@ function createQuickAddWindow(): BrowserWindow {
     title: 'Quick Add — TaskOverflow',
     icon: iconPath,
     webPreferences: {
-      preload: join(__dirname, '../preload/index.mjs'),
+      preload: join(__dirname, '../preload/index.js'),
       sandbox: false
     }
   });
