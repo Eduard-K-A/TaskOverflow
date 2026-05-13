@@ -107,5 +107,4 @@ On Windows, your task data is stored in:
 ---
 
 ## 📄 License
-
-Built with ❤️ for productivity. Licensed under the MIT License.
+Licensed under the MIT License.
