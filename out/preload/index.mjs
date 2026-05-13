@@ -20,7 +20,29 @@ const api = {
   addTagToTask: (taskId, tag) => ipcRenderer.invoke("tags:addToTask", taskId, tag),
   removeTagFromTask: (taskId, tag) => ipcRenderer.invoke("tags:removeFromTask", taskId, tag),
   // Settings
-  saveSetting: (key, value) => ipcRenderer.invoke("settings:save", key, value)
+  saveSetting: (key, value) => ipcRenderer.invoke("settings:save", key, value),
+  getDataPaths: () => ipcRenderer.invoke("paths:getData"),
+  revealDbInFolder: () => ipcRenderer.invoke("paths:revealDb"),
+  closeQuickAddWindow: () => ipcRenderer.invoke("windows:closeQuickAdd"),
+  onQuickAddPrepare: (callback) => {
+    const listener = () => {
+      callback();
+    };
+    ipcRenderer.on("quickadd:prepare", listener);
+    return () => {
+      ipcRenderer.removeListener("quickadd:prepare", listener);
+    };
+  },
+  broadcastStateReload: () => ipcRenderer.invoke("app:broadcastStateReload"),
+  subscribeReloadState: (callback) => {
+    const listener = () => {
+      callback();
+    };
+    ipcRenderer.on("app:reload-state", listener);
+    return () => {
+      ipcRenderer.removeListener("app:reload-state", listener);
+    };
+  }
 };
 if (process.contextIsolated) {
   try {
