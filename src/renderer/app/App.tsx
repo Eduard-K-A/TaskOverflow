@@ -180,7 +180,7 @@ export default function App() {
         </div>
 
         <div className="flex-1 overflow-y-auto px-8 pb-8">
-          <div className="flex-1 overflow-y-auto px-8 pb-8">
+          <div className="max-w-3xl mx-auto space-y-2">
             <AddTaskInline
               ref={addTaskRef}
               groupId={activeGroup.id}
@@ -189,6 +189,7 @@ export default function App() {
 
             {visibleTasks.length > 0 ? (
               <TaskList
+                key={activeGroup.id}
                 tasks={visibleTasks}
                 accent={activeGroup.accent}
                 groupId={activeGroup.id}
