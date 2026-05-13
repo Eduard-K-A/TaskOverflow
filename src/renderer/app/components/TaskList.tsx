@@ -31,14 +31,14 @@ export const TaskList = ({ tasks, accent, groupId }: Props) => {
     useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates }),
   );
 
-  const handleDragEnd = (event: DragEndEvent) => {
+  const handleDragEnd = async (event: DragEndEvent) => {
     const { active, over } = event;
     if (!over || active.id === over.id) return;
     const oldIndex = tasks.findIndex((t) => t.id === active.id);
     const newIndex = tasks.findIndex((t) => t.id === over.id);
     if (oldIndex === -1 || newIndex === -1) return;
     const next = arrayMove(tasks, oldIndex, newIndex);
-    reorderTasks(
+    await reorderTasks(
       groupId,
       next.map((t) => t.id),
     );

@@ -49,6 +49,15 @@ export const DEFAULT_SETTINGS: Settings = {
   rememberWindow: true,
 };
 
+async function invokePersist(op: () => Promise<unknown>): Promise<void> {
+  if (typeof window === "undefined" || !window.api) return;
+  try {
+    await op();
+  } catch (err) {
+    console.error("Persistence failed:", err);
+  }
+}
+
 interface UIState {
   theme: "light" | "dark" | "system";
   sidebarCollapsed: boolean;
@@ -74,7 +83,7 @@ interface Actions {
   // UI
   setTheme: (t: UIState["theme"]) => void;
   toggleSidebar: () => void;
-  setActiveGroup: (id: string | null) => void;
+  setActiveGroup: (id: string | null) => Promise<void>;
   selectTask: (id: string | null) => void;
   setSearch: (q: string) => void;
   setStatusFilter: (s: StatusFilter) => void;
@@ -82,33 +91,33 @@ interface Actions {
   clearFilters: () => void;
   setHelpOpen: (open: boolean) => void;
   setSettingsOpen: (open: boolean) => void;
-  saveSettings: (next: Settings) => void;
-  resetSettings: () => void;
+  saveSettings: (next: Settings) => Promise<void>;
+  resetSettings: () => Promise<void>;
   openGroupDialog: (editingId?: string | null) => void;
   closeGroupDialog: () => void;
 
   // Groups
-  createGroup: (input: { name: string; emoji: string; accent: AccentColor }) => Group;
-  updateGroup: (id: string, patch: Partial<Pick<Group, "name" | "emoji" | "accent">>) => void;
-  deleteGroup: (id: string) => void;
-  reorderGroups: (orderedIds: string[]) => void;
+  createGroup: (input: { name: string; emoji: string; accent: AccentColor }) => Promise<Group>;
+  updateGroup: (id: string, patch: Partial<Pick<Group, "name" | "emoji" | "accent">>) => Promise<void>;
+  deleteGroup: (id: string) => Promise<void>;
+  reorderGroups: (orderedIds: string[]) => Promise<void>;
 
   // Tasks
-  createTask: (input: { groupId: string; title: string }) => Task;
-  updateTask: (id: string, patch: Partial<Task>) => void;
-  toggleTaskDone: (id: string) => void;
-  deleteTask: (id: string) => void;
-  reorderTasks: (groupId: string, orderedIds: string[]) => void;
+  createTask: (input: { groupId: string; title: string }) => Promise<Task>;
+  updateTask: (id: string, patch: Partial<Task>) => Promise<void>;
+  toggleTaskDone: (id: string) => Promise<void>;
+  deleteTask: (id: string) => Promise<void>;
+  reorderTasks: (groupId: string, orderedIds: string[]) => Promise<void>;
 
   // Subtasks
-  addSubtask: (taskId: string, title: string) => void;
-  toggleSubtask: (taskId: string, subtaskId: string) => void;
-  updateSubtask: (taskId: string, subtaskId: string, title: string) => void;
-  deleteSubtask: (taskId: string, subtaskId: string) => void;
+  addSubtask: (taskId: string, title: string) => Promise<void>;
+  toggleSubtask: (taskId: string, subtaskId: string) => Promise<void>;
+  updateSubtask: (taskId: string, subtaskId: string, title: string) => Promise<void>;
+  deleteSubtask: (taskId: string, subtaskId: string) => Promise<void>;
 
   // Tags
-  addTagToTask: (taskId: string, tag: string) => void;
-  removeTagFromTask: (taskId: string, tag: string) => void;
+  addTagToTask: (taskId: string, tag: string) => Promise<void>;
+  removeTagFromTask: (taskId: string, tag: string) => Promise<void>;
 
   // Export
   exportGroup: (groupId: string, format: "json" | "csv") => void;
@@ -135,12 +144,20 @@ export const useStore = create<Store>()((set, get) => ({
   hydrate: async () => {
     try {
       if (typeof window !== 'undefined' && window.api) {
-        const { groups, tasks, settings } = await window.api.getInitialState();
+        const { groups, tasks, settings: rawSettings } = await window.api.getInitialState();
+        const { lastActiveGroupId, ...prefs } = rawSettings as Record<string, unknown>;
+        const merged = { ...DEFAULT_SETTINGS, ...prefs } as Settings;
+        const preferred =
+          typeof lastActiveGroupId === 'string' &&
+          lastActiveGroupId.length > 0 &&
+          groups.some((g) => g.id === lastActiveGroupId)
+            ? lastActiveGroupId
+            : null;
         set({
           groups,
           tasks,
-          settings: { ...DEFAULT_SETTINGS, ...settings },
-          activeGroupId: groups[0]?.id ?? null,
+          settings: merged,
+          activeGroupId: preferred ?? groups[0]?.id ?? null,
           isHydrated: true
         });
         return;
@@ -168,14 +185,17 @@ export const useStore = create<Store>()((set, get) => ({
 
   setTheme: (theme) => {
     set({ theme });
-    window.api?.saveSetting('theme', theme);
+    void invokePersist(() => window.api!.saveSetting('theme', theme));
   },
   toggleSidebar: () => {
     const next = !get().sidebarCollapsed;
     set({ sidebarCollapsed: next });
-    window.api?.saveSetting('sidebarCollapsed', next);
+    void invokePersist(() => window.api!.saveSetting('sidebarCollapsed', next));
   },
-  setActiveGroup: (id) => set({ activeGroupId: id, selectedTaskId: null }),
+  setActiveGroup: async (id) => {
+    set({ activeGroupId: id, selectedTaskId: null });
+    await invokePersist(() => window.api!.saveSetting('lastActiveGroupId', id ?? ''));
+  },
   selectTask: (id) => set({ selectedTaskId: id }),
   setSearch: (q) => set({ searchQuery: q }),
   setStatusFilter: (statusFilter) => set({ statusFilter }),
@@ -188,18 +208,18 @@ export const useStore = create<Store>()((set, get) => ({
   clearFilters: () => set({ statusFilter: "all", tagFilter: [], searchQuery: "" }),
   setHelpOpen: (helpOpen) => set({ helpOpen }),
   setSettingsOpen: (settingsOpen) => set({ settingsOpen }),
-  saveSettings: (settings) => {
+  saveSettings: async (settings) => {
     set({ settings });
-    window.api?.saveSetting('settings', settings);
+    await invokePersist(() => window.api!.saveSetting('settings', settings));
   },
-  resetSettings: () => {
+  resetSettings: async () => {
     set({ settings: DEFAULT_SETTINGS });
-    window.api?.saveSetting('settings', DEFAULT_SETTINGS);
+    await invokePersist(() => window.api!.saveSetting('settings', DEFAULT_SETTINGS));
   },
   openGroupDialog: (editingId = null) => set({ groupDialog: { open: true, editingId } }),
   closeGroupDialog: () => set({ groupDialog: { open: false, editingId: null } }),
 
-  createGroup: ({ name, emoji, accent }) => {
+  createGroup: async ({ name, emoji, accent }) => {
     const group: Group = {
       id: uid(),
       name,
@@ -209,14 +229,15 @@ export const useStore = create<Store>()((set, get) => ({
       createdAt: Date.now(),
     };
     set((s) => ({ groups: [...s.groups, group], activeGroupId: group.id }));
-    window.api?.createGroup(group);
+    await invokePersist(() => window.api!.createGroup(group));
+    await invokePersist(() => window.api!.saveSetting('lastActiveGroupId', group.id));
     return group;
   },
-  updateGroup: (id, patch) => {
+  updateGroup: async (id, patch) => {
     set((s) => ({ groups: s.groups.map((g) => (g.id === id ? { ...g, ...patch } : g)) }));
-    window.api?.updateGroup(id, patch);
+    await invokePersist(() => window.api!.updateGroup(id, patch));
   },
-  deleteGroup: (id) => {
+  deleteGroup: async (id) => {
     set((s) => {
       const groups = s.groups.filter((g) => g.id !== id);
       const tasks = s.tasks.filter((t) => t.groupId !== id);
@@ -224,9 +245,11 @@ export const useStore = create<Store>()((set, get) => ({
         s.activeGroupId === id ? groups[0]?.id ?? null : s.activeGroupId;
       return { groups, tasks, activeGroupId };
     });
-    window.api?.deleteGroup(id);
+    await invokePersist(() => window.api!.deleteGroup(id));
+    const next = get().activeGroupId;
+    await invokePersist(() => window.api!.saveSetting('lastActiveGroupId', next ?? ''));
   },
-  reorderGroups: (orderedIds) => {
+  reorderGroups: async (orderedIds) => {
     set((s) => ({
       groups: orderedIds
         .map((id, i) => {
@@ -235,10 +258,10 @@ export const useStore = create<Store>()((set, get) => ({
         })
         .filter((g): g is Group => g !== null),
     }));
-    window.api?.reorderGroups(orderedIds);
+    await invokePersist(() => window.api!.reorderGroups(orderedIds));
   },
 
-  createTask: ({ groupId, title }) => {
+  createTask: async ({ groupId, title }) => {
     const existing = get().tasks.filter((t) => t.groupId === groupId);
     const pref = get().settings.defaultDueDate;
     let due: string | null = null;
@@ -263,14 +286,14 @@ export const useStore = create<Store>()((set, get) => ({
       completedAt: null,
     };
     set((s) => ({ tasks: [...s.tasks, task] }));
-    window.api?.createTask(task);
+    await invokePersist(() => window.api!.createTask(task));
     return task;
   },
-  updateTask: (id, patch) => {
+  updateTask: async (id, patch) => {
     set((s) => ({ tasks: s.tasks.map((t) => (t.id === id ? { ...t, ...patch } : t)) }));
-    window.api?.updateTask(id, patch);
+    await invokePersist(() => window.api!.updateTask(id, patch));
   },
-  toggleTaskDone: (id) => {
+  toggleTaskDone: async (id) => {
     const task = get().tasks.find(t => t.id === id);
     if (!task) return;
     const isDone = task.status === "done";
@@ -283,16 +306,16 @@ export const useStore = create<Store>()((set, get) => ({
         t.id === id ? { ...t, ...patch } : t,
       ),
     }));
-    window.api?.updateTask(id, patch);
+    await invokePersist(() => window.api!.updateTask(id, patch));
   },
-  deleteTask: (id) => {
+  deleteTask: async (id) => {
     set((s) => ({
       tasks: s.tasks.filter((t) => t.id !== id),
       selectedTaskId: s.selectedTaskId === id ? null : s.selectedTaskId,
     }));
-    window.api?.deleteTask(id);
+    await invokePersist(() => window.api!.deleteTask(id));
   },
-  reorderTasks: (groupId, orderedIds) => {
+  reorderTasks: async (groupId, orderedIds) => {
     set((s) => ({
       tasks: s.tasks.map((t) => {
         if (t.groupId !== groupId) return t;
@@ -300,10 +323,10 @@ export const useStore = create<Store>()((set, get) => ({
         return idx === -1 ? t : { ...t, position: idx };
       }),
     }));
-    window.api?.reorderTasks(groupId, orderedIds);
+    await invokePersist(() => window.api!.reorderTasks(groupId, orderedIds));
   },
 
-  addSubtask: (taskId, title) => {
+  addSubtask: async (taskId, title) => {
     const subtask = { id: uid(), title, done: false, position: 0 };
     set((s) => ({
       tasks: s.tasks.map((t) =>
@@ -312,9 +335,9 @@ export const useStore = create<Store>()((set, get) => ({
           : t,
       ),
     }));
-    window.api?.addSubtask(taskId, subtask);
+    await invokePersist(() => window.api!.addSubtask(taskId, subtask));
   },
-  toggleSubtask: (taskId, subtaskId) => {
+  toggleSubtask: async (taskId, subtaskId) => {
     const task = get().tasks.find(t => t.id === taskId);
     const subtask = task?.subtasks.find(st => st.id === subtaskId);
     if (!subtask) return;
@@ -331,9 +354,9 @@ export const useStore = create<Store>()((set, get) => ({
           : t,
       ),
     }));
-    window.api?.updateSubtask(subtaskId, { done: !subtask.done });
+    await invokePersist(() => window.api!.updateSubtask(subtaskId, { done: !subtask.done }));
   },
-  updateSubtask: (taskId, subtaskId, title) => {
+  updateSubtask: async (taskId, subtaskId, title) => {
     set((s) => ({
       tasks: s.tasks.map((t) =>
         t.id === taskId
@@ -346,9 +369,9 @@ export const useStore = create<Store>()((set, get) => ({
           : t,
       ),
     }));
-    window.api?.updateSubtask(subtaskId, { title });
+    await invokePersist(() => window.api!.updateSubtask(subtaskId, { title }));
   },
-  deleteSubtask: (taskId, subtaskId) => {
+  deleteSubtask: async (taskId, subtaskId) => {
     set((s) => ({
       tasks: s.tasks.map((t) =>
         t.id === taskId
@@ -356,10 +379,10 @@ export const useStore = create<Store>()((set, get) => ({
           : t,
       ),
     }));
-    window.api?.deleteSubtask(subtaskId);
+    await invokePersist(() => window.api!.deleteSubtask(subtaskId));
   },
 
-  addTagToTask: (taskId, tag) => {
+  addTagToTask: async (taskId, tag) => {
     const clean = tag.trim().toLowerCase();
     if (!clean) return;
     const task = get().tasks.find(t => t.id === taskId);
@@ -369,16 +392,16 @@ export const useStore = create<Store>()((set, get) => ({
           t.id === taskId ? { ...t, tags: [...t.tags, clean] } : t,
         ),
       }));
-      window.api?.addTagToTask(taskId, clean);
+      await invokePersist(() => window.api!.addTagToTask(taskId, clean));
     }
   },
-  removeTagFromTask: (taskId, tag) => {
+  removeTagFromTask: async (taskId, tag) => {
     set((s) => ({
       tasks: s.tasks.map((t) =>
         t.id === taskId ? { ...t, tags: t.tags.filter((x) => x !== tag) } : t,
       ),
     }));
-    window.api?.removeTagFromTask(taskId, tag);
+    await invokePersist(() => window.api!.removeTagFromTask(taskId, tag));
   },
 
   exportGroup: (groupId, format) => {
@@ -440,7 +463,7 @@ export const selectVisibleTasks = (s: Store): Task[] => {
       if (!q) return true;
       return (
         t.title.toLowerCase().includes(q) ||
-        t.notes.toLowerCase().includes(q) ||
+        (t.notes ?? "").toLowerCase().includes(q) ||
         t.tags.some((tag) => tag.toLowerCase().includes(q))
       );
     })

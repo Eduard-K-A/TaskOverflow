@@ -146,8 +146,23 @@ export const SettingsDialog = () => {
   const [draft, setDraft] = useState<Settings>(savedSettings);
   const [draftTheme, setDraftTheme] = useState(theme);
   const [deleteGroupChoice, setDeleteGroupChoice] = useState<string>("");
+  const [dataPaths, setDataPaths] = useState<{
+    userData: string;
+    dbFile: string;
+    dbSizeKb: number | null;
+  } | null>(null);
 
-  // Reset draft whenever dialog opens
+  useEffect(() => {
+    if (!open || active !== "data") return;
+    if (typeof window === "undefined" || !window.api?.getDataPaths) {
+      setDataPaths(null);
+      return;
+    }
+    void window.api
+      .getDataPaths()
+      .then(setDataPaths)
+      .catch(() => setDataPaths(null));
+  }, [open, active]);
   useEffect(() => {
     if (open) {
       setDraft(savedSettings);
@@ -162,8 +177,8 @@ export const SettingsDialog = () => {
     draftTheme !== theme ||
     (Object.keys(draft) as Array<keyof Settings>).some((k) => draft[k] !== savedSettings[k]);
 
-  const handleSave = () => {
-    saveSettings(draft);
+  const handleSave = async () => {
+    await saveSettings(draft);
     if (draftTheme !== theme) setTheme(draftTheme);
     toast.success("Settings saved");
     setOpen(false);
@@ -228,7 +243,7 @@ export const SettingsDialog = () => {
             </nav>
             <Separator className="bg-border/60" />
             <div className="px-5 py-3 text-[11px] text-muted-foreground/70 leading-snug">
-              Created for you by Eduard King Anterola
+              Created for you by Eduard King
             </div>
           </aside>
 
@@ -399,17 +414,23 @@ export const SettingsDialog = () => {
                   <SectionHeader icon={Database} title="Data" description="Database location, backup, and export" />
                   <div className="rounded-xl border border-border/60 bg-card/40 divide-y divide-border/40 overflow-hidden">
                     <Row title="Database location" description="Where taskoverflow.db is stored on disk">
-                      <div className="flex items-center gap-2">
-                        <code className="text-xs text-muted-foreground bg-muted px-2 h-7 inline-flex items-center rounded-md max-w-[200px] truncate">
-                          C:\Users\Eduard\AppData\…
+                      <div className="flex items-center gap-2 min-w-0">
+                        <code
+                          title={dataPaths?.dbFile ?? undefined}
+                          className="text-xs text-muted-foreground bg-muted px-2 h-7 inline-flex items-center rounded-md max-w-[220px] truncate"
+                        >
+                          {dataPaths?.dbFile ?? "—"}
                         </code>
                         <Button
                           variant="outline"
                           size="sm"
-                          className="h-8"
-                          onClick={() => toast.info("Database location is fixed in browser mode")}
+                          className="h-8 shrink-0"
+                          disabled={!window.api?.revealDbInFolder}
+                          onClick={() => {
+                            void window.api?.revealDbInFolder?.();
+                          }}
                         >
-                          Change
+                          Open folder
                         </Button>
                       </div>
                     </Row>
@@ -452,7 +473,7 @@ export const SettingsDialog = () => {
                     </Row>
                     <Row title="Database size" description="Current size of taskoverflow.db">
                       <span className="text-sm text-muted-foreground tabular-nums">
-                        {estimateSize()} KB
+                        {dataPaths?.dbSizeKb != null ? `${dataPaths.dbSizeKb} KB` : "—"}
                       </span>
                     </Row>
                   </div>
@@ -502,7 +523,7 @@ export const SettingsDialog = () => {
                     <Row title="Open search"><KeyHint keys={["Ctrl", "K"]} /></Row>
                     <Row title="Toggle sidebar"><KeyHint keys={["Ctrl", "B"]} /></Row>
                     <Row title="New group"><KeyHint keys={["G"]} /></Row>
-                    <Row title="New group (anywhere)"><KeyHint keys={["Ctrl", "Shift", "N"]} /></Row>
+                    <Row title="Quick Add (global)"><KeyHint keys={["Ctrl", "Shift", "N"]} /></Row>
                     <Row title="Show this help"><KeyHint keys={["?"]} /></Row>
                     <Row title="Close panel or dialog"><KeyHint keys={["Esc"]} /></Row>
                   </div>
@@ -559,10 +580,11 @@ export const SettingsDialog = () => {
                         disabled={completedCount === 0}
                         title="Delete completed tasks?"
                         body={`This removes ${completedCount} completed task${completedCount === 1 ? "" : "s"} across every group.`}
-                        onConfirm={() => {
-                          tasks
-                            .filter((t) => t.status === "done")
-                            .forEach((t) => useStore.getState().deleteTask(t.id));
+                        onConfirm={async () => {
+                          const done = tasks.filter((t) => t.status === "done");
+                          for (const t of done) {
+                            await useStore.getState().deleteTask(t.id);
+                          }
                           toast.success(`Deleted ${completedCount} task${completedCount === 1 ? "" : "s"}`);
                         }}
                       />
@@ -586,10 +608,10 @@ export const SettingsDialog = () => {
                           disabled={!deleteGroupChoice}
                           title="Delete this group?"
                           body="This removes the group and every task inside it."
-                          onConfirm={() => {
+                          onConfirm={async () => {
                             if (deleteGroupChoice) {
                               const name = groups.find((g) => g.id === deleteGroupChoice)?.name;
-                              deleteGroup(deleteGroupChoice);
+                              await deleteGroup(deleteGroupChoice);
                               setDeleteGroupChoice("");
                               toast.success(`Deleted "${name}"`);
                             }
@@ -695,7 +717,7 @@ const ImportButton = () => {
   void groups;
   const onImport = (file: File) => {
     const reader = new FileReader();
-    reader.onload = () => {
+    reader.onload = async () => {
       try {
         const text = String(reader.result ?? "");
         const data = JSON.parse(text);
@@ -705,7 +727,7 @@ const ImportButton = () => {
           const group = entry?.group;
           const tasks = entry?.tasks;
           if (!group?.name) continue;
-          const created = useStore.getState().createGroup({
+          const created = await useStore.getState().createGroup({
             name: group.name,
             emoji: group.emoji ?? "",
             accent: group.accent ?? "blue",
@@ -713,11 +735,11 @@ const ImportButton = () => {
           if (Array.isArray(tasks)) {
             for (const t of tasks) {
               if (typeof t?.title === "string") {
-                const task = useStore.getState().createTask({
+                const task = await useStore.getState().createTask({
                   groupId: created.id,
                   title: t.title,
                 });
-                useStore.getState().updateTask(task.id, {
+                await useStore.getState().updateTask(task.id, {
                   notes: t.notes ?? "",
                   status: t.status === "done" ? "done" : "todo",
                   dueDate: t.dueDate ?? null,
@@ -755,13 +777,4 @@ const ImportButton = () => {
       </Button>
     </label>
   );
-};
-
-const estimateSize = () => {
-  try {
-    const raw = localStorage.getItem("taskoverflow-state") ?? "";
-    return Math.max(1, Math.round(new Blob([raw]).size / 1024));
-  } catch {
-    return 0;
-  }
 };

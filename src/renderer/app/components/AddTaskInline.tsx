@@ -24,10 +24,10 @@ export const AddTaskInline = forwardRef<AddTaskInlineHandle, Props>(
       focus: () => inputRef.current?.focus(),
     }));
 
-    const submit = () => {
+    const submit = async () => {
       const trimmed = value.trim();
       if (!trimmed) return;
-      createTask({ groupId, title: trimmed });
+      await createTask({ groupId, title: trimmed });
       setValue("");
       selectTask(null);
       requestAnimationFrame(() => inputRef.current?.focus());

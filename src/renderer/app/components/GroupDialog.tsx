@@ -46,13 +46,13 @@ export const GroupDialog = () => {
     setAccent(editing?.accent ?? "blue");
   }, [open, editing?.id]);
 
-  const submit = () => {
+  const submit = async () => {
     const trimmed = name.trim();
     if (!trimmed) return;
     if (editing) {
-      updateGroup(editing.id, { name: trimmed, emoji: "", accent });
+      await updateGroup(editing.id, { name: trimmed, emoji: "", accent });
     } else {
-      createGroup({ name: trimmed, emoji: "", accent });
+      await createGroup({ name: trimmed, emoji: "", accent });
     }
     close();
   };
@@ -128,8 +128,8 @@ export const GroupDialog = () => {
                 <AlertDialogFooter>
                   <AlertDialogCancel>Cancel</AlertDialogCancel>
                   <AlertDialogAction
-                    onClick={() => {
-                      deleteGroup(editing.id);
+                    onClick={async () => {
+                      await deleteGroup(editing.id);
                       close();
                     }}
                   >
