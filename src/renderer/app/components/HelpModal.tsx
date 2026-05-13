@@ -10,7 +10,7 @@ import {
 const SHORTCUTS: Array<{ keys: string[]; label: string }> = [
   { keys: ["N"], label: "New task in current group" },
   { keys: ["G"], label: "New group" },
-  { keys: ["Ctrl", "Shift", "N"], label: "New group (anywhere)" },
+  { keys: ["Ctrl", "Shift", "N"], label: "Quick Add (global mini window)" },
   { keys: ["Ctrl", "K"], label: "Focus search" },
   { keys: ["Ctrl", "B"], label: "Toggle sidebar" },
   { keys: ["?"], label: "Show this help" },

@@ -36,12 +36,6 @@ export const useKeyboardShortcuts = (onNewTask: () => void, onFocusSearch: () =>
         return;
       }
 
-      if (meta && e.shiftKey && e.key.toLowerCase() === "n") {
-        e.preventDefault();
-        openGroupDialog();
-        return;
-      }
-
       if (isTypingTarget(e.target)) return;
 
       if (e.key === "?" || (e.shiftKey && e.key === "/")) {
