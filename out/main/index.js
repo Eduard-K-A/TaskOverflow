@@ -287,10 +287,9 @@ function getIconPath() {
   };
 }
 function loadTrayImage() {
-  const { win, other } = getIconPath();
-  const path = process.platform === "win32" ? win : other;
+  const iconPath = resolve(__dirname, "../../src/renderer/taskoverflow-dark-icon.svg");
   try {
-    return nativeImage.createFromPath(path);
+    return nativeImage.createFromPath(iconPath);
   } catch {
     return nativeImage.createEmpty();
   }
