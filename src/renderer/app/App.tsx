@@ -189,7 +189,6 @@ export default function App() {
 
             {visibleTasks.length > 0 ? (
               <TaskList
-                key={activeGroup.id}
                 tasks={visibleTasks}
                 accent={activeGroup.accent}
                 groupId={activeGroup.id}
