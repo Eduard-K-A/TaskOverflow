@@ -40194,7 +40194,7 @@ const SettingsDialog = () => {
           );
         }) }),
         /* @__PURE__ */ jsxRuntimeExports.jsx(Separator, { className: "bg-border/60" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "px-5 py-3 text-[11px] text-muted-foreground/70 leading-snug", children: "Created for you by Eduard King" })
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "px-5 py-3 text-[11px] text-muted-foreground/70 leading-snug", children: "Created for you by Eduard King." })
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex-1 overflow-y-auto bg-background", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "px-10 py-8 max-w-[640px]", children: [
         active === "appearance" && /* @__PURE__ */ jsxRuntimeExports.jsxs("section", { children: [
@@ -40896,7 +40896,7 @@ function App() {
         ),
         /* @__PURE__ */ jsxRuntimeExports.jsx(FilterBar, { availableTags })
       ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex-1 overflow-y-auto px-8 pb-8", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex-1 overflow-y-auto px-8 pb-8", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex-1 overflow-y-auto px-8 pb-8", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "max-w-3xl mx-auto space-y-2", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(
           AddTaskInline,
           {

@@ -1,20 +1,17 @@
-import { app, ipcMain, shell, BrowserWindow, globalShortcut, Tray, screen, nativeImage, Menu } from "electron";
-import { join, resolve } from "path";
-import { existsSync, mkdirSync, statSync, copyFileSync } from "fs";
-import { electronApp, optimizer, is } from "@electron-toolkit/utils";
-import Database from "better-sqlite3";
-import __cjs_mod__ from "node:module";
-const __filename = import.meta.filename;
-const __dirname = import.meta.dirname;
-const require2 = __cjs_mod__.createRequire(import.meta.url);
+"use strict";
+const electron = require("electron");
+const path = require("path");
+const fs = require("fs");
+const utils = require("@electron-toolkit/utils");
+const Database = require("better-sqlite3");
 let db;
 function getDbFilePath() {
-  return join(app.getPath("userData"), "taskoverflow.db");
+  return path.join(electron.app.getPath("userData"), "taskoverflow.db");
 }
 function initDb() {
-  const userDataPath = app.getPath("userData");
-  if (!existsSync(userDataPath)) {
-    mkdirSync(userDataPath, { recursive: true });
+  const userDataPath = electron.app.getPath("userData");
+  if (!fs.existsSync(userDataPath)) {
+    fs.mkdirSync(userDataPath, { recursive: true });
   }
   const dbPath = getDbFilePath();
   db = new Database(dbPath);
@@ -265,6 +262,12 @@ const settingsRepo = {
     return db.prepare("INSERT OR REPLACE INTO settings (key, value) VALUES (?, ?)").run(key, JSON.stringify(value));
   }
 };
+process.on("uncaughtException", (err) => {
+  console.error("[UNCAUGHT EXCEPTION]", err);
+});
+process.on("unhandledRejection", (reason) => {
+  console.error("[UNHANDLED REJECTION]", reason);
+});
 const QUICK_ADD_QUERY = { quickadd: "1" };
 const GLOBAL_SHORTCUT = "CommandOrControl+Shift+N";
 const DEFAULT_PREFS = {
@@ -282,16 +285,16 @@ let currentPrefs = { ...DEFAULT_PREFS };
 let saveBoundsTimeout = null;
 function getIconPath() {
   return {
-    win: resolve(process.cwd(), "build/icon.ico"),
-    other: resolve(process.cwd(), "build/icon.png")
+    win: path.resolve(process.cwd(), "build/icon.ico"),
+    other: path.resolve(process.cwd(), "build/icon.png")
   };
 }
 function loadTrayImage() {
-  const iconPath = resolve(__dirname, "../../src/renderer/taskoverflow-dark-icon.svg");
+  const iconPath = path.resolve(__dirname, "../../src/renderer/taskoverflow-dark-icon.svg");
   try {
-    return nativeImage.createFromPath(iconPath);
+    return electron.nativeImage.createFromPath(iconPath);
   } catch {
-    return nativeImage.createEmpty();
+    return electron.nativeImage.createEmpty();
   }
 }
 function readStoredSettingsRecord() {
@@ -320,7 +323,7 @@ function refreshPrefsFromDb() {
 }
 function applyLaunchAtLogin(enabled) {
   try {
-    app.setLoginItemSettings({
+    electron.app.setLoginItemSettings({
       openAtLogin: enabled,
       path: process.execPath,
       args: enabled ? ["--was-opened-at-login"] : []
@@ -346,7 +349,7 @@ function readSavedWindowBounds() {
   }
 }
 function boundsAreOnScreen(bounds) {
-  const displays = screen.getAllDisplays();
+  const displays = electron.screen.getAllDisplays();
   const ax1 = bounds.x;
   const ay1 = bounds.y;
   const ax2 = bounds.x + bounds.width;
@@ -365,7 +368,7 @@ function boundsAreOnScreen(bounds) {
 function getMainWindowBounds() {
   const defaults = { width: 1100, height: 750 };
   if (!currentPrefs.rememberWindow) {
-    const { width, height } = screen.getPrimaryDisplay().workAreaSize;
+    const { width, height } = electron.screen.getPrimaryDisplay().workAreaSize;
     return {
       x: Math.round((width - defaults.width) / 2),
       y: Math.round((height - defaults.height) / 2),
@@ -375,7 +378,7 @@ function getMainWindowBounds() {
   }
   const saved = readSavedWindowBounds();
   if (!saved || saved.width === void 0 || saved.height === void 0) {
-    const { width, height } = screen.getPrimaryDisplay().workAreaSize;
+    const { width, height } = electron.screen.getPrimaryDisplay().workAreaSize;
     return {
       x: Math.round((width - defaults.width) / 2),
       y: Math.round((height - defaults.height) / 2),
@@ -390,7 +393,7 @@ function getMainWindowBounds() {
     height: saved.height
   };
   if (rect.width < 400 || rect.height < 300 || !boundsAreOnScreen(rect)) {
-    const { width, height } = screen.getPrimaryDisplay().workAreaSize;
+    const { width, height } = electron.screen.getPrimaryDisplay().workAreaSize;
     return {
       x: Math.round((width - defaults.width) / 2),
       y: Math.round((height - defaults.height) / 2),
@@ -433,7 +436,7 @@ function shouldUseTray() {
   return currentPrefs.closeToTray || currentPrefs.startMinimized;
 }
 function buildTrayMenu() {
-  return Menu.buildFromTemplate([
+  return electron.Menu.buildFromTemplate([
     {
       label: "Show TaskOverflow",
       click: () => showMainWindow()
@@ -447,7 +450,7 @@ function buildTrayMenu() {
       label: "Quit",
       click: () => {
         isQuitting = true;
-        app.quit();
+        electron.app.quit();
       }
     }
   ]);
@@ -462,7 +465,7 @@ function ensureTray() {
     return;
   }
   const img = loadTrayImage();
-  tray = new Tray(img);
+  tray = new electron.Tray(img);
   tray.setToolTip("TaskOverflow");
   tray.setContextMenu(buildTrayMenu());
   tray.on("click", () => showMainWindow());
@@ -476,13 +479,13 @@ function attachMainWindowListeners(win) {
       e.preventDefault();
       win.hide();
       if (process.platform === "darwin") {
-        app.dock?.hide?.();
+        electron.app.dock?.hide?.();
       }
     }
   });
   win.on("show", () => {
     if (process.platform === "darwin") {
-      app.dock?.show?.();
+      electron.app.dock?.show?.();
     }
   });
   win.once("ready-to-show", () => {
@@ -491,57 +494,71 @@ function attachMainWindowListeners(win) {
     } else {
       win.hide();
       if (process.platform === "darwin") {
-        app.dock?.hide?.();
+        electron.app.dock?.hide?.();
       }
     }
   });
 }
 function loadMainWindowUrl(win) {
-  if (is.dev && process.env["ELECTRON_RENDERER_URL"]) {
+  if (utils.is.dev && process.env["ELECTRON_RENDERER_URL"]) {
+    console.log("[MAIN] Loading renderer from dev server:", process.env["ELECTRON_RENDERER_URL"]);
     win.loadURL(process.env["ELECTRON_RENDERER_URL"]);
   } else {
-    win.loadFile(join(__dirname, "../renderer/index.html"));
+    const filePath = path.join(__dirname, "../renderer/index.html");
+    console.log("[MAIN] Loading renderer from file:", filePath);
+    win.loadFile(filePath);
   }
 }
 function createMainWindow() {
   const iconPath = process.platform === "win32" ? getIconPath().win : getIconPath().other;
   const bounds = getMainWindowBounds();
-  const win = new BrowserWindow({
+  console.log("[MAIN] Creating window with bounds:", bounds);
+  const isMac = process.platform === "darwin";
+  const win = new electron.BrowserWindow({
     x: bounds.x,
     y: bounds.y,
     width: bounds.width,
     height: bounds.height,
-    show: false,
+    show: true,
     autoHideMenuBar: true,
-    titleBarStyle: "hiddenInset",
-    trafficLightPosition: { x: 15, y: 15 },
+    ...isMac ? { titleBarStyle: "hiddenInset", trafficLightPosition: { x: 15, y: 15 } } : {},
     icon: iconPath,
     webPreferences: {
-      preload: join(__dirname, "../preload/index.mjs"),
+      preload: path.join(__dirname, "../preload/index.js"),
       sandbox: false
     }
   });
+  console.log("[MAIN] BrowserWindow created, id:", win.id);
   mainWindow = win;
   attachMainWindowListeners(win);
   win.webContents.setWindowOpenHandler((details) => {
-    shell.openExternal(details.url);
+    electron.shell.openExternal(details.url);
     return { action: "deny" };
+  });
+  win.webContents.on("did-fail-load", (_e, code, desc, url) => {
+    console.error("[RENDERER] did-fail-load", { code, desc, url });
+  });
+  win.webContents.on("render-process-gone", (_e, details) => {
+    console.error("[RENDERER] render-process-gone", details);
+  });
+  win.webContents.on("did-finish-load", () => {
+    console.log("[RENDERER] did-finish-load — page loaded successfully");
   });
   loadMainWindowUrl(win);
 }
 function loadQuickAddUrl(win) {
-  if (is.dev && process.env["ELECTRON_RENDERER_URL"]) {
+  if (utils.is.dev && process.env["ELECTRON_RENDERER_URL"]) {
     const base = process.env["ELECTRON_RENDERER_URL"];
     const u = new URL(base);
     u.searchParams.set("quickadd", "1");
     win.loadURL(u.toString());
   } else {
-    win.loadFile(join(__dirname, "../renderer/index.html"), { query: QUICK_ADD_QUERY });
+    win.loadFile(path.join(__dirname, "../renderer/index.html"), { query: QUICK_ADD_QUERY });
   }
 }
 function createQuickAddWindow() {
   const iconPath = process.platform === "win32" ? getIconPath().win : getIconPath().other;
-  const win = new BrowserWindow({
+  const win = new electron.BrowserWindow({
     width: 440,
     height: 148,
     show: false,
@@ -552,7 +569,7 @@ function createQuickAddWindow() {
     title: "Quick Add — TaskOverflow",
     icon: iconPath,
     webPreferences: {
-      preload: join(__dirname, "../preload/index.mjs"),
+      preload: path.join(__dirname, "../preload/index.js"),
       sandbox: false
     }
   });
@@ -582,9 +599,9 @@ function openOrFocusQuickAdd() {
   }
 }
 function registerGlobalShortcuts() {
-  globalShortcut.unregister(GLOBAL_SHORTCUT);
+  electron.globalShortcut.unregister(GLOBAL_SHORTCUT);
   try {
-    const ok = globalShortcut.register(GLOBAL_SHORTCUT, () => openOrFocusQuickAdd());
+    const ok = electron.globalShortcut.register(GLOBAL_SHORTCUT, () => openOrFocusQuickAdd());
     if (!ok) {
       console.warn("Global shortcut registration failed:", GLOBAL_SHORTCUT);
     }
@@ -595,18 +612,18 @@ function registerGlobalShortcuts() {
 function runDailyAutoBackup() {
   if (!currentPrefs.autoBackup) return;
   const dbPath = getDbFilePath();
-  if (!existsSync(dbPath)) return;
-  const backupRoot = join(app.getPath("userData"), "backups");
-  if (!existsSync(backupRoot)) {
-    mkdirSync(backupRoot, { recursive: true });
+  if (!fs.existsSync(dbPath)) return;
+  const backupRoot = path.join(electron.app.getPath("userData"), "backups");
+  if (!fs.existsSync(backupRoot)) {
+    fs.mkdirSync(backupRoot, { recursive: true });
   }
   const d = /* @__PURE__ */ new Date();
   const stamp = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
-  const dest = join(backupRoot, `taskoverflow-${stamp}.db`);
-  if (existsSync(dest)) return;
+  const dest = path.join(backupRoot, `taskoverflow-${stamp}.db`);
+  if (fs.existsSync(dest)) return;
   try {
     checkpointDbForBackup();
-    copyFileSync(dbPath, dest);
+    fs.copyFileSync(dbPath, dest);
   } catch (e) {
     console.error("Auto-backup failed:", e);
   }
@@ -623,79 +640,79 @@ function syncPrefsAfterSettingsSave(value) {
   if (mainWindow && !mainWindow.isDestroyed()) {
     if (!shouldUseTray() && !mainWindow.isVisible()) {
       mainWindow.show();
-      if (process.platform === "darwin") app.dock?.show?.();
+      if (process.platform === "darwin") electron.app.dock?.show?.();
     }
   }
 }
-if (!app.requestSingleInstanceLock()) {
-  app.quit();
+if (!electron.app.requestSingleInstanceLock()) {
+  electron.app.quit();
 } else {
-  app.on("second-instance", () => {
+  electron.app.on("second-instance", () => {
     showMainWindow();
   });
-  app.whenReady().then(() => {
-    electronApp.setAppUserModelId("com.taskoverflow");
+  electron.app.whenReady().then(() => {
+    utils.electronApp.setAppUserModelId("com.taskoverflow");
     if (process.platform === "darwin") {
-      app.dock.setIcon(resolve(process.cwd(), "build/icon.png"));
+      electron.app.dock.setIcon(path.resolve(process.cwd(), "build/icon.png"));
     }
-    app.on("browser-window-created", (_, window) => {
-      optimizer.watchWindowShortcuts(window);
+    electron.app.on("browser-window-created", (_, window) => {
+      utils.optimizer.watchWindowShortcuts(window);
     });
     initDb();
     refreshPrefsFromDb();
     applyPrefsSideEffects();
     registerGlobalShortcuts();
-    ipcMain.handle("db:getInitialState", () => {
+    electron.ipcMain.handle("db:getInitialState", () => {
       return {
         groups: groupsRepo.getAll(),
         tasks: tasksRepo.getAll(),
         settings: settingsRepo.get()
       };
     });
-    ipcMain.handle("groups:create", (_, group) => groupsRepo.create(group));
-    ipcMain.handle("groups:update", (_, id, patch) => groupsRepo.update(id, patch));
-    ipcMain.handle("groups:delete", (_, id) => groupsRepo.delete(id));
-    ipcMain.handle("groups:reorder", (_, ids) => groupsRepo.reorder(ids));
-    ipcMain.handle("tasks:create", (_, task) => tasksRepo.create(task));
-    ipcMain.handle("tasks:update", (_, id, patch) => tasksRepo.update(id, patch));
-    ipcMain.handle("tasks:delete", (_, id) => tasksRepo.delete(id));
-    ipcMain.handle("tasks:reorder", (_, groupId, ids) => tasksRepo.reorder(groupId, ids));
-    ipcMain.handle("subtasks:add", (_, taskId, subtask) => subtasksRepo.add(taskId, subtask));
-    ipcMain.handle("subtasks:update", (_, id, patch) => subtasksRepo.update(id, patch));
-    ipcMain.handle("subtasks:delete", (_, id) => subtasksRepo.delete(id));
-    ipcMain.handle("tags:addToTask", (_, taskId, tag) => tagsRepo.addToTask(taskId, tag));
-    ipcMain.handle("tags:removeFromTask", (_, taskId, tag) => tagsRepo.removeFromTask(taskId, tag));
-    ipcMain.handle("settings:save", (_, key, value) => {
+    electron.ipcMain.handle("groups:create", (_, group) => groupsRepo.create(group));
+    electron.ipcMain.handle("groups:update", (_, id, patch) => groupsRepo.update(id, patch));
+    electron.ipcMain.handle("groups:delete", (_, id) => groupsRepo.delete(id));
+    electron.ipcMain.handle("groups:reorder", (_, ids) => groupsRepo.reorder(ids));
+    electron.ipcMain.handle("tasks:create", (_, task) => tasksRepo.create(task));
+    electron.ipcMain.handle("tasks:update", (_, id, patch) => tasksRepo.update(id, patch));
+    electron.ipcMain.handle("tasks:delete", (_, id) => tasksRepo.delete(id));
+    electron.ipcMain.handle("tasks:reorder", (_, groupId, ids) => tasksRepo.reorder(groupId, ids));
+    electron.ipcMain.handle("subtasks:add", (_, taskId, subtask) => subtasksRepo.add(taskId, subtask));
+    electron.ipcMain.handle("subtasks:update", (_, id, patch) => subtasksRepo.update(id, patch));
+    electron.ipcMain.handle("subtasks:delete", (_, id) => subtasksRepo.delete(id));
+    electron.ipcMain.handle("tags:addToTask", (_, taskId, tag) => tagsRepo.addToTask(taskId, tag));
+    electron.ipcMain.handle("tags:removeFromTask", (_, taskId, tag) => tagsRepo.removeFromTask(taskId, tag));
+    electron.ipcMain.handle("settings:save", (_, key, value) => {
       settingsRepo.set(key, value);
       if (key === "settings") {
         syncPrefsAfterSettingsSave(value);
       }
     });
-    ipcMain.handle("paths:getData", () => {
+    electron.ipcMain.handle("paths:getData", () => {
       const dbFile = getDbFilePath();
       let dbSizeKb = null;
       try {
-        if (existsSync(dbFile)) {
-          dbSizeKb = Math.max(1, Math.round(statSync(dbFile).size / 1024));
+        if (fs.existsSync(dbFile)) {
+          dbSizeKb = Math.max(1, Math.round(fs.statSync(dbFile).size / 1024));
         }
       } catch {
       }
       return {
-        userData: app.getPath("userData"),
+        userData: electron.app.getPath("userData"),
         dbFile,
         dbSizeKb
       };
     });
-    ipcMain.handle("paths:revealDb", () => {
-      shell.showItemInFolder(getDbFilePath());
+    electron.ipcMain.handle("paths:revealDb", () => {
+      electron.shell.showItemInFolder(getDbFilePath());
     });
-    ipcMain.handle("windows:closeQuickAdd", () => {
+    electron.ipcMain.handle("windows:closeQuickAdd", () => {
       if (quickAddWindow && !quickAddWindow.isDestroyed()) {
         quickAddWindow.hide();
       }
     });
-    ipcMain.handle("app:broadcastStateReload", () => {
-      for (const w of BrowserWindow.getAllWindows()) {
+    electron.ipcMain.handle("app:broadcastStateReload", () => {
+      for (const w of electron.BrowserWindow.getAllWindows()) {
         if (!w.isDestroyed()) {
           w.webContents.send("app:reload-state");
         }
@@ -705,27 +722,27 @@ if (!app.requestSingleInstanceLock()) {
     ensureTray();
     runDailyAutoBackup();
     setInterval(runDailyAutoBackup, 6 * 60 * 60 * 1e3);
-    app.on("activate", function() {
-      if (BrowserWindow.getAllWindows().length === 0) {
+    electron.app.on("activate", function() {
+      if (electron.BrowserWindow.getAllWindows().length === 0) {
         createMainWindow();
       } else {
         showMainWindow();
       }
     });
   });
-  app.on("before-quit", () => {
+  electron.app.on("before-quit", () => {
     isQuitting = true;
-    globalShortcut.unregisterAll();
+    electron.globalShortcut.unregisterAll();
     destroyTray();
     closeDb();
   });
-  app.on("will-quit", () => {
-    globalShortcut.unregisterAll();
+  electron.app.on("will-quit", () => {
+    electron.globalShortcut.unregisterAll();
   });
-  app.on("window-all-closed", () => {
+  electron.app.on("window-all-closed", () => {
     if (process.platform !== "darwin") {
       if (!currentPrefs.closeToTray) {
-        app.quit();
+        electron.app.quit();
       }
     }
   });
