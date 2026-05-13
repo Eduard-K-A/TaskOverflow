@@ -3,7 +3,12 @@ import { app } from 'electron';
 import { join } from 'path';
 import { existsSync, mkdirSync } from 'fs';
 
-let db: Database.Database;
+let db: Database.Database | undefined;
+
+/** Absolute path to the SQLite database file (same path `initDb` uses). */
+export function getDbFilePath(): string {
+  return join(app.getPath('userData'), 'taskoverflow.db');
+}
 
 export function initDb() {
   const userDataPath = app.getPath('userData');
@@ -11,7 +16,7 @@ export function initDb() {
     mkdirSync(userDataPath, { recursive: true });
   }
 
-  const dbPath = join(userDataPath, 'taskoverflow.db');
+  const dbPath = getDbFilePath();
   db = new Database(dbPath);
   db.pragma('journal_mode = WAL');
   db.pragma('foreign_keys = ON');
@@ -19,7 +24,29 @@ export function initDb() {
   migrate();
 }
 
+/** Flush WAL to the main db file so a filesystem copy is consistent. */
+export function checkpointDbForBackup(): void {
+  if (!db) return;
+  try {
+    db.pragma('wal_checkpoint(TRUNCATE)');
+  } catch (e) {
+    console.error('WAL checkpoint failed:', e);
+  }
+}
+
+/** Close the DB connection so WAL is flushed before process exit. */
+export function closeDb() {
+  if (!db) return;
+  try {
+    db.close();
+  } catch (e) {
+    console.error('Failed to close database:', e);
+  }
+  db = undefined;
+}
+
 function migrate() {
+  if (!db) throw new Error('Database not initialized');
   db.exec(`
     CREATE TABLE IF NOT EXISTS schema_version (
       version INTEGER PRIMARY KEY
@@ -84,6 +111,7 @@ function migrate() {
 // Group Repository
 export const groupsRepo = {
   getAll: () => {
+    if (!db) return [];
     const groups = db.prepare('SELECT * FROM groups ORDER BY position').all() as any[];
     return groups.map(g => ({
       id: g.id,
@@ -95,12 +123,14 @@ export const groupsRepo = {
     }));
   },
   create: (group: any) => {
+    if (!db) throw new Error('Database not initialized');
     return db.prepare(`
       INSERT INTO groups (id, name, emoji, accent, position, created_at)
       VALUES (@id, @name, @emoji, @accent, @position, @createdAt)
     `).run(group);
   },
   update: (id: string, patch: any) => {
+    if (!db) throw new Error('Database not initialized');
     const keys = Object.keys(patch);
     if (keys.length === 0) return;
     const setClause = keys.map(k => {
@@ -109,10 +139,15 @@ export const groupsRepo = {
     }).join(', ');
     return db.prepare(`UPDATE groups SET ${setClause} WHERE id = @id`).run({ ...patch, id });
   },
-  delete: (id: string) => db.prepare('DELETE FROM groups WHERE id = ?').run(id),
+  delete: (id: string) => {
+    if (!db) throw new Error('Database not initialized');
+    return db.prepare('DELETE FROM groups WHERE id = ?').run(id);
+  },
   reorder: (orderedIds: string[]) => {
-    const transaction = db.transaction((ids) => {
-      const stmt = db.prepare('UPDATE groups SET position = ? WHERE id = ?');
+    if (!db) throw new Error('Database not initialized');
+    const database = db;
+    const transaction = database.transaction((ids) => {
+      const stmt = database.prepare('UPDATE groups SET position = ? WHERE id = ?');
       ids.forEach((id: string, index: number) => stmt.run(index, id));
     });
     transaction(orderedIds);
@@ -122,13 +157,15 @@ export const groupsRepo = {
 // Task Repository
 export const tasksRepo = {
   getAll: () => {
-    const tasks = db.prepare('SELECT * FROM tasks ORDER BY position').all() as any[];
+    if (!db) return [];
+    const database = db;
+    const tasks = database.prepare('SELECT * FROM tasks ORDER BY position').all() as any[];
     return tasks.map(t => {
-      const subtasks = db.prepare('SELECT id, title, is_done as done FROM subtasks WHERE task_id = ? ORDER BY position').all(t.id).map((st: any) => ({
+      const subtasks = database.prepare('SELECT id, title, is_done as done FROM subtasks WHERE task_id = ? ORDER BY position').all(t.id).map((st: any) => ({
         ...st,
         done: st.done === 1
       }));
-      const tags = db.prepare(`
+      const tags = database.prepare(`
         SELECT t.name FROM tags t
         JOIN task_tags tt ON t.id = tt.tag_id
         WHERE tt.task_id = ?
@@ -137,7 +174,7 @@ export const tasksRepo = {
         id: t.id,
         groupId: t.group_id,
         title: t.title,
-        notes: t.notes,
+        notes: t.notes ?? '',
         status: t.status,
         dueDate: t.due_date,
         position: t.position,
@@ -149,12 +186,14 @@ export const tasksRepo = {
     });
   },
   create: (task: any) => {
+    if (!db) throw new Error('Database not initialized');
     return db.prepare(`
       INSERT INTO tasks (id, group_id, title, notes, status, due_date, position, created_at, completed_at)
       VALUES (@id, @groupId, @title, @notes, @status, @dueDate, @position, @createdAt, @completedAt)
     `).run(task);
   },
   update: (id: string, patch: any) => {
+    if (!db) throw new Error('Database not initialized');
     const keys = Object.keys(patch).filter(k => !['subtasks', 'tags'].includes(k));
     if (keys.length > 0) {
       const setClause = keys.map(k => {
@@ -164,10 +203,15 @@ export const tasksRepo = {
       db.prepare(`UPDATE tasks SET ${setClause} WHERE id = @id`).run({ ...patch, id });
     }
   },
-  delete: (id: string) => db.prepare('DELETE FROM tasks WHERE id = ?').run(id),
+  delete: (id: string) => {
+    if (!db) throw new Error('Database not initialized');
+    return db.prepare('DELETE FROM tasks WHERE id = ?').run(id);
+  },
   reorder: (groupId: string, orderedIds: string[]) => {
-    const transaction = db.transaction((ids) => {
-      const stmt = db.prepare('UPDATE tasks SET position = ? WHERE id = ? AND group_id = ?');
+    if (!db) throw new Error('Database not initialized');
+    const database = db;
+    const transaction = database.transaction((ids) => {
+      const stmt = database.prepare('UPDATE tasks SET position = ? WHERE id = ? AND group_id = ?');
       ids.forEach((id: string, index: number) => stmt.run(index, id, groupId));
     });
     transaction(orderedIds);
@@ -177,29 +221,40 @@ export const tasksRepo = {
 // Subtask Repository
 export const subtasksRepo = {
   add: (taskId: string, subtask: any) => {
+    if (!db) throw new Error('Database not initialized');
     return db.prepare(`
       INSERT INTO subtasks (id, task_id, title, is_done, position)
       VALUES (@id, @taskId, @title, @isDone, @position)
     `).run({ ...subtask, taskId, isDone: subtask.done ? 1 : 0 });
   },
   update: (id: string, patch: any) => {
+    if (!db) throw new Error('Database not initialized');
     if (patch.done !== undefined) patch.is_done = patch.done ? 1 : 0;
     const keys = Object.keys(patch).filter(k => k !== 'done');
+    if (keys.length === 0) return;
     const setClause = keys.map(k => `${k} = @${k}`).join(', ');
     return db.prepare(`UPDATE subtasks SET ${setClause} WHERE id = @id`).run({ ...patch, id });
   },
-  delete: (id: string) => db.prepare('DELETE FROM subtasks WHERE id = ?').run(id),
-  deleteByTask: (taskId: string) => db.prepare('DELETE FROM subtasks WHERE task_id = ?').run(taskId)
+  delete: (id: string) => {
+    if (!db) throw new Error('Database not initialized');
+    return db.prepare('DELETE FROM subtasks WHERE id = ?').run(id);
+  },
+  deleteByTask: (taskId: string) => {
+    if (!db) throw new Error('Database not initialized');
+    return db.prepare('DELETE FROM subtasks WHERE task_id = ?').run(taskId);
+  }
 };
 
 // Tags Repository
 export const tagsRepo = {
   addToTask: (taskId: string, tagName: string) => {
+    if (!db) throw new Error('Database not initialized');
     db.prepare('INSERT OR IGNORE INTO tags (name) VALUES (?)').run(tagName);
     const tag = db.prepare('SELECT id FROM tags WHERE name = ?').get(tagName) as { id: number };
     return db.prepare('INSERT OR IGNORE INTO task_tags (task_id, tag_id) VALUES (?, ?)').run(taskId, tag.id);
   },
   removeFromTask: (taskId: string, tagName: string) => {
+    if (!db) throw new Error('Database not initialized');
     const tag = db.prepare('SELECT id FROM tags WHERE name = ?').get(tagName) as { id: number };
     if (tag) {
       return db.prepare('DELETE FROM task_tags WHERE task_id = ? AND tag_id = ?').run(taskId, tag.id);
@@ -210,6 +265,7 @@ export const tagsRepo = {
 // Settings Repository
 export const settingsRepo = {
   get: () => {
+    if (!db) return {};
     const rows = db.prepare('SELECT * FROM settings').all() as any[];
     const settings: any = {};
     rows.forEach(row => {
@@ -222,6 +278,7 @@ export const settingsRepo = {
     return settings;
   },
   set: (key: string, value: any) => {
+    if (!db) throw new Error('Database not initialized');
     return db.prepare('INSERT OR REPLACE INTO settings (key, value) VALUES (?, ?)').run(key, JSON.stringify(value));
   }
 };

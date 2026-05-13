@@ -25,6 +25,12 @@ declare global {
       addTagToTask: (taskId: string, tag: string) => Promise<void>;
       removeTagFromTask: (taskId: string, tag: string) => Promise<void>;
       saveSetting: (key: string, value: any) => Promise<void>;
+      getDataPaths: () => Promise<{ userData: string; dbFile: string; dbSizeKb: number | null }>;
+      revealDbInFolder: () => Promise<void>;
+      closeQuickAddWindow: () => Promise<void>;
+      onQuickAddPrepare: (callback: () => void) => () => void;
+      broadcastStateReload: () => Promise<void>;
+      subscribeReloadState: (callback: () => void) => () => void;
     }
   }
 }

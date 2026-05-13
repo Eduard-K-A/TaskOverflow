@@ -27,7 +27,38 @@ const api = {
   removeTagFromTask: (taskId: string, tag: string) => ipcRenderer.invoke('tags:removeFromTask', taskId, tag),
 
   // Settings
-  saveSetting: (key: string, value: any) => ipcRenderer.invoke('settings:save', key, value)
+  saveSetting: (key: string, value: any) => ipcRenderer.invoke('settings:save', key, value),
+
+  getDataPaths: () =>
+    ipcRenderer.invoke('paths:getData') as Promise<{
+      userData: string;
+      dbFile: string;
+      dbSizeKb: number | null;
+    }>,
+  revealDbInFolder: () => ipcRenderer.invoke('paths:revealDb'),
+  closeQuickAddWindow: () => ipcRenderer.invoke('windows:closeQuickAdd'),
+
+  onQuickAddPrepare: (callback: () => void) => {
+    const listener = (): void => {
+      callback();
+    };
+    ipcRenderer.on('quickadd:prepare', listener);
+    return () => {
+      ipcRenderer.removeListener('quickadd:prepare', listener);
+    };
+  },
+
+  broadcastStateReload: () => ipcRenderer.invoke('app:broadcastStateReload'),
+
+  subscribeReloadState: (callback: () => void) => {
+    const listener = (): void => {
+      callback();
+    };
+    ipcRenderer.on('app:reload-state', listener);
+    return () => {
+      ipcRenderer.removeListener('app:reload-state', listener);
+    };
+  }
 };
 
 // Use `contextBridge` APIs to expose Electron APIs to
