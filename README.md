@@ -9,6 +9,7 @@ TaskOverflow is a minimalist, industry-grade task management desktop application
 The first version of TaskOverflow focuses on core productivity features with a focus on speed, offline reliability, and a polished user experience.
 
 - **Grouped Task Management**: Organize tasks into custom groups with distinct accents and emojis.
+- **Group Actions**: Edit groups from the sidebar menu and export a group directly from the header in JSON or CSV.
 - **Detailed Task Control**: Add notes, due dates, and tags to your tasks.
 - **Subtasks**: Break down complex tasks into manageable steps.
 - **Theme-Aware UI**: Seamlessly switch between Light and Dark modes.
