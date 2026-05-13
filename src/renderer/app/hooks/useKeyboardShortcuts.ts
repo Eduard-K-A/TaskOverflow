@@ -13,6 +13,7 @@ export const useKeyboardShortcuts = (onNewTask: () => void, onFocusSearch: () =>
   const setHelpOpen = useStore((s) => s.setHelpOpen);
   const selectTask = useStore((s) => s.selectTask);
   const openGroupDialog = useStore((s) => s.openGroupDialog);
+  const setCommandPaletteOpen = useStore((s) => s.setCommandPaletteOpen);
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
@@ -26,7 +27,7 @@ export const useKeyboardShortcuts = (onNewTask: () => void, onFocusSearch: () =>
 
       if (meta && e.key === "k") {
         e.preventDefault();
-        onFocusSearch();
+        setCommandPaletteOpen(true);
         return;
       }
 

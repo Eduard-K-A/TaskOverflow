@@ -68,6 +68,7 @@ interface UIState {
   tagFilter: string[];
   helpOpen: boolean;
   settingsOpen: boolean;
+  commandPaletteOpen: boolean;
   groupDialog: { open: boolean; editingId: string | null };
   settings: Settings;
   isHydrated: boolean;
@@ -91,6 +92,7 @@ interface Actions {
   clearFilters: () => void;
   setHelpOpen: (open: boolean) => void;
   setSettingsOpen: (open: boolean) => void;
+  setCommandPaletteOpen: (open: boolean) => void;
   saveSettings: (next: Settings) => Promise<void>;
   resetSettings: () => Promise<void>;
   openGroupDialog: (editingId?: string | null) => void;
@@ -135,6 +137,7 @@ export const useStore = create<Store>()((set, get) => ({
   tagFilter: [],
   helpOpen: false,
   settingsOpen: false,
+  commandPaletteOpen: false,
   groupDialog: { open: false, editingId: null },
   settings: DEFAULT_SETTINGS,
   groups: [],
@@ -208,6 +211,7 @@ export const useStore = create<Store>()((set, get) => ({
   clearFilters: () => set({ statusFilter: "all", tagFilter: [], searchQuery: "" }),
   setHelpOpen: (helpOpen) => set({ helpOpen }),
   setSettingsOpen: (settingsOpen) => set({ settingsOpen }),
+  setCommandPaletteOpen: (commandPaletteOpen) => set({ commandPaletteOpen }),
   saveSettings: async (settings) => {
     set({ settings });
     await invokePersist(() => window.api!.saveSetting('settings', settings));
