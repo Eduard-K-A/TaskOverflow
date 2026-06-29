@@ -1,14 +1,14 @@
-function _mergeNamespaces(n, m) {
-  for (var i = 0; i < m.length; i++) {
-    const e = m[i];
+function _mergeNamespaces(n, m2) {
+  for (var i = 0; i < m2.length; i++) {
+    const e = m2[i];
     if (typeof e !== "string" && !Array.isArray(e)) {
-      for (const k in e) {
-        if (k !== "default" && !(k in n)) {
-          const d = Object.getOwnPropertyDescriptor(e, k);
+      for (const k2 in e) {
+        if (k2 !== "default" && !(k2 in n)) {
+          const d = Object.getOwnPropertyDescriptor(e, k2);
           if (d) {
-            Object.defineProperty(n, k, d.get ? d : {
+            Object.defineProperty(n, k2, d.get ? d : {
               enumerable: true,
-              get: () => e[k]
+              get: () => e[k2]
             });
           }
         }
@@ -12464,4815 +12464,6 @@ function checkDCE() {
   client.exports = reactDomClient_production;
 }
 var clientExports = client.exports;
-/**
- * @license lucide-react v0.487.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const toKebabCase = (string) => string.replace(/([a-z0-9])([A-Z])/g, "$1-$2").toLowerCase();
-const toCamelCase = (string) => string.replace(
-  /^([A-Z])|[\s-_]+(\w)/g,
-  (match2, p1, p2) => p2 ? p2.toUpperCase() : p1.toLowerCase()
-);
-const toPascalCase = (string) => {
-  const camelCase = toCamelCase(string);
-  return camelCase.charAt(0).toUpperCase() + camelCase.slice(1);
-};
-const mergeClasses = (...classes) => classes.filter((className, index2, array) => {
-  return Boolean(className) && className.trim() !== "" && array.indexOf(className) === index2;
-}).join(" ").trim();
-/**
- * @license lucide-react v0.487.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-var defaultAttributes$1 = {
-  xmlns: "http://www.w3.org/2000/svg",
-  width: 24,
-  height: 24,
-  viewBox: "0 0 24 24",
-  fill: "none",
-  stroke: "currentColor",
-  strokeWidth: 2,
-  strokeLinecap: "round",
-  strokeLinejoin: "round"
-};
-/**
- * @license lucide-react v0.487.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const Icon$1 = reactExports.forwardRef(
-  ({
-    color: color2 = "currentColor",
-    size: size2 = 24,
-    strokeWidth = 2,
-    absoluteStrokeWidth,
-    className = "",
-    children,
-    iconNode,
-    ...rest
-  }, ref) => {
-    return reactExports.createElement(
-      "svg",
-      {
-        ref,
-        ...defaultAttributes$1,
-        width: size2,
-        height: size2,
-        stroke: color2,
-        strokeWidth: absoluteStrokeWidth ? Number(strokeWidth) * 24 / Number(size2) : strokeWidth,
-        className: mergeClasses("lucide", className),
-        ...rest
-      },
-      [
-        ...iconNode.map(([tag, attrs]) => reactExports.createElement(tag, attrs)),
-        ...Array.isArray(children) ? children : [children]
-      ]
-    );
-  }
-);
-/**
- * @license lucide-react v0.487.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const createLucideIcon = (iconName, iconNode) => {
-  const Component2 = reactExports.forwardRef(
-    ({ className, ...props }, ref) => reactExports.createElement(Icon$1, {
-      ref,
-      iconNode,
-      className: mergeClasses(
-        `lucide-${toKebabCase(toPascalCase(iconName))}`,
-        `lucide-${iconName}`,
-        className
-      ),
-      ...props
-    })
-  );
-  Component2.displayName = toPascalCase(iconName);
-  return Component2;
-};
-/**
- * @license lucide-react v0.487.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$w = [
-  ["path", { d: "M10.268 21a2 2 0 0 0 3.464 0", key: "vwvbt9" }],
-  [
-    "path",
-    {
-      d: "M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326",
-      key: "11g9vi"
-    }
-  ]
-];
-const Bell = createLucideIcon("bell", __iconNode$w);
-/**
- * @license lucide-react v0.487.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$v = [
-  ["path", { d: "M8 2v4", key: "1cmpym" }],
-  ["path", { d: "M16 2v4", key: "4m81vk" }],
-  ["rect", { width: "18", height: "18", x: "3", y: "4", rx: "2", key: "1hopcy" }],
-  ["path", { d: "M3 10h18", key: "8toen8" }]
-];
-const Calendar = createLucideIcon("calendar", __iconNode$v);
-/**
- * @license lucide-react v0.487.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$u = [["path", { d: "M20 6 9 17l-5-5", key: "1gmf2c" }]];
-const Check = createLucideIcon("check", __iconNode$u);
-/**
- * @license lucide-react v0.487.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$t = [["path", { d: "m6 9 6 6 6-6", key: "qrunsl" }]];
-const ChevronDown = createLucideIcon("chevron-down", __iconNode$t);
-/**
- * @license lucide-react v0.487.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$s = [["path", { d: "m9 18 6-6-6-6", key: "mthhwq" }]];
-const ChevronRight = createLucideIcon("chevron-right", __iconNode$s);
-/**
- * @license lucide-react v0.487.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$r = [["path", { d: "m18 15-6-6-6 6", key: "153udz" }]];
-const ChevronUp = createLucideIcon("chevron-up", __iconNode$r);
-/**
- * @license lucide-react v0.487.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$q = [
-  ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
-  ["path", { d: "M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3", key: "1u773s" }],
-  ["path", { d: "M12 17h.01", key: "p32p05" }]
-];
-const CircleHelp = createLucideIcon("circle-help", __iconNode$q);
-/**
- * @license lucide-react v0.487.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$p = [
-  ["ellipse", { cx: "12", cy: "5", rx: "9", ry: "3", key: "msslwz" }],
-  ["path", { d: "M3 5V19A9 3 0 0 0 21 19V5", key: "1wlel7" }],
-  ["path", { d: "M3 12A9 3 0 0 0 21 12", key: "mv7ke4" }]
-];
-const Database = createLucideIcon("database", __iconNode$p);
-/**
- * @license lucide-react v0.487.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$o = [
-  ["path", { d: "M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4", key: "ih7n3h" }],
-  ["polyline", { points: "7 10 12 15 17 10", key: "2ggqvy" }],
-  ["line", { x1: "12", x2: "12", y1: "15", y2: "3", key: "1vk2je" }]
-];
-const Download = createLucideIcon("download", __iconNode$o);
-/**
- * @license lucide-react v0.487.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$n = [
-  ["circle", { cx: "12", cy: "12", r: "1", key: "41hilf" }],
-  ["circle", { cx: "19", cy: "12", r: "1", key: "1wjl8i" }],
-  ["circle", { cx: "5", cy: "12", r: "1", key: "1pcz8c" }]
-];
-const Ellipsis = createLucideIcon("ellipsis", __iconNode$n);
-/**
- * @license lucide-react v0.487.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$m = [
-  ["path", { d: "M15 3h6v6", key: "1q9fwt" }],
-  ["path", { d: "M10 14 21 3", key: "gplh6r" }],
-  ["path", { d: "M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6", key: "a6xqqp" }]
-];
-const ExternalLink = createLucideIcon("external-link", __iconNode$m);
-/**
- * @license lucide-react v0.487.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$l = [
-  ["path", { d: "M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z", key: "1rqfz7" }],
-  ["path", { d: "M14 2v4a2 2 0 0 0 2 2h4", key: "tnqrlb" }],
-  [
-    "path",
-    { d: "M10 12a1 1 0 0 0-1 1v1a1 1 0 0 1-1 1 1 1 0 0 1 1 1v1a1 1 0 0 0 1 1", key: "1oajmo" }
-  ],
-  [
-    "path",
-    { d: "M14 18a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1 1 1 0 0 1-1-1v-1a1 1 0 0 0-1-1", key: "mpwhp6" }
-  ]
-];
-const FileJson = createLucideIcon("file-json", __iconNode$l);
-/**
- * @license lucide-react v0.487.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$k = [
-  ["path", { d: "M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z", key: "1rqfz7" }],
-  ["path", { d: "M14 2v4a2 2 0 0 0 2 2h4", key: "tnqrlb" }],
-  ["path", { d: "M10 9H8", key: "b1mrlr" }],
-  ["path", { d: "M16 13H8", key: "t4e002" }],
-  ["path", { d: "M16 17H8", key: "z1uh3a" }]
-];
-const FileText = createLucideIcon("file-text", __iconNode$k);
-/**
- * @license lucide-react v0.487.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$j = [
-  ["circle", { cx: "9", cy: "12", r: "1", key: "1vctgf" }],
-  ["circle", { cx: "9", cy: "5", r: "1", key: "hp0tcf" }],
-  ["circle", { cx: "9", cy: "19", r: "1", key: "fkjjf6" }],
-  ["circle", { cx: "15", cy: "12", r: "1", key: "1tmaij" }],
-  ["circle", { cx: "15", cy: "5", r: "1", key: "19l28e" }],
-  ["circle", { cx: "15", cy: "19", r: "1", key: "f4zoj3" }]
-];
-const GripVertical = createLucideIcon("grip-vertical", __iconNode$j);
-/**
- * @license lucide-react v0.487.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$i = [
-  ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
-  ["path", { d: "M12 16v-4", key: "1dtifu" }],
-  ["path", { d: "M12 8h.01", key: "e9boi3" }]
-];
-const Info = createLucideIcon("info", __iconNode$i);
-/**
- * @license lucide-react v0.487.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$h = [
-  ["path", { d: "M10 8h.01", key: "1r9ogq" }],
-  ["path", { d: "M12 12h.01", key: "1mp3jc" }],
-  ["path", { d: "M14 8h.01", key: "1primd" }],
-  ["path", { d: "M16 12h.01", key: "1l6xoz" }],
-  ["path", { d: "M18 8h.01", key: "emo2bl" }],
-  ["path", { d: "M6 8h.01", key: "x9i8wu" }],
-  ["path", { d: "M7 16h10", key: "wp8him" }],
-  ["path", { d: "M8 12h.01", key: "czm47f" }],
-  ["rect", { width: "20", height: "16", x: "2", y: "4", rx: "2", key: "18n3k1" }]
-];
-const Keyboard = createLucideIcon("keyboard", __iconNode$h);
-/**
- * @license lucide-react v0.487.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$g = [
-  ["rect", { x: "3", y: "5", width: "6", height: "6", rx: "1", key: "1defrl" }],
-  ["path", { d: "m3 17 2 2 4-4", key: "1jhpwq" }],
-  ["path", { d: "M13 6h8", key: "15sg57" }],
-  ["path", { d: "M13 12h8", key: "h98zly" }],
-  ["path", { d: "M13 18h8", key: "oe0vm4" }]
-];
-const ListTodo = createLucideIcon("list-todo", __iconNode$g);
-/**
- * @license lucide-react v0.487.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$f = [
-  ["path", { d: "M12 17v4", key: "1riwvh" }],
-  ["path", { d: "m15.2 4.9-.9-.4", key: "12wd2u" }],
-  ["path", { d: "m15.2 7.1-.9.4", key: "1r2vl7" }],
-  ["path", { d: "m16.9 3.2-.4-.9", key: "3zbo91" }],
-  ["path", { d: "m16.9 8.8-.4.9", key: "1qr2dn" }],
-  ["path", { d: "m19.5 2.3-.4.9", key: "1rjrkq" }],
-  ["path", { d: "m19.5 9.7-.4-.9", key: "heryx5" }],
-  ["path", { d: "m21.7 4.5-.9.4", key: "17fqt1" }],
-  ["path", { d: "m21.7 7.5-.9-.4", key: "14zyni" }],
-  ["path", { d: "M22 13v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7", key: "1tnzv8" }],
-  ["path", { d: "M8 21h8", key: "1ev6f3" }],
-  ["circle", { cx: "18", cy: "6", r: "3", key: "1h7g24" }]
-];
-const MonitorCog = createLucideIcon("monitor-cog", __iconNode$f);
-/**
- * @license lucide-react v0.487.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$e = [
-  ["rect", { width: "20", height: "14", x: "2", y: "3", rx: "2", key: "48i651" }],
-  ["line", { x1: "8", x2: "16", y1: "21", y2: "21", key: "1svkeh" }],
-  ["line", { x1: "12", x2: "12", y1: "17", y2: "21", key: "vw1qmm" }]
-];
-const Monitor = createLucideIcon("monitor", __iconNode$e);
-/**
- * @license lucide-react v0.487.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$d = [
-  ["path", { d: "M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z", key: "a7tn18" }]
-];
-const Moon = createLucideIcon("moon", __iconNode$d);
-/**
- * @license lucide-react v0.487.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$c = [
-  ["circle", { cx: "13.5", cy: "6.5", r: ".5", fill: "currentColor", key: "1okk4w" }],
-  ["circle", { cx: "17.5", cy: "10.5", r: ".5", fill: "currentColor", key: "f64h9f" }],
-  ["circle", { cx: "8.5", cy: "7.5", r: ".5", fill: "currentColor", key: "fotxhn" }],
-  ["circle", { cx: "6.5", cy: "12.5", r: ".5", fill: "currentColor", key: "qy21gx" }],
-  [
-    "path",
-    {
-      d: "M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z",
-      key: "12rzf8"
-    }
-  ]
-];
-const Palette = createLucideIcon("palette", __iconNode$c);
-/**
- * @license lucide-react v0.487.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$b = [
-  ["rect", { width: "18", height: "18", x: "3", y: "3", rx: "2", key: "afitv7" }],
-  ["path", { d: "M9 3v18", key: "fh3hqa" }],
-  ["path", { d: "m16 15-3-3 3-3", key: "14y99z" }]
-];
-const PanelLeftClose = createLucideIcon("panel-left-close", __iconNode$b);
-/**
- * @license lucide-react v0.487.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$a = [
-  ["rect", { width: "18", height: "18", x: "3", y: "3", rx: "2", key: "afitv7" }],
-  ["path", { d: "M9 3v18", key: "fh3hqa" }]
-];
-const PanelLeft = createLucideIcon("panel-left", __iconNode$a);
-/**
- * @license lucide-react v0.487.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$9 = [
-  [
-    "path",
-    {
-      d: "M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z",
-      key: "1a8usu"
-    }
-  ],
-  ["path", { d: "m15 5 4 4", key: "1mk7zo" }]
-];
-const Pencil = createLucideIcon("pencil", __iconNode$9);
-/**
- * @license lucide-react v0.487.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$8 = [
-  ["path", { d: "M5 12h14", key: "1ays0h" }],
-  ["path", { d: "M12 5v14", key: "s699le" }]
-];
-const Plus = createLucideIcon("plus", __iconNode$8);
-/**
- * @license lucide-react v0.487.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$7 = [
-  ["circle", { cx: "11", cy: "11", r: "8", key: "4ej97u" }],
-  ["path", { d: "m21 21-4.3-4.3", key: "1qie3q" }]
-];
-const Search = createLucideIcon("search", __iconNode$7);
-/**
- * @license lucide-react v0.487.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$6 = [
-  [
-    "path",
-    {
-      d: "M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z",
-      key: "1qme2f"
-    }
-  ],
-  ["circle", { cx: "12", cy: "12", r: "3", key: "1v7zrd" }]
-];
-const Settings = createLucideIcon("settings", __iconNode$6);
-/**
- * @license lucide-react v0.487.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$5 = [
-  [
-    "path",
-    {
-      d: "M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z",
-      key: "4pj2yx"
-    }
-  ],
-  ["path", { d: "M20 3v4", key: "1olli1" }],
-  ["path", { d: "M22 5h-4", key: "1gvqau" }],
-  ["path", { d: "M4 17v2", key: "vumght" }],
-  ["path", { d: "M5 18H3", key: "zchphs" }]
-];
-const Sparkles = createLucideIcon("sparkles", __iconNode$5);
-/**
- * @license lucide-react v0.487.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$4 = [
-  ["circle", { cx: "12", cy: "12", r: "4", key: "4exip2" }],
-  ["path", { d: "M12 2v2", key: "tus03m" }],
-  ["path", { d: "M12 20v2", key: "1lh1kg" }],
-  ["path", { d: "m4.93 4.93 1.41 1.41", key: "149t6j" }],
-  ["path", { d: "m17.66 17.66 1.41 1.41", key: "ptbguv" }],
-  ["path", { d: "M2 12h2", key: "1t8f8n" }],
-  ["path", { d: "M20 12h2", key: "1q8mjw" }],
-  ["path", { d: "m6.34 17.66-1.41 1.41", key: "1m8zz5" }],
-  ["path", { d: "m19.07 4.93-1.41 1.41", key: "1shlcs" }]
-];
-const Sun = createLucideIcon("sun", __iconNode$4);
-/**
- * @license lucide-react v0.487.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$3 = [
-  ["path", { d: "M3 6h18", key: "d0wm0j" }],
-  ["path", { d: "M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6", key: "4alrt4" }],
-  ["path", { d: "M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2", key: "v07s0e" }],
-  ["line", { x1: "10", x2: "10", y1: "11", y2: "17", key: "1uufr5" }],
-  ["line", { x1: "14", x2: "14", y1: "11", y2: "17", key: "xtxkd" }]
-];
-const Trash2 = createLucideIcon("trash-2", __iconNode$3);
-/**
- * @license lucide-react v0.487.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$2 = [
-  [
-    "path",
-    {
-      d: "m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3",
-      key: "wmoenq"
-    }
-  ],
-  ["path", { d: "M12 9v4", key: "juzpu7" }],
-  ["path", { d: "M12 17h.01", key: "p32p05" }]
-];
-const TriangleAlert = createLucideIcon("triangle-alert", __iconNode$2);
-/**
- * @license lucide-react v0.487.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$1 = [
-  ["path", { d: "M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4", key: "ih7n3h" }],
-  ["polyline", { points: "17 8 12 3 7 8", key: "t8dd8p" }],
-  ["line", { x1: "12", x2: "12", y1: "3", y2: "15", key: "widbto" }]
-];
-const Upload = createLucideIcon("upload", __iconNode$1);
-/**
- * @license lucide-react v0.487.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode = [
-  ["path", { d: "M18 6 6 18", key: "1bl5f8" }],
-  ["path", { d: "m6 6 12 12", key: "d8bk6v" }]
-];
-const X = createLucideIcon("x", __iconNode);
-var M = (e, i, s, u, m, a, l, h) => {
-  let d = document.documentElement, w = ["light", "dark"];
-  function p(n) {
-    (Array.isArray(e) ? e : [e]).forEach((y) => {
-      let k = y === "class", S = k && a ? m.map((f) => a[f] || f) : m;
-      k ? (d.classList.remove(...S), d.classList.add(a && a[n] ? a[n] : n)) : d.setAttribute(y, n);
-    }), R(n);
-  }
-  function R(n) {
-    h && w.includes(n) && (d.style.colorScheme = n);
-  }
-  function c() {
-    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-  }
-  if (u) p(u);
-  else try {
-    let n = localStorage.getItem(i) || s, y = l && n === "system" ? c() : n;
-    p(y);
-  } catch (n) {
-  }
-};
-var x = reactExports.createContext(void 0), U = { setTheme: (e) => {
-}, themes: [] }, z = () => {
-  var e;
-  return (e = reactExports.useContext(x)) != null ? e : U;
-};
-reactExports.memo(({ forcedTheme: e, storageKey: i, attribute: s, enableSystem: u, enableColorScheme: m, defaultTheme: a, value: l, themes: h, nonce: d, scriptProps: w }) => {
-  let p = JSON.stringify([s, i, a, e, h, l, u, m]).slice(1, -1);
-  return reactExports.createElement("script", { ...w, suppressHydrationWarning: true, nonce: typeof window == "undefined" ? d : "", dangerouslySetInnerHTML: { __html: `(${M.toString()})(${p})` } });
-});
-function __insertCSS(code) {
-  if (typeof document == "undefined") return;
-  let head = document.head || document.getElementsByTagName("head")[0];
-  let style2 = document.createElement("style");
-  style2.type = "text/css";
-  head.appendChild(style2);
-  style2.styleSheet ? style2.styleSheet.cssText = code : style2.appendChild(document.createTextNode(code));
-}
-const getAsset = (type) => {
-  switch (type) {
-    case "success":
-      return SuccessIcon;
-    case "info":
-      return InfoIcon;
-    case "warning":
-      return WarningIcon;
-    case "error":
-      return ErrorIcon;
-    default:
-      return null;
-  }
-};
-const bars = Array(12).fill(0);
-const Loader = ({ visible, className }) => {
-  return /* @__PURE__ */ React$2.createElement("div", {
-    className: [
-      "sonner-loading-wrapper",
-      className
-    ].filter(Boolean).join(" "),
-    "data-visible": visible
-  }, /* @__PURE__ */ React$2.createElement("div", {
-    className: "sonner-spinner"
-  }, bars.map((_, i) => /* @__PURE__ */ React$2.createElement("div", {
-    className: "sonner-loading-bar",
-    key: `spinner-bar-${i}`
-  }))));
-};
-const SuccessIcon = /* @__PURE__ */ React$2.createElement("svg", {
-  xmlns: "http://www.w3.org/2000/svg",
-  viewBox: "0 0 20 20",
-  fill: "currentColor",
-  height: "20",
-  width: "20"
-}, /* @__PURE__ */ React$2.createElement("path", {
-  fillRule: "evenodd",
-  d: "M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z",
-  clipRule: "evenodd"
-}));
-const WarningIcon = /* @__PURE__ */ React$2.createElement("svg", {
-  xmlns: "http://www.w3.org/2000/svg",
-  viewBox: "0 0 24 24",
-  fill: "currentColor",
-  height: "20",
-  width: "20"
-}, /* @__PURE__ */ React$2.createElement("path", {
-  fillRule: "evenodd",
-  d: "M9.401 3.003c1.155-2 4.043-2 5.197 0l7.355 12.748c1.154 2-.29 4.5-2.599 4.5H4.645c-2.309 0-3.752-2.5-2.598-4.5L9.4 3.003zM12 8.25a.75.75 0 01.75.75v3.75a.75.75 0 01-1.5 0V9a.75.75 0 01.75-.75zm0 8.25a.75.75 0 100-1.5.75.75 0 000 1.5z",
-  clipRule: "evenodd"
-}));
-const InfoIcon = /* @__PURE__ */ React$2.createElement("svg", {
-  xmlns: "http://www.w3.org/2000/svg",
-  viewBox: "0 0 20 20",
-  fill: "currentColor",
-  height: "20",
-  width: "20"
-}, /* @__PURE__ */ React$2.createElement("path", {
-  fillRule: "evenodd",
-  d: "M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a.75.75 0 000 1.5h.253a.25.25 0 01.244.304l-.459 2.066A1.75 1.75 0 0010.747 15H11a.75.75 0 000-1.5h-.253a.25.25 0 01-.244-.304l.459-2.066A1.75 1.75 0 009.253 9H9z",
-  clipRule: "evenodd"
-}));
-const ErrorIcon = /* @__PURE__ */ React$2.createElement("svg", {
-  xmlns: "http://www.w3.org/2000/svg",
-  viewBox: "0 0 20 20",
-  fill: "currentColor",
-  height: "20",
-  width: "20"
-}, /* @__PURE__ */ React$2.createElement("path", {
-  fillRule: "evenodd",
-  d: "M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-5a.75.75 0 01.75.75v4.5a.75.75 0 01-1.5 0v-4.5A.75.75 0 0110 5zm0 10a1 1 0 100-2 1 1 0 000 2z",
-  clipRule: "evenodd"
-}));
-const CloseIcon = /* @__PURE__ */ React$2.createElement("svg", {
-  xmlns: "http://www.w3.org/2000/svg",
-  width: "12",
-  height: "12",
-  viewBox: "0 0 24 24",
-  fill: "none",
-  stroke: "currentColor",
-  strokeWidth: "1.5",
-  strokeLinecap: "round",
-  strokeLinejoin: "round"
-}, /* @__PURE__ */ React$2.createElement("line", {
-  x1: "18",
-  y1: "6",
-  x2: "6",
-  y2: "18"
-}), /* @__PURE__ */ React$2.createElement("line", {
-  x1: "6",
-  y1: "6",
-  x2: "18",
-  y2: "18"
-}));
-const useIsDocumentHidden = () => {
-  const [isDocumentHidden, setIsDocumentHidden] = React$2.useState(document.hidden);
-  React$2.useEffect(() => {
-    const callback = () => {
-      setIsDocumentHidden(document.hidden);
-    };
-    document.addEventListener("visibilitychange", callback);
-    return () => window.removeEventListener("visibilitychange", callback);
-  }, []);
-  return isDocumentHidden;
-};
-let toastsCounter = 1;
-class Observer {
-  constructor() {
-    this.subscribe = (subscriber) => {
-      this.subscribers.push(subscriber);
-      return () => {
-        const index2 = this.subscribers.indexOf(subscriber);
-        this.subscribers.splice(index2, 1);
-      };
-    };
-    this.publish = (data) => {
-      this.subscribers.forEach((subscriber) => subscriber(data));
-    };
-    this.addToast = (data) => {
-      this.publish(data);
-      this.toasts = [
-        ...this.toasts,
-        data
-      ];
-    };
-    this.create = (data) => {
-      var _data_id;
-      const { message: message2, ...rest } = data;
-      const id2 = typeof (data == null ? void 0 : data.id) === "number" || ((_data_id = data.id) == null ? void 0 : _data_id.length) > 0 ? data.id : toastsCounter++;
-      const alreadyExists = this.toasts.find((toast2) => {
-        return toast2.id === id2;
-      });
-      const dismissible = data.dismissible === void 0 ? true : data.dismissible;
-      if (this.dismissedToasts.has(id2)) {
-        this.dismissedToasts.delete(id2);
-      }
-      if (alreadyExists) {
-        this.toasts = this.toasts.map((toast2) => {
-          if (toast2.id === id2) {
-            this.publish({
-              ...toast2,
-              ...data,
-              id: id2,
-              title: message2
-            });
-            return {
-              ...toast2,
-              ...data,
-              id: id2,
-              dismissible,
-              title: message2
-            };
-          }
-          return toast2;
-        });
-      } else {
-        this.addToast({
-          title: message2,
-          ...rest,
-          dismissible,
-          id: id2
-        });
-      }
-      return id2;
-    };
-    this.dismiss = (id2) => {
-      if (id2) {
-        this.dismissedToasts.add(id2);
-        requestAnimationFrame(() => this.subscribers.forEach((subscriber) => subscriber({
-          id: id2,
-          dismiss: true
-        })));
-      } else {
-        this.toasts.forEach((toast2) => {
-          this.subscribers.forEach((subscriber) => subscriber({
-            id: toast2.id,
-            dismiss: true
-          }));
-        });
-      }
-      return id2;
-    };
-    this.message = (message2, data) => {
-      return this.create({
-        ...data,
-        message: message2
-      });
-    };
-    this.error = (message2, data) => {
-      return this.create({
-        ...data,
-        message: message2,
-        type: "error"
-      });
-    };
-    this.success = (message2, data) => {
-      return this.create({
-        ...data,
-        type: "success",
-        message: message2
-      });
-    };
-    this.info = (message2, data) => {
-      return this.create({
-        ...data,
-        type: "info",
-        message: message2
-      });
-    };
-    this.warning = (message2, data) => {
-      return this.create({
-        ...data,
-        type: "warning",
-        message: message2
-      });
-    };
-    this.loading = (message2, data) => {
-      return this.create({
-        ...data,
-        type: "loading",
-        message: message2
-      });
-    };
-    this.promise = (promise, data) => {
-      if (!data) {
-        return;
-      }
-      let id2 = void 0;
-      if (data.loading !== void 0) {
-        id2 = this.create({
-          ...data,
-          promise,
-          type: "loading",
-          message: data.loading,
-          description: typeof data.description !== "function" ? data.description : void 0
-        });
-      }
-      const p = Promise.resolve(promise instanceof Function ? promise() : promise);
-      let shouldDismiss = id2 !== void 0;
-      let result;
-      const originalPromise = p.then(async (response) => {
-        result = [
-          "resolve",
-          response
-        ];
-        const isReactElementResponse = React$2.isValidElement(response);
-        if (isReactElementResponse) {
-          shouldDismiss = false;
-          this.create({
-            id: id2,
-            type: "default",
-            message: response
-          });
-        } else if (isHttpResponse(response) && !response.ok) {
-          shouldDismiss = false;
-          const promiseData = typeof data.error === "function" ? await data.error(`HTTP error! status: ${response.status}`) : data.error;
-          const description = typeof data.description === "function" ? await data.description(`HTTP error! status: ${response.status}`) : data.description;
-          const isExtendedResult = typeof promiseData === "object" && !React$2.isValidElement(promiseData);
-          const toastSettings = isExtendedResult ? promiseData : {
-            message: promiseData
-          };
-          this.create({
-            id: id2,
-            type: "error",
-            description,
-            ...toastSettings
-          });
-        } else if (response instanceof Error) {
-          shouldDismiss = false;
-          const promiseData = typeof data.error === "function" ? await data.error(response) : data.error;
-          const description = typeof data.description === "function" ? await data.description(response) : data.description;
-          const isExtendedResult = typeof promiseData === "object" && !React$2.isValidElement(promiseData);
-          const toastSettings = isExtendedResult ? promiseData : {
-            message: promiseData
-          };
-          this.create({
-            id: id2,
-            type: "error",
-            description,
-            ...toastSettings
-          });
-        } else if (data.success !== void 0) {
-          shouldDismiss = false;
-          const promiseData = typeof data.success === "function" ? await data.success(response) : data.success;
-          const description = typeof data.description === "function" ? await data.description(response) : data.description;
-          const isExtendedResult = typeof promiseData === "object" && !React$2.isValidElement(promiseData);
-          const toastSettings = isExtendedResult ? promiseData : {
-            message: promiseData
-          };
-          this.create({
-            id: id2,
-            type: "success",
-            description,
-            ...toastSettings
-          });
-        }
-      }).catch(async (error) => {
-        result = [
-          "reject",
-          error
-        ];
-        if (data.error !== void 0) {
-          shouldDismiss = false;
-          const promiseData = typeof data.error === "function" ? await data.error(error) : data.error;
-          const description = typeof data.description === "function" ? await data.description(error) : data.description;
-          const isExtendedResult = typeof promiseData === "object" && !React$2.isValidElement(promiseData);
-          const toastSettings = isExtendedResult ? promiseData : {
-            message: promiseData
-          };
-          this.create({
-            id: id2,
-            type: "error",
-            description,
-            ...toastSettings
-          });
-        }
-      }).finally(() => {
-        if (shouldDismiss) {
-          this.dismiss(id2);
-          id2 = void 0;
-        }
-        data.finally == null ? void 0 : data.finally.call(data);
-      });
-      const unwrap = () => new Promise((resolve, reject) => originalPromise.then(() => result[0] === "reject" ? reject(result[1]) : resolve(result[1])).catch(reject));
-      if (typeof id2 !== "string" && typeof id2 !== "number") {
-        return {
-          unwrap
-        };
-      } else {
-        return Object.assign(id2, {
-          unwrap
-        });
-      }
-    };
-    this.custom = (jsx, data) => {
-      const id2 = (data == null ? void 0 : data.id) || toastsCounter++;
-      this.create({
-        jsx: jsx(id2),
-        id: id2,
-        ...data
-      });
-      return id2;
-    };
-    this.getActiveToasts = () => {
-      return this.toasts.filter((toast2) => !this.dismissedToasts.has(toast2.id));
-    };
-    this.subscribers = [];
-    this.toasts = [];
-    this.dismissedToasts = /* @__PURE__ */ new Set();
-  }
-}
-const ToastState = new Observer();
-const toastFunction = (message2, data) => {
-  const id2 = (data == null ? void 0 : data.id) || toastsCounter++;
-  ToastState.addToast({
-    title: message2,
-    ...data,
-    id: id2
-  });
-  return id2;
-};
-const isHttpResponse = (data) => {
-  return data && typeof data === "object" && "ok" in data && typeof data.ok === "boolean" && "status" in data && typeof data.status === "number";
-};
-const basicToast = toastFunction;
-const getHistory = () => ToastState.toasts;
-const getToasts = () => ToastState.getActiveToasts();
-const toast = Object.assign(basicToast, {
-  success: ToastState.success,
-  info: ToastState.info,
-  warning: ToastState.warning,
-  error: ToastState.error,
-  custom: ToastState.custom,
-  message: ToastState.message,
-  promise: ToastState.promise,
-  dismiss: ToastState.dismiss,
-  loading: ToastState.loading
-}, {
-  getHistory,
-  getToasts
-});
-__insertCSS("[data-sonner-toaster][dir=ltr],html[dir=ltr]{--toast-icon-margin-start:-3px;--toast-icon-margin-end:4px;--toast-svg-margin-start:-1px;--toast-svg-margin-end:0px;--toast-button-margin-start:auto;--toast-button-margin-end:0;--toast-close-button-start:0;--toast-close-button-end:unset;--toast-close-button-transform:translate(-35%, -35%)}[data-sonner-toaster][dir=rtl],html[dir=rtl]{--toast-icon-margin-start:4px;--toast-icon-margin-end:-3px;--toast-svg-margin-start:0px;--toast-svg-margin-end:-1px;--toast-button-margin-start:0;--toast-button-margin-end:auto;--toast-close-button-start:unset;--toast-close-button-end:0;--toast-close-button-transform:translate(35%, -35%)}[data-sonner-toaster]{position:fixed;width:var(--width);font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;--gray1:hsl(0, 0%, 99%);--gray2:hsl(0, 0%, 97.3%);--gray3:hsl(0, 0%, 95.1%);--gray4:hsl(0, 0%, 93%);--gray5:hsl(0, 0%, 90.9%);--gray6:hsl(0, 0%, 88.7%);--gray7:hsl(0, 0%, 85.8%);--gray8:hsl(0, 0%, 78%);--gray9:hsl(0, 0%, 56.1%);--gray10:hsl(0, 0%, 52.3%);--gray11:hsl(0, 0%, 43.5%);--gray12:hsl(0, 0%, 9%);--border-radius:8px;box-sizing:border-box;padding:0;margin:0;list-style:none;outline:0;z-index:999999999;transition:transform .4s ease}[data-sonner-toaster][data-lifted=true]{transform:translateY(-8px)}@media (hover:none) and (pointer:coarse){[data-sonner-toaster][data-lifted=true]{transform:none}}[data-sonner-toaster][data-x-position=right]{right:var(--offset-right)}[data-sonner-toaster][data-x-position=left]{left:var(--offset-left)}[data-sonner-toaster][data-x-position=center]{left:50%;transform:translateX(-50%)}[data-sonner-toaster][data-y-position=top]{top:var(--offset-top)}[data-sonner-toaster][data-y-position=bottom]{bottom:var(--offset-bottom)}[data-sonner-toast]{--y:translateY(100%);--lift-amount:calc(var(--lift) * var(--gap));z-index:var(--z-index);position:absolute;opacity:0;transform:var(--y);touch-action:none;transition:transform .4s,opacity .4s,height .4s,box-shadow .2s;box-sizing:border-box;outline:0;overflow-wrap:anywhere}[data-sonner-toast][data-styled=true]{padding:16px;background:var(--normal-bg);border:1px solid var(--normal-border);color:var(--normal-text);border-radius:var(--border-radius);box-shadow:0 4px 12px rgba(0,0,0,.1);width:var(--width);font-size:13px;display:flex;align-items:center;gap:6px}[data-sonner-toast]:focus-visible{box-shadow:0 4px 12px rgba(0,0,0,.1),0 0 0 2px rgba(0,0,0,.2)}[data-sonner-toast][data-y-position=top]{top:0;--y:translateY(-100%);--lift:1;--lift-amount:calc(1 * var(--gap))}[data-sonner-toast][data-y-position=bottom]{bottom:0;--y:translateY(100%);--lift:-1;--lift-amount:calc(var(--lift) * var(--gap))}[data-sonner-toast][data-styled=true] [data-description]{font-weight:400;line-height:1.4;color:#3f3f3f}[data-rich-colors=true][data-sonner-toast][data-styled=true] [data-description]{color:inherit}[data-sonner-toaster][data-sonner-theme=dark] [data-description]{color:#e8e8e8}[data-sonner-toast][data-styled=true] [data-title]{font-weight:500;line-height:1.5;color:inherit}[data-sonner-toast][data-styled=true] [data-icon]{display:flex;height:16px;width:16px;position:relative;justify-content:flex-start;align-items:center;flex-shrink:0;margin-left:var(--toast-icon-margin-start);margin-right:var(--toast-icon-margin-end)}[data-sonner-toast][data-promise=true] [data-icon]>svg{opacity:0;transform:scale(.8);transform-origin:center;animation:sonner-fade-in .3s ease forwards}[data-sonner-toast][data-styled=true] [data-icon]>*{flex-shrink:0}[data-sonner-toast][data-styled=true] [data-icon] svg{margin-left:var(--toast-svg-margin-start);margin-right:var(--toast-svg-margin-end)}[data-sonner-toast][data-styled=true] [data-content]{display:flex;flex-direction:column;gap:2px}[data-sonner-toast][data-styled=true] [data-button]{border-radius:4px;padding-left:8px;padding-right:8px;height:24px;font-size:12px;color:var(--normal-bg);background:var(--normal-text);margin-left:var(--toast-button-margin-start);margin-right:var(--toast-button-margin-end);border:none;font-weight:500;cursor:pointer;outline:0;display:flex;align-items:center;flex-shrink:0;transition:opacity .4s,box-shadow .2s}[data-sonner-toast][data-styled=true] [data-button]:focus-visible{box-shadow:0 0 0 2px rgba(0,0,0,.4)}[data-sonner-toast][data-styled=true] [data-button]:first-of-type{margin-left:var(--toast-button-margin-start);margin-right:var(--toast-button-margin-end)}[data-sonner-toast][data-styled=true] [data-cancel]{color:var(--normal-text);background:rgba(0,0,0,.08)}[data-sonner-toaster][data-sonner-theme=dark] [data-sonner-toast][data-styled=true] [data-cancel]{background:rgba(255,255,255,.3)}[data-sonner-toast][data-styled=true] [data-close-button]{position:absolute;left:var(--toast-close-button-start);right:var(--toast-close-button-end);top:0;height:20px;width:20px;display:flex;justify-content:center;align-items:center;padding:0;color:var(--gray12);background:var(--normal-bg);border:1px solid var(--gray4);transform:var(--toast-close-button-transform);border-radius:50%;cursor:pointer;z-index:1;transition:opacity .1s,background .2s,border-color .2s}[data-sonner-toast][data-styled=true] [data-close-button]:focus-visible{box-shadow:0 4px 12px rgba(0,0,0,.1),0 0 0 2px rgba(0,0,0,.2)}[data-sonner-toast][data-styled=true] [data-disabled=true]{cursor:not-allowed}[data-sonner-toast][data-styled=true]:hover [data-close-button]:hover{background:var(--gray2);border-color:var(--gray5)}[data-sonner-toast][data-swiping=true]::before{content:'';position:absolute;left:-100%;right:-100%;height:100%;z-index:-1}[data-sonner-toast][data-y-position=top][data-swiping=true]::before{bottom:50%;transform:scaleY(3) translateY(50%)}[data-sonner-toast][data-y-position=bottom][data-swiping=true]::before{top:50%;transform:scaleY(3) translateY(-50%)}[data-sonner-toast][data-swiping=false][data-removed=true]::before{content:'';position:absolute;inset:0;transform:scaleY(2)}[data-sonner-toast][data-expanded=true]::after{content:'';position:absolute;left:0;height:calc(var(--gap) + 1px);bottom:100%;width:100%}[data-sonner-toast][data-mounted=true]{--y:translateY(0);opacity:1}[data-sonner-toast][data-expanded=false][data-front=false]{--scale:var(--toasts-before) * 0.05 + 1;--y:translateY(calc(var(--lift-amount) * var(--toasts-before))) scale(calc(-1 * var(--scale)));height:var(--front-toast-height)}[data-sonner-toast]>*{transition:opacity .4s}[data-sonner-toast][data-x-position=right]{right:0}[data-sonner-toast][data-x-position=left]{left:0}[data-sonner-toast][data-expanded=false][data-front=false][data-styled=true]>*{opacity:0}[data-sonner-toast][data-visible=false]{opacity:0;pointer-events:none}[data-sonner-toast][data-mounted=true][data-expanded=true]{--y:translateY(calc(var(--lift) * var(--offset)));height:var(--initial-height)}[data-sonner-toast][data-removed=true][data-front=true][data-swipe-out=false]{--y:translateY(calc(var(--lift) * -100%));opacity:0}[data-sonner-toast][data-removed=true][data-front=false][data-swipe-out=false][data-expanded=true]{--y:translateY(calc(var(--lift) * var(--offset) + var(--lift) * -100%));opacity:0}[data-sonner-toast][data-removed=true][data-front=false][data-swipe-out=false][data-expanded=false]{--y:translateY(40%);opacity:0;transition:transform .5s,opacity .2s}[data-sonner-toast][data-removed=true][data-front=false]::before{height:calc(var(--initial-height) + 20%)}[data-sonner-toast][data-swiping=true]{transform:var(--y) translateY(var(--swipe-amount-y,0)) translateX(var(--swipe-amount-x,0));transition:none}[data-sonner-toast][data-swiped=true]{user-select:none}[data-sonner-toast][data-swipe-out=true][data-y-position=bottom],[data-sonner-toast][data-swipe-out=true][data-y-position=top]{animation-duration:.2s;animation-timing-function:ease-out;animation-fill-mode:forwards}[data-sonner-toast][data-swipe-out=true][data-swipe-direction=left]{animation-name:swipe-out-left}[data-sonner-toast][data-swipe-out=true][data-swipe-direction=right]{animation-name:swipe-out-right}[data-sonner-toast][data-swipe-out=true][data-swipe-direction=up]{animation-name:swipe-out-up}[data-sonner-toast][data-swipe-out=true][data-swipe-direction=down]{animation-name:swipe-out-down}@keyframes swipe-out-left{from{transform:var(--y) translateX(var(--swipe-amount-x));opacity:1}to{transform:var(--y) translateX(calc(var(--swipe-amount-x) - 100%));opacity:0}}@keyframes swipe-out-right{from{transform:var(--y) translateX(var(--swipe-amount-x));opacity:1}to{transform:var(--y) translateX(calc(var(--swipe-amount-x) + 100%));opacity:0}}@keyframes swipe-out-up{from{transform:var(--y) translateY(var(--swipe-amount-y));opacity:1}to{transform:var(--y) translateY(calc(var(--swipe-amount-y) - 100%));opacity:0}}@keyframes swipe-out-down{from{transform:var(--y) translateY(var(--swipe-amount-y));opacity:1}to{transform:var(--y) translateY(calc(var(--swipe-amount-y) + 100%));opacity:0}}@media (max-width:600px){[data-sonner-toaster]{position:fixed;right:var(--mobile-offset-right);left:var(--mobile-offset-left);width:100%}[data-sonner-toaster][dir=rtl]{left:calc(var(--mobile-offset-left) * -1)}[data-sonner-toaster] [data-sonner-toast]{left:0;right:0;width:calc(100% - var(--mobile-offset-left) * 2)}[data-sonner-toaster][data-x-position=left]{left:var(--mobile-offset-left)}[data-sonner-toaster][data-y-position=bottom]{bottom:var(--mobile-offset-bottom)}[data-sonner-toaster][data-y-position=top]{top:var(--mobile-offset-top)}[data-sonner-toaster][data-x-position=center]{left:var(--mobile-offset-left);right:var(--mobile-offset-right);transform:none}}[data-sonner-toaster][data-sonner-theme=light]{--normal-bg:#fff;--normal-border:var(--gray4);--normal-text:var(--gray12);--success-bg:hsl(143, 85%, 96%);--success-border:hsl(145, 92%, 87%);--success-text:hsl(140, 100%, 27%);--info-bg:hsl(208, 100%, 97%);--info-border:hsl(221, 91%, 93%);--info-text:hsl(210, 92%, 45%);--warning-bg:hsl(49, 100%, 97%);--warning-border:hsl(49, 91%, 84%);--warning-text:hsl(31, 92%, 45%);--error-bg:hsl(359, 100%, 97%);--error-border:hsl(359, 100%, 94%);--error-text:hsl(360, 100%, 45%)}[data-sonner-toaster][data-sonner-theme=light] [data-sonner-toast][data-invert=true]{--normal-bg:#000;--normal-border:hsl(0, 0%, 20%);--normal-text:var(--gray1)}[data-sonner-toaster][data-sonner-theme=dark] [data-sonner-toast][data-invert=true]{--normal-bg:#fff;--normal-border:var(--gray3);--normal-text:var(--gray12)}[data-sonner-toaster][data-sonner-theme=dark]{--normal-bg:#000;--normal-bg-hover:hsl(0, 0%, 12%);--normal-border:hsl(0, 0%, 20%);--normal-border-hover:hsl(0, 0%, 25%);--normal-text:var(--gray1);--success-bg:hsl(150, 100%, 6%);--success-border:hsl(147, 100%, 12%);--success-text:hsl(150, 86%, 65%);--info-bg:hsl(215, 100%, 6%);--info-border:hsl(223, 43%, 17%);--info-text:hsl(216, 87%, 65%);--warning-bg:hsl(64, 100%, 6%);--warning-border:hsl(60, 100%, 9%);--warning-text:hsl(46, 87%, 65%);--error-bg:hsl(358, 76%, 10%);--error-border:hsl(357, 89%, 16%);--error-text:hsl(358, 100%, 81%)}[data-sonner-toaster][data-sonner-theme=dark] [data-sonner-toast] [data-close-button]{background:var(--normal-bg);border-color:var(--normal-border);color:var(--normal-text)}[data-sonner-toaster][data-sonner-theme=dark] [data-sonner-toast] [data-close-button]:hover{background:var(--normal-bg-hover);border-color:var(--normal-border-hover)}[data-rich-colors=true][data-sonner-toast][data-type=success]{background:var(--success-bg);border-color:var(--success-border);color:var(--success-text)}[data-rich-colors=true][data-sonner-toast][data-type=success] [data-close-button]{background:var(--success-bg);border-color:var(--success-border);color:var(--success-text)}[data-rich-colors=true][data-sonner-toast][data-type=info]{background:var(--info-bg);border-color:var(--info-border);color:var(--info-text)}[data-rich-colors=true][data-sonner-toast][data-type=info] [data-close-button]{background:var(--info-bg);border-color:var(--info-border);color:var(--info-text)}[data-rich-colors=true][data-sonner-toast][data-type=warning]{background:var(--warning-bg);border-color:var(--warning-border);color:var(--warning-text)}[data-rich-colors=true][data-sonner-toast][data-type=warning] [data-close-button]{background:var(--warning-bg);border-color:var(--warning-border);color:var(--warning-text)}[data-rich-colors=true][data-sonner-toast][data-type=error]{background:var(--error-bg);border-color:var(--error-border);color:var(--error-text)}[data-rich-colors=true][data-sonner-toast][data-type=error] [data-close-button]{background:var(--error-bg);border-color:var(--error-border);color:var(--error-text)}.sonner-loading-wrapper{--size:16px;height:var(--size);width:var(--size);position:absolute;inset:0;z-index:10}.sonner-loading-wrapper[data-visible=false]{transform-origin:center;animation:sonner-fade-out .2s ease forwards}.sonner-spinner{position:relative;top:50%;left:50%;height:var(--size);width:var(--size)}.sonner-loading-bar{animation:sonner-spin 1.2s linear infinite;background:var(--gray11);border-radius:6px;height:8%;left:-10%;position:absolute;top:-3.9%;width:24%}.sonner-loading-bar:first-child{animation-delay:-1.2s;transform:rotate(.0001deg) translate(146%)}.sonner-loading-bar:nth-child(2){animation-delay:-1.1s;transform:rotate(30deg) translate(146%)}.sonner-loading-bar:nth-child(3){animation-delay:-1s;transform:rotate(60deg) translate(146%)}.sonner-loading-bar:nth-child(4){animation-delay:-.9s;transform:rotate(90deg) translate(146%)}.sonner-loading-bar:nth-child(5){animation-delay:-.8s;transform:rotate(120deg) translate(146%)}.sonner-loading-bar:nth-child(6){animation-delay:-.7s;transform:rotate(150deg) translate(146%)}.sonner-loading-bar:nth-child(7){animation-delay:-.6s;transform:rotate(180deg) translate(146%)}.sonner-loading-bar:nth-child(8){animation-delay:-.5s;transform:rotate(210deg) translate(146%)}.sonner-loading-bar:nth-child(9){animation-delay:-.4s;transform:rotate(240deg) translate(146%)}.sonner-loading-bar:nth-child(10){animation-delay:-.3s;transform:rotate(270deg) translate(146%)}.sonner-loading-bar:nth-child(11){animation-delay:-.2s;transform:rotate(300deg) translate(146%)}.sonner-loading-bar:nth-child(12){animation-delay:-.1s;transform:rotate(330deg) translate(146%)}@keyframes sonner-fade-in{0%{opacity:0;transform:scale(.8)}100%{opacity:1;transform:scale(1)}}@keyframes sonner-fade-out{0%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(.8)}}@keyframes sonner-spin{0%{opacity:1}100%{opacity:.15}}@media (prefers-reduced-motion){.sonner-loading-bar,[data-sonner-toast],[data-sonner-toast]>*{transition:none!important;animation:none!important}}.sonner-loader{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);transform-origin:center;transition:opacity .2s,transform .2s}.sonner-loader[data-visible=false]{opacity:0;transform:scale(.8) translate(-50%,-50%)}");
-function isAction(action) {
-  return action.label !== void 0;
-}
-const VISIBLE_TOASTS_AMOUNT = 3;
-const VIEWPORT_OFFSET = "24px";
-const MOBILE_VIEWPORT_OFFSET = "16px";
-const TOAST_LIFETIME = 4e3;
-const TOAST_WIDTH = 356;
-const GAP = 14;
-const SWIPE_THRESHOLD = 45;
-const TIME_BEFORE_UNMOUNT = 200;
-function cn$1(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
-function getDefaultSwipeDirections(position) {
-  const [y, x2] = position.split("-");
-  const directions2 = [];
-  if (y) {
-    directions2.push(y);
-  }
-  if (x2) {
-    directions2.push(x2);
-  }
-  return directions2;
-}
-const Toast = (props) => {
-  var _toast_classNames, _toast_classNames1, _toast_classNames2, _toast_classNames3, _toast_classNames4, _toast_classNames5, _toast_classNames6, _toast_classNames7, _toast_classNames8;
-  const { invert: ToasterInvert, toast: toast2, unstyled, interacting, setHeights, visibleToasts, heights, index: index2, toasts, expanded, removeToast, defaultRichColors, closeButton: closeButtonFromToaster, style: style2, cancelButtonStyle, actionButtonStyle, className = "", descriptionClassName = "", duration: durationFromToaster, position, gap, expandByDefault, classNames, icons, closeButtonAriaLabel = "Close toast" } = props;
-  const [swipeDirection, setSwipeDirection] = React$2.useState(null);
-  const [swipeOutDirection, setSwipeOutDirection] = React$2.useState(null);
-  const [mounted, setMounted] = React$2.useState(false);
-  const [removed, setRemoved] = React$2.useState(false);
-  const [swiping, setSwiping] = React$2.useState(false);
-  const [swipeOut, setSwipeOut] = React$2.useState(false);
-  const [isSwiped, setIsSwiped] = React$2.useState(false);
-  const [offsetBeforeRemove, setOffsetBeforeRemove] = React$2.useState(0);
-  const [initialHeight, setInitialHeight] = React$2.useState(0);
-  const remainingTime = React$2.useRef(toast2.duration || durationFromToaster || TOAST_LIFETIME);
-  const dragStartTime = React$2.useRef(null);
-  const toastRef = React$2.useRef(null);
-  const isFront = index2 === 0;
-  const isVisible = index2 + 1 <= visibleToasts;
-  const toastType = toast2.type;
-  const dismissible = toast2.dismissible !== false;
-  const toastClassname = toast2.className || "";
-  const toastDescriptionClassname = toast2.descriptionClassName || "";
-  const heightIndex = React$2.useMemo(() => heights.findIndex((height) => height.toastId === toast2.id) || 0, [
-    heights,
-    toast2.id
-  ]);
-  const closeButton = React$2.useMemo(() => {
-    var _toast_closeButton;
-    return (_toast_closeButton = toast2.closeButton) != null ? _toast_closeButton : closeButtonFromToaster;
-  }, [
-    toast2.closeButton,
-    closeButtonFromToaster
-  ]);
-  const duration = React$2.useMemo(() => toast2.duration || durationFromToaster || TOAST_LIFETIME, [
-    toast2.duration,
-    durationFromToaster
-  ]);
-  const closeTimerStartTimeRef = React$2.useRef(0);
-  const offset2 = React$2.useRef(0);
-  const lastCloseTimerStartTimeRef = React$2.useRef(0);
-  const pointerStartRef = React$2.useRef(null);
-  const [y, x2] = position.split("-");
-  const toastsHeightBefore = React$2.useMemo(() => {
-    return heights.reduce((prev, curr, reducerIndex) => {
-      if (reducerIndex >= heightIndex) {
-        return prev;
-      }
-      return prev + curr.height;
-    }, 0);
-  }, [
-    heights,
-    heightIndex
-  ]);
-  const isDocumentHidden = useIsDocumentHidden();
-  const invert = toast2.invert || ToasterInvert;
-  const disabled = toastType === "loading";
-  offset2.current = React$2.useMemo(() => heightIndex * gap + toastsHeightBefore, [
-    heightIndex,
-    toastsHeightBefore
-  ]);
-  React$2.useEffect(() => {
-    remainingTime.current = duration;
-  }, [
-    duration
-  ]);
-  React$2.useEffect(() => {
-    setMounted(true);
-  }, []);
-  React$2.useEffect(() => {
-    const toastNode = toastRef.current;
-    if (toastNode) {
-      const height = toastNode.getBoundingClientRect().height;
-      setInitialHeight(height);
-      setHeights((h) => [
-        {
-          toastId: toast2.id,
-          height,
-          position: toast2.position
-        },
-        ...h
-      ]);
-      return () => setHeights((h) => h.filter((height2) => height2.toastId !== toast2.id));
-    }
-  }, [
-    setHeights,
-    toast2.id
-  ]);
-  React$2.useLayoutEffect(() => {
-    if (!mounted) return;
-    const toastNode = toastRef.current;
-    const originalHeight = toastNode.style.height;
-    toastNode.style.height = "auto";
-    const newHeight = toastNode.getBoundingClientRect().height;
-    toastNode.style.height = originalHeight;
-    setInitialHeight(newHeight);
-    setHeights((heights2) => {
-      const alreadyExists = heights2.find((height) => height.toastId === toast2.id);
-      if (!alreadyExists) {
-        return [
-          {
-            toastId: toast2.id,
-            height: newHeight,
-            position: toast2.position
-          },
-          ...heights2
-        ];
-      } else {
-        return heights2.map((height) => height.toastId === toast2.id ? {
-          ...height,
-          height: newHeight
-        } : height);
-      }
-    });
-  }, [
-    mounted,
-    toast2.title,
-    toast2.description,
-    setHeights,
-    toast2.id
-  ]);
-  const deleteToast = React$2.useCallback(() => {
-    setRemoved(true);
-    setOffsetBeforeRemove(offset2.current);
-    setHeights((h) => h.filter((height) => height.toastId !== toast2.id));
-    setTimeout(() => {
-      removeToast(toast2);
-    }, TIME_BEFORE_UNMOUNT);
-  }, [
-    toast2,
-    removeToast,
-    setHeights,
-    offset2
-  ]);
-  React$2.useEffect(() => {
-    if (toast2.promise && toastType === "loading" || toast2.duration === Infinity || toast2.type === "loading") return;
-    let timeoutId;
-    const pauseTimer = () => {
-      if (lastCloseTimerStartTimeRef.current < closeTimerStartTimeRef.current) {
-        const elapsedTime = (/* @__PURE__ */ new Date()).getTime() - closeTimerStartTimeRef.current;
-        remainingTime.current = remainingTime.current - elapsedTime;
-      }
-      lastCloseTimerStartTimeRef.current = (/* @__PURE__ */ new Date()).getTime();
-    };
-    const startTimer = () => {
-      if (remainingTime.current === Infinity) return;
-      closeTimerStartTimeRef.current = (/* @__PURE__ */ new Date()).getTime();
-      timeoutId = setTimeout(() => {
-        toast2.onAutoClose == null ? void 0 : toast2.onAutoClose.call(toast2, toast2);
-        deleteToast();
-      }, remainingTime.current);
-    };
-    if (expanded || interacting || isDocumentHidden) {
-      pauseTimer();
-    } else {
-      startTimer();
-    }
-    return () => clearTimeout(timeoutId);
-  }, [
-    expanded,
-    interacting,
-    toast2,
-    toastType,
-    isDocumentHidden,
-    deleteToast
-  ]);
-  React$2.useEffect(() => {
-    if (toast2.delete) {
-      deleteToast();
-    }
-  }, [
-    deleteToast,
-    toast2.delete
-  ]);
-  function getLoadingIcon() {
-    var _toast_classNames9;
-    if (icons == null ? void 0 : icons.loading) {
-      var _toast_classNames12;
-      return /* @__PURE__ */ React$2.createElement("div", {
-        className: cn$1(classNames == null ? void 0 : classNames.loader, toast2 == null ? void 0 : (_toast_classNames12 = toast2.classNames) == null ? void 0 : _toast_classNames12.loader, "sonner-loader"),
-        "data-visible": toastType === "loading"
-      }, icons.loading);
-    }
-    return /* @__PURE__ */ React$2.createElement(Loader, {
-      className: cn$1(classNames == null ? void 0 : classNames.loader, toast2 == null ? void 0 : (_toast_classNames9 = toast2.classNames) == null ? void 0 : _toast_classNames9.loader),
-      visible: toastType === "loading"
-    });
-  }
-  const icon = toast2.icon || (icons == null ? void 0 : icons[toastType]) || getAsset(toastType);
-  var _toast_richColors, _icons_close;
-  return /* @__PURE__ */ React$2.createElement("li", {
-    tabIndex: 0,
-    ref: toastRef,
-    className: cn$1(className, toastClassname, classNames == null ? void 0 : classNames.toast, toast2 == null ? void 0 : (_toast_classNames = toast2.classNames) == null ? void 0 : _toast_classNames.toast, classNames == null ? void 0 : classNames.default, classNames == null ? void 0 : classNames[toastType], toast2 == null ? void 0 : (_toast_classNames1 = toast2.classNames) == null ? void 0 : _toast_classNames1[toastType]),
-    "data-sonner-toast": "",
-    "data-rich-colors": (_toast_richColors = toast2.richColors) != null ? _toast_richColors : defaultRichColors,
-    "data-styled": !Boolean(toast2.jsx || toast2.unstyled || unstyled),
-    "data-mounted": mounted,
-    "data-promise": Boolean(toast2.promise),
-    "data-swiped": isSwiped,
-    "data-removed": removed,
-    "data-visible": isVisible,
-    "data-y-position": y,
-    "data-x-position": x2,
-    "data-index": index2,
-    "data-front": isFront,
-    "data-swiping": swiping,
-    "data-dismissible": dismissible,
-    "data-type": toastType,
-    "data-invert": invert,
-    "data-swipe-out": swipeOut,
-    "data-swipe-direction": swipeOutDirection,
-    "data-expanded": Boolean(expanded || expandByDefault && mounted),
-    style: {
-      "--index": index2,
-      "--toasts-before": index2,
-      "--z-index": toasts.length - index2,
-      "--offset": `${removed ? offsetBeforeRemove : offset2.current}px`,
-      "--initial-height": expandByDefault ? "auto" : `${initialHeight}px`,
-      ...style2,
-      ...toast2.style
-    },
-    onDragEnd: () => {
-      setSwiping(false);
-      setSwipeDirection(null);
-      pointerStartRef.current = null;
-    },
-    onPointerDown: (event) => {
-      if (disabled || !dismissible) return;
-      dragStartTime.current = /* @__PURE__ */ new Date();
-      setOffsetBeforeRemove(offset2.current);
-      event.target.setPointerCapture(event.pointerId);
-      if (event.target.tagName === "BUTTON") return;
-      setSwiping(true);
-      pointerStartRef.current = {
-        x: event.clientX,
-        y: event.clientY
-      };
-    },
-    onPointerUp: () => {
-      var _toastRef_current, _toastRef_current1, _dragStartTime_current;
-      if (swipeOut || !dismissible) return;
-      pointerStartRef.current = null;
-      const swipeAmountX = Number(((_toastRef_current = toastRef.current) == null ? void 0 : _toastRef_current.style.getPropertyValue("--swipe-amount-x").replace("px", "")) || 0);
-      const swipeAmountY = Number(((_toastRef_current1 = toastRef.current) == null ? void 0 : _toastRef_current1.style.getPropertyValue("--swipe-amount-y").replace("px", "")) || 0);
-      const timeTaken = (/* @__PURE__ */ new Date()).getTime() - ((_dragStartTime_current = dragStartTime.current) == null ? void 0 : _dragStartTime_current.getTime());
-      const swipeAmount = swipeDirection === "x" ? swipeAmountX : swipeAmountY;
-      const velocity = Math.abs(swipeAmount) / timeTaken;
-      if (Math.abs(swipeAmount) >= SWIPE_THRESHOLD || velocity > 0.11) {
-        setOffsetBeforeRemove(offset2.current);
-        toast2.onDismiss == null ? void 0 : toast2.onDismiss.call(toast2, toast2);
-        if (swipeDirection === "x") {
-          setSwipeOutDirection(swipeAmountX > 0 ? "right" : "left");
-        } else {
-          setSwipeOutDirection(swipeAmountY > 0 ? "down" : "up");
-        }
-        deleteToast();
-        setSwipeOut(true);
-        return;
-      } else {
-        var _toastRef_current2, _toastRef_current3;
-        (_toastRef_current2 = toastRef.current) == null ? void 0 : _toastRef_current2.style.setProperty("--swipe-amount-x", `0px`);
-        (_toastRef_current3 = toastRef.current) == null ? void 0 : _toastRef_current3.style.setProperty("--swipe-amount-y", `0px`);
-      }
-      setIsSwiped(false);
-      setSwiping(false);
-      setSwipeDirection(null);
-    },
-    onPointerMove: (event) => {
-      var _window_getSelection, _toastRef_current, _toastRef_current1;
-      if (!pointerStartRef.current || !dismissible) return;
-      const isHighlighted = ((_window_getSelection = window.getSelection()) == null ? void 0 : _window_getSelection.toString().length) > 0;
-      if (isHighlighted) return;
-      const yDelta = event.clientY - pointerStartRef.current.y;
-      const xDelta = event.clientX - pointerStartRef.current.x;
-      var _props_swipeDirections;
-      const swipeDirections = (_props_swipeDirections = props.swipeDirections) != null ? _props_swipeDirections : getDefaultSwipeDirections(position);
-      if (!swipeDirection && (Math.abs(xDelta) > 1 || Math.abs(yDelta) > 1)) {
-        setSwipeDirection(Math.abs(xDelta) > Math.abs(yDelta) ? "x" : "y");
-      }
-      let swipeAmount = {
-        x: 0,
-        y: 0
-      };
-      const getDampening = (delta) => {
-        const factor = Math.abs(delta) / 20;
-        return 1 / (1.5 + factor);
-      };
-      if (swipeDirection === "y") {
-        if (swipeDirections.includes("top") || swipeDirections.includes("bottom")) {
-          if (swipeDirections.includes("top") && yDelta < 0 || swipeDirections.includes("bottom") && yDelta > 0) {
-            swipeAmount.y = yDelta;
-          } else {
-            const dampenedDelta = yDelta * getDampening(yDelta);
-            swipeAmount.y = Math.abs(dampenedDelta) < Math.abs(yDelta) ? dampenedDelta : yDelta;
-          }
-        }
-      } else if (swipeDirection === "x") {
-        if (swipeDirections.includes("left") || swipeDirections.includes("right")) {
-          if (swipeDirections.includes("left") && xDelta < 0 || swipeDirections.includes("right") && xDelta > 0) {
-            swipeAmount.x = xDelta;
-          } else {
-            const dampenedDelta = xDelta * getDampening(xDelta);
-            swipeAmount.x = Math.abs(dampenedDelta) < Math.abs(xDelta) ? dampenedDelta : xDelta;
-          }
-        }
-      }
-      if (Math.abs(swipeAmount.x) > 0 || Math.abs(swipeAmount.y) > 0) {
-        setIsSwiped(true);
-      }
-      (_toastRef_current = toastRef.current) == null ? void 0 : _toastRef_current.style.setProperty("--swipe-amount-x", `${swipeAmount.x}px`);
-      (_toastRef_current1 = toastRef.current) == null ? void 0 : _toastRef_current1.style.setProperty("--swipe-amount-y", `${swipeAmount.y}px`);
-    }
-  }, closeButton && !toast2.jsx && toastType !== "loading" ? /* @__PURE__ */ React$2.createElement("button", {
-    "aria-label": closeButtonAriaLabel,
-    "data-disabled": disabled,
-    "data-close-button": true,
-    onClick: disabled || !dismissible ? () => {
-    } : () => {
-      deleteToast();
-      toast2.onDismiss == null ? void 0 : toast2.onDismiss.call(toast2, toast2);
-    },
-    className: cn$1(classNames == null ? void 0 : classNames.closeButton, toast2 == null ? void 0 : (_toast_classNames2 = toast2.classNames) == null ? void 0 : _toast_classNames2.closeButton)
-  }, (_icons_close = icons == null ? void 0 : icons.close) != null ? _icons_close : CloseIcon) : null, (toastType || toast2.icon || toast2.promise) && toast2.icon !== null && ((icons == null ? void 0 : icons[toastType]) !== null || toast2.icon) ? /* @__PURE__ */ React$2.createElement("div", {
-    "data-icon": "",
-    className: cn$1(classNames == null ? void 0 : classNames.icon, toast2 == null ? void 0 : (_toast_classNames3 = toast2.classNames) == null ? void 0 : _toast_classNames3.icon)
-  }, toast2.promise || toast2.type === "loading" && !toast2.icon ? toast2.icon || getLoadingIcon() : null, toast2.type !== "loading" ? icon : null) : null, /* @__PURE__ */ React$2.createElement("div", {
-    "data-content": "",
-    className: cn$1(classNames == null ? void 0 : classNames.content, toast2 == null ? void 0 : (_toast_classNames4 = toast2.classNames) == null ? void 0 : _toast_classNames4.content)
-  }, /* @__PURE__ */ React$2.createElement("div", {
-    "data-title": "",
-    className: cn$1(classNames == null ? void 0 : classNames.title, toast2 == null ? void 0 : (_toast_classNames5 = toast2.classNames) == null ? void 0 : _toast_classNames5.title)
-  }, toast2.jsx ? toast2.jsx : typeof toast2.title === "function" ? toast2.title() : toast2.title), toast2.description ? /* @__PURE__ */ React$2.createElement("div", {
-    "data-description": "",
-    className: cn$1(descriptionClassName, toastDescriptionClassname, classNames == null ? void 0 : classNames.description, toast2 == null ? void 0 : (_toast_classNames6 = toast2.classNames) == null ? void 0 : _toast_classNames6.description)
-  }, typeof toast2.description === "function" ? toast2.description() : toast2.description) : null), /* @__PURE__ */ React$2.isValidElement(toast2.cancel) ? toast2.cancel : toast2.cancel && isAction(toast2.cancel) ? /* @__PURE__ */ React$2.createElement("button", {
-    "data-button": true,
-    "data-cancel": true,
-    style: toast2.cancelButtonStyle || cancelButtonStyle,
-    onClick: (event) => {
-      if (!isAction(toast2.cancel)) return;
-      if (!dismissible) return;
-      toast2.cancel.onClick == null ? void 0 : toast2.cancel.onClick.call(toast2.cancel, event);
-      deleteToast();
-    },
-    className: cn$1(classNames == null ? void 0 : classNames.cancelButton, toast2 == null ? void 0 : (_toast_classNames7 = toast2.classNames) == null ? void 0 : _toast_classNames7.cancelButton)
-  }, toast2.cancel.label) : null, /* @__PURE__ */ React$2.isValidElement(toast2.action) ? toast2.action : toast2.action && isAction(toast2.action) ? /* @__PURE__ */ React$2.createElement("button", {
-    "data-button": true,
-    "data-action": true,
-    style: toast2.actionButtonStyle || actionButtonStyle,
-    onClick: (event) => {
-      if (!isAction(toast2.action)) return;
-      toast2.action.onClick == null ? void 0 : toast2.action.onClick.call(toast2.action, event);
-      if (event.defaultPrevented) return;
-      deleteToast();
-    },
-    className: cn$1(classNames == null ? void 0 : classNames.actionButton, toast2 == null ? void 0 : (_toast_classNames8 = toast2.classNames) == null ? void 0 : _toast_classNames8.actionButton)
-  }, toast2.action.label) : null);
-};
-function getDocumentDirection() {
-  if (typeof window === "undefined") return "ltr";
-  if (typeof document === "undefined") return "ltr";
-  const dirAttribute = document.documentElement.getAttribute("dir");
-  if (dirAttribute === "auto" || !dirAttribute) {
-    return window.getComputedStyle(document.documentElement).direction;
-  }
-  return dirAttribute;
-}
-function assignOffset(defaultOffset2, mobileOffset) {
-  const styles = {};
-  [
-    defaultOffset2,
-    mobileOffset
-  ].forEach((offset2, index2) => {
-    const isMobile = index2 === 1;
-    const prefix2 = isMobile ? "--mobile-offset" : "--offset";
-    const defaultValue2 = isMobile ? MOBILE_VIEWPORT_OFFSET : VIEWPORT_OFFSET;
-    function assignAll(offset3) {
-      [
-        "top",
-        "right",
-        "bottom",
-        "left"
-      ].forEach((key) => {
-        styles[`${prefix2}-${key}`] = typeof offset3 === "number" ? `${offset3}px` : offset3;
-      });
-    }
-    if (typeof offset2 === "number" || typeof offset2 === "string") {
-      assignAll(offset2);
-    } else if (typeof offset2 === "object") {
-      [
-        "top",
-        "right",
-        "bottom",
-        "left"
-      ].forEach((key) => {
-        if (offset2[key] === void 0) {
-          styles[`${prefix2}-${key}`] = defaultValue2;
-        } else {
-          styles[`${prefix2}-${key}`] = typeof offset2[key] === "number" ? `${offset2[key]}px` : offset2[key];
-        }
-      });
-    } else {
-      assignAll(defaultValue2);
-    }
-  });
-  return styles;
-}
-const Toaster$1 = /* @__PURE__ */ React$2.forwardRef(function Toaster(props, ref) {
-  const { invert, position = "bottom-right", hotkey = [
-    "altKey",
-    "KeyT"
-  ], expand, closeButton, className, offset: offset2, mobileOffset, theme = "light", richColors, duration, style: style2, visibleToasts = VISIBLE_TOASTS_AMOUNT, toastOptions, dir = getDocumentDirection(), gap = GAP, icons, containerAriaLabel = "Notifications" } = props;
-  const [toasts, setToasts] = React$2.useState([]);
-  const possiblePositions = React$2.useMemo(() => {
-    return Array.from(new Set([
-      position
-    ].concat(toasts.filter((toast2) => toast2.position).map((toast2) => toast2.position))));
-  }, [
-    toasts,
-    position
-  ]);
-  const [heights, setHeights] = React$2.useState([]);
-  const [expanded, setExpanded] = React$2.useState(false);
-  const [interacting, setInteracting] = React$2.useState(false);
-  const [actualTheme, setActualTheme] = React$2.useState(theme !== "system" ? theme : typeof window !== "undefined" ? window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light" : "light");
-  const listRef = React$2.useRef(null);
-  const hotkeyLabel = hotkey.join("+").replace(/Key/g, "").replace(/Digit/g, "");
-  const lastFocusedElementRef = React$2.useRef(null);
-  const isFocusWithinRef = React$2.useRef(false);
-  const removeToast = React$2.useCallback((toastToRemove) => {
-    setToasts((toasts2) => {
-      var _toasts_find;
-      if (!((_toasts_find = toasts2.find((toast2) => toast2.id === toastToRemove.id)) == null ? void 0 : _toasts_find.delete)) {
-        ToastState.dismiss(toastToRemove.id);
-      }
-      return toasts2.filter(({ id: id2 }) => id2 !== toastToRemove.id);
-    });
-  }, []);
-  React$2.useEffect(() => {
-    return ToastState.subscribe((toast2) => {
-      if (toast2.dismiss) {
-        requestAnimationFrame(() => {
-          setToasts((toasts2) => toasts2.map((t) => t.id === toast2.id ? {
-            ...t,
-            delete: true
-          } : t));
-        });
-        return;
-      }
-      setTimeout(() => {
-        ReactDOM$1.flushSync(() => {
-          setToasts((toasts2) => {
-            const indexOfExistingToast = toasts2.findIndex((t) => t.id === toast2.id);
-            if (indexOfExistingToast !== -1) {
-              return [
-                ...toasts2.slice(0, indexOfExistingToast),
-                {
-                  ...toasts2[indexOfExistingToast],
-                  ...toast2
-                },
-                ...toasts2.slice(indexOfExistingToast + 1)
-              ];
-            }
-            return [
-              toast2,
-              ...toasts2
-            ];
-          });
-        });
-      });
-    });
-  }, [
-    toasts
-  ]);
-  React$2.useEffect(() => {
-    if (theme !== "system") {
-      setActualTheme(theme);
-      return;
-    }
-    if (theme === "system") {
-      if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
-        setActualTheme("dark");
-      } else {
-        setActualTheme("light");
-      }
-    }
-    if (typeof window === "undefined") return;
-    const darkMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-    try {
-      darkMediaQuery.addEventListener("change", ({ matches }) => {
-        if (matches) {
-          setActualTheme("dark");
-        } else {
-          setActualTheme("light");
-        }
-      });
-    } catch (error) {
-      darkMediaQuery.addListener(({ matches }) => {
-        try {
-          if (matches) {
-            setActualTheme("dark");
-          } else {
-            setActualTheme("light");
-          }
-        } catch (e) {
-          console.error(e);
-        }
-      });
-    }
-  }, [
-    theme
-  ]);
-  React$2.useEffect(() => {
-    if (toasts.length <= 1) {
-      setExpanded(false);
-    }
-  }, [
-    toasts
-  ]);
-  React$2.useEffect(() => {
-    const handleKeyDown = (event) => {
-      var _listRef_current;
-      const isHotkeyPressed = hotkey.every((key) => event[key] || event.code === key);
-      if (isHotkeyPressed) {
-        var _listRef_current1;
-        setExpanded(true);
-        (_listRef_current1 = listRef.current) == null ? void 0 : _listRef_current1.focus();
-      }
-      if (event.code === "Escape" && (document.activeElement === listRef.current || ((_listRef_current = listRef.current) == null ? void 0 : _listRef_current.contains(document.activeElement)))) {
-        setExpanded(false);
-      }
-    };
-    document.addEventListener("keydown", handleKeyDown);
-    return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [
-    hotkey
-  ]);
-  React$2.useEffect(() => {
-    if (listRef.current) {
-      return () => {
-        if (lastFocusedElementRef.current) {
-          lastFocusedElementRef.current.focus({
-            preventScroll: true
-          });
-          lastFocusedElementRef.current = null;
-          isFocusWithinRef.current = false;
-        }
-      };
-    }
-  }, [
-    listRef.current
-  ]);
-  return (
-    // Remove item from normal navigation flow, only available via hotkey
-    /* @__PURE__ */ React$2.createElement("section", {
-      ref,
-      "aria-label": `${containerAriaLabel} ${hotkeyLabel}`,
-      tabIndex: -1,
-      "aria-live": "polite",
-      "aria-relevant": "additions text",
-      "aria-atomic": "false",
-      suppressHydrationWarning: true
-    }, possiblePositions.map((position2, index2) => {
-      var _heights_;
-      const [y, x2] = position2.split("-");
-      if (!toasts.length) return null;
-      return /* @__PURE__ */ React$2.createElement("ol", {
-        key: position2,
-        dir: dir === "auto" ? getDocumentDirection() : dir,
-        tabIndex: -1,
-        ref: listRef,
-        className,
-        "data-sonner-toaster": true,
-        "data-sonner-theme": actualTheme,
-        "data-y-position": y,
-        "data-lifted": expanded && toasts.length > 1 && !expand,
-        "data-x-position": x2,
-        style: {
-          "--front-toast-height": `${((_heights_ = heights[0]) == null ? void 0 : _heights_.height) || 0}px`,
-          "--width": `${TOAST_WIDTH}px`,
-          "--gap": `${gap}px`,
-          ...style2,
-          ...assignOffset(offset2, mobileOffset)
-        },
-        onBlur: (event) => {
-          if (isFocusWithinRef.current && !event.currentTarget.contains(event.relatedTarget)) {
-            isFocusWithinRef.current = false;
-            if (lastFocusedElementRef.current) {
-              lastFocusedElementRef.current.focus({
-                preventScroll: true
-              });
-              lastFocusedElementRef.current = null;
-            }
-          }
-        },
-        onFocus: (event) => {
-          const isNotDismissible = event.target instanceof HTMLElement && event.target.dataset.dismissible === "false";
-          if (isNotDismissible) return;
-          if (!isFocusWithinRef.current) {
-            isFocusWithinRef.current = true;
-            lastFocusedElementRef.current = event.relatedTarget;
-          }
-        },
-        onMouseEnter: () => setExpanded(true),
-        onMouseMove: () => setExpanded(true),
-        onMouseLeave: () => {
-          if (!interacting) {
-            setExpanded(false);
-          }
-        },
-        onDragEnd: () => setExpanded(false),
-        onPointerDown: (event) => {
-          const isNotDismissible = event.target instanceof HTMLElement && event.target.dataset.dismissible === "false";
-          if (isNotDismissible) return;
-          setInteracting(true);
-        },
-        onPointerUp: () => setInteracting(false)
-      }, toasts.filter((toast2) => !toast2.position && index2 === 0 || toast2.position === position2).map((toast2, index3) => {
-        var _toastOptions_duration, _toastOptions_closeButton;
-        return /* @__PURE__ */ React$2.createElement(Toast, {
-          key: toast2.id,
-          icons,
-          index: index3,
-          toast: toast2,
-          defaultRichColors: richColors,
-          duration: (_toastOptions_duration = toastOptions == null ? void 0 : toastOptions.duration) != null ? _toastOptions_duration : duration,
-          className: toastOptions == null ? void 0 : toastOptions.className,
-          descriptionClassName: toastOptions == null ? void 0 : toastOptions.descriptionClassName,
-          invert,
-          visibleToasts,
-          closeButton: (_toastOptions_closeButton = toastOptions == null ? void 0 : toastOptions.closeButton) != null ? _toastOptions_closeButton : closeButton,
-          interacting,
-          position: position2,
-          style: toastOptions == null ? void 0 : toastOptions.style,
-          unstyled: toastOptions == null ? void 0 : toastOptions.unstyled,
-          classNames: toastOptions == null ? void 0 : toastOptions.classNames,
-          cancelButtonStyle: toastOptions == null ? void 0 : toastOptions.cancelButtonStyle,
-          actionButtonStyle: toastOptions == null ? void 0 : toastOptions.actionButtonStyle,
-          closeButtonAriaLabel: toastOptions == null ? void 0 : toastOptions.closeButtonAriaLabel,
-          removeToast,
-          toasts: toasts.filter((t) => t.position == toast2.position),
-          heights: heights.filter((h) => h.position == toast2.position),
-          setHeights,
-          expandByDefault: expand,
-          gap,
-          expanded,
-          swipeDirections: props.swipeDirections
-        });
-      }));
-    }))
-  );
-});
-const Toaster2 = ({ ...props }) => {
-  const { theme = "system" } = z();
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(
-    Toaster$1,
-    {
-      theme,
-      className: "toaster group",
-      style: {
-        "--normal-bg": "var(--popover)",
-        "--normal-text": "var(--popover-foreground)",
-        "--normal-border": "var(--border)"
-      },
-      ...props
-    }
-  );
-};
-function setRef$1(ref, value) {
-  if (typeof ref === "function") {
-    return ref(value);
-  } else if (ref !== null && ref !== void 0) {
-    ref.current = value;
-  }
-}
-function composeRefs$1(...refs) {
-  return (node) => {
-    let hasCleanup = false;
-    const cleanups = refs.map((ref) => {
-      const cleanup = setRef$1(ref, node);
-      if (!hasCleanup && typeof cleanup == "function") {
-        hasCleanup = true;
-      }
-      return cleanup;
-    });
-    if (hasCleanup) {
-      return () => {
-        for (let i = 0; i < cleanups.length; i++) {
-          const cleanup = cleanups[i];
-          if (typeof cleanup == "function") {
-            cleanup();
-          } else {
-            setRef$1(refs[i], null);
-          }
-        }
-      };
-    }
-  };
-}
-function useComposedRefs$1(...refs) {
-  return reactExports.useCallback(composeRefs$1(...refs), refs);
-}
-var Slot = reactExports.forwardRef((props, forwardedRef) => {
-  const { children, ...slotProps } = props;
-  const childrenArray = reactExports.Children.toArray(children);
-  const slottable = childrenArray.find(isSlottable);
-  if (slottable) {
-    const newElement = slottable.props.children;
-    const newChildren = childrenArray.map((child) => {
-      if (child === slottable) {
-        if (reactExports.Children.count(newElement) > 1) return reactExports.Children.only(null);
-        return reactExports.isValidElement(newElement) ? newElement.props.children : null;
-      } else {
-        return child;
-      }
-    });
-    return /* @__PURE__ */ jsxRuntimeExports.jsx(SlotClone, { ...slotProps, ref: forwardedRef, children: reactExports.isValidElement(newElement) ? reactExports.cloneElement(newElement, void 0, newChildren) : null });
-  }
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(SlotClone, { ...slotProps, ref: forwardedRef, children });
-});
-Slot.displayName = "Slot";
-var SlotClone = reactExports.forwardRef((props, forwardedRef) => {
-  const { children, ...slotProps } = props;
-  if (reactExports.isValidElement(children)) {
-    const childrenRef = getElementRef$1(children);
-    const props2 = mergeProps(slotProps, children.props);
-    if (children.type !== reactExports.Fragment) {
-      props2.ref = forwardedRef ? composeRefs$1(forwardedRef, childrenRef) : childrenRef;
-    }
-    return reactExports.cloneElement(children, props2);
-  }
-  return reactExports.Children.count(children) > 1 ? reactExports.Children.only(null) : null;
-});
-SlotClone.displayName = "SlotClone";
-var Slottable = ({ children }) => {
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, { children });
-};
-function isSlottable(child) {
-  return reactExports.isValidElement(child) && child.type === Slottable;
-}
-function mergeProps(slotProps, childProps) {
-  const overrideProps = { ...childProps };
-  for (const propName in childProps) {
-    const slotPropValue = slotProps[propName];
-    const childPropValue = childProps[propName];
-    const isHandler = /^on[A-Z]/.test(propName);
-    if (isHandler) {
-      if (slotPropValue && childPropValue) {
-        overrideProps[propName] = (...args) => {
-          childPropValue(...args);
-          slotPropValue(...args);
-        };
-      } else if (slotPropValue) {
-        overrideProps[propName] = slotPropValue;
-      }
-    } else if (propName === "style") {
-      overrideProps[propName] = { ...slotPropValue, ...childPropValue };
-    } else if (propName === "className") {
-      overrideProps[propName] = [slotPropValue, childPropValue].filter(Boolean).join(" ");
-    }
-  }
-  return { ...slotProps, ...overrideProps };
-}
-function getElementRef$1(element) {
-  let getter = Object.getOwnPropertyDescriptor(element.props, "ref")?.get;
-  let mayWarn = getter && "isReactWarning" in getter && getter.isReactWarning;
-  if (mayWarn) {
-    return element.ref;
-  }
-  getter = Object.getOwnPropertyDescriptor(element, "ref")?.get;
-  mayWarn = getter && "isReactWarning" in getter && getter.isReactWarning;
-  if (mayWarn) {
-    return element.props.ref;
-  }
-  return element.props.ref || element.ref;
-}
-function r(e) {
-  var t, f, n = "";
-  if ("string" == typeof e || "number" == typeof e) n += e;
-  else if ("object" == typeof e) if (Array.isArray(e)) {
-    var o = e.length;
-    for (t = 0; t < o; t++) e[t] && (f = r(e[t])) && (n && (n += " "), n += f);
-  } else for (f in e) e[f] && (n && (n += " "), n += f);
-  return n;
-}
-function clsx() {
-  for (var e, t, f = 0, n = "", o = arguments.length; f < o; f++) (e = arguments[f]) && (t = r(e)) && (n && (n += " "), n += t);
-  return n;
-}
-const falsyToString = (value) => typeof value === "boolean" ? `${value}` : value === 0 ? "0" : value;
-const cx = clsx;
-const cva = (base, config) => (props) => {
-  var _config_compoundVariants;
-  if ((config === null || config === void 0 ? void 0 : config.variants) == null) return cx(base, props === null || props === void 0 ? void 0 : props.class, props === null || props === void 0 ? void 0 : props.className);
-  const { variants, defaultVariants } = config;
-  const getVariantClassNames = Object.keys(variants).map((variant) => {
-    const variantProp = props === null || props === void 0 ? void 0 : props[variant];
-    const defaultVariantProp = defaultVariants === null || defaultVariants === void 0 ? void 0 : defaultVariants[variant];
-    if (variantProp === null) return null;
-    const variantKey = falsyToString(variantProp) || falsyToString(defaultVariantProp);
-    return variants[variant][variantKey];
-  });
-  const propsWithoutUndefined = props && Object.entries(props).reduce((acc, param) => {
-    let [key, value] = param;
-    if (value === void 0) {
-      return acc;
-    }
-    acc[key] = value;
-    return acc;
-  }, {});
-  const getCompoundVariantClassNames = config === null || config === void 0 ? void 0 : (_config_compoundVariants = config.compoundVariants) === null || _config_compoundVariants === void 0 ? void 0 : _config_compoundVariants.reduce((acc, param) => {
-    let { class: cvClass, className: cvClassName, ...compoundVariantOptions } = param;
-    return Object.entries(compoundVariantOptions).every((param2) => {
-      let [key, value] = param2;
-      return Array.isArray(value) ? value.includes({
-        ...defaultVariants,
-        ...propsWithoutUndefined
-      }[key]) : {
-        ...defaultVariants,
-        ...propsWithoutUndefined
-      }[key] === value;
-    }) ? [
-      ...acc,
-      cvClass,
-      cvClassName
-    ] : acc;
-  }, []);
-  return cx(base, getVariantClassNames, getCompoundVariantClassNames, props === null || props === void 0 ? void 0 : props.class, props === null || props === void 0 ? void 0 : props.className);
-};
-const CLASS_PART_SEPARATOR = "-";
-const createClassGroupUtils = (config) => {
-  const classMap = createClassMap(config);
-  const {
-    conflictingClassGroups,
-    conflictingClassGroupModifiers
-  } = config;
-  const getClassGroupId = (className) => {
-    const classParts = className.split(CLASS_PART_SEPARATOR);
-    if (classParts[0] === "" && classParts.length !== 1) {
-      classParts.shift();
-    }
-    return getGroupRecursive(classParts, classMap) || getGroupIdForArbitraryProperty(className);
-  };
-  const getConflictingClassGroupIds = (classGroupId, hasPostfixModifier) => {
-    const conflicts = conflictingClassGroups[classGroupId] || [];
-    if (hasPostfixModifier && conflictingClassGroupModifiers[classGroupId]) {
-      return [...conflicts, ...conflictingClassGroupModifiers[classGroupId]];
-    }
-    return conflicts;
-  };
-  return {
-    getClassGroupId,
-    getConflictingClassGroupIds
-  };
-};
-const getGroupRecursive = (classParts, classPartObject) => {
-  if (classParts.length === 0) {
-    return classPartObject.classGroupId;
-  }
-  const currentClassPart = classParts[0];
-  const nextClassPartObject = classPartObject.nextPart.get(currentClassPart);
-  const classGroupFromNextClassPart = nextClassPartObject ? getGroupRecursive(classParts.slice(1), nextClassPartObject) : void 0;
-  if (classGroupFromNextClassPart) {
-    return classGroupFromNextClassPart;
-  }
-  if (classPartObject.validators.length === 0) {
-    return void 0;
-  }
-  const classRest = classParts.join(CLASS_PART_SEPARATOR);
-  return classPartObject.validators.find(({
-    validator
-  }) => validator(classRest))?.classGroupId;
-};
-const arbitraryPropertyRegex = /^\[(.+)\]$/;
-const getGroupIdForArbitraryProperty = (className) => {
-  if (arbitraryPropertyRegex.test(className)) {
-    const arbitraryPropertyClassName = arbitraryPropertyRegex.exec(className)[1];
-    const property = arbitraryPropertyClassName?.substring(0, arbitraryPropertyClassName.indexOf(":"));
-    if (property) {
-      return "arbitrary.." + property;
-    }
-  }
-};
-const createClassMap = (config) => {
-  const {
-    theme,
-    classGroups
-  } = config;
-  const classMap = {
-    nextPart: /* @__PURE__ */ new Map(),
-    validators: []
-  };
-  for (const classGroupId in classGroups) {
-    processClassesRecursively(classGroups[classGroupId], classMap, classGroupId, theme);
-  }
-  return classMap;
-};
-const processClassesRecursively = (classGroup, classPartObject, classGroupId, theme) => {
-  classGroup.forEach((classDefinition) => {
-    if (typeof classDefinition === "string") {
-      const classPartObjectToEdit = classDefinition === "" ? classPartObject : getPart(classPartObject, classDefinition);
-      classPartObjectToEdit.classGroupId = classGroupId;
-      return;
-    }
-    if (typeof classDefinition === "function") {
-      if (isThemeGetter(classDefinition)) {
-        processClassesRecursively(classDefinition(theme), classPartObject, classGroupId, theme);
-        return;
-      }
-      classPartObject.validators.push({
-        validator: classDefinition,
-        classGroupId
-      });
-      return;
-    }
-    Object.entries(classDefinition).forEach(([key, classGroup2]) => {
-      processClassesRecursively(classGroup2, getPart(classPartObject, key), classGroupId, theme);
-    });
-  });
-};
-const getPart = (classPartObject, path) => {
-  let currentClassPartObject = classPartObject;
-  path.split(CLASS_PART_SEPARATOR).forEach((pathPart) => {
-    if (!currentClassPartObject.nextPart.has(pathPart)) {
-      currentClassPartObject.nextPart.set(pathPart, {
-        nextPart: /* @__PURE__ */ new Map(),
-        validators: []
-      });
-    }
-    currentClassPartObject = currentClassPartObject.nextPart.get(pathPart);
-  });
-  return currentClassPartObject;
-};
-const isThemeGetter = (func) => func.isThemeGetter;
-const createLruCache = (maxCacheSize) => {
-  if (maxCacheSize < 1) {
-    return {
-      get: () => void 0,
-      set: () => {
-      }
-    };
-  }
-  let cacheSize = 0;
-  let cache = /* @__PURE__ */ new Map();
-  let previousCache = /* @__PURE__ */ new Map();
-  const update = (key, value) => {
-    cache.set(key, value);
-    cacheSize++;
-    if (cacheSize > maxCacheSize) {
-      cacheSize = 0;
-      previousCache = cache;
-      cache = /* @__PURE__ */ new Map();
-    }
-  };
-  return {
-    get(key) {
-      let value = cache.get(key);
-      if (value !== void 0) {
-        return value;
-      }
-      if ((value = previousCache.get(key)) !== void 0) {
-        update(key, value);
-        return value;
-      }
-    },
-    set(key, value) {
-      if (cache.has(key)) {
-        cache.set(key, value);
-      } else {
-        update(key, value);
-      }
-    }
-  };
-};
-const IMPORTANT_MODIFIER = "!";
-const MODIFIER_SEPARATOR = ":";
-const MODIFIER_SEPARATOR_LENGTH = MODIFIER_SEPARATOR.length;
-const createParseClassName = (config) => {
-  const {
-    prefix: prefix2,
-    experimentalParseClassName
-  } = config;
-  let parseClassName = (className) => {
-    const modifiers = [];
-    let bracketDepth = 0;
-    let parenDepth = 0;
-    let modifierStart = 0;
-    let postfixModifierPosition;
-    for (let index2 = 0; index2 < className.length; index2++) {
-      let currentCharacter = className[index2];
-      if (bracketDepth === 0 && parenDepth === 0) {
-        if (currentCharacter === MODIFIER_SEPARATOR) {
-          modifiers.push(className.slice(modifierStart, index2));
-          modifierStart = index2 + MODIFIER_SEPARATOR_LENGTH;
-          continue;
-        }
-        if (currentCharacter === "/") {
-          postfixModifierPosition = index2;
-          continue;
-        }
-      }
-      if (currentCharacter === "[") {
-        bracketDepth++;
-      } else if (currentCharacter === "]") {
-        bracketDepth--;
-      } else if (currentCharacter === "(") {
-        parenDepth++;
-      } else if (currentCharacter === ")") {
-        parenDepth--;
-      }
-    }
-    const baseClassNameWithImportantModifier = modifiers.length === 0 ? className : className.substring(modifierStart);
-    const baseClassName = stripImportantModifier(baseClassNameWithImportantModifier);
-    const hasImportantModifier = baseClassName !== baseClassNameWithImportantModifier;
-    const maybePostfixModifierPosition = postfixModifierPosition && postfixModifierPosition > modifierStart ? postfixModifierPosition - modifierStart : void 0;
-    return {
-      modifiers,
-      hasImportantModifier,
-      baseClassName,
-      maybePostfixModifierPosition
-    };
-  };
-  if (prefix2) {
-    const fullPrefix = prefix2 + MODIFIER_SEPARATOR;
-    const parseClassNameOriginal = parseClassName;
-    parseClassName = (className) => className.startsWith(fullPrefix) ? parseClassNameOriginal(className.substring(fullPrefix.length)) : {
-      isExternal: true,
-      modifiers: [],
-      hasImportantModifier: false,
-      baseClassName: className,
-      maybePostfixModifierPosition: void 0
-    };
-  }
-  if (experimentalParseClassName) {
-    const parseClassNameOriginal = parseClassName;
-    parseClassName = (className) => experimentalParseClassName({
-      className,
-      parseClassName: parseClassNameOriginal
-    });
-  }
-  return parseClassName;
-};
-const stripImportantModifier = (baseClassName) => {
-  if (baseClassName.endsWith(IMPORTANT_MODIFIER)) {
-    return baseClassName.substring(0, baseClassName.length - 1);
-  }
-  if (baseClassName.startsWith(IMPORTANT_MODIFIER)) {
-    return baseClassName.substring(1);
-  }
-  return baseClassName;
-};
-const createSortModifiers = (config) => {
-  const orderSensitiveModifiers = Object.fromEntries(config.orderSensitiveModifiers.map((modifier) => [modifier, true]));
-  const sortModifiers = (modifiers) => {
-    if (modifiers.length <= 1) {
-      return modifiers;
-    }
-    const sortedModifiers = [];
-    let unsortedModifiers = [];
-    modifiers.forEach((modifier) => {
-      const isPositionSensitive = modifier[0] === "[" || orderSensitiveModifiers[modifier];
-      if (isPositionSensitive) {
-        sortedModifiers.push(...unsortedModifiers.sort(), modifier);
-        unsortedModifiers = [];
-      } else {
-        unsortedModifiers.push(modifier);
-      }
-    });
-    sortedModifiers.push(...unsortedModifiers.sort());
-    return sortedModifiers;
-  };
-  return sortModifiers;
-};
-const createConfigUtils = (config) => ({
-  cache: createLruCache(config.cacheSize),
-  parseClassName: createParseClassName(config),
-  sortModifiers: createSortModifiers(config),
-  ...createClassGroupUtils(config)
-});
-const SPLIT_CLASSES_REGEX = /\s+/;
-const mergeClassList = (classList, configUtils) => {
-  const {
-    parseClassName,
-    getClassGroupId,
-    getConflictingClassGroupIds,
-    sortModifiers
-  } = configUtils;
-  const classGroupsInConflict = [];
-  const classNames = classList.trim().split(SPLIT_CLASSES_REGEX);
-  let result = "";
-  for (let index2 = classNames.length - 1; index2 >= 0; index2 -= 1) {
-    const originalClassName = classNames[index2];
-    const {
-      isExternal,
-      modifiers,
-      hasImportantModifier,
-      baseClassName,
-      maybePostfixModifierPosition
-    } = parseClassName(originalClassName);
-    if (isExternal) {
-      result = originalClassName + (result.length > 0 ? " " + result : result);
-      continue;
-    }
-    let hasPostfixModifier = !!maybePostfixModifierPosition;
-    let classGroupId = getClassGroupId(hasPostfixModifier ? baseClassName.substring(0, maybePostfixModifierPosition) : baseClassName);
-    if (!classGroupId) {
-      if (!hasPostfixModifier) {
-        result = originalClassName + (result.length > 0 ? " " + result : result);
-        continue;
-      }
-      classGroupId = getClassGroupId(baseClassName);
-      if (!classGroupId) {
-        result = originalClassName + (result.length > 0 ? " " + result : result);
-        continue;
-      }
-      hasPostfixModifier = false;
-    }
-    const variantModifier = sortModifiers(modifiers).join(":");
-    const modifierId = hasImportantModifier ? variantModifier + IMPORTANT_MODIFIER : variantModifier;
-    const classId = modifierId + classGroupId;
-    if (classGroupsInConflict.includes(classId)) {
-      continue;
-    }
-    classGroupsInConflict.push(classId);
-    const conflictGroups = getConflictingClassGroupIds(classGroupId, hasPostfixModifier);
-    for (let i = 0; i < conflictGroups.length; ++i) {
-      const group = conflictGroups[i];
-      classGroupsInConflict.push(modifierId + group);
-    }
-    result = originalClassName + (result.length > 0 ? " " + result : result);
-  }
-  return result;
-};
-function twJoin() {
-  let index2 = 0;
-  let argument;
-  let resolvedValue;
-  let string = "";
-  while (index2 < arguments.length) {
-    if (argument = arguments[index2++]) {
-      if (resolvedValue = toValue(argument)) {
-        string && (string += " ");
-        string += resolvedValue;
-      }
-    }
-  }
-  return string;
-}
-const toValue = (mix2) => {
-  if (typeof mix2 === "string") {
-    return mix2;
-  }
-  let resolvedValue;
-  let string = "";
-  for (let k = 0; k < mix2.length; k++) {
-    if (mix2[k]) {
-      if (resolvedValue = toValue(mix2[k])) {
-        string && (string += " ");
-        string += resolvedValue;
-      }
-    }
-  }
-  return string;
-};
-function createTailwindMerge(createConfigFirst, ...createConfigRest) {
-  let configUtils;
-  let cacheGet;
-  let cacheSet;
-  let functionToCall = initTailwindMerge;
-  function initTailwindMerge(classList) {
-    const config = createConfigRest.reduce((previousConfig, createConfigCurrent) => createConfigCurrent(previousConfig), createConfigFirst());
-    configUtils = createConfigUtils(config);
-    cacheGet = configUtils.cache.get;
-    cacheSet = configUtils.cache.set;
-    functionToCall = tailwindMerge;
-    return tailwindMerge(classList);
-  }
-  function tailwindMerge(classList) {
-    const cachedResult = cacheGet(classList);
-    if (cachedResult) {
-      return cachedResult;
-    }
-    const result = mergeClassList(classList, configUtils);
-    cacheSet(classList, result);
-    return result;
-  }
-  return function callTailwindMerge() {
-    return functionToCall(twJoin.apply(null, arguments));
-  };
-}
-const fromTheme = (key) => {
-  const themeGetter = (theme) => theme[key] || [];
-  themeGetter.isThemeGetter = true;
-  return themeGetter;
-};
-const arbitraryValueRegex = /^\[(?:(\w[\w-]*):)?(.+)\]$/i;
-const arbitraryVariableRegex = /^\((?:(\w[\w-]*):)?(.+)\)$/i;
-const fractionRegex = /^\d+\/\d+$/;
-const tshirtUnitRegex = /^(\d+(\.\d+)?)?(xs|sm|md|lg|xl)$/;
-const lengthUnitRegex = /\d+(%|px|r?em|[sdl]?v([hwib]|min|max)|pt|pc|in|cm|mm|cap|ch|ex|r?lh|cq(w|h|i|b|min|max))|\b(calc|min|max|clamp)\(.+\)|^0$/;
-const colorFunctionRegex = /^(rgba?|hsla?|hwb|(ok)?(lab|lch))\(.+\)$/;
-const shadowRegex = /^(inset_)?-?((\d+)?\.?(\d+)[a-z]+|0)_-?((\d+)?\.?(\d+)[a-z]+|0)/;
-const imageRegex = /^(url|image|image-set|cross-fade|element|(repeating-)?(linear|radial|conic)-gradient)\(.+\)$/;
-const isFraction = (value) => fractionRegex.test(value);
-const isNumber = (value) => !!value && !Number.isNaN(Number(value));
-const isInteger = (value) => !!value && Number.isInteger(Number(value));
-const isPercent = (value) => value.endsWith("%") && isNumber(value.slice(0, -1));
-const isTshirtSize = (value) => tshirtUnitRegex.test(value);
-const isAny = () => true;
-const isLengthOnly = (value) => (
-  // `colorFunctionRegex` check is necessary because color functions can have percentages in them which which would be incorrectly classified as lengths.
-  // For example, `hsl(0 0% 0%)` would be classified as a length without this check.
-  // I could also use lookbehind assertion in `lengthUnitRegex` but that isn't supported widely enough.
-  lengthUnitRegex.test(value) && !colorFunctionRegex.test(value)
-);
-const isNever = () => false;
-const isShadow = (value) => shadowRegex.test(value);
-const isImage = (value) => imageRegex.test(value);
-const isAnyNonArbitrary = (value) => !isArbitraryValue(value) && !isArbitraryVariable(value);
-const isArbitrarySize = (value) => getIsArbitraryValue(value, isLabelSize, isNever);
-const isArbitraryValue = (value) => arbitraryValueRegex.test(value);
-const isArbitraryLength = (value) => getIsArbitraryValue(value, isLabelLength, isLengthOnly);
-const isArbitraryNumber = (value) => getIsArbitraryValue(value, isLabelNumber, isNumber);
-const isArbitraryPosition = (value) => getIsArbitraryValue(value, isLabelPosition, isNever);
-const isArbitraryImage = (value) => getIsArbitraryValue(value, isLabelImage, isImage);
-const isArbitraryShadow = (value) => getIsArbitraryValue(value, isLabelShadow, isShadow);
-const isArbitraryVariable = (value) => arbitraryVariableRegex.test(value);
-const isArbitraryVariableLength = (value) => getIsArbitraryVariable(value, isLabelLength);
-const isArbitraryVariableFamilyName = (value) => getIsArbitraryVariable(value, isLabelFamilyName);
-const isArbitraryVariablePosition = (value) => getIsArbitraryVariable(value, isLabelPosition);
-const isArbitraryVariableSize = (value) => getIsArbitraryVariable(value, isLabelSize);
-const isArbitraryVariableImage = (value) => getIsArbitraryVariable(value, isLabelImage);
-const isArbitraryVariableShadow = (value) => getIsArbitraryVariable(value, isLabelShadow, true);
-const getIsArbitraryValue = (value, testLabel, testValue) => {
-  const result = arbitraryValueRegex.exec(value);
-  if (result) {
-    if (result[1]) {
-      return testLabel(result[1]);
-    }
-    return testValue(result[2]);
-  }
-  return false;
-};
-const getIsArbitraryVariable = (value, testLabel, shouldMatchNoLabel = false) => {
-  const result = arbitraryVariableRegex.exec(value);
-  if (result) {
-    if (result[1]) {
-      return testLabel(result[1]);
-    }
-    return shouldMatchNoLabel;
-  }
-  return false;
-};
-const isLabelPosition = (label) => label === "position" || label === "percentage";
-const isLabelImage = (label) => label === "image" || label === "url";
-const isLabelSize = (label) => label === "length" || label === "size" || label === "bg-size";
-const isLabelLength = (label) => label === "length";
-const isLabelNumber = (label) => label === "number";
-const isLabelFamilyName = (label) => label === "family-name";
-const isLabelShadow = (label) => label === "shadow";
-const getDefaultConfig = () => {
-  const themeColor = fromTheme("color");
-  const themeFont = fromTheme("font");
-  const themeText = fromTheme("text");
-  const themeFontWeight = fromTheme("font-weight");
-  const themeTracking = fromTheme("tracking");
-  const themeLeading = fromTheme("leading");
-  const themeBreakpoint = fromTheme("breakpoint");
-  const themeContainer = fromTheme("container");
-  const themeSpacing = fromTheme("spacing");
-  const themeRadius = fromTheme("radius");
-  const themeShadow = fromTheme("shadow");
-  const themeInsetShadow = fromTheme("inset-shadow");
-  const themeTextShadow = fromTheme("text-shadow");
-  const themeDropShadow = fromTheme("drop-shadow");
-  const themeBlur = fromTheme("blur");
-  const themePerspective = fromTheme("perspective");
-  const themeAspect = fromTheme("aspect");
-  const themeEase = fromTheme("ease");
-  const themeAnimate = fromTheme("animate");
-  const scaleBreak = () => ["auto", "avoid", "all", "avoid-page", "page", "left", "right", "column"];
-  const scalePosition = () => [
-    "center",
-    "top",
-    "bottom",
-    "left",
-    "right",
-    "top-left",
-    // Deprecated since Tailwind CSS v4.1.0, see https://github.com/tailwindlabs/tailwindcss/pull/17378
-    "left-top",
-    "top-right",
-    // Deprecated since Tailwind CSS v4.1.0, see https://github.com/tailwindlabs/tailwindcss/pull/17378
-    "right-top",
-    "bottom-right",
-    // Deprecated since Tailwind CSS v4.1.0, see https://github.com/tailwindlabs/tailwindcss/pull/17378
-    "right-bottom",
-    "bottom-left",
-    // Deprecated since Tailwind CSS v4.1.0, see https://github.com/tailwindlabs/tailwindcss/pull/17378
-    "left-bottom"
-  ];
-  const scalePositionWithArbitrary = () => [...scalePosition(), isArbitraryVariable, isArbitraryValue];
-  const scaleOverflow = () => ["auto", "hidden", "clip", "visible", "scroll"];
-  const scaleOverscroll = () => ["auto", "contain", "none"];
-  const scaleUnambiguousSpacing = () => [isArbitraryVariable, isArbitraryValue, themeSpacing];
-  const scaleInset = () => [isFraction, "full", "auto", ...scaleUnambiguousSpacing()];
-  const scaleGridTemplateColsRows = () => [isInteger, "none", "subgrid", isArbitraryVariable, isArbitraryValue];
-  const scaleGridColRowStartAndEnd = () => ["auto", {
-    span: ["full", isInteger, isArbitraryVariable, isArbitraryValue]
-  }, isInteger, isArbitraryVariable, isArbitraryValue];
-  const scaleGridColRowStartOrEnd = () => [isInteger, "auto", isArbitraryVariable, isArbitraryValue];
-  const scaleGridAutoColsRows = () => ["auto", "min", "max", "fr", isArbitraryVariable, isArbitraryValue];
-  const scaleAlignPrimaryAxis = () => ["start", "end", "center", "between", "around", "evenly", "stretch", "baseline", "center-safe", "end-safe"];
-  const scaleAlignSecondaryAxis = () => ["start", "end", "center", "stretch", "center-safe", "end-safe"];
-  const scaleMargin = () => ["auto", ...scaleUnambiguousSpacing()];
-  const scaleSizing = () => [isFraction, "auto", "full", "dvw", "dvh", "lvw", "lvh", "svw", "svh", "min", "max", "fit", ...scaleUnambiguousSpacing()];
-  const scaleColor = () => [themeColor, isArbitraryVariable, isArbitraryValue];
-  const scaleBgPosition = () => [...scalePosition(), isArbitraryVariablePosition, isArbitraryPosition, {
-    position: [isArbitraryVariable, isArbitraryValue]
-  }];
-  const scaleBgRepeat = () => ["no-repeat", {
-    repeat: ["", "x", "y", "space", "round"]
-  }];
-  const scaleBgSize = () => ["auto", "cover", "contain", isArbitraryVariableSize, isArbitrarySize, {
-    size: [isArbitraryVariable, isArbitraryValue]
-  }];
-  const scaleGradientStopPosition = () => [isPercent, isArbitraryVariableLength, isArbitraryLength];
-  const scaleRadius = () => [
-    // Deprecated since Tailwind CSS v4.0.0
-    "",
-    "none",
-    "full",
-    themeRadius,
-    isArbitraryVariable,
-    isArbitraryValue
-  ];
-  const scaleBorderWidth = () => ["", isNumber, isArbitraryVariableLength, isArbitraryLength];
-  const scaleLineStyle = () => ["solid", "dashed", "dotted", "double"];
-  const scaleBlendMode = () => ["normal", "multiply", "screen", "overlay", "darken", "lighten", "color-dodge", "color-burn", "hard-light", "soft-light", "difference", "exclusion", "hue", "saturation", "color", "luminosity"];
-  const scaleMaskImagePosition = () => [isNumber, isPercent, isArbitraryVariablePosition, isArbitraryPosition];
-  const scaleBlur = () => [
-    // Deprecated since Tailwind CSS v4.0.0
-    "",
-    "none",
-    themeBlur,
-    isArbitraryVariable,
-    isArbitraryValue
-  ];
-  const scaleRotate = () => ["none", isNumber, isArbitraryVariable, isArbitraryValue];
-  const scaleScale = () => ["none", isNumber, isArbitraryVariable, isArbitraryValue];
-  const scaleSkew = () => [isNumber, isArbitraryVariable, isArbitraryValue];
-  const scaleTranslate = () => [isFraction, "full", ...scaleUnambiguousSpacing()];
-  return {
-    cacheSize: 500,
-    theme: {
-      animate: ["spin", "ping", "pulse", "bounce"],
-      aspect: ["video"],
-      blur: [isTshirtSize],
-      breakpoint: [isTshirtSize],
-      color: [isAny],
-      container: [isTshirtSize],
-      "drop-shadow": [isTshirtSize],
-      ease: ["in", "out", "in-out"],
-      font: [isAnyNonArbitrary],
-      "font-weight": ["thin", "extralight", "light", "normal", "medium", "semibold", "bold", "extrabold", "black"],
-      "inset-shadow": [isTshirtSize],
-      leading: ["none", "tight", "snug", "normal", "relaxed", "loose"],
-      perspective: ["dramatic", "near", "normal", "midrange", "distant", "none"],
-      radius: [isTshirtSize],
-      shadow: [isTshirtSize],
-      spacing: ["px", isNumber],
-      text: [isTshirtSize],
-      "text-shadow": [isTshirtSize],
-      tracking: ["tighter", "tight", "normal", "wide", "wider", "widest"]
-    },
-    classGroups: {
-      // --------------
-      // --- Layout ---
-      // --------------
-      /**
-       * Aspect Ratio
-       * @see https://tailwindcss.com/docs/aspect-ratio
-       */
-      aspect: [{
-        aspect: ["auto", "square", isFraction, isArbitraryValue, isArbitraryVariable, themeAspect]
-      }],
-      /**
-       * Container
-       * @see https://tailwindcss.com/docs/container
-       * @deprecated since Tailwind CSS v4.0.0
-       */
-      container: ["container"],
-      /**
-       * Columns
-       * @see https://tailwindcss.com/docs/columns
-       */
-      columns: [{
-        columns: [isNumber, isArbitraryValue, isArbitraryVariable, themeContainer]
-      }],
-      /**
-       * Break After
-       * @see https://tailwindcss.com/docs/break-after
-       */
-      "break-after": [{
-        "break-after": scaleBreak()
-      }],
-      /**
-       * Break Before
-       * @see https://tailwindcss.com/docs/break-before
-       */
-      "break-before": [{
-        "break-before": scaleBreak()
-      }],
-      /**
-       * Break Inside
-       * @see https://tailwindcss.com/docs/break-inside
-       */
-      "break-inside": [{
-        "break-inside": ["auto", "avoid", "avoid-page", "avoid-column"]
-      }],
-      /**
-       * Box Decoration Break
-       * @see https://tailwindcss.com/docs/box-decoration-break
-       */
-      "box-decoration": [{
-        "box-decoration": ["slice", "clone"]
-      }],
-      /**
-       * Box Sizing
-       * @see https://tailwindcss.com/docs/box-sizing
-       */
-      box: [{
-        box: ["border", "content"]
-      }],
-      /**
-       * Display
-       * @see https://tailwindcss.com/docs/display
-       */
-      display: ["block", "inline-block", "inline", "flex", "inline-flex", "table", "inline-table", "table-caption", "table-cell", "table-column", "table-column-group", "table-footer-group", "table-header-group", "table-row-group", "table-row", "flow-root", "grid", "inline-grid", "contents", "list-item", "hidden"],
-      /**
-       * Screen Reader Only
-       * @see https://tailwindcss.com/docs/display#screen-reader-only
-       */
-      sr: ["sr-only", "not-sr-only"],
-      /**
-       * Floats
-       * @see https://tailwindcss.com/docs/float
-       */
-      float: [{
-        float: ["right", "left", "none", "start", "end"]
-      }],
-      /**
-       * Clear
-       * @see https://tailwindcss.com/docs/clear
-       */
-      clear: [{
-        clear: ["left", "right", "both", "none", "start", "end"]
-      }],
-      /**
-       * Isolation
-       * @see https://tailwindcss.com/docs/isolation
-       */
-      isolation: ["isolate", "isolation-auto"],
-      /**
-       * Object Fit
-       * @see https://tailwindcss.com/docs/object-fit
-       */
-      "object-fit": [{
-        object: ["contain", "cover", "fill", "none", "scale-down"]
-      }],
-      /**
-       * Object Position
-       * @see https://tailwindcss.com/docs/object-position
-       */
-      "object-position": [{
-        object: scalePositionWithArbitrary()
-      }],
-      /**
-       * Overflow
-       * @see https://tailwindcss.com/docs/overflow
-       */
-      overflow: [{
-        overflow: scaleOverflow()
-      }],
-      /**
-       * Overflow X
-       * @see https://tailwindcss.com/docs/overflow
-       */
-      "overflow-x": [{
-        "overflow-x": scaleOverflow()
-      }],
-      /**
-       * Overflow Y
-       * @see https://tailwindcss.com/docs/overflow
-       */
-      "overflow-y": [{
-        "overflow-y": scaleOverflow()
-      }],
-      /**
-       * Overscroll Behavior
-       * @see https://tailwindcss.com/docs/overscroll-behavior
-       */
-      overscroll: [{
-        overscroll: scaleOverscroll()
-      }],
-      /**
-       * Overscroll Behavior X
-       * @see https://tailwindcss.com/docs/overscroll-behavior
-       */
-      "overscroll-x": [{
-        "overscroll-x": scaleOverscroll()
-      }],
-      /**
-       * Overscroll Behavior Y
-       * @see https://tailwindcss.com/docs/overscroll-behavior
-       */
-      "overscroll-y": [{
-        "overscroll-y": scaleOverscroll()
-      }],
-      /**
-       * Position
-       * @see https://tailwindcss.com/docs/position
-       */
-      position: ["static", "fixed", "absolute", "relative", "sticky"],
-      /**
-       * Top / Right / Bottom / Left
-       * @see https://tailwindcss.com/docs/top-right-bottom-left
-       */
-      inset: [{
-        inset: scaleInset()
-      }],
-      /**
-       * Right / Left
-       * @see https://tailwindcss.com/docs/top-right-bottom-left
-       */
-      "inset-x": [{
-        "inset-x": scaleInset()
-      }],
-      /**
-       * Top / Bottom
-       * @see https://tailwindcss.com/docs/top-right-bottom-left
-       */
-      "inset-y": [{
-        "inset-y": scaleInset()
-      }],
-      /**
-       * Start
-       * @see https://tailwindcss.com/docs/top-right-bottom-left
-       */
-      start: [{
-        start: scaleInset()
-      }],
-      /**
-       * End
-       * @see https://tailwindcss.com/docs/top-right-bottom-left
-       */
-      end: [{
-        end: scaleInset()
-      }],
-      /**
-       * Top
-       * @see https://tailwindcss.com/docs/top-right-bottom-left
-       */
-      top: [{
-        top: scaleInset()
-      }],
-      /**
-       * Right
-       * @see https://tailwindcss.com/docs/top-right-bottom-left
-       */
-      right: [{
-        right: scaleInset()
-      }],
-      /**
-       * Bottom
-       * @see https://tailwindcss.com/docs/top-right-bottom-left
-       */
-      bottom: [{
-        bottom: scaleInset()
-      }],
-      /**
-       * Left
-       * @see https://tailwindcss.com/docs/top-right-bottom-left
-       */
-      left: [{
-        left: scaleInset()
-      }],
-      /**
-       * Visibility
-       * @see https://tailwindcss.com/docs/visibility
-       */
-      visibility: ["visible", "invisible", "collapse"],
-      /**
-       * Z-Index
-       * @see https://tailwindcss.com/docs/z-index
-       */
-      z: [{
-        z: [isInteger, "auto", isArbitraryVariable, isArbitraryValue]
-      }],
-      // ------------------------
-      // --- Flexbox and Grid ---
-      // ------------------------
-      /**
-       * Flex Basis
-       * @see https://tailwindcss.com/docs/flex-basis
-       */
-      basis: [{
-        basis: [isFraction, "full", "auto", themeContainer, ...scaleUnambiguousSpacing()]
-      }],
-      /**
-       * Flex Direction
-       * @see https://tailwindcss.com/docs/flex-direction
-       */
-      "flex-direction": [{
-        flex: ["row", "row-reverse", "col", "col-reverse"]
-      }],
-      /**
-       * Flex Wrap
-       * @see https://tailwindcss.com/docs/flex-wrap
-       */
-      "flex-wrap": [{
-        flex: ["nowrap", "wrap", "wrap-reverse"]
-      }],
-      /**
-       * Flex
-       * @see https://tailwindcss.com/docs/flex
-       */
-      flex: [{
-        flex: [isNumber, isFraction, "auto", "initial", "none", isArbitraryValue]
-      }],
-      /**
-       * Flex Grow
-       * @see https://tailwindcss.com/docs/flex-grow
-       */
-      grow: [{
-        grow: ["", isNumber, isArbitraryVariable, isArbitraryValue]
-      }],
-      /**
-       * Flex Shrink
-       * @see https://tailwindcss.com/docs/flex-shrink
-       */
-      shrink: [{
-        shrink: ["", isNumber, isArbitraryVariable, isArbitraryValue]
-      }],
-      /**
-       * Order
-       * @see https://tailwindcss.com/docs/order
-       */
-      order: [{
-        order: [isInteger, "first", "last", "none", isArbitraryVariable, isArbitraryValue]
-      }],
-      /**
-       * Grid Template Columns
-       * @see https://tailwindcss.com/docs/grid-template-columns
-       */
-      "grid-cols": [{
-        "grid-cols": scaleGridTemplateColsRows()
-      }],
-      /**
-       * Grid Column Start / End
-       * @see https://tailwindcss.com/docs/grid-column
-       */
-      "col-start-end": [{
-        col: scaleGridColRowStartAndEnd()
-      }],
-      /**
-       * Grid Column Start
-       * @see https://tailwindcss.com/docs/grid-column
-       */
-      "col-start": [{
-        "col-start": scaleGridColRowStartOrEnd()
-      }],
-      /**
-       * Grid Column End
-       * @see https://tailwindcss.com/docs/grid-column
-       */
-      "col-end": [{
-        "col-end": scaleGridColRowStartOrEnd()
-      }],
-      /**
-       * Grid Template Rows
-       * @see https://tailwindcss.com/docs/grid-template-rows
-       */
-      "grid-rows": [{
-        "grid-rows": scaleGridTemplateColsRows()
-      }],
-      /**
-       * Grid Row Start / End
-       * @see https://tailwindcss.com/docs/grid-row
-       */
-      "row-start-end": [{
-        row: scaleGridColRowStartAndEnd()
-      }],
-      /**
-       * Grid Row Start
-       * @see https://tailwindcss.com/docs/grid-row
-       */
-      "row-start": [{
-        "row-start": scaleGridColRowStartOrEnd()
-      }],
-      /**
-       * Grid Row End
-       * @see https://tailwindcss.com/docs/grid-row
-       */
-      "row-end": [{
-        "row-end": scaleGridColRowStartOrEnd()
-      }],
-      /**
-       * Grid Auto Flow
-       * @see https://tailwindcss.com/docs/grid-auto-flow
-       */
-      "grid-flow": [{
-        "grid-flow": ["row", "col", "dense", "row-dense", "col-dense"]
-      }],
-      /**
-       * Grid Auto Columns
-       * @see https://tailwindcss.com/docs/grid-auto-columns
-       */
-      "auto-cols": [{
-        "auto-cols": scaleGridAutoColsRows()
-      }],
-      /**
-       * Grid Auto Rows
-       * @see https://tailwindcss.com/docs/grid-auto-rows
-       */
-      "auto-rows": [{
-        "auto-rows": scaleGridAutoColsRows()
-      }],
-      /**
-       * Gap
-       * @see https://tailwindcss.com/docs/gap
-       */
-      gap: [{
-        gap: scaleUnambiguousSpacing()
-      }],
-      /**
-       * Gap X
-       * @see https://tailwindcss.com/docs/gap
-       */
-      "gap-x": [{
-        "gap-x": scaleUnambiguousSpacing()
-      }],
-      /**
-       * Gap Y
-       * @see https://tailwindcss.com/docs/gap
-       */
-      "gap-y": [{
-        "gap-y": scaleUnambiguousSpacing()
-      }],
-      /**
-       * Justify Content
-       * @see https://tailwindcss.com/docs/justify-content
-       */
-      "justify-content": [{
-        justify: [...scaleAlignPrimaryAxis(), "normal"]
-      }],
-      /**
-       * Justify Items
-       * @see https://tailwindcss.com/docs/justify-items
-       */
-      "justify-items": [{
-        "justify-items": [...scaleAlignSecondaryAxis(), "normal"]
-      }],
-      /**
-       * Justify Self
-       * @see https://tailwindcss.com/docs/justify-self
-       */
-      "justify-self": [{
-        "justify-self": ["auto", ...scaleAlignSecondaryAxis()]
-      }],
-      /**
-       * Align Content
-       * @see https://tailwindcss.com/docs/align-content
-       */
-      "align-content": [{
-        content: ["normal", ...scaleAlignPrimaryAxis()]
-      }],
-      /**
-       * Align Items
-       * @see https://tailwindcss.com/docs/align-items
-       */
-      "align-items": [{
-        items: [...scaleAlignSecondaryAxis(), {
-          baseline: ["", "last"]
-        }]
-      }],
-      /**
-       * Align Self
-       * @see https://tailwindcss.com/docs/align-self
-       */
-      "align-self": [{
-        self: ["auto", ...scaleAlignSecondaryAxis(), {
-          baseline: ["", "last"]
-        }]
-      }],
-      /**
-       * Place Content
-       * @see https://tailwindcss.com/docs/place-content
-       */
-      "place-content": [{
-        "place-content": scaleAlignPrimaryAxis()
-      }],
-      /**
-       * Place Items
-       * @see https://tailwindcss.com/docs/place-items
-       */
-      "place-items": [{
-        "place-items": [...scaleAlignSecondaryAxis(), "baseline"]
-      }],
-      /**
-       * Place Self
-       * @see https://tailwindcss.com/docs/place-self
-       */
-      "place-self": [{
-        "place-self": ["auto", ...scaleAlignSecondaryAxis()]
-      }],
-      // Spacing
-      /**
-       * Padding
-       * @see https://tailwindcss.com/docs/padding
-       */
-      p: [{
-        p: scaleUnambiguousSpacing()
-      }],
-      /**
-       * Padding X
-       * @see https://tailwindcss.com/docs/padding
-       */
-      px: [{
-        px: scaleUnambiguousSpacing()
-      }],
-      /**
-       * Padding Y
-       * @see https://tailwindcss.com/docs/padding
-       */
-      py: [{
-        py: scaleUnambiguousSpacing()
-      }],
-      /**
-       * Padding Start
-       * @see https://tailwindcss.com/docs/padding
-       */
-      ps: [{
-        ps: scaleUnambiguousSpacing()
-      }],
-      /**
-       * Padding End
-       * @see https://tailwindcss.com/docs/padding
-       */
-      pe: [{
-        pe: scaleUnambiguousSpacing()
-      }],
-      /**
-       * Padding Top
-       * @see https://tailwindcss.com/docs/padding
-       */
-      pt: [{
-        pt: scaleUnambiguousSpacing()
-      }],
-      /**
-       * Padding Right
-       * @see https://tailwindcss.com/docs/padding
-       */
-      pr: [{
-        pr: scaleUnambiguousSpacing()
-      }],
-      /**
-       * Padding Bottom
-       * @see https://tailwindcss.com/docs/padding
-       */
-      pb: [{
-        pb: scaleUnambiguousSpacing()
-      }],
-      /**
-       * Padding Left
-       * @see https://tailwindcss.com/docs/padding
-       */
-      pl: [{
-        pl: scaleUnambiguousSpacing()
-      }],
-      /**
-       * Margin
-       * @see https://tailwindcss.com/docs/margin
-       */
-      m: [{
-        m: scaleMargin()
-      }],
-      /**
-       * Margin X
-       * @see https://tailwindcss.com/docs/margin
-       */
-      mx: [{
-        mx: scaleMargin()
-      }],
-      /**
-       * Margin Y
-       * @see https://tailwindcss.com/docs/margin
-       */
-      my: [{
-        my: scaleMargin()
-      }],
-      /**
-       * Margin Start
-       * @see https://tailwindcss.com/docs/margin
-       */
-      ms: [{
-        ms: scaleMargin()
-      }],
-      /**
-       * Margin End
-       * @see https://tailwindcss.com/docs/margin
-       */
-      me: [{
-        me: scaleMargin()
-      }],
-      /**
-       * Margin Top
-       * @see https://tailwindcss.com/docs/margin
-       */
-      mt: [{
-        mt: scaleMargin()
-      }],
-      /**
-       * Margin Right
-       * @see https://tailwindcss.com/docs/margin
-       */
-      mr: [{
-        mr: scaleMargin()
-      }],
-      /**
-       * Margin Bottom
-       * @see https://tailwindcss.com/docs/margin
-       */
-      mb: [{
-        mb: scaleMargin()
-      }],
-      /**
-       * Margin Left
-       * @see https://tailwindcss.com/docs/margin
-       */
-      ml: [{
-        ml: scaleMargin()
-      }],
-      /**
-       * Space Between X
-       * @see https://tailwindcss.com/docs/margin#adding-space-between-children
-       */
-      "space-x": [{
-        "space-x": scaleUnambiguousSpacing()
-      }],
-      /**
-       * Space Between X Reverse
-       * @see https://tailwindcss.com/docs/margin#adding-space-between-children
-       */
-      "space-x-reverse": ["space-x-reverse"],
-      /**
-       * Space Between Y
-       * @see https://tailwindcss.com/docs/margin#adding-space-between-children
-       */
-      "space-y": [{
-        "space-y": scaleUnambiguousSpacing()
-      }],
-      /**
-       * Space Between Y Reverse
-       * @see https://tailwindcss.com/docs/margin#adding-space-between-children
-       */
-      "space-y-reverse": ["space-y-reverse"],
-      // --------------
-      // --- Sizing ---
-      // --------------
-      /**
-       * Size
-       * @see https://tailwindcss.com/docs/width#setting-both-width-and-height
-       */
-      size: [{
-        size: scaleSizing()
-      }],
-      /**
-       * Width
-       * @see https://tailwindcss.com/docs/width
-       */
-      w: [{
-        w: [themeContainer, "screen", ...scaleSizing()]
-      }],
-      /**
-       * Min-Width
-       * @see https://tailwindcss.com/docs/min-width
-       */
-      "min-w": [{
-        "min-w": [
-          themeContainer,
-          "screen",
-          /** Deprecated. @see https://github.com/tailwindlabs/tailwindcss.com/issues/2027#issuecomment-2620152757 */
-          "none",
-          ...scaleSizing()
-        ]
-      }],
-      /**
-       * Max-Width
-       * @see https://tailwindcss.com/docs/max-width
-       */
-      "max-w": [{
-        "max-w": [
-          themeContainer,
-          "screen",
-          "none",
-          /** Deprecated since Tailwind CSS v4.0.0. @see https://github.com/tailwindlabs/tailwindcss.com/issues/2027#issuecomment-2620152757 */
-          "prose",
-          /** Deprecated since Tailwind CSS v4.0.0. @see https://github.com/tailwindlabs/tailwindcss.com/issues/2027#issuecomment-2620152757 */
-          {
-            screen: [themeBreakpoint]
-          },
-          ...scaleSizing()
-        ]
-      }],
-      /**
-       * Height
-       * @see https://tailwindcss.com/docs/height
-       */
-      h: [{
-        h: ["screen", ...scaleSizing()]
-      }],
-      /**
-       * Min-Height
-       * @see https://tailwindcss.com/docs/min-height
-       */
-      "min-h": [{
-        "min-h": ["screen", "none", ...scaleSizing()]
-      }],
-      /**
-       * Max-Height
-       * @see https://tailwindcss.com/docs/max-height
-       */
-      "max-h": [{
-        "max-h": ["screen", ...scaleSizing()]
-      }],
-      // ------------------
-      // --- Typography ---
-      // ------------------
-      /**
-       * Font Size
-       * @see https://tailwindcss.com/docs/font-size
-       */
-      "font-size": [{
-        text: ["base", themeText, isArbitraryVariableLength, isArbitraryLength]
-      }],
-      /**
-       * Font Smoothing
-       * @see https://tailwindcss.com/docs/font-smoothing
-       */
-      "font-smoothing": ["antialiased", "subpixel-antialiased"],
-      /**
-       * Font Style
-       * @see https://tailwindcss.com/docs/font-style
-       */
-      "font-style": ["italic", "not-italic"],
-      /**
-       * Font Weight
-       * @see https://tailwindcss.com/docs/font-weight
-       */
-      "font-weight": [{
-        font: [themeFontWeight, isArbitraryVariable, isArbitraryNumber]
-      }],
-      /**
-       * Font Stretch
-       * @see https://tailwindcss.com/docs/font-stretch
-       */
-      "font-stretch": [{
-        "font-stretch": ["ultra-condensed", "extra-condensed", "condensed", "semi-condensed", "normal", "semi-expanded", "expanded", "extra-expanded", "ultra-expanded", isPercent, isArbitraryValue]
-      }],
-      /**
-       * Font Family
-       * @see https://tailwindcss.com/docs/font-family
-       */
-      "font-family": [{
-        font: [isArbitraryVariableFamilyName, isArbitraryValue, themeFont]
-      }],
-      /**
-       * Font Variant Numeric
-       * @see https://tailwindcss.com/docs/font-variant-numeric
-       */
-      "fvn-normal": ["normal-nums"],
-      /**
-       * Font Variant Numeric
-       * @see https://tailwindcss.com/docs/font-variant-numeric
-       */
-      "fvn-ordinal": ["ordinal"],
-      /**
-       * Font Variant Numeric
-       * @see https://tailwindcss.com/docs/font-variant-numeric
-       */
-      "fvn-slashed-zero": ["slashed-zero"],
-      /**
-       * Font Variant Numeric
-       * @see https://tailwindcss.com/docs/font-variant-numeric
-       */
-      "fvn-figure": ["lining-nums", "oldstyle-nums"],
-      /**
-       * Font Variant Numeric
-       * @see https://tailwindcss.com/docs/font-variant-numeric
-       */
-      "fvn-spacing": ["proportional-nums", "tabular-nums"],
-      /**
-       * Font Variant Numeric
-       * @see https://tailwindcss.com/docs/font-variant-numeric
-       */
-      "fvn-fraction": ["diagonal-fractions", "stacked-fractions"],
-      /**
-       * Letter Spacing
-       * @see https://tailwindcss.com/docs/letter-spacing
-       */
-      tracking: [{
-        tracking: [themeTracking, isArbitraryVariable, isArbitraryValue]
-      }],
-      /**
-       * Line Clamp
-       * @see https://tailwindcss.com/docs/line-clamp
-       */
-      "line-clamp": [{
-        "line-clamp": [isNumber, "none", isArbitraryVariable, isArbitraryNumber]
-      }],
-      /**
-       * Line Height
-       * @see https://tailwindcss.com/docs/line-height
-       */
-      leading: [{
-        leading: [
-          /** Deprecated since Tailwind CSS v4.0.0. @see https://github.com/tailwindlabs/tailwindcss.com/issues/2027#issuecomment-2620152757 */
-          themeLeading,
-          ...scaleUnambiguousSpacing()
-        ]
-      }],
-      /**
-       * List Style Image
-       * @see https://tailwindcss.com/docs/list-style-image
-       */
-      "list-image": [{
-        "list-image": ["none", isArbitraryVariable, isArbitraryValue]
-      }],
-      /**
-       * List Style Position
-       * @see https://tailwindcss.com/docs/list-style-position
-       */
-      "list-style-position": [{
-        list: ["inside", "outside"]
-      }],
-      /**
-       * List Style Type
-       * @see https://tailwindcss.com/docs/list-style-type
-       */
-      "list-style-type": [{
-        list: ["disc", "decimal", "none", isArbitraryVariable, isArbitraryValue]
-      }],
-      /**
-       * Text Alignment
-       * @see https://tailwindcss.com/docs/text-align
-       */
-      "text-alignment": [{
-        text: ["left", "center", "right", "justify", "start", "end"]
-      }],
-      /**
-       * Placeholder Color
-       * @deprecated since Tailwind CSS v3.0.0
-       * @see https://v3.tailwindcss.com/docs/placeholder-color
-       */
-      "placeholder-color": [{
-        placeholder: scaleColor()
-      }],
-      /**
-       * Text Color
-       * @see https://tailwindcss.com/docs/text-color
-       */
-      "text-color": [{
-        text: scaleColor()
-      }],
-      /**
-       * Text Decoration
-       * @see https://tailwindcss.com/docs/text-decoration
-       */
-      "text-decoration": ["underline", "overline", "line-through", "no-underline"],
-      /**
-       * Text Decoration Style
-       * @see https://tailwindcss.com/docs/text-decoration-style
-       */
-      "text-decoration-style": [{
-        decoration: [...scaleLineStyle(), "wavy"]
-      }],
-      /**
-       * Text Decoration Thickness
-       * @see https://tailwindcss.com/docs/text-decoration-thickness
-       */
-      "text-decoration-thickness": [{
-        decoration: [isNumber, "from-font", "auto", isArbitraryVariable, isArbitraryLength]
-      }],
-      /**
-       * Text Decoration Color
-       * @see https://tailwindcss.com/docs/text-decoration-color
-       */
-      "text-decoration-color": [{
-        decoration: scaleColor()
-      }],
-      /**
-       * Text Underline Offset
-       * @see https://tailwindcss.com/docs/text-underline-offset
-       */
-      "underline-offset": [{
-        "underline-offset": [isNumber, "auto", isArbitraryVariable, isArbitraryValue]
-      }],
-      /**
-       * Text Transform
-       * @see https://tailwindcss.com/docs/text-transform
-       */
-      "text-transform": ["uppercase", "lowercase", "capitalize", "normal-case"],
-      /**
-       * Text Overflow
-       * @see https://tailwindcss.com/docs/text-overflow
-       */
-      "text-overflow": ["truncate", "text-ellipsis", "text-clip"],
-      /**
-       * Text Wrap
-       * @see https://tailwindcss.com/docs/text-wrap
-       */
-      "text-wrap": [{
-        text: ["wrap", "nowrap", "balance", "pretty"]
-      }],
-      /**
-       * Text Indent
-       * @see https://tailwindcss.com/docs/text-indent
-       */
-      indent: [{
-        indent: scaleUnambiguousSpacing()
-      }],
-      /**
-       * Vertical Alignment
-       * @see https://tailwindcss.com/docs/vertical-align
-       */
-      "vertical-align": [{
-        align: ["baseline", "top", "middle", "bottom", "text-top", "text-bottom", "sub", "super", isArbitraryVariable, isArbitraryValue]
-      }],
-      /**
-       * Whitespace
-       * @see https://tailwindcss.com/docs/whitespace
-       */
-      whitespace: [{
-        whitespace: ["normal", "nowrap", "pre", "pre-line", "pre-wrap", "break-spaces"]
-      }],
-      /**
-       * Word Break
-       * @see https://tailwindcss.com/docs/word-break
-       */
-      break: [{
-        break: ["normal", "words", "all", "keep"]
-      }],
-      /**
-       * Overflow Wrap
-       * @see https://tailwindcss.com/docs/overflow-wrap
-       */
-      wrap: [{
-        wrap: ["break-word", "anywhere", "normal"]
-      }],
-      /**
-       * Hyphens
-       * @see https://tailwindcss.com/docs/hyphens
-       */
-      hyphens: [{
-        hyphens: ["none", "manual", "auto"]
-      }],
-      /**
-       * Content
-       * @see https://tailwindcss.com/docs/content
-       */
-      content: [{
-        content: ["none", isArbitraryVariable, isArbitraryValue]
-      }],
-      // -------------------
-      // --- Backgrounds ---
-      // -------------------
-      /**
-       * Background Attachment
-       * @see https://tailwindcss.com/docs/background-attachment
-       */
-      "bg-attachment": [{
-        bg: ["fixed", "local", "scroll"]
-      }],
-      /**
-       * Background Clip
-       * @see https://tailwindcss.com/docs/background-clip
-       */
-      "bg-clip": [{
-        "bg-clip": ["border", "padding", "content", "text"]
-      }],
-      /**
-       * Background Origin
-       * @see https://tailwindcss.com/docs/background-origin
-       */
-      "bg-origin": [{
-        "bg-origin": ["border", "padding", "content"]
-      }],
-      /**
-       * Background Position
-       * @see https://tailwindcss.com/docs/background-position
-       */
-      "bg-position": [{
-        bg: scaleBgPosition()
-      }],
-      /**
-       * Background Repeat
-       * @see https://tailwindcss.com/docs/background-repeat
-       */
-      "bg-repeat": [{
-        bg: scaleBgRepeat()
-      }],
-      /**
-       * Background Size
-       * @see https://tailwindcss.com/docs/background-size
-       */
-      "bg-size": [{
-        bg: scaleBgSize()
-      }],
-      /**
-       * Background Image
-       * @see https://tailwindcss.com/docs/background-image
-       */
-      "bg-image": [{
-        bg: ["none", {
-          linear: [{
-            to: ["t", "tr", "r", "br", "b", "bl", "l", "tl"]
-          }, isInteger, isArbitraryVariable, isArbitraryValue],
-          radial: ["", isArbitraryVariable, isArbitraryValue],
-          conic: [isInteger, isArbitraryVariable, isArbitraryValue]
-        }, isArbitraryVariableImage, isArbitraryImage]
-      }],
-      /**
-       * Background Color
-       * @see https://tailwindcss.com/docs/background-color
-       */
-      "bg-color": [{
-        bg: scaleColor()
-      }],
-      /**
-       * Gradient Color Stops From Position
-       * @see https://tailwindcss.com/docs/gradient-color-stops
-       */
-      "gradient-from-pos": [{
-        from: scaleGradientStopPosition()
-      }],
-      /**
-       * Gradient Color Stops Via Position
-       * @see https://tailwindcss.com/docs/gradient-color-stops
-       */
-      "gradient-via-pos": [{
-        via: scaleGradientStopPosition()
-      }],
-      /**
-       * Gradient Color Stops To Position
-       * @see https://tailwindcss.com/docs/gradient-color-stops
-       */
-      "gradient-to-pos": [{
-        to: scaleGradientStopPosition()
-      }],
-      /**
-       * Gradient Color Stops From
-       * @see https://tailwindcss.com/docs/gradient-color-stops
-       */
-      "gradient-from": [{
-        from: scaleColor()
-      }],
-      /**
-       * Gradient Color Stops Via
-       * @see https://tailwindcss.com/docs/gradient-color-stops
-       */
-      "gradient-via": [{
-        via: scaleColor()
-      }],
-      /**
-       * Gradient Color Stops To
-       * @see https://tailwindcss.com/docs/gradient-color-stops
-       */
-      "gradient-to": [{
-        to: scaleColor()
-      }],
-      // ---------------
-      // --- Borders ---
-      // ---------------
-      /**
-       * Border Radius
-       * @see https://tailwindcss.com/docs/border-radius
-       */
-      rounded: [{
-        rounded: scaleRadius()
-      }],
-      /**
-       * Border Radius Start
-       * @see https://tailwindcss.com/docs/border-radius
-       */
-      "rounded-s": [{
-        "rounded-s": scaleRadius()
-      }],
-      /**
-       * Border Radius End
-       * @see https://tailwindcss.com/docs/border-radius
-       */
-      "rounded-e": [{
-        "rounded-e": scaleRadius()
-      }],
-      /**
-       * Border Radius Top
-       * @see https://tailwindcss.com/docs/border-radius
-       */
-      "rounded-t": [{
-        "rounded-t": scaleRadius()
-      }],
-      /**
-       * Border Radius Right
-       * @see https://tailwindcss.com/docs/border-radius
-       */
-      "rounded-r": [{
-        "rounded-r": scaleRadius()
-      }],
-      /**
-       * Border Radius Bottom
-       * @see https://tailwindcss.com/docs/border-radius
-       */
-      "rounded-b": [{
-        "rounded-b": scaleRadius()
-      }],
-      /**
-       * Border Radius Left
-       * @see https://tailwindcss.com/docs/border-radius
-       */
-      "rounded-l": [{
-        "rounded-l": scaleRadius()
-      }],
-      /**
-       * Border Radius Start Start
-       * @see https://tailwindcss.com/docs/border-radius
-       */
-      "rounded-ss": [{
-        "rounded-ss": scaleRadius()
-      }],
-      /**
-       * Border Radius Start End
-       * @see https://tailwindcss.com/docs/border-radius
-       */
-      "rounded-se": [{
-        "rounded-se": scaleRadius()
-      }],
-      /**
-       * Border Radius End End
-       * @see https://tailwindcss.com/docs/border-radius
-       */
-      "rounded-ee": [{
-        "rounded-ee": scaleRadius()
-      }],
-      /**
-       * Border Radius End Start
-       * @see https://tailwindcss.com/docs/border-radius
-       */
-      "rounded-es": [{
-        "rounded-es": scaleRadius()
-      }],
-      /**
-       * Border Radius Top Left
-       * @see https://tailwindcss.com/docs/border-radius
-       */
-      "rounded-tl": [{
-        "rounded-tl": scaleRadius()
-      }],
-      /**
-       * Border Radius Top Right
-       * @see https://tailwindcss.com/docs/border-radius
-       */
-      "rounded-tr": [{
-        "rounded-tr": scaleRadius()
-      }],
-      /**
-       * Border Radius Bottom Right
-       * @see https://tailwindcss.com/docs/border-radius
-       */
-      "rounded-br": [{
-        "rounded-br": scaleRadius()
-      }],
-      /**
-       * Border Radius Bottom Left
-       * @see https://tailwindcss.com/docs/border-radius
-       */
-      "rounded-bl": [{
-        "rounded-bl": scaleRadius()
-      }],
-      /**
-       * Border Width
-       * @see https://tailwindcss.com/docs/border-width
-       */
-      "border-w": [{
-        border: scaleBorderWidth()
-      }],
-      /**
-       * Border Width X
-       * @see https://tailwindcss.com/docs/border-width
-       */
-      "border-w-x": [{
-        "border-x": scaleBorderWidth()
-      }],
-      /**
-       * Border Width Y
-       * @see https://tailwindcss.com/docs/border-width
-       */
-      "border-w-y": [{
-        "border-y": scaleBorderWidth()
-      }],
-      /**
-       * Border Width Start
-       * @see https://tailwindcss.com/docs/border-width
-       */
-      "border-w-s": [{
-        "border-s": scaleBorderWidth()
-      }],
-      /**
-       * Border Width End
-       * @see https://tailwindcss.com/docs/border-width
-       */
-      "border-w-e": [{
-        "border-e": scaleBorderWidth()
-      }],
-      /**
-       * Border Width Top
-       * @see https://tailwindcss.com/docs/border-width
-       */
-      "border-w-t": [{
-        "border-t": scaleBorderWidth()
-      }],
-      /**
-       * Border Width Right
-       * @see https://tailwindcss.com/docs/border-width
-       */
-      "border-w-r": [{
-        "border-r": scaleBorderWidth()
-      }],
-      /**
-       * Border Width Bottom
-       * @see https://tailwindcss.com/docs/border-width
-       */
-      "border-w-b": [{
-        "border-b": scaleBorderWidth()
-      }],
-      /**
-       * Border Width Left
-       * @see https://tailwindcss.com/docs/border-width
-       */
-      "border-w-l": [{
-        "border-l": scaleBorderWidth()
-      }],
-      /**
-       * Divide Width X
-       * @see https://tailwindcss.com/docs/border-width#between-children
-       */
-      "divide-x": [{
-        "divide-x": scaleBorderWidth()
-      }],
-      /**
-       * Divide Width X Reverse
-       * @see https://tailwindcss.com/docs/border-width#between-children
-       */
-      "divide-x-reverse": ["divide-x-reverse"],
-      /**
-       * Divide Width Y
-       * @see https://tailwindcss.com/docs/border-width#between-children
-       */
-      "divide-y": [{
-        "divide-y": scaleBorderWidth()
-      }],
-      /**
-       * Divide Width Y Reverse
-       * @see https://tailwindcss.com/docs/border-width#between-children
-       */
-      "divide-y-reverse": ["divide-y-reverse"],
-      /**
-       * Border Style
-       * @see https://tailwindcss.com/docs/border-style
-       */
-      "border-style": [{
-        border: [...scaleLineStyle(), "hidden", "none"]
-      }],
-      /**
-       * Divide Style
-       * @see https://tailwindcss.com/docs/border-style#setting-the-divider-style
-       */
-      "divide-style": [{
-        divide: [...scaleLineStyle(), "hidden", "none"]
-      }],
-      /**
-       * Border Color
-       * @see https://tailwindcss.com/docs/border-color
-       */
-      "border-color": [{
-        border: scaleColor()
-      }],
-      /**
-       * Border Color X
-       * @see https://tailwindcss.com/docs/border-color
-       */
-      "border-color-x": [{
-        "border-x": scaleColor()
-      }],
-      /**
-       * Border Color Y
-       * @see https://tailwindcss.com/docs/border-color
-       */
-      "border-color-y": [{
-        "border-y": scaleColor()
-      }],
-      /**
-       * Border Color S
-       * @see https://tailwindcss.com/docs/border-color
-       */
-      "border-color-s": [{
-        "border-s": scaleColor()
-      }],
-      /**
-       * Border Color E
-       * @see https://tailwindcss.com/docs/border-color
-       */
-      "border-color-e": [{
-        "border-e": scaleColor()
-      }],
-      /**
-       * Border Color Top
-       * @see https://tailwindcss.com/docs/border-color
-       */
-      "border-color-t": [{
-        "border-t": scaleColor()
-      }],
-      /**
-       * Border Color Right
-       * @see https://tailwindcss.com/docs/border-color
-       */
-      "border-color-r": [{
-        "border-r": scaleColor()
-      }],
-      /**
-       * Border Color Bottom
-       * @see https://tailwindcss.com/docs/border-color
-       */
-      "border-color-b": [{
-        "border-b": scaleColor()
-      }],
-      /**
-       * Border Color Left
-       * @see https://tailwindcss.com/docs/border-color
-       */
-      "border-color-l": [{
-        "border-l": scaleColor()
-      }],
-      /**
-       * Divide Color
-       * @see https://tailwindcss.com/docs/divide-color
-       */
-      "divide-color": [{
-        divide: scaleColor()
-      }],
-      /**
-       * Outline Style
-       * @see https://tailwindcss.com/docs/outline-style
-       */
-      "outline-style": [{
-        outline: [...scaleLineStyle(), "none", "hidden"]
-      }],
-      /**
-       * Outline Offset
-       * @see https://tailwindcss.com/docs/outline-offset
-       */
-      "outline-offset": [{
-        "outline-offset": [isNumber, isArbitraryVariable, isArbitraryValue]
-      }],
-      /**
-       * Outline Width
-       * @see https://tailwindcss.com/docs/outline-width
-       */
-      "outline-w": [{
-        outline: ["", isNumber, isArbitraryVariableLength, isArbitraryLength]
-      }],
-      /**
-       * Outline Color
-       * @see https://tailwindcss.com/docs/outline-color
-       */
-      "outline-color": [{
-        outline: scaleColor()
-      }],
-      // ---------------
-      // --- Effects ---
-      // ---------------
-      /**
-       * Box Shadow
-       * @see https://tailwindcss.com/docs/box-shadow
-       */
-      shadow: [{
-        shadow: [
-          // Deprecated since Tailwind CSS v4.0.0
-          "",
-          "none",
-          themeShadow,
-          isArbitraryVariableShadow,
-          isArbitraryShadow
-        ]
-      }],
-      /**
-       * Box Shadow Color
-       * @see https://tailwindcss.com/docs/box-shadow#setting-the-shadow-color
-       */
-      "shadow-color": [{
-        shadow: scaleColor()
-      }],
-      /**
-       * Inset Box Shadow
-       * @see https://tailwindcss.com/docs/box-shadow#adding-an-inset-shadow
-       */
-      "inset-shadow": [{
-        "inset-shadow": ["none", themeInsetShadow, isArbitraryVariableShadow, isArbitraryShadow]
-      }],
-      /**
-       * Inset Box Shadow Color
-       * @see https://tailwindcss.com/docs/box-shadow#setting-the-inset-shadow-color
-       */
-      "inset-shadow-color": [{
-        "inset-shadow": scaleColor()
-      }],
-      /**
-       * Ring Width
-       * @see https://tailwindcss.com/docs/box-shadow#adding-a-ring
-       */
-      "ring-w": [{
-        ring: scaleBorderWidth()
-      }],
-      /**
-       * Ring Width Inset
-       * @see https://v3.tailwindcss.com/docs/ring-width#inset-rings
-       * @deprecated since Tailwind CSS v4.0.0
-       * @see https://github.com/tailwindlabs/tailwindcss/blob/v4.0.0/packages/tailwindcss/src/utilities.ts#L4158
-       */
-      "ring-w-inset": ["ring-inset"],
-      /**
-       * Ring Color
-       * @see https://tailwindcss.com/docs/box-shadow#setting-the-ring-color
-       */
-      "ring-color": [{
-        ring: scaleColor()
-      }],
-      /**
-       * Ring Offset Width
-       * @see https://v3.tailwindcss.com/docs/ring-offset-width
-       * @deprecated since Tailwind CSS v4.0.0
-       * @see https://github.com/tailwindlabs/tailwindcss/blob/v4.0.0/packages/tailwindcss/src/utilities.ts#L4158
-       */
-      "ring-offset-w": [{
-        "ring-offset": [isNumber, isArbitraryLength]
-      }],
-      /**
-       * Ring Offset Color
-       * @see https://v3.tailwindcss.com/docs/ring-offset-color
-       * @deprecated since Tailwind CSS v4.0.0
-       * @see https://github.com/tailwindlabs/tailwindcss/blob/v4.0.0/packages/tailwindcss/src/utilities.ts#L4158
-       */
-      "ring-offset-color": [{
-        "ring-offset": scaleColor()
-      }],
-      /**
-       * Inset Ring Width
-       * @see https://tailwindcss.com/docs/box-shadow#adding-an-inset-ring
-       */
-      "inset-ring-w": [{
-        "inset-ring": scaleBorderWidth()
-      }],
-      /**
-       * Inset Ring Color
-       * @see https://tailwindcss.com/docs/box-shadow#setting-the-inset-ring-color
-       */
-      "inset-ring-color": [{
-        "inset-ring": scaleColor()
-      }],
-      /**
-       * Text Shadow
-       * @see https://tailwindcss.com/docs/text-shadow
-       */
-      "text-shadow": [{
-        "text-shadow": ["none", themeTextShadow, isArbitraryVariableShadow, isArbitraryShadow]
-      }],
-      /**
-       * Text Shadow Color
-       * @see https://tailwindcss.com/docs/text-shadow#setting-the-shadow-color
-       */
-      "text-shadow-color": [{
-        "text-shadow": scaleColor()
-      }],
-      /**
-       * Opacity
-       * @see https://tailwindcss.com/docs/opacity
-       */
-      opacity: [{
-        opacity: [isNumber, isArbitraryVariable, isArbitraryValue]
-      }],
-      /**
-       * Mix Blend Mode
-       * @see https://tailwindcss.com/docs/mix-blend-mode
-       */
-      "mix-blend": [{
-        "mix-blend": [...scaleBlendMode(), "plus-darker", "plus-lighter"]
-      }],
-      /**
-       * Background Blend Mode
-       * @see https://tailwindcss.com/docs/background-blend-mode
-       */
-      "bg-blend": [{
-        "bg-blend": scaleBlendMode()
-      }],
-      /**
-       * Mask Clip
-       * @see https://tailwindcss.com/docs/mask-clip
-       */
-      "mask-clip": [{
-        "mask-clip": ["border", "padding", "content", "fill", "stroke", "view"]
-      }, "mask-no-clip"],
-      /**
-       * Mask Composite
-       * @see https://tailwindcss.com/docs/mask-composite
-       */
-      "mask-composite": [{
-        mask: ["add", "subtract", "intersect", "exclude"]
-      }],
-      /**
-       * Mask Image
-       * @see https://tailwindcss.com/docs/mask-image
-       */
-      "mask-image-linear-pos": [{
-        "mask-linear": [isNumber]
-      }],
-      "mask-image-linear-from-pos": [{
-        "mask-linear-from": scaleMaskImagePosition()
-      }],
-      "mask-image-linear-to-pos": [{
-        "mask-linear-to": scaleMaskImagePosition()
-      }],
-      "mask-image-linear-from-color": [{
-        "mask-linear-from": scaleColor()
-      }],
-      "mask-image-linear-to-color": [{
-        "mask-linear-to": scaleColor()
-      }],
-      "mask-image-t-from-pos": [{
-        "mask-t-from": scaleMaskImagePosition()
-      }],
-      "mask-image-t-to-pos": [{
-        "mask-t-to": scaleMaskImagePosition()
-      }],
-      "mask-image-t-from-color": [{
-        "mask-t-from": scaleColor()
-      }],
-      "mask-image-t-to-color": [{
-        "mask-t-to": scaleColor()
-      }],
-      "mask-image-r-from-pos": [{
-        "mask-r-from": scaleMaskImagePosition()
-      }],
-      "mask-image-r-to-pos": [{
-        "mask-r-to": scaleMaskImagePosition()
-      }],
-      "mask-image-r-from-color": [{
-        "mask-r-from": scaleColor()
-      }],
-      "mask-image-r-to-color": [{
-        "mask-r-to": scaleColor()
-      }],
-      "mask-image-b-from-pos": [{
-        "mask-b-from": scaleMaskImagePosition()
-      }],
-      "mask-image-b-to-pos": [{
-        "mask-b-to": scaleMaskImagePosition()
-      }],
-      "mask-image-b-from-color": [{
-        "mask-b-from": scaleColor()
-      }],
-      "mask-image-b-to-color": [{
-        "mask-b-to": scaleColor()
-      }],
-      "mask-image-l-from-pos": [{
-        "mask-l-from": scaleMaskImagePosition()
-      }],
-      "mask-image-l-to-pos": [{
-        "mask-l-to": scaleMaskImagePosition()
-      }],
-      "mask-image-l-from-color": [{
-        "mask-l-from": scaleColor()
-      }],
-      "mask-image-l-to-color": [{
-        "mask-l-to": scaleColor()
-      }],
-      "mask-image-x-from-pos": [{
-        "mask-x-from": scaleMaskImagePosition()
-      }],
-      "mask-image-x-to-pos": [{
-        "mask-x-to": scaleMaskImagePosition()
-      }],
-      "mask-image-x-from-color": [{
-        "mask-x-from": scaleColor()
-      }],
-      "mask-image-x-to-color": [{
-        "mask-x-to": scaleColor()
-      }],
-      "mask-image-y-from-pos": [{
-        "mask-y-from": scaleMaskImagePosition()
-      }],
-      "mask-image-y-to-pos": [{
-        "mask-y-to": scaleMaskImagePosition()
-      }],
-      "mask-image-y-from-color": [{
-        "mask-y-from": scaleColor()
-      }],
-      "mask-image-y-to-color": [{
-        "mask-y-to": scaleColor()
-      }],
-      "mask-image-radial": [{
-        "mask-radial": [isArbitraryVariable, isArbitraryValue]
-      }],
-      "mask-image-radial-from-pos": [{
-        "mask-radial-from": scaleMaskImagePosition()
-      }],
-      "mask-image-radial-to-pos": [{
-        "mask-radial-to": scaleMaskImagePosition()
-      }],
-      "mask-image-radial-from-color": [{
-        "mask-radial-from": scaleColor()
-      }],
-      "mask-image-radial-to-color": [{
-        "mask-radial-to": scaleColor()
-      }],
-      "mask-image-radial-shape": [{
-        "mask-radial": ["circle", "ellipse"]
-      }],
-      "mask-image-radial-size": [{
-        "mask-radial": [{
-          closest: ["side", "corner"],
-          farthest: ["side", "corner"]
-        }]
-      }],
-      "mask-image-radial-pos": [{
-        "mask-radial-at": scalePosition()
-      }],
-      "mask-image-conic-pos": [{
-        "mask-conic": [isNumber]
-      }],
-      "mask-image-conic-from-pos": [{
-        "mask-conic-from": scaleMaskImagePosition()
-      }],
-      "mask-image-conic-to-pos": [{
-        "mask-conic-to": scaleMaskImagePosition()
-      }],
-      "mask-image-conic-from-color": [{
-        "mask-conic-from": scaleColor()
-      }],
-      "mask-image-conic-to-color": [{
-        "mask-conic-to": scaleColor()
-      }],
-      /**
-       * Mask Mode
-       * @see https://tailwindcss.com/docs/mask-mode
-       */
-      "mask-mode": [{
-        mask: ["alpha", "luminance", "match"]
-      }],
-      /**
-       * Mask Origin
-       * @see https://tailwindcss.com/docs/mask-origin
-       */
-      "mask-origin": [{
-        "mask-origin": ["border", "padding", "content", "fill", "stroke", "view"]
-      }],
-      /**
-       * Mask Position
-       * @see https://tailwindcss.com/docs/mask-position
-       */
-      "mask-position": [{
-        mask: scaleBgPosition()
-      }],
-      /**
-       * Mask Repeat
-       * @see https://tailwindcss.com/docs/mask-repeat
-       */
-      "mask-repeat": [{
-        mask: scaleBgRepeat()
-      }],
-      /**
-       * Mask Size
-       * @see https://tailwindcss.com/docs/mask-size
-       */
-      "mask-size": [{
-        mask: scaleBgSize()
-      }],
-      /**
-       * Mask Type
-       * @see https://tailwindcss.com/docs/mask-type
-       */
-      "mask-type": [{
-        "mask-type": ["alpha", "luminance"]
-      }],
-      /**
-       * Mask Image
-       * @see https://tailwindcss.com/docs/mask-image
-       */
-      "mask-image": [{
-        mask: ["none", isArbitraryVariable, isArbitraryValue]
-      }],
-      // ---------------
-      // --- Filters ---
-      // ---------------
-      /**
-       * Filter
-       * @see https://tailwindcss.com/docs/filter
-       */
-      filter: [{
-        filter: [
-          // Deprecated since Tailwind CSS v3.0.0
-          "",
-          "none",
-          isArbitraryVariable,
-          isArbitraryValue
-        ]
-      }],
-      /**
-       * Blur
-       * @see https://tailwindcss.com/docs/blur
-       */
-      blur: [{
-        blur: scaleBlur()
-      }],
-      /**
-       * Brightness
-       * @see https://tailwindcss.com/docs/brightness
-       */
-      brightness: [{
-        brightness: [isNumber, isArbitraryVariable, isArbitraryValue]
-      }],
-      /**
-       * Contrast
-       * @see https://tailwindcss.com/docs/contrast
-       */
-      contrast: [{
-        contrast: [isNumber, isArbitraryVariable, isArbitraryValue]
-      }],
-      /**
-       * Drop Shadow
-       * @see https://tailwindcss.com/docs/drop-shadow
-       */
-      "drop-shadow": [{
-        "drop-shadow": [
-          // Deprecated since Tailwind CSS v4.0.0
-          "",
-          "none",
-          themeDropShadow,
-          isArbitraryVariableShadow,
-          isArbitraryShadow
-        ]
-      }],
-      /**
-       * Drop Shadow Color
-       * @see https://tailwindcss.com/docs/filter-drop-shadow#setting-the-shadow-color
-       */
-      "drop-shadow-color": [{
-        "drop-shadow": scaleColor()
-      }],
-      /**
-       * Grayscale
-       * @see https://tailwindcss.com/docs/grayscale
-       */
-      grayscale: [{
-        grayscale: ["", isNumber, isArbitraryVariable, isArbitraryValue]
-      }],
-      /**
-       * Hue Rotate
-       * @see https://tailwindcss.com/docs/hue-rotate
-       */
-      "hue-rotate": [{
-        "hue-rotate": [isNumber, isArbitraryVariable, isArbitraryValue]
-      }],
-      /**
-       * Invert
-       * @see https://tailwindcss.com/docs/invert
-       */
-      invert: [{
-        invert: ["", isNumber, isArbitraryVariable, isArbitraryValue]
-      }],
-      /**
-       * Saturate
-       * @see https://tailwindcss.com/docs/saturate
-       */
-      saturate: [{
-        saturate: [isNumber, isArbitraryVariable, isArbitraryValue]
-      }],
-      /**
-       * Sepia
-       * @see https://tailwindcss.com/docs/sepia
-       */
-      sepia: [{
-        sepia: ["", isNumber, isArbitraryVariable, isArbitraryValue]
-      }],
-      /**
-       * Backdrop Filter
-       * @see https://tailwindcss.com/docs/backdrop-filter
-       */
-      "backdrop-filter": [{
-        "backdrop-filter": [
-          // Deprecated since Tailwind CSS v3.0.0
-          "",
-          "none",
-          isArbitraryVariable,
-          isArbitraryValue
-        ]
-      }],
-      /**
-       * Backdrop Blur
-       * @see https://tailwindcss.com/docs/backdrop-blur
-       */
-      "backdrop-blur": [{
-        "backdrop-blur": scaleBlur()
-      }],
-      /**
-       * Backdrop Brightness
-       * @see https://tailwindcss.com/docs/backdrop-brightness
-       */
-      "backdrop-brightness": [{
-        "backdrop-brightness": [isNumber, isArbitraryVariable, isArbitraryValue]
-      }],
-      /**
-       * Backdrop Contrast
-       * @see https://tailwindcss.com/docs/backdrop-contrast
-       */
-      "backdrop-contrast": [{
-        "backdrop-contrast": [isNumber, isArbitraryVariable, isArbitraryValue]
-      }],
-      /**
-       * Backdrop Grayscale
-       * @see https://tailwindcss.com/docs/backdrop-grayscale
-       */
-      "backdrop-grayscale": [{
-        "backdrop-grayscale": ["", isNumber, isArbitraryVariable, isArbitraryValue]
-      }],
-      /**
-       * Backdrop Hue Rotate
-       * @see https://tailwindcss.com/docs/backdrop-hue-rotate
-       */
-      "backdrop-hue-rotate": [{
-        "backdrop-hue-rotate": [isNumber, isArbitraryVariable, isArbitraryValue]
-      }],
-      /**
-       * Backdrop Invert
-       * @see https://tailwindcss.com/docs/backdrop-invert
-       */
-      "backdrop-invert": [{
-        "backdrop-invert": ["", isNumber, isArbitraryVariable, isArbitraryValue]
-      }],
-      /**
-       * Backdrop Opacity
-       * @see https://tailwindcss.com/docs/backdrop-opacity
-       */
-      "backdrop-opacity": [{
-        "backdrop-opacity": [isNumber, isArbitraryVariable, isArbitraryValue]
-      }],
-      /**
-       * Backdrop Saturate
-       * @see https://tailwindcss.com/docs/backdrop-saturate
-       */
-      "backdrop-saturate": [{
-        "backdrop-saturate": [isNumber, isArbitraryVariable, isArbitraryValue]
-      }],
-      /**
-       * Backdrop Sepia
-       * @see https://tailwindcss.com/docs/backdrop-sepia
-       */
-      "backdrop-sepia": [{
-        "backdrop-sepia": ["", isNumber, isArbitraryVariable, isArbitraryValue]
-      }],
-      // --------------
-      // --- Tables ---
-      // --------------
-      /**
-       * Border Collapse
-       * @see https://tailwindcss.com/docs/border-collapse
-       */
-      "border-collapse": [{
-        border: ["collapse", "separate"]
-      }],
-      /**
-       * Border Spacing
-       * @see https://tailwindcss.com/docs/border-spacing
-       */
-      "border-spacing": [{
-        "border-spacing": scaleUnambiguousSpacing()
-      }],
-      /**
-       * Border Spacing X
-       * @see https://tailwindcss.com/docs/border-spacing
-       */
-      "border-spacing-x": [{
-        "border-spacing-x": scaleUnambiguousSpacing()
-      }],
-      /**
-       * Border Spacing Y
-       * @see https://tailwindcss.com/docs/border-spacing
-       */
-      "border-spacing-y": [{
-        "border-spacing-y": scaleUnambiguousSpacing()
-      }],
-      /**
-       * Table Layout
-       * @see https://tailwindcss.com/docs/table-layout
-       */
-      "table-layout": [{
-        table: ["auto", "fixed"]
-      }],
-      /**
-       * Caption Side
-       * @see https://tailwindcss.com/docs/caption-side
-       */
-      caption: [{
-        caption: ["top", "bottom"]
-      }],
-      // ---------------------------------
-      // --- Transitions and Animation ---
-      // ---------------------------------
-      /**
-       * Transition Property
-       * @see https://tailwindcss.com/docs/transition-property
-       */
-      transition: [{
-        transition: ["", "all", "colors", "opacity", "shadow", "transform", "none", isArbitraryVariable, isArbitraryValue]
-      }],
-      /**
-       * Transition Behavior
-       * @see https://tailwindcss.com/docs/transition-behavior
-       */
-      "transition-behavior": [{
-        transition: ["normal", "discrete"]
-      }],
-      /**
-       * Transition Duration
-       * @see https://tailwindcss.com/docs/transition-duration
-       */
-      duration: [{
-        duration: [isNumber, "initial", isArbitraryVariable, isArbitraryValue]
-      }],
-      /**
-       * Transition Timing Function
-       * @see https://tailwindcss.com/docs/transition-timing-function
-       */
-      ease: [{
-        ease: ["linear", "initial", themeEase, isArbitraryVariable, isArbitraryValue]
-      }],
-      /**
-       * Transition Delay
-       * @see https://tailwindcss.com/docs/transition-delay
-       */
-      delay: [{
-        delay: [isNumber, isArbitraryVariable, isArbitraryValue]
-      }],
-      /**
-       * Animation
-       * @see https://tailwindcss.com/docs/animation
-       */
-      animate: [{
-        animate: ["none", themeAnimate, isArbitraryVariable, isArbitraryValue]
-      }],
-      // ------------------
-      // --- Transforms ---
-      // ------------------
-      /**
-       * Backface Visibility
-       * @see https://tailwindcss.com/docs/backface-visibility
-       */
-      backface: [{
-        backface: ["hidden", "visible"]
-      }],
-      /**
-       * Perspective
-       * @see https://tailwindcss.com/docs/perspective
-       */
-      perspective: [{
-        perspective: [themePerspective, isArbitraryVariable, isArbitraryValue]
-      }],
-      /**
-       * Perspective Origin
-       * @see https://tailwindcss.com/docs/perspective-origin
-       */
-      "perspective-origin": [{
-        "perspective-origin": scalePositionWithArbitrary()
-      }],
-      /**
-       * Rotate
-       * @see https://tailwindcss.com/docs/rotate
-       */
-      rotate: [{
-        rotate: scaleRotate()
-      }],
-      /**
-       * Rotate X
-       * @see https://tailwindcss.com/docs/rotate
-       */
-      "rotate-x": [{
-        "rotate-x": scaleRotate()
-      }],
-      /**
-       * Rotate Y
-       * @see https://tailwindcss.com/docs/rotate
-       */
-      "rotate-y": [{
-        "rotate-y": scaleRotate()
-      }],
-      /**
-       * Rotate Z
-       * @see https://tailwindcss.com/docs/rotate
-       */
-      "rotate-z": [{
-        "rotate-z": scaleRotate()
-      }],
-      /**
-       * Scale
-       * @see https://tailwindcss.com/docs/scale
-       */
-      scale: [{
-        scale: scaleScale()
-      }],
-      /**
-       * Scale X
-       * @see https://tailwindcss.com/docs/scale
-       */
-      "scale-x": [{
-        "scale-x": scaleScale()
-      }],
-      /**
-       * Scale Y
-       * @see https://tailwindcss.com/docs/scale
-       */
-      "scale-y": [{
-        "scale-y": scaleScale()
-      }],
-      /**
-       * Scale Z
-       * @see https://tailwindcss.com/docs/scale
-       */
-      "scale-z": [{
-        "scale-z": scaleScale()
-      }],
-      /**
-       * Scale 3D
-       * @see https://tailwindcss.com/docs/scale
-       */
-      "scale-3d": ["scale-3d"],
-      /**
-       * Skew
-       * @see https://tailwindcss.com/docs/skew
-       */
-      skew: [{
-        skew: scaleSkew()
-      }],
-      /**
-       * Skew X
-       * @see https://tailwindcss.com/docs/skew
-       */
-      "skew-x": [{
-        "skew-x": scaleSkew()
-      }],
-      /**
-       * Skew Y
-       * @see https://tailwindcss.com/docs/skew
-       */
-      "skew-y": [{
-        "skew-y": scaleSkew()
-      }],
-      /**
-       * Transform
-       * @see https://tailwindcss.com/docs/transform
-       */
-      transform: [{
-        transform: [isArbitraryVariable, isArbitraryValue, "", "none", "gpu", "cpu"]
-      }],
-      /**
-       * Transform Origin
-       * @see https://tailwindcss.com/docs/transform-origin
-       */
-      "transform-origin": [{
-        origin: scalePositionWithArbitrary()
-      }],
-      /**
-       * Transform Style
-       * @see https://tailwindcss.com/docs/transform-style
-       */
-      "transform-style": [{
-        transform: ["3d", "flat"]
-      }],
-      /**
-       * Translate
-       * @see https://tailwindcss.com/docs/translate
-       */
-      translate: [{
-        translate: scaleTranslate()
-      }],
-      /**
-       * Translate X
-       * @see https://tailwindcss.com/docs/translate
-       */
-      "translate-x": [{
-        "translate-x": scaleTranslate()
-      }],
-      /**
-       * Translate Y
-       * @see https://tailwindcss.com/docs/translate
-       */
-      "translate-y": [{
-        "translate-y": scaleTranslate()
-      }],
-      /**
-       * Translate Z
-       * @see https://tailwindcss.com/docs/translate
-       */
-      "translate-z": [{
-        "translate-z": scaleTranslate()
-      }],
-      /**
-       * Translate None
-       * @see https://tailwindcss.com/docs/translate
-       */
-      "translate-none": ["translate-none"],
-      // ---------------------
-      // --- Interactivity ---
-      // ---------------------
-      /**
-       * Accent Color
-       * @see https://tailwindcss.com/docs/accent-color
-       */
-      accent: [{
-        accent: scaleColor()
-      }],
-      /**
-       * Appearance
-       * @see https://tailwindcss.com/docs/appearance
-       */
-      appearance: [{
-        appearance: ["none", "auto"]
-      }],
-      /**
-       * Caret Color
-       * @see https://tailwindcss.com/docs/just-in-time-mode#caret-color-utilities
-       */
-      "caret-color": [{
-        caret: scaleColor()
-      }],
-      /**
-       * Color Scheme
-       * @see https://tailwindcss.com/docs/color-scheme
-       */
-      "color-scheme": [{
-        scheme: ["normal", "dark", "light", "light-dark", "only-dark", "only-light"]
-      }],
-      /**
-       * Cursor
-       * @see https://tailwindcss.com/docs/cursor
-       */
-      cursor: [{
-        cursor: ["auto", "default", "pointer", "wait", "text", "move", "help", "not-allowed", "none", "context-menu", "progress", "cell", "crosshair", "vertical-text", "alias", "copy", "no-drop", "grab", "grabbing", "all-scroll", "col-resize", "row-resize", "n-resize", "e-resize", "s-resize", "w-resize", "ne-resize", "nw-resize", "se-resize", "sw-resize", "ew-resize", "ns-resize", "nesw-resize", "nwse-resize", "zoom-in", "zoom-out", isArbitraryVariable, isArbitraryValue]
-      }],
-      /**
-       * Field Sizing
-       * @see https://tailwindcss.com/docs/field-sizing
-       */
-      "field-sizing": [{
-        "field-sizing": ["fixed", "content"]
-      }],
-      /**
-       * Pointer Events
-       * @see https://tailwindcss.com/docs/pointer-events
-       */
-      "pointer-events": [{
-        "pointer-events": ["auto", "none"]
-      }],
-      /**
-       * Resize
-       * @see https://tailwindcss.com/docs/resize
-       */
-      resize: [{
-        resize: ["none", "", "y", "x"]
-      }],
-      /**
-       * Scroll Behavior
-       * @see https://tailwindcss.com/docs/scroll-behavior
-       */
-      "scroll-behavior": [{
-        scroll: ["auto", "smooth"]
-      }],
-      /**
-       * Scroll Margin
-       * @see https://tailwindcss.com/docs/scroll-margin
-       */
-      "scroll-m": [{
-        "scroll-m": scaleUnambiguousSpacing()
-      }],
-      /**
-       * Scroll Margin X
-       * @see https://tailwindcss.com/docs/scroll-margin
-       */
-      "scroll-mx": [{
-        "scroll-mx": scaleUnambiguousSpacing()
-      }],
-      /**
-       * Scroll Margin Y
-       * @see https://tailwindcss.com/docs/scroll-margin
-       */
-      "scroll-my": [{
-        "scroll-my": scaleUnambiguousSpacing()
-      }],
-      /**
-       * Scroll Margin Start
-       * @see https://tailwindcss.com/docs/scroll-margin
-       */
-      "scroll-ms": [{
-        "scroll-ms": scaleUnambiguousSpacing()
-      }],
-      /**
-       * Scroll Margin End
-       * @see https://tailwindcss.com/docs/scroll-margin
-       */
-      "scroll-me": [{
-        "scroll-me": scaleUnambiguousSpacing()
-      }],
-      /**
-       * Scroll Margin Top
-       * @see https://tailwindcss.com/docs/scroll-margin
-       */
-      "scroll-mt": [{
-        "scroll-mt": scaleUnambiguousSpacing()
-      }],
-      /**
-       * Scroll Margin Right
-       * @see https://tailwindcss.com/docs/scroll-margin
-       */
-      "scroll-mr": [{
-        "scroll-mr": scaleUnambiguousSpacing()
-      }],
-      /**
-       * Scroll Margin Bottom
-       * @see https://tailwindcss.com/docs/scroll-margin
-       */
-      "scroll-mb": [{
-        "scroll-mb": scaleUnambiguousSpacing()
-      }],
-      /**
-       * Scroll Margin Left
-       * @see https://tailwindcss.com/docs/scroll-margin
-       */
-      "scroll-ml": [{
-        "scroll-ml": scaleUnambiguousSpacing()
-      }],
-      /**
-       * Scroll Padding
-       * @see https://tailwindcss.com/docs/scroll-padding
-       */
-      "scroll-p": [{
-        "scroll-p": scaleUnambiguousSpacing()
-      }],
-      /**
-       * Scroll Padding X
-       * @see https://tailwindcss.com/docs/scroll-padding
-       */
-      "scroll-px": [{
-        "scroll-px": scaleUnambiguousSpacing()
-      }],
-      /**
-       * Scroll Padding Y
-       * @see https://tailwindcss.com/docs/scroll-padding
-       */
-      "scroll-py": [{
-        "scroll-py": scaleUnambiguousSpacing()
-      }],
-      /**
-       * Scroll Padding Start
-       * @see https://tailwindcss.com/docs/scroll-padding
-       */
-      "scroll-ps": [{
-        "scroll-ps": scaleUnambiguousSpacing()
-      }],
-      /**
-       * Scroll Padding End
-       * @see https://tailwindcss.com/docs/scroll-padding
-       */
-      "scroll-pe": [{
-        "scroll-pe": scaleUnambiguousSpacing()
-      }],
-      /**
-       * Scroll Padding Top
-       * @see https://tailwindcss.com/docs/scroll-padding
-       */
-      "scroll-pt": [{
-        "scroll-pt": scaleUnambiguousSpacing()
-      }],
-      /**
-       * Scroll Padding Right
-       * @see https://tailwindcss.com/docs/scroll-padding
-       */
-      "scroll-pr": [{
-        "scroll-pr": scaleUnambiguousSpacing()
-      }],
-      /**
-       * Scroll Padding Bottom
-       * @see https://tailwindcss.com/docs/scroll-padding
-       */
-      "scroll-pb": [{
-        "scroll-pb": scaleUnambiguousSpacing()
-      }],
-      /**
-       * Scroll Padding Left
-       * @see https://tailwindcss.com/docs/scroll-padding
-       */
-      "scroll-pl": [{
-        "scroll-pl": scaleUnambiguousSpacing()
-      }],
-      /**
-       * Scroll Snap Align
-       * @see https://tailwindcss.com/docs/scroll-snap-align
-       */
-      "snap-align": [{
-        snap: ["start", "end", "center", "align-none"]
-      }],
-      /**
-       * Scroll Snap Stop
-       * @see https://tailwindcss.com/docs/scroll-snap-stop
-       */
-      "snap-stop": [{
-        snap: ["normal", "always"]
-      }],
-      /**
-       * Scroll Snap Type
-       * @see https://tailwindcss.com/docs/scroll-snap-type
-       */
-      "snap-type": [{
-        snap: ["none", "x", "y", "both"]
-      }],
-      /**
-       * Scroll Snap Type Strictness
-       * @see https://tailwindcss.com/docs/scroll-snap-type
-       */
-      "snap-strictness": [{
-        snap: ["mandatory", "proximity"]
-      }],
-      /**
-       * Touch Action
-       * @see https://tailwindcss.com/docs/touch-action
-       */
-      touch: [{
-        touch: ["auto", "none", "manipulation"]
-      }],
-      /**
-       * Touch Action X
-       * @see https://tailwindcss.com/docs/touch-action
-       */
-      "touch-x": [{
-        "touch-pan": ["x", "left", "right"]
-      }],
-      /**
-       * Touch Action Y
-       * @see https://tailwindcss.com/docs/touch-action
-       */
-      "touch-y": [{
-        "touch-pan": ["y", "up", "down"]
-      }],
-      /**
-       * Touch Action Pinch Zoom
-       * @see https://tailwindcss.com/docs/touch-action
-       */
-      "touch-pz": ["touch-pinch-zoom"],
-      /**
-       * User Select
-       * @see https://tailwindcss.com/docs/user-select
-       */
-      select: [{
-        select: ["none", "text", "all", "auto"]
-      }],
-      /**
-       * Will Change
-       * @see https://tailwindcss.com/docs/will-change
-       */
-      "will-change": [{
-        "will-change": ["auto", "scroll", "contents", "transform", isArbitraryVariable, isArbitraryValue]
-      }],
-      // -----------
-      // --- SVG ---
-      // -----------
-      /**
-       * Fill
-       * @see https://tailwindcss.com/docs/fill
-       */
-      fill: [{
-        fill: ["none", ...scaleColor()]
-      }],
-      /**
-       * Stroke Width
-       * @see https://tailwindcss.com/docs/stroke-width
-       */
-      "stroke-w": [{
-        stroke: [isNumber, isArbitraryVariableLength, isArbitraryLength, isArbitraryNumber]
-      }],
-      /**
-       * Stroke
-       * @see https://tailwindcss.com/docs/stroke
-       */
-      stroke: [{
-        stroke: ["none", ...scaleColor()]
-      }],
-      // ---------------------
-      // --- Accessibility ---
-      // ---------------------
-      /**
-       * Forced Color Adjust
-       * @see https://tailwindcss.com/docs/forced-color-adjust
-       */
-      "forced-color-adjust": [{
-        "forced-color-adjust": ["auto", "none"]
-      }]
-    },
-    conflictingClassGroups: {
-      overflow: ["overflow-x", "overflow-y"],
-      overscroll: ["overscroll-x", "overscroll-y"],
-      inset: ["inset-x", "inset-y", "start", "end", "top", "right", "bottom", "left"],
-      "inset-x": ["right", "left"],
-      "inset-y": ["top", "bottom"],
-      flex: ["basis", "grow", "shrink"],
-      gap: ["gap-x", "gap-y"],
-      p: ["px", "py", "ps", "pe", "pt", "pr", "pb", "pl"],
-      px: ["pr", "pl"],
-      py: ["pt", "pb"],
-      m: ["mx", "my", "ms", "me", "mt", "mr", "mb", "ml"],
-      mx: ["mr", "ml"],
-      my: ["mt", "mb"],
-      size: ["w", "h"],
-      "font-size": ["leading"],
-      "fvn-normal": ["fvn-ordinal", "fvn-slashed-zero", "fvn-figure", "fvn-spacing", "fvn-fraction"],
-      "fvn-ordinal": ["fvn-normal"],
-      "fvn-slashed-zero": ["fvn-normal"],
-      "fvn-figure": ["fvn-normal"],
-      "fvn-spacing": ["fvn-normal"],
-      "fvn-fraction": ["fvn-normal"],
-      "line-clamp": ["display", "overflow"],
-      rounded: ["rounded-s", "rounded-e", "rounded-t", "rounded-r", "rounded-b", "rounded-l", "rounded-ss", "rounded-se", "rounded-ee", "rounded-es", "rounded-tl", "rounded-tr", "rounded-br", "rounded-bl"],
-      "rounded-s": ["rounded-ss", "rounded-es"],
-      "rounded-e": ["rounded-se", "rounded-ee"],
-      "rounded-t": ["rounded-tl", "rounded-tr"],
-      "rounded-r": ["rounded-tr", "rounded-br"],
-      "rounded-b": ["rounded-br", "rounded-bl"],
-      "rounded-l": ["rounded-tl", "rounded-bl"],
-      "border-spacing": ["border-spacing-x", "border-spacing-y"],
-      "border-w": ["border-w-x", "border-w-y", "border-w-s", "border-w-e", "border-w-t", "border-w-r", "border-w-b", "border-w-l"],
-      "border-w-x": ["border-w-r", "border-w-l"],
-      "border-w-y": ["border-w-t", "border-w-b"],
-      "border-color": ["border-color-x", "border-color-y", "border-color-s", "border-color-e", "border-color-t", "border-color-r", "border-color-b", "border-color-l"],
-      "border-color-x": ["border-color-r", "border-color-l"],
-      "border-color-y": ["border-color-t", "border-color-b"],
-      translate: ["translate-x", "translate-y", "translate-none"],
-      "translate-none": ["translate", "translate-x", "translate-y", "translate-z"],
-      "scroll-m": ["scroll-mx", "scroll-my", "scroll-ms", "scroll-me", "scroll-mt", "scroll-mr", "scroll-mb", "scroll-ml"],
-      "scroll-mx": ["scroll-mr", "scroll-ml"],
-      "scroll-my": ["scroll-mt", "scroll-mb"],
-      "scroll-p": ["scroll-px", "scroll-py", "scroll-ps", "scroll-pe", "scroll-pt", "scroll-pr", "scroll-pb", "scroll-pl"],
-      "scroll-px": ["scroll-pr", "scroll-pl"],
-      "scroll-py": ["scroll-pt", "scroll-pb"],
-      touch: ["touch-x", "touch-y", "touch-pz"],
-      "touch-x": ["touch"],
-      "touch-y": ["touch"],
-      "touch-pz": ["touch"]
-    },
-    conflictingClassGroupModifiers: {
-      "font-size": ["leading"]
-    },
-    orderSensitiveModifiers: ["*", "**", "after", "backdrop", "before", "details-content", "file", "first-letter", "first-line", "marker", "placeholder", "selection"]
-  };
-};
-const twMerge = /* @__PURE__ */ createTailwindMerge(getDefaultConfig);
-function cn(...inputs) {
-  return twMerge(clsx(inputs));
-}
-const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
-  {
-    variants: {
-      variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90",
-        destructive: "bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
-        outline: "border bg-background text-foreground hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50",
-        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        ghost: "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
-        link: "text-primary underline-offset-4 hover:underline"
-      },
-      size: {
-        default: "h-9 px-4 py-2 has-[>svg]:px-3",
-        sm: "h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5",
-        lg: "h-10 rounded-md px-6 has-[>svg]:px-4",
-        icon: "size-9 rounded-md"
-      }
-    },
-    defaultVariants: {
-      variant: "default",
-      size: "default"
-    }
-  }
-);
-const Button = reactExports.forwardRef(
-  ({ className, variant, size: size2, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : "button";
-    return /* @__PURE__ */ jsxRuntimeExports.jsx(
-      Comp,
-      {
-        ref,
-        "data-slot": "button",
-        className: cn(buttonVariants({ variant, size: size2, className })),
-        ...props
-      }
-    );
-  }
-);
-Button.displayName = "Button";
 const LayoutGroupContext = reactExports.createContext({});
 function useConstant(init) {
   const ref = reactExports.useRef(null);
@@ -17381,13 +12572,13 @@ function cubicBezier(mX1, mY1, mX2, mY2) {
   const getTForX = (aX) => binarySubdivide(aX, 0, 1, mX1, mX2);
   return (t) => t === 0 || t === 1 ? t : calcBezier(getTForX(t), mY1, mY2);
 }
-const mirrorEasing = (easing) => (p) => p <= 0.5 ? easing(2 * p) / 2 : (2 - easing(2 * (1 - p))) / 2;
-const reverseEasing = (easing) => (p) => 1 - easing(1 - p);
+const mirrorEasing = (easing) => (p2) => p2 <= 0.5 ? easing(2 * p2) / 2 : (2 - easing(2 * (1 - p2))) / 2;
+const reverseEasing = (easing) => (p2) => 1 - easing(1 - p2);
 const backOut = /* @__PURE__ */ cubicBezier(0.33, 1.53, 0.69, 0.99);
 const backIn = /* @__PURE__ */ reverseEasing(backOut);
 const backInOut = /* @__PURE__ */ mirrorEasing(backIn);
-const anticipate = (p) => p >= 1 ? 1 : (p *= 2) < 1 ? 0.5 * backIn(p) : 0.5 * (2 - Math.pow(2, -10 * (p - 1)));
-const circIn = (p) => 1 - Math.sin(Math.acos(p));
+const anticipate = (p2) => p2 >= 1 ? 1 : (p2 *= 2) < 1 ? 0.5 * backIn(p2) : 0.5 * (2 - Math.pow(2, -10 * (p2 - 1)));
+const circIn = (p2) => 1 - Math.sin(Math.acos(p2));
 const circOut = reverseEasing(circIn);
 const circInOut = mirrorEasing(circIn);
 const easeIn = /* @__PURE__ */ cubicBezier(0.42, 0, 1, 1);
@@ -17796,18 +12987,18 @@ const complex = {
   createTransformer,
   getAnimatableNone: getAnimatableNone$1
 };
-function hueToRgb(p, q, t) {
+function hueToRgb(p2, q, t) {
   if (t < 0)
     t += 1;
   if (t > 1)
     t -= 1;
   if (t < 1 / 6)
-    return p + (q - p) * 6 * t;
+    return p2 + (q - p2) * 6 * t;
   if (t < 1 / 2)
     return q;
   if (t < 2 / 3)
-    return p + (q - p) * (2 / 3 - t) * 6;
-  return p;
+    return p2 + (q - p2) * (2 / 3 - t) * 6;
+  return p2;
 }
 function hslaToRgba({ hue, saturation, lightness, alpha: alpha2 }) {
   hue /= 360;
@@ -17820,10 +13011,10 @@ function hslaToRgba({ hue, saturation, lightness, alpha: alpha2 }) {
     red = green = blue = lightness;
   } else {
     const q = lightness < 0.5 ? lightness * (1 + saturation) : lightness + saturation - lightness * saturation;
-    const p = 2 * lightness - q;
-    red = hueToRgb(p, q, hue + 1 / 3);
-    green = hueToRgb(p, q, hue);
-    blue = hueToRgb(p, q, hue - 1 / 3);
+    const p2 = 2 * lightness - q;
+    red = hueToRgb(p2, q, hue + 1 / 3);
+    green = hueToRgb(p2, q, hue);
+    blue = hueToRgb(p2, q, hue - 1 / 3);
   }
   return {
     red: Math.round(red * 255),
@@ -17833,7 +13024,7 @@ function hslaToRgba({ hue, saturation, lightness, alpha: alpha2 }) {
   };
 }
 function mixImmediate(a, b) {
-  return (p) => p > 0 ? b : a;
+  return (p2) => p2 > 0 ? b : a;
 }
 const mixNumber$1 = (from, to, progress2) => {
   return from + (to - from) * progress2;
@@ -17873,13 +13064,13 @@ const mixColor = (from, to) => {
 const invisibleValues = /* @__PURE__ */ new Set(["none", "hidden"]);
 function mixVisibility(origin, target) {
   if (invisibleValues.has(origin)) {
-    return (p) => p <= 0 ? origin : target;
+    return (p2) => p2 <= 0 ? origin : target;
   } else {
-    return (p) => p >= 1 ? target : origin;
+    return (p2) => p2 >= 1 ? target : origin;
   }
 }
 function mixNumber(a, b) {
-  return (p) => mixNumber$1(a, b, p);
+  return (p2) => mixNumber$1(a, b, p2);
 }
 function getMixer(a) {
   if (typeof a === "number") {
@@ -17897,9 +13088,9 @@ function mixArray(a, b) {
   const output = [...a];
   const numValues = output.length;
   const blendValue = a.map((v, i) => getMixer(v)(v, b[i]));
-  return (p) => {
+  return (p2) => {
     for (let i = 0; i < numValues; i++) {
-      output[i] = blendValue[i](p);
+      output[i] = blendValue[i](p2);
     }
     return output;
   };
@@ -17945,9 +13136,9 @@ const mixComplex = (origin, target) => {
     return mixImmediate(origin, target);
   }
 };
-function mix(from, to, p) {
-  if (typeof from === "number" && typeof to === "number" && typeof p === "number") {
-    return mixNumber$1(from, to, p);
+function mix(from, to, p2) {
+  if (typeof from === "number" && typeof to === "number" && typeof p2 === "number") {
+    return mixNumber$1(from, to, p2);
   }
   const mixer = getMixer(from);
   return mixer(from, to);
@@ -18180,9 +13371,9 @@ function spring(optionsOrVisualDuration = springDefaults.visualDuration, bounce 
       const freqForT = Math.min(dampedAngularFreq * t, 300);
       return target - envelope * ((initialVelocity + dampingRatio * undampedAngularFreq * initialDelta) * Math.sinh(freqForT) + dampedAngularFreq * initialDelta * Math.cosh(freqForT)) / dampedAngularFreq;
     };
-    const P = (initialVelocity + dampingRatio * undampedAngularFreq * initialDelta) / dampedAngularFreq;
-    const sinhCoeff = dampingRatio * undampedAngularFreq * P - initialDelta * dampedAngularFreq;
-    const coshCoeff = dampingRatio * undampedAngularFreq * initialDelta - P * dampedAngularFreq;
+    const P2 = (initialVelocity + dampingRatio * undampedAngularFreq * initialDelta) / dampedAngularFreq;
+    const sinhCoeff = dampingRatio * undampedAngularFreq * P2 - initialDelta * dampedAngularFreq;
+    const coshCoeff = dampingRatio * undampedAngularFreq * initialDelta - P2 * dampedAngularFreq;
     resolveVelocity = (t) => {
       const envelope = Math.exp(-dampingRatio * undampedAngularFreq * t);
       const freqForT = Math.min(dampedAngularFreq * t, 300);
@@ -22079,12 +17270,12 @@ function getRadius(values, radiusName) {
 const easeCrossfadeIn = /* @__PURE__ */ compress(0, 0.5, circOut);
 const easeCrossfadeOut = /* @__PURE__ */ compress(0.5, 0.95, noop$2);
 function compress(min2, max2, easing) {
-  return (p) => {
-    if (p < min2)
+  return (p2) => {
+    if (p2 < min2)
       return 0;
-    if (p > max2)
+    if (p2 > max2)
       return 1;
-    return easing(/* @__PURE__ */ progress(min2, max2, p));
+    return easing(/* @__PURE__ */ progress(min2, max2, p2));
   };
 }
 function animateSingleValue(value, keyframes2, options) {
@@ -23255,19 +18446,19 @@ function resetSkewAndRotation(node) {
 function removeLeadSnapshots(stack) {
   stack.removeLeadSnapshot();
 }
-function mixAxisDelta(output, delta, p) {
-  output.translate = mixNumber$1(delta.translate, 0, p);
-  output.scale = mixNumber$1(delta.scale, 1, p);
+function mixAxisDelta(output, delta, p2) {
+  output.translate = mixNumber$1(delta.translate, 0, p2);
+  output.scale = mixNumber$1(delta.scale, 1, p2);
   output.origin = delta.origin;
   output.originPoint = delta.originPoint;
 }
-function mixAxis(output, from, to, p) {
-  output.min = mixNumber$1(from.min, to.min, p);
-  output.max = mixNumber$1(from.max, to.max, p);
+function mixAxis(output, from, to, p2) {
+  output.min = mixNumber$1(from.min, to.min, p2);
+  output.max = mixNumber$1(from.max, to.max, p2);
 }
-function mixBox(output, from, to, p) {
-  mixAxis(output.x, from.x, to.x, p);
-  mixAxis(output.y, from.y, to.y, p);
+function mixBox(output, from, to, p2) {
+  mixAxis(output.x, from.x, to.x, p2);
+  mixAxis(output.y, from.y, to.y, p2);
 }
 function hasOpacityCrossfade(node) {
   return node.animationValues && node.animationValues.opacityExit !== void 0;
@@ -23323,22 +18514,22 @@ const HTMLProjectionNode = createProjectionNode$1({
   checkIsScrollRoot: (instance) => Boolean(window.getComputedStyle(instance).position === "fixed")
 });
 const MotionConfigContext = reactExports.createContext({
-  transformPagePoint: (p) => p,
+  transformPagePoint: (p2) => p2,
   isStatic: false,
   reducedMotion: "never"
 });
-function setRef(ref, value) {
+function setRef$1(ref, value) {
   if (typeof ref === "function") {
     return ref(value);
   } else if (ref !== null && ref !== void 0) {
     ref.current = value;
   }
 }
-function composeRefs(...refs) {
+function composeRefs$1(...refs) {
   return (node) => {
     let hasCleanup = false;
     const cleanups = refs.map((ref) => {
-      const cleanup = setRef(ref, node);
+      const cleanup = setRef$1(ref, node);
       if (!hasCleanup && typeof cleanup === "function") {
         hasCleanup = true;
       }
@@ -23351,15 +18542,15 @@ function composeRefs(...refs) {
           if (typeof cleanup === "function") {
             cleanup();
           } else {
-            setRef(refs[i], null);
+            setRef$1(refs[i], null);
           }
         }
       };
     }
   };
 }
-function useComposedRefs(...refs) {
-  return reactExports.useCallback(composeRefs(...refs), refs);
+function useComposedRefs$1(...refs) {
+  return reactExports.useCallback(composeRefs$1(...refs), refs);
 }
 class PopChildMeasure extends reactExports.Component {
   getSnapshotBeforeUpdate(prevProps) {
@@ -23401,7 +18592,7 @@ function PopChild({ children, isPresent, anchorX, anchorY, root: root2, pop: pop
   });
   const { nonce } = reactExports.useContext(MotionConfigContext);
   const childRef = children.props?.ref ?? children?.ref;
-  const composedRef = useComposedRefs(ref, childRef);
+  const composedRef = useComposedRefs$1(ref, childRef);
   reactExports.useInsertionEffect(() => {
     const { width, height, top, left, right, bottom } = size2.current;
     if (isPresent || pop2 === false || !ref.current || !width || !height)
@@ -25276,390 +20467,8847 @@ const featureBundle = {
   ...layout
 };
 const motion = /* @__PURE__ */ createMotionProxy(featureBundle, createDomVisualElement);
-const createStoreImpl = (createState2) => {
-  let state;
-  const listeners = /* @__PURE__ */ new Set();
-  const setState = (partial, replace) => {
-    const nextState = typeof partial === "function" ? partial(state) : partial;
-    if (!Object.is(nextState, state)) {
-      const previousState = state;
-      state = (replace != null ? replace : typeof nextState !== "object" || nextState === null) ? nextState : Object.assign({}, state, nextState);
-      listeners.forEach((listener) => listener(state, previousState));
-    }
-  };
-  const getState2 = () => state;
-  const getInitialState2 = () => initialState;
-  const subscribe = (listener) => {
-    listeners.add(listener);
-    return () => listeners.delete(listener);
-  };
-  const api = { setState, getState: getState2, getInitialState: getInitialState2, subscribe };
-  const initialState = state = createState2(setState, getState2, api);
-  return api;
+/**
+ * @license lucide-react v0.487.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const toKebabCase = (string) => string.replace(/([a-z0-9])([A-Z])/g, "$1-$2").toLowerCase();
+const toCamelCase = (string) => string.replace(
+  /^([A-Z])|[\s-_]+(\w)/g,
+  (match2, p1, p2) => p2 ? p2.toUpperCase() : p1.toLowerCase()
+);
+const toPascalCase = (string) => {
+  const camelCase = toCamelCase(string);
+  return camelCase.charAt(0).toUpperCase() + camelCase.slice(1);
 };
-const createStore = (createState2) => createState2 ? createStoreImpl(createState2) : createStoreImpl;
-const identity = (arg) => arg;
-function useStore$1(api, selector = identity) {
-  const slice = React$2.useSyncExternalStore(
-    api.subscribe,
-    React$2.useCallback(() => selector(api.getState()), [api, selector]),
-    React$2.useCallback(() => selector(api.getInitialState()), [api, selector])
+const mergeClasses = (...classes) => classes.filter((className, index2, array) => {
+  return Boolean(className) && className.trim() !== "" && array.indexOf(className) === index2;
+}).join(" ").trim();
+/**
+ * @license lucide-react v0.487.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+var defaultAttributes$1 = {
+  xmlns: "http://www.w3.org/2000/svg",
+  width: 24,
+  height: 24,
+  viewBox: "0 0 24 24",
+  fill: "none",
+  stroke: "currentColor",
+  strokeWidth: 2,
+  strokeLinecap: "round",
+  strokeLinejoin: "round"
+};
+/**
+ * @license lucide-react v0.487.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const Icon$1 = reactExports.forwardRef(
+  ({
+    color: color2 = "currentColor",
+    size: size2 = 24,
+    strokeWidth = 2,
+    absoluteStrokeWidth,
+    className = "",
+    children,
+    iconNode,
+    ...rest
+  }, ref) => {
+    return reactExports.createElement(
+      "svg",
+      {
+        ref,
+        ...defaultAttributes$1,
+        width: size2,
+        height: size2,
+        stroke: color2,
+        strokeWidth: absoluteStrokeWidth ? Number(strokeWidth) * 24 / Number(size2) : strokeWidth,
+        className: mergeClasses("lucide", className),
+        ...rest
+      },
+      [
+        ...iconNode.map(([tag, attrs]) => reactExports.createElement(tag, attrs)),
+        ...Array.isArray(children) ? children : [children]
+      ]
+    );
+  }
+);
+/**
+ * @license lucide-react v0.487.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const createLucideIcon = (iconName, iconNode) => {
+  const Component2 = reactExports.forwardRef(
+    ({ className, ...props }, ref) => reactExports.createElement(Icon$1, {
+      ref,
+      iconNode,
+      className: mergeClasses(
+        `lucide-${toKebabCase(toPascalCase(iconName))}`,
+        `lucide-${iconName}`,
+        className
+      ),
+      ...props
+    })
   );
-  React$2.useDebugValue(slice);
-  return slice;
+  Component2.displayName = toPascalCase(iconName);
+  return Component2;
+};
+/**
+ * @license lucide-react v0.487.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$u = [
+  ["path", { d: "M10.268 21a2 2 0 0 0 3.464 0", key: "vwvbt9" }],
+  [
+    "path",
+    {
+      d: "M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326",
+      key: "11g9vi"
+    }
+  ]
+];
+const Bell = createLucideIcon("bell", __iconNode$u);
+/**
+ * @license lucide-react v0.487.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$t = [
+  ["path", { d: "M8 2v4", key: "1cmpym" }],
+  ["path", { d: "M16 2v4", key: "4m81vk" }],
+  ["rect", { width: "18", height: "18", x: "3", y: "4", rx: "2", key: "1hopcy" }],
+  ["path", { d: "M3 10h18", key: "8toen8" }]
+];
+const Calendar = createLucideIcon("calendar", __iconNode$t);
+/**
+ * @license lucide-react v0.487.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$s = [["path", { d: "M20 6 9 17l-5-5", key: "1gmf2c" }]];
+const Check = createLucideIcon("check", __iconNode$s);
+/**
+ * @license lucide-react v0.487.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$r = [["path", { d: "m6 9 6 6 6-6", key: "qrunsl" }]];
+const ChevronDown = createLucideIcon("chevron-down", __iconNode$r);
+/**
+ * @license lucide-react v0.487.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$q = [["path", { d: "m9 18 6-6-6-6", key: "mthhwq" }]];
+const ChevronRight = createLucideIcon("chevron-right", __iconNode$q);
+/**
+ * @license lucide-react v0.487.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$p = [["path", { d: "m18 15-6-6-6 6", key: "153udz" }]];
+const ChevronUp = createLucideIcon("chevron-up", __iconNode$p);
+/**
+ * @license lucide-react v0.487.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$o = [
+  ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
+  ["path", { d: "M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3", key: "1u773s" }],
+  ["path", { d: "M12 17h.01", key: "p32p05" }]
+];
+const CircleHelp = createLucideIcon("circle-help", __iconNode$o);
+/**
+ * @license lucide-react v0.487.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$n = [["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }]];
+const Circle = createLucideIcon("circle", __iconNode$n);
+/**
+ * @license lucide-react v0.487.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$m = [
+  ["ellipse", { cx: "12", cy: "5", rx: "9", ry: "3", key: "msslwz" }],
+  ["path", { d: "M3 5V19A9 3 0 0 0 21 19V5", key: "1wlel7" }],
+  ["path", { d: "M3 12A9 3 0 0 0 21 12", key: "mv7ke4" }]
+];
+const Database = createLucideIcon("database", __iconNode$m);
+/**
+ * @license lucide-react v0.487.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$l = [
+  ["path", { d: "M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4", key: "ih7n3h" }],
+  ["polyline", { points: "7 10 12 15 17 10", key: "2ggqvy" }],
+  ["line", { x1: "12", x2: "12", y1: "15", y2: "3", key: "1vk2je" }]
+];
+const Download = createLucideIcon("download", __iconNode$l);
+/**
+ * @license lucide-react v0.487.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$k = [
+  ["circle", { cx: "12", cy: "12", r: "1", key: "41hilf" }],
+  ["circle", { cx: "19", cy: "12", r: "1", key: "1wjl8i" }],
+  ["circle", { cx: "5", cy: "12", r: "1", key: "1pcz8c" }]
+];
+const Ellipsis = createLucideIcon("ellipsis", __iconNode$k);
+/**
+ * @license lucide-react v0.487.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$j = [
+  ["path", { d: "M15 3h6v6", key: "1q9fwt" }],
+  ["path", { d: "M10 14 21 3", key: "gplh6r" }],
+  ["path", { d: "M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6", key: "a6xqqp" }]
+];
+const ExternalLink = createLucideIcon("external-link", __iconNode$j);
+/**
+ * @license lucide-react v0.487.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$i = [
+  [
+    "path",
+    {
+      d: "M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z",
+      key: "1kt360"
+    }
+  ]
+];
+const Folder = createLucideIcon("folder", __iconNode$i);
+/**
+ * @license lucide-react v0.487.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$h = [
+  ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
+  ["path", { d: "M12 16v-4", key: "1dtifu" }],
+  ["path", { d: "M12 8h.01", key: "e9boi3" }]
+];
+const Info = createLucideIcon("info", __iconNode$h);
+/**
+ * @license lucide-react v0.487.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$g = [
+  ["path", { d: "M10 8h.01", key: "1r9ogq" }],
+  ["path", { d: "M12 12h.01", key: "1mp3jc" }],
+  ["path", { d: "M14 8h.01", key: "1primd" }],
+  ["path", { d: "M16 12h.01", key: "1l6xoz" }],
+  ["path", { d: "M18 8h.01", key: "emo2bl" }],
+  ["path", { d: "M6 8h.01", key: "x9i8wu" }],
+  ["path", { d: "M7 16h10", key: "wp8him" }],
+  ["path", { d: "M8 12h.01", key: "czm47f" }],
+  ["rect", { width: "20", height: "16", x: "2", y: "4", rx: "2", key: "18n3k1" }]
+];
+const Keyboard = createLucideIcon("keyboard", __iconNode$g);
+/**
+ * @license lucide-react v0.487.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$f = [
+  ["rect", { width: "7", height: "9", x: "3", y: "3", rx: "1", key: "10lvy0" }],
+  ["rect", { width: "7", height: "5", x: "14", y: "3", rx: "1", key: "16une8" }],
+  ["rect", { width: "7", height: "9", x: "14", y: "12", rx: "1", key: "1hutg5" }],
+  ["rect", { width: "7", height: "5", x: "3", y: "16", rx: "1", key: "ldoo1y" }]
+];
+const LayoutDashboard = createLucideIcon("layout-dashboard", __iconNode$f);
+/**
+ * @license lucide-react v0.487.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$e = [
+  ["rect", { x: "3", y: "5", width: "6", height: "6", rx: "1", key: "1defrl" }],
+  ["path", { d: "m3 17 2 2 4-4", key: "1jhpwq" }],
+  ["path", { d: "M13 6h8", key: "15sg57" }],
+  ["path", { d: "M13 12h8", key: "h98zly" }],
+  ["path", { d: "M13 18h8", key: "oe0vm4" }]
+];
+const ListTodo = createLucideIcon("list-todo", __iconNode$e);
+/**
+ * @license lucide-react v0.487.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$d = [
+  ["path", { d: "M12 17v4", key: "1riwvh" }],
+  ["path", { d: "m15.2 4.9-.9-.4", key: "12wd2u" }],
+  ["path", { d: "m15.2 7.1-.9.4", key: "1r2vl7" }],
+  ["path", { d: "m16.9 3.2-.4-.9", key: "3zbo91" }],
+  ["path", { d: "m16.9 8.8-.4.9", key: "1qr2dn" }],
+  ["path", { d: "m19.5 2.3-.4.9", key: "1rjrkq" }],
+  ["path", { d: "m19.5 9.7-.4-.9", key: "heryx5" }],
+  ["path", { d: "m21.7 4.5-.9.4", key: "17fqt1" }],
+  ["path", { d: "m21.7 7.5-.9-.4", key: "14zyni" }],
+  ["path", { d: "M22 13v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7", key: "1tnzv8" }],
+  ["path", { d: "M8 21h8", key: "1ev6f3" }],
+  ["circle", { cx: "18", cy: "6", r: "3", key: "1h7g24" }]
+];
+const MonitorCog = createLucideIcon("monitor-cog", __iconNode$d);
+/**
+ * @license lucide-react v0.487.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$c = [
+  ["rect", { width: "20", height: "14", x: "2", y: "3", rx: "2", key: "48i651" }],
+  ["line", { x1: "8", x2: "16", y1: "21", y2: "21", key: "1svkeh" }],
+  ["line", { x1: "12", x2: "12", y1: "17", y2: "21", key: "vw1qmm" }]
+];
+const Monitor = createLucideIcon("monitor", __iconNode$c);
+/**
+ * @license lucide-react v0.487.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$b = [
+  ["path", { d: "M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z", key: "a7tn18" }]
+];
+const Moon = createLucideIcon("moon", __iconNode$b);
+/**
+ * @license lucide-react v0.487.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$a = [
+  ["circle", { cx: "13.5", cy: "6.5", r: ".5", fill: "currentColor", key: "1okk4w" }],
+  ["circle", { cx: "17.5", cy: "10.5", r: ".5", fill: "currentColor", key: "f64h9f" }],
+  ["circle", { cx: "8.5", cy: "7.5", r: ".5", fill: "currentColor", key: "fotxhn" }],
+  ["circle", { cx: "6.5", cy: "12.5", r: ".5", fill: "currentColor", key: "qy21gx" }],
+  [
+    "path",
+    {
+      d: "M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z",
+      key: "12rzf8"
+    }
+  ]
+];
+const Palette = createLucideIcon("palette", __iconNode$a);
+/**
+ * @license lucide-react v0.487.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$9 = [
+  ["rect", { width: "18", height: "18", x: "3", y: "3", rx: "2", key: "afitv7" }],
+  ["path", { d: "M9 3v18", key: "fh3hqa" }]
+];
+const PanelLeft = createLucideIcon("panel-left", __iconNode$9);
+/**
+ * @license lucide-react v0.487.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$8 = [
+  ["path", { d: "M5 12h14", key: "1ays0h" }],
+  ["path", { d: "M12 5v14", key: "s699le" }]
+];
+const Plus = createLucideIcon("plus", __iconNode$8);
+/**
+ * @license lucide-react v0.487.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$7 = [
+  ["circle", { cx: "11", cy: "11", r: "8", key: "4ej97u" }],
+  ["path", { d: "m21 21-4.3-4.3", key: "1qie3q" }]
+];
+const Search = createLucideIcon("search", __iconNode$7);
+/**
+ * @license lucide-react v0.487.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$6 = [
+  [
+    "path",
+    {
+      d: "M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z",
+      key: "1qme2f"
+    }
+  ],
+  ["circle", { cx: "12", cy: "12", r: "3", key: "1v7zrd" }]
+];
+const Settings = createLucideIcon("settings", __iconNode$6);
+/**
+ * @license lucide-react v0.487.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$5 = [
+  [
+    "path",
+    {
+      d: "M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z",
+      key: "4pj2yx"
+    }
+  ],
+  ["path", { d: "M20 3v4", key: "1olli1" }],
+  ["path", { d: "M22 5h-4", key: "1gvqau" }],
+  ["path", { d: "M4 17v2", key: "vumght" }],
+  ["path", { d: "M5 18H3", key: "zchphs" }]
+];
+const Sparkles = createLucideIcon("sparkles", __iconNode$5);
+/**
+ * @license lucide-react v0.487.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$4 = [
+  ["circle", { cx: "12", cy: "12", r: "4", key: "4exip2" }],
+  ["path", { d: "M12 2v2", key: "tus03m" }],
+  ["path", { d: "M12 20v2", key: "1lh1kg" }],
+  ["path", { d: "m4.93 4.93 1.41 1.41", key: "149t6j" }],
+  ["path", { d: "m17.66 17.66 1.41 1.41", key: "ptbguv" }],
+  ["path", { d: "M2 12h2", key: "1t8f8n" }],
+  ["path", { d: "M20 12h2", key: "1q8mjw" }],
+  ["path", { d: "m6.34 17.66-1.41 1.41", key: "1m8zz5" }],
+  ["path", { d: "m19.07 4.93-1.41 1.41", key: "1shlcs" }]
+];
+const Sun = createLucideIcon("sun", __iconNode$4);
+/**
+ * @license lucide-react v0.487.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$3 = [
+  ["path", { d: "M3 6h18", key: "d0wm0j" }],
+  ["path", { d: "M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6", key: "4alrt4" }],
+  ["path", { d: "M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2", key: "v07s0e" }],
+  ["line", { x1: "10", x2: "10", y1: "11", y2: "17", key: "1uufr5" }],
+  ["line", { x1: "14", x2: "14", y1: "11", y2: "17", key: "xtxkd" }]
+];
+const Trash2 = createLucideIcon("trash-2", __iconNode$3);
+/**
+ * @license lucide-react v0.487.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$2 = [
+  [
+    "path",
+    {
+      d: "m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3",
+      key: "wmoenq"
+    }
+  ],
+  ["path", { d: "M12 9v4", key: "juzpu7" }],
+  ["path", { d: "M12 17h.01", key: "p32p05" }]
+];
+const TriangleAlert = createLucideIcon("triangle-alert", __iconNode$2);
+/**
+ * @license lucide-react v0.487.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$1 = [
+  ["path", { d: "M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4", key: "ih7n3h" }],
+  ["polyline", { points: "17 8 12 3 7 8", key: "t8dd8p" }],
+  ["line", { x1: "12", x2: "12", y1: "3", y2: "15", key: "widbto" }]
+];
+const Upload = createLucideIcon("upload", __iconNode$1);
+/**
+ * @license lucide-react v0.487.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode = [
+  ["path", { d: "M18 6 6 18", key: "1bl5f8" }],
+  ["path", { d: "m6 6 12 12", key: "d8bk6v" }]
+];
+const X$1 = createLucideIcon("x", __iconNode);
+var M = (e, i, s, u2, m2, a, l, h) => {
+  let d = document.documentElement, w = ["light", "dark"];
+  function p2(n) {
+    (Array.isArray(e) ? e : [e]).forEach((y) => {
+      let k2 = y === "class", S = k2 && a ? m2.map((f) => a[f] || f) : m2;
+      k2 ? (d.classList.remove(...S), d.classList.add(a && a[n] ? a[n] : n)) : d.setAttribute(y, n);
+    }), R(n);
+  }
+  function R(n) {
+    h && w.includes(n) && (d.style.colorScheme = n);
+  }
+  function c() {
+    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  }
+  if (u2) p2(u2);
+  else try {
+    let n = localStorage.getItem(i) || s, y = l && n === "system" ? c() : n;
+    p2(y);
+  } catch (n) {
+  }
+};
+var x = reactExports.createContext(void 0), U$1 = { setTheme: (e) => {
+}, themes: [] }, z = () => {
+  var e;
+  return (e = reactExports.useContext(x)) != null ? e : U$1;
+};
+reactExports.memo(({ forcedTheme: e, storageKey: i, attribute: s, enableSystem: u2, enableColorScheme: m2, defaultTheme: a, value: l, themes: h, nonce: d, scriptProps: w }) => {
+  let p2 = JSON.stringify([s, i, a, e, h, l, u2, m2]).slice(1, -1);
+  return reactExports.createElement("script", { ...w, suppressHydrationWarning: true, nonce: typeof window == "undefined" ? d : "", dangerouslySetInnerHTML: { __html: `(${M.toString()})(${p2})` } });
+});
+function __insertCSS(code) {
+  if (typeof document == "undefined") return;
+  let head = document.head || document.getElementsByTagName("head")[0];
+  let style2 = document.createElement("style");
+  style2.type = "text/css";
+  head.appendChild(style2);
+  style2.styleSheet ? style2.styleSheet.cssText = code : style2.appendChild(document.createTextNode(code));
 }
-const createImpl = (createState2) => {
-  const api = createStore(createState2);
-  const useBoundStore = (selector) => useStore$1(api, selector);
-  Object.assign(useBoundStore, api);
-  return useBoundStore;
+const getAsset = (type) => {
+  switch (type) {
+    case "success":
+      return SuccessIcon;
+    case "info":
+      return InfoIcon;
+    case "warning":
+      return WarningIcon;
+    case "error":
+      return ErrorIcon;
+    default:
+      return null;
+  }
 };
-const create = (createState2) => createImpl;
-const uid = () => globalThis.crypto?.randomUUID?.() ?? `id_${Date.now()}_${Math.random().toString(36).slice(2, 9)}`;
-const DEFAULT_SETTINGS = {
-  density: "comfortable",
-  sidebarWidth: 264,
-  showCounts: true,
-  moveCompletedDown: false,
-  showCompleted: true,
-  defaultDueDate: "today",
-  confirmDelete: true,
-  overdueRed: true,
-  notificationsEnabled: false,
-  remindBefore: "30",
-  notifSound: true,
-  dndHours: "22-08",
-  autoBackup: true,
-  launchAtLogin: false,
-  startMinimized: false,
-  closeToTray: true,
-  rememberWindow: true
+const bars = Array(12).fill(0);
+const Loader = ({ visible, className }) => {
+  return /* @__PURE__ */ React$2.createElement("div", {
+    className: [
+      "sonner-loading-wrapper",
+      className
+    ].filter(Boolean).join(" "),
+    "data-visible": visible
+  }, /* @__PURE__ */ React$2.createElement("div", {
+    className: "sonner-spinner"
+  }, bars.map((_, i) => /* @__PURE__ */ React$2.createElement("div", {
+    className: "sonner-loading-bar",
+    key: `spinner-bar-${i}`
+  }))));
 };
-async function invokePersist(op) {
-  if (typeof window === "undefined" || !window.api) return;
-  try {
-    await op();
-  } catch (err) {
-    console.error("Persistence failed:", err);
+const SuccessIcon = /* @__PURE__ */ React$2.createElement("svg", {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 20 20",
+  fill: "currentColor",
+  height: "20",
+  width: "20"
+}, /* @__PURE__ */ React$2.createElement("path", {
+  fillRule: "evenodd",
+  d: "M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z",
+  clipRule: "evenodd"
+}));
+const WarningIcon = /* @__PURE__ */ React$2.createElement("svg", {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 24 24",
+  fill: "currentColor",
+  height: "20",
+  width: "20"
+}, /* @__PURE__ */ React$2.createElement("path", {
+  fillRule: "evenodd",
+  d: "M9.401 3.003c1.155-2 4.043-2 5.197 0l7.355 12.748c1.154 2-.29 4.5-2.599 4.5H4.645c-2.309 0-3.752-2.5-2.598-4.5L9.4 3.003zM12 8.25a.75.75 0 01.75.75v3.75a.75.75 0 01-1.5 0V9a.75.75 0 01.75-.75zm0 8.25a.75.75 0 100-1.5.75.75 0 000 1.5z",
+  clipRule: "evenodd"
+}));
+const InfoIcon = /* @__PURE__ */ React$2.createElement("svg", {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 20 20",
+  fill: "currentColor",
+  height: "20",
+  width: "20"
+}, /* @__PURE__ */ React$2.createElement("path", {
+  fillRule: "evenodd",
+  d: "M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a.75.75 0 000 1.5h.253a.25.25 0 01.244.304l-.459 2.066A1.75 1.75 0 0010.747 15H11a.75.75 0 000-1.5h-.253a.25.25 0 01-.244-.304l.459-2.066A1.75 1.75 0 009.253 9H9z",
+  clipRule: "evenodd"
+}));
+const ErrorIcon = /* @__PURE__ */ React$2.createElement("svg", {
+  xmlns: "http://www.w3.org/2000/svg",
+  viewBox: "0 0 20 20",
+  fill: "currentColor",
+  height: "20",
+  width: "20"
+}, /* @__PURE__ */ React$2.createElement("path", {
+  fillRule: "evenodd",
+  d: "M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-5a.75.75 0 01.75.75v4.5a.75.75 0 01-1.5 0v-4.5A.75.75 0 0110 5zm0 10a1 1 0 100-2 1 1 0 000 2z",
+  clipRule: "evenodd"
+}));
+const CloseIcon = /* @__PURE__ */ React$2.createElement("svg", {
+  xmlns: "http://www.w3.org/2000/svg",
+  width: "12",
+  height: "12",
+  viewBox: "0 0 24 24",
+  fill: "none",
+  stroke: "currentColor",
+  strokeWidth: "1.5",
+  strokeLinecap: "round",
+  strokeLinejoin: "round"
+}, /* @__PURE__ */ React$2.createElement("line", {
+  x1: "18",
+  y1: "6",
+  x2: "6",
+  y2: "18"
+}), /* @__PURE__ */ React$2.createElement("line", {
+  x1: "6",
+  y1: "6",
+  x2: "18",
+  y2: "18"
+}));
+const useIsDocumentHidden = () => {
+  const [isDocumentHidden, setIsDocumentHidden] = React$2.useState(document.hidden);
+  React$2.useEffect(() => {
+    const callback = () => {
+      setIsDocumentHidden(document.hidden);
+    };
+    document.addEventListener("visibilitychange", callback);
+    return () => window.removeEventListener("visibilitychange", callback);
+  }, []);
+  return isDocumentHidden;
+};
+let toastsCounter = 1;
+class Observer {
+  constructor() {
+    this.subscribe = (subscriber) => {
+      this.subscribers.push(subscriber);
+      return () => {
+        const index2 = this.subscribers.indexOf(subscriber);
+        this.subscribers.splice(index2, 1);
+      };
+    };
+    this.publish = (data) => {
+      this.subscribers.forEach((subscriber) => subscriber(data));
+    };
+    this.addToast = (data) => {
+      this.publish(data);
+      this.toasts = [
+        ...this.toasts,
+        data
+      ];
+    };
+    this.create = (data) => {
+      var _data_id;
+      const { message: message2, ...rest } = data;
+      const id2 = typeof (data == null ? void 0 : data.id) === "number" || ((_data_id = data.id) == null ? void 0 : _data_id.length) > 0 ? data.id : toastsCounter++;
+      const alreadyExists = this.toasts.find((toast2) => {
+        return toast2.id === id2;
+      });
+      const dismissible = data.dismissible === void 0 ? true : data.dismissible;
+      if (this.dismissedToasts.has(id2)) {
+        this.dismissedToasts.delete(id2);
+      }
+      if (alreadyExists) {
+        this.toasts = this.toasts.map((toast2) => {
+          if (toast2.id === id2) {
+            this.publish({
+              ...toast2,
+              ...data,
+              id: id2,
+              title: message2
+            });
+            return {
+              ...toast2,
+              ...data,
+              id: id2,
+              dismissible,
+              title: message2
+            };
+          }
+          return toast2;
+        });
+      } else {
+        this.addToast({
+          title: message2,
+          ...rest,
+          dismissible,
+          id: id2
+        });
+      }
+      return id2;
+    };
+    this.dismiss = (id2) => {
+      if (id2) {
+        this.dismissedToasts.add(id2);
+        requestAnimationFrame(() => this.subscribers.forEach((subscriber) => subscriber({
+          id: id2,
+          dismiss: true
+        })));
+      } else {
+        this.toasts.forEach((toast2) => {
+          this.subscribers.forEach((subscriber) => subscriber({
+            id: toast2.id,
+            dismiss: true
+          }));
+        });
+      }
+      return id2;
+    };
+    this.message = (message2, data) => {
+      return this.create({
+        ...data,
+        message: message2
+      });
+    };
+    this.error = (message2, data) => {
+      return this.create({
+        ...data,
+        message: message2,
+        type: "error"
+      });
+    };
+    this.success = (message2, data) => {
+      return this.create({
+        ...data,
+        type: "success",
+        message: message2
+      });
+    };
+    this.info = (message2, data) => {
+      return this.create({
+        ...data,
+        type: "info",
+        message: message2
+      });
+    };
+    this.warning = (message2, data) => {
+      return this.create({
+        ...data,
+        type: "warning",
+        message: message2
+      });
+    };
+    this.loading = (message2, data) => {
+      return this.create({
+        ...data,
+        type: "loading",
+        message: message2
+      });
+    };
+    this.promise = (promise, data) => {
+      if (!data) {
+        return;
+      }
+      let id2 = void 0;
+      if (data.loading !== void 0) {
+        id2 = this.create({
+          ...data,
+          promise,
+          type: "loading",
+          message: data.loading,
+          description: typeof data.description !== "function" ? data.description : void 0
+        });
+      }
+      const p2 = Promise.resolve(promise instanceof Function ? promise() : promise);
+      let shouldDismiss = id2 !== void 0;
+      let result;
+      const originalPromise = p2.then(async (response) => {
+        result = [
+          "resolve",
+          response
+        ];
+        const isReactElementResponse = React$2.isValidElement(response);
+        if (isReactElementResponse) {
+          shouldDismiss = false;
+          this.create({
+            id: id2,
+            type: "default",
+            message: response
+          });
+        } else if (isHttpResponse(response) && !response.ok) {
+          shouldDismiss = false;
+          const promiseData = typeof data.error === "function" ? await data.error(`HTTP error! status: ${response.status}`) : data.error;
+          const description = typeof data.description === "function" ? await data.description(`HTTP error! status: ${response.status}`) : data.description;
+          const isExtendedResult = typeof promiseData === "object" && !React$2.isValidElement(promiseData);
+          const toastSettings = isExtendedResult ? promiseData : {
+            message: promiseData
+          };
+          this.create({
+            id: id2,
+            type: "error",
+            description,
+            ...toastSettings
+          });
+        } else if (response instanceof Error) {
+          shouldDismiss = false;
+          const promiseData = typeof data.error === "function" ? await data.error(response) : data.error;
+          const description = typeof data.description === "function" ? await data.description(response) : data.description;
+          const isExtendedResult = typeof promiseData === "object" && !React$2.isValidElement(promiseData);
+          const toastSettings = isExtendedResult ? promiseData : {
+            message: promiseData
+          };
+          this.create({
+            id: id2,
+            type: "error",
+            description,
+            ...toastSettings
+          });
+        } else if (data.success !== void 0) {
+          shouldDismiss = false;
+          const promiseData = typeof data.success === "function" ? await data.success(response) : data.success;
+          const description = typeof data.description === "function" ? await data.description(response) : data.description;
+          const isExtendedResult = typeof promiseData === "object" && !React$2.isValidElement(promiseData);
+          const toastSettings = isExtendedResult ? promiseData : {
+            message: promiseData
+          };
+          this.create({
+            id: id2,
+            type: "success",
+            description,
+            ...toastSettings
+          });
+        }
+      }).catch(async (error) => {
+        result = [
+          "reject",
+          error
+        ];
+        if (data.error !== void 0) {
+          shouldDismiss = false;
+          const promiseData = typeof data.error === "function" ? await data.error(error) : data.error;
+          const description = typeof data.description === "function" ? await data.description(error) : data.description;
+          const isExtendedResult = typeof promiseData === "object" && !React$2.isValidElement(promiseData);
+          const toastSettings = isExtendedResult ? promiseData : {
+            message: promiseData
+          };
+          this.create({
+            id: id2,
+            type: "error",
+            description,
+            ...toastSettings
+          });
+        }
+      }).finally(() => {
+        if (shouldDismiss) {
+          this.dismiss(id2);
+          id2 = void 0;
+        }
+        data.finally == null ? void 0 : data.finally.call(data);
+      });
+      const unwrap = () => new Promise((resolve, reject) => originalPromise.then(() => result[0] === "reject" ? reject(result[1]) : resolve(result[1])).catch(reject));
+      if (typeof id2 !== "string" && typeof id2 !== "number") {
+        return {
+          unwrap
+        };
+      } else {
+        return Object.assign(id2, {
+          unwrap
+        });
+      }
+    };
+    this.custom = (jsx, data) => {
+      const id2 = (data == null ? void 0 : data.id) || toastsCounter++;
+      this.create({
+        jsx: jsx(id2),
+        id: id2,
+        ...data
+      });
+      return id2;
+    };
+    this.getActiveToasts = () => {
+      return this.toasts.filter((toast2) => !this.dismissedToasts.has(toast2.id));
+    };
+    this.subscribers = [];
+    this.toasts = [];
+    this.dismissedToasts = /* @__PURE__ */ new Set();
   }
 }
-const useStore = create()((set, get) => ({
-  theme: "system",
-  sidebarCollapsed: false,
-  activeGroupId: null,
-  selectedTaskId: null,
-  searchQuery: "",
-  statusFilter: "all",
-  tagFilter: [],
-  helpOpen: false,
-  settingsOpen: false,
-  groupDialog: { open: false, editingId: null },
-  settings: DEFAULT_SETTINGS,
-  groups: [],
-  tasks: [],
-  isHydrated: false,
-  hydrate: async () => {
-    try {
-      if (typeof window !== "undefined" && window.api) {
-        const { groups, tasks, settings: rawSettings } = await window.api.getInitialState();
-        const { lastActiveGroupId, ...prefs } = rawSettings;
-        const merged = { ...DEFAULT_SETTINGS, ...prefs };
-        const preferred = typeof lastActiveGroupId === "string" && lastActiveGroupId.length > 0 && groups.some((g) => g.id === lastActiveGroupId) ? lastActiveGroupId : null;
-        set({
-          groups,
-          tasks,
-          settings: merged,
-          activeGroupId: preferred ?? groups[0]?.id ?? null,
-          isHydrated: true
+const ToastState = new Observer();
+const toastFunction = (message2, data) => {
+  const id2 = (data == null ? void 0 : data.id) || toastsCounter++;
+  ToastState.addToast({
+    title: message2,
+    ...data,
+    id: id2
+  });
+  return id2;
+};
+const isHttpResponse = (data) => {
+  return data && typeof data === "object" && "ok" in data && typeof data.ok === "boolean" && "status" in data && typeof data.status === "number";
+};
+const basicToast = toastFunction;
+const getHistory = () => ToastState.toasts;
+const getToasts = () => ToastState.getActiveToasts();
+const toast = Object.assign(basicToast, {
+  success: ToastState.success,
+  info: ToastState.info,
+  warning: ToastState.warning,
+  error: ToastState.error,
+  custom: ToastState.custom,
+  message: ToastState.message,
+  promise: ToastState.promise,
+  dismiss: ToastState.dismiss,
+  loading: ToastState.loading
+}, {
+  getHistory,
+  getToasts
+});
+__insertCSS("[data-sonner-toaster][dir=ltr],html[dir=ltr]{--toast-icon-margin-start:-3px;--toast-icon-margin-end:4px;--toast-svg-margin-start:-1px;--toast-svg-margin-end:0px;--toast-button-margin-start:auto;--toast-button-margin-end:0;--toast-close-button-start:0;--toast-close-button-end:unset;--toast-close-button-transform:translate(-35%, -35%)}[data-sonner-toaster][dir=rtl],html[dir=rtl]{--toast-icon-margin-start:4px;--toast-icon-margin-end:-3px;--toast-svg-margin-start:0px;--toast-svg-margin-end:-1px;--toast-button-margin-start:0;--toast-button-margin-end:auto;--toast-close-button-start:unset;--toast-close-button-end:0;--toast-close-button-transform:translate(35%, -35%)}[data-sonner-toaster]{position:fixed;width:var(--width);font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;--gray1:hsl(0, 0%, 99%);--gray2:hsl(0, 0%, 97.3%);--gray3:hsl(0, 0%, 95.1%);--gray4:hsl(0, 0%, 93%);--gray5:hsl(0, 0%, 90.9%);--gray6:hsl(0, 0%, 88.7%);--gray7:hsl(0, 0%, 85.8%);--gray8:hsl(0, 0%, 78%);--gray9:hsl(0, 0%, 56.1%);--gray10:hsl(0, 0%, 52.3%);--gray11:hsl(0, 0%, 43.5%);--gray12:hsl(0, 0%, 9%);--border-radius:8px;box-sizing:border-box;padding:0;margin:0;list-style:none;outline:0;z-index:999999999;transition:transform .4s ease}[data-sonner-toaster][data-lifted=true]{transform:translateY(-8px)}@media (hover:none) and (pointer:coarse){[data-sonner-toaster][data-lifted=true]{transform:none}}[data-sonner-toaster][data-x-position=right]{right:var(--offset-right)}[data-sonner-toaster][data-x-position=left]{left:var(--offset-left)}[data-sonner-toaster][data-x-position=center]{left:50%;transform:translateX(-50%)}[data-sonner-toaster][data-y-position=top]{top:var(--offset-top)}[data-sonner-toaster][data-y-position=bottom]{bottom:var(--offset-bottom)}[data-sonner-toast]{--y:translateY(100%);--lift-amount:calc(var(--lift) * var(--gap));z-index:var(--z-index);position:absolute;opacity:0;transform:var(--y);touch-action:none;transition:transform .4s,opacity .4s,height .4s,box-shadow .2s;box-sizing:border-box;outline:0;overflow-wrap:anywhere}[data-sonner-toast][data-styled=true]{padding:16px;background:var(--normal-bg);border:1px solid var(--normal-border);color:var(--normal-text);border-radius:var(--border-radius);box-shadow:0 4px 12px rgba(0,0,0,.1);width:var(--width);font-size:13px;display:flex;align-items:center;gap:6px}[data-sonner-toast]:focus-visible{box-shadow:0 4px 12px rgba(0,0,0,.1),0 0 0 2px rgba(0,0,0,.2)}[data-sonner-toast][data-y-position=top]{top:0;--y:translateY(-100%);--lift:1;--lift-amount:calc(1 * var(--gap))}[data-sonner-toast][data-y-position=bottom]{bottom:0;--y:translateY(100%);--lift:-1;--lift-amount:calc(var(--lift) * var(--gap))}[data-sonner-toast][data-styled=true] [data-description]{font-weight:400;line-height:1.4;color:#3f3f3f}[data-rich-colors=true][data-sonner-toast][data-styled=true] [data-description]{color:inherit}[data-sonner-toaster][data-sonner-theme=dark] [data-description]{color:#e8e8e8}[data-sonner-toast][data-styled=true] [data-title]{font-weight:500;line-height:1.5;color:inherit}[data-sonner-toast][data-styled=true] [data-icon]{display:flex;height:16px;width:16px;position:relative;justify-content:flex-start;align-items:center;flex-shrink:0;margin-left:var(--toast-icon-margin-start);margin-right:var(--toast-icon-margin-end)}[data-sonner-toast][data-promise=true] [data-icon]>svg{opacity:0;transform:scale(.8);transform-origin:center;animation:sonner-fade-in .3s ease forwards}[data-sonner-toast][data-styled=true] [data-icon]>*{flex-shrink:0}[data-sonner-toast][data-styled=true] [data-icon] svg{margin-left:var(--toast-svg-margin-start);margin-right:var(--toast-svg-margin-end)}[data-sonner-toast][data-styled=true] [data-content]{display:flex;flex-direction:column;gap:2px}[data-sonner-toast][data-styled=true] [data-button]{border-radius:4px;padding-left:8px;padding-right:8px;height:24px;font-size:12px;color:var(--normal-bg);background:var(--normal-text);margin-left:var(--toast-button-margin-start);margin-right:var(--toast-button-margin-end);border:none;font-weight:500;cursor:pointer;outline:0;display:flex;align-items:center;flex-shrink:0;transition:opacity .4s,box-shadow .2s}[data-sonner-toast][data-styled=true] [data-button]:focus-visible{box-shadow:0 0 0 2px rgba(0,0,0,.4)}[data-sonner-toast][data-styled=true] [data-button]:first-of-type{margin-left:var(--toast-button-margin-start);margin-right:var(--toast-button-margin-end)}[data-sonner-toast][data-styled=true] [data-cancel]{color:var(--normal-text);background:rgba(0,0,0,.08)}[data-sonner-toaster][data-sonner-theme=dark] [data-sonner-toast][data-styled=true] [data-cancel]{background:rgba(255,255,255,.3)}[data-sonner-toast][data-styled=true] [data-close-button]{position:absolute;left:var(--toast-close-button-start);right:var(--toast-close-button-end);top:0;height:20px;width:20px;display:flex;justify-content:center;align-items:center;padding:0;color:var(--gray12);background:var(--normal-bg);border:1px solid var(--gray4);transform:var(--toast-close-button-transform);border-radius:50%;cursor:pointer;z-index:1;transition:opacity .1s,background .2s,border-color .2s}[data-sonner-toast][data-styled=true] [data-close-button]:focus-visible{box-shadow:0 4px 12px rgba(0,0,0,.1),0 0 0 2px rgba(0,0,0,.2)}[data-sonner-toast][data-styled=true] [data-disabled=true]{cursor:not-allowed}[data-sonner-toast][data-styled=true]:hover [data-close-button]:hover{background:var(--gray2);border-color:var(--gray5)}[data-sonner-toast][data-swiping=true]::before{content:'';position:absolute;left:-100%;right:-100%;height:100%;z-index:-1}[data-sonner-toast][data-y-position=top][data-swiping=true]::before{bottom:50%;transform:scaleY(3) translateY(50%)}[data-sonner-toast][data-y-position=bottom][data-swiping=true]::before{top:50%;transform:scaleY(3) translateY(-50%)}[data-sonner-toast][data-swiping=false][data-removed=true]::before{content:'';position:absolute;inset:0;transform:scaleY(2)}[data-sonner-toast][data-expanded=true]::after{content:'';position:absolute;left:0;height:calc(var(--gap) + 1px);bottom:100%;width:100%}[data-sonner-toast][data-mounted=true]{--y:translateY(0);opacity:1}[data-sonner-toast][data-expanded=false][data-front=false]{--scale:var(--toasts-before) * 0.05 + 1;--y:translateY(calc(var(--lift-amount) * var(--toasts-before))) scale(calc(-1 * var(--scale)));height:var(--front-toast-height)}[data-sonner-toast]>*{transition:opacity .4s}[data-sonner-toast][data-x-position=right]{right:0}[data-sonner-toast][data-x-position=left]{left:0}[data-sonner-toast][data-expanded=false][data-front=false][data-styled=true]>*{opacity:0}[data-sonner-toast][data-visible=false]{opacity:0;pointer-events:none}[data-sonner-toast][data-mounted=true][data-expanded=true]{--y:translateY(calc(var(--lift) * var(--offset)));height:var(--initial-height)}[data-sonner-toast][data-removed=true][data-front=true][data-swipe-out=false]{--y:translateY(calc(var(--lift) * -100%));opacity:0}[data-sonner-toast][data-removed=true][data-front=false][data-swipe-out=false][data-expanded=true]{--y:translateY(calc(var(--lift) * var(--offset) + var(--lift) * -100%));opacity:0}[data-sonner-toast][data-removed=true][data-front=false][data-swipe-out=false][data-expanded=false]{--y:translateY(40%);opacity:0;transition:transform .5s,opacity .2s}[data-sonner-toast][data-removed=true][data-front=false]::before{height:calc(var(--initial-height) + 20%)}[data-sonner-toast][data-swiping=true]{transform:var(--y) translateY(var(--swipe-amount-y,0)) translateX(var(--swipe-amount-x,0));transition:none}[data-sonner-toast][data-swiped=true]{user-select:none}[data-sonner-toast][data-swipe-out=true][data-y-position=bottom],[data-sonner-toast][data-swipe-out=true][data-y-position=top]{animation-duration:.2s;animation-timing-function:ease-out;animation-fill-mode:forwards}[data-sonner-toast][data-swipe-out=true][data-swipe-direction=left]{animation-name:swipe-out-left}[data-sonner-toast][data-swipe-out=true][data-swipe-direction=right]{animation-name:swipe-out-right}[data-sonner-toast][data-swipe-out=true][data-swipe-direction=up]{animation-name:swipe-out-up}[data-sonner-toast][data-swipe-out=true][data-swipe-direction=down]{animation-name:swipe-out-down}@keyframes swipe-out-left{from{transform:var(--y) translateX(var(--swipe-amount-x));opacity:1}to{transform:var(--y) translateX(calc(var(--swipe-amount-x) - 100%));opacity:0}}@keyframes swipe-out-right{from{transform:var(--y) translateX(var(--swipe-amount-x));opacity:1}to{transform:var(--y) translateX(calc(var(--swipe-amount-x) + 100%));opacity:0}}@keyframes swipe-out-up{from{transform:var(--y) translateY(var(--swipe-amount-y));opacity:1}to{transform:var(--y) translateY(calc(var(--swipe-amount-y) - 100%));opacity:0}}@keyframes swipe-out-down{from{transform:var(--y) translateY(var(--swipe-amount-y));opacity:1}to{transform:var(--y) translateY(calc(var(--swipe-amount-y) + 100%));opacity:0}}@media (max-width:600px){[data-sonner-toaster]{position:fixed;right:var(--mobile-offset-right);left:var(--mobile-offset-left);width:100%}[data-sonner-toaster][dir=rtl]{left:calc(var(--mobile-offset-left) * -1)}[data-sonner-toaster] [data-sonner-toast]{left:0;right:0;width:calc(100% - var(--mobile-offset-left) * 2)}[data-sonner-toaster][data-x-position=left]{left:var(--mobile-offset-left)}[data-sonner-toaster][data-y-position=bottom]{bottom:var(--mobile-offset-bottom)}[data-sonner-toaster][data-y-position=top]{top:var(--mobile-offset-top)}[data-sonner-toaster][data-x-position=center]{left:var(--mobile-offset-left);right:var(--mobile-offset-right);transform:none}}[data-sonner-toaster][data-sonner-theme=light]{--normal-bg:#fff;--normal-border:var(--gray4);--normal-text:var(--gray12);--success-bg:hsl(143, 85%, 96%);--success-border:hsl(145, 92%, 87%);--success-text:hsl(140, 100%, 27%);--info-bg:hsl(208, 100%, 97%);--info-border:hsl(221, 91%, 93%);--info-text:hsl(210, 92%, 45%);--warning-bg:hsl(49, 100%, 97%);--warning-border:hsl(49, 91%, 84%);--warning-text:hsl(31, 92%, 45%);--error-bg:hsl(359, 100%, 97%);--error-border:hsl(359, 100%, 94%);--error-text:hsl(360, 100%, 45%)}[data-sonner-toaster][data-sonner-theme=light] [data-sonner-toast][data-invert=true]{--normal-bg:#000;--normal-border:hsl(0, 0%, 20%);--normal-text:var(--gray1)}[data-sonner-toaster][data-sonner-theme=dark] [data-sonner-toast][data-invert=true]{--normal-bg:#fff;--normal-border:var(--gray3);--normal-text:var(--gray12)}[data-sonner-toaster][data-sonner-theme=dark]{--normal-bg:#000;--normal-bg-hover:hsl(0, 0%, 12%);--normal-border:hsl(0, 0%, 20%);--normal-border-hover:hsl(0, 0%, 25%);--normal-text:var(--gray1);--success-bg:hsl(150, 100%, 6%);--success-border:hsl(147, 100%, 12%);--success-text:hsl(150, 86%, 65%);--info-bg:hsl(215, 100%, 6%);--info-border:hsl(223, 43%, 17%);--info-text:hsl(216, 87%, 65%);--warning-bg:hsl(64, 100%, 6%);--warning-border:hsl(60, 100%, 9%);--warning-text:hsl(46, 87%, 65%);--error-bg:hsl(358, 76%, 10%);--error-border:hsl(357, 89%, 16%);--error-text:hsl(358, 100%, 81%)}[data-sonner-toaster][data-sonner-theme=dark] [data-sonner-toast] [data-close-button]{background:var(--normal-bg);border-color:var(--normal-border);color:var(--normal-text)}[data-sonner-toaster][data-sonner-theme=dark] [data-sonner-toast] [data-close-button]:hover{background:var(--normal-bg-hover);border-color:var(--normal-border-hover)}[data-rich-colors=true][data-sonner-toast][data-type=success]{background:var(--success-bg);border-color:var(--success-border);color:var(--success-text)}[data-rich-colors=true][data-sonner-toast][data-type=success] [data-close-button]{background:var(--success-bg);border-color:var(--success-border);color:var(--success-text)}[data-rich-colors=true][data-sonner-toast][data-type=info]{background:var(--info-bg);border-color:var(--info-border);color:var(--info-text)}[data-rich-colors=true][data-sonner-toast][data-type=info] [data-close-button]{background:var(--info-bg);border-color:var(--info-border);color:var(--info-text)}[data-rich-colors=true][data-sonner-toast][data-type=warning]{background:var(--warning-bg);border-color:var(--warning-border);color:var(--warning-text)}[data-rich-colors=true][data-sonner-toast][data-type=warning] [data-close-button]{background:var(--warning-bg);border-color:var(--warning-border);color:var(--warning-text)}[data-rich-colors=true][data-sonner-toast][data-type=error]{background:var(--error-bg);border-color:var(--error-border);color:var(--error-text)}[data-rich-colors=true][data-sonner-toast][data-type=error] [data-close-button]{background:var(--error-bg);border-color:var(--error-border);color:var(--error-text)}.sonner-loading-wrapper{--size:16px;height:var(--size);width:var(--size);position:absolute;inset:0;z-index:10}.sonner-loading-wrapper[data-visible=false]{transform-origin:center;animation:sonner-fade-out .2s ease forwards}.sonner-spinner{position:relative;top:50%;left:50%;height:var(--size);width:var(--size)}.sonner-loading-bar{animation:sonner-spin 1.2s linear infinite;background:var(--gray11);border-radius:6px;height:8%;left:-10%;position:absolute;top:-3.9%;width:24%}.sonner-loading-bar:first-child{animation-delay:-1.2s;transform:rotate(.0001deg) translate(146%)}.sonner-loading-bar:nth-child(2){animation-delay:-1.1s;transform:rotate(30deg) translate(146%)}.sonner-loading-bar:nth-child(3){animation-delay:-1s;transform:rotate(60deg) translate(146%)}.sonner-loading-bar:nth-child(4){animation-delay:-.9s;transform:rotate(90deg) translate(146%)}.sonner-loading-bar:nth-child(5){animation-delay:-.8s;transform:rotate(120deg) translate(146%)}.sonner-loading-bar:nth-child(6){animation-delay:-.7s;transform:rotate(150deg) translate(146%)}.sonner-loading-bar:nth-child(7){animation-delay:-.6s;transform:rotate(180deg) translate(146%)}.sonner-loading-bar:nth-child(8){animation-delay:-.5s;transform:rotate(210deg) translate(146%)}.sonner-loading-bar:nth-child(9){animation-delay:-.4s;transform:rotate(240deg) translate(146%)}.sonner-loading-bar:nth-child(10){animation-delay:-.3s;transform:rotate(270deg) translate(146%)}.sonner-loading-bar:nth-child(11){animation-delay:-.2s;transform:rotate(300deg) translate(146%)}.sonner-loading-bar:nth-child(12){animation-delay:-.1s;transform:rotate(330deg) translate(146%)}@keyframes sonner-fade-in{0%{opacity:0;transform:scale(.8)}100%{opacity:1;transform:scale(1)}}@keyframes sonner-fade-out{0%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(.8)}}@keyframes sonner-spin{0%{opacity:1}100%{opacity:.15}}@media (prefers-reduced-motion){.sonner-loading-bar,[data-sonner-toast],[data-sonner-toast]>*{transition:none!important;animation:none!important}}.sonner-loader{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);transform-origin:center;transition:opacity .2s,transform .2s}.sonner-loader[data-visible=false]{opacity:0;transform:scale(.8) translate(-50%,-50%)}");
+function isAction(action) {
+  return action.label !== void 0;
+}
+const VISIBLE_TOASTS_AMOUNT = 3;
+const VIEWPORT_OFFSET = "24px";
+const MOBILE_VIEWPORT_OFFSET = "16px";
+const TOAST_LIFETIME = 4e3;
+const TOAST_WIDTH = 356;
+const GAP = 14;
+const SWIPE_THRESHOLD = 45;
+const TIME_BEFORE_UNMOUNT = 200;
+function cn$1(...classes) {
+  return classes.filter(Boolean).join(" ");
+}
+function getDefaultSwipeDirections(position) {
+  const [y, x2] = position.split("-");
+  const directions2 = [];
+  if (y) {
+    directions2.push(y);
+  }
+  if (x2) {
+    directions2.push(x2);
+  }
+  return directions2;
+}
+const Toast = (props) => {
+  var _toast_classNames, _toast_classNames1, _toast_classNames2, _toast_classNames3, _toast_classNames4, _toast_classNames5, _toast_classNames6, _toast_classNames7, _toast_classNames8;
+  const { invert: ToasterInvert, toast: toast2, unstyled, interacting, setHeights, visibleToasts, heights, index: index2, toasts, expanded, removeToast, defaultRichColors, closeButton: closeButtonFromToaster, style: style2, cancelButtonStyle, actionButtonStyle, className = "", descriptionClassName = "", duration: durationFromToaster, position, gap, expandByDefault, classNames, icons, closeButtonAriaLabel = "Close toast" } = props;
+  const [swipeDirection, setSwipeDirection] = React$2.useState(null);
+  const [swipeOutDirection, setSwipeOutDirection] = React$2.useState(null);
+  const [mounted, setMounted] = React$2.useState(false);
+  const [removed, setRemoved] = React$2.useState(false);
+  const [swiping, setSwiping] = React$2.useState(false);
+  const [swipeOut, setSwipeOut] = React$2.useState(false);
+  const [isSwiped, setIsSwiped] = React$2.useState(false);
+  const [offsetBeforeRemove, setOffsetBeforeRemove] = React$2.useState(0);
+  const [initialHeight, setInitialHeight] = React$2.useState(0);
+  const remainingTime = React$2.useRef(toast2.duration || durationFromToaster || TOAST_LIFETIME);
+  const dragStartTime = React$2.useRef(null);
+  const toastRef = React$2.useRef(null);
+  const isFront = index2 === 0;
+  const isVisible = index2 + 1 <= visibleToasts;
+  const toastType = toast2.type;
+  const dismissible = toast2.dismissible !== false;
+  const toastClassname = toast2.className || "";
+  const toastDescriptionClassname = toast2.descriptionClassName || "";
+  const heightIndex = React$2.useMemo(() => heights.findIndex((height) => height.toastId === toast2.id) || 0, [
+    heights,
+    toast2.id
+  ]);
+  const closeButton = React$2.useMemo(() => {
+    var _toast_closeButton;
+    return (_toast_closeButton = toast2.closeButton) != null ? _toast_closeButton : closeButtonFromToaster;
+  }, [
+    toast2.closeButton,
+    closeButtonFromToaster
+  ]);
+  const duration = React$2.useMemo(() => toast2.duration || durationFromToaster || TOAST_LIFETIME, [
+    toast2.duration,
+    durationFromToaster
+  ]);
+  const closeTimerStartTimeRef = React$2.useRef(0);
+  const offset2 = React$2.useRef(0);
+  const lastCloseTimerStartTimeRef = React$2.useRef(0);
+  const pointerStartRef = React$2.useRef(null);
+  const [y, x2] = position.split("-");
+  const toastsHeightBefore = React$2.useMemo(() => {
+    return heights.reduce((prev, curr, reducerIndex) => {
+      if (reducerIndex >= heightIndex) {
+        return prev;
+      }
+      return prev + curr.height;
+    }, 0);
+  }, [
+    heights,
+    heightIndex
+  ]);
+  const isDocumentHidden = useIsDocumentHidden();
+  const invert = toast2.invert || ToasterInvert;
+  const disabled = toastType === "loading";
+  offset2.current = React$2.useMemo(() => heightIndex * gap + toastsHeightBefore, [
+    heightIndex,
+    toastsHeightBefore
+  ]);
+  React$2.useEffect(() => {
+    remainingTime.current = duration;
+  }, [
+    duration
+  ]);
+  React$2.useEffect(() => {
+    setMounted(true);
+  }, []);
+  React$2.useEffect(() => {
+    const toastNode = toastRef.current;
+    if (toastNode) {
+      const height = toastNode.getBoundingClientRect().height;
+      setInitialHeight(height);
+      setHeights((h) => [
+        {
+          toastId: toast2.id,
+          height,
+          position: toast2.position
+        },
+        ...h
+      ]);
+      return () => setHeights((h) => h.filter((height2) => height2.toastId !== toast2.id));
+    }
+  }, [
+    setHeights,
+    toast2.id
+  ]);
+  React$2.useLayoutEffect(() => {
+    if (!mounted) return;
+    const toastNode = toastRef.current;
+    const originalHeight = toastNode.style.height;
+    toastNode.style.height = "auto";
+    const newHeight = toastNode.getBoundingClientRect().height;
+    toastNode.style.height = originalHeight;
+    setInitialHeight(newHeight);
+    setHeights((heights2) => {
+      const alreadyExists = heights2.find((height) => height.toastId === toast2.id);
+      if (!alreadyExists) {
+        return [
+          {
+            toastId: toast2.id,
+            height: newHeight,
+            position: toast2.position
+          },
+          ...heights2
+        ];
+      } else {
+        return heights2.map((height) => height.toastId === toast2.id ? {
+          ...height,
+          height: newHeight
+        } : height);
+      }
+    });
+  }, [
+    mounted,
+    toast2.title,
+    toast2.description,
+    setHeights,
+    toast2.id
+  ]);
+  const deleteToast = React$2.useCallback(() => {
+    setRemoved(true);
+    setOffsetBeforeRemove(offset2.current);
+    setHeights((h) => h.filter((height) => height.toastId !== toast2.id));
+    setTimeout(() => {
+      removeToast(toast2);
+    }, TIME_BEFORE_UNMOUNT);
+  }, [
+    toast2,
+    removeToast,
+    setHeights,
+    offset2
+  ]);
+  React$2.useEffect(() => {
+    if (toast2.promise && toastType === "loading" || toast2.duration === Infinity || toast2.type === "loading") return;
+    let timeoutId;
+    const pauseTimer = () => {
+      if (lastCloseTimerStartTimeRef.current < closeTimerStartTimeRef.current) {
+        const elapsedTime = (/* @__PURE__ */ new Date()).getTime() - closeTimerStartTimeRef.current;
+        remainingTime.current = remainingTime.current - elapsedTime;
+      }
+      lastCloseTimerStartTimeRef.current = (/* @__PURE__ */ new Date()).getTime();
+    };
+    const startTimer = () => {
+      if (remainingTime.current === Infinity) return;
+      closeTimerStartTimeRef.current = (/* @__PURE__ */ new Date()).getTime();
+      timeoutId = setTimeout(() => {
+        toast2.onAutoClose == null ? void 0 : toast2.onAutoClose.call(toast2, toast2);
+        deleteToast();
+      }, remainingTime.current);
+    };
+    if (expanded || interacting || isDocumentHidden) {
+      pauseTimer();
+    } else {
+      startTimer();
+    }
+    return () => clearTimeout(timeoutId);
+  }, [
+    expanded,
+    interacting,
+    toast2,
+    toastType,
+    isDocumentHidden,
+    deleteToast
+  ]);
+  React$2.useEffect(() => {
+    if (toast2.delete) {
+      deleteToast();
+    }
+  }, [
+    deleteToast,
+    toast2.delete
+  ]);
+  function getLoadingIcon() {
+    var _toast_classNames9;
+    if (icons == null ? void 0 : icons.loading) {
+      var _toast_classNames12;
+      return /* @__PURE__ */ React$2.createElement("div", {
+        className: cn$1(classNames == null ? void 0 : classNames.loader, toast2 == null ? void 0 : (_toast_classNames12 = toast2.classNames) == null ? void 0 : _toast_classNames12.loader, "sonner-loader"),
+        "data-visible": toastType === "loading"
+      }, icons.loading);
+    }
+    return /* @__PURE__ */ React$2.createElement(Loader, {
+      className: cn$1(classNames == null ? void 0 : classNames.loader, toast2 == null ? void 0 : (_toast_classNames9 = toast2.classNames) == null ? void 0 : _toast_classNames9.loader),
+      visible: toastType === "loading"
+    });
+  }
+  const icon = toast2.icon || (icons == null ? void 0 : icons[toastType]) || getAsset(toastType);
+  var _toast_richColors, _icons_close;
+  return /* @__PURE__ */ React$2.createElement("li", {
+    tabIndex: 0,
+    ref: toastRef,
+    className: cn$1(className, toastClassname, classNames == null ? void 0 : classNames.toast, toast2 == null ? void 0 : (_toast_classNames = toast2.classNames) == null ? void 0 : _toast_classNames.toast, classNames == null ? void 0 : classNames.default, classNames == null ? void 0 : classNames[toastType], toast2 == null ? void 0 : (_toast_classNames1 = toast2.classNames) == null ? void 0 : _toast_classNames1[toastType]),
+    "data-sonner-toast": "",
+    "data-rich-colors": (_toast_richColors = toast2.richColors) != null ? _toast_richColors : defaultRichColors,
+    "data-styled": !Boolean(toast2.jsx || toast2.unstyled || unstyled),
+    "data-mounted": mounted,
+    "data-promise": Boolean(toast2.promise),
+    "data-swiped": isSwiped,
+    "data-removed": removed,
+    "data-visible": isVisible,
+    "data-y-position": y,
+    "data-x-position": x2,
+    "data-index": index2,
+    "data-front": isFront,
+    "data-swiping": swiping,
+    "data-dismissible": dismissible,
+    "data-type": toastType,
+    "data-invert": invert,
+    "data-swipe-out": swipeOut,
+    "data-swipe-direction": swipeOutDirection,
+    "data-expanded": Boolean(expanded || expandByDefault && mounted),
+    style: {
+      "--index": index2,
+      "--toasts-before": index2,
+      "--z-index": toasts.length - index2,
+      "--offset": `${removed ? offsetBeforeRemove : offset2.current}px`,
+      "--initial-height": expandByDefault ? "auto" : `${initialHeight}px`,
+      ...style2,
+      ...toast2.style
+    },
+    onDragEnd: () => {
+      setSwiping(false);
+      setSwipeDirection(null);
+      pointerStartRef.current = null;
+    },
+    onPointerDown: (event) => {
+      if (disabled || !dismissible) return;
+      dragStartTime.current = /* @__PURE__ */ new Date();
+      setOffsetBeforeRemove(offset2.current);
+      event.target.setPointerCapture(event.pointerId);
+      if (event.target.tagName === "BUTTON") return;
+      setSwiping(true);
+      pointerStartRef.current = {
+        x: event.clientX,
+        y: event.clientY
+      };
+    },
+    onPointerUp: () => {
+      var _toastRef_current, _toastRef_current1, _dragStartTime_current;
+      if (swipeOut || !dismissible) return;
+      pointerStartRef.current = null;
+      const swipeAmountX = Number(((_toastRef_current = toastRef.current) == null ? void 0 : _toastRef_current.style.getPropertyValue("--swipe-amount-x").replace("px", "")) || 0);
+      const swipeAmountY = Number(((_toastRef_current1 = toastRef.current) == null ? void 0 : _toastRef_current1.style.getPropertyValue("--swipe-amount-y").replace("px", "")) || 0);
+      const timeTaken = (/* @__PURE__ */ new Date()).getTime() - ((_dragStartTime_current = dragStartTime.current) == null ? void 0 : _dragStartTime_current.getTime());
+      const swipeAmount = swipeDirection === "x" ? swipeAmountX : swipeAmountY;
+      const velocity = Math.abs(swipeAmount) / timeTaken;
+      if (Math.abs(swipeAmount) >= SWIPE_THRESHOLD || velocity > 0.11) {
+        setOffsetBeforeRemove(offset2.current);
+        toast2.onDismiss == null ? void 0 : toast2.onDismiss.call(toast2, toast2);
+        if (swipeDirection === "x") {
+          setSwipeOutDirection(swipeAmountX > 0 ? "right" : "left");
+        } else {
+          setSwipeOutDirection(swipeAmountY > 0 ? "down" : "up");
+        }
+        deleteToast();
+        setSwipeOut(true);
+        return;
+      } else {
+        var _toastRef_current2, _toastRef_current3;
+        (_toastRef_current2 = toastRef.current) == null ? void 0 : _toastRef_current2.style.setProperty("--swipe-amount-x", `0px`);
+        (_toastRef_current3 = toastRef.current) == null ? void 0 : _toastRef_current3.style.setProperty("--swipe-amount-y", `0px`);
+      }
+      setIsSwiped(false);
+      setSwiping(false);
+      setSwipeDirection(null);
+    },
+    onPointerMove: (event) => {
+      var _window_getSelection, _toastRef_current, _toastRef_current1;
+      if (!pointerStartRef.current || !dismissible) return;
+      const isHighlighted = ((_window_getSelection = window.getSelection()) == null ? void 0 : _window_getSelection.toString().length) > 0;
+      if (isHighlighted) return;
+      const yDelta = event.clientY - pointerStartRef.current.y;
+      const xDelta = event.clientX - pointerStartRef.current.x;
+      var _props_swipeDirections;
+      const swipeDirections = (_props_swipeDirections = props.swipeDirections) != null ? _props_swipeDirections : getDefaultSwipeDirections(position);
+      if (!swipeDirection && (Math.abs(xDelta) > 1 || Math.abs(yDelta) > 1)) {
+        setSwipeDirection(Math.abs(xDelta) > Math.abs(yDelta) ? "x" : "y");
+      }
+      let swipeAmount = {
+        x: 0,
+        y: 0
+      };
+      const getDampening = (delta) => {
+        const factor = Math.abs(delta) / 20;
+        return 1 / (1.5 + factor);
+      };
+      if (swipeDirection === "y") {
+        if (swipeDirections.includes("top") || swipeDirections.includes("bottom")) {
+          if (swipeDirections.includes("top") && yDelta < 0 || swipeDirections.includes("bottom") && yDelta > 0) {
+            swipeAmount.y = yDelta;
+          } else {
+            const dampenedDelta = yDelta * getDampening(yDelta);
+            swipeAmount.y = Math.abs(dampenedDelta) < Math.abs(yDelta) ? dampenedDelta : yDelta;
+          }
+        }
+      } else if (swipeDirection === "x") {
+        if (swipeDirections.includes("left") || swipeDirections.includes("right")) {
+          if (swipeDirections.includes("left") && xDelta < 0 || swipeDirections.includes("right") && xDelta > 0) {
+            swipeAmount.x = xDelta;
+          } else {
+            const dampenedDelta = xDelta * getDampening(xDelta);
+            swipeAmount.x = Math.abs(dampenedDelta) < Math.abs(xDelta) ? dampenedDelta : xDelta;
+          }
+        }
+      }
+      if (Math.abs(swipeAmount.x) > 0 || Math.abs(swipeAmount.y) > 0) {
+        setIsSwiped(true);
+      }
+      (_toastRef_current = toastRef.current) == null ? void 0 : _toastRef_current.style.setProperty("--swipe-amount-x", `${swipeAmount.x}px`);
+      (_toastRef_current1 = toastRef.current) == null ? void 0 : _toastRef_current1.style.setProperty("--swipe-amount-y", `${swipeAmount.y}px`);
+    }
+  }, closeButton && !toast2.jsx && toastType !== "loading" ? /* @__PURE__ */ React$2.createElement("button", {
+    "aria-label": closeButtonAriaLabel,
+    "data-disabled": disabled,
+    "data-close-button": true,
+    onClick: disabled || !dismissible ? () => {
+    } : () => {
+      deleteToast();
+      toast2.onDismiss == null ? void 0 : toast2.onDismiss.call(toast2, toast2);
+    },
+    className: cn$1(classNames == null ? void 0 : classNames.closeButton, toast2 == null ? void 0 : (_toast_classNames2 = toast2.classNames) == null ? void 0 : _toast_classNames2.closeButton)
+  }, (_icons_close = icons == null ? void 0 : icons.close) != null ? _icons_close : CloseIcon) : null, (toastType || toast2.icon || toast2.promise) && toast2.icon !== null && ((icons == null ? void 0 : icons[toastType]) !== null || toast2.icon) ? /* @__PURE__ */ React$2.createElement("div", {
+    "data-icon": "",
+    className: cn$1(classNames == null ? void 0 : classNames.icon, toast2 == null ? void 0 : (_toast_classNames3 = toast2.classNames) == null ? void 0 : _toast_classNames3.icon)
+  }, toast2.promise || toast2.type === "loading" && !toast2.icon ? toast2.icon || getLoadingIcon() : null, toast2.type !== "loading" ? icon : null) : null, /* @__PURE__ */ React$2.createElement("div", {
+    "data-content": "",
+    className: cn$1(classNames == null ? void 0 : classNames.content, toast2 == null ? void 0 : (_toast_classNames4 = toast2.classNames) == null ? void 0 : _toast_classNames4.content)
+  }, /* @__PURE__ */ React$2.createElement("div", {
+    "data-title": "",
+    className: cn$1(classNames == null ? void 0 : classNames.title, toast2 == null ? void 0 : (_toast_classNames5 = toast2.classNames) == null ? void 0 : _toast_classNames5.title)
+  }, toast2.jsx ? toast2.jsx : typeof toast2.title === "function" ? toast2.title() : toast2.title), toast2.description ? /* @__PURE__ */ React$2.createElement("div", {
+    "data-description": "",
+    className: cn$1(descriptionClassName, toastDescriptionClassname, classNames == null ? void 0 : classNames.description, toast2 == null ? void 0 : (_toast_classNames6 = toast2.classNames) == null ? void 0 : _toast_classNames6.description)
+  }, typeof toast2.description === "function" ? toast2.description() : toast2.description) : null), /* @__PURE__ */ React$2.isValidElement(toast2.cancel) ? toast2.cancel : toast2.cancel && isAction(toast2.cancel) ? /* @__PURE__ */ React$2.createElement("button", {
+    "data-button": true,
+    "data-cancel": true,
+    style: toast2.cancelButtonStyle || cancelButtonStyle,
+    onClick: (event) => {
+      if (!isAction(toast2.cancel)) return;
+      if (!dismissible) return;
+      toast2.cancel.onClick == null ? void 0 : toast2.cancel.onClick.call(toast2.cancel, event);
+      deleteToast();
+    },
+    className: cn$1(classNames == null ? void 0 : classNames.cancelButton, toast2 == null ? void 0 : (_toast_classNames7 = toast2.classNames) == null ? void 0 : _toast_classNames7.cancelButton)
+  }, toast2.cancel.label) : null, /* @__PURE__ */ React$2.isValidElement(toast2.action) ? toast2.action : toast2.action && isAction(toast2.action) ? /* @__PURE__ */ React$2.createElement("button", {
+    "data-button": true,
+    "data-action": true,
+    style: toast2.actionButtonStyle || actionButtonStyle,
+    onClick: (event) => {
+      if (!isAction(toast2.action)) return;
+      toast2.action.onClick == null ? void 0 : toast2.action.onClick.call(toast2.action, event);
+      if (event.defaultPrevented) return;
+      deleteToast();
+    },
+    className: cn$1(classNames == null ? void 0 : classNames.actionButton, toast2 == null ? void 0 : (_toast_classNames8 = toast2.classNames) == null ? void 0 : _toast_classNames8.actionButton)
+  }, toast2.action.label) : null);
+};
+function getDocumentDirection() {
+  if (typeof window === "undefined") return "ltr";
+  if (typeof document === "undefined") return "ltr";
+  const dirAttribute = document.documentElement.getAttribute("dir");
+  if (dirAttribute === "auto" || !dirAttribute) {
+    return window.getComputedStyle(document.documentElement).direction;
+  }
+  return dirAttribute;
+}
+function assignOffset(defaultOffset2, mobileOffset) {
+  const styles = {};
+  [
+    defaultOffset2,
+    mobileOffset
+  ].forEach((offset2, index2) => {
+    const isMobile = index2 === 1;
+    const prefix2 = isMobile ? "--mobile-offset" : "--offset";
+    const defaultValue2 = isMobile ? MOBILE_VIEWPORT_OFFSET : VIEWPORT_OFFSET;
+    function assignAll(offset3) {
+      [
+        "top",
+        "right",
+        "bottom",
+        "left"
+      ].forEach((key) => {
+        styles[`${prefix2}-${key}`] = typeof offset3 === "number" ? `${offset3}px` : offset3;
+      });
+    }
+    if (typeof offset2 === "number" || typeof offset2 === "string") {
+      assignAll(offset2);
+    } else if (typeof offset2 === "object") {
+      [
+        "top",
+        "right",
+        "bottom",
+        "left"
+      ].forEach((key) => {
+        if (offset2[key] === void 0) {
+          styles[`${prefix2}-${key}`] = defaultValue2;
+        } else {
+          styles[`${prefix2}-${key}`] = typeof offset2[key] === "number" ? `${offset2[key]}px` : offset2[key];
+        }
+      });
+    } else {
+      assignAll(defaultValue2);
+    }
+  });
+  return styles;
+}
+const Toaster$1 = /* @__PURE__ */ React$2.forwardRef(function Toaster(props, ref) {
+  const { invert, position = "bottom-right", hotkey = [
+    "altKey",
+    "KeyT"
+  ], expand, closeButton, className, offset: offset2, mobileOffset, theme = "light", richColors, duration, style: style2, visibleToasts = VISIBLE_TOASTS_AMOUNT, toastOptions, dir = getDocumentDirection(), gap = GAP, icons, containerAriaLabel = "Notifications" } = props;
+  const [toasts, setToasts] = React$2.useState([]);
+  const possiblePositions = React$2.useMemo(() => {
+    return Array.from(new Set([
+      position
+    ].concat(toasts.filter((toast2) => toast2.position).map((toast2) => toast2.position))));
+  }, [
+    toasts,
+    position
+  ]);
+  const [heights, setHeights] = React$2.useState([]);
+  const [expanded, setExpanded] = React$2.useState(false);
+  const [interacting, setInteracting] = React$2.useState(false);
+  const [actualTheme, setActualTheme] = React$2.useState(theme !== "system" ? theme : typeof window !== "undefined" ? window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light" : "light");
+  const listRef = React$2.useRef(null);
+  const hotkeyLabel = hotkey.join("+").replace(/Key/g, "").replace(/Digit/g, "");
+  const lastFocusedElementRef = React$2.useRef(null);
+  const isFocusWithinRef = React$2.useRef(false);
+  const removeToast = React$2.useCallback((toastToRemove) => {
+    setToasts((toasts2) => {
+      var _toasts_find;
+      if (!((_toasts_find = toasts2.find((toast2) => toast2.id === toastToRemove.id)) == null ? void 0 : _toasts_find.delete)) {
+        ToastState.dismiss(toastToRemove.id);
+      }
+      return toasts2.filter(({ id: id2 }) => id2 !== toastToRemove.id);
+    });
+  }, []);
+  React$2.useEffect(() => {
+    return ToastState.subscribe((toast2) => {
+      if (toast2.dismiss) {
+        requestAnimationFrame(() => {
+          setToasts((toasts2) => toasts2.map((t) => t.id === toast2.id ? {
+            ...t,
+            delete: true
+          } : t));
         });
         return;
       }
-      set({
-        groups: [],
-        tasks: [],
-        settings: DEFAULT_SETTINGS,
-        activeGroupId: null,
-        isHydrated: true
+      setTimeout(() => {
+        ReactDOM$1.flushSync(() => {
+          setToasts((toasts2) => {
+            const indexOfExistingToast = toasts2.findIndex((t) => t.id === toast2.id);
+            if (indexOfExistingToast !== -1) {
+              return [
+                ...toasts2.slice(0, indexOfExistingToast),
+                {
+                  ...toasts2[indexOfExistingToast],
+                  ...toast2
+                },
+                ...toasts2.slice(indexOfExistingToast + 1)
+              ];
+            }
+            return [
+              toast2,
+              ...toasts2
+            ];
+          });
+        });
+      });
+    });
+  }, [
+    toasts
+  ]);
+  React$2.useEffect(() => {
+    if (theme !== "system") {
+      setActualTheme(theme);
+      return;
+    }
+    if (theme === "system") {
+      if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        setActualTheme("dark");
+      } else {
+        setActualTheme("light");
+      }
+    }
+    if (typeof window === "undefined") return;
+    const darkMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    try {
+      darkMediaQuery.addEventListener("change", ({ matches }) => {
+        if (matches) {
+          setActualTheme("dark");
+        } else {
+          setActualTheme("light");
+        }
       });
     } catch (error) {
-      console.error("Failed to hydrate app state:", error);
-      set({
-        groups: [],
-        tasks: [],
-        settings: DEFAULT_SETTINGS,
-        activeGroupId: null,
-        isHydrated: true
+      darkMediaQuery.addListener(({ matches }) => {
+        try {
+          if (matches) {
+            setActualTheme("dark");
+          } else {
+            setActualTheme("light");
+          }
+        } catch (e) {
+          console.error(e);
+        }
       });
     }
-  },
-  setTheme: (theme) => {
-    set({ theme });
-    void invokePersist(() => window.api.saveSetting("theme", theme));
-  },
-  toggleSidebar: () => {
-    const next = !get().sidebarCollapsed;
-    set({ sidebarCollapsed: next });
-    void invokePersist(() => window.api.saveSetting("sidebarCollapsed", next));
-  },
-  setActiveGroup: async (id2) => {
-    set({ activeGroupId: id2, selectedTaskId: null });
-    await invokePersist(() => window.api.saveSetting("lastActiveGroupId", id2 ?? ""));
-  },
-  selectTask: (id2) => set({ selectedTaskId: id2 }),
-  setSearch: (q) => set({ searchQuery: q }),
-  setStatusFilter: (statusFilter) => set({ statusFilter }),
-  toggleTagFilter: (tag) => set((s) => ({
-    tagFilter: s.tagFilter.includes(tag) ? s.tagFilter.filter((t) => t !== tag) : [...s.tagFilter, tag]
-  })),
-  clearFilters: () => set({ statusFilter: "all", tagFilter: [], searchQuery: "" }),
-  setHelpOpen: (helpOpen) => set({ helpOpen }),
-  setSettingsOpen: (settingsOpen) => set({ settingsOpen }),
-  saveSettings: async (settings) => {
-    set({ settings });
-    await invokePersist(() => window.api.saveSetting("settings", settings));
-  },
-  resetSettings: async () => {
-    set({ settings: DEFAULT_SETTINGS });
-    await invokePersist(() => window.api.saveSetting("settings", DEFAULT_SETTINGS));
-  },
-  openGroupDialog: (editingId = null) => set({ groupDialog: { open: true, editingId } }),
-  closeGroupDialog: () => set({ groupDialog: { open: false, editingId: null } }),
-  createGroup: async ({ name, emoji, accent }) => {
-    const group = {
-      id: uid(),
-      name,
-      emoji,
-      accent,
-      position: get().groups.length,
-      createdAt: Date.now()
-    };
-    set((s) => ({ groups: [...s.groups, group], activeGroupId: group.id }));
-    await invokePersist(() => window.api.createGroup(group));
-    await invokePersist(() => window.api.saveSetting("lastActiveGroupId", group.id));
-    return group;
-  },
-  updateGroup: async (id2, patch) => {
-    set((s) => ({ groups: s.groups.map((g) => g.id === id2 ? { ...g, ...patch } : g) }));
-    await invokePersist(() => window.api.updateGroup(id2, patch));
-  },
-  deleteGroup: async (id2) => {
-    set((s) => {
-      const groups = s.groups.filter((g) => g.id !== id2);
-      const tasks = s.tasks.filter((t) => t.groupId !== id2);
-      const activeGroupId = s.activeGroupId === id2 ? groups[0]?.id ?? null : s.activeGroupId;
-      return { groups, tasks, activeGroupId };
-    });
-    await invokePersist(() => window.api.deleteGroup(id2));
-    const next = get().activeGroupId;
-    await invokePersist(() => window.api.saveSetting("lastActiveGroupId", next ?? ""));
-  },
-  reorderGroups: async (orderedIds) => {
-    set((s) => ({
-      groups: orderedIds.map((id2, i) => {
-        const g = s.groups.find((x2) => x2.id === id2);
-        return g ? { ...g, position: i } : null;
-      }).filter((g) => g !== null)
-    }));
-    await invokePersist(() => window.api.reorderGroups(orderedIds));
-  },
-  createTask: async ({ groupId, title }) => {
-    const existing = get().tasks.filter((t) => t.groupId === groupId);
-    const pref = get().settings.defaultDueDate;
-    let due = null;
-    if (pref !== "none") {
-      const d = /* @__PURE__ */ new Date();
-      d.setHours(12, 0, 0, 0);
-      if (pref === "tomorrow") d.setDate(d.getDate() + 1);
-      if (pref === "next-week") d.setDate(d.getDate() + 7);
-      due = d.toISOString();
+  }, [
+    theme
+  ]);
+  React$2.useEffect(() => {
+    if (toasts.length <= 1) {
+      setExpanded(false);
     }
-    const task = {
-      id: uid(),
-      groupId,
-      title,
-      notes: "",
-      status: "todo",
-      dueDate: due,
-      tags: [],
-      subtasks: [],
-      position: existing.length,
-      createdAt: Date.now(),
-      completedAt: null
+  }, [
+    toasts
+  ]);
+  React$2.useEffect(() => {
+    const handleKeyDown = (event) => {
+      var _listRef_current;
+      const isHotkeyPressed = hotkey.every((key) => event[key] || event.code === key);
+      if (isHotkeyPressed) {
+        var _listRef_current1;
+        setExpanded(true);
+        (_listRef_current1 = listRef.current) == null ? void 0 : _listRef_current1.focus();
+      }
+      if (event.code === "Escape" && (document.activeElement === listRef.current || ((_listRef_current = listRef.current) == null ? void 0 : _listRef_current.contains(document.activeElement)))) {
+        setExpanded(false);
+      }
     };
-    set((s) => ({ tasks: [...s.tasks, task] }));
-    await invokePersist(() => window.api.createTask(task));
-    return task;
-  },
-  updateTask: async (id2, patch) => {
-    set((s) => ({ tasks: s.tasks.map((t) => t.id === id2 ? { ...t, ...patch } : t) }));
-    await invokePersist(() => window.api.updateTask(id2, patch));
-  },
-  toggleTaskDone: async (id2) => {
-    const task = get().tasks.find((t) => t.id === id2);
-    if (!task) return;
-    const isDone = task.status === "done";
-    const patch = isDone ? { status: "todo", completedAt: null } : { status: "done", completedAt: Date.now() };
-    set((s) => ({
-      tasks: s.tasks.map(
-        (t) => t.id === id2 ? { ...t, ...patch } : t
-      )
-    }));
-    await invokePersist(() => window.api.updateTask(id2, patch));
-  },
-  deleteTask: async (id2) => {
-    set((s) => ({
-      tasks: s.tasks.filter((t) => t.id !== id2),
-      selectedTaskId: s.selectedTaskId === id2 ? null : s.selectedTaskId
-    }));
-    await invokePersist(() => window.api.deleteTask(id2));
-  },
-  reorderTasks: async (groupId, orderedIds) => {
-    set((s) => ({
-      tasks: s.tasks.map((t) => {
-        if (t.groupId !== groupId) return t;
-        const idx = orderedIds.indexOf(t.id);
-        return idx === -1 ? t : { ...t, position: idx };
-      })
-    }));
-    await invokePersist(() => window.api.reorderTasks(groupId, orderedIds));
-  },
-  addSubtask: async (taskId, title) => {
-    const subtask = { id: uid(), title, done: false, position: 0 };
-    set((s) => ({
-      tasks: s.tasks.map(
-        (t) => t.id === taskId ? { ...t, subtasks: [...t.subtasks, subtask] } : t
-      )
-    }));
-    await invokePersist(() => window.api.addSubtask(taskId, subtask));
-  },
-  toggleSubtask: async (taskId, subtaskId) => {
-    const task = get().tasks.find((t) => t.id === taskId);
-    const subtask = task?.subtasks.find((st) => st.id === subtaskId);
-    if (!subtask) return;
-    set((s) => ({
-      tasks: s.tasks.map(
-        (t) => t.id === taskId ? {
-          ...t,
-          subtasks: t.subtasks.map(
-            (st) => st.id === subtaskId ? { ...st, done: !st.done } : st
-          )
-        } : t
-      )
-    }));
-    await invokePersist(() => window.api.updateSubtask(subtaskId, { done: !subtask.done }));
-  },
-  updateSubtask: async (taskId, subtaskId, title) => {
-    set((s) => ({
-      tasks: s.tasks.map(
-        (t) => t.id === taskId ? {
-          ...t,
-          subtasks: t.subtasks.map(
-            (st) => st.id === subtaskId ? { ...st, title } : st
-          )
-        } : t
-      )
-    }));
-    await invokePersist(() => window.api.updateSubtask(subtaskId, { title }));
-  },
-  deleteSubtask: async (taskId, subtaskId) => {
-    set((s) => ({
-      tasks: s.tasks.map(
-        (t) => t.id === taskId ? { ...t, subtasks: t.subtasks.filter((st) => st.id !== subtaskId) } : t
-      )
-    }));
-    await invokePersist(() => window.api.deleteSubtask(subtaskId));
-  },
-  addTagToTask: async (taskId, tag) => {
-    const clean = tag.trim().toLowerCase();
-    if (!clean) return;
-    const task = get().tasks.find((t) => t.id === taskId);
-    if (task && !task.tags.includes(clean)) {
-      set((s) => ({
-        tasks: s.tasks.map(
-          (t) => t.id === taskId ? { ...t, tags: [...t.tags, clean] } : t
-        )
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [
+    hotkey
+  ]);
+  React$2.useEffect(() => {
+    if (listRef.current) {
+      return () => {
+        if (lastFocusedElementRef.current) {
+          lastFocusedElementRef.current.focus({
+            preventScroll: true
+          });
+          lastFocusedElementRef.current = null;
+          isFocusWithinRef.current = false;
+        }
+      };
+    }
+  }, [
+    listRef.current
+  ]);
+  return (
+    // Remove item from normal navigation flow, only available via hotkey
+    /* @__PURE__ */ React$2.createElement("section", {
+      ref,
+      "aria-label": `${containerAriaLabel} ${hotkeyLabel}`,
+      tabIndex: -1,
+      "aria-live": "polite",
+      "aria-relevant": "additions text",
+      "aria-atomic": "false",
+      suppressHydrationWarning: true
+    }, possiblePositions.map((position2, index2) => {
+      var _heights_;
+      const [y, x2] = position2.split("-");
+      if (!toasts.length) return null;
+      return /* @__PURE__ */ React$2.createElement("ol", {
+        key: position2,
+        dir: dir === "auto" ? getDocumentDirection() : dir,
+        tabIndex: -1,
+        ref: listRef,
+        className,
+        "data-sonner-toaster": true,
+        "data-sonner-theme": actualTheme,
+        "data-y-position": y,
+        "data-lifted": expanded && toasts.length > 1 && !expand,
+        "data-x-position": x2,
+        style: {
+          "--front-toast-height": `${((_heights_ = heights[0]) == null ? void 0 : _heights_.height) || 0}px`,
+          "--width": `${TOAST_WIDTH}px`,
+          "--gap": `${gap}px`,
+          ...style2,
+          ...assignOffset(offset2, mobileOffset)
+        },
+        onBlur: (event) => {
+          if (isFocusWithinRef.current && !event.currentTarget.contains(event.relatedTarget)) {
+            isFocusWithinRef.current = false;
+            if (lastFocusedElementRef.current) {
+              lastFocusedElementRef.current.focus({
+                preventScroll: true
+              });
+              lastFocusedElementRef.current = null;
+            }
+          }
+        },
+        onFocus: (event) => {
+          const isNotDismissible = event.target instanceof HTMLElement && event.target.dataset.dismissible === "false";
+          if (isNotDismissible) return;
+          if (!isFocusWithinRef.current) {
+            isFocusWithinRef.current = true;
+            lastFocusedElementRef.current = event.relatedTarget;
+          }
+        },
+        onMouseEnter: () => setExpanded(true),
+        onMouseMove: () => setExpanded(true),
+        onMouseLeave: () => {
+          if (!interacting) {
+            setExpanded(false);
+          }
+        },
+        onDragEnd: () => setExpanded(false),
+        onPointerDown: (event) => {
+          const isNotDismissible = event.target instanceof HTMLElement && event.target.dataset.dismissible === "false";
+          if (isNotDismissible) return;
+          setInteracting(true);
+        },
+        onPointerUp: () => setInteracting(false)
+      }, toasts.filter((toast2) => !toast2.position && index2 === 0 || toast2.position === position2).map((toast2, index3) => {
+        var _toastOptions_duration, _toastOptions_closeButton;
+        return /* @__PURE__ */ React$2.createElement(Toast, {
+          key: toast2.id,
+          icons,
+          index: index3,
+          toast: toast2,
+          defaultRichColors: richColors,
+          duration: (_toastOptions_duration = toastOptions == null ? void 0 : toastOptions.duration) != null ? _toastOptions_duration : duration,
+          className: toastOptions == null ? void 0 : toastOptions.className,
+          descriptionClassName: toastOptions == null ? void 0 : toastOptions.descriptionClassName,
+          invert,
+          visibleToasts,
+          closeButton: (_toastOptions_closeButton = toastOptions == null ? void 0 : toastOptions.closeButton) != null ? _toastOptions_closeButton : closeButton,
+          interacting,
+          position: position2,
+          style: toastOptions == null ? void 0 : toastOptions.style,
+          unstyled: toastOptions == null ? void 0 : toastOptions.unstyled,
+          classNames: toastOptions == null ? void 0 : toastOptions.classNames,
+          cancelButtonStyle: toastOptions == null ? void 0 : toastOptions.cancelButtonStyle,
+          actionButtonStyle: toastOptions == null ? void 0 : toastOptions.actionButtonStyle,
+          closeButtonAriaLabel: toastOptions == null ? void 0 : toastOptions.closeButtonAriaLabel,
+          removeToast,
+          toasts: toasts.filter((t) => t.position == toast2.position),
+          heights: heights.filter((h) => h.position == toast2.position),
+          setHeights,
+          expandByDefault: expand,
+          gap,
+          expanded,
+          swipeDirections: props.swipeDirections
+        });
       }));
-      await invokePersist(() => window.api.addTagToTask(taskId, clean));
+    }))
+  );
+});
+const Toaster2 = ({ ...props }) => {
+  const { theme = "system" } = z();
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    Toaster$1,
+    {
+      theme,
+      className: "toaster group",
+      style: {
+        "--normal-bg": "var(--popover)",
+        "--normal-text": "var(--popover-foreground)",
+        "--normal-border": "var(--border)"
+      },
+      ...props
     }
-  },
-  removeTagFromTask: async (taskId, tag) => {
-    set((s) => ({
-      tasks: s.tasks.map(
-        (t) => t.id === taskId ? { ...t, tags: t.tags.filter((x2) => x2 !== tag) } : t
-      )
-    }));
-    await invokePersist(() => window.api.removeTagFromTask(taskId, tag));
-  },
-  exportGroup: (groupId, format2) => {
-    const { groups, tasks } = get();
-    const group = groups.find((g) => g.id === groupId);
-    if (!group) return;
-    const groupTasks = tasks.filter((t) => t.groupId === groupId).sort((a2, b) => a2.position - b.position);
-    let content;
-    let mime;
-    let ext;
-    if (format2 === "json") {
-      content = JSON.stringify({ group, tasks: groupTasks }, null, 2);
-      mime = "application/json";
-      ext = "json";
-    } else {
-      const headers = ["id", "title", "status", "due_date", "tags", "notes"];
-      const escape2 = (v) => `"${v.replace(/"/g, '""')}"`;
-      const rows = groupTasks.map(
-        (t) => [t.id, t.title, t.status, t.dueDate ?? "", t.tags.join("|"), t.notes].map((v) => escape2(String(v))).join(",")
-      );
-      content = [headers.join(","), ...rows].join("\n");
-      mime = "text/csv";
-      ext = "csv";
-    }
-    const blob = new Blob([content], { type: mime });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `${group.name.replace(/\s+/g, "-").toLowerCase()}.${ext}`;
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-    URL.revokeObjectURL(url);
+  );
+};
+function useCombinedRefs() {
+  for (var _len = arguments.length, refs = new Array(_len), _key = 0; _key < _len; _key++) {
+    refs[_key] = arguments[_key];
   }
-}));
-const useTheme = () => {
-  const theme = useStore((s) => s.theme);
-  const setTheme = useStore((s) => s.setTheme);
-  const [resolvedTheme, setResolvedTheme] = reactExports.useState("light");
-  reactExports.useEffect(() => {
-    const root2 = document.documentElement;
-    const mql = window.matchMedia("(prefers-color-scheme: dark)");
-    const apply = () => {
-      const resolved = theme === "system" ? mql.matches ? "dark" : "light" : theme;
-      setResolvedTheme(resolved);
-      root2.classList.toggle("dark", resolved === "dark");
-    };
-    apply();
-    if (theme === "system") {
-      mql.addEventListener("change", apply);
-      return () => mql.removeEventListener("change", apply);
+  return reactExports.useMemo(
+    () => (node) => {
+      refs.forEach((ref) => ref(node));
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    refs
+  );
+}
+const canUseDOM = typeof window !== "undefined" && typeof window.document !== "undefined" && typeof window.document.createElement !== "undefined";
+function isWindow(element) {
+  const elementString = Object.prototype.toString.call(element);
+  return elementString === "[object Window]" || // In Electron context the Window object serializes to [object global]
+  elementString === "[object global]";
+}
+function isNode$1(node) {
+  return "nodeType" in node;
+}
+function getWindow$1(target) {
+  var _target$ownerDocument, _target$ownerDocument2;
+  if (!target) {
+    return window;
+  }
+  if (isWindow(target)) {
+    return target;
+  }
+  if (!isNode$1(target)) {
+    return window;
+  }
+  return (_target$ownerDocument = (_target$ownerDocument2 = target.ownerDocument) == null ? void 0 : _target$ownerDocument2.defaultView) != null ? _target$ownerDocument : window;
+}
+function isDocument(node) {
+  const {
+    Document
+  } = getWindow$1(node);
+  return node instanceof Document;
+}
+function isHTMLElement$1(node) {
+  if (isWindow(node)) {
+    return false;
+  }
+  return node instanceof getWindow$1(node).HTMLElement;
+}
+function isSVGElement(node) {
+  return node instanceof getWindow$1(node).SVGElement;
+}
+function getOwnerDocument(target) {
+  if (!target) {
+    return document;
+  }
+  if (isWindow(target)) {
+    return target.document;
+  }
+  if (!isNode$1(target)) {
+    return document;
+  }
+  if (isDocument(target)) {
+    return target;
+  }
+  if (isHTMLElement$1(target) || isSVGElement(target)) {
+    return target.ownerDocument;
+  }
+  return document;
+}
+const useIsomorphicLayoutEffect$1 = canUseDOM ? reactExports.useLayoutEffect : reactExports.useEffect;
+function useEvent(handler) {
+  const handlerRef = reactExports.useRef(handler);
+  useIsomorphicLayoutEffect$1(() => {
+    handlerRef.current = handler;
+  });
+  return reactExports.useCallback(function() {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
     }
-  }, [theme]);
-  return { theme, setTheme, resolvedTheme };
+    return handlerRef.current == null ? void 0 : handlerRef.current(...args);
+  }, []);
+}
+function useInterval() {
+  const intervalRef = reactExports.useRef(null);
+  const set = reactExports.useCallback((listener, duration) => {
+    intervalRef.current = setInterval(listener, duration);
+  }, []);
+  const clear = reactExports.useCallback(() => {
+    if (intervalRef.current !== null) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    }
+  }, []);
+  return [set, clear];
+}
+function useLatestValue(value, dependencies) {
+  if (dependencies === void 0) {
+    dependencies = [value];
+  }
+  const valueRef = reactExports.useRef(value);
+  useIsomorphicLayoutEffect$1(() => {
+    if (valueRef.current !== value) {
+      valueRef.current = value;
+    }
+  }, dependencies);
+  return valueRef;
+}
+function useLazyMemo(callback, dependencies) {
+  const valueRef = reactExports.useRef();
+  return reactExports.useMemo(
+    () => {
+      const newValue = callback(valueRef.current);
+      valueRef.current = newValue;
+      return newValue;
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [...dependencies]
+  );
+}
+function useNodeRef(onChange) {
+  const onChangeHandler = useEvent(onChange);
+  const node = reactExports.useRef(null);
+  const setNodeRef = reactExports.useCallback(
+    (element) => {
+      if (element !== node.current) {
+        onChangeHandler == null ? void 0 : onChangeHandler(element, node.current);
+      }
+      node.current = element;
+    },
+    //eslint-disable-next-line
+    []
+  );
+  return [node, setNodeRef];
+}
+function usePrevious$1(value) {
+  const ref = reactExports.useRef();
+  reactExports.useEffect(() => {
+    ref.current = value;
+  }, [value]);
+  return ref.current;
+}
+let ids = {};
+function useUniqueId(prefix2, value) {
+  return reactExports.useMemo(() => {
+    if (value) {
+      return value;
+    }
+    const id2 = ids[prefix2] == null ? 0 : ids[prefix2] + 1;
+    ids[prefix2] = id2;
+    return prefix2 + "-" + id2;
+  }, [prefix2, value]);
+}
+function createAdjustmentFn(modifier) {
+  return function(object) {
+    for (var _len = arguments.length, adjustments = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      adjustments[_key - 1] = arguments[_key];
+    }
+    return adjustments.reduce((accumulator, adjustment) => {
+      const entries = Object.entries(adjustment);
+      for (const [key, valueAdjustment] of entries) {
+        const value = accumulator[key];
+        if (value != null) {
+          accumulator[key] = value + modifier * valueAdjustment;
+        }
+      }
+      return accumulator;
+    }, {
+      ...object
+    });
+  };
+}
+const add = /* @__PURE__ */ createAdjustmentFn(1);
+const subtract = /* @__PURE__ */ createAdjustmentFn(-1);
+function hasViewportRelativeCoordinates(event) {
+  return "clientX" in event && "clientY" in event;
+}
+function isKeyboardEvent(event) {
+  if (!event) {
+    return false;
+  }
+  const {
+    KeyboardEvent
+  } = getWindow$1(event.target);
+  return KeyboardEvent && event instanceof KeyboardEvent;
+}
+function isTouchEvent(event) {
+  if (!event) {
+    return false;
+  }
+  const {
+    TouchEvent
+  } = getWindow$1(event.target);
+  return TouchEvent && event instanceof TouchEvent;
+}
+function getEventCoordinates(event) {
+  if (isTouchEvent(event)) {
+    if (event.touches && event.touches.length) {
+      const {
+        clientX: x2,
+        clientY: y
+      } = event.touches[0];
+      return {
+        x: x2,
+        y
+      };
+    } else if (event.changedTouches && event.changedTouches.length) {
+      const {
+        clientX: x2,
+        clientY: y
+      } = event.changedTouches[0];
+      return {
+        x: x2,
+        y
+      };
+    }
+  }
+  if (hasViewportRelativeCoordinates(event)) {
+    return {
+      x: event.clientX,
+      y: event.clientY
+    };
+  }
+  return null;
+}
+const CSS$1 = /* @__PURE__ */ Object.freeze({
+  Translate: {
+    toString(transform) {
+      if (!transform) {
+        return;
+      }
+      const {
+        x: x2,
+        y
+      } = transform;
+      return "translate3d(" + (x2 ? Math.round(x2) : 0) + "px, " + (y ? Math.round(y) : 0) + "px, 0)";
+    }
+  },
+  Scale: {
+    toString(transform) {
+      if (!transform) {
+        return;
+      }
+      const {
+        scaleX: scaleX2,
+        scaleY: scaleY2
+      } = transform;
+      return "scaleX(" + scaleX2 + ") scaleY(" + scaleY2 + ")";
+    }
+  },
+  Transform: {
+    toString(transform) {
+      if (!transform) {
+        return;
+      }
+      return [CSS$1.Translate.toString(transform), CSS$1.Scale.toString(transform)].join(" ");
+    }
+  },
+  Transition: {
+    toString(_ref) {
+      let {
+        property,
+        duration,
+        easing
+      } = _ref;
+      return property + " " + duration + "ms " + easing;
+    }
+  }
+});
+const SELECTOR = "a,frame,iframe,input:not([type=hidden]):not(:disabled),select:not(:disabled),textarea:not(:disabled),button:not(:disabled),*[tabindex]";
+function findFirstFocusableNode(element) {
+  if (element.matches(SELECTOR)) {
+    return element;
+  }
+  return element.querySelector(SELECTOR);
+}
+const hiddenStyles = {
+  display: "none"
 };
-const taskOverflowDarkIcon = "data:image/svg+xml,%3csvg%20width='512'%20height='512'%20viewBox='0%200%20512%20512'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3crect%20width='512'%20height='512'%20rx='115'%20fill='url(%23darkGradient)'/%3e%3crect%20x='154'%20y='154'%20width='204'%20height='204'%20rx='8'%20stroke='white'%20stroke-width='16'%20fill='none'/%3e%3cpolyline%20points='194,256%20234,296%20318,212'%20stroke='white'%20stroke-width='16'%20fill='none'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cdefs%3e%3clinearGradient%20id='darkGradient'%20x1='0'%20y1='0'%20x2='512'%20y2='512'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0%25'%20stop-color='%231f2937'/%3e%3cstop%20offset='100%25'%20stop-color='%23000000'/%3e%3c/linearGradient%3e%3c/defs%3e%3c/svg%3e";
-const taskOverflowLightIcon = "data:image/svg+xml,%3csvg%20width='512'%20height='512'%20viewBox='0%200%20512%20512'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3crect%20width='512'%20height='512'%20rx='115'%20fill='url(%23lightGradient)'%20stroke='%23e5e7eb'%20stroke-width='4'/%3e%3crect%20x='154'%20y='154'%20width='204'%20height='204'%20rx='8'%20stroke='%23111827'%20stroke-width='16'%20fill='none'/%3e%3cpolyline%20points='194,256%20234,296%20318,212'%20stroke='%23111827'%20stroke-width='16'%20fill='none'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cdefs%3e%3clinearGradient%20id='lightGradient'%20x1='0'%20y1='0'%20x2='512'%20y2='512'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0%25'%20stop-color='%23ffffff'/%3e%3cstop%20offset='100%25'%20stop-color='%23f9fafb'/%3e%3c/linearGradient%3e%3c/defs%3e%3c/svg%3e";
-const ACCENT_PALETTE = {
-  slate: { name: "Slate", hex: "#64748b", ring: "ring-slate-400", fill: "bg-slate-500", soft: "bg-slate-500/10" },
-  rose: { name: "Rose", hex: "#f43f5e", ring: "ring-rose-400", fill: "bg-rose-500", soft: "bg-rose-500/10" },
-  red: { name: "Red", hex: "#ef4444", ring: "ring-red-400", fill: "bg-red-500", soft: "bg-red-500/10" },
-  orange: { name: "Orange", hex: "#f97316", ring: "ring-orange-400", fill: "bg-orange-500", soft: "bg-orange-500/10" },
-  amber: { name: "Amber", hex: "#f59e0b", ring: "ring-amber-400", fill: "bg-amber-500", soft: "bg-amber-500/10" },
-  lime: { name: "Lime", hex: "#84cc16", ring: "ring-lime-400", fill: "bg-lime-500", soft: "bg-lime-500/10" },
-  emerald: { name: "Emerald", hex: "#10b981", ring: "ring-emerald-400", fill: "bg-emerald-500", soft: "bg-emerald-500/10" },
-  teal: { name: "Teal", hex: "#14b8a6", ring: "ring-teal-400", fill: "bg-teal-500", soft: "bg-teal-500/10" },
-  sky: { name: "Sky", hex: "#0ea5e9", ring: "ring-sky-400", fill: "bg-sky-500", soft: "bg-sky-500/10" },
-  blue: { name: "Blue", hex: "#3b82f6", ring: "ring-blue-400", fill: "bg-blue-500", soft: "bg-blue-500/10" },
-  violet: { name: "Violet", hex: "#8b5cf6", ring: "ring-violet-400", fill: "bg-violet-500", soft: "bg-violet-500/10" },
-  fuchsia: { name: "Fuchsia", hex: "#d946ef", ring: "ring-fuchsia-400", fill: "bg-fuchsia-500", soft: "bg-fuchsia-500/10" }
+function HiddenText(_ref) {
+  let {
+    id: id2,
+    value
+  } = _ref;
+  return React$2.createElement("div", {
+    id: id2,
+    style: hiddenStyles
+  }, value);
+}
+function LiveRegion(_ref) {
+  let {
+    id: id2,
+    announcement,
+    ariaLiveType = "assertive"
+  } = _ref;
+  const visuallyHidden = {
+    position: "fixed",
+    top: 0,
+    left: 0,
+    width: 1,
+    height: 1,
+    margin: -1,
+    border: 0,
+    padding: 0,
+    overflow: "hidden",
+    clip: "rect(0 0 0 0)",
+    clipPath: "inset(100%)",
+    whiteSpace: "nowrap"
+  };
+  return React$2.createElement("div", {
+    id: id2,
+    style: visuallyHidden,
+    role: "status",
+    "aria-live": ariaLiveType,
+    "aria-atomic": true
+  }, announcement);
+}
+function useAnnouncement() {
+  const [announcement, setAnnouncement] = reactExports.useState("");
+  const announce = reactExports.useCallback((value) => {
+    if (value != null) {
+      setAnnouncement(value);
+    }
+  }, []);
+  return {
+    announce,
+    announcement
+  };
+}
+const DndMonitorContext = /* @__PURE__ */ reactExports.createContext(null);
+function useDndMonitor(listener) {
+  const registerListener = reactExports.useContext(DndMonitorContext);
+  reactExports.useEffect(() => {
+    if (!registerListener) {
+      throw new Error("useDndMonitor must be used within a children of <DndContext>");
+    }
+    const unsubscribe = registerListener(listener);
+    return unsubscribe;
+  }, [listener, registerListener]);
+}
+function useDndMonitorProvider() {
+  const [listeners] = reactExports.useState(() => /* @__PURE__ */ new Set());
+  const registerListener = reactExports.useCallback((listener) => {
+    listeners.add(listener);
+    return () => listeners.delete(listener);
+  }, [listeners]);
+  const dispatch = reactExports.useCallback((_ref) => {
+    let {
+      type,
+      event
+    } = _ref;
+    listeners.forEach((listener) => {
+      var _listener$type;
+      return (_listener$type = listener[type]) == null ? void 0 : _listener$type.call(listener, event);
+    });
+  }, [listeners]);
+  return [dispatch, registerListener];
+}
+const defaultScreenReaderInstructions = {
+  draggable: "\n    To pick up a draggable item, press the space bar.\n    While dragging, use the arrow keys to move the item.\n    Press space again to drop the item in its new position, or press escape to cancel.\n  "
 };
-const ACCENT_KEYS = Object.keys(ACCENT_PALETTE);
+const defaultAnnouncements = {
+  onDragStart(_ref) {
+    let {
+      active
+    } = _ref;
+    return "Picked up draggable item " + active.id + ".";
+  },
+  onDragOver(_ref2) {
+    let {
+      active,
+      over
+    } = _ref2;
+    if (over) {
+      return "Draggable item " + active.id + " was moved over droppable area " + over.id + ".";
+    }
+    return "Draggable item " + active.id + " is no longer over a droppable area.";
+  },
+  onDragEnd(_ref3) {
+    let {
+      active,
+      over
+    } = _ref3;
+    if (over) {
+      return "Draggable item " + active.id + " was dropped over droppable area " + over.id;
+    }
+    return "Draggable item " + active.id + " was dropped.";
+  },
+  onDragCancel(_ref4) {
+    let {
+      active
+    } = _ref4;
+    return "Dragging was cancelled. Draggable item " + active.id + " was dropped.";
+  }
+};
+function Accessibility(_ref) {
+  let {
+    announcements = defaultAnnouncements,
+    container,
+    hiddenTextDescribedById,
+    screenReaderInstructions = defaultScreenReaderInstructions
+  } = _ref;
+  const {
+    announce,
+    announcement
+  } = useAnnouncement();
+  const liveRegionId = useUniqueId("DndLiveRegion");
+  const [mounted, setMounted] = reactExports.useState(false);
+  reactExports.useEffect(() => {
+    setMounted(true);
+  }, []);
+  useDndMonitor(reactExports.useMemo(() => ({
+    onDragStart(_ref2) {
+      let {
+        active
+      } = _ref2;
+      announce(announcements.onDragStart({
+        active
+      }));
+    },
+    onDragMove(_ref3) {
+      let {
+        active,
+        over
+      } = _ref3;
+      if (announcements.onDragMove) {
+        announce(announcements.onDragMove({
+          active,
+          over
+        }));
+      }
+    },
+    onDragOver(_ref4) {
+      let {
+        active,
+        over
+      } = _ref4;
+      announce(announcements.onDragOver({
+        active,
+        over
+      }));
+    },
+    onDragEnd(_ref5) {
+      let {
+        active,
+        over
+      } = _ref5;
+      announce(announcements.onDragEnd({
+        active,
+        over
+      }));
+    },
+    onDragCancel(_ref6) {
+      let {
+        active,
+        over
+      } = _ref6;
+      announce(announcements.onDragCancel({
+        active,
+        over
+      }));
+    }
+  }), [announce, announcements]));
+  if (!mounted) {
+    return null;
+  }
+  const markup = React$2.createElement(React$2.Fragment, null, React$2.createElement(HiddenText, {
+    id: hiddenTextDescribedById,
+    value: screenReaderInstructions.draggable
+  }), React$2.createElement(LiveRegion, {
+    id: liveRegionId,
+    announcement
+  }));
+  return container ? reactDomExports.createPortal(markup, container) : markup;
+}
+var Action$1;
+(function(Action2) {
+  Action2["DragStart"] = "dragStart";
+  Action2["DragMove"] = "dragMove";
+  Action2["DragEnd"] = "dragEnd";
+  Action2["DragCancel"] = "dragCancel";
+  Action2["DragOver"] = "dragOver";
+  Action2["RegisterDroppable"] = "registerDroppable";
+  Action2["SetDroppableDisabled"] = "setDroppableDisabled";
+  Action2["UnregisterDroppable"] = "unregisterDroppable";
+})(Action$1 || (Action$1 = {}));
+function noop$1() {
+}
+function useSensor(sensor, options) {
+  return reactExports.useMemo(
+    () => ({
+      sensor,
+      options: options != null ? options : {}
+    }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [sensor, options]
+  );
+}
+function useSensors() {
+  for (var _len = arguments.length, sensors = new Array(_len), _key = 0; _key < _len; _key++) {
+    sensors[_key] = arguments[_key];
+  }
+  return reactExports.useMemo(
+    () => [...sensors].filter((sensor) => sensor != null),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [...sensors]
+  );
+}
+const defaultCoordinates = /* @__PURE__ */ Object.freeze({
+  x: 0,
+  y: 0
+});
+function distanceBetween(p1, p2) {
+  return Math.sqrt(Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2));
+}
+function sortCollisionsAsc(_ref, _ref2) {
+  let {
+    data: {
+      value: a
+    }
+  } = _ref;
+  let {
+    data: {
+      value: b
+    }
+  } = _ref2;
+  return a - b;
+}
+function sortCollisionsDesc(_ref3, _ref4) {
+  let {
+    data: {
+      value: a
+    }
+  } = _ref3;
+  let {
+    data: {
+      value: b
+    }
+  } = _ref4;
+  return b - a;
+}
+function cornersOfRectangle(_ref5) {
+  let {
+    left,
+    top,
+    height,
+    width
+  } = _ref5;
+  return [{
+    x: left,
+    y: top
+  }, {
+    x: left + width,
+    y: top
+  }, {
+    x: left,
+    y: top + height
+  }, {
+    x: left + width,
+    y: top + height
+  }];
+}
+function getFirstCollision(collisions, property) {
+  if (!collisions || collisions.length === 0) {
+    return null;
+  }
+  const [firstCollision] = collisions;
+  return firstCollision[property];
+}
+function centerOfRectangle(rect, left, top) {
+  if (left === void 0) {
+    left = rect.left;
+  }
+  if (top === void 0) {
+    top = rect.top;
+  }
+  return {
+    x: left + rect.width * 0.5,
+    y: top + rect.height * 0.5
+  };
+}
+const closestCenter = (_ref) => {
+  let {
+    collisionRect,
+    droppableRects,
+    droppableContainers
+  } = _ref;
+  const centerRect = centerOfRectangle(collisionRect, collisionRect.left, collisionRect.top);
+  const collisions = [];
+  for (const droppableContainer of droppableContainers) {
+    const {
+      id: id2
+    } = droppableContainer;
+    const rect = droppableRects.get(id2);
+    if (rect) {
+      const distBetween = distanceBetween(centerOfRectangle(rect), centerRect);
+      collisions.push({
+        id: id2,
+        data: {
+          droppableContainer,
+          value: distBetween
+        }
+      });
+    }
+  }
+  return collisions.sort(sortCollisionsAsc);
+};
+const closestCorners = (_ref) => {
+  let {
+    collisionRect,
+    droppableRects,
+    droppableContainers
+  } = _ref;
+  const corners = cornersOfRectangle(collisionRect);
+  const collisions = [];
+  for (const droppableContainer of droppableContainers) {
+    const {
+      id: id2
+    } = droppableContainer;
+    const rect = droppableRects.get(id2);
+    if (rect) {
+      const rectCorners = cornersOfRectangle(rect);
+      const distances = corners.reduce((accumulator, corner, index2) => {
+        return accumulator + distanceBetween(rectCorners[index2], corner);
+      }, 0);
+      const effectiveDistance = Number((distances / 4).toFixed(4));
+      collisions.push({
+        id: id2,
+        data: {
+          droppableContainer,
+          value: effectiveDistance
+        }
+      });
+    }
+  }
+  return collisions.sort(sortCollisionsAsc);
+};
+function getIntersectionRatio(entry, target) {
+  const top = Math.max(target.top, entry.top);
+  const left = Math.max(target.left, entry.left);
+  const right = Math.min(target.left + target.width, entry.left + entry.width);
+  const bottom = Math.min(target.top + target.height, entry.top + entry.height);
+  const width = right - left;
+  const height = bottom - top;
+  if (left < right && top < bottom) {
+    const targetArea = target.width * target.height;
+    const entryArea = entry.width * entry.height;
+    const intersectionArea = width * height;
+    const intersectionRatio = intersectionArea / (targetArea + entryArea - intersectionArea);
+    return Number(intersectionRatio.toFixed(4));
+  }
+  return 0;
+}
+const rectIntersection = (_ref) => {
+  let {
+    collisionRect,
+    droppableRects,
+    droppableContainers
+  } = _ref;
+  const collisions = [];
+  for (const droppableContainer of droppableContainers) {
+    const {
+      id: id2
+    } = droppableContainer;
+    const rect = droppableRects.get(id2);
+    if (rect) {
+      const intersectionRatio = getIntersectionRatio(rect, collisionRect);
+      if (intersectionRatio > 0) {
+        collisions.push({
+          id: id2,
+          data: {
+            droppableContainer,
+            value: intersectionRatio
+          }
+        });
+      }
+    }
+  }
+  return collisions.sort(sortCollisionsDesc);
+};
+function adjustScale(transform, rect1, rect2) {
+  return {
+    ...transform,
+    scaleX: rect1 && rect2 ? rect1.width / rect2.width : 1,
+    scaleY: rect1 && rect2 ? rect1.height / rect2.height : 1
+  };
+}
+function getRectDelta(rect1, rect2) {
+  return rect1 && rect2 ? {
+    x: rect1.left - rect2.left,
+    y: rect1.top - rect2.top
+  } : defaultCoordinates;
+}
+function createRectAdjustmentFn(modifier) {
+  return function adjustClientRect(rect) {
+    for (var _len = arguments.length, adjustments = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      adjustments[_key - 1] = arguments[_key];
+    }
+    return adjustments.reduce((acc, adjustment) => ({
+      ...acc,
+      top: acc.top + modifier * adjustment.y,
+      bottom: acc.bottom + modifier * adjustment.y,
+      left: acc.left + modifier * adjustment.x,
+      right: acc.right + modifier * adjustment.x
+    }), {
+      ...rect
+    });
+  };
+}
+const getAdjustedRect = /* @__PURE__ */ createRectAdjustmentFn(1);
+function parseTransform(transform) {
+  if (transform.startsWith("matrix3d(")) {
+    const transformArray = transform.slice(9, -1).split(/, /);
+    return {
+      x: +transformArray[12],
+      y: +transformArray[13],
+      scaleX: +transformArray[0],
+      scaleY: +transformArray[5]
+    };
+  } else if (transform.startsWith("matrix(")) {
+    const transformArray = transform.slice(7, -1).split(/, /);
+    return {
+      x: +transformArray[4],
+      y: +transformArray[5],
+      scaleX: +transformArray[0],
+      scaleY: +transformArray[3]
+    };
+  }
+  return null;
+}
+function inverseTransform(rect, transform, transformOrigin2) {
+  const parsedTransform = parseTransform(transform);
+  if (!parsedTransform) {
+    return rect;
+  }
+  const {
+    scaleX: scaleX2,
+    scaleY: scaleY2,
+    x: translateX,
+    y: translateY
+  } = parsedTransform;
+  const x2 = rect.left - translateX - (1 - scaleX2) * parseFloat(transformOrigin2);
+  const y = rect.top - translateY - (1 - scaleY2) * parseFloat(transformOrigin2.slice(transformOrigin2.indexOf(" ") + 1));
+  const w = scaleX2 ? rect.width / scaleX2 : rect.width;
+  const h = scaleY2 ? rect.height / scaleY2 : rect.height;
+  return {
+    width: w,
+    height: h,
+    top: y,
+    right: x2 + w,
+    bottom: y + h,
+    left: x2
+  };
+}
+const defaultOptions$1 = {
+  ignoreTransform: false
+};
+function getClientRect(element, options) {
+  if (options === void 0) {
+    options = defaultOptions$1;
+  }
+  let rect = element.getBoundingClientRect();
+  if (options.ignoreTransform) {
+    const {
+      transform,
+      transformOrigin: transformOrigin2
+    } = getWindow$1(element).getComputedStyle(element);
+    if (transform) {
+      rect = inverseTransform(rect, transform, transformOrigin2);
+    }
+  }
+  const {
+    top,
+    left,
+    width,
+    height,
+    bottom,
+    right
+  } = rect;
+  return {
+    top,
+    left,
+    width,
+    height,
+    bottom,
+    right
+  };
+}
+function getTransformAgnosticClientRect(element) {
+  return getClientRect(element, {
+    ignoreTransform: true
+  });
+}
+function getWindowClientRect(element) {
+  const width = element.innerWidth;
+  const height = element.innerHeight;
+  return {
+    top: 0,
+    left: 0,
+    right: width,
+    bottom: height,
+    width,
+    height
+  };
+}
+function isFixed(node, computedStyle) {
+  if (computedStyle === void 0) {
+    computedStyle = getWindow$1(node).getComputedStyle(node);
+  }
+  return computedStyle.position === "fixed";
+}
+function isScrollable(element, computedStyle) {
+  if (computedStyle === void 0) {
+    computedStyle = getWindow$1(element).getComputedStyle(element);
+  }
+  const overflowRegex = /(auto|scroll|overlay)/;
+  const properties2 = ["overflow", "overflowX", "overflowY"];
+  return properties2.some((property) => {
+    const value = computedStyle[property];
+    return typeof value === "string" ? overflowRegex.test(value) : false;
+  });
+}
+function getScrollableAncestors(element, limit) {
+  const scrollParents = [];
+  function findScrollableAncestors(node) {
+    if (limit != null && scrollParents.length >= limit) {
+      return scrollParents;
+    }
+    if (!node) {
+      return scrollParents;
+    }
+    if (isDocument(node) && node.scrollingElement != null && !scrollParents.includes(node.scrollingElement)) {
+      scrollParents.push(node.scrollingElement);
+      return scrollParents;
+    }
+    if (!isHTMLElement$1(node) || isSVGElement(node)) {
+      return scrollParents;
+    }
+    if (scrollParents.includes(node)) {
+      return scrollParents;
+    }
+    const computedStyle = getWindow$1(element).getComputedStyle(node);
+    if (node !== element) {
+      if (isScrollable(node, computedStyle)) {
+        scrollParents.push(node);
+      }
+    }
+    if (isFixed(node, computedStyle)) {
+      return scrollParents;
+    }
+    return findScrollableAncestors(node.parentNode);
+  }
+  if (!element) {
+    return scrollParents;
+  }
+  return findScrollableAncestors(element);
+}
+function getFirstScrollableAncestor(node) {
+  const [firstScrollableAncestor] = getScrollableAncestors(node, 1);
+  return firstScrollableAncestor != null ? firstScrollableAncestor : null;
+}
+function getScrollableElement(element) {
+  if (!canUseDOM || !element) {
+    return null;
+  }
+  if (isWindow(element)) {
+    return element;
+  }
+  if (!isNode$1(element)) {
+    return null;
+  }
+  if (isDocument(element) || element === getOwnerDocument(element).scrollingElement) {
+    return window;
+  }
+  if (isHTMLElement$1(element)) {
+    return element;
+  }
+  return null;
+}
+function getScrollXCoordinate(element) {
+  if (isWindow(element)) {
+    return element.scrollX;
+  }
+  return element.scrollLeft;
+}
+function getScrollYCoordinate(element) {
+  if (isWindow(element)) {
+    return element.scrollY;
+  }
+  return element.scrollTop;
+}
+function getScrollCoordinates(element) {
+  return {
+    x: getScrollXCoordinate(element),
+    y: getScrollYCoordinate(element)
+  };
+}
+var Direction;
+(function(Direction2) {
+  Direction2[Direction2["Forward"] = 1] = "Forward";
+  Direction2[Direction2["Backward"] = -1] = "Backward";
+})(Direction || (Direction = {}));
+function isDocumentScrollingElement(element) {
+  if (!canUseDOM || !element) {
+    return false;
+  }
+  return element === document.scrollingElement;
+}
+function getScrollPosition(scrollingContainer) {
+  const minScroll = {
+    x: 0,
+    y: 0
+  };
+  const dimensions = isDocumentScrollingElement(scrollingContainer) ? {
+    height: window.innerHeight,
+    width: window.innerWidth
+  } : {
+    height: scrollingContainer.clientHeight,
+    width: scrollingContainer.clientWidth
+  };
+  const maxScroll = {
+    x: scrollingContainer.scrollWidth - dimensions.width,
+    y: scrollingContainer.scrollHeight - dimensions.height
+  };
+  const isTop = scrollingContainer.scrollTop <= minScroll.y;
+  const isLeft = scrollingContainer.scrollLeft <= minScroll.x;
+  const isBottom = scrollingContainer.scrollTop >= maxScroll.y;
+  const isRight = scrollingContainer.scrollLeft >= maxScroll.x;
+  return {
+    isTop,
+    isLeft,
+    isBottom,
+    isRight,
+    maxScroll,
+    minScroll
+  };
+}
+const defaultThreshold = {
+  x: 0.2,
+  y: 0.2
+};
+function getScrollDirectionAndSpeed(scrollContainer, scrollContainerRect, _ref, acceleration, thresholdPercentage) {
+  let {
+    top,
+    left,
+    right,
+    bottom
+  } = _ref;
+  if (acceleration === void 0) {
+    acceleration = 10;
+  }
+  if (thresholdPercentage === void 0) {
+    thresholdPercentage = defaultThreshold;
+  }
+  const {
+    isTop,
+    isBottom,
+    isLeft,
+    isRight
+  } = getScrollPosition(scrollContainer);
+  const direction = {
+    x: 0,
+    y: 0
+  };
+  const speed = {
+    x: 0,
+    y: 0
+  };
+  const threshold = {
+    height: scrollContainerRect.height * thresholdPercentage.y,
+    width: scrollContainerRect.width * thresholdPercentage.x
+  };
+  if (!isTop && top <= scrollContainerRect.top + threshold.height) {
+    direction.y = Direction.Backward;
+    speed.y = acceleration * Math.abs((scrollContainerRect.top + threshold.height - top) / threshold.height);
+  } else if (!isBottom && bottom >= scrollContainerRect.bottom - threshold.height) {
+    direction.y = Direction.Forward;
+    speed.y = acceleration * Math.abs((scrollContainerRect.bottom - threshold.height - bottom) / threshold.height);
+  }
+  if (!isRight && right >= scrollContainerRect.right - threshold.width) {
+    direction.x = Direction.Forward;
+    speed.x = acceleration * Math.abs((scrollContainerRect.right - threshold.width - right) / threshold.width);
+  } else if (!isLeft && left <= scrollContainerRect.left + threshold.width) {
+    direction.x = Direction.Backward;
+    speed.x = acceleration * Math.abs((scrollContainerRect.left + threshold.width - left) / threshold.width);
+  }
+  return {
+    direction,
+    speed
+  };
+}
+function getScrollElementRect(element) {
+  if (element === document.scrollingElement) {
+    const {
+      innerWidth,
+      innerHeight
+    } = window;
+    return {
+      top: 0,
+      left: 0,
+      right: innerWidth,
+      bottom: innerHeight,
+      width: innerWidth,
+      height: innerHeight
+    };
+  }
+  const {
+    top,
+    left,
+    right,
+    bottom
+  } = element.getBoundingClientRect();
+  return {
+    top,
+    left,
+    right,
+    bottom,
+    width: element.clientWidth,
+    height: element.clientHeight
+  };
+}
+function getScrollOffsets(scrollableAncestors) {
+  return scrollableAncestors.reduce((acc, node) => {
+    return add(acc, getScrollCoordinates(node));
+  }, defaultCoordinates);
+}
+function getScrollXOffset(scrollableAncestors) {
+  return scrollableAncestors.reduce((acc, node) => {
+    return acc + getScrollXCoordinate(node);
+  }, 0);
+}
+function getScrollYOffset(scrollableAncestors) {
+  return scrollableAncestors.reduce((acc, node) => {
+    return acc + getScrollYCoordinate(node);
+  }, 0);
+}
+function scrollIntoViewIfNeeded(element, measure) {
+  if (measure === void 0) {
+    measure = getClientRect;
+  }
+  if (!element) {
+    return;
+  }
+  const {
+    top,
+    left,
+    bottom,
+    right
+  } = measure(element);
+  const firstScrollableAncestor = getFirstScrollableAncestor(element);
+  if (!firstScrollableAncestor) {
+    return;
+  }
+  if (bottom <= 0 || right <= 0 || top >= window.innerHeight || left >= window.innerWidth) {
+    element.scrollIntoView({
+      block: "center",
+      inline: "center"
+    });
+  }
+}
+const properties = [["x", ["left", "right"], getScrollXOffset], ["y", ["top", "bottom"], getScrollYOffset]];
+class Rect {
+  constructor(rect, element) {
+    this.rect = void 0;
+    this.width = void 0;
+    this.height = void 0;
+    this.top = void 0;
+    this.bottom = void 0;
+    this.right = void 0;
+    this.left = void 0;
+    const scrollableAncestors = getScrollableAncestors(element);
+    const scrollOffsets = getScrollOffsets(scrollableAncestors);
+    this.rect = {
+      ...rect
+    };
+    this.width = rect.width;
+    this.height = rect.height;
+    for (const [axis, keys, getScrollOffset] of properties) {
+      for (const key of keys) {
+        Object.defineProperty(this, key, {
+          get: () => {
+            const currentOffsets = getScrollOffset(scrollableAncestors);
+            const scrollOffsetsDeltla = scrollOffsets[axis] - currentOffsets;
+            return this.rect[key] + scrollOffsetsDeltla;
+          },
+          enumerable: true
+        });
+      }
+    }
+    Object.defineProperty(this, "rect", {
+      enumerable: false
+    });
+  }
+}
+class Listeners {
+  constructor(target) {
+    this.target = void 0;
+    this.listeners = [];
+    this.removeAll = () => {
+      this.listeners.forEach((listener) => {
+        var _this$target;
+        return (_this$target = this.target) == null ? void 0 : _this$target.removeEventListener(...listener);
+      });
+    };
+    this.target = target;
+  }
+  add(eventName, handler, options) {
+    var _this$target2;
+    (_this$target2 = this.target) == null ? void 0 : _this$target2.addEventListener(eventName, handler, options);
+    this.listeners.push([eventName, handler, options]);
+  }
+}
+function getEventListenerTarget(target) {
+  const {
+    EventTarget: EventTarget2
+  } = getWindow$1(target);
+  return target instanceof EventTarget2 ? target : getOwnerDocument(target);
+}
+function hasExceededDistance(delta, measurement) {
+  const dx = Math.abs(delta.x);
+  const dy = Math.abs(delta.y);
+  if (typeof measurement === "number") {
+    return Math.sqrt(dx ** 2 + dy ** 2) > measurement;
+  }
+  if ("x" in measurement && "y" in measurement) {
+    return dx > measurement.x && dy > measurement.y;
+  }
+  if ("x" in measurement) {
+    return dx > measurement.x;
+  }
+  if ("y" in measurement) {
+    return dy > measurement.y;
+  }
+  return false;
+}
+var EventName;
+(function(EventName2) {
+  EventName2["Click"] = "click";
+  EventName2["DragStart"] = "dragstart";
+  EventName2["Keydown"] = "keydown";
+  EventName2["ContextMenu"] = "contextmenu";
+  EventName2["Resize"] = "resize";
+  EventName2["SelectionChange"] = "selectionchange";
+  EventName2["VisibilityChange"] = "visibilitychange";
+})(EventName || (EventName = {}));
+function preventDefault(event) {
+  event.preventDefault();
+}
+function stopPropagation(event) {
+  event.stopPropagation();
+}
+var KeyboardCode;
+(function(KeyboardCode2) {
+  KeyboardCode2["Space"] = "Space";
+  KeyboardCode2["Down"] = "ArrowDown";
+  KeyboardCode2["Right"] = "ArrowRight";
+  KeyboardCode2["Left"] = "ArrowLeft";
+  KeyboardCode2["Up"] = "ArrowUp";
+  KeyboardCode2["Esc"] = "Escape";
+  KeyboardCode2["Enter"] = "Enter";
+  KeyboardCode2["Tab"] = "Tab";
+})(KeyboardCode || (KeyboardCode = {}));
+const defaultKeyboardCodes = {
+  start: [KeyboardCode.Space, KeyboardCode.Enter],
+  cancel: [KeyboardCode.Esc],
+  end: [KeyboardCode.Space, KeyboardCode.Enter, KeyboardCode.Tab]
+};
+const defaultKeyboardCoordinateGetter = (event, _ref) => {
+  let {
+    currentCoordinates
+  } = _ref;
+  switch (event.code) {
+    case KeyboardCode.Right:
+      return {
+        ...currentCoordinates,
+        x: currentCoordinates.x + 25
+      };
+    case KeyboardCode.Left:
+      return {
+        ...currentCoordinates,
+        x: currentCoordinates.x - 25
+      };
+    case KeyboardCode.Down:
+      return {
+        ...currentCoordinates,
+        y: currentCoordinates.y + 25
+      };
+    case KeyboardCode.Up:
+      return {
+        ...currentCoordinates,
+        y: currentCoordinates.y - 25
+      };
+  }
+  return void 0;
+};
+class KeyboardSensor {
+  constructor(props) {
+    this.props = void 0;
+    this.autoScrollEnabled = false;
+    this.referenceCoordinates = void 0;
+    this.listeners = void 0;
+    this.windowListeners = void 0;
+    this.props = props;
+    const {
+      event: {
+        target
+      }
+    } = props;
+    this.props = props;
+    this.listeners = new Listeners(getOwnerDocument(target));
+    this.windowListeners = new Listeners(getWindow$1(target));
+    this.handleKeyDown = this.handleKeyDown.bind(this);
+    this.handleCancel = this.handleCancel.bind(this);
+    this.attach();
+  }
+  attach() {
+    this.handleStart();
+    this.windowListeners.add(EventName.Resize, this.handleCancel);
+    this.windowListeners.add(EventName.VisibilityChange, this.handleCancel);
+    setTimeout(() => this.listeners.add(EventName.Keydown, this.handleKeyDown));
+  }
+  handleStart() {
+    const {
+      activeNode,
+      onStart
+    } = this.props;
+    const node = activeNode.node.current;
+    if (node) {
+      scrollIntoViewIfNeeded(node);
+    }
+    onStart(defaultCoordinates);
+  }
+  handleKeyDown(event) {
+    if (isKeyboardEvent(event)) {
+      const {
+        active,
+        context,
+        options
+      } = this.props;
+      const {
+        keyboardCodes = defaultKeyboardCodes,
+        coordinateGetter = defaultKeyboardCoordinateGetter,
+        scrollBehavior = "smooth"
+      } = options;
+      const {
+        code
+      } = event;
+      if (keyboardCodes.end.includes(code)) {
+        this.handleEnd(event);
+        return;
+      }
+      if (keyboardCodes.cancel.includes(code)) {
+        this.handleCancel(event);
+        return;
+      }
+      const {
+        collisionRect
+      } = context.current;
+      const currentCoordinates = collisionRect ? {
+        x: collisionRect.left,
+        y: collisionRect.top
+      } : defaultCoordinates;
+      if (!this.referenceCoordinates) {
+        this.referenceCoordinates = currentCoordinates;
+      }
+      const newCoordinates = coordinateGetter(event, {
+        active,
+        context: context.current,
+        currentCoordinates
+      });
+      if (newCoordinates) {
+        const coordinatesDelta = subtract(newCoordinates, currentCoordinates);
+        const scrollDelta = {
+          x: 0,
+          y: 0
+        };
+        const {
+          scrollableAncestors
+        } = context.current;
+        for (const scrollContainer of scrollableAncestors) {
+          const direction = event.code;
+          const {
+            isTop,
+            isRight,
+            isLeft,
+            isBottom,
+            maxScroll,
+            minScroll
+          } = getScrollPosition(scrollContainer);
+          const scrollElementRect = getScrollElementRect(scrollContainer);
+          const clampedCoordinates = {
+            x: Math.min(direction === KeyboardCode.Right ? scrollElementRect.right - scrollElementRect.width / 2 : scrollElementRect.right, Math.max(direction === KeyboardCode.Right ? scrollElementRect.left : scrollElementRect.left + scrollElementRect.width / 2, newCoordinates.x)),
+            y: Math.min(direction === KeyboardCode.Down ? scrollElementRect.bottom - scrollElementRect.height / 2 : scrollElementRect.bottom, Math.max(direction === KeyboardCode.Down ? scrollElementRect.top : scrollElementRect.top + scrollElementRect.height / 2, newCoordinates.y))
+          };
+          const canScrollX = direction === KeyboardCode.Right && !isRight || direction === KeyboardCode.Left && !isLeft;
+          const canScrollY = direction === KeyboardCode.Down && !isBottom || direction === KeyboardCode.Up && !isTop;
+          if (canScrollX && clampedCoordinates.x !== newCoordinates.x) {
+            const newScrollCoordinates = scrollContainer.scrollLeft + coordinatesDelta.x;
+            const canScrollToNewCoordinates = direction === KeyboardCode.Right && newScrollCoordinates <= maxScroll.x || direction === KeyboardCode.Left && newScrollCoordinates >= minScroll.x;
+            if (canScrollToNewCoordinates && !coordinatesDelta.y) {
+              scrollContainer.scrollTo({
+                left: newScrollCoordinates,
+                behavior: scrollBehavior
+              });
+              return;
+            }
+            if (canScrollToNewCoordinates) {
+              scrollDelta.x = scrollContainer.scrollLeft - newScrollCoordinates;
+            } else {
+              scrollDelta.x = direction === KeyboardCode.Right ? scrollContainer.scrollLeft - maxScroll.x : scrollContainer.scrollLeft - minScroll.x;
+            }
+            if (scrollDelta.x) {
+              scrollContainer.scrollBy({
+                left: -scrollDelta.x,
+                behavior: scrollBehavior
+              });
+            }
+            break;
+          } else if (canScrollY && clampedCoordinates.y !== newCoordinates.y) {
+            const newScrollCoordinates = scrollContainer.scrollTop + coordinatesDelta.y;
+            const canScrollToNewCoordinates = direction === KeyboardCode.Down && newScrollCoordinates <= maxScroll.y || direction === KeyboardCode.Up && newScrollCoordinates >= minScroll.y;
+            if (canScrollToNewCoordinates && !coordinatesDelta.x) {
+              scrollContainer.scrollTo({
+                top: newScrollCoordinates,
+                behavior: scrollBehavior
+              });
+              return;
+            }
+            if (canScrollToNewCoordinates) {
+              scrollDelta.y = scrollContainer.scrollTop - newScrollCoordinates;
+            } else {
+              scrollDelta.y = direction === KeyboardCode.Down ? scrollContainer.scrollTop - maxScroll.y : scrollContainer.scrollTop - minScroll.y;
+            }
+            if (scrollDelta.y) {
+              scrollContainer.scrollBy({
+                top: -scrollDelta.y,
+                behavior: scrollBehavior
+              });
+            }
+            break;
+          }
+        }
+        this.handleMove(event, add(subtract(newCoordinates, this.referenceCoordinates), scrollDelta));
+      }
+    }
+  }
+  handleMove(event, coordinates) {
+    const {
+      onMove
+    } = this.props;
+    event.preventDefault();
+    onMove(coordinates);
+  }
+  handleEnd(event) {
+    const {
+      onEnd
+    } = this.props;
+    event.preventDefault();
+    this.detach();
+    onEnd();
+  }
+  handleCancel(event) {
+    const {
+      onCancel
+    } = this.props;
+    event.preventDefault();
+    this.detach();
+    onCancel();
+  }
+  detach() {
+    this.listeners.removeAll();
+    this.windowListeners.removeAll();
+  }
+}
+KeyboardSensor.activators = [{
+  eventName: "onKeyDown",
+  handler: (event, _ref, _ref2) => {
+    let {
+      keyboardCodes = defaultKeyboardCodes,
+      onActivation
+    } = _ref;
+    let {
+      active
+    } = _ref2;
+    const {
+      code
+    } = event.nativeEvent;
+    if (keyboardCodes.start.includes(code)) {
+      const activator = active.activatorNode.current;
+      if (activator && event.target !== activator) {
+        return false;
+      }
+      event.preventDefault();
+      onActivation == null ? void 0 : onActivation({
+        event: event.nativeEvent
+      });
+      return true;
+    }
+    return false;
+  }
+}];
+function isDistanceConstraint(constraint) {
+  return Boolean(constraint && "distance" in constraint);
+}
+function isDelayConstraint(constraint) {
+  return Boolean(constraint && "delay" in constraint);
+}
+class AbstractPointerSensor {
+  constructor(props, events2, listenerTarget) {
+    var _getEventCoordinates;
+    if (listenerTarget === void 0) {
+      listenerTarget = getEventListenerTarget(props.event.target);
+    }
+    this.props = void 0;
+    this.events = void 0;
+    this.autoScrollEnabled = true;
+    this.document = void 0;
+    this.activated = false;
+    this.initialCoordinates = void 0;
+    this.timeoutId = null;
+    this.listeners = void 0;
+    this.documentListeners = void 0;
+    this.windowListeners = void 0;
+    this.props = props;
+    this.events = events2;
+    const {
+      event
+    } = props;
+    const {
+      target
+    } = event;
+    this.props = props;
+    this.events = events2;
+    this.document = getOwnerDocument(target);
+    this.documentListeners = new Listeners(this.document);
+    this.listeners = new Listeners(listenerTarget);
+    this.windowListeners = new Listeners(getWindow$1(target));
+    this.initialCoordinates = (_getEventCoordinates = getEventCoordinates(event)) != null ? _getEventCoordinates : defaultCoordinates;
+    this.handleStart = this.handleStart.bind(this);
+    this.handleMove = this.handleMove.bind(this);
+    this.handleEnd = this.handleEnd.bind(this);
+    this.handleCancel = this.handleCancel.bind(this);
+    this.handleKeydown = this.handleKeydown.bind(this);
+    this.removeTextSelection = this.removeTextSelection.bind(this);
+    this.attach();
+  }
+  attach() {
+    const {
+      events: events2,
+      props: {
+        options: {
+          activationConstraint,
+          bypassActivationConstraint
+        }
+      }
+    } = this;
+    this.listeners.add(events2.move.name, this.handleMove, {
+      passive: false
+    });
+    this.listeners.add(events2.end.name, this.handleEnd);
+    if (events2.cancel) {
+      this.listeners.add(events2.cancel.name, this.handleCancel);
+    }
+    this.windowListeners.add(EventName.Resize, this.handleCancel);
+    this.windowListeners.add(EventName.DragStart, preventDefault);
+    this.windowListeners.add(EventName.VisibilityChange, this.handleCancel);
+    this.windowListeners.add(EventName.ContextMenu, preventDefault);
+    this.documentListeners.add(EventName.Keydown, this.handleKeydown);
+    if (activationConstraint) {
+      if (bypassActivationConstraint != null && bypassActivationConstraint({
+        event: this.props.event,
+        activeNode: this.props.activeNode,
+        options: this.props.options
+      })) {
+        return this.handleStart();
+      }
+      if (isDelayConstraint(activationConstraint)) {
+        this.timeoutId = setTimeout(this.handleStart, activationConstraint.delay);
+        this.handlePending(activationConstraint);
+        return;
+      }
+      if (isDistanceConstraint(activationConstraint)) {
+        this.handlePending(activationConstraint);
+        return;
+      }
+    }
+    this.handleStart();
+  }
+  detach() {
+    this.listeners.removeAll();
+    this.windowListeners.removeAll();
+    setTimeout(this.documentListeners.removeAll, 50);
+    if (this.timeoutId !== null) {
+      clearTimeout(this.timeoutId);
+      this.timeoutId = null;
+    }
+  }
+  handlePending(constraint, offset2) {
+    const {
+      active,
+      onPending
+    } = this.props;
+    onPending(active, constraint, this.initialCoordinates, offset2);
+  }
+  handleStart() {
+    const {
+      initialCoordinates
+    } = this;
+    const {
+      onStart
+    } = this.props;
+    if (initialCoordinates) {
+      this.activated = true;
+      this.documentListeners.add(EventName.Click, stopPropagation, {
+        capture: true
+      });
+      this.removeTextSelection();
+      this.documentListeners.add(EventName.SelectionChange, this.removeTextSelection);
+      onStart(initialCoordinates);
+    }
+  }
+  handleMove(event) {
+    var _getEventCoordinates2;
+    const {
+      activated,
+      initialCoordinates,
+      props
+    } = this;
+    const {
+      onMove,
+      options: {
+        activationConstraint
+      }
+    } = props;
+    if (!initialCoordinates) {
+      return;
+    }
+    const coordinates = (_getEventCoordinates2 = getEventCoordinates(event)) != null ? _getEventCoordinates2 : defaultCoordinates;
+    const delta = subtract(initialCoordinates, coordinates);
+    if (!activated && activationConstraint) {
+      if (isDistanceConstraint(activationConstraint)) {
+        if (activationConstraint.tolerance != null && hasExceededDistance(delta, activationConstraint.tolerance)) {
+          return this.handleCancel();
+        }
+        if (hasExceededDistance(delta, activationConstraint.distance)) {
+          return this.handleStart();
+        }
+      }
+      if (isDelayConstraint(activationConstraint)) {
+        if (hasExceededDistance(delta, activationConstraint.tolerance)) {
+          return this.handleCancel();
+        }
+      }
+      this.handlePending(activationConstraint, delta);
+      return;
+    }
+    if (event.cancelable) {
+      event.preventDefault();
+    }
+    onMove(coordinates);
+  }
+  handleEnd() {
+    const {
+      onAbort,
+      onEnd
+    } = this.props;
+    this.detach();
+    if (!this.activated) {
+      onAbort(this.props.active);
+    }
+    onEnd();
+  }
+  handleCancel() {
+    const {
+      onAbort,
+      onCancel
+    } = this.props;
+    this.detach();
+    if (!this.activated) {
+      onAbort(this.props.active);
+    }
+    onCancel();
+  }
+  handleKeydown(event) {
+    if (event.code === KeyboardCode.Esc) {
+      this.handleCancel();
+    }
+  }
+  removeTextSelection() {
+    var _this$document$getSel;
+    (_this$document$getSel = this.document.getSelection()) == null ? void 0 : _this$document$getSel.removeAllRanges();
+  }
+}
+const events = {
+  cancel: {
+    name: "pointercancel"
+  },
+  move: {
+    name: "pointermove"
+  },
+  end: {
+    name: "pointerup"
+  }
+};
+class PointerSensor extends AbstractPointerSensor {
+  constructor(props) {
+    const {
+      event
+    } = props;
+    const listenerTarget = getOwnerDocument(event.target);
+    super(props, events, listenerTarget);
+  }
+}
+PointerSensor.activators = [{
+  eventName: "onPointerDown",
+  handler: (_ref, _ref2) => {
+    let {
+      nativeEvent: event
+    } = _ref;
+    let {
+      onActivation
+    } = _ref2;
+    if (!event.isPrimary || event.button !== 0) {
+      return false;
+    }
+    onActivation == null ? void 0 : onActivation({
+      event
+    });
+    return true;
+  }
+}];
+const events$1 = {
+  move: {
+    name: "mousemove"
+  },
+  end: {
+    name: "mouseup"
+  }
+};
+var MouseButton;
+(function(MouseButton2) {
+  MouseButton2[MouseButton2["RightClick"] = 2] = "RightClick";
+})(MouseButton || (MouseButton = {}));
+class MouseSensor extends AbstractPointerSensor {
+  constructor(props) {
+    super(props, events$1, getOwnerDocument(props.event.target));
+  }
+}
+MouseSensor.activators = [{
+  eventName: "onMouseDown",
+  handler: (_ref, _ref2) => {
+    let {
+      nativeEvent: event
+    } = _ref;
+    let {
+      onActivation
+    } = _ref2;
+    if (event.button === MouseButton.RightClick) {
+      return false;
+    }
+    onActivation == null ? void 0 : onActivation({
+      event
+    });
+    return true;
+  }
+}];
+const events$2 = {
+  cancel: {
+    name: "touchcancel"
+  },
+  move: {
+    name: "touchmove"
+  },
+  end: {
+    name: "touchend"
+  }
+};
+class TouchSensor extends AbstractPointerSensor {
+  constructor(props) {
+    super(props, events$2);
+  }
+  static setup() {
+    window.addEventListener(events$2.move.name, noop3, {
+      capture: false,
+      passive: false
+    });
+    return function teardown() {
+      window.removeEventListener(events$2.move.name, noop3);
+    };
+    function noop3() {
+    }
+  }
+}
+TouchSensor.activators = [{
+  eventName: "onTouchStart",
+  handler: (_ref, _ref2) => {
+    let {
+      nativeEvent: event
+    } = _ref;
+    let {
+      onActivation
+    } = _ref2;
+    const {
+      touches
+    } = event;
+    if (touches.length > 1) {
+      return false;
+    }
+    onActivation == null ? void 0 : onActivation({
+      event
+    });
+    return true;
+  }
+}];
+var AutoScrollActivator;
+(function(AutoScrollActivator2) {
+  AutoScrollActivator2[AutoScrollActivator2["Pointer"] = 0] = "Pointer";
+  AutoScrollActivator2[AutoScrollActivator2["DraggableRect"] = 1] = "DraggableRect";
+})(AutoScrollActivator || (AutoScrollActivator = {}));
+var TraversalOrder;
+(function(TraversalOrder2) {
+  TraversalOrder2[TraversalOrder2["TreeOrder"] = 0] = "TreeOrder";
+  TraversalOrder2[TraversalOrder2["ReversedTreeOrder"] = 1] = "ReversedTreeOrder";
+})(TraversalOrder || (TraversalOrder = {}));
+function useAutoScroller(_ref) {
+  let {
+    acceleration,
+    activator = AutoScrollActivator.Pointer,
+    canScroll,
+    draggingRect,
+    enabled,
+    interval = 5,
+    order = TraversalOrder.TreeOrder,
+    pointerCoordinates,
+    scrollableAncestors,
+    scrollableAncestorRects,
+    delta,
+    threshold
+  } = _ref;
+  const scrollIntent = useScrollIntent({
+    delta,
+    disabled: !enabled
+  });
+  const [setAutoScrollInterval, clearAutoScrollInterval] = useInterval();
+  const scrollSpeed = reactExports.useRef({
+    x: 0,
+    y: 0
+  });
+  const scrollDirection = reactExports.useRef({
+    x: 0,
+    y: 0
+  });
+  const rect = reactExports.useMemo(() => {
+    switch (activator) {
+      case AutoScrollActivator.Pointer:
+        return pointerCoordinates ? {
+          top: pointerCoordinates.y,
+          bottom: pointerCoordinates.y,
+          left: pointerCoordinates.x,
+          right: pointerCoordinates.x
+        } : null;
+      case AutoScrollActivator.DraggableRect:
+        return draggingRect;
+    }
+  }, [activator, draggingRect, pointerCoordinates]);
+  const scrollContainerRef = reactExports.useRef(null);
+  const autoScroll = reactExports.useCallback(() => {
+    const scrollContainer = scrollContainerRef.current;
+    if (!scrollContainer) {
+      return;
+    }
+    const scrollLeft = scrollSpeed.current.x * scrollDirection.current.x;
+    const scrollTop = scrollSpeed.current.y * scrollDirection.current.y;
+    scrollContainer.scrollBy(scrollLeft, scrollTop);
+  }, []);
+  const sortedScrollableAncestors = reactExports.useMemo(() => order === TraversalOrder.TreeOrder ? [...scrollableAncestors].reverse() : scrollableAncestors, [order, scrollableAncestors]);
+  reactExports.useEffect(
+    () => {
+      if (!enabled || !scrollableAncestors.length || !rect) {
+        clearAutoScrollInterval();
+        return;
+      }
+      for (const scrollContainer of sortedScrollableAncestors) {
+        if ((canScroll == null ? void 0 : canScroll(scrollContainer)) === false) {
+          continue;
+        }
+        const index2 = scrollableAncestors.indexOf(scrollContainer);
+        const scrollContainerRect = scrollableAncestorRects[index2];
+        if (!scrollContainerRect) {
+          continue;
+        }
+        const {
+          direction,
+          speed
+        } = getScrollDirectionAndSpeed(scrollContainer, scrollContainerRect, rect, acceleration, threshold);
+        for (const axis of ["x", "y"]) {
+          if (!scrollIntent[axis][direction[axis]]) {
+            speed[axis] = 0;
+            direction[axis] = 0;
+          }
+        }
+        if (speed.x > 0 || speed.y > 0) {
+          clearAutoScrollInterval();
+          scrollContainerRef.current = scrollContainer;
+          setAutoScrollInterval(autoScroll, interval);
+          scrollSpeed.current = speed;
+          scrollDirection.current = direction;
+          return;
+        }
+      }
+      scrollSpeed.current = {
+        x: 0,
+        y: 0
+      };
+      scrollDirection.current = {
+        x: 0,
+        y: 0
+      };
+      clearAutoScrollInterval();
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [
+      acceleration,
+      autoScroll,
+      canScroll,
+      clearAutoScrollInterval,
+      enabled,
+      interval,
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      JSON.stringify(rect),
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      JSON.stringify(scrollIntent),
+      setAutoScrollInterval,
+      scrollableAncestors,
+      sortedScrollableAncestors,
+      scrollableAncestorRects,
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      JSON.stringify(threshold)
+    ]
+  );
+}
+const defaultScrollIntent = {
+  x: {
+    [Direction.Backward]: false,
+    [Direction.Forward]: false
+  },
+  y: {
+    [Direction.Backward]: false,
+    [Direction.Forward]: false
+  }
+};
+function useScrollIntent(_ref2) {
+  let {
+    delta,
+    disabled
+  } = _ref2;
+  const previousDelta = usePrevious$1(delta);
+  return useLazyMemo((previousIntent) => {
+    if (disabled || !previousDelta || !previousIntent) {
+      return defaultScrollIntent;
+    }
+    const direction = {
+      x: Math.sign(delta.x - previousDelta.x),
+      y: Math.sign(delta.y - previousDelta.y)
+    };
+    return {
+      x: {
+        [Direction.Backward]: previousIntent.x[Direction.Backward] || direction.x === -1,
+        [Direction.Forward]: previousIntent.x[Direction.Forward] || direction.x === 1
+      },
+      y: {
+        [Direction.Backward]: previousIntent.y[Direction.Backward] || direction.y === -1,
+        [Direction.Forward]: previousIntent.y[Direction.Forward] || direction.y === 1
+      }
+    };
+  }, [disabled, delta, previousDelta]);
+}
+function useCachedNode(draggableNodes, id2) {
+  const draggableNode = id2 != null ? draggableNodes.get(id2) : void 0;
+  const node = draggableNode ? draggableNode.node.current : null;
+  return useLazyMemo((cachedNode) => {
+    var _ref;
+    if (id2 == null) {
+      return null;
+    }
+    return (_ref = node != null ? node : cachedNode) != null ? _ref : null;
+  }, [node, id2]);
+}
+function useCombineActivators(sensors, getSyntheticHandler) {
+  return reactExports.useMemo(() => sensors.reduce((accumulator, sensor) => {
+    const {
+      sensor: Sensor
+    } = sensor;
+    const sensorActivators = Sensor.activators.map((activator) => ({
+      eventName: activator.eventName,
+      handler: getSyntheticHandler(activator.handler, sensor)
+    }));
+    return [...accumulator, ...sensorActivators];
+  }, []), [sensors, getSyntheticHandler]);
+}
+var MeasuringStrategy;
+(function(MeasuringStrategy2) {
+  MeasuringStrategy2[MeasuringStrategy2["Always"] = 0] = "Always";
+  MeasuringStrategy2[MeasuringStrategy2["BeforeDragging"] = 1] = "BeforeDragging";
+  MeasuringStrategy2[MeasuringStrategy2["WhileDragging"] = 2] = "WhileDragging";
+})(MeasuringStrategy || (MeasuringStrategy = {}));
+var MeasuringFrequency;
+(function(MeasuringFrequency2) {
+  MeasuringFrequency2["Optimized"] = "optimized";
+})(MeasuringFrequency || (MeasuringFrequency = {}));
+const defaultValue = /* @__PURE__ */ new Map();
+function useDroppableMeasuring(containers, _ref) {
+  let {
+    dragging,
+    dependencies,
+    config
+  } = _ref;
+  const [queue, setQueue] = reactExports.useState(null);
+  const {
+    frequency,
+    measure,
+    strategy
+  } = config;
+  const containersRef = reactExports.useRef(containers);
+  const disabled = isDisabled();
+  const disabledRef = useLatestValue(disabled);
+  const measureDroppableContainers = reactExports.useCallback(function(ids2) {
+    if (ids2 === void 0) {
+      ids2 = [];
+    }
+    if (disabledRef.current) {
+      return;
+    }
+    setQueue((value) => {
+      if (value === null) {
+        return ids2;
+      }
+      return value.concat(ids2.filter((id2) => !value.includes(id2)));
+    });
+  }, [disabledRef]);
+  const timeoutId = reactExports.useRef(null);
+  const droppableRects = useLazyMemo((previousValue) => {
+    if (disabled && !dragging) {
+      return defaultValue;
+    }
+    if (!previousValue || previousValue === defaultValue || containersRef.current !== containers || queue != null) {
+      const map = /* @__PURE__ */ new Map();
+      for (let container of containers) {
+        if (!container) {
+          continue;
+        }
+        if (queue && queue.length > 0 && !queue.includes(container.id) && container.rect.current) {
+          map.set(container.id, container.rect.current);
+          continue;
+        }
+        const node = container.node.current;
+        const rect = node ? new Rect(measure(node), node) : null;
+        container.rect.current = rect;
+        if (rect) {
+          map.set(container.id, rect);
+        }
+      }
+      return map;
+    }
+    return previousValue;
+  }, [containers, queue, dragging, disabled, measure]);
+  reactExports.useEffect(() => {
+    containersRef.current = containers;
+  }, [containers]);
+  reactExports.useEffect(
+    () => {
+      if (disabled) {
+        return;
+      }
+      measureDroppableContainers();
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [dragging, disabled]
+  );
+  reactExports.useEffect(
+    () => {
+      if (queue && queue.length > 0) {
+        setQueue(null);
+      }
+    },
+    //eslint-disable-next-line react-hooks/exhaustive-deps
+    [JSON.stringify(queue)]
+  );
+  reactExports.useEffect(
+    () => {
+      if (disabled || typeof frequency !== "number" || timeoutId.current !== null) {
+        return;
+      }
+      timeoutId.current = setTimeout(() => {
+        measureDroppableContainers();
+        timeoutId.current = null;
+      }, frequency);
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [frequency, disabled, measureDroppableContainers, ...dependencies]
+  );
+  return {
+    droppableRects,
+    measureDroppableContainers,
+    measuringScheduled: queue != null
+  };
+  function isDisabled() {
+    switch (strategy) {
+      case MeasuringStrategy.Always:
+        return false;
+      case MeasuringStrategy.BeforeDragging:
+        return dragging;
+      default:
+        return !dragging;
+    }
+  }
+}
+function useInitialValue(value, computeFn) {
+  return useLazyMemo((previousValue) => {
+    if (!value) {
+      return null;
+    }
+    if (previousValue) {
+      return previousValue;
+    }
+    return typeof computeFn === "function" ? computeFn(value) : value;
+  }, [computeFn, value]);
+}
+function useInitialRect(node, measure) {
+  return useInitialValue(node, measure);
+}
+function useMutationObserver(_ref) {
+  let {
+    callback,
+    disabled
+  } = _ref;
+  const handleMutations = useEvent(callback);
+  const mutationObserver = reactExports.useMemo(() => {
+    if (disabled || typeof window === "undefined" || typeof window.MutationObserver === "undefined") {
+      return void 0;
+    }
+    const {
+      MutationObserver: MutationObserver2
+    } = window;
+    return new MutationObserver2(handleMutations);
+  }, [handleMutations, disabled]);
+  reactExports.useEffect(() => {
+    return () => mutationObserver == null ? void 0 : mutationObserver.disconnect();
+  }, [mutationObserver]);
+  return mutationObserver;
+}
+function useResizeObserver(_ref) {
+  let {
+    callback,
+    disabled
+  } = _ref;
+  const handleResize = useEvent(callback);
+  const resizeObserver = reactExports.useMemo(
+    () => {
+      if (disabled || typeof window === "undefined" || typeof window.ResizeObserver === "undefined") {
+        return void 0;
+      }
+      const {
+        ResizeObserver: ResizeObserver2
+      } = window;
+      return new ResizeObserver2(handleResize);
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [disabled]
+  );
+  reactExports.useEffect(() => {
+    return () => resizeObserver == null ? void 0 : resizeObserver.disconnect();
+  }, [resizeObserver]);
+  return resizeObserver;
+}
+function defaultMeasure(element) {
+  return new Rect(getClientRect(element), element);
+}
+function useRect(element, measure, fallbackRect) {
+  if (measure === void 0) {
+    measure = defaultMeasure;
+  }
+  const [rect, setRect] = reactExports.useState(null);
+  function measureRect() {
+    setRect((currentRect) => {
+      if (!element) {
+        return null;
+      }
+      if (element.isConnected === false) {
+        var _ref;
+        return (_ref = currentRect != null ? currentRect : fallbackRect) != null ? _ref : null;
+      }
+      const newRect = measure(element);
+      if (JSON.stringify(currentRect) === JSON.stringify(newRect)) {
+        return currentRect;
+      }
+      return newRect;
+    });
+  }
+  const mutationObserver = useMutationObserver({
+    callback(records) {
+      if (!element) {
+        return;
+      }
+      for (const record of records) {
+        const {
+          type,
+          target
+        } = record;
+        if (type === "childList" && target instanceof HTMLElement && target.contains(element)) {
+          measureRect();
+          break;
+        }
+      }
+    }
+  });
+  const resizeObserver = useResizeObserver({
+    callback: measureRect
+  });
+  useIsomorphicLayoutEffect$1(() => {
+    measureRect();
+    if (element) {
+      resizeObserver == null ? void 0 : resizeObserver.observe(element);
+      mutationObserver == null ? void 0 : mutationObserver.observe(document.body, {
+        childList: true,
+        subtree: true
+      });
+    } else {
+      resizeObserver == null ? void 0 : resizeObserver.disconnect();
+      mutationObserver == null ? void 0 : mutationObserver.disconnect();
+    }
+  }, [element]);
+  return rect;
+}
+function useRectDelta(rect) {
+  const initialRect = useInitialValue(rect);
+  return getRectDelta(rect, initialRect);
+}
+const defaultValue$1 = [];
+function useScrollableAncestors(node) {
+  const previousNode = reactExports.useRef(node);
+  const ancestors = useLazyMemo((previousValue) => {
+    if (!node) {
+      return defaultValue$1;
+    }
+    if (previousValue && previousValue !== defaultValue$1 && node && previousNode.current && node.parentNode === previousNode.current.parentNode) {
+      return previousValue;
+    }
+    return getScrollableAncestors(node);
+  }, [node]);
+  reactExports.useEffect(() => {
+    previousNode.current = node;
+  }, [node]);
+  return ancestors;
+}
+function useScrollOffsets(elements) {
+  const [scrollCoordinates, setScrollCoordinates] = reactExports.useState(null);
+  const prevElements = reactExports.useRef(elements);
+  const handleScroll2 = reactExports.useCallback((event) => {
+    const scrollingElement = getScrollableElement(event.target);
+    if (!scrollingElement) {
+      return;
+    }
+    setScrollCoordinates((scrollCoordinates2) => {
+      if (!scrollCoordinates2) {
+        return null;
+      }
+      scrollCoordinates2.set(scrollingElement, getScrollCoordinates(scrollingElement));
+      return new Map(scrollCoordinates2);
+    });
+  }, []);
+  reactExports.useEffect(() => {
+    const previousElements = prevElements.current;
+    if (elements !== previousElements) {
+      cleanup(previousElements);
+      const entries = elements.map((element) => {
+        const scrollableElement = getScrollableElement(element);
+        if (scrollableElement) {
+          scrollableElement.addEventListener("scroll", handleScroll2, {
+            passive: true
+          });
+          return [scrollableElement, getScrollCoordinates(scrollableElement)];
+        }
+        return null;
+      }).filter((entry) => entry != null);
+      setScrollCoordinates(entries.length ? new Map(entries) : null);
+      prevElements.current = elements;
+    }
+    return () => {
+      cleanup(elements);
+      cleanup(previousElements);
+    };
+    function cleanup(elements2) {
+      elements2.forEach((element) => {
+        const scrollableElement = getScrollableElement(element);
+        scrollableElement == null ? void 0 : scrollableElement.removeEventListener("scroll", handleScroll2);
+      });
+    }
+  }, [handleScroll2, elements]);
+  return reactExports.useMemo(() => {
+    if (elements.length) {
+      return scrollCoordinates ? Array.from(scrollCoordinates.values()).reduce((acc, coordinates) => add(acc, coordinates), defaultCoordinates) : getScrollOffsets(elements);
+    }
+    return defaultCoordinates;
+  }, [elements, scrollCoordinates]);
+}
+function useScrollOffsetsDelta(scrollOffsets, dependencies) {
+  if (dependencies === void 0) {
+    dependencies = [];
+  }
+  const initialScrollOffsets = reactExports.useRef(null);
+  reactExports.useEffect(
+    () => {
+      initialScrollOffsets.current = null;
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    dependencies
+  );
+  reactExports.useEffect(() => {
+    const hasScrollOffsets = scrollOffsets !== defaultCoordinates;
+    if (hasScrollOffsets && !initialScrollOffsets.current) {
+      initialScrollOffsets.current = scrollOffsets;
+    }
+    if (!hasScrollOffsets && initialScrollOffsets.current) {
+      initialScrollOffsets.current = null;
+    }
+  }, [scrollOffsets]);
+  return initialScrollOffsets.current ? subtract(scrollOffsets, initialScrollOffsets.current) : defaultCoordinates;
+}
+function useSensorSetup(sensors) {
+  reactExports.useEffect(
+    () => {
+      if (!canUseDOM) {
+        return;
+      }
+      const teardownFns = sensors.map((_ref) => {
+        let {
+          sensor
+        } = _ref;
+        return sensor.setup == null ? void 0 : sensor.setup();
+      });
+      return () => {
+        for (const teardown of teardownFns) {
+          teardown == null ? void 0 : teardown();
+        }
+      };
+    },
+    // TO-DO: Sensors length could theoretically change which would not be a valid dependency
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    sensors.map((_ref2) => {
+      let {
+        sensor
+      } = _ref2;
+      return sensor;
+    })
+  );
+}
+function useSyntheticListeners(listeners, id2) {
+  return reactExports.useMemo(() => {
+    return listeners.reduce((acc, _ref) => {
+      let {
+        eventName,
+        handler
+      } = _ref;
+      acc[eventName] = (event) => {
+        handler(event, id2);
+      };
+      return acc;
+    }, {});
+  }, [listeners, id2]);
+}
+function useWindowRect(element) {
+  return reactExports.useMemo(() => element ? getWindowClientRect(element) : null, [element]);
+}
+const defaultValue$2 = [];
+function useRects(elements, measure) {
+  if (measure === void 0) {
+    measure = getClientRect;
+  }
+  const [firstElement] = elements;
+  const windowRect = useWindowRect(firstElement ? getWindow$1(firstElement) : null);
+  const [rects, setRects] = reactExports.useState(defaultValue$2);
+  function measureRects() {
+    setRects(() => {
+      if (!elements.length) {
+        return defaultValue$2;
+      }
+      return elements.map((element) => isDocumentScrollingElement(element) ? windowRect : new Rect(measure(element), element));
+    });
+  }
+  const resizeObserver = useResizeObserver({
+    callback: measureRects
+  });
+  useIsomorphicLayoutEffect$1(() => {
+    resizeObserver == null ? void 0 : resizeObserver.disconnect();
+    measureRects();
+    elements.forEach((element) => resizeObserver == null ? void 0 : resizeObserver.observe(element));
+  }, [elements]);
+  return rects;
+}
+function getMeasurableNode(node) {
+  if (!node) {
+    return null;
+  }
+  if (node.children.length > 1) {
+    return node;
+  }
+  const firstChild = node.children[0];
+  return isHTMLElement$1(firstChild) ? firstChild : node;
+}
+function useDragOverlayMeasuring(_ref) {
+  let {
+    measure
+  } = _ref;
+  const [rect, setRect] = reactExports.useState(null);
+  const handleResize = reactExports.useCallback((entries) => {
+    for (const {
+      target
+    } of entries) {
+      if (isHTMLElement$1(target)) {
+        setRect((rect2) => {
+          const newRect = measure(target);
+          return rect2 ? {
+            ...rect2,
+            width: newRect.width,
+            height: newRect.height
+          } : newRect;
+        });
+        break;
+      }
+    }
+  }, [measure]);
+  const resizeObserver = useResizeObserver({
+    callback: handleResize
+  });
+  const handleNodeChange = reactExports.useCallback((element) => {
+    const node = getMeasurableNode(element);
+    resizeObserver == null ? void 0 : resizeObserver.disconnect();
+    if (node) {
+      resizeObserver == null ? void 0 : resizeObserver.observe(node);
+    }
+    setRect(node ? measure(node) : null);
+  }, [measure, resizeObserver]);
+  const [nodeRef, setRef2] = useNodeRef(handleNodeChange);
+  return reactExports.useMemo(() => ({
+    nodeRef,
+    rect,
+    setRef: setRef2
+  }), [rect, nodeRef, setRef2]);
+}
+const defaultSensors = [{
+  sensor: PointerSensor,
+  options: {}
+}, {
+  sensor: KeyboardSensor,
+  options: {}
+}];
+const defaultData = {
+  current: {}
+};
+const defaultMeasuringConfiguration = {
+  draggable: {
+    measure: getTransformAgnosticClientRect
+  },
+  droppable: {
+    measure: getTransformAgnosticClientRect,
+    strategy: MeasuringStrategy.WhileDragging,
+    frequency: MeasuringFrequency.Optimized
+  },
+  dragOverlay: {
+    measure: getClientRect
+  }
+};
+class DroppableContainersMap extends Map {
+  get(id2) {
+    var _super$get;
+    return id2 != null ? (_super$get = super.get(id2)) != null ? _super$get : void 0 : void 0;
+  }
+  toArray() {
+    return Array.from(this.values());
+  }
+  getEnabled() {
+    return this.toArray().filter((_ref) => {
+      let {
+        disabled
+      } = _ref;
+      return !disabled;
+    });
+  }
+  getNodeFor(id2) {
+    var _this$get$node$curren, _this$get;
+    return (_this$get$node$curren = (_this$get = this.get(id2)) == null ? void 0 : _this$get.node.current) != null ? _this$get$node$curren : void 0;
+  }
+}
+const defaultPublicContext = {
+  activatorEvent: null,
+  active: null,
+  activeNode: null,
+  activeNodeRect: null,
+  collisions: null,
+  containerNodeRect: null,
+  draggableNodes: /* @__PURE__ */ new Map(),
+  droppableRects: /* @__PURE__ */ new Map(),
+  droppableContainers: /* @__PURE__ */ new DroppableContainersMap(),
+  over: null,
+  dragOverlay: {
+    nodeRef: {
+      current: null
+    },
+    rect: null,
+    setRef: noop$1
+  },
+  scrollableAncestors: [],
+  scrollableAncestorRects: [],
+  measuringConfiguration: defaultMeasuringConfiguration,
+  measureDroppableContainers: noop$1,
+  windowRect: null,
+  measuringScheduled: false
+};
+const defaultInternalContext = {
+  activatorEvent: null,
+  activators: [],
+  active: null,
+  activeNodeRect: null,
+  ariaDescribedById: {
+    draggable: ""
+  },
+  dispatch: noop$1,
+  draggableNodes: /* @__PURE__ */ new Map(),
+  over: null,
+  measureDroppableContainers: noop$1
+};
+const InternalContext = /* @__PURE__ */ reactExports.createContext(defaultInternalContext);
+const PublicContext = /* @__PURE__ */ reactExports.createContext(defaultPublicContext);
+function getInitialState() {
+  return {
+    draggable: {
+      active: null,
+      initialCoordinates: {
+        x: 0,
+        y: 0
+      },
+      nodes: /* @__PURE__ */ new Map(),
+      translate: {
+        x: 0,
+        y: 0
+      }
+    },
+    droppable: {
+      containers: new DroppableContainersMap()
+    }
+  };
+}
+function reducer(state, action) {
+  switch (action.type) {
+    case Action$1.DragStart:
+      return {
+        ...state,
+        draggable: {
+          ...state.draggable,
+          initialCoordinates: action.initialCoordinates,
+          active: action.active
+        }
+      };
+    case Action$1.DragMove:
+      if (state.draggable.active == null) {
+        return state;
+      }
+      return {
+        ...state,
+        draggable: {
+          ...state.draggable,
+          translate: {
+            x: action.coordinates.x - state.draggable.initialCoordinates.x,
+            y: action.coordinates.y - state.draggable.initialCoordinates.y
+          }
+        }
+      };
+    case Action$1.DragEnd:
+    case Action$1.DragCancel:
+      return {
+        ...state,
+        draggable: {
+          ...state.draggable,
+          active: null,
+          initialCoordinates: {
+            x: 0,
+            y: 0
+          },
+          translate: {
+            x: 0,
+            y: 0
+          }
+        }
+      };
+    case Action$1.RegisterDroppable: {
+      const {
+        element
+      } = action;
+      const {
+        id: id2
+      } = element;
+      const containers = new DroppableContainersMap(state.droppable.containers);
+      containers.set(id2, element);
+      return {
+        ...state,
+        droppable: {
+          ...state.droppable,
+          containers
+        }
+      };
+    }
+    case Action$1.SetDroppableDisabled: {
+      const {
+        id: id2,
+        key,
+        disabled
+      } = action;
+      const element = state.droppable.containers.get(id2);
+      if (!element || key !== element.key) {
+        return state;
+      }
+      const containers = new DroppableContainersMap(state.droppable.containers);
+      containers.set(id2, {
+        ...element,
+        disabled
+      });
+      return {
+        ...state,
+        droppable: {
+          ...state.droppable,
+          containers
+        }
+      };
+    }
+    case Action$1.UnregisterDroppable: {
+      const {
+        id: id2,
+        key
+      } = action;
+      const element = state.droppable.containers.get(id2);
+      if (!element || key !== element.key) {
+        return state;
+      }
+      const containers = new DroppableContainersMap(state.droppable.containers);
+      containers.delete(id2);
+      return {
+        ...state,
+        droppable: {
+          ...state.droppable,
+          containers
+        }
+      };
+    }
+    default: {
+      return state;
+    }
+  }
+}
+function RestoreFocus(_ref) {
+  let {
+    disabled
+  } = _ref;
+  const {
+    active,
+    activatorEvent,
+    draggableNodes
+  } = reactExports.useContext(InternalContext);
+  const previousActivatorEvent = usePrevious$1(activatorEvent);
+  const previousActiveId = usePrevious$1(active == null ? void 0 : active.id);
+  reactExports.useEffect(() => {
+    if (disabled) {
+      return;
+    }
+    if (!activatorEvent && previousActivatorEvent && previousActiveId != null) {
+      if (!isKeyboardEvent(previousActivatorEvent)) {
+        return;
+      }
+      if (document.activeElement === previousActivatorEvent.target) {
+        return;
+      }
+      const draggableNode = draggableNodes.get(previousActiveId);
+      if (!draggableNode) {
+        return;
+      }
+      const {
+        activatorNode,
+        node
+      } = draggableNode;
+      if (!activatorNode.current && !node.current) {
+        return;
+      }
+      requestAnimationFrame(() => {
+        for (const element of [activatorNode.current, node.current]) {
+          if (!element) {
+            continue;
+          }
+          const focusableNode = findFirstFocusableNode(element);
+          if (focusableNode) {
+            focusableNode.focus();
+            break;
+          }
+        }
+      });
+    }
+  }, [activatorEvent, disabled, draggableNodes, previousActiveId, previousActivatorEvent]);
+  return null;
+}
+function applyModifiers(modifiers, _ref) {
+  let {
+    transform,
+    ...args
+  } = _ref;
+  return modifiers != null && modifiers.length ? modifiers.reduce((accumulator, modifier) => {
+    return modifier({
+      transform: accumulator,
+      ...args
+    });
+  }, transform) : transform;
+}
+function useMeasuringConfiguration(config) {
+  return reactExports.useMemo(
+    () => ({
+      draggable: {
+        ...defaultMeasuringConfiguration.draggable,
+        ...config == null ? void 0 : config.draggable
+      },
+      droppable: {
+        ...defaultMeasuringConfiguration.droppable,
+        ...config == null ? void 0 : config.droppable
+      },
+      dragOverlay: {
+        ...defaultMeasuringConfiguration.dragOverlay,
+        ...config == null ? void 0 : config.dragOverlay
+      }
+    }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [config == null ? void 0 : config.draggable, config == null ? void 0 : config.droppable, config == null ? void 0 : config.dragOverlay]
+  );
+}
+function useLayoutShiftScrollCompensation(_ref) {
+  let {
+    activeNode,
+    measure,
+    initialRect,
+    config = true
+  } = _ref;
+  const initialized = reactExports.useRef(false);
+  const {
+    x: x2,
+    y
+  } = typeof config === "boolean" ? {
+    x: config,
+    y: config
+  } : config;
+  useIsomorphicLayoutEffect$1(() => {
+    const disabled = !x2 && !y;
+    if (disabled || !activeNode) {
+      initialized.current = false;
+      return;
+    }
+    if (initialized.current || !initialRect) {
+      return;
+    }
+    const node = activeNode == null ? void 0 : activeNode.node.current;
+    if (!node || node.isConnected === false) {
+      return;
+    }
+    const rect = measure(node);
+    const rectDelta = getRectDelta(rect, initialRect);
+    if (!x2) {
+      rectDelta.x = 0;
+    }
+    if (!y) {
+      rectDelta.y = 0;
+    }
+    initialized.current = true;
+    if (Math.abs(rectDelta.x) > 0 || Math.abs(rectDelta.y) > 0) {
+      const firstScrollableAncestor = getFirstScrollableAncestor(node);
+      if (firstScrollableAncestor) {
+        firstScrollableAncestor.scrollBy({
+          top: rectDelta.y,
+          left: rectDelta.x
+        });
+      }
+    }
+  }, [activeNode, x2, y, initialRect, measure]);
+}
+const ActiveDraggableContext = /* @__PURE__ */ reactExports.createContext({
+  ...defaultCoordinates,
+  scaleX: 1,
+  scaleY: 1
+});
+var Status;
+(function(Status2) {
+  Status2[Status2["Uninitialized"] = 0] = "Uninitialized";
+  Status2[Status2["Initializing"] = 1] = "Initializing";
+  Status2[Status2["Initialized"] = 2] = "Initialized";
+})(Status || (Status = {}));
+const DndContext = /* @__PURE__ */ reactExports.memo(function DndContext2(_ref) {
+  var _sensorContext$curren, _dragOverlay$nodeRef$, _dragOverlay$rect, _over$rect;
+  let {
+    id: id2,
+    accessibility,
+    autoScroll = true,
+    children,
+    sensors = defaultSensors,
+    collisionDetection = rectIntersection,
+    measuring,
+    modifiers,
+    ...props
+  } = _ref;
+  const store = reactExports.useReducer(reducer, void 0, getInitialState);
+  const [state, dispatch] = store;
+  const [dispatchMonitorEvent, registerMonitorListener] = useDndMonitorProvider();
+  const [status, setStatus] = reactExports.useState(Status.Uninitialized);
+  const isInitialized2 = status === Status.Initialized;
+  const {
+    draggable: {
+      active: activeId,
+      nodes: draggableNodes,
+      translate
+    },
+    droppable: {
+      containers: droppableContainers
+    }
+  } = state;
+  const node = activeId != null ? draggableNodes.get(activeId) : null;
+  const activeRects = reactExports.useRef({
+    initial: null,
+    translated: null
+  });
+  const active = reactExports.useMemo(() => {
+    var _node$data;
+    return activeId != null ? {
+      id: activeId,
+      // It's possible for the active node to unmount while dragging
+      data: (_node$data = node == null ? void 0 : node.data) != null ? _node$data : defaultData,
+      rect: activeRects
+    } : null;
+  }, [activeId, node]);
+  const activeRef = reactExports.useRef(null);
+  const [activeSensor, setActiveSensor] = reactExports.useState(null);
+  const [activatorEvent, setActivatorEvent] = reactExports.useState(null);
+  const latestProps = useLatestValue(props, Object.values(props));
+  const draggableDescribedById = useUniqueId("DndDescribedBy", id2);
+  const enabledDroppableContainers = reactExports.useMemo(() => droppableContainers.getEnabled(), [droppableContainers]);
+  const measuringConfiguration = useMeasuringConfiguration(measuring);
+  const {
+    droppableRects,
+    measureDroppableContainers,
+    measuringScheduled
+  } = useDroppableMeasuring(enabledDroppableContainers, {
+    dragging: isInitialized2,
+    dependencies: [translate.x, translate.y],
+    config: measuringConfiguration.droppable
+  });
+  const activeNode = useCachedNode(draggableNodes, activeId);
+  const activationCoordinates = reactExports.useMemo(() => activatorEvent ? getEventCoordinates(activatorEvent) : null, [activatorEvent]);
+  const autoScrollOptions = getAutoScrollerOptions();
+  const initialActiveNodeRect = useInitialRect(activeNode, measuringConfiguration.draggable.measure);
+  useLayoutShiftScrollCompensation({
+    activeNode: activeId != null ? draggableNodes.get(activeId) : null,
+    config: autoScrollOptions.layoutShiftCompensation,
+    initialRect: initialActiveNodeRect,
+    measure: measuringConfiguration.draggable.measure
+  });
+  const activeNodeRect = useRect(activeNode, measuringConfiguration.draggable.measure, initialActiveNodeRect);
+  const containerNodeRect = useRect(activeNode ? activeNode.parentElement : null);
+  const sensorContext = reactExports.useRef({
+    activatorEvent: null,
+    active: null,
+    activeNode,
+    collisionRect: null,
+    collisions: null,
+    droppableRects,
+    draggableNodes,
+    draggingNode: null,
+    draggingNodeRect: null,
+    droppableContainers,
+    over: null,
+    scrollableAncestors: [],
+    scrollAdjustedTranslate: null
+  });
+  const overNode = droppableContainers.getNodeFor((_sensorContext$curren = sensorContext.current.over) == null ? void 0 : _sensorContext$curren.id);
+  const dragOverlay = useDragOverlayMeasuring({
+    measure: measuringConfiguration.dragOverlay.measure
+  });
+  const draggingNode = (_dragOverlay$nodeRef$ = dragOverlay.nodeRef.current) != null ? _dragOverlay$nodeRef$ : activeNode;
+  const draggingNodeRect = isInitialized2 ? (_dragOverlay$rect = dragOverlay.rect) != null ? _dragOverlay$rect : activeNodeRect : null;
+  const usesDragOverlay = Boolean(dragOverlay.nodeRef.current && dragOverlay.rect);
+  const nodeRectDelta = useRectDelta(usesDragOverlay ? null : activeNodeRect);
+  const windowRect = useWindowRect(draggingNode ? getWindow$1(draggingNode) : null);
+  const scrollableAncestors = useScrollableAncestors(isInitialized2 ? overNode != null ? overNode : activeNode : null);
+  const scrollableAncestorRects = useRects(scrollableAncestors);
+  const modifiedTranslate = applyModifiers(modifiers, {
+    transform: {
+      x: translate.x - nodeRectDelta.x,
+      y: translate.y - nodeRectDelta.y,
+      scaleX: 1,
+      scaleY: 1
+    },
+    activatorEvent,
+    active,
+    activeNodeRect,
+    containerNodeRect,
+    draggingNodeRect,
+    over: sensorContext.current.over,
+    overlayNodeRect: dragOverlay.rect,
+    scrollableAncestors,
+    scrollableAncestorRects,
+    windowRect
+  });
+  const pointerCoordinates = activationCoordinates ? add(activationCoordinates, translate) : null;
+  const scrollOffsets = useScrollOffsets(scrollableAncestors);
+  const scrollAdjustment = useScrollOffsetsDelta(scrollOffsets);
+  const activeNodeScrollDelta = useScrollOffsetsDelta(scrollOffsets, [activeNodeRect]);
+  const scrollAdjustedTranslate = add(modifiedTranslate, scrollAdjustment);
+  const collisionRect = draggingNodeRect ? getAdjustedRect(draggingNodeRect, modifiedTranslate) : null;
+  const collisions = active && collisionRect ? collisionDetection({
+    active,
+    collisionRect,
+    droppableRects,
+    droppableContainers: enabledDroppableContainers,
+    pointerCoordinates
+  }) : null;
+  const overId = getFirstCollision(collisions, "id");
+  const [over, setOver] = reactExports.useState(null);
+  const appliedTranslate = usesDragOverlay ? modifiedTranslate : add(modifiedTranslate, activeNodeScrollDelta);
+  const transform = adjustScale(appliedTranslate, (_over$rect = over == null ? void 0 : over.rect) != null ? _over$rect : null, activeNodeRect);
+  const activeSensorRef = reactExports.useRef(null);
+  const instantiateSensor = reactExports.useCallback(
+    (event, _ref2) => {
+      let {
+        sensor: Sensor,
+        options
+      } = _ref2;
+      if (activeRef.current == null) {
+        return;
+      }
+      const activeNode2 = draggableNodes.get(activeRef.current);
+      if (!activeNode2) {
+        return;
+      }
+      const activatorEvent2 = event.nativeEvent;
+      const sensorInstance = new Sensor({
+        active: activeRef.current,
+        activeNode: activeNode2,
+        event: activatorEvent2,
+        options,
+        // Sensors need to be instantiated with refs for arguments that change over time
+        // otherwise they are frozen in time with the stale arguments
+        context: sensorContext,
+        onAbort(id3) {
+          const draggableNode = draggableNodes.get(id3);
+          if (!draggableNode) {
+            return;
+          }
+          const {
+            onDragAbort
+          } = latestProps.current;
+          const event2 = {
+            id: id3
+          };
+          onDragAbort == null ? void 0 : onDragAbort(event2);
+          dispatchMonitorEvent({
+            type: "onDragAbort",
+            event: event2
+          });
+        },
+        onPending(id3, constraint, initialCoordinates, offset2) {
+          const draggableNode = draggableNodes.get(id3);
+          if (!draggableNode) {
+            return;
+          }
+          const {
+            onDragPending
+          } = latestProps.current;
+          const event2 = {
+            id: id3,
+            constraint,
+            initialCoordinates,
+            offset: offset2
+          };
+          onDragPending == null ? void 0 : onDragPending(event2);
+          dispatchMonitorEvent({
+            type: "onDragPending",
+            event: event2
+          });
+        },
+        onStart(initialCoordinates) {
+          const id3 = activeRef.current;
+          if (id3 == null) {
+            return;
+          }
+          const draggableNode = draggableNodes.get(id3);
+          if (!draggableNode) {
+            return;
+          }
+          const {
+            onDragStart
+          } = latestProps.current;
+          const event2 = {
+            activatorEvent: activatorEvent2,
+            active: {
+              id: id3,
+              data: draggableNode.data,
+              rect: activeRects
+            }
+          };
+          reactDomExports.unstable_batchedUpdates(() => {
+            onDragStart == null ? void 0 : onDragStart(event2);
+            setStatus(Status.Initializing);
+            dispatch({
+              type: Action$1.DragStart,
+              initialCoordinates,
+              active: id3
+            });
+            dispatchMonitorEvent({
+              type: "onDragStart",
+              event: event2
+            });
+            setActiveSensor(activeSensorRef.current);
+            setActivatorEvent(activatorEvent2);
+          });
+        },
+        onMove(coordinates) {
+          dispatch({
+            type: Action$1.DragMove,
+            coordinates
+          });
+        },
+        onEnd: createHandler(Action$1.DragEnd),
+        onCancel: createHandler(Action$1.DragCancel)
+      });
+      activeSensorRef.current = sensorInstance;
+      function createHandler(type) {
+        return async function handler() {
+          const {
+            active: active2,
+            collisions: collisions2,
+            over: over2,
+            scrollAdjustedTranslate: scrollAdjustedTranslate2
+          } = sensorContext.current;
+          let event2 = null;
+          if (active2 && scrollAdjustedTranslate2) {
+            const {
+              cancelDrop
+            } = latestProps.current;
+            event2 = {
+              activatorEvent: activatorEvent2,
+              active: active2,
+              collisions: collisions2,
+              delta: scrollAdjustedTranslate2,
+              over: over2
+            };
+            if (type === Action$1.DragEnd && typeof cancelDrop === "function") {
+              const shouldCancel = await Promise.resolve(cancelDrop(event2));
+              if (shouldCancel) {
+                type = Action$1.DragCancel;
+              }
+            }
+          }
+          activeRef.current = null;
+          reactDomExports.unstable_batchedUpdates(() => {
+            dispatch({
+              type
+            });
+            setStatus(Status.Uninitialized);
+            setOver(null);
+            setActiveSensor(null);
+            setActivatorEvent(null);
+            activeSensorRef.current = null;
+            const eventName = type === Action$1.DragEnd ? "onDragEnd" : "onDragCancel";
+            if (event2) {
+              const handler2 = latestProps.current[eventName];
+              handler2 == null ? void 0 : handler2(event2);
+              dispatchMonitorEvent({
+                type: eventName,
+                event: event2
+              });
+            }
+          });
+        };
+      }
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [draggableNodes]
+  );
+  const bindActivatorToSensorInstantiator = reactExports.useCallback((handler, sensor) => {
+    return (event, active2) => {
+      const nativeEvent = event.nativeEvent;
+      const activeDraggableNode = draggableNodes.get(active2);
+      if (
+        // Another sensor is already instantiating
+        activeRef.current !== null || // No active draggable
+        !activeDraggableNode || // Event has already been captured
+        nativeEvent.dndKit || nativeEvent.defaultPrevented
+      ) {
+        return;
+      }
+      const activationContext = {
+        active: activeDraggableNode
+      };
+      const shouldActivate = handler(event, sensor.options, activationContext);
+      if (shouldActivate === true) {
+        nativeEvent.dndKit = {
+          capturedBy: sensor.sensor
+        };
+        activeRef.current = active2;
+        instantiateSensor(event, sensor);
+      }
+    };
+  }, [draggableNodes, instantiateSensor]);
+  const activators = useCombineActivators(sensors, bindActivatorToSensorInstantiator);
+  useSensorSetup(sensors);
+  useIsomorphicLayoutEffect$1(() => {
+    if (activeNodeRect && status === Status.Initializing) {
+      setStatus(Status.Initialized);
+    }
+  }, [activeNodeRect, status]);
+  reactExports.useEffect(
+    () => {
+      const {
+        onDragMove
+      } = latestProps.current;
+      const {
+        active: active2,
+        activatorEvent: activatorEvent2,
+        collisions: collisions2,
+        over: over2
+      } = sensorContext.current;
+      if (!active2 || !activatorEvent2) {
+        return;
+      }
+      const event = {
+        active: active2,
+        activatorEvent: activatorEvent2,
+        collisions: collisions2,
+        delta: {
+          x: scrollAdjustedTranslate.x,
+          y: scrollAdjustedTranslate.y
+        },
+        over: over2
+      };
+      reactDomExports.unstable_batchedUpdates(() => {
+        onDragMove == null ? void 0 : onDragMove(event);
+        dispatchMonitorEvent({
+          type: "onDragMove",
+          event
+        });
+      });
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [scrollAdjustedTranslate.x, scrollAdjustedTranslate.y]
+  );
+  reactExports.useEffect(
+    () => {
+      const {
+        active: active2,
+        activatorEvent: activatorEvent2,
+        collisions: collisions2,
+        droppableContainers: droppableContainers2,
+        scrollAdjustedTranslate: scrollAdjustedTranslate2
+      } = sensorContext.current;
+      if (!active2 || activeRef.current == null || !activatorEvent2 || !scrollAdjustedTranslate2) {
+        return;
+      }
+      const {
+        onDragOver
+      } = latestProps.current;
+      const overContainer = droppableContainers2.get(overId);
+      const over2 = overContainer && overContainer.rect.current ? {
+        id: overContainer.id,
+        rect: overContainer.rect.current,
+        data: overContainer.data,
+        disabled: overContainer.disabled
+      } : null;
+      const event = {
+        active: active2,
+        activatorEvent: activatorEvent2,
+        collisions: collisions2,
+        delta: {
+          x: scrollAdjustedTranslate2.x,
+          y: scrollAdjustedTranslate2.y
+        },
+        over: over2
+      };
+      reactDomExports.unstable_batchedUpdates(() => {
+        setOver(over2);
+        onDragOver == null ? void 0 : onDragOver(event);
+        dispatchMonitorEvent({
+          type: "onDragOver",
+          event
+        });
+      });
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [overId]
+  );
+  useIsomorphicLayoutEffect$1(() => {
+    sensorContext.current = {
+      activatorEvent,
+      active,
+      activeNode,
+      collisionRect,
+      collisions,
+      droppableRects,
+      draggableNodes,
+      draggingNode,
+      draggingNodeRect,
+      droppableContainers,
+      over,
+      scrollableAncestors,
+      scrollAdjustedTranslate
+    };
+    activeRects.current = {
+      initial: draggingNodeRect,
+      translated: collisionRect
+    };
+  }, [active, activeNode, collisions, collisionRect, draggableNodes, draggingNode, draggingNodeRect, droppableRects, droppableContainers, over, scrollableAncestors, scrollAdjustedTranslate]);
+  useAutoScroller({
+    ...autoScrollOptions,
+    delta: translate,
+    draggingRect: collisionRect,
+    pointerCoordinates,
+    scrollableAncestors,
+    scrollableAncestorRects
+  });
+  const publicContext = reactExports.useMemo(() => {
+    const context = {
+      active,
+      activeNode,
+      activeNodeRect,
+      activatorEvent,
+      collisions,
+      containerNodeRect,
+      dragOverlay,
+      draggableNodes,
+      droppableContainers,
+      droppableRects,
+      over,
+      measureDroppableContainers,
+      scrollableAncestors,
+      scrollableAncestorRects,
+      measuringConfiguration,
+      measuringScheduled,
+      windowRect
+    };
+    return context;
+  }, [active, activeNode, activeNodeRect, activatorEvent, collisions, containerNodeRect, dragOverlay, draggableNodes, droppableContainers, droppableRects, over, measureDroppableContainers, scrollableAncestors, scrollableAncestorRects, measuringConfiguration, measuringScheduled, windowRect]);
+  const internalContext = reactExports.useMemo(() => {
+    const context = {
+      activatorEvent,
+      activators,
+      active,
+      activeNodeRect,
+      ariaDescribedById: {
+        draggable: draggableDescribedById
+      },
+      dispatch,
+      draggableNodes,
+      over,
+      measureDroppableContainers
+    };
+    return context;
+  }, [activatorEvent, activators, active, activeNodeRect, dispatch, draggableDescribedById, draggableNodes, over, measureDroppableContainers]);
+  return React$2.createElement(DndMonitorContext.Provider, {
+    value: registerMonitorListener
+  }, React$2.createElement(InternalContext.Provider, {
+    value: internalContext
+  }, React$2.createElement(PublicContext.Provider, {
+    value: publicContext
+  }, React$2.createElement(ActiveDraggableContext.Provider, {
+    value: transform
+  }, children)), React$2.createElement(RestoreFocus, {
+    disabled: (accessibility == null ? void 0 : accessibility.restoreFocus) === false
+  })), React$2.createElement(Accessibility, {
+    ...accessibility,
+    hiddenTextDescribedById: draggableDescribedById
+  }));
+  function getAutoScrollerOptions() {
+    const activeSensorDisablesAutoscroll = (activeSensor == null ? void 0 : activeSensor.autoScrollEnabled) === false;
+    const autoScrollGloballyDisabled = typeof autoScroll === "object" ? autoScroll.enabled === false : autoScroll === false;
+    const enabled = isInitialized2 && !activeSensorDisablesAutoscroll && !autoScrollGloballyDisabled;
+    if (typeof autoScroll === "object") {
+      return {
+        ...autoScroll,
+        enabled
+      };
+    }
+    return {
+      enabled
+    };
+  }
+});
+const NullContext = /* @__PURE__ */ reactExports.createContext(null);
+const defaultRole = "button";
+const ID_PREFIX$1 = "Draggable";
+function useDraggable(_ref) {
+  let {
+    id: id2,
+    data,
+    disabled = false,
+    attributes
+  } = _ref;
+  const key = useUniqueId(ID_PREFIX$1);
+  const {
+    activators,
+    activatorEvent,
+    active,
+    activeNodeRect,
+    ariaDescribedById,
+    draggableNodes,
+    over
+  } = reactExports.useContext(InternalContext);
+  const {
+    role = defaultRole,
+    roleDescription = "draggable",
+    tabIndex = 0
+  } = attributes != null ? attributes : {};
+  const isDragging2 = (active == null ? void 0 : active.id) === id2;
+  const transform = reactExports.useContext(isDragging2 ? ActiveDraggableContext : NullContext);
+  const [node, setNodeRef] = useNodeRef();
+  const [activatorNode, setActivatorNodeRef] = useNodeRef();
+  const listeners = useSyntheticListeners(activators, id2);
+  const dataRef = useLatestValue(data);
+  useIsomorphicLayoutEffect$1(
+    () => {
+      draggableNodes.set(id2, {
+        id: id2,
+        key,
+        node,
+        activatorNode,
+        data: dataRef
+      });
+      return () => {
+        const node2 = draggableNodes.get(id2);
+        if (node2 && node2.key === key) {
+          draggableNodes.delete(id2);
+        }
+      };
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [draggableNodes, id2]
+  );
+  const memoizedAttributes = reactExports.useMemo(() => ({
+    role,
+    tabIndex,
+    "aria-disabled": disabled,
+    "aria-pressed": isDragging2 && role === defaultRole ? true : void 0,
+    "aria-roledescription": roleDescription,
+    "aria-describedby": ariaDescribedById.draggable
+  }), [disabled, role, tabIndex, isDragging2, roleDescription, ariaDescribedById.draggable]);
+  return {
+    active,
+    activatorEvent,
+    activeNodeRect,
+    attributes: memoizedAttributes,
+    isDragging: isDragging2,
+    listeners: disabled ? void 0 : listeners,
+    node,
+    over,
+    setNodeRef,
+    setActivatorNodeRef,
+    transform
+  };
+}
+function useDndContext() {
+  return reactExports.useContext(PublicContext);
+}
+const ID_PREFIX$1$1 = "Droppable";
+const defaultResizeObserverConfig = {
+  timeout: 25
+};
+function useDroppable(_ref) {
+  let {
+    data,
+    disabled = false,
+    id: id2,
+    resizeObserverConfig
+  } = _ref;
+  const key = useUniqueId(ID_PREFIX$1$1);
+  const {
+    active,
+    dispatch,
+    over,
+    measureDroppableContainers
+  } = reactExports.useContext(InternalContext);
+  const previous = reactExports.useRef({
+    disabled
+  });
+  const resizeObserverConnected = reactExports.useRef(false);
+  const rect = reactExports.useRef(null);
+  const callbackId = reactExports.useRef(null);
+  const {
+    disabled: resizeObserverDisabled,
+    updateMeasurementsFor,
+    timeout: resizeObserverTimeout
+  } = {
+    ...defaultResizeObserverConfig,
+    ...resizeObserverConfig
+  };
+  const ids2 = useLatestValue(updateMeasurementsFor != null ? updateMeasurementsFor : id2);
+  const handleResize = reactExports.useCallback(
+    () => {
+      if (!resizeObserverConnected.current) {
+        resizeObserverConnected.current = true;
+        return;
+      }
+      if (callbackId.current != null) {
+        clearTimeout(callbackId.current);
+      }
+      callbackId.current = setTimeout(() => {
+        measureDroppableContainers(Array.isArray(ids2.current) ? ids2.current : [ids2.current]);
+        callbackId.current = null;
+      }, resizeObserverTimeout);
+    },
+    //eslint-disable-next-line react-hooks/exhaustive-deps
+    [resizeObserverTimeout]
+  );
+  const resizeObserver = useResizeObserver({
+    callback: handleResize,
+    disabled: resizeObserverDisabled || !active
+  });
+  const handleNodeChange = reactExports.useCallback((newElement, previousElement) => {
+    if (!resizeObserver) {
+      return;
+    }
+    if (previousElement) {
+      resizeObserver.unobserve(previousElement);
+      resizeObserverConnected.current = false;
+    }
+    if (newElement) {
+      resizeObserver.observe(newElement);
+    }
+  }, [resizeObserver]);
+  const [nodeRef, setNodeRef] = useNodeRef(handleNodeChange);
+  const dataRef = useLatestValue(data);
+  reactExports.useEffect(() => {
+    if (!resizeObserver || !nodeRef.current) {
+      return;
+    }
+    resizeObserver.disconnect();
+    resizeObserverConnected.current = false;
+    resizeObserver.observe(nodeRef.current);
+  }, [nodeRef, resizeObserver]);
+  reactExports.useEffect(
+    () => {
+      dispatch({
+        type: Action$1.RegisterDroppable,
+        element: {
+          id: id2,
+          key,
+          disabled,
+          node: nodeRef,
+          rect,
+          data: dataRef
+        }
+      });
+      return () => dispatch({
+        type: Action$1.UnregisterDroppable,
+        key,
+        id: id2
+      });
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [id2]
+  );
+  reactExports.useEffect(() => {
+    if (disabled !== previous.current.disabled) {
+      dispatch({
+        type: Action$1.SetDroppableDisabled,
+        id: id2,
+        key,
+        disabled
+      });
+      previous.current.disabled = disabled;
+    }
+  }, [id2, key, disabled, dispatch]);
+  return {
+    active,
+    rect,
+    isOver: (over == null ? void 0 : over.id) === id2,
+    node: nodeRef,
+    over,
+    setNodeRef
+  };
+}
+function arrayMove(array, from, to) {
+  const newArray = array.slice();
+  newArray.splice(to < 0 ? newArray.length + to : to, 0, newArray.splice(from, 1)[0]);
+  return newArray;
+}
+function getSortedRects(items, rects) {
+  return items.reduce((accumulator, id2, index2) => {
+    const rect = rects.get(id2);
+    if (rect) {
+      accumulator[index2] = rect;
+    }
+    return accumulator;
+  }, Array(items.length));
+}
+function isValidIndex(index2) {
+  return index2 !== null && index2 >= 0;
+}
+function itemsEqual(a, b) {
+  if (a === b) {
+    return true;
+  }
+  if (a.length !== b.length) {
+    return false;
+  }
+  for (let i = 0; i < a.length; i++) {
+    if (a[i] !== b[i]) {
+      return false;
+    }
+  }
+  return true;
+}
+function normalizeDisabled(disabled) {
+  if (typeof disabled === "boolean") {
+    return {
+      draggable: disabled,
+      droppable: disabled
+    };
+  }
+  return disabled;
+}
+const rectSortingStrategy = (_ref) => {
+  let {
+    rects,
+    activeIndex,
+    overIndex,
+    index: index2
+  } = _ref;
+  const newRects = arrayMove(rects, overIndex, activeIndex);
+  const oldRect = rects[index2];
+  const newRect = newRects[index2];
+  if (!newRect || !oldRect) {
+    return null;
+  }
+  return {
+    x: newRect.left - oldRect.left,
+    y: newRect.top - oldRect.top,
+    scaleX: newRect.width / oldRect.width,
+    scaleY: newRect.height / oldRect.height
+  };
+};
+const defaultScale$1 = {
+  scaleX: 1,
+  scaleY: 1
+};
+const verticalListSortingStrategy = (_ref) => {
+  var _rects$activeIndex;
+  let {
+    activeIndex,
+    activeNodeRect: fallbackActiveRect,
+    index: index2,
+    rects,
+    overIndex
+  } = _ref;
+  const activeNodeRect = (_rects$activeIndex = rects[activeIndex]) != null ? _rects$activeIndex : fallbackActiveRect;
+  if (!activeNodeRect) {
+    return null;
+  }
+  if (index2 === activeIndex) {
+    const overIndexRect = rects[overIndex];
+    if (!overIndexRect) {
+      return null;
+    }
+    return {
+      x: 0,
+      y: activeIndex < overIndex ? overIndexRect.top + overIndexRect.height - (activeNodeRect.top + activeNodeRect.height) : overIndexRect.top - activeNodeRect.top,
+      ...defaultScale$1
+    };
+  }
+  const itemGap = getItemGap$1(rects, index2, activeIndex);
+  if (index2 > activeIndex && index2 <= overIndex) {
+    return {
+      x: 0,
+      y: -activeNodeRect.height - itemGap,
+      ...defaultScale$1
+    };
+  }
+  if (index2 < activeIndex && index2 >= overIndex) {
+    return {
+      x: 0,
+      y: activeNodeRect.height + itemGap,
+      ...defaultScale$1
+    };
+  }
+  return {
+    x: 0,
+    y: 0,
+    ...defaultScale$1
+  };
+};
+function getItemGap$1(clientRects, index2, activeIndex) {
+  const currentRect = clientRects[index2];
+  const previousRect = clientRects[index2 - 1];
+  const nextRect = clientRects[index2 + 1];
+  if (!currentRect) {
+    return 0;
+  }
+  if (activeIndex < index2) {
+    return previousRect ? currentRect.top - (previousRect.top + previousRect.height) : nextRect ? nextRect.top - (currentRect.top + currentRect.height) : 0;
+  }
+  return nextRect ? nextRect.top - (currentRect.top + currentRect.height) : previousRect ? currentRect.top - (previousRect.top + previousRect.height) : 0;
+}
+const ID_PREFIX = "Sortable";
+const Context = /* @__PURE__ */ React$2.createContext({
+  activeIndex: -1,
+  containerId: ID_PREFIX,
+  disableTransforms: false,
+  items: [],
+  overIndex: -1,
+  useDragOverlay: false,
+  sortedRects: [],
+  strategy: rectSortingStrategy,
+  disabled: {
+    draggable: false,
+    droppable: false
+  }
+});
+function SortableContext(_ref) {
+  let {
+    children,
+    id: id2,
+    items: userDefinedItems,
+    strategy = rectSortingStrategy,
+    disabled: disabledProp = false
+  } = _ref;
+  const {
+    active,
+    dragOverlay,
+    droppableRects,
+    over,
+    measureDroppableContainers
+  } = useDndContext();
+  const containerId = useUniqueId(ID_PREFIX, id2);
+  const useDragOverlay = Boolean(dragOverlay.rect !== null);
+  const items = reactExports.useMemo(() => userDefinedItems.map((item) => typeof item === "object" && "id" in item ? item.id : item), [userDefinedItems]);
+  const isDragging2 = active != null;
+  const activeIndex = active ? items.indexOf(active.id) : -1;
+  const overIndex = over ? items.indexOf(over.id) : -1;
+  const previousItemsRef = reactExports.useRef(items);
+  const itemsHaveChanged = !itemsEqual(items, previousItemsRef.current);
+  const disableTransforms = overIndex !== -1 && activeIndex === -1 || itemsHaveChanged;
+  const disabled = normalizeDisabled(disabledProp);
+  useIsomorphicLayoutEffect$1(() => {
+    if (itemsHaveChanged && isDragging2) {
+      measureDroppableContainers(items);
+    }
+  }, [itemsHaveChanged, items, isDragging2, measureDroppableContainers]);
+  reactExports.useEffect(() => {
+    previousItemsRef.current = items;
+  }, [items]);
+  const contextValue = reactExports.useMemo(
+    () => ({
+      activeIndex,
+      containerId,
+      disabled,
+      disableTransforms,
+      items,
+      overIndex,
+      useDragOverlay,
+      sortedRects: getSortedRects(items, droppableRects),
+      strategy
+    }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [activeIndex, containerId, disabled.draggable, disabled.droppable, disableTransforms, items, overIndex, droppableRects, useDragOverlay, strategy]
+  );
+  return React$2.createElement(Context.Provider, {
+    value: contextValue
+  }, children);
+}
+const defaultNewIndexGetter = (_ref) => {
+  let {
+    id: id2,
+    items,
+    activeIndex,
+    overIndex
+  } = _ref;
+  return arrayMove(items, activeIndex, overIndex).indexOf(id2);
+};
+const defaultAnimateLayoutChanges = (_ref2) => {
+  let {
+    containerId,
+    isSorting,
+    wasDragging,
+    index: index2,
+    items,
+    newIndex,
+    previousItems,
+    previousContainerId,
+    transition
+  } = _ref2;
+  if (!transition || !wasDragging) {
+    return false;
+  }
+  if (previousItems !== items && index2 === newIndex) {
+    return false;
+  }
+  if (isSorting) {
+    return true;
+  }
+  return newIndex !== index2 && containerId === previousContainerId;
+};
+const defaultTransition = {
+  duration: 200,
+  easing: "ease"
+};
+const transitionProperty = "transform";
+const disabledTransition = /* @__PURE__ */ CSS$1.Transition.toString({
+  property: transitionProperty,
+  duration: 0,
+  easing: "linear"
+});
+const defaultAttributes = {
+  roleDescription: "sortable"
+};
+function useDerivedTransform(_ref) {
+  let {
+    disabled,
+    index: index2,
+    node,
+    rect
+  } = _ref;
+  const [derivedTransform, setDerivedtransform] = reactExports.useState(null);
+  const previousIndex = reactExports.useRef(index2);
+  useIsomorphicLayoutEffect$1(() => {
+    if (!disabled && index2 !== previousIndex.current && node.current) {
+      const initial = rect.current;
+      if (initial) {
+        const current = getClientRect(node.current, {
+          ignoreTransform: true
+        });
+        const delta = {
+          x: initial.left - current.left,
+          y: initial.top - current.top,
+          scaleX: initial.width / current.width,
+          scaleY: initial.height / current.height
+        };
+        if (delta.x || delta.y) {
+          setDerivedtransform(delta);
+        }
+      }
+    }
+    if (index2 !== previousIndex.current) {
+      previousIndex.current = index2;
+    }
+  }, [disabled, index2, node, rect]);
+  reactExports.useEffect(() => {
+    if (derivedTransform) {
+      setDerivedtransform(null);
+    }
+  }, [derivedTransform]);
+  return derivedTransform;
+}
+function useSortable(_ref) {
+  let {
+    animateLayoutChanges = defaultAnimateLayoutChanges,
+    attributes: userDefinedAttributes,
+    disabled: localDisabled,
+    data: customData,
+    getNewIndex = defaultNewIndexGetter,
+    id: id2,
+    strategy: localStrategy,
+    resizeObserverConfig,
+    transition = defaultTransition
+  } = _ref;
+  const {
+    items,
+    containerId,
+    activeIndex,
+    disabled: globalDisabled,
+    disableTransforms,
+    sortedRects,
+    overIndex,
+    useDragOverlay,
+    strategy: globalStrategy
+  } = reactExports.useContext(Context);
+  const disabled = normalizeLocalDisabled(localDisabled, globalDisabled);
+  const index2 = items.indexOf(id2);
+  const data = reactExports.useMemo(() => ({
+    sortable: {
+      containerId,
+      index: index2,
+      items
+    },
+    ...customData
+  }), [containerId, customData, index2, items]);
+  const itemsAfterCurrentSortable = reactExports.useMemo(() => items.slice(items.indexOf(id2)), [items, id2]);
+  const {
+    rect,
+    node,
+    isOver,
+    setNodeRef: setDroppableNodeRef
+  } = useDroppable({
+    id: id2,
+    data,
+    disabled: disabled.droppable,
+    resizeObserverConfig: {
+      updateMeasurementsFor: itemsAfterCurrentSortable,
+      ...resizeObserverConfig
+    }
+  });
+  const {
+    active,
+    activatorEvent,
+    activeNodeRect,
+    attributes,
+    setNodeRef: setDraggableNodeRef,
+    listeners,
+    isDragging: isDragging2,
+    over,
+    setActivatorNodeRef,
+    transform
+  } = useDraggable({
+    id: id2,
+    data,
+    attributes: {
+      ...defaultAttributes,
+      ...userDefinedAttributes
+    },
+    disabled: disabled.draggable
+  });
+  const setNodeRef = useCombinedRefs(setDroppableNodeRef, setDraggableNodeRef);
+  const isSorting = Boolean(active);
+  const displaceItem = isSorting && !disableTransforms && isValidIndex(activeIndex) && isValidIndex(overIndex);
+  const shouldDisplaceDragSource = !useDragOverlay && isDragging2;
+  const dragSourceDisplacement = shouldDisplaceDragSource && displaceItem ? transform : null;
+  const strategy = localStrategy != null ? localStrategy : globalStrategy;
+  const finalTransform = displaceItem ? dragSourceDisplacement != null ? dragSourceDisplacement : strategy({
+    rects: sortedRects,
+    activeNodeRect,
+    activeIndex,
+    overIndex,
+    index: index2
+  }) : null;
+  const newIndex = isValidIndex(activeIndex) && isValidIndex(overIndex) ? getNewIndex({
+    id: id2,
+    items,
+    activeIndex,
+    overIndex
+  }) : index2;
+  const activeId = active == null ? void 0 : active.id;
+  const previous = reactExports.useRef({
+    activeId,
+    items,
+    newIndex,
+    containerId
+  });
+  const itemsHaveChanged = items !== previous.current.items;
+  const shouldAnimateLayoutChanges = animateLayoutChanges({
+    active,
+    containerId,
+    isDragging: isDragging2,
+    isSorting,
+    id: id2,
+    index: index2,
+    items,
+    newIndex: previous.current.newIndex,
+    previousItems: previous.current.items,
+    previousContainerId: previous.current.containerId,
+    transition,
+    wasDragging: previous.current.activeId != null
+  });
+  const derivedTransform = useDerivedTransform({
+    disabled: !shouldAnimateLayoutChanges,
+    index: index2,
+    node,
+    rect
+  });
+  reactExports.useEffect(() => {
+    if (isSorting && previous.current.newIndex !== newIndex) {
+      previous.current.newIndex = newIndex;
+    }
+    if (containerId !== previous.current.containerId) {
+      previous.current.containerId = containerId;
+    }
+    if (items !== previous.current.items) {
+      previous.current.items = items;
+    }
+  }, [isSorting, newIndex, containerId, items]);
+  reactExports.useEffect(() => {
+    if (activeId === previous.current.activeId) {
+      return;
+    }
+    if (activeId != null && previous.current.activeId == null) {
+      previous.current.activeId = activeId;
+      return;
+    }
+    const timeoutId = setTimeout(() => {
+      previous.current.activeId = activeId;
+    }, 50);
+    return () => clearTimeout(timeoutId);
+  }, [activeId]);
+  return {
+    active,
+    activeIndex,
+    attributes,
+    data,
+    rect,
+    index: index2,
+    newIndex,
+    items,
+    isOver,
+    isSorting,
+    isDragging: isDragging2,
+    listeners,
+    node,
+    overIndex,
+    over,
+    setNodeRef,
+    setActivatorNodeRef,
+    setDroppableNodeRef,
+    setDraggableNodeRef,
+    transform: derivedTransform != null ? derivedTransform : finalTransform,
+    transition: getTransition()
+  };
+  function getTransition() {
+    if (
+      // Temporarily disable transitions for a single frame to set up derived transforms
+      derivedTransform || // Or to prevent items jumping to back to their "new" position when items change
+      itemsHaveChanged && previous.current.newIndex === index2
+    ) {
+      return disabledTransition;
+    }
+    if (shouldDisplaceDragSource && !isKeyboardEvent(activatorEvent) || !transition) {
+      return void 0;
+    }
+    if (isSorting || shouldAnimateLayoutChanges) {
+      return CSS$1.Transition.toString({
+        ...transition,
+        property: transitionProperty
+      });
+    }
+    return void 0;
+  }
+}
+function normalizeLocalDisabled(localDisabled, globalDisabled) {
+  var _localDisabled$dragga, _localDisabled$droppa;
+  if (typeof localDisabled === "boolean") {
+    return {
+      draggable: localDisabled,
+      // Backwards compatibility
+      droppable: false
+    };
+  }
+  return {
+    draggable: (_localDisabled$dragga = localDisabled == null ? void 0 : localDisabled.draggable) != null ? _localDisabled$dragga : globalDisabled.draggable,
+    droppable: (_localDisabled$droppa = localDisabled == null ? void 0 : localDisabled.droppable) != null ? _localDisabled$droppa : globalDisabled.droppable
+  };
+}
+function hasSortableData(entry) {
+  if (!entry) {
+    return false;
+  }
+  const data = entry.data.current;
+  if (data && "sortable" in data && typeof data.sortable === "object" && "containerId" in data.sortable && "items" in data.sortable && "index" in data.sortable) {
+    return true;
+  }
+  return false;
+}
+const directions = [KeyboardCode.Down, KeyboardCode.Right, KeyboardCode.Up, KeyboardCode.Left];
+const sortableKeyboardCoordinates = (event, _ref) => {
+  let {
+    context: {
+      active,
+      collisionRect,
+      droppableRects,
+      droppableContainers,
+      over,
+      scrollableAncestors
+    }
+  } = _ref;
+  if (directions.includes(event.code)) {
+    event.preventDefault();
+    if (!active || !collisionRect) {
+      return;
+    }
+    const filteredContainers = [];
+    droppableContainers.getEnabled().forEach((entry) => {
+      if (!entry || entry != null && entry.disabled) {
+        return;
+      }
+      const rect = droppableRects.get(entry.id);
+      if (!rect) {
+        return;
+      }
+      switch (event.code) {
+        case KeyboardCode.Down:
+          if (collisionRect.top < rect.top) {
+            filteredContainers.push(entry);
+          }
+          break;
+        case KeyboardCode.Up:
+          if (collisionRect.top > rect.top) {
+            filteredContainers.push(entry);
+          }
+          break;
+        case KeyboardCode.Left:
+          if (collisionRect.left > rect.left) {
+            filteredContainers.push(entry);
+          }
+          break;
+        case KeyboardCode.Right:
+          if (collisionRect.left < rect.left) {
+            filteredContainers.push(entry);
+          }
+          break;
+      }
+    });
+    const collisions = closestCorners({
+      collisionRect,
+      droppableRects,
+      droppableContainers: filteredContainers
+    });
+    let closestId = getFirstCollision(collisions, "id");
+    if (closestId === (over == null ? void 0 : over.id) && collisions.length > 1) {
+      closestId = collisions[1].id;
+    }
+    if (closestId != null) {
+      const activeDroppable = droppableContainers.get(active.id);
+      const newDroppable = droppableContainers.get(closestId);
+      const newRect = newDroppable ? droppableRects.get(newDroppable.id) : null;
+      const newNode = newDroppable == null ? void 0 : newDroppable.node.current;
+      if (newNode && newRect && activeDroppable && newDroppable) {
+        const newScrollAncestors = getScrollableAncestors(newNode);
+        const hasDifferentScrollAncestors = newScrollAncestors.some((element, index2) => scrollableAncestors[index2] !== element);
+        const hasSameContainer = isSameContainer(activeDroppable, newDroppable);
+        const isAfterActive = isAfter(activeDroppable, newDroppable);
+        const offset2 = hasDifferentScrollAncestors || !hasSameContainer ? {
+          x: 0,
+          y: 0
+        } : {
+          x: isAfterActive ? collisionRect.width - newRect.width : 0,
+          y: isAfterActive ? collisionRect.height - newRect.height : 0
+        };
+        const rectCoordinates = {
+          x: newRect.left,
+          y: newRect.top
+        };
+        const newCoordinates = offset2.x && offset2.y ? rectCoordinates : subtract(rectCoordinates, offset2);
+        return newCoordinates;
+      }
+    }
+  }
+  return void 0;
+};
+function isSameContainer(a, b) {
+  if (!hasSortableData(a) || !hasSortableData(b)) {
+    return false;
+  }
+  return a.data.current.sortable.containerId === b.data.current.sortable.containerId;
+}
+function isAfter(a, b) {
+  if (!hasSortableData(a) || !hasSortableData(b)) {
+    return false;
+  }
+  if (!isSameContainer(a, b)) {
+    return false;
+  }
+  return a.data.current.sortable.index < b.data.current.sortable.index;
+}
+function setRef(ref, value) {
+  if (typeof ref === "function") {
+    return ref(value);
+  } else if (ref !== null && ref !== void 0) {
+    ref.current = value;
+  }
+}
+function composeRefs(...refs) {
+  return (node) => {
+    let hasCleanup = false;
+    const cleanups = refs.map((ref) => {
+      const cleanup = setRef(ref, node);
+      if (!hasCleanup && typeof cleanup == "function") {
+        hasCleanup = true;
+      }
+      return cleanup;
+    });
+    if (hasCleanup) {
+      return () => {
+        for (let i = 0; i < cleanups.length; i++) {
+          const cleanup = cleanups[i];
+          if (typeof cleanup == "function") {
+            cleanup();
+          } else {
+            setRef(refs[i], null);
+          }
+        }
+      };
+    }
+  };
+}
+function useComposedRefs(...refs) {
+  return reactExports.useCallback(composeRefs(...refs), refs);
+}
+var Slot = reactExports.forwardRef((props, forwardedRef) => {
+  const { children, ...slotProps } = props;
+  const childrenArray = reactExports.Children.toArray(children);
+  const slottable = childrenArray.find(isSlottable);
+  if (slottable) {
+    const newElement = slottable.props.children;
+    const newChildren = childrenArray.map((child) => {
+      if (child === slottable) {
+        if (reactExports.Children.count(newElement) > 1) return reactExports.Children.only(null);
+        return reactExports.isValidElement(newElement) ? newElement.props.children : null;
+      } else {
+        return child;
+      }
+    });
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(SlotClone, { ...slotProps, ref: forwardedRef, children: reactExports.isValidElement(newElement) ? reactExports.cloneElement(newElement, void 0, newChildren) : null });
+  }
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(SlotClone, { ...slotProps, ref: forwardedRef, children });
+});
+Slot.displayName = "Slot";
+var SlotClone = reactExports.forwardRef((props, forwardedRef) => {
+  const { children, ...slotProps } = props;
+  if (reactExports.isValidElement(children)) {
+    const childrenRef = getElementRef$1(children);
+    const props2 = mergeProps(slotProps, children.props);
+    if (children.type !== reactExports.Fragment) {
+      props2.ref = forwardedRef ? composeRefs(forwardedRef, childrenRef) : childrenRef;
+    }
+    return reactExports.cloneElement(children, props2);
+  }
+  return reactExports.Children.count(children) > 1 ? reactExports.Children.only(null) : null;
+});
+SlotClone.displayName = "SlotClone";
+var Slottable = ({ children }) => {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, { children });
+};
+function isSlottable(child) {
+  return reactExports.isValidElement(child) && child.type === Slottable;
+}
+function mergeProps(slotProps, childProps) {
+  const overrideProps = { ...childProps };
+  for (const propName in childProps) {
+    const slotPropValue = slotProps[propName];
+    const childPropValue = childProps[propName];
+    const isHandler = /^on[A-Z]/.test(propName);
+    if (isHandler) {
+      if (slotPropValue && childPropValue) {
+        overrideProps[propName] = (...args) => {
+          childPropValue(...args);
+          slotPropValue(...args);
+        };
+      } else if (slotPropValue) {
+        overrideProps[propName] = slotPropValue;
+      }
+    } else if (propName === "style") {
+      overrideProps[propName] = { ...slotPropValue, ...childPropValue };
+    } else if (propName === "className") {
+      overrideProps[propName] = [slotPropValue, childPropValue].filter(Boolean).join(" ");
+    }
+  }
+  return { ...slotProps, ...overrideProps };
+}
+function getElementRef$1(element) {
+  let getter = Object.getOwnPropertyDescriptor(element.props, "ref")?.get;
+  let mayWarn = getter && "isReactWarning" in getter && getter.isReactWarning;
+  if (mayWarn) {
+    return element.ref;
+  }
+  getter = Object.getOwnPropertyDescriptor(element, "ref")?.get;
+  mayWarn = getter && "isReactWarning" in getter && getter.isReactWarning;
+  if (mayWarn) {
+    return element.props.ref;
+  }
+  return element.props.ref || element.ref;
+}
+function r(e) {
+  var t, f, n = "";
+  if ("string" == typeof e || "number" == typeof e) n += e;
+  else if ("object" == typeof e) if (Array.isArray(e)) {
+    var o = e.length;
+    for (t = 0; t < o; t++) e[t] && (f = r(e[t])) && (n && (n += " "), n += f);
+  } else for (f in e) e[f] && (n && (n += " "), n += f);
+  return n;
+}
+function clsx() {
+  for (var e, t, f = 0, n = "", o = arguments.length; f < o; f++) (e = arguments[f]) && (t = r(e)) && (n && (n += " "), n += t);
+  return n;
+}
+const falsyToString = (value) => typeof value === "boolean" ? `${value}` : value === 0 ? "0" : value;
+const cx = clsx;
+const cva = (base, config) => (props) => {
+  var _config_compoundVariants;
+  if ((config === null || config === void 0 ? void 0 : config.variants) == null) return cx(base, props === null || props === void 0 ? void 0 : props.class, props === null || props === void 0 ? void 0 : props.className);
+  const { variants, defaultVariants } = config;
+  const getVariantClassNames = Object.keys(variants).map((variant) => {
+    const variantProp = props === null || props === void 0 ? void 0 : props[variant];
+    const defaultVariantProp = defaultVariants === null || defaultVariants === void 0 ? void 0 : defaultVariants[variant];
+    if (variantProp === null) return null;
+    const variantKey = falsyToString(variantProp) || falsyToString(defaultVariantProp);
+    return variants[variant][variantKey];
+  });
+  const propsWithoutUndefined = props && Object.entries(props).reduce((acc, param) => {
+    let [key, value] = param;
+    if (value === void 0) {
+      return acc;
+    }
+    acc[key] = value;
+    return acc;
+  }, {});
+  const getCompoundVariantClassNames = config === null || config === void 0 ? void 0 : (_config_compoundVariants = config.compoundVariants) === null || _config_compoundVariants === void 0 ? void 0 : _config_compoundVariants.reduce((acc, param) => {
+    let { class: cvClass, className: cvClassName, ...compoundVariantOptions } = param;
+    return Object.entries(compoundVariantOptions).every((param2) => {
+      let [key, value] = param2;
+      return Array.isArray(value) ? value.includes({
+        ...defaultVariants,
+        ...propsWithoutUndefined
+      }[key]) : {
+        ...defaultVariants,
+        ...propsWithoutUndefined
+      }[key] === value;
+    }) ? [
+      ...acc,
+      cvClass,
+      cvClassName
+    ] : acc;
+  }, []);
+  return cx(base, getVariantClassNames, getCompoundVariantClassNames, props === null || props === void 0 ? void 0 : props.class, props === null || props === void 0 ? void 0 : props.className);
+};
+const MOBILE_BREAKPOINT = 768;
+function useIsMobile() {
+  const [isMobile, setIsMobile] = reactExports.useState(
+    void 0
+  );
+  reactExports.useEffect(() => {
+    const mql = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT - 1}px)`);
+    const onChange = () => {
+      setIsMobile(window.innerWidth < MOBILE_BREAKPOINT);
+    };
+    mql.addEventListener("change", onChange);
+    setIsMobile(window.innerWidth < MOBILE_BREAKPOINT);
+    return () => mql.removeEventListener("change", onChange);
+  }, []);
+  return !!isMobile;
+}
+const CLASS_PART_SEPARATOR = "-";
+const createClassGroupUtils = (config) => {
+  const classMap = createClassMap(config);
+  const {
+    conflictingClassGroups,
+    conflictingClassGroupModifiers
+  } = config;
+  const getClassGroupId = (className) => {
+    const classParts = className.split(CLASS_PART_SEPARATOR);
+    if (classParts[0] === "" && classParts.length !== 1) {
+      classParts.shift();
+    }
+    return getGroupRecursive(classParts, classMap) || getGroupIdForArbitraryProperty(className);
+  };
+  const getConflictingClassGroupIds = (classGroupId, hasPostfixModifier) => {
+    const conflicts = conflictingClassGroups[classGroupId] || [];
+    if (hasPostfixModifier && conflictingClassGroupModifiers[classGroupId]) {
+      return [...conflicts, ...conflictingClassGroupModifiers[classGroupId]];
+    }
+    return conflicts;
+  };
+  return {
+    getClassGroupId,
+    getConflictingClassGroupIds
+  };
+};
+const getGroupRecursive = (classParts, classPartObject) => {
+  if (classParts.length === 0) {
+    return classPartObject.classGroupId;
+  }
+  const currentClassPart = classParts[0];
+  const nextClassPartObject = classPartObject.nextPart.get(currentClassPart);
+  const classGroupFromNextClassPart = nextClassPartObject ? getGroupRecursive(classParts.slice(1), nextClassPartObject) : void 0;
+  if (classGroupFromNextClassPart) {
+    return classGroupFromNextClassPart;
+  }
+  if (classPartObject.validators.length === 0) {
+    return void 0;
+  }
+  const classRest = classParts.join(CLASS_PART_SEPARATOR);
+  return classPartObject.validators.find(({
+    validator
+  }) => validator(classRest))?.classGroupId;
+};
+const arbitraryPropertyRegex = /^\[(.+)\]$/;
+const getGroupIdForArbitraryProperty = (className) => {
+  if (arbitraryPropertyRegex.test(className)) {
+    const arbitraryPropertyClassName = arbitraryPropertyRegex.exec(className)[1];
+    const property = arbitraryPropertyClassName?.substring(0, arbitraryPropertyClassName.indexOf(":"));
+    if (property) {
+      return "arbitrary.." + property;
+    }
+  }
+};
+const createClassMap = (config) => {
+  const {
+    theme,
+    classGroups
+  } = config;
+  const classMap = {
+    nextPart: /* @__PURE__ */ new Map(),
+    validators: []
+  };
+  for (const classGroupId in classGroups) {
+    processClassesRecursively(classGroups[classGroupId], classMap, classGroupId, theme);
+  }
+  return classMap;
+};
+const processClassesRecursively = (classGroup, classPartObject, classGroupId, theme) => {
+  classGroup.forEach((classDefinition) => {
+    if (typeof classDefinition === "string") {
+      const classPartObjectToEdit = classDefinition === "" ? classPartObject : getPart(classPartObject, classDefinition);
+      classPartObjectToEdit.classGroupId = classGroupId;
+      return;
+    }
+    if (typeof classDefinition === "function") {
+      if (isThemeGetter(classDefinition)) {
+        processClassesRecursively(classDefinition(theme), classPartObject, classGroupId, theme);
+        return;
+      }
+      classPartObject.validators.push({
+        validator: classDefinition,
+        classGroupId
+      });
+      return;
+    }
+    Object.entries(classDefinition).forEach(([key, classGroup2]) => {
+      processClassesRecursively(classGroup2, getPart(classPartObject, key), classGroupId, theme);
+    });
+  });
+};
+const getPart = (classPartObject, path) => {
+  let currentClassPartObject = classPartObject;
+  path.split(CLASS_PART_SEPARATOR).forEach((pathPart) => {
+    if (!currentClassPartObject.nextPart.has(pathPart)) {
+      currentClassPartObject.nextPart.set(pathPart, {
+        nextPart: /* @__PURE__ */ new Map(),
+        validators: []
+      });
+    }
+    currentClassPartObject = currentClassPartObject.nextPart.get(pathPart);
+  });
+  return currentClassPartObject;
+};
+const isThemeGetter = (func) => func.isThemeGetter;
+const createLruCache = (maxCacheSize) => {
+  if (maxCacheSize < 1) {
+    return {
+      get: () => void 0,
+      set: () => {
+      }
+    };
+  }
+  let cacheSize = 0;
+  let cache = /* @__PURE__ */ new Map();
+  let previousCache = /* @__PURE__ */ new Map();
+  const update = (key, value) => {
+    cache.set(key, value);
+    cacheSize++;
+    if (cacheSize > maxCacheSize) {
+      cacheSize = 0;
+      previousCache = cache;
+      cache = /* @__PURE__ */ new Map();
+    }
+  };
+  return {
+    get(key) {
+      let value = cache.get(key);
+      if (value !== void 0) {
+        return value;
+      }
+      if ((value = previousCache.get(key)) !== void 0) {
+        update(key, value);
+        return value;
+      }
+    },
+    set(key, value) {
+      if (cache.has(key)) {
+        cache.set(key, value);
+      } else {
+        update(key, value);
+      }
+    }
+  };
+};
+const IMPORTANT_MODIFIER = "!";
+const MODIFIER_SEPARATOR = ":";
+const MODIFIER_SEPARATOR_LENGTH = MODIFIER_SEPARATOR.length;
+const createParseClassName = (config) => {
+  const {
+    prefix: prefix2,
+    experimentalParseClassName
+  } = config;
+  let parseClassName = (className) => {
+    const modifiers = [];
+    let bracketDepth = 0;
+    let parenDepth = 0;
+    let modifierStart = 0;
+    let postfixModifierPosition;
+    for (let index2 = 0; index2 < className.length; index2++) {
+      let currentCharacter = className[index2];
+      if (bracketDepth === 0 && parenDepth === 0) {
+        if (currentCharacter === MODIFIER_SEPARATOR) {
+          modifiers.push(className.slice(modifierStart, index2));
+          modifierStart = index2 + MODIFIER_SEPARATOR_LENGTH;
+          continue;
+        }
+        if (currentCharacter === "/") {
+          postfixModifierPosition = index2;
+          continue;
+        }
+      }
+      if (currentCharacter === "[") {
+        bracketDepth++;
+      } else if (currentCharacter === "]") {
+        bracketDepth--;
+      } else if (currentCharacter === "(") {
+        parenDepth++;
+      } else if (currentCharacter === ")") {
+        parenDepth--;
+      }
+    }
+    const baseClassNameWithImportantModifier = modifiers.length === 0 ? className : className.substring(modifierStart);
+    const baseClassName = stripImportantModifier(baseClassNameWithImportantModifier);
+    const hasImportantModifier = baseClassName !== baseClassNameWithImportantModifier;
+    const maybePostfixModifierPosition = postfixModifierPosition && postfixModifierPosition > modifierStart ? postfixModifierPosition - modifierStart : void 0;
+    return {
+      modifiers,
+      hasImportantModifier,
+      baseClassName,
+      maybePostfixModifierPosition
+    };
+  };
+  if (prefix2) {
+    const fullPrefix = prefix2 + MODIFIER_SEPARATOR;
+    const parseClassNameOriginal = parseClassName;
+    parseClassName = (className) => className.startsWith(fullPrefix) ? parseClassNameOriginal(className.substring(fullPrefix.length)) : {
+      isExternal: true,
+      modifiers: [],
+      hasImportantModifier: false,
+      baseClassName: className,
+      maybePostfixModifierPosition: void 0
+    };
+  }
+  if (experimentalParseClassName) {
+    const parseClassNameOriginal = parseClassName;
+    parseClassName = (className) => experimentalParseClassName({
+      className,
+      parseClassName: parseClassNameOriginal
+    });
+  }
+  return parseClassName;
+};
+const stripImportantModifier = (baseClassName) => {
+  if (baseClassName.endsWith(IMPORTANT_MODIFIER)) {
+    return baseClassName.substring(0, baseClassName.length - 1);
+  }
+  if (baseClassName.startsWith(IMPORTANT_MODIFIER)) {
+    return baseClassName.substring(1);
+  }
+  return baseClassName;
+};
+const createSortModifiers = (config) => {
+  const orderSensitiveModifiers = Object.fromEntries(config.orderSensitiveModifiers.map((modifier) => [modifier, true]));
+  const sortModifiers = (modifiers) => {
+    if (modifiers.length <= 1) {
+      return modifiers;
+    }
+    const sortedModifiers = [];
+    let unsortedModifiers = [];
+    modifiers.forEach((modifier) => {
+      const isPositionSensitive = modifier[0] === "[" || orderSensitiveModifiers[modifier];
+      if (isPositionSensitive) {
+        sortedModifiers.push(...unsortedModifiers.sort(), modifier);
+        unsortedModifiers = [];
+      } else {
+        unsortedModifiers.push(modifier);
+      }
+    });
+    sortedModifiers.push(...unsortedModifiers.sort());
+    return sortedModifiers;
+  };
+  return sortModifiers;
+};
+const createConfigUtils = (config) => ({
+  cache: createLruCache(config.cacheSize),
+  parseClassName: createParseClassName(config),
+  sortModifiers: createSortModifiers(config),
+  ...createClassGroupUtils(config)
+});
+const SPLIT_CLASSES_REGEX = /\s+/;
+const mergeClassList = (classList, configUtils) => {
+  const {
+    parseClassName,
+    getClassGroupId,
+    getConflictingClassGroupIds,
+    sortModifiers
+  } = configUtils;
+  const classGroupsInConflict = [];
+  const classNames = classList.trim().split(SPLIT_CLASSES_REGEX);
+  let result = "";
+  for (let index2 = classNames.length - 1; index2 >= 0; index2 -= 1) {
+    const originalClassName = classNames[index2];
+    const {
+      isExternal,
+      modifiers,
+      hasImportantModifier,
+      baseClassName,
+      maybePostfixModifierPosition
+    } = parseClassName(originalClassName);
+    if (isExternal) {
+      result = originalClassName + (result.length > 0 ? " " + result : result);
+      continue;
+    }
+    let hasPostfixModifier = !!maybePostfixModifierPosition;
+    let classGroupId = getClassGroupId(hasPostfixModifier ? baseClassName.substring(0, maybePostfixModifierPosition) : baseClassName);
+    if (!classGroupId) {
+      if (!hasPostfixModifier) {
+        result = originalClassName + (result.length > 0 ? " " + result : result);
+        continue;
+      }
+      classGroupId = getClassGroupId(baseClassName);
+      if (!classGroupId) {
+        result = originalClassName + (result.length > 0 ? " " + result : result);
+        continue;
+      }
+      hasPostfixModifier = false;
+    }
+    const variantModifier = sortModifiers(modifiers).join(":");
+    const modifierId = hasImportantModifier ? variantModifier + IMPORTANT_MODIFIER : variantModifier;
+    const classId = modifierId + classGroupId;
+    if (classGroupsInConflict.includes(classId)) {
+      continue;
+    }
+    classGroupsInConflict.push(classId);
+    const conflictGroups = getConflictingClassGroupIds(classGroupId, hasPostfixModifier);
+    for (let i = 0; i < conflictGroups.length; ++i) {
+      const group = conflictGroups[i];
+      classGroupsInConflict.push(modifierId + group);
+    }
+    result = originalClassName + (result.length > 0 ? " " + result : result);
+  }
+  return result;
+};
+function twJoin() {
+  let index2 = 0;
+  let argument;
+  let resolvedValue;
+  let string = "";
+  while (index2 < arguments.length) {
+    if (argument = arguments[index2++]) {
+      if (resolvedValue = toValue(argument)) {
+        string && (string += " ");
+        string += resolvedValue;
+      }
+    }
+  }
+  return string;
+}
+const toValue = (mix2) => {
+  if (typeof mix2 === "string") {
+    return mix2;
+  }
+  let resolvedValue;
+  let string = "";
+  for (let k2 = 0; k2 < mix2.length; k2++) {
+    if (mix2[k2]) {
+      if (resolvedValue = toValue(mix2[k2])) {
+        string && (string += " ");
+        string += resolvedValue;
+      }
+    }
+  }
+  return string;
+};
+function createTailwindMerge(createConfigFirst, ...createConfigRest) {
+  let configUtils;
+  let cacheGet;
+  let cacheSet;
+  let functionToCall = initTailwindMerge;
+  function initTailwindMerge(classList) {
+    const config = createConfigRest.reduce((previousConfig, createConfigCurrent) => createConfigCurrent(previousConfig), createConfigFirst());
+    configUtils = createConfigUtils(config);
+    cacheGet = configUtils.cache.get;
+    cacheSet = configUtils.cache.set;
+    functionToCall = tailwindMerge;
+    return tailwindMerge(classList);
+  }
+  function tailwindMerge(classList) {
+    const cachedResult = cacheGet(classList);
+    if (cachedResult) {
+      return cachedResult;
+    }
+    const result = mergeClassList(classList, configUtils);
+    cacheSet(classList, result);
+    return result;
+  }
+  return function callTailwindMerge() {
+    return functionToCall(twJoin.apply(null, arguments));
+  };
+}
+const fromTheme = (key) => {
+  const themeGetter = (theme) => theme[key] || [];
+  themeGetter.isThemeGetter = true;
+  return themeGetter;
+};
+const arbitraryValueRegex = /^\[(?:(\w[\w-]*):)?(.+)\]$/i;
+const arbitraryVariableRegex = /^\((?:(\w[\w-]*):)?(.+)\)$/i;
+const fractionRegex = /^\d+\/\d+$/;
+const tshirtUnitRegex = /^(\d+(\.\d+)?)?(xs|sm|md|lg|xl)$/;
+const lengthUnitRegex = /\d+(%|px|r?em|[sdl]?v([hwib]|min|max)|pt|pc|in|cm|mm|cap|ch|ex|r?lh|cq(w|h|i|b|min|max))|\b(calc|min|max|clamp)\(.+\)|^0$/;
+const colorFunctionRegex = /^(rgba?|hsla?|hwb|(ok)?(lab|lch))\(.+\)$/;
+const shadowRegex = /^(inset_)?-?((\d+)?\.?(\d+)[a-z]+|0)_-?((\d+)?\.?(\d+)[a-z]+|0)/;
+const imageRegex = /^(url|image|image-set|cross-fade|element|(repeating-)?(linear|radial|conic)-gradient)\(.+\)$/;
+const isFraction = (value) => fractionRegex.test(value);
+const isNumber = (value) => !!value && !Number.isNaN(Number(value));
+const isInteger = (value) => !!value && Number.isInteger(Number(value));
+const isPercent = (value) => value.endsWith("%") && isNumber(value.slice(0, -1));
+const isTshirtSize = (value) => tshirtUnitRegex.test(value);
+const isAny = () => true;
+const isLengthOnly = (value) => (
+  // `colorFunctionRegex` check is necessary because color functions can have percentages in them which which would be incorrectly classified as lengths.
+  // For example, `hsl(0 0% 0%)` would be classified as a length without this check.
+  // I could also use lookbehind assertion in `lengthUnitRegex` but that isn't supported widely enough.
+  lengthUnitRegex.test(value) && !colorFunctionRegex.test(value)
+);
+const isNever = () => false;
+const isShadow = (value) => shadowRegex.test(value);
+const isImage = (value) => imageRegex.test(value);
+const isAnyNonArbitrary = (value) => !isArbitraryValue(value) && !isArbitraryVariable(value);
+const isArbitrarySize = (value) => getIsArbitraryValue(value, isLabelSize, isNever);
+const isArbitraryValue = (value) => arbitraryValueRegex.test(value);
+const isArbitraryLength = (value) => getIsArbitraryValue(value, isLabelLength, isLengthOnly);
+const isArbitraryNumber = (value) => getIsArbitraryValue(value, isLabelNumber, isNumber);
+const isArbitraryPosition = (value) => getIsArbitraryValue(value, isLabelPosition, isNever);
+const isArbitraryImage = (value) => getIsArbitraryValue(value, isLabelImage, isImage);
+const isArbitraryShadow = (value) => getIsArbitraryValue(value, isLabelShadow, isShadow);
+const isArbitraryVariable = (value) => arbitraryVariableRegex.test(value);
+const isArbitraryVariableLength = (value) => getIsArbitraryVariable(value, isLabelLength);
+const isArbitraryVariableFamilyName = (value) => getIsArbitraryVariable(value, isLabelFamilyName);
+const isArbitraryVariablePosition = (value) => getIsArbitraryVariable(value, isLabelPosition);
+const isArbitraryVariableSize = (value) => getIsArbitraryVariable(value, isLabelSize);
+const isArbitraryVariableImage = (value) => getIsArbitraryVariable(value, isLabelImage);
+const isArbitraryVariableShadow = (value) => getIsArbitraryVariable(value, isLabelShadow, true);
+const getIsArbitraryValue = (value, testLabel, testValue) => {
+  const result = arbitraryValueRegex.exec(value);
+  if (result) {
+    if (result[1]) {
+      return testLabel(result[1]);
+    }
+    return testValue(result[2]);
+  }
+  return false;
+};
+const getIsArbitraryVariable = (value, testLabel, shouldMatchNoLabel = false) => {
+  const result = arbitraryVariableRegex.exec(value);
+  if (result) {
+    if (result[1]) {
+      return testLabel(result[1]);
+    }
+    return shouldMatchNoLabel;
+  }
+  return false;
+};
+const isLabelPosition = (label) => label === "position" || label === "percentage";
+const isLabelImage = (label) => label === "image" || label === "url";
+const isLabelSize = (label) => label === "length" || label === "size" || label === "bg-size";
+const isLabelLength = (label) => label === "length";
+const isLabelNumber = (label) => label === "number";
+const isLabelFamilyName = (label) => label === "family-name";
+const isLabelShadow = (label) => label === "shadow";
+const getDefaultConfig = () => {
+  const themeColor = fromTheme("color");
+  const themeFont = fromTheme("font");
+  const themeText = fromTheme("text");
+  const themeFontWeight = fromTheme("font-weight");
+  const themeTracking = fromTheme("tracking");
+  const themeLeading = fromTheme("leading");
+  const themeBreakpoint = fromTheme("breakpoint");
+  const themeContainer = fromTheme("container");
+  const themeSpacing = fromTheme("spacing");
+  const themeRadius = fromTheme("radius");
+  const themeShadow = fromTheme("shadow");
+  const themeInsetShadow = fromTheme("inset-shadow");
+  const themeTextShadow = fromTheme("text-shadow");
+  const themeDropShadow = fromTheme("drop-shadow");
+  const themeBlur = fromTheme("blur");
+  const themePerspective = fromTheme("perspective");
+  const themeAspect = fromTheme("aspect");
+  const themeEase = fromTheme("ease");
+  const themeAnimate = fromTheme("animate");
+  const scaleBreak = () => ["auto", "avoid", "all", "avoid-page", "page", "left", "right", "column"];
+  const scalePosition = () => [
+    "center",
+    "top",
+    "bottom",
+    "left",
+    "right",
+    "top-left",
+    // Deprecated since Tailwind CSS v4.1.0, see https://github.com/tailwindlabs/tailwindcss/pull/17378
+    "left-top",
+    "top-right",
+    // Deprecated since Tailwind CSS v4.1.0, see https://github.com/tailwindlabs/tailwindcss/pull/17378
+    "right-top",
+    "bottom-right",
+    // Deprecated since Tailwind CSS v4.1.0, see https://github.com/tailwindlabs/tailwindcss/pull/17378
+    "right-bottom",
+    "bottom-left",
+    // Deprecated since Tailwind CSS v4.1.0, see https://github.com/tailwindlabs/tailwindcss/pull/17378
+    "left-bottom"
+  ];
+  const scalePositionWithArbitrary = () => [...scalePosition(), isArbitraryVariable, isArbitraryValue];
+  const scaleOverflow = () => ["auto", "hidden", "clip", "visible", "scroll"];
+  const scaleOverscroll = () => ["auto", "contain", "none"];
+  const scaleUnambiguousSpacing = () => [isArbitraryVariable, isArbitraryValue, themeSpacing];
+  const scaleInset = () => [isFraction, "full", "auto", ...scaleUnambiguousSpacing()];
+  const scaleGridTemplateColsRows = () => [isInteger, "none", "subgrid", isArbitraryVariable, isArbitraryValue];
+  const scaleGridColRowStartAndEnd = () => ["auto", {
+    span: ["full", isInteger, isArbitraryVariable, isArbitraryValue]
+  }, isInteger, isArbitraryVariable, isArbitraryValue];
+  const scaleGridColRowStartOrEnd = () => [isInteger, "auto", isArbitraryVariable, isArbitraryValue];
+  const scaleGridAutoColsRows = () => ["auto", "min", "max", "fr", isArbitraryVariable, isArbitraryValue];
+  const scaleAlignPrimaryAxis = () => ["start", "end", "center", "between", "around", "evenly", "stretch", "baseline", "center-safe", "end-safe"];
+  const scaleAlignSecondaryAxis = () => ["start", "end", "center", "stretch", "center-safe", "end-safe"];
+  const scaleMargin = () => ["auto", ...scaleUnambiguousSpacing()];
+  const scaleSizing = () => [isFraction, "auto", "full", "dvw", "dvh", "lvw", "lvh", "svw", "svh", "min", "max", "fit", ...scaleUnambiguousSpacing()];
+  const scaleColor = () => [themeColor, isArbitraryVariable, isArbitraryValue];
+  const scaleBgPosition = () => [...scalePosition(), isArbitraryVariablePosition, isArbitraryPosition, {
+    position: [isArbitraryVariable, isArbitraryValue]
+  }];
+  const scaleBgRepeat = () => ["no-repeat", {
+    repeat: ["", "x", "y", "space", "round"]
+  }];
+  const scaleBgSize = () => ["auto", "cover", "contain", isArbitraryVariableSize, isArbitrarySize, {
+    size: [isArbitraryVariable, isArbitraryValue]
+  }];
+  const scaleGradientStopPosition = () => [isPercent, isArbitraryVariableLength, isArbitraryLength];
+  const scaleRadius = () => [
+    // Deprecated since Tailwind CSS v4.0.0
+    "",
+    "none",
+    "full",
+    themeRadius,
+    isArbitraryVariable,
+    isArbitraryValue
+  ];
+  const scaleBorderWidth = () => ["", isNumber, isArbitraryVariableLength, isArbitraryLength];
+  const scaleLineStyle = () => ["solid", "dashed", "dotted", "double"];
+  const scaleBlendMode = () => ["normal", "multiply", "screen", "overlay", "darken", "lighten", "color-dodge", "color-burn", "hard-light", "soft-light", "difference", "exclusion", "hue", "saturation", "color", "luminosity"];
+  const scaleMaskImagePosition = () => [isNumber, isPercent, isArbitraryVariablePosition, isArbitraryPosition];
+  const scaleBlur = () => [
+    // Deprecated since Tailwind CSS v4.0.0
+    "",
+    "none",
+    themeBlur,
+    isArbitraryVariable,
+    isArbitraryValue
+  ];
+  const scaleRotate = () => ["none", isNumber, isArbitraryVariable, isArbitraryValue];
+  const scaleScale = () => ["none", isNumber, isArbitraryVariable, isArbitraryValue];
+  const scaleSkew = () => [isNumber, isArbitraryVariable, isArbitraryValue];
+  const scaleTranslate = () => [isFraction, "full", ...scaleUnambiguousSpacing()];
+  return {
+    cacheSize: 500,
+    theme: {
+      animate: ["spin", "ping", "pulse", "bounce"],
+      aspect: ["video"],
+      blur: [isTshirtSize],
+      breakpoint: [isTshirtSize],
+      color: [isAny],
+      container: [isTshirtSize],
+      "drop-shadow": [isTshirtSize],
+      ease: ["in", "out", "in-out"],
+      font: [isAnyNonArbitrary],
+      "font-weight": ["thin", "extralight", "light", "normal", "medium", "semibold", "bold", "extrabold", "black"],
+      "inset-shadow": [isTshirtSize],
+      leading: ["none", "tight", "snug", "normal", "relaxed", "loose"],
+      perspective: ["dramatic", "near", "normal", "midrange", "distant", "none"],
+      radius: [isTshirtSize],
+      shadow: [isTshirtSize],
+      spacing: ["px", isNumber],
+      text: [isTshirtSize],
+      "text-shadow": [isTshirtSize],
+      tracking: ["tighter", "tight", "normal", "wide", "wider", "widest"]
+    },
+    classGroups: {
+      // --------------
+      // --- Layout ---
+      // --------------
+      /**
+       * Aspect Ratio
+       * @see https://tailwindcss.com/docs/aspect-ratio
+       */
+      aspect: [{
+        aspect: ["auto", "square", isFraction, isArbitraryValue, isArbitraryVariable, themeAspect]
+      }],
+      /**
+       * Container
+       * @see https://tailwindcss.com/docs/container
+       * @deprecated since Tailwind CSS v4.0.0
+       */
+      container: ["container"],
+      /**
+       * Columns
+       * @see https://tailwindcss.com/docs/columns
+       */
+      columns: [{
+        columns: [isNumber, isArbitraryValue, isArbitraryVariable, themeContainer]
+      }],
+      /**
+       * Break After
+       * @see https://tailwindcss.com/docs/break-after
+       */
+      "break-after": [{
+        "break-after": scaleBreak()
+      }],
+      /**
+       * Break Before
+       * @see https://tailwindcss.com/docs/break-before
+       */
+      "break-before": [{
+        "break-before": scaleBreak()
+      }],
+      /**
+       * Break Inside
+       * @see https://tailwindcss.com/docs/break-inside
+       */
+      "break-inside": [{
+        "break-inside": ["auto", "avoid", "avoid-page", "avoid-column"]
+      }],
+      /**
+       * Box Decoration Break
+       * @see https://tailwindcss.com/docs/box-decoration-break
+       */
+      "box-decoration": [{
+        "box-decoration": ["slice", "clone"]
+      }],
+      /**
+       * Box Sizing
+       * @see https://tailwindcss.com/docs/box-sizing
+       */
+      box: [{
+        box: ["border", "content"]
+      }],
+      /**
+       * Display
+       * @see https://tailwindcss.com/docs/display
+       */
+      display: ["block", "inline-block", "inline", "flex", "inline-flex", "table", "inline-table", "table-caption", "table-cell", "table-column", "table-column-group", "table-footer-group", "table-header-group", "table-row-group", "table-row", "flow-root", "grid", "inline-grid", "contents", "list-item", "hidden"],
+      /**
+       * Screen Reader Only
+       * @see https://tailwindcss.com/docs/display#screen-reader-only
+       */
+      sr: ["sr-only", "not-sr-only"],
+      /**
+       * Floats
+       * @see https://tailwindcss.com/docs/float
+       */
+      float: [{
+        float: ["right", "left", "none", "start", "end"]
+      }],
+      /**
+       * Clear
+       * @see https://tailwindcss.com/docs/clear
+       */
+      clear: [{
+        clear: ["left", "right", "both", "none", "start", "end"]
+      }],
+      /**
+       * Isolation
+       * @see https://tailwindcss.com/docs/isolation
+       */
+      isolation: ["isolate", "isolation-auto"],
+      /**
+       * Object Fit
+       * @see https://tailwindcss.com/docs/object-fit
+       */
+      "object-fit": [{
+        object: ["contain", "cover", "fill", "none", "scale-down"]
+      }],
+      /**
+       * Object Position
+       * @see https://tailwindcss.com/docs/object-position
+       */
+      "object-position": [{
+        object: scalePositionWithArbitrary()
+      }],
+      /**
+       * Overflow
+       * @see https://tailwindcss.com/docs/overflow
+       */
+      overflow: [{
+        overflow: scaleOverflow()
+      }],
+      /**
+       * Overflow X
+       * @see https://tailwindcss.com/docs/overflow
+       */
+      "overflow-x": [{
+        "overflow-x": scaleOverflow()
+      }],
+      /**
+       * Overflow Y
+       * @see https://tailwindcss.com/docs/overflow
+       */
+      "overflow-y": [{
+        "overflow-y": scaleOverflow()
+      }],
+      /**
+       * Overscroll Behavior
+       * @see https://tailwindcss.com/docs/overscroll-behavior
+       */
+      overscroll: [{
+        overscroll: scaleOverscroll()
+      }],
+      /**
+       * Overscroll Behavior X
+       * @see https://tailwindcss.com/docs/overscroll-behavior
+       */
+      "overscroll-x": [{
+        "overscroll-x": scaleOverscroll()
+      }],
+      /**
+       * Overscroll Behavior Y
+       * @see https://tailwindcss.com/docs/overscroll-behavior
+       */
+      "overscroll-y": [{
+        "overscroll-y": scaleOverscroll()
+      }],
+      /**
+       * Position
+       * @see https://tailwindcss.com/docs/position
+       */
+      position: ["static", "fixed", "absolute", "relative", "sticky"],
+      /**
+       * Top / Right / Bottom / Left
+       * @see https://tailwindcss.com/docs/top-right-bottom-left
+       */
+      inset: [{
+        inset: scaleInset()
+      }],
+      /**
+       * Right / Left
+       * @see https://tailwindcss.com/docs/top-right-bottom-left
+       */
+      "inset-x": [{
+        "inset-x": scaleInset()
+      }],
+      /**
+       * Top / Bottom
+       * @see https://tailwindcss.com/docs/top-right-bottom-left
+       */
+      "inset-y": [{
+        "inset-y": scaleInset()
+      }],
+      /**
+       * Start
+       * @see https://tailwindcss.com/docs/top-right-bottom-left
+       */
+      start: [{
+        start: scaleInset()
+      }],
+      /**
+       * End
+       * @see https://tailwindcss.com/docs/top-right-bottom-left
+       */
+      end: [{
+        end: scaleInset()
+      }],
+      /**
+       * Top
+       * @see https://tailwindcss.com/docs/top-right-bottom-left
+       */
+      top: [{
+        top: scaleInset()
+      }],
+      /**
+       * Right
+       * @see https://tailwindcss.com/docs/top-right-bottom-left
+       */
+      right: [{
+        right: scaleInset()
+      }],
+      /**
+       * Bottom
+       * @see https://tailwindcss.com/docs/top-right-bottom-left
+       */
+      bottom: [{
+        bottom: scaleInset()
+      }],
+      /**
+       * Left
+       * @see https://tailwindcss.com/docs/top-right-bottom-left
+       */
+      left: [{
+        left: scaleInset()
+      }],
+      /**
+       * Visibility
+       * @see https://tailwindcss.com/docs/visibility
+       */
+      visibility: ["visible", "invisible", "collapse"],
+      /**
+       * Z-Index
+       * @see https://tailwindcss.com/docs/z-index
+       */
+      z: [{
+        z: [isInteger, "auto", isArbitraryVariable, isArbitraryValue]
+      }],
+      // ------------------------
+      // --- Flexbox and Grid ---
+      // ------------------------
+      /**
+       * Flex Basis
+       * @see https://tailwindcss.com/docs/flex-basis
+       */
+      basis: [{
+        basis: [isFraction, "full", "auto", themeContainer, ...scaleUnambiguousSpacing()]
+      }],
+      /**
+       * Flex Direction
+       * @see https://tailwindcss.com/docs/flex-direction
+       */
+      "flex-direction": [{
+        flex: ["row", "row-reverse", "col", "col-reverse"]
+      }],
+      /**
+       * Flex Wrap
+       * @see https://tailwindcss.com/docs/flex-wrap
+       */
+      "flex-wrap": [{
+        flex: ["nowrap", "wrap", "wrap-reverse"]
+      }],
+      /**
+       * Flex
+       * @see https://tailwindcss.com/docs/flex
+       */
+      flex: [{
+        flex: [isNumber, isFraction, "auto", "initial", "none", isArbitraryValue]
+      }],
+      /**
+       * Flex Grow
+       * @see https://tailwindcss.com/docs/flex-grow
+       */
+      grow: [{
+        grow: ["", isNumber, isArbitraryVariable, isArbitraryValue]
+      }],
+      /**
+       * Flex Shrink
+       * @see https://tailwindcss.com/docs/flex-shrink
+       */
+      shrink: [{
+        shrink: ["", isNumber, isArbitraryVariable, isArbitraryValue]
+      }],
+      /**
+       * Order
+       * @see https://tailwindcss.com/docs/order
+       */
+      order: [{
+        order: [isInteger, "first", "last", "none", isArbitraryVariable, isArbitraryValue]
+      }],
+      /**
+       * Grid Template Columns
+       * @see https://tailwindcss.com/docs/grid-template-columns
+       */
+      "grid-cols": [{
+        "grid-cols": scaleGridTemplateColsRows()
+      }],
+      /**
+       * Grid Column Start / End
+       * @see https://tailwindcss.com/docs/grid-column
+       */
+      "col-start-end": [{
+        col: scaleGridColRowStartAndEnd()
+      }],
+      /**
+       * Grid Column Start
+       * @see https://tailwindcss.com/docs/grid-column
+       */
+      "col-start": [{
+        "col-start": scaleGridColRowStartOrEnd()
+      }],
+      /**
+       * Grid Column End
+       * @see https://tailwindcss.com/docs/grid-column
+       */
+      "col-end": [{
+        "col-end": scaleGridColRowStartOrEnd()
+      }],
+      /**
+       * Grid Template Rows
+       * @see https://tailwindcss.com/docs/grid-template-rows
+       */
+      "grid-rows": [{
+        "grid-rows": scaleGridTemplateColsRows()
+      }],
+      /**
+       * Grid Row Start / End
+       * @see https://tailwindcss.com/docs/grid-row
+       */
+      "row-start-end": [{
+        row: scaleGridColRowStartAndEnd()
+      }],
+      /**
+       * Grid Row Start
+       * @see https://tailwindcss.com/docs/grid-row
+       */
+      "row-start": [{
+        "row-start": scaleGridColRowStartOrEnd()
+      }],
+      /**
+       * Grid Row End
+       * @see https://tailwindcss.com/docs/grid-row
+       */
+      "row-end": [{
+        "row-end": scaleGridColRowStartOrEnd()
+      }],
+      /**
+       * Grid Auto Flow
+       * @see https://tailwindcss.com/docs/grid-auto-flow
+       */
+      "grid-flow": [{
+        "grid-flow": ["row", "col", "dense", "row-dense", "col-dense"]
+      }],
+      /**
+       * Grid Auto Columns
+       * @see https://tailwindcss.com/docs/grid-auto-columns
+       */
+      "auto-cols": [{
+        "auto-cols": scaleGridAutoColsRows()
+      }],
+      /**
+       * Grid Auto Rows
+       * @see https://tailwindcss.com/docs/grid-auto-rows
+       */
+      "auto-rows": [{
+        "auto-rows": scaleGridAutoColsRows()
+      }],
+      /**
+       * Gap
+       * @see https://tailwindcss.com/docs/gap
+       */
+      gap: [{
+        gap: scaleUnambiguousSpacing()
+      }],
+      /**
+       * Gap X
+       * @see https://tailwindcss.com/docs/gap
+       */
+      "gap-x": [{
+        "gap-x": scaleUnambiguousSpacing()
+      }],
+      /**
+       * Gap Y
+       * @see https://tailwindcss.com/docs/gap
+       */
+      "gap-y": [{
+        "gap-y": scaleUnambiguousSpacing()
+      }],
+      /**
+       * Justify Content
+       * @see https://tailwindcss.com/docs/justify-content
+       */
+      "justify-content": [{
+        justify: [...scaleAlignPrimaryAxis(), "normal"]
+      }],
+      /**
+       * Justify Items
+       * @see https://tailwindcss.com/docs/justify-items
+       */
+      "justify-items": [{
+        "justify-items": [...scaleAlignSecondaryAxis(), "normal"]
+      }],
+      /**
+       * Justify Self
+       * @see https://tailwindcss.com/docs/justify-self
+       */
+      "justify-self": [{
+        "justify-self": ["auto", ...scaleAlignSecondaryAxis()]
+      }],
+      /**
+       * Align Content
+       * @see https://tailwindcss.com/docs/align-content
+       */
+      "align-content": [{
+        content: ["normal", ...scaleAlignPrimaryAxis()]
+      }],
+      /**
+       * Align Items
+       * @see https://tailwindcss.com/docs/align-items
+       */
+      "align-items": [{
+        items: [...scaleAlignSecondaryAxis(), {
+          baseline: ["", "last"]
+        }]
+      }],
+      /**
+       * Align Self
+       * @see https://tailwindcss.com/docs/align-self
+       */
+      "align-self": [{
+        self: ["auto", ...scaleAlignSecondaryAxis(), {
+          baseline: ["", "last"]
+        }]
+      }],
+      /**
+       * Place Content
+       * @see https://tailwindcss.com/docs/place-content
+       */
+      "place-content": [{
+        "place-content": scaleAlignPrimaryAxis()
+      }],
+      /**
+       * Place Items
+       * @see https://tailwindcss.com/docs/place-items
+       */
+      "place-items": [{
+        "place-items": [...scaleAlignSecondaryAxis(), "baseline"]
+      }],
+      /**
+       * Place Self
+       * @see https://tailwindcss.com/docs/place-self
+       */
+      "place-self": [{
+        "place-self": ["auto", ...scaleAlignSecondaryAxis()]
+      }],
+      // Spacing
+      /**
+       * Padding
+       * @see https://tailwindcss.com/docs/padding
+       */
+      p: [{
+        p: scaleUnambiguousSpacing()
+      }],
+      /**
+       * Padding X
+       * @see https://tailwindcss.com/docs/padding
+       */
+      px: [{
+        px: scaleUnambiguousSpacing()
+      }],
+      /**
+       * Padding Y
+       * @see https://tailwindcss.com/docs/padding
+       */
+      py: [{
+        py: scaleUnambiguousSpacing()
+      }],
+      /**
+       * Padding Start
+       * @see https://tailwindcss.com/docs/padding
+       */
+      ps: [{
+        ps: scaleUnambiguousSpacing()
+      }],
+      /**
+       * Padding End
+       * @see https://tailwindcss.com/docs/padding
+       */
+      pe: [{
+        pe: scaleUnambiguousSpacing()
+      }],
+      /**
+       * Padding Top
+       * @see https://tailwindcss.com/docs/padding
+       */
+      pt: [{
+        pt: scaleUnambiguousSpacing()
+      }],
+      /**
+       * Padding Right
+       * @see https://tailwindcss.com/docs/padding
+       */
+      pr: [{
+        pr: scaleUnambiguousSpacing()
+      }],
+      /**
+       * Padding Bottom
+       * @see https://tailwindcss.com/docs/padding
+       */
+      pb: [{
+        pb: scaleUnambiguousSpacing()
+      }],
+      /**
+       * Padding Left
+       * @see https://tailwindcss.com/docs/padding
+       */
+      pl: [{
+        pl: scaleUnambiguousSpacing()
+      }],
+      /**
+       * Margin
+       * @see https://tailwindcss.com/docs/margin
+       */
+      m: [{
+        m: scaleMargin()
+      }],
+      /**
+       * Margin X
+       * @see https://tailwindcss.com/docs/margin
+       */
+      mx: [{
+        mx: scaleMargin()
+      }],
+      /**
+       * Margin Y
+       * @see https://tailwindcss.com/docs/margin
+       */
+      my: [{
+        my: scaleMargin()
+      }],
+      /**
+       * Margin Start
+       * @see https://tailwindcss.com/docs/margin
+       */
+      ms: [{
+        ms: scaleMargin()
+      }],
+      /**
+       * Margin End
+       * @see https://tailwindcss.com/docs/margin
+       */
+      me: [{
+        me: scaleMargin()
+      }],
+      /**
+       * Margin Top
+       * @see https://tailwindcss.com/docs/margin
+       */
+      mt: [{
+        mt: scaleMargin()
+      }],
+      /**
+       * Margin Right
+       * @see https://tailwindcss.com/docs/margin
+       */
+      mr: [{
+        mr: scaleMargin()
+      }],
+      /**
+       * Margin Bottom
+       * @see https://tailwindcss.com/docs/margin
+       */
+      mb: [{
+        mb: scaleMargin()
+      }],
+      /**
+       * Margin Left
+       * @see https://tailwindcss.com/docs/margin
+       */
+      ml: [{
+        ml: scaleMargin()
+      }],
+      /**
+       * Space Between X
+       * @see https://tailwindcss.com/docs/margin#adding-space-between-children
+       */
+      "space-x": [{
+        "space-x": scaleUnambiguousSpacing()
+      }],
+      /**
+       * Space Between X Reverse
+       * @see https://tailwindcss.com/docs/margin#adding-space-between-children
+       */
+      "space-x-reverse": ["space-x-reverse"],
+      /**
+       * Space Between Y
+       * @see https://tailwindcss.com/docs/margin#adding-space-between-children
+       */
+      "space-y": [{
+        "space-y": scaleUnambiguousSpacing()
+      }],
+      /**
+       * Space Between Y Reverse
+       * @see https://tailwindcss.com/docs/margin#adding-space-between-children
+       */
+      "space-y-reverse": ["space-y-reverse"],
+      // --------------
+      // --- Sizing ---
+      // --------------
+      /**
+       * Size
+       * @see https://tailwindcss.com/docs/width#setting-both-width-and-height
+       */
+      size: [{
+        size: scaleSizing()
+      }],
+      /**
+       * Width
+       * @see https://tailwindcss.com/docs/width
+       */
+      w: [{
+        w: [themeContainer, "screen", ...scaleSizing()]
+      }],
+      /**
+       * Min-Width
+       * @see https://tailwindcss.com/docs/min-width
+       */
+      "min-w": [{
+        "min-w": [
+          themeContainer,
+          "screen",
+          /** Deprecated. @see https://github.com/tailwindlabs/tailwindcss.com/issues/2027#issuecomment-2620152757 */
+          "none",
+          ...scaleSizing()
+        ]
+      }],
+      /**
+       * Max-Width
+       * @see https://tailwindcss.com/docs/max-width
+       */
+      "max-w": [{
+        "max-w": [
+          themeContainer,
+          "screen",
+          "none",
+          /** Deprecated since Tailwind CSS v4.0.0. @see https://github.com/tailwindlabs/tailwindcss.com/issues/2027#issuecomment-2620152757 */
+          "prose",
+          /** Deprecated since Tailwind CSS v4.0.0. @see https://github.com/tailwindlabs/tailwindcss.com/issues/2027#issuecomment-2620152757 */
+          {
+            screen: [themeBreakpoint]
+          },
+          ...scaleSizing()
+        ]
+      }],
+      /**
+       * Height
+       * @see https://tailwindcss.com/docs/height
+       */
+      h: [{
+        h: ["screen", ...scaleSizing()]
+      }],
+      /**
+       * Min-Height
+       * @see https://tailwindcss.com/docs/min-height
+       */
+      "min-h": [{
+        "min-h": ["screen", "none", ...scaleSizing()]
+      }],
+      /**
+       * Max-Height
+       * @see https://tailwindcss.com/docs/max-height
+       */
+      "max-h": [{
+        "max-h": ["screen", ...scaleSizing()]
+      }],
+      // ------------------
+      // --- Typography ---
+      // ------------------
+      /**
+       * Font Size
+       * @see https://tailwindcss.com/docs/font-size
+       */
+      "font-size": [{
+        text: ["base", themeText, isArbitraryVariableLength, isArbitraryLength]
+      }],
+      /**
+       * Font Smoothing
+       * @see https://tailwindcss.com/docs/font-smoothing
+       */
+      "font-smoothing": ["antialiased", "subpixel-antialiased"],
+      /**
+       * Font Style
+       * @see https://tailwindcss.com/docs/font-style
+       */
+      "font-style": ["italic", "not-italic"],
+      /**
+       * Font Weight
+       * @see https://tailwindcss.com/docs/font-weight
+       */
+      "font-weight": [{
+        font: [themeFontWeight, isArbitraryVariable, isArbitraryNumber]
+      }],
+      /**
+       * Font Stretch
+       * @see https://tailwindcss.com/docs/font-stretch
+       */
+      "font-stretch": [{
+        "font-stretch": ["ultra-condensed", "extra-condensed", "condensed", "semi-condensed", "normal", "semi-expanded", "expanded", "extra-expanded", "ultra-expanded", isPercent, isArbitraryValue]
+      }],
+      /**
+       * Font Family
+       * @see https://tailwindcss.com/docs/font-family
+       */
+      "font-family": [{
+        font: [isArbitraryVariableFamilyName, isArbitraryValue, themeFont]
+      }],
+      /**
+       * Font Variant Numeric
+       * @see https://tailwindcss.com/docs/font-variant-numeric
+       */
+      "fvn-normal": ["normal-nums"],
+      /**
+       * Font Variant Numeric
+       * @see https://tailwindcss.com/docs/font-variant-numeric
+       */
+      "fvn-ordinal": ["ordinal"],
+      /**
+       * Font Variant Numeric
+       * @see https://tailwindcss.com/docs/font-variant-numeric
+       */
+      "fvn-slashed-zero": ["slashed-zero"],
+      /**
+       * Font Variant Numeric
+       * @see https://tailwindcss.com/docs/font-variant-numeric
+       */
+      "fvn-figure": ["lining-nums", "oldstyle-nums"],
+      /**
+       * Font Variant Numeric
+       * @see https://tailwindcss.com/docs/font-variant-numeric
+       */
+      "fvn-spacing": ["proportional-nums", "tabular-nums"],
+      /**
+       * Font Variant Numeric
+       * @see https://tailwindcss.com/docs/font-variant-numeric
+       */
+      "fvn-fraction": ["diagonal-fractions", "stacked-fractions"],
+      /**
+       * Letter Spacing
+       * @see https://tailwindcss.com/docs/letter-spacing
+       */
+      tracking: [{
+        tracking: [themeTracking, isArbitraryVariable, isArbitraryValue]
+      }],
+      /**
+       * Line Clamp
+       * @see https://tailwindcss.com/docs/line-clamp
+       */
+      "line-clamp": [{
+        "line-clamp": [isNumber, "none", isArbitraryVariable, isArbitraryNumber]
+      }],
+      /**
+       * Line Height
+       * @see https://tailwindcss.com/docs/line-height
+       */
+      leading: [{
+        leading: [
+          /** Deprecated since Tailwind CSS v4.0.0. @see https://github.com/tailwindlabs/tailwindcss.com/issues/2027#issuecomment-2620152757 */
+          themeLeading,
+          ...scaleUnambiguousSpacing()
+        ]
+      }],
+      /**
+       * List Style Image
+       * @see https://tailwindcss.com/docs/list-style-image
+       */
+      "list-image": [{
+        "list-image": ["none", isArbitraryVariable, isArbitraryValue]
+      }],
+      /**
+       * List Style Position
+       * @see https://tailwindcss.com/docs/list-style-position
+       */
+      "list-style-position": [{
+        list: ["inside", "outside"]
+      }],
+      /**
+       * List Style Type
+       * @see https://tailwindcss.com/docs/list-style-type
+       */
+      "list-style-type": [{
+        list: ["disc", "decimal", "none", isArbitraryVariable, isArbitraryValue]
+      }],
+      /**
+       * Text Alignment
+       * @see https://tailwindcss.com/docs/text-align
+       */
+      "text-alignment": [{
+        text: ["left", "center", "right", "justify", "start", "end"]
+      }],
+      /**
+       * Placeholder Color
+       * @deprecated since Tailwind CSS v3.0.0
+       * @see https://v3.tailwindcss.com/docs/placeholder-color
+       */
+      "placeholder-color": [{
+        placeholder: scaleColor()
+      }],
+      /**
+       * Text Color
+       * @see https://tailwindcss.com/docs/text-color
+       */
+      "text-color": [{
+        text: scaleColor()
+      }],
+      /**
+       * Text Decoration
+       * @see https://tailwindcss.com/docs/text-decoration
+       */
+      "text-decoration": ["underline", "overline", "line-through", "no-underline"],
+      /**
+       * Text Decoration Style
+       * @see https://tailwindcss.com/docs/text-decoration-style
+       */
+      "text-decoration-style": [{
+        decoration: [...scaleLineStyle(), "wavy"]
+      }],
+      /**
+       * Text Decoration Thickness
+       * @see https://tailwindcss.com/docs/text-decoration-thickness
+       */
+      "text-decoration-thickness": [{
+        decoration: [isNumber, "from-font", "auto", isArbitraryVariable, isArbitraryLength]
+      }],
+      /**
+       * Text Decoration Color
+       * @see https://tailwindcss.com/docs/text-decoration-color
+       */
+      "text-decoration-color": [{
+        decoration: scaleColor()
+      }],
+      /**
+       * Text Underline Offset
+       * @see https://tailwindcss.com/docs/text-underline-offset
+       */
+      "underline-offset": [{
+        "underline-offset": [isNumber, "auto", isArbitraryVariable, isArbitraryValue]
+      }],
+      /**
+       * Text Transform
+       * @see https://tailwindcss.com/docs/text-transform
+       */
+      "text-transform": ["uppercase", "lowercase", "capitalize", "normal-case"],
+      /**
+       * Text Overflow
+       * @see https://tailwindcss.com/docs/text-overflow
+       */
+      "text-overflow": ["truncate", "text-ellipsis", "text-clip"],
+      /**
+       * Text Wrap
+       * @see https://tailwindcss.com/docs/text-wrap
+       */
+      "text-wrap": [{
+        text: ["wrap", "nowrap", "balance", "pretty"]
+      }],
+      /**
+       * Text Indent
+       * @see https://tailwindcss.com/docs/text-indent
+       */
+      indent: [{
+        indent: scaleUnambiguousSpacing()
+      }],
+      /**
+       * Vertical Alignment
+       * @see https://tailwindcss.com/docs/vertical-align
+       */
+      "vertical-align": [{
+        align: ["baseline", "top", "middle", "bottom", "text-top", "text-bottom", "sub", "super", isArbitraryVariable, isArbitraryValue]
+      }],
+      /**
+       * Whitespace
+       * @see https://tailwindcss.com/docs/whitespace
+       */
+      whitespace: [{
+        whitespace: ["normal", "nowrap", "pre", "pre-line", "pre-wrap", "break-spaces"]
+      }],
+      /**
+       * Word Break
+       * @see https://tailwindcss.com/docs/word-break
+       */
+      break: [{
+        break: ["normal", "words", "all", "keep"]
+      }],
+      /**
+       * Overflow Wrap
+       * @see https://tailwindcss.com/docs/overflow-wrap
+       */
+      wrap: [{
+        wrap: ["break-word", "anywhere", "normal"]
+      }],
+      /**
+       * Hyphens
+       * @see https://tailwindcss.com/docs/hyphens
+       */
+      hyphens: [{
+        hyphens: ["none", "manual", "auto"]
+      }],
+      /**
+       * Content
+       * @see https://tailwindcss.com/docs/content
+       */
+      content: [{
+        content: ["none", isArbitraryVariable, isArbitraryValue]
+      }],
+      // -------------------
+      // --- Backgrounds ---
+      // -------------------
+      /**
+       * Background Attachment
+       * @see https://tailwindcss.com/docs/background-attachment
+       */
+      "bg-attachment": [{
+        bg: ["fixed", "local", "scroll"]
+      }],
+      /**
+       * Background Clip
+       * @see https://tailwindcss.com/docs/background-clip
+       */
+      "bg-clip": [{
+        "bg-clip": ["border", "padding", "content", "text"]
+      }],
+      /**
+       * Background Origin
+       * @see https://tailwindcss.com/docs/background-origin
+       */
+      "bg-origin": [{
+        "bg-origin": ["border", "padding", "content"]
+      }],
+      /**
+       * Background Position
+       * @see https://tailwindcss.com/docs/background-position
+       */
+      "bg-position": [{
+        bg: scaleBgPosition()
+      }],
+      /**
+       * Background Repeat
+       * @see https://tailwindcss.com/docs/background-repeat
+       */
+      "bg-repeat": [{
+        bg: scaleBgRepeat()
+      }],
+      /**
+       * Background Size
+       * @see https://tailwindcss.com/docs/background-size
+       */
+      "bg-size": [{
+        bg: scaleBgSize()
+      }],
+      /**
+       * Background Image
+       * @see https://tailwindcss.com/docs/background-image
+       */
+      "bg-image": [{
+        bg: ["none", {
+          linear: [{
+            to: ["t", "tr", "r", "br", "b", "bl", "l", "tl"]
+          }, isInteger, isArbitraryVariable, isArbitraryValue],
+          radial: ["", isArbitraryVariable, isArbitraryValue],
+          conic: [isInteger, isArbitraryVariable, isArbitraryValue]
+        }, isArbitraryVariableImage, isArbitraryImage]
+      }],
+      /**
+       * Background Color
+       * @see https://tailwindcss.com/docs/background-color
+       */
+      "bg-color": [{
+        bg: scaleColor()
+      }],
+      /**
+       * Gradient Color Stops From Position
+       * @see https://tailwindcss.com/docs/gradient-color-stops
+       */
+      "gradient-from-pos": [{
+        from: scaleGradientStopPosition()
+      }],
+      /**
+       * Gradient Color Stops Via Position
+       * @see https://tailwindcss.com/docs/gradient-color-stops
+       */
+      "gradient-via-pos": [{
+        via: scaleGradientStopPosition()
+      }],
+      /**
+       * Gradient Color Stops To Position
+       * @see https://tailwindcss.com/docs/gradient-color-stops
+       */
+      "gradient-to-pos": [{
+        to: scaleGradientStopPosition()
+      }],
+      /**
+       * Gradient Color Stops From
+       * @see https://tailwindcss.com/docs/gradient-color-stops
+       */
+      "gradient-from": [{
+        from: scaleColor()
+      }],
+      /**
+       * Gradient Color Stops Via
+       * @see https://tailwindcss.com/docs/gradient-color-stops
+       */
+      "gradient-via": [{
+        via: scaleColor()
+      }],
+      /**
+       * Gradient Color Stops To
+       * @see https://tailwindcss.com/docs/gradient-color-stops
+       */
+      "gradient-to": [{
+        to: scaleColor()
+      }],
+      // ---------------
+      // --- Borders ---
+      // ---------------
+      /**
+       * Border Radius
+       * @see https://tailwindcss.com/docs/border-radius
+       */
+      rounded: [{
+        rounded: scaleRadius()
+      }],
+      /**
+       * Border Radius Start
+       * @see https://tailwindcss.com/docs/border-radius
+       */
+      "rounded-s": [{
+        "rounded-s": scaleRadius()
+      }],
+      /**
+       * Border Radius End
+       * @see https://tailwindcss.com/docs/border-radius
+       */
+      "rounded-e": [{
+        "rounded-e": scaleRadius()
+      }],
+      /**
+       * Border Radius Top
+       * @see https://tailwindcss.com/docs/border-radius
+       */
+      "rounded-t": [{
+        "rounded-t": scaleRadius()
+      }],
+      /**
+       * Border Radius Right
+       * @see https://tailwindcss.com/docs/border-radius
+       */
+      "rounded-r": [{
+        "rounded-r": scaleRadius()
+      }],
+      /**
+       * Border Radius Bottom
+       * @see https://tailwindcss.com/docs/border-radius
+       */
+      "rounded-b": [{
+        "rounded-b": scaleRadius()
+      }],
+      /**
+       * Border Radius Left
+       * @see https://tailwindcss.com/docs/border-radius
+       */
+      "rounded-l": [{
+        "rounded-l": scaleRadius()
+      }],
+      /**
+       * Border Radius Start Start
+       * @see https://tailwindcss.com/docs/border-radius
+       */
+      "rounded-ss": [{
+        "rounded-ss": scaleRadius()
+      }],
+      /**
+       * Border Radius Start End
+       * @see https://tailwindcss.com/docs/border-radius
+       */
+      "rounded-se": [{
+        "rounded-se": scaleRadius()
+      }],
+      /**
+       * Border Radius End End
+       * @see https://tailwindcss.com/docs/border-radius
+       */
+      "rounded-ee": [{
+        "rounded-ee": scaleRadius()
+      }],
+      /**
+       * Border Radius End Start
+       * @see https://tailwindcss.com/docs/border-radius
+       */
+      "rounded-es": [{
+        "rounded-es": scaleRadius()
+      }],
+      /**
+       * Border Radius Top Left
+       * @see https://tailwindcss.com/docs/border-radius
+       */
+      "rounded-tl": [{
+        "rounded-tl": scaleRadius()
+      }],
+      /**
+       * Border Radius Top Right
+       * @see https://tailwindcss.com/docs/border-radius
+       */
+      "rounded-tr": [{
+        "rounded-tr": scaleRadius()
+      }],
+      /**
+       * Border Radius Bottom Right
+       * @see https://tailwindcss.com/docs/border-radius
+       */
+      "rounded-br": [{
+        "rounded-br": scaleRadius()
+      }],
+      /**
+       * Border Radius Bottom Left
+       * @see https://tailwindcss.com/docs/border-radius
+       */
+      "rounded-bl": [{
+        "rounded-bl": scaleRadius()
+      }],
+      /**
+       * Border Width
+       * @see https://tailwindcss.com/docs/border-width
+       */
+      "border-w": [{
+        border: scaleBorderWidth()
+      }],
+      /**
+       * Border Width X
+       * @see https://tailwindcss.com/docs/border-width
+       */
+      "border-w-x": [{
+        "border-x": scaleBorderWidth()
+      }],
+      /**
+       * Border Width Y
+       * @see https://tailwindcss.com/docs/border-width
+       */
+      "border-w-y": [{
+        "border-y": scaleBorderWidth()
+      }],
+      /**
+       * Border Width Start
+       * @see https://tailwindcss.com/docs/border-width
+       */
+      "border-w-s": [{
+        "border-s": scaleBorderWidth()
+      }],
+      /**
+       * Border Width End
+       * @see https://tailwindcss.com/docs/border-width
+       */
+      "border-w-e": [{
+        "border-e": scaleBorderWidth()
+      }],
+      /**
+       * Border Width Top
+       * @see https://tailwindcss.com/docs/border-width
+       */
+      "border-w-t": [{
+        "border-t": scaleBorderWidth()
+      }],
+      /**
+       * Border Width Right
+       * @see https://tailwindcss.com/docs/border-width
+       */
+      "border-w-r": [{
+        "border-r": scaleBorderWidth()
+      }],
+      /**
+       * Border Width Bottom
+       * @see https://tailwindcss.com/docs/border-width
+       */
+      "border-w-b": [{
+        "border-b": scaleBorderWidth()
+      }],
+      /**
+       * Border Width Left
+       * @see https://tailwindcss.com/docs/border-width
+       */
+      "border-w-l": [{
+        "border-l": scaleBorderWidth()
+      }],
+      /**
+       * Divide Width X
+       * @see https://tailwindcss.com/docs/border-width#between-children
+       */
+      "divide-x": [{
+        "divide-x": scaleBorderWidth()
+      }],
+      /**
+       * Divide Width X Reverse
+       * @see https://tailwindcss.com/docs/border-width#between-children
+       */
+      "divide-x-reverse": ["divide-x-reverse"],
+      /**
+       * Divide Width Y
+       * @see https://tailwindcss.com/docs/border-width#between-children
+       */
+      "divide-y": [{
+        "divide-y": scaleBorderWidth()
+      }],
+      /**
+       * Divide Width Y Reverse
+       * @see https://tailwindcss.com/docs/border-width#between-children
+       */
+      "divide-y-reverse": ["divide-y-reverse"],
+      /**
+       * Border Style
+       * @see https://tailwindcss.com/docs/border-style
+       */
+      "border-style": [{
+        border: [...scaleLineStyle(), "hidden", "none"]
+      }],
+      /**
+       * Divide Style
+       * @see https://tailwindcss.com/docs/border-style#setting-the-divider-style
+       */
+      "divide-style": [{
+        divide: [...scaleLineStyle(), "hidden", "none"]
+      }],
+      /**
+       * Border Color
+       * @see https://tailwindcss.com/docs/border-color
+       */
+      "border-color": [{
+        border: scaleColor()
+      }],
+      /**
+       * Border Color X
+       * @see https://tailwindcss.com/docs/border-color
+       */
+      "border-color-x": [{
+        "border-x": scaleColor()
+      }],
+      /**
+       * Border Color Y
+       * @see https://tailwindcss.com/docs/border-color
+       */
+      "border-color-y": [{
+        "border-y": scaleColor()
+      }],
+      /**
+       * Border Color S
+       * @see https://tailwindcss.com/docs/border-color
+       */
+      "border-color-s": [{
+        "border-s": scaleColor()
+      }],
+      /**
+       * Border Color E
+       * @see https://tailwindcss.com/docs/border-color
+       */
+      "border-color-e": [{
+        "border-e": scaleColor()
+      }],
+      /**
+       * Border Color Top
+       * @see https://tailwindcss.com/docs/border-color
+       */
+      "border-color-t": [{
+        "border-t": scaleColor()
+      }],
+      /**
+       * Border Color Right
+       * @see https://tailwindcss.com/docs/border-color
+       */
+      "border-color-r": [{
+        "border-r": scaleColor()
+      }],
+      /**
+       * Border Color Bottom
+       * @see https://tailwindcss.com/docs/border-color
+       */
+      "border-color-b": [{
+        "border-b": scaleColor()
+      }],
+      /**
+       * Border Color Left
+       * @see https://tailwindcss.com/docs/border-color
+       */
+      "border-color-l": [{
+        "border-l": scaleColor()
+      }],
+      /**
+       * Divide Color
+       * @see https://tailwindcss.com/docs/divide-color
+       */
+      "divide-color": [{
+        divide: scaleColor()
+      }],
+      /**
+       * Outline Style
+       * @see https://tailwindcss.com/docs/outline-style
+       */
+      "outline-style": [{
+        outline: [...scaleLineStyle(), "none", "hidden"]
+      }],
+      /**
+       * Outline Offset
+       * @see https://tailwindcss.com/docs/outline-offset
+       */
+      "outline-offset": [{
+        "outline-offset": [isNumber, isArbitraryVariable, isArbitraryValue]
+      }],
+      /**
+       * Outline Width
+       * @see https://tailwindcss.com/docs/outline-width
+       */
+      "outline-w": [{
+        outline: ["", isNumber, isArbitraryVariableLength, isArbitraryLength]
+      }],
+      /**
+       * Outline Color
+       * @see https://tailwindcss.com/docs/outline-color
+       */
+      "outline-color": [{
+        outline: scaleColor()
+      }],
+      // ---------------
+      // --- Effects ---
+      // ---------------
+      /**
+       * Box Shadow
+       * @see https://tailwindcss.com/docs/box-shadow
+       */
+      shadow: [{
+        shadow: [
+          // Deprecated since Tailwind CSS v4.0.0
+          "",
+          "none",
+          themeShadow,
+          isArbitraryVariableShadow,
+          isArbitraryShadow
+        ]
+      }],
+      /**
+       * Box Shadow Color
+       * @see https://tailwindcss.com/docs/box-shadow#setting-the-shadow-color
+       */
+      "shadow-color": [{
+        shadow: scaleColor()
+      }],
+      /**
+       * Inset Box Shadow
+       * @see https://tailwindcss.com/docs/box-shadow#adding-an-inset-shadow
+       */
+      "inset-shadow": [{
+        "inset-shadow": ["none", themeInsetShadow, isArbitraryVariableShadow, isArbitraryShadow]
+      }],
+      /**
+       * Inset Box Shadow Color
+       * @see https://tailwindcss.com/docs/box-shadow#setting-the-inset-shadow-color
+       */
+      "inset-shadow-color": [{
+        "inset-shadow": scaleColor()
+      }],
+      /**
+       * Ring Width
+       * @see https://tailwindcss.com/docs/box-shadow#adding-a-ring
+       */
+      "ring-w": [{
+        ring: scaleBorderWidth()
+      }],
+      /**
+       * Ring Width Inset
+       * @see https://v3.tailwindcss.com/docs/ring-width#inset-rings
+       * @deprecated since Tailwind CSS v4.0.0
+       * @see https://github.com/tailwindlabs/tailwindcss/blob/v4.0.0/packages/tailwindcss/src/utilities.ts#L4158
+       */
+      "ring-w-inset": ["ring-inset"],
+      /**
+       * Ring Color
+       * @see https://tailwindcss.com/docs/box-shadow#setting-the-ring-color
+       */
+      "ring-color": [{
+        ring: scaleColor()
+      }],
+      /**
+       * Ring Offset Width
+       * @see https://v3.tailwindcss.com/docs/ring-offset-width
+       * @deprecated since Tailwind CSS v4.0.0
+       * @see https://github.com/tailwindlabs/tailwindcss/blob/v4.0.0/packages/tailwindcss/src/utilities.ts#L4158
+       */
+      "ring-offset-w": [{
+        "ring-offset": [isNumber, isArbitraryLength]
+      }],
+      /**
+       * Ring Offset Color
+       * @see https://v3.tailwindcss.com/docs/ring-offset-color
+       * @deprecated since Tailwind CSS v4.0.0
+       * @see https://github.com/tailwindlabs/tailwindcss/blob/v4.0.0/packages/tailwindcss/src/utilities.ts#L4158
+       */
+      "ring-offset-color": [{
+        "ring-offset": scaleColor()
+      }],
+      /**
+       * Inset Ring Width
+       * @see https://tailwindcss.com/docs/box-shadow#adding-an-inset-ring
+       */
+      "inset-ring-w": [{
+        "inset-ring": scaleBorderWidth()
+      }],
+      /**
+       * Inset Ring Color
+       * @see https://tailwindcss.com/docs/box-shadow#setting-the-inset-ring-color
+       */
+      "inset-ring-color": [{
+        "inset-ring": scaleColor()
+      }],
+      /**
+       * Text Shadow
+       * @see https://tailwindcss.com/docs/text-shadow
+       */
+      "text-shadow": [{
+        "text-shadow": ["none", themeTextShadow, isArbitraryVariableShadow, isArbitraryShadow]
+      }],
+      /**
+       * Text Shadow Color
+       * @see https://tailwindcss.com/docs/text-shadow#setting-the-shadow-color
+       */
+      "text-shadow-color": [{
+        "text-shadow": scaleColor()
+      }],
+      /**
+       * Opacity
+       * @see https://tailwindcss.com/docs/opacity
+       */
+      opacity: [{
+        opacity: [isNumber, isArbitraryVariable, isArbitraryValue]
+      }],
+      /**
+       * Mix Blend Mode
+       * @see https://tailwindcss.com/docs/mix-blend-mode
+       */
+      "mix-blend": [{
+        "mix-blend": [...scaleBlendMode(), "plus-darker", "plus-lighter"]
+      }],
+      /**
+       * Background Blend Mode
+       * @see https://tailwindcss.com/docs/background-blend-mode
+       */
+      "bg-blend": [{
+        "bg-blend": scaleBlendMode()
+      }],
+      /**
+       * Mask Clip
+       * @see https://tailwindcss.com/docs/mask-clip
+       */
+      "mask-clip": [{
+        "mask-clip": ["border", "padding", "content", "fill", "stroke", "view"]
+      }, "mask-no-clip"],
+      /**
+       * Mask Composite
+       * @see https://tailwindcss.com/docs/mask-composite
+       */
+      "mask-composite": [{
+        mask: ["add", "subtract", "intersect", "exclude"]
+      }],
+      /**
+       * Mask Image
+       * @see https://tailwindcss.com/docs/mask-image
+       */
+      "mask-image-linear-pos": [{
+        "mask-linear": [isNumber]
+      }],
+      "mask-image-linear-from-pos": [{
+        "mask-linear-from": scaleMaskImagePosition()
+      }],
+      "mask-image-linear-to-pos": [{
+        "mask-linear-to": scaleMaskImagePosition()
+      }],
+      "mask-image-linear-from-color": [{
+        "mask-linear-from": scaleColor()
+      }],
+      "mask-image-linear-to-color": [{
+        "mask-linear-to": scaleColor()
+      }],
+      "mask-image-t-from-pos": [{
+        "mask-t-from": scaleMaskImagePosition()
+      }],
+      "mask-image-t-to-pos": [{
+        "mask-t-to": scaleMaskImagePosition()
+      }],
+      "mask-image-t-from-color": [{
+        "mask-t-from": scaleColor()
+      }],
+      "mask-image-t-to-color": [{
+        "mask-t-to": scaleColor()
+      }],
+      "mask-image-r-from-pos": [{
+        "mask-r-from": scaleMaskImagePosition()
+      }],
+      "mask-image-r-to-pos": [{
+        "mask-r-to": scaleMaskImagePosition()
+      }],
+      "mask-image-r-from-color": [{
+        "mask-r-from": scaleColor()
+      }],
+      "mask-image-r-to-color": [{
+        "mask-r-to": scaleColor()
+      }],
+      "mask-image-b-from-pos": [{
+        "mask-b-from": scaleMaskImagePosition()
+      }],
+      "mask-image-b-to-pos": [{
+        "mask-b-to": scaleMaskImagePosition()
+      }],
+      "mask-image-b-from-color": [{
+        "mask-b-from": scaleColor()
+      }],
+      "mask-image-b-to-color": [{
+        "mask-b-to": scaleColor()
+      }],
+      "mask-image-l-from-pos": [{
+        "mask-l-from": scaleMaskImagePosition()
+      }],
+      "mask-image-l-to-pos": [{
+        "mask-l-to": scaleMaskImagePosition()
+      }],
+      "mask-image-l-from-color": [{
+        "mask-l-from": scaleColor()
+      }],
+      "mask-image-l-to-color": [{
+        "mask-l-to": scaleColor()
+      }],
+      "mask-image-x-from-pos": [{
+        "mask-x-from": scaleMaskImagePosition()
+      }],
+      "mask-image-x-to-pos": [{
+        "mask-x-to": scaleMaskImagePosition()
+      }],
+      "mask-image-x-from-color": [{
+        "mask-x-from": scaleColor()
+      }],
+      "mask-image-x-to-color": [{
+        "mask-x-to": scaleColor()
+      }],
+      "mask-image-y-from-pos": [{
+        "mask-y-from": scaleMaskImagePosition()
+      }],
+      "mask-image-y-to-pos": [{
+        "mask-y-to": scaleMaskImagePosition()
+      }],
+      "mask-image-y-from-color": [{
+        "mask-y-from": scaleColor()
+      }],
+      "mask-image-y-to-color": [{
+        "mask-y-to": scaleColor()
+      }],
+      "mask-image-radial": [{
+        "mask-radial": [isArbitraryVariable, isArbitraryValue]
+      }],
+      "mask-image-radial-from-pos": [{
+        "mask-radial-from": scaleMaskImagePosition()
+      }],
+      "mask-image-radial-to-pos": [{
+        "mask-radial-to": scaleMaskImagePosition()
+      }],
+      "mask-image-radial-from-color": [{
+        "mask-radial-from": scaleColor()
+      }],
+      "mask-image-radial-to-color": [{
+        "mask-radial-to": scaleColor()
+      }],
+      "mask-image-radial-shape": [{
+        "mask-radial": ["circle", "ellipse"]
+      }],
+      "mask-image-radial-size": [{
+        "mask-radial": [{
+          closest: ["side", "corner"],
+          farthest: ["side", "corner"]
+        }]
+      }],
+      "mask-image-radial-pos": [{
+        "mask-radial-at": scalePosition()
+      }],
+      "mask-image-conic-pos": [{
+        "mask-conic": [isNumber]
+      }],
+      "mask-image-conic-from-pos": [{
+        "mask-conic-from": scaleMaskImagePosition()
+      }],
+      "mask-image-conic-to-pos": [{
+        "mask-conic-to": scaleMaskImagePosition()
+      }],
+      "mask-image-conic-from-color": [{
+        "mask-conic-from": scaleColor()
+      }],
+      "mask-image-conic-to-color": [{
+        "mask-conic-to": scaleColor()
+      }],
+      /**
+       * Mask Mode
+       * @see https://tailwindcss.com/docs/mask-mode
+       */
+      "mask-mode": [{
+        mask: ["alpha", "luminance", "match"]
+      }],
+      /**
+       * Mask Origin
+       * @see https://tailwindcss.com/docs/mask-origin
+       */
+      "mask-origin": [{
+        "mask-origin": ["border", "padding", "content", "fill", "stroke", "view"]
+      }],
+      /**
+       * Mask Position
+       * @see https://tailwindcss.com/docs/mask-position
+       */
+      "mask-position": [{
+        mask: scaleBgPosition()
+      }],
+      /**
+       * Mask Repeat
+       * @see https://tailwindcss.com/docs/mask-repeat
+       */
+      "mask-repeat": [{
+        mask: scaleBgRepeat()
+      }],
+      /**
+       * Mask Size
+       * @see https://tailwindcss.com/docs/mask-size
+       */
+      "mask-size": [{
+        mask: scaleBgSize()
+      }],
+      /**
+       * Mask Type
+       * @see https://tailwindcss.com/docs/mask-type
+       */
+      "mask-type": [{
+        "mask-type": ["alpha", "luminance"]
+      }],
+      /**
+       * Mask Image
+       * @see https://tailwindcss.com/docs/mask-image
+       */
+      "mask-image": [{
+        mask: ["none", isArbitraryVariable, isArbitraryValue]
+      }],
+      // ---------------
+      // --- Filters ---
+      // ---------------
+      /**
+       * Filter
+       * @see https://tailwindcss.com/docs/filter
+       */
+      filter: [{
+        filter: [
+          // Deprecated since Tailwind CSS v3.0.0
+          "",
+          "none",
+          isArbitraryVariable,
+          isArbitraryValue
+        ]
+      }],
+      /**
+       * Blur
+       * @see https://tailwindcss.com/docs/blur
+       */
+      blur: [{
+        blur: scaleBlur()
+      }],
+      /**
+       * Brightness
+       * @see https://tailwindcss.com/docs/brightness
+       */
+      brightness: [{
+        brightness: [isNumber, isArbitraryVariable, isArbitraryValue]
+      }],
+      /**
+       * Contrast
+       * @see https://tailwindcss.com/docs/contrast
+       */
+      contrast: [{
+        contrast: [isNumber, isArbitraryVariable, isArbitraryValue]
+      }],
+      /**
+       * Drop Shadow
+       * @see https://tailwindcss.com/docs/drop-shadow
+       */
+      "drop-shadow": [{
+        "drop-shadow": [
+          // Deprecated since Tailwind CSS v4.0.0
+          "",
+          "none",
+          themeDropShadow,
+          isArbitraryVariableShadow,
+          isArbitraryShadow
+        ]
+      }],
+      /**
+       * Drop Shadow Color
+       * @see https://tailwindcss.com/docs/filter-drop-shadow#setting-the-shadow-color
+       */
+      "drop-shadow-color": [{
+        "drop-shadow": scaleColor()
+      }],
+      /**
+       * Grayscale
+       * @see https://tailwindcss.com/docs/grayscale
+       */
+      grayscale: [{
+        grayscale: ["", isNumber, isArbitraryVariable, isArbitraryValue]
+      }],
+      /**
+       * Hue Rotate
+       * @see https://tailwindcss.com/docs/hue-rotate
+       */
+      "hue-rotate": [{
+        "hue-rotate": [isNumber, isArbitraryVariable, isArbitraryValue]
+      }],
+      /**
+       * Invert
+       * @see https://tailwindcss.com/docs/invert
+       */
+      invert: [{
+        invert: ["", isNumber, isArbitraryVariable, isArbitraryValue]
+      }],
+      /**
+       * Saturate
+       * @see https://tailwindcss.com/docs/saturate
+       */
+      saturate: [{
+        saturate: [isNumber, isArbitraryVariable, isArbitraryValue]
+      }],
+      /**
+       * Sepia
+       * @see https://tailwindcss.com/docs/sepia
+       */
+      sepia: [{
+        sepia: ["", isNumber, isArbitraryVariable, isArbitraryValue]
+      }],
+      /**
+       * Backdrop Filter
+       * @see https://tailwindcss.com/docs/backdrop-filter
+       */
+      "backdrop-filter": [{
+        "backdrop-filter": [
+          // Deprecated since Tailwind CSS v3.0.0
+          "",
+          "none",
+          isArbitraryVariable,
+          isArbitraryValue
+        ]
+      }],
+      /**
+       * Backdrop Blur
+       * @see https://tailwindcss.com/docs/backdrop-blur
+       */
+      "backdrop-blur": [{
+        "backdrop-blur": scaleBlur()
+      }],
+      /**
+       * Backdrop Brightness
+       * @see https://tailwindcss.com/docs/backdrop-brightness
+       */
+      "backdrop-brightness": [{
+        "backdrop-brightness": [isNumber, isArbitraryVariable, isArbitraryValue]
+      }],
+      /**
+       * Backdrop Contrast
+       * @see https://tailwindcss.com/docs/backdrop-contrast
+       */
+      "backdrop-contrast": [{
+        "backdrop-contrast": [isNumber, isArbitraryVariable, isArbitraryValue]
+      }],
+      /**
+       * Backdrop Grayscale
+       * @see https://tailwindcss.com/docs/backdrop-grayscale
+       */
+      "backdrop-grayscale": [{
+        "backdrop-grayscale": ["", isNumber, isArbitraryVariable, isArbitraryValue]
+      }],
+      /**
+       * Backdrop Hue Rotate
+       * @see https://tailwindcss.com/docs/backdrop-hue-rotate
+       */
+      "backdrop-hue-rotate": [{
+        "backdrop-hue-rotate": [isNumber, isArbitraryVariable, isArbitraryValue]
+      }],
+      /**
+       * Backdrop Invert
+       * @see https://tailwindcss.com/docs/backdrop-invert
+       */
+      "backdrop-invert": [{
+        "backdrop-invert": ["", isNumber, isArbitraryVariable, isArbitraryValue]
+      }],
+      /**
+       * Backdrop Opacity
+       * @see https://tailwindcss.com/docs/backdrop-opacity
+       */
+      "backdrop-opacity": [{
+        "backdrop-opacity": [isNumber, isArbitraryVariable, isArbitraryValue]
+      }],
+      /**
+       * Backdrop Saturate
+       * @see https://tailwindcss.com/docs/backdrop-saturate
+       */
+      "backdrop-saturate": [{
+        "backdrop-saturate": [isNumber, isArbitraryVariable, isArbitraryValue]
+      }],
+      /**
+       * Backdrop Sepia
+       * @see https://tailwindcss.com/docs/backdrop-sepia
+       */
+      "backdrop-sepia": [{
+        "backdrop-sepia": ["", isNumber, isArbitraryVariable, isArbitraryValue]
+      }],
+      // --------------
+      // --- Tables ---
+      // --------------
+      /**
+       * Border Collapse
+       * @see https://tailwindcss.com/docs/border-collapse
+       */
+      "border-collapse": [{
+        border: ["collapse", "separate"]
+      }],
+      /**
+       * Border Spacing
+       * @see https://tailwindcss.com/docs/border-spacing
+       */
+      "border-spacing": [{
+        "border-spacing": scaleUnambiguousSpacing()
+      }],
+      /**
+       * Border Spacing X
+       * @see https://tailwindcss.com/docs/border-spacing
+       */
+      "border-spacing-x": [{
+        "border-spacing-x": scaleUnambiguousSpacing()
+      }],
+      /**
+       * Border Spacing Y
+       * @see https://tailwindcss.com/docs/border-spacing
+       */
+      "border-spacing-y": [{
+        "border-spacing-y": scaleUnambiguousSpacing()
+      }],
+      /**
+       * Table Layout
+       * @see https://tailwindcss.com/docs/table-layout
+       */
+      "table-layout": [{
+        table: ["auto", "fixed"]
+      }],
+      /**
+       * Caption Side
+       * @see https://tailwindcss.com/docs/caption-side
+       */
+      caption: [{
+        caption: ["top", "bottom"]
+      }],
+      // ---------------------------------
+      // --- Transitions and Animation ---
+      // ---------------------------------
+      /**
+       * Transition Property
+       * @see https://tailwindcss.com/docs/transition-property
+       */
+      transition: [{
+        transition: ["", "all", "colors", "opacity", "shadow", "transform", "none", isArbitraryVariable, isArbitraryValue]
+      }],
+      /**
+       * Transition Behavior
+       * @see https://tailwindcss.com/docs/transition-behavior
+       */
+      "transition-behavior": [{
+        transition: ["normal", "discrete"]
+      }],
+      /**
+       * Transition Duration
+       * @see https://tailwindcss.com/docs/transition-duration
+       */
+      duration: [{
+        duration: [isNumber, "initial", isArbitraryVariable, isArbitraryValue]
+      }],
+      /**
+       * Transition Timing Function
+       * @see https://tailwindcss.com/docs/transition-timing-function
+       */
+      ease: [{
+        ease: ["linear", "initial", themeEase, isArbitraryVariable, isArbitraryValue]
+      }],
+      /**
+       * Transition Delay
+       * @see https://tailwindcss.com/docs/transition-delay
+       */
+      delay: [{
+        delay: [isNumber, isArbitraryVariable, isArbitraryValue]
+      }],
+      /**
+       * Animation
+       * @see https://tailwindcss.com/docs/animation
+       */
+      animate: [{
+        animate: ["none", themeAnimate, isArbitraryVariable, isArbitraryValue]
+      }],
+      // ------------------
+      // --- Transforms ---
+      // ------------------
+      /**
+       * Backface Visibility
+       * @see https://tailwindcss.com/docs/backface-visibility
+       */
+      backface: [{
+        backface: ["hidden", "visible"]
+      }],
+      /**
+       * Perspective
+       * @see https://tailwindcss.com/docs/perspective
+       */
+      perspective: [{
+        perspective: [themePerspective, isArbitraryVariable, isArbitraryValue]
+      }],
+      /**
+       * Perspective Origin
+       * @see https://tailwindcss.com/docs/perspective-origin
+       */
+      "perspective-origin": [{
+        "perspective-origin": scalePositionWithArbitrary()
+      }],
+      /**
+       * Rotate
+       * @see https://tailwindcss.com/docs/rotate
+       */
+      rotate: [{
+        rotate: scaleRotate()
+      }],
+      /**
+       * Rotate X
+       * @see https://tailwindcss.com/docs/rotate
+       */
+      "rotate-x": [{
+        "rotate-x": scaleRotate()
+      }],
+      /**
+       * Rotate Y
+       * @see https://tailwindcss.com/docs/rotate
+       */
+      "rotate-y": [{
+        "rotate-y": scaleRotate()
+      }],
+      /**
+       * Rotate Z
+       * @see https://tailwindcss.com/docs/rotate
+       */
+      "rotate-z": [{
+        "rotate-z": scaleRotate()
+      }],
+      /**
+       * Scale
+       * @see https://tailwindcss.com/docs/scale
+       */
+      scale: [{
+        scale: scaleScale()
+      }],
+      /**
+       * Scale X
+       * @see https://tailwindcss.com/docs/scale
+       */
+      "scale-x": [{
+        "scale-x": scaleScale()
+      }],
+      /**
+       * Scale Y
+       * @see https://tailwindcss.com/docs/scale
+       */
+      "scale-y": [{
+        "scale-y": scaleScale()
+      }],
+      /**
+       * Scale Z
+       * @see https://tailwindcss.com/docs/scale
+       */
+      "scale-z": [{
+        "scale-z": scaleScale()
+      }],
+      /**
+       * Scale 3D
+       * @see https://tailwindcss.com/docs/scale
+       */
+      "scale-3d": ["scale-3d"],
+      /**
+       * Skew
+       * @see https://tailwindcss.com/docs/skew
+       */
+      skew: [{
+        skew: scaleSkew()
+      }],
+      /**
+       * Skew X
+       * @see https://tailwindcss.com/docs/skew
+       */
+      "skew-x": [{
+        "skew-x": scaleSkew()
+      }],
+      /**
+       * Skew Y
+       * @see https://tailwindcss.com/docs/skew
+       */
+      "skew-y": [{
+        "skew-y": scaleSkew()
+      }],
+      /**
+       * Transform
+       * @see https://tailwindcss.com/docs/transform
+       */
+      transform: [{
+        transform: [isArbitraryVariable, isArbitraryValue, "", "none", "gpu", "cpu"]
+      }],
+      /**
+       * Transform Origin
+       * @see https://tailwindcss.com/docs/transform-origin
+       */
+      "transform-origin": [{
+        origin: scalePositionWithArbitrary()
+      }],
+      /**
+       * Transform Style
+       * @see https://tailwindcss.com/docs/transform-style
+       */
+      "transform-style": [{
+        transform: ["3d", "flat"]
+      }],
+      /**
+       * Translate
+       * @see https://tailwindcss.com/docs/translate
+       */
+      translate: [{
+        translate: scaleTranslate()
+      }],
+      /**
+       * Translate X
+       * @see https://tailwindcss.com/docs/translate
+       */
+      "translate-x": [{
+        "translate-x": scaleTranslate()
+      }],
+      /**
+       * Translate Y
+       * @see https://tailwindcss.com/docs/translate
+       */
+      "translate-y": [{
+        "translate-y": scaleTranslate()
+      }],
+      /**
+       * Translate Z
+       * @see https://tailwindcss.com/docs/translate
+       */
+      "translate-z": [{
+        "translate-z": scaleTranslate()
+      }],
+      /**
+       * Translate None
+       * @see https://tailwindcss.com/docs/translate
+       */
+      "translate-none": ["translate-none"],
+      // ---------------------
+      // --- Interactivity ---
+      // ---------------------
+      /**
+       * Accent Color
+       * @see https://tailwindcss.com/docs/accent-color
+       */
+      accent: [{
+        accent: scaleColor()
+      }],
+      /**
+       * Appearance
+       * @see https://tailwindcss.com/docs/appearance
+       */
+      appearance: [{
+        appearance: ["none", "auto"]
+      }],
+      /**
+       * Caret Color
+       * @see https://tailwindcss.com/docs/just-in-time-mode#caret-color-utilities
+       */
+      "caret-color": [{
+        caret: scaleColor()
+      }],
+      /**
+       * Color Scheme
+       * @see https://tailwindcss.com/docs/color-scheme
+       */
+      "color-scheme": [{
+        scheme: ["normal", "dark", "light", "light-dark", "only-dark", "only-light"]
+      }],
+      /**
+       * Cursor
+       * @see https://tailwindcss.com/docs/cursor
+       */
+      cursor: [{
+        cursor: ["auto", "default", "pointer", "wait", "text", "move", "help", "not-allowed", "none", "context-menu", "progress", "cell", "crosshair", "vertical-text", "alias", "copy", "no-drop", "grab", "grabbing", "all-scroll", "col-resize", "row-resize", "n-resize", "e-resize", "s-resize", "w-resize", "ne-resize", "nw-resize", "se-resize", "sw-resize", "ew-resize", "ns-resize", "nesw-resize", "nwse-resize", "zoom-in", "zoom-out", isArbitraryVariable, isArbitraryValue]
+      }],
+      /**
+       * Field Sizing
+       * @see https://tailwindcss.com/docs/field-sizing
+       */
+      "field-sizing": [{
+        "field-sizing": ["fixed", "content"]
+      }],
+      /**
+       * Pointer Events
+       * @see https://tailwindcss.com/docs/pointer-events
+       */
+      "pointer-events": [{
+        "pointer-events": ["auto", "none"]
+      }],
+      /**
+       * Resize
+       * @see https://tailwindcss.com/docs/resize
+       */
+      resize: [{
+        resize: ["none", "", "y", "x"]
+      }],
+      /**
+       * Scroll Behavior
+       * @see https://tailwindcss.com/docs/scroll-behavior
+       */
+      "scroll-behavior": [{
+        scroll: ["auto", "smooth"]
+      }],
+      /**
+       * Scroll Margin
+       * @see https://tailwindcss.com/docs/scroll-margin
+       */
+      "scroll-m": [{
+        "scroll-m": scaleUnambiguousSpacing()
+      }],
+      /**
+       * Scroll Margin X
+       * @see https://tailwindcss.com/docs/scroll-margin
+       */
+      "scroll-mx": [{
+        "scroll-mx": scaleUnambiguousSpacing()
+      }],
+      /**
+       * Scroll Margin Y
+       * @see https://tailwindcss.com/docs/scroll-margin
+       */
+      "scroll-my": [{
+        "scroll-my": scaleUnambiguousSpacing()
+      }],
+      /**
+       * Scroll Margin Start
+       * @see https://tailwindcss.com/docs/scroll-margin
+       */
+      "scroll-ms": [{
+        "scroll-ms": scaleUnambiguousSpacing()
+      }],
+      /**
+       * Scroll Margin End
+       * @see https://tailwindcss.com/docs/scroll-margin
+       */
+      "scroll-me": [{
+        "scroll-me": scaleUnambiguousSpacing()
+      }],
+      /**
+       * Scroll Margin Top
+       * @see https://tailwindcss.com/docs/scroll-margin
+       */
+      "scroll-mt": [{
+        "scroll-mt": scaleUnambiguousSpacing()
+      }],
+      /**
+       * Scroll Margin Right
+       * @see https://tailwindcss.com/docs/scroll-margin
+       */
+      "scroll-mr": [{
+        "scroll-mr": scaleUnambiguousSpacing()
+      }],
+      /**
+       * Scroll Margin Bottom
+       * @see https://tailwindcss.com/docs/scroll-margin
+       */
+      "scroll-mb": [{
+        "scroll-mb": scaleUnambiguousSpacing()
+      }],
+      /**
+       * Scroll Margin Left
+       * @see https://tailwindcss.com/docs/scroll-margin
+       */
+      "scroll-ml": [{
+        "scroll-ml": scaleUnambiguousSpacing()
+      }],
+      /**
+       * Scroll Padding
+       * @see https://tailwindcss.com/docs/scroll-padding
+       */
+      "scroll-p": [{
+        "scroll-p": scaleUnambiguousSpacing()
+      }],
+      /**
+       * Scroll Padding X
+       * @see https://tailwindcss.com/docs/scroll-padding
+       */
+      "scroll-px": [{
+        "scroll-px": scaleUnambiguousSpacing()
+      }],
+      /**
+       * Scroll Padding Y
+       * @see https://tailwindcss.com/docs/scroll-padding
+       */
+      "scroll-py": [{
+        "scroll-py": scaleUnambiguousSpacing()
+      }],
+      /**
+       * Scroll Padding Start
+       * @see https://tailwindcss.com/docs/scroll-padding
+       */
+      "scroll-ps": [{
+        "scroll-ps": scaleUnambiguousSpacing()
+      }],
+      /**
+       * Scroll Padding End
+       * @see https://tailwindcss.com/docs/scroll-padding
+       */
+      "scroll-pe": [{
+        "scroll-pe": scaleUnambiguousSpacing()
+      }],
+      /**
+       * Scroll Padding Top
+       * @see https://tailwindcss.com/docs/scroll-padding
+       */
+      "scroll-pt": [{
+        "scroll-pt": scaleUnambiguousSpacing()
+      }],
+      /**
+       * Scroll Padding Right
+       * @see https://tailwindcss.com/docs/scroll-padding
+       */
+      "scroll-pr": [{
+        "scroll-pr": scaleUnambiguousSpacing()
+      }],
+      /**
+       * Scroll Padding Bottom
+       * @see https://tailwindcss.com/docs/scroll-padding
+       */
+      "scroll-pb": [{
+        "scroll-pb": scaleUnambiguousSpacing()
+      }],
+      /**
+       * Scroll Padding Left
+       * @see https://tailwindcss.com/docs/scroll-padding
+       */
+      "scroll-pl": [{
+        "scroll-pl": scaleUnambiguousSpacing()
+      }],
+      /**
+       * Scroll Snap Align
+       * @see https://tailwindcss.com/docs/scroll-snap-align
+       */
+      "snap-align": [{
+        snap: ["start", "end", "center", "align-none"]
+      }],
+      /**
+       * Scroll Snap Stop
+       * @see https://tailwindcss.com/docs/scroll-snap-stop
+       */
+      "snap-stop": [{
+        snap: ["normal", "always"]
+      }],
+      /**
+       * Scroll Snap Type
+       * @see https://tailwindcss.com/docs/scroll-snap-type
+       */
+      "snap-type": [{
+        snap: ["none", "x", "y", "both"]
+      }],
+      /**
+       * Scroll Snap Type Strictness
+       * @see https://tailwindcss.com/docs/scroll-snap-type
+       */
+      "snap-strictness": [{
+        snap: ["mandatory", "proximity"]
+      }],
+      /**
+       * Touch Action
+       * @see https://tailwindcss.com/docs/touch-action
+       */
+      touch: [{
+        touch: ["auto", "none", "manipulation"]
+      }],
+      /**
+       * Touch Action X
+       * @see https://tailwindcss.com/docs/touch-action
+       */
+      "touch-x": [{
+        "touch-pan": ["x", "left", "right"]
+      }],
+      /**
+       * Touch Action Y
+       * @see https://tailwindcss.com/docs/touch-action
+       */
+      "touch-y": [{
+        "touch-pan": ["y", "up", "down"]
+      }],
+      /**
+       * Touch Action Pinch Zoom
+       * @see https://tailwindcss.com/docs/touch-action
+       */
+      "touch-pz": ["touch-pinch-zoom"],
+      /**
+       * User Select
+       * @see https://tailwindcss.com/docs/user-select
+       */
+      select: [{
+        select: ["none", "text", "all", "auto"]
+      }],
+      /**
+       * Will Change
+       * @see https://tailwindcss.com/docs/will-change
+       */
+      "will-change": [{
+        "will-change": ["auto", "scroll", "contents", "transform", isArbitraryVariable, isArbitraryValue]
+      }],
+      // -----------
+      // --- SVG ---
+      // -----------
+      /**
+       * Fill
+       * @see https://tailwindcss.com/docs/fill
+       */
+      fill: [{
+        fill: ["none", ...scaleColor()]
+      }],
+      /**
+       * Stroke Width
+       * @see https://tailwindcss.com/docs/stroke-width
+       */
+      "stroke-w": [{
+        stroke: [isNumber, isArbitraryVariableLength, isArbitraryLength, isArbitraryNumber]
+      }],
+      /**
+       * Stroke
+       * @see https://tailwindcss.com/docs/stroke
+       */
+      stroke: [{
+        stroke: ["none", ...scaleColor()]
+      }],
+      // ---------------------
+      // --- Accessibility ---
+      // ---------------------
+      /**
+       * Forced Color Adjust
+       * @see https://tailwindcss.com/docs/forced-color-adjust
+       */
+      "forced-color-adjust": [{
+        "forced-color-adjust": ["auto", "none"]
+      }]
+    },
+    conflictingClassGroups: {
+      overflow: ["overflow-x", "overflow-y"],
+      overscroll: ["overscroll-x", "overscroll-y"],
+      inset: ["inset-x", "inset-y", "start", "end", "top", "right", "bottom", "left"],
+      "inset-x": ["right", "left"],
+      "inset-y": ["top", "bottom"],
+      flex: ["basis", "grow", "shrink"],
+      gap: ["gap-x", "gap-y"],
+      p: ["px", "py", "ps", "pe", "pt", "pr", "pb", "pl"],
+      px: ["pr", "pl"],
+      py: ["pt", "pb"],
+      m: ["mx", "my", "ms", "me", "mt", "mr", "mb", "ml"],
+      mx: ["mr", "ml"],
+      my: ["mt", "mb"],
+      size: ["w", "h"],
+      "font-size": ["leading"],
+      "fvn-normal": ["fvn-ordinal", "fvn-slashed-zero", "fvn-figure", "fvn-spacing", "fvn-fraction"],
+      "fvn-ordinal": ["fvn-normal"],
+      "fvn-slashed-zero": ["fvn-normal"],
+      "fvn-figure": ["fvn-normal"],
+      "fvn-spacing": ["fvn-normal"],
+      "fvn-fraction": ["fvn-normal"],
+      "line-clamp": ["display", "overflow"],
+      rounded: ["rounded-s", "rounded-e", "rounded-t", "rounded-r", "rounded-b", "rounded-l", "rounded-ss", "rounded-se", "rounded-ee", "rounded-es", "rounded-tl", "rounded-tr", "rounded-br", "rounded-bl"],
+      "rounded-s": ["rounded-ss", "rounded-es"],
+      "rounded-e": ["rounded-se", "rounded-ee"],
+      "rounded-t": ["rounded-tl", "rounded-tr"],
+      "rounded-r": ["rounded-tr", "rounded-br"],
+      "rounded-b": ["rounded-br", "rounded-bl"],
+      "rounded-l": ["rounded-tl", "rounded-bl"],
+      "border-spacing": ["border-spacing-x", "border-spacing-y"],
+      "border-w": ["border-w-x", "border-w-y", "border-w-s", "border-w-e", "border-w-t", "border-w-r", "border-w-b", "border-w-l"],
+      "border-w-x": ["border-w-r", "border-w-l"],
+      "border-w-y": ["border-w-t", "border-w-b"],
+      "border-color": ["border-color-x", "border-color-y", "border-color-s", "border-color-e", "border-color-t", "border-color-r", "border-color-b", "border-color-l"],
+      "border-color-x": ["border-color-r", "border-color-l"],
+      "border-color-y": ["border-color-t", "border-color-b"],
+      translate: ["translate-x", "translate-y", "translate-none"],
+      "translate-none": ["translate", "translate-x", "translate-y", "translate-z"],
+      "scroll-m": ["scroll-mx", "scroll-my", "scroll-ms", "scroll-me", "scroll-mt", "scroll-mr", "scroll-mb", "scroll-ml"],
+      "scroll-mx": ["scroll-mr", "scroll-ml"],
+      "scroll-my": ["scroll-mt", "scroll-mb"],
+      "scroll-p": ["scroll-px", "scroll-py", "scroll-ps", "scroll-pe", "scroll-pt", "scroll-pr", "scroll-pb", "scroll-pl"],
+      "scroll-px": ["scroll-pr", "scroll-pl"],
+      "scroll-py": ["scroll-pt", "scroll-pb"],
+      touch: ["touch-x", "touch-y", "touch-pz"],
+      "touch-x": ["touch"],
+      "touch-y": ["touch"],
+      "touch-pz": ["touch"]
+    },
+    conflictingClassGroupModifiers: {
+      "font-size": ["leading"]
+    },
+    orderSensitiveModifiers: ["*", "**", "after", "backdrop", "before", "details-content", "file", "first-letter", "first-line", "marker", "placeholder", "selection"]
+  };
+};
+const twMerge = /* @__PURE__ */ createTailwindMerge(getDefaultConfig);
+function cn(...inputs) {
+  return twMerge(clsx(inputs));
+}
+const buttonVariants = cva(
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
+  {
+    variants: {
+      variant: {
+        default: "bg-primary text-primary-foreground hover:bg-primary/90",
+        destructive: "bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
+        outline: "border bg-background text-foreground hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50",
+        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+        ghost: "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
+        link: "text-primary underline-offset-4 hover:underline"
+      },
+      size: {
+        default: "h-9 px-4 py-2 has-[>svg]:px-3",
+        sm: "h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5",
+        lg: "h-10 rounded-md px-6 has-[>svg]:px-4",
+        icon: "size-9 rounded-md"
+      }
+    },
+    defaultVariants: {
+      variant: "default",
+      size: "default"
+    }
+  }
+);
+const Button = reactExports.forwardRef(
+  ({ className, variant, size: size2, asChild = false, ...props }, ref) => {
+    const Comp = asChild ? Slot : "button";
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(
+      Comp,
+      {
+        ref,
+        "data-slot": "button",
+        className: cn(buttonVariants({ variant, size: size2, className })),
+        ...props
+      }
+    );
+  }
+);
+Button.displayName = "Button";
+function Input({ className, type, ...props }) {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    "input",
+    {
+      type,
+      "data-slot": "input",
+      className: cn(
+        "file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input flex h-9 w-full min-w-0 rounded-md border px-3 py-1 text-base bg-input-background transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
+        "focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]",
+        "aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
+        className
+      ),
+      ...props
+    }
+  );
+}
+var NODES = [
+  "a",
+  "button",
+  "div",
+  "form",
+  "h2",
+  "h3",
+  "img",
+  "input",
+  "label",
+  "li",
+  "nav",
+  "ol",
+  "p",
+  "span",
+  "svg",
+  "ul"
+];
+var Primitive = NODES.reduce((primitive, node) => {
+  const Node2 = reactExports.forwardRef((props, forwardedRef) => {
+    const { asChild, ...primitiveProps } = props;
+    const Comp = asChild ? Slot : node;
+    if (typeof window !== "undefined") {
+      window[Symbol.for("radix-ui")] = true;
+    }
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(Comp, { ...primitiveProps, ref: forwardedRef });
+  });
+  Node2.displayName = `Primitive.${node}`;
+  return { ...primitive, [node]: Node2 };
+}, {});
+function dispatchDiscreteCustomEvent(target, event) {
+  if (target) reactDomExports.flushSync(() => target.dispatchEvent(event));
+}
+var NAME$3 = "Separator";
+var DEFAULT_ORIENTATION = "horizontal";
+var ORIENTATIONS = ["horizontal", "vertical"];
+var Separator$2 = reactExports.forwardRef((props, forwardedRef) => {
+  const { decorative, orientation: orientationProp = DEFAULT_ORIENTATION, ...domProps } = props;
+  const orientation = isValidOrientation(orientationProp) ? orientationProp : DEFAULT_ORIENTATION;
+  const ariaOrientation = orientation === "vertical" ? orientation : void 0;
+  const semanticProps = decorative ? { role: "none" } : { "aria-orientation": ariaOrientation, role: "separator" };
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    Primitive.div,
+    {
+      "data-orientation": orientation,
+      ...semanticProps,
+      ...domProps,
+      ref: forwardedRef
+    }
+  );
+});
+Separator$2.displayName = NAME$3;
+function isValidOrientation(orientation) {
+  return ORIENTATIONS.includes(orientation);
+}
+var Root$6 = Separator$2;
+function Separator$1({
+  className,
+  orientation = "horizontal",
+  decorative = true,
+  ...props
+}) {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    Root$6,
+    {
+      "data-slot": "separator-root",
+      decorative,
+      orientation,
+      className: cn(
+        "bg-border shrink-0 data-[orientation=horizontal]:h-px data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-px",
+        className
+      ),
+      ...props
+    }
+  );
+}
 function composeEventHandlers(originalEventHandler, ourEventHandler, { checkForDefaultPrevented = true } = {}) {
   return function handleEvent(event) {
     originalEventHandler?.(event);
@@ -25741,38 +29389,16 @@ function composeContextScopes(...scopes) {
   createScope.scopeName = baseScope.scopeName;
   return createScope;
 }
-var NODES = [
-  "a",
-  "button",
-  "div",
-  "form",
-  "h2",
-  "h3",
-  "img",
-  "input",
-  "label",
-  "li",
-  "nav",
-  "ol",
-  "p",
-  "span",
-  "svg",
-  "ul"
-];
-var Primitive = NODES.reduce((primitive, node) => {
-  const Node2 = reactExports.forwardRef((props, forwardedRef) => {
-    const { asChild, ...primitiveProps } = props;
-    const Comp = asChild ? Slot : node;
-    if (typeof window !== "undefined") {
-      window[Symbol.for("radix-ui")] = true;
-    }
-    return /* @__PURE__ */ jsxRuntimeExports.jsx(Comp, { ...primitiveProps, ref: forwardedRef });
-  });
-  Node2.displayName = `Primitive.${node}`;
-  return { ...primitive, [node]: Node2 };
-}, {});
-function dispatchDiscreteCustomEvent(target, event) {
-  if (target) reactDomExports.flushSync(() => target.dispatchEvent(event));
+var useLayoutEffect2 = Boolean(globalThis?.document) ? reactExports.useLayoutEffect : () => {
+};
+var useReactId = React$3["useId".toString()] || (() => void 0);
+var count$1 = 0;
+function useId(deterministicId) {
+  const [id2, setId] = reactExports.useState(useReactId());
+  useLayoutEffect2(() => {
+    setId((reactId) => reactId ?? String(count$1++));
+  }, [deterministicId]);
+  return deterministicId || (id2 ? `radix-${id2}` : "");
 }
 function useCallbackRef$1(callback) {
   const callbackRef = reactExports.useRef(callback);
@@ -25780,6 +29406,46 @@ function useCallbackRef$1(callback) {
     callbackRef.current = callback;
   });
   return reactExports.useMemo(() => (...args) => callbackRef.current?.(...args), []);
+}
+function useControllableState({
+  prop,
+  defaultProp,
+  onChange = () => {
+  }
+}) {
+  const [uncontrolledProp, setUncontrolledProp] = useUncontrolledState({ defaultProp, onChange });
+  const isControlled = prop !== void 0;
+  const value = isControlled ? prop : uncontrolledProp;
+  const handleChange = useCallbackRef$1(onChange);
+  const setValue = reactExports.useCallback(
+    (nextValue) => {
+      if (isControlled) {
+        const setter = nextValue;
+        const value2 = typeof nextValue === "function" ? setter(prop) : nextValue;
+        if (value2 !== prop) handleChange(value2);
+      } else {
+        setUncontrolledProp(nextValue);
+      }
+    },
+    [isControlled, prop, setUncontrolledProp, handleChange]
+  );
+  return [value, setValue];
+}
+function useUncontrolledState({
+  defaultProp,
+  onChange
+}) {
+  const uncontrolledState = reactExports.useState(defaultProp);
+  const [value] = uncontrolledState;
+  const prevValueRef = reactExports.useRef(value);
+  const handleChange = useCallbackRef$1(onChange);
+  reactExports.useEffect(() => {
+    if (prevValueRef.current !== value) {
+      handleChange(value);
+      prevValueRef.current = value;
+    }
+  }, [value, prevValueRef, handleChange]);
+  return uncontrolledState;
 }
 function useEscapeKeydown(onEscapeKeyDownProp, ownerDocument = globalThis?.document) {
   const onEscapeKeyDown = useCallbackRef$1(onEscapeKeyDownProp);
@@ -25818,7 +29484,7 @@ var DismissableLayer = reactExports.forwardRef(
     const [node, setNode] = reactExports.useState(null);
     const ownerDocument = node?.ownerDocument ?? globalThis?.document;
     const [, force] = reactExports.useState({});
-    const composedRefs = useComposedRefs$1(forwardedRef, (node2) => setNode(node2));
+    const composedRefs = useComposedRefs(forwardedRef, (node2) => setNode(node2));
     const layers = Array.from(context.layers);
     const [highestLayerWithOutsidePointerEventsDisabled] = [...context.layersWithOutsidePointerEventsDisabled].slice(-1);
     const highestLayerWithOutsidePointerEventsDisabledIndex = layers.indexOf(highestLayerWithOutsidePointerEventsDisabled);
@@ -25904,7 +29570,7 @@ var BRANCH_NAME = "DismissableLayerBranch";
 var DismissableLayerBranch = reactExports.forwardRef((props, forwardedRef) => {
   const context = reactExports.useContext(DismissableLayerContext);
   const ref = reactExports.useRef(null);
-  const composedRefs = useComposedRefs$1(forwardedRef, ref);
+  const composedRefs = useComposedRefs(forwardedRef, ref);
   reactExports.useEffect(() => {
     const node = ref.current;
     if (node) {
@@ -25994,16 +29660,1531 @@ function handleAndDispatchCustomEvent(name, handler, detail, { discrete }) {
     target.dispatchEvent(event);
   }
 }
-var useLayoutEffect2 = Boolean(globalThis?.document) ? reactExports.useLayoutEffect : () => {
+var AUTOFOCUS_ON_MOUNT = "focusScope.autoFocusOnMount";
+var AUTOFOCUS_ON_UNMOUNT = "focusScope.autoFocusOnUnmount";
+var EVENT_OPTIONS$1 = { bubbles: false, cancelable: true };
+var FOCUS_SCOPE_NAME = "FocusScope";
+var FocusScope = reactExports.forwardRef((props, forwardedRef) => {
+  const {
+    loop = false,
+    trapped = false,
+    onMountAutoFocus: onMountAutoFocusProp,
+    onUnmountAutoFocus: onUnmountAutoFocusProp,
+    ...scopeProps
+  } = props;
+  const [container, setContainer] = reactExports.useState(null);
+  const onMountAutoFocus = useCallbackRef$1(onMountAutoFocusProp);
+  const onUnmountAutoFocus = useCallbackRef$1(onUnmountAutoFocusProp);
+  const lastFocusedElementRef = reactExports.useRef(null);
+  const composedRefs = useComposedRefs(forwardedRef, (node) => setContainer(node));
+  const focusScope = reactExports.useRef({
+    paused: false,
+    pause() {
+      this.paused = true;
+    },
+    resume() {
+      this.paused = false;
+    }
+  }).current;
+  reactExports.useEffect(() => {
+    if (trapped) {
+      let handleFocusIn2 = function(event) {
+        if (focusScope.paused || !container) return;
+        const target = event.target;
+        if (container.contains(target)) {
+          lastFocusedElementRef.current = target;
+        } else {
+          focus(lastFocusedElementRef.current, { select: true });
+        }
+      }, handleFocusOut2 = function(event) {
+        if (focusScope.paused || !container) return;
+        const relatedTarget = event.relatedTarget;
+        if (relatedTarget === null) return;
+        if (!container.contains(relatedTarget)) {
+          focus(lastFocusedElementRef.current, { select: true });
+        }
+      }, handleMutations2 = function(mutations) {
+        const focusedElement = document.activeElement;
+        if (focusedElement !== document.body) return;
+        for (const mutation of mutations) {
+          if (mutation.removedNodes.length > 0) focus(container);
+        }
+      };
+      document.addEventListener("focusin", handleFocusIn2);
+      document.addEventListener("focusout", handleFocusOut2);
+      const mutationObserver = new MutationObserver(handleMutations2);
+      if (container) mutationObserver.observe(container, { childList: true, subtree: true });
+      return () => {
+        document.removeEventListener("focusin", handleFocusIn2);
+        document.removeEventListener("focusout", handleFocusOut2);
+        mutationObserver.disconnect();
+      };
+    }
+  }, [trapped, container, focusScope.paused]);
+  reactExports.useEffect(() => {
+    if (container) {
+      focusScopesStack.add(focusScope);
+      const previouslyFocusedElement = document.activeElement;
+      const hasFocusedCandidate = container.contains(previouslyFocusedElement);
+      if (!hasFocusedCandidate) {
+        const mountEvent = new CustomEvent(AUTOFOCUS_ON_MOUNT, EVENT_OPTIONS$1);
+        container.addEventListener(AUTOFOCUS_ON_MOUNT, onMountAutoFocus);
+        container.dispatchEvent(mountEvent);
+        if (!mountEvent.defaultPrevented) {
+          focusFirst$2(removeLinks(getTabbableCandidates(container)), { select: true });
+          if (document.activeElement === previouslyFocusedElement) {
+            focus(container);
+          }
+        }
+      }
+      return () => {
+        container.removeEventListener(AUTOFOCUS_ON_MOUNT, onMountAutoFocus);
+        setTimeout(() => {
+          const unmountEvent = new CustomEvent(AUTOFOCUS_ON_UNMOUNT, EVENT_OPTIONS$1);
+          container.addEventListener(AUTOFOCUS_ON_UNMOUNT, onUnmountAutoFocus);
+          container.dispatchEvent(unmountEvent);
+          if (!unmountEvent.defaultPrevented) {
+            focus(previouslyFocusedElement ?? document.body, { select: true });
+          }
+          container.removeEventListener(AUTOFOCUS_ON_UNMOUNT, onUnmountAutoFocus);
+          focusScopesStack.remove(focusScope);
+        }, 0);
+      };
+    }
+  }, [container, onMountAutoFocus, onUnmountAutoFocus, focusScope]);
+  const handleKeyDown = reactExports.useCallback(
+    (event) => {
+      if (!loop && !trapped) return;
+      if (focusScope.paused) return;
+      const isTabKey = event.key === "Tab" && !event.altKey && !event.ctrlKey && !event.metaKey;
+      const focusedElement = document.activeElement;
+      if (isTabKey && focusedElement) {
+        const container2 = event.currentTarget;
+        const [first, last] = getTabbableEdges(container2);
+        const hasTabbableElementsInside = first && last;
+        if (!hasTabbableElementsInside) {
+          if (focusedElement === container2) event.preventDefault();
+        } else {
+          if (!event.shiftKey && focusedElement === last) {
+            event.preventDefault();
+            if (loop) focus(first, { select: true });
+          } else if (event.shiftKey && focusedElement === first) {
+            event.preventDefault();
+            if (loop) focus(last, { select: true });
+          }
+        }
+      }
+    },
+    [loop, trapped, focusScope.paused]
+  );
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(Primitive.div, { tabIndex: -1, ...scopeProps, ref: composedRefs, onKeyDown: handleKeyDown });
+});
+FocusScope.displayName = FOCUS_SCOPE_NAME;
+function focusFirst$2(candidates, { select = false } = {}) {
+  const previouslyFocusedElement = document.activeElement;
+  for (const candidate of candidates) {
+    focus(candidate, { select });
+    if (document.activeElement !== previouslyFocusedElement) return;
+  }
+}
+function getTabbableEdges(container) {
+  const candidates = getTabbableCandidates(container);
+  const first = findVisible(candidates, container);
+  const last = findVisible(candidates.reverse(), container);
+  return [first, last];
+}
+function getTabbableCandidates(container) {
+  const nodes = [];
+  const walker = document.createTreeWalker(container, NodeFilter.SHOW_ELEMENT, {
+    acceptNode: (node) => {
+      const isHiddenInput = node.tagName === "INPUT" && node.type === "hidden";
+      if (node.disabled || node.hidden || isHiddenInput) return NodeFilter.FILTER_SKIP;
+      return node.tabIndex >= 0 ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
+    }
+  });
+  while (walker.nextNode()) nodes.push(walker.currentNode);
+  return nodes;
+}
+function findVisible(elements, container) {
+  for (const element of elements) {
+    if (!isHidden(element, { upTo: container })) return element;
+  }
+}
+function isHidden(node, { upTo }) {
+  if (getComputedStyle(node).visibility === "hidden") return true;
+  while (node) {
+    if (upTo !== void 0 && node === upTo) return false;
+    if (getComputedStyle(node).display === "none") return true;
+    node = node.parentElement;
+  }
+  return false;
+}
+function isSelectableInput(element) {
+  return element instanceof HTMLInputElement && "select" in element;
+}
+function focus(element, { select = false } = {}) {
+  if (element && element.focus) {
+    const previouslyFocusedElement = document.activeElement;
+    element.focus({ preventScroll: true });
+    if (element !== previouslyFocusedElement && isSelectableInput(element) && select)
+      element.select();
+  }
+}
+var focusScopesStack = createFocusScopesStack();
+function createFocusScopesStack() {
+  let stack = [];
+  return {
+    add(focusScope) {
+      const activeFocusScope = stack[0];
+      if (focusScope !== activeFocusScope) {
+        activeFocusScope?.pause();
+      }
+      stack = arrayRemove(stack, focusScope);
+      stack.unshift(focusScope);
+    },
+    remove(focusScope) {
+      stack = arrayRemove(stack, focusScope);
+      stack[0]?.resume();
+    }
+  };
+}
+function arrayRemove(array, item) {
+  const updatedArray = [...array];
+  const index2 = updatedArray.indexOf(item);
+  if (index2 !== -1) {
+    updatedArray.splice(index2, 1);
+  }
+  return updatedArray;
+}
+function removeLinks(items) {
+  return items.filter((item) => item.tagName !== "A");
+}
+var PORTAL_NAME$6 = "Portal";
+var Portal$4 = reactExports.forwardRef((props, forwardedRef) => {
+  const { container: containerProp, ...portalProps } = props;
+  const [mounted, setMounted] = reactExports.useState(false);
+  useLayoutEffect2(() => setMounted(true), []);
+  const container = containerProp || mounted && globalThis?.document?.body;
+  return container ? ReactDOM$1.createPortal(/* @__PURE__ */ jsxRuntimeExports.jsx(Primitive.div, { ...portalProps, ref: forwardedRef }), container) : null;
+});
+Portal$4.displayName = PORTAL_NAME$6;
+function useStateMachine(initialState, machine) {
+  return reactExports.useReducer((state, event) => {
+    const nextState = machine[state][event];
+    return nextState ?? state;
+  }, initialState);
+}
+var Presence = (props) => {
+  const { present, children } = props;
+  const presence = usePresence(present);
+  const child = typeof children === "function" ? children({ present: presence.isPresent }) : reactExports.Children.only(children);
+  const ref = useComposedRefs(presence.ref, getElementRef(child));
+  const forceMount = typeof children === "function";
+  return forceMount || presence.isPresent ? reactExports.cloneElement(child, { ref }) : null;
 };
-var useReactId = React$3["useId".toString()] || (() => void 0);
-var count$1 = 0;
-function useId(deterministicId) {
-  const [id2, setId] = reactExports.useState(useReactId());
+Presence.displayName = "Presence";
+function usePresence(present) {
+  const [node, setNode] = reactExports.useState();
+  const stylesRef = reactExports.useRef({});
+  const prevPresentRef = reactExports.useRef(present);
+  const prevAnimationNameRef = reactExports.useRef("none");
+  const initialState = present ? "mounted" : "unmounted";
+  const [state, send] = useStateMachine(initialState, {
+    mounted: {
+      UNMOUNT: "unmounted",
+      ANIMATION_OUT: "unmountSuspended"
+    },
+    unmountSuspended: {
+      MOUNT: "mounted",
+      ANIMATION_END: "unmounted"
+    },
+    unmounted: {
+      MOUNT: "mounted"
+    }
+  });
+  reactExports.useEffect(() => {
+    const currentAnimationName = getAnimationName(stylesRef.current);
+    prevAnimationNameRef.current = state === "mounted" ? currentAnimationName : "none";
+  }, [state]);
   useLayoutEffect2(() => {
-    setId((reactId) => reactId ?? String(count$1++));
-  }, [deterministicId]);
-  return deterministicId || (id2 ? `radix-${id2}` : "");
+    const styles = stylesRef.current;
+    const wasPresent = prevPresentRef.current;
+    const hasPresentChanged = wasPresent !== present;
+    if (hasPresentChanged) {
+      const prevAnimationName = prevAnimationNameRef.current;
+      const currentAnimationName = getAnimationName(styles);
+      if (present) {
+        send("MOUNT");
+      } else if (currentAnimationName === "none" || styles?.display === "none") {
+        send("UNMOUNT");
+      } else {
+        const isAnimating = prevAnimationName !== currentAnimationName;
+        if (wasPresent && isAnimating) {
+          send("ANIMATION_OUT");
+        } else {
+          send("UNMOUNT");
+        }
+      }
+      prevPresentRef.current = present;
+    }
+  }, [present, send]);
+  useLayoutEffect2(() => {
+    if (node) {
+      let timeoutId;
+      const ownerWindow = node.ownerDocument.defaultView ?? window;
+      const handleAnimationEnd = (event) => {
+        const currentAnimationName = getAnimationName(stylesRef.current);
+        const isCurrentAnimation = currentAnimationName.includes(event.animationName);
+        if (event.target === node && isCurrentAnimation) {
+          send("ANIMATION_END");
+          if (!prevPresentRef.current) {
+            const currentFillMode = node.style.animationFillMode;
+            node.style.animationFillMode = "forwards";
+            timeoutId = ownerWindow.setTimeout(() => {
+              if (node.style.animationFillMode === "forwards") {
+                node.style.animationFillMode = currentFillMode;
+              }
+            });
+          }
+        }
+      };
+      const handleAnimationStart = (event) => {
+        if (event.target === node) {
+          prevAnimationNameRef.current = getAnimationName(stylesRef.current);
+        }
+      };
+      node.addEventListener("animationstart", handleAnimationStart);
+      node.addEventListener("animationcancel", handleAnimationEnd);
+      node.addEventListener("animationend", handleAnimationEnd);
+      return () => {
+        ownerWindow.clearTimeout(timeoutId);
+        node.removeEventListener("animationstart", handleAnimationStart);
+        node.removeEventListener("animationcancel", handleAnimationEnd);
+        node.removeEventListener("animationend", handleAnimationEnd);
+      };
+    } else {
+      send("ANIMATION_END");
+    }
+  }, [node, send]);
+  return {
+    isPresent: ["mounted", "unmountSuspended"].includes(state),
+    ref: reactExports.useCallback((node2) => {
+      if (node2) stylesRef.current = getComputedStyle(node2);
+      setNode(node2);
+    }, [])
+  };
+}
+function getAnimationName(styles) {
+  return styles?.animationName || "none";
+}
+function getElementRef(element) {
+  let getter = Object.getOwnPropertyDescriptor(element.props, "ref")?.get;
+  let mayWarn = getter && "isReactWarning" in getter && getter.isReactWarning;
+  if (mayWarn) {
+    return element.ref;
+  }
+  getter = Object.getOwnPropertyDescriptor(element, "ref")?.get;
+  mayWarn = getter && "isReactWarning" in getter && getter.isReactWarning;
+  if (mayWarn) {
+    return element.props.ref;
+  }
+  return element.props.ref || element.ref;
+}
+var count = 0;
+function useFocusGuards() {
+  reactExports.useEffect(() => {
+    const edgeGuards = document.querySelectorAll("[data-radix-focus-guard]");
+    document.body.insertAdjacentElement("afterbegin", edgeGuards[0] ?? createFocusGuard());
+    document.body.insertAdjacentElement("beforeend", edgeGuards[1] ?? createFocusGuard());
+    count++;
+    return () => {
+      if (count === 1) {
+        document.querySelectorAll("[data-radix-focus-guard]").forEach((node) => node.remove());
+      }
+      count--;
+    };
+  }, []);
+}
+function createFocusGuard() {
+  const element = document.createElement("span");
+  element.setAttribute("data-radix-focus-guard", "");
+  element.tabIndex = 0;
+  element.style.outline = "none";
+  element.style.opacity = "0";
+  element.style.position = "fixed";
+  element.style.pointerEvents = "none";
+  return element;
+}
+var __assign = function() {
+  __assign = Object.assign || function __assign2(t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+      s = arguments[i];
+      for (var p2 in s) if (Object.prototype.hasOwnProperty.call(s, p2)) t[p2] = s[p2];
+    }
+    return t;
+  };
+  return __assign.apply(this, arguments);
+};
+function __rest(s, e) {
+  var t = {};
+  for (var p2 in s) if (Object.prototype.hasOwnProperty.call(s, p2) && e.indexOf(p2) < 0)
+    t[p2] = s[p2];
+  if (s != null && typeof Object.getOwnPropertySymbols === "function")
+    for (var i = 0, p2 = Object.getOwnPropertySymbols(s); i < p2.length; i++) {
+      if (e.indexOf(p2[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p2[i]))
+        t[p2[i]] = s[p2[i]];
+    }
+  return t;
+}
+function __spreadArray(to, from, pack) {
+  if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+    if (ar || !(i in from)) {
+      if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+      ar[i] = from[i];
+    }
+  }
+  return to.concat(ar || Array.prototype.slice.call(from));
+}
+typeof SuppressedError === "function" ? SuppressedError : function(error, suppressed, message2) {
+  var e = new Error(message2);
+  return e.name = "SuppressedError", e.error = error, e.suppressed = suppressed, e;
+};
+var zeroRightClassName = "right-scroll-bar-position";
+var fullWidthClassName = "width-before-scroll-bar";
+var noScrollbarsClassName = "with-scroll-bars-hidden";
+var removedBarSizeVariable = "--removed-body-scroll-bar-size";
+function assignRef(ref, value) {
+  if (typeof ref === "function") {
+    ref(value);
+  } else if (ref) {
+    ref.current = value;
+  }
+  return ref;
+}
+function useCallbackRef(initialValue, callback) {
+  var ref = reactExports.useState(function() {
+    return {
+      // value
+      value: initialValue,
+      // last callback
+      callback,
+      // "memoized" public interface
+      facade: {
+        get current() {
+          return ref.value;
+        },
+        set current(value) {
+          var last = ref.value;
+          if (last !== value) {
+            ref.value = value;
+            ref.callback(value, last);
+          }
+        }
+      }
+    };
+  })[0];
+  ref.callback = callback;
+  return ref.facade;
+}
+var useIsomorphicLayoutEffect = typeof window !== "undefined" ? reactExports.useLayoutEffect : reactExports.useEffect;
+var currentValues = /* @__PURE__ */ new WeakMap();
+function useMergeRefs(refs, defaultValue2) {
+  var callbackRef = useCallbackRef(null, function(newValue) {
+    return refs.forEach(function(ref) {
+      return assignRef(ref, newValue);
+    });
+  });
+  useIsomorphicLayoutEffect(function() {
+    var oldValue = currentValues.get(callbackRef);
+    if (oldValue) {
+      var prevRefs_1 = new Set(oldValue);
+      var nextRefs_1 = new Set(refs);
+      var current_1 = callbackRef.current;
+      prevRefs_1.forEach(function(ref) {
+        if (!nextRefs_1.has(ref)) {
+          assignRef(ref, null);
+        }
+      });
+      nextRefs_1.forEach(function(ref) {
+        if (!prevRefs_1.has(ref)) {
+          assignRef(ref, current_1);
+        }
+      });
+    }
+    currentValues.set(callbackRef, refs);
+  }, [refs]);
+  return callbackRef;
+}
+function ItoI(a) {
+  return a;
+}
+function innerCreateMedium(defaults, middleware) {
+  if (middleware === void 0) {
+    middleware = ItoI;
+  }
+  var buffer = [];
+  var assigned = false;
+  var medium = {
+    read: function() {
+      if (assigned) {
+        throw new Error("Sidecar: could not `read` from an `assigned` medium. `read` could be used only with `useMedium`.");
+      }
+      if (buffer.length) {
+        return buffer[buffer.length - 1];
+      }
+      return defaults;
+    },
+    useMedium: function(data) {
+      var item = middleware(data, assigned);
+      buffer.push(item);
+      return function() {
+        buffer = buffer.filter(function(x2) {
+          return x2 !== item;
+        });
+      };
+    },
+    assignSyncMedium: function(cb) {
+      assigned = true;
+      while (buffer.length) {
+        var cbs = buffer;
+        buffer = [];
+        cbs.forEach(cb);
+      }
+      buffer = {
+        push: function(x2) {
+          return cb(x2);
+        },
+        filter: function() {
+          return buffer;
+        }
+      };
+    },
+    assignMedium: function(cb) {
+      assigned = true;
+      var pendingQueue = [];
+      if (buffer.length) {
+        var cbs = buffer;
+        buffer = [];
+        cbs.forEach(cb);
+        pendingQueue = buffer;
+      }
+      var executeQueue = function() {
+        var cbs2 = pendingQueue;
+        pendingQueue = [];
+        cbs2.forEach(cb);
+      };
+      var cycle = function() {
+        return Promise.resolve().then(executeQueue);
+      };
+      cycle();
+      buffer = {
+        push: function(x2) {
+          pendingQueue.push(x2);
+          cycle();
+        },
+        filter: function(filter2) {
+          pendingQueue = pendingQueue.filter(filter2);
+          return buffer;
+        }
+      };
+    }
+  };
+  return medium;
+}
+function createSidecarMedium(options) {
+  if (options === void 0) {
+    options = {};
+  }
+  var medium = innerCreateMedium(null);
+  medium.options = __assign({ async: true, ssr: false }, options);
+  return medium;
+}
+var SideCar$1 = function(_a) {
+  var sideCar = _a.sideCar, rest = __rest(_a, ["sideCar"]);
+  if (!sideCar) {
+    throw new Error("Sidecar: please provide `sideCar` property to import the right car");
+  }
+  var Target = sideCar.read();
+  if (!Target) {
+    throw new Error("Sidecar medium not found");
+  }
+  return reactExports.createElement(Target, __assign({}, rest));
+};
+SideCar$1.isSideCarExport = true;
+function exportSidecar(medium, exported) {
+  medium.useMedium(exported);
+  return SideCar$1;
+}
+var effectCar = createSidecarMedium();
+var nothing = function() {
+  return;
+};
+var RemoveScroll = reactExports.forwardRef(function(props, parentRef) {
+  var ref = reactExports.useRef(null);
+  var _a = reactExports.useState({
+    onScrollCapture: nothing,
+    onWheelCapture: nothing,
+    onTouchMoveCapture: nothing
+  }), callbacks = _a[0], setCallbacks = _a[1];
+  var forwardProps = props.forwardProps, children = props.children, className = props.className, removeScrollBar = props.removeScrollBar, enabled = props.enabled, shards = props.shards, sideCar = props.sideCar, noRelative = props.noRelative, noIsolation = props.noIsolation, inert = props.inert, allowPinchZoom = props.allowPinchZoom, _b = props.as, Container = _b === void 0 ? "div" : _b, gapMode = props.gapMode, rest = __rest(props, ["forwardProps", "children", "className", "removeScrollBar", "enabled", "shards", "sideCar", "noRelative", "noIsolation", "inert", "allowPinchZoom", "as", "gapMode"]);
+  var SideCar2 = sideCar;
+  var containerRef = useMergeRefs([ref, parentRef]);
+  var containerProps = __assign(__assign({}, rest), callbacks);
+  return reactExports.createElement(
+    reactExports.Fragment,
+    null,
+    enabled && reactExports.createElement(SideCar2, { sideCar: effectCar, removeScrollBar, shards, noRelative, noIsolation, inert, setCallbacks, allowPinchZoom: !!allowPinchZoom, lockRef: ref, gapMode }),
+    forwardProps ? reactExports.cloneElement(reactExports.Children.only(children), __assign(__assign({}, containerProps), { ref: containerRef })) : reactExports.createElement(Container, __assign({}, containerProps, { className, ref: containerRef }), children)
+  );
+});
+RemoveScroll.defaultProps = {
+  enabled: true,
+  removeScrollBar: true,
+  inert: false
+};
+RemoveScroll.classNames = {
+  fullWidth: fullWidthClassName,
+  zeroRight: zeroRightClassName
+};
+var getNonce = function() {
+  if (typeof __webpack_nonce__ !== "undefined") {
+    return __webpack_nonce__;
+  }
+  return void 0;
+};
+function makeStyleTag() {
+  if (!document)
+    return null;
+  var tag = document.createElement("style");
+  tag.type = "text/css";
+  var nonce = getNonce();
+  if (nonce) {
+    tag.setAttribute("nonce", nonce);
+  }
+  return tag;
+}
+function injectStyles(tag, css) {
+  if (tag.styleSheet) {
+    tag.styleSheet.cssText = css;
+  } else {
+    tag.appendChild(document.createTextNode(css));
+  }
+}
+function insertStyleTag(tag) {
+  var head = document.head || document.getElementsByTagName("head")[0];
+  head.appendChild(tag);
+}
+var stylesheetSingleton = function() {
+  var counter = 0;
+  var stylesheet = null;
+  return {
+    add: function(style2) {
+      if (counter == 0) {
+        if (stylesheet = makeStyleTag()) {
+          injectStyles(stylesheet, style2);
+          insertStyleTag(stylesheet);
+        }
+      }
+      counter++;
+    },
+    remove: function() {
+      counter--;
+      if (!counter && stylesheet) {
+        stylesheet.parentNode && stylesheet.parentNode.removeChild(stylesheet);
+        stylesheet = null;
+      }
+    }
+  };
+};
+var styleHookSingleton = function() {
+  var sheet = stylesheetSingleton();
+  return function(styles, isDynamic) {
+    reactExports.useEffect(function() {
+      sheet.add(styles);
+      return function() {
+        sheet.remove();
+      };
+    }, [styles && isDynamic]);
+  };
+};
+var styleSingleton = function() {
+  var useStyle2 = styleHookSingleton();
+  var Sheet2 = function(_a) {
+    var styles = _a.styles, dynamic = _a.dynamic;
+    useStyle2(styles, dynamic);
+    return null;
+  };
+  return Sheet2;
+};
+var zeroGap = {
+  left: 0,
+  top: 0,
+  right: 0,
+  gap: 0
+};
+var parse = function(x2) {
+  return parseInt(x2 || "", 10) || 0;
+};
+var getOffset = function(gapMode) {
+  var cs = window.getComputedStyle(document.body);
+  var left = cs[gapMode === "padding" ? "paddingLeft" : "marginLeft"];
+  var top = cs[gapMode === "padding" ? "paddingTop" : "marginTop"];
+  var right = cs[gapMode === "padding" ? "paddingRight" : "marginRight"];
+  return [parse(left), parse(top), parse(right)];
+};
+var getGapWidth = function(gapMode) {
+  if (gapMode === void 0) {
+    gapMode = "margin";
+  }
+  if (typeof window === "undefined") {
+    return zeroGap;
+  }
+  var offsets = getOffset(gapMode);
+  var documentWidth = document.documentElement.clientWidth;
+  var windowWidth = window.innerWidth;
+  return {
+    left: offsets[0],
+    top: offsets[1],
+    right: offsets[2],
+    gap: Math.max(0, windowWidth - documentWidth + offsets[2] - offsets[0])
+  };
+};
+var Style = styleSingleton();
+var lockAttribute = "data-scroll-locked";
+var getStyles = function(_a, allowRelative, gapMode, important) {
+  var left = _a.left, top = _a.top, right = _a.right, gap = _a.gap;
+  if (gapMode === void 0) {
+    gapMode = "margin";
+  }
+  return "\n  .".concat(noScrollbarsClassName, " {\n   overflow: hidden ").concat(important, ";\n   padding-right: ").concat(gap, "px ").concat(important, ";\n  }\n  body[").concat(lockAttribute, "] {\n    overflow: hidden ").concat(important, ";\n    overscroll-behavior: contain;\n    ").concat([
+    allowRelative && "position: relative ".concat(important, ";"),
+    gapMode === "margin" && "\n    padding-left: ".concat(left, "px;\n    padding-top: ").concat(top, "px;\n    padding-right: ").concat(right, "px;\n    margin-left:0;\n    margin-top:0;\n    margin-right: ").concat(gap, "px ").concat(important, ";\n    "),
+    gapMode === "padding" && "padding-right: ".concat(gap, "px ").concat(important, ";")
+  ].filter(Boolean).join(""), "\n  }\n  \n  .").concat(zeroRightClassName, " {\n    right: ").concat(gap, "px ").concat(important, ";\n  }\n  \n  .").concat(fullWidthClassName, " {\n    margin-right: ").concat(gap, "px ").concat(important, ";\n  }\n  \n  .").concat(zeroRightClassName, " .").concat(zeroRightClassName, " {\n    right: 0 ").concat(important, ";\n  }\n  \n  .").concat(fullWidthClassName, " .").concat(fullWidthClassName, " {\n    margin-right: 0 ").concat(important, ";\n  }\n  \n  body[").concat(lockAttribute, "] {\n    ").concat(removedBarSizeVariable, ": ").concat(gap, "px;\n  }\n");
+};
+var getCurrentUseCounter = function() {
+  var counter = parseInt(document.body.getAttribute(lockAttribute) || "0", 10);
+  return isFinite(counter) ? counter : 0;
+};
+var useLockAttribute = function() {
+  reactExports.useEffect(function() {
+    document.body.setAttribute(lockAttribute, (getCurrentUseCounter() + 1).toString());
+    return function() {
+      var newCounter = getCurrentUseCounter() - 1;
+      if (newCounter <= 0) {
+        document.body.removeAttribute(lockAttribute);
+      } else {
+        document.body.setAttribute(lockAttribute, newCounter.toString());
+      }
+    };
+  }, []);
+};
+var RemoveScrollBar = function(_a) {
+  var noRelative = _a.noRelative, noImportant = _a.noImportant, _b = _a.gapMode, gapMode = _b === void 0 ? "margin" : _b;
+  useLockAttribute();
+  var gap = reactExports.useMemo(function() {
+    return getGapWidth(gapMode);
+  }, [gapMode]);
+  return reactExports.createElement(Style, { styles: getStyles(gap, !noRelative, gapMode, !noImportant ? "!important" : "") });
+};
+var passiveSupported = false;
+if (typeof window !== "undefined") {
+  try {
+    var options = Object.defineProperty({}, "passive", {
+      get: function() {
+        passiveSupported = true;
+        return true;
+      }
+    });
+    window.addEventListener("test", options, options);
+    window.removeEventListener("test", options, options);
+  } catch (err) {
+    passiveSupported = false;
+  }
+}
+var nonPassive = passiveSupported ? { passive: false } : false;
+var alwaysContainsScroll = function(node) {
+  return node.tagName === "TEXTAREA";
+};
+var elementCanBeScrolled = function(node, overflow) {
+  if (!(node instanceof Element)) {
+    return false;
+  }
+  var styles = window.getComputedStyle(node);
+  return (
+    // not-not-scrollable
+    styles[overflow] !== "hidden" && // contains scroll inside self
+    !(styles.overflowY === styles.overflowX && !alwaysContainsScroll(node) && styles[overflow] === "visible")
+  );
+};
+var elementCouldBeVScrolled = function(node) {
+  return elementCanBeScrolled(node, "overflowY");
+};
+var elementCouldBeHScrolled = function(node) {
+  return elementCanBeScrolled(node, "overflowX");
+};
+var locationCouldBeScrolled = function(axis, node) {
+  var ownerDocument = node.ownerDocument;
+  var current = node;
+  do {
+    if (typeof ShadowRoot !== "undefined" && current instanceof ShadowRoot) {
+      current = current.host;
+    }
+    var isScrollable2 = elementCouldBeScrolled(axis, current);
+    if (isScrollable2) {
+      var _a = getScrollVariables(axis, current), scrollHeight = _a[1], clientHeight = _a[2];
+      if (scrollHeight > clientHeight) {
+        return true;
+      }
+    }
+    current = current.parentNode;
+  } while (current && current !== ownerDocument.body);
+  return false;
+};
+var getVScrollVariables = function(_a) {
+  var scrollTop = _a.scrollTop, scrollHeight = _a.scrollHeight, clientHeight = _a.clientHeight;
+  return [
+    scrollTop,
+    scrollHeight,
+    clientHeight
+  ];
+};
+var getHScrollVariables = function(_a) {
+  var scrollLeft = _a.scrollLeft, scrollWidth = _a.scrollWidth, clientWidth = _a.clientWidth;
+  return [
+    scrollLeft,
+    scrollWidth,
+    clientWidth
+  ];
+};
+var elementCouldBeScrolled = function(axis, node) {
+  return axis === "v" ? elementCouldBeVScrolled(node) : elementCouldBeHScrolled(node);
+};
+var getScrollVariables = function(axis, node) {
+  return axis === "v" ? getVScrollVariables(node) : getHScrollVariables(node);
+};
+var getDirectionFactor = function(axis, direction) {
+  return axis === "h" && direction === "rtl" ? -1 : 1;
+};
+var handleScroll = function(axis, endTarget, event, sourceDelta, noOverscroll) {
+  var directionFactor = getDirectionFactor(axis, window.getComputedStyle(endTarget).direction);
+  var delta = directionFactor * sourceDelta;
+  var target = event.target;
+  var targetInLock = endTarget.contains(target);
+  var shouldCancelScroll = false;
+  var isDeltaPositive = delta > 0;
+  var availableScroll = 0;
+  var availableScrollTop = 0;
+  do {
+    if (!target) {
+      break;
+    }
+    var _a = getScrollVariables(axis, target), position = _a[0], scroll_1 = _a[1], capacity = _a[2];
+    var elementScroll = scroll_1 - capacity - directionFactor * position;
+    if (position || elementScroll) {
+      if (elementCouldBeScrolled(axis, target)) {
+        availableScroll += elementScroll;
+        availableScrollTop += position;
+      }
+    }
+    var parent_1 = target.parentNode;
+    target = parent_1 && parent_1.nodeType === Node.DOCUMENT_FRAGMENT_NODE ? parent_1.host : parent_1;
+  } while (
+    // portaled content
+    !targetInLock && target !== document.body || // self content
+    targetInLock && (endTarget.contains(target) || endTarget === target)
+  );
+  if (isDeltaPositive && (Math.abs(availableScroll) < 1 || false)) {
+    shouldCancelScroll = true;
+  } else if (!isDeltaPositive && (Math.abs(availableScrollTop) < 1 || false)) {
+    shouldCancelScroll = true;
+  }
+  return shouldCancelScroll;
+};
+var getTouchXY = function(event) {
+  return "changedTouches" in event ? [event.changedTouches[0].clientX, event.changedTouches[0].clientY] : [0, 0];
+};
+var getDeltaXY = function(event) {
+  return [event.deltaX, event.deltaY];
+};
+var extractRef = function(ref) {
+  return ref && "current" in ref ? ref.current : ref;
+};
+var deltaCompare = function(x2, y) {
+  return x2[0] === y[0] && x2[1] === y[1];
+};
+var generateStyle = function(id2) {
+  return "\n  .block-interactivity-".concat(id2, " {pointer-events: none;}\n  .allow-interactivity-").concat(id2, " {pointer-events: all;}\n");
+};
+var idCounter = 0;
+var lockStack = [];
+function RemoveScrollSideCar(props) {
+  var shouldPreventQueue = reactExports.useRef([]);
+  var touchStartRef = reactExports.useRef([0, 0]);
+  var activeAxis = reactExports.useRef();
+  var id2 = reactExports.useState(idCounter++)[0];
+  var Style2 = reactExports.useState(styleSingleton)[0];
+  var lastProps = reactExports.useRef(props);
+  reactExports.useEffect(function() {
+    lastProps.current = props;
+  }, [props]);
+  reactExports.useEffect(function() {
+    if (props.inert) {
+      document.body.classList.add("block-interactivity-".concat(id2));
+      var allow_1 = __spreadArray([props.lockRef.current], (props.shards || []).map(extractRef), true).filter(Boolean);
+      allow_1.forEach(function(el) {
+        return el.classList.add("allow-interactivity-".concat(id2));
+      });
+      return function() {
+        document.body.classList.remove("block-interactivity-".concat(id2));
+        allow_1.forEach(function(el) {
+          return el.classList.remove("allow-interactivity-".concat(id2));
+        });
+      };
+    }
+    return;
+  }, [props.inert, props.lockRef.current, props.shards]);
+  var shouldCancelEvent = reactExports.useCallback(function(event, parent) {
+    if ("touches" in event && event.touches.length === 2 || event.type === "wheel" && event.ctrlKey) {
+      return !lastProps.current.allowPinchZoom;
+    }
+    var touch = getTouchXY(event);
+    var touchStart = touchStartRef.current;
+    var deltaX = "deltaX" in event ? event.deltaX : touchStart[0] - touch[0];
+    var deltaY = "deltaY" in event ? event.deltaY : touchStart[1] - touch[1];
+    var currentAxis;
+    var target = event.target;
+    var moveDirection = Math.abs(deltaX) > Math.abs(deltaY) ? "h" : "v";
+    if ("touches" in event && moveDirection === "h" && target.type === "range") {
+      return false;
+    }
+    var selection = window.getSelection();
+    var anchorNode = selection && selection.anchorNode;
+    var isTouchingSelection = anchorNode ? anchorNode === target || anchorNode.contains(target) : false;
+    if (isTouchingSelection) {
+      return false;
+    }
+    var canBeScrolledInMainDirection = locationCouldBeScrolled(moveDirection, target);
+    if (!canBeScrolledInMainDirection) {
+      return true;
+    }
+    if (canBeScrolledInMainDirection) {
+      currentAxis = moveDirection;
+    } else {
+      currentAxis = moveDirection === "v" ? "h" : "v";
+      canBeScrolledInMainDirection = locationCouldBeScrolled(moveDirection, target);
+    }
+    if (!canBeScrolledInMainDirection) {
+      return false;
+    }
+    if (!activeAxis.current && "changedTouches" in event && (deltaX || deltaY)) {
+      activeAxis.current = currentAxis;
+    }
+    if (!currentAxis) {
+      return true;
+    }
+    var cancelingAxis = activeAxis.current || currentAxis;
+    return handleScroll(cancelingAxis, parent, event, cancelingAxis === "h" ? deltaX : deltaY);
+  }, []);
+  var shouldPrevent = reactExports.useCallback(function(_event) {
+    var event = _event;
+    if (!lockStack.length || lockStack[lockStack.length - 1] !== Style2) {
+      return;
+    }
+    var delta = "deltaY" in event ? getDeltaXY(event) : getTouchXY(event);
+    var sourceEvent = shouldPreventQueue.current.filter(function(e) {
+      return e.name === event.type && (e.target === event.target || event.target === e.shadowParent) && deltaCompare(e.delta, delta);
+    })[0];
+    if (sourceEvent && sourceEvent.should) {
+      if (event.cancelable) {
+        event.preventDefault();
+      }
+      return;
+    }
+    if (!sourceEvent) {
+      var shardNodes = (lastProps.current.shards || []).map(extractRef).filter(Boolean).filter(function(node) {
+        return node.contains(event.target);
+      });
+      var shouldStop = shardNodes.length > 0 ? shouldCancelEvent(event, shardNodes[0]) : !lastProps.current.noIsolation;
+      if (shouldStop) {
+        if (event.cancelable) {
+          event.preventDefault();
+        }
+      }
+    }
+  }, []);
+  var shouldCancel = reactExports.useCallback(function(name, delta, target, should) {
+    var event = { name, delta, target, should, shadowParent: getOutermostShadowParent(target) };
+    shouldPreventQueue.current.push(event);
+    setTimeout(function() {
+      shouldPreventQueue.current = shouldPreventQueue.current.filter(function(e) {
+        return e !== event;
+      });
+    }, 1);
+  }, []);
+  var scrollTouchStart = reactExports.useCallback(function(event) {
+    touchStartRef.current = getTouchXY(event);
+    activeAxis.current = void 0;
+  }, []);
+  var scrollWheel = reactExports.useCallback(function(event) {
+    shouldCancel(event.type, getDeltaXY(event), event.target, shouldCancelEvent(event, props.lockRef.current));
+  }, []);
+  var scrollTouchMove = reactExports.useCallback(function(event) {
+    shouldCancel(event.type, getTouchXY(event), event.target, shouldCancelEvent(event, props.lockRef.current));
+  }, []);
+  reactExports.useEffect(function() {
+    lockStack.push(Style2);
+    props.setCallbacks({
+      onScrollCapture: scrollWheel,
+      onWheelCapture: scrollWheel,
+      onTouchMoveCapture: scrollTouchMove
+    });
+    document.addEventListener("wheel", shouldPrevent, nonPassive);
+    document.addEventListener("touchmove", shouldPrevent, nonPassive);
+    document.addEventListener("touchstart", scrollTouchStart, nonPassive);
+    return function() {
+      lockStack = lockStack.filter(function(inst) {
+        return inst !== Style2;
+      });
+      document.removeEventListener("wheel", shouldPrevent, nonPassive);
+      document.removeEventListener("touchmove", shouldPrevent, nonPassive);
+      document.removeEventListener("touchstart", scrollTouchStart, nonPassive);
+    };
+  }, []);
+  var removeScrollBar = props.removeScrollBar, inert = props.inert;
+  return reactExports.createElement(
+    reactExports.Fragment,
+    null,
+    inert ? reactExports.createElement(Style2, { styles: generateStyle(id2) }) : null,
+    removeScrollBar ? reactExports.createElement(RemoveScrollBar, { noRelative: props.noRelative, gapMode: props.gapMode }) : null
+  );
+}
+function getOutermostShadowParent(node) {
+  var shadowParent = null;
+  while (node !== null) {
+    if (node instanceof ShadowRoot) {
+      shadowParent = node.host;
+      node = node.host;
+    }
+    node = node.parentNode;
+  }
+  return shadowParent;
+}
+const SideCar = exportSidecar(effectCar, RemoveScrollSideCar);
+var ReactRemoveScroll = reactExports.forwardRef(function(props, ref) {
+  return reactExports.createElement(RemoveScroll, __assign({}, props, { ref, sideCar: SideCar }));
+});
+ReactRemoveScroll.classNames = RemoveScroll.classNames;
+var getDefaultParent = function(originalTarget) {
+  if (typeof document === "undefined") {
+    return null;
+  }
+  var sampleTarget = Array.isArray(originalTarget) ? originalTarget[0] : originalTarget;
+  return sampleTarget.ownerDocument.body;
+};
+var counterMap = /* @__PURE__ */ new WeakMap();
+var uncontrolledNodes = /* @__PURE__ */ new WeakMap();
+var markerMap = {};
+var lockCount = 0;
+var unwrapHost = function(node) {
+  return node && (node.host || unwrapHost(node.parentNode));
+};
+var correctTargets = function(parent, targets) {
+  return targets.map(function(target) {
+    if (parent.contains(target)) {
+      return target;
+    }
+    var correctedTarget = unwrapHost(target);
+    if (correctedTarget && parent.contains(correctedTarget)) {
+      return correctedTarget;
+    }
+    console.error("aria-hidden", target, "in not contained inside", parent, ". Doing nothing");
+    return null;
+  }).filter(function(x2) {
+    return Boolean(x2);
+  });
+};
+var applyAttributeToOthers = function(originalTarget, parentNode, markerName, controlAttribute) {
+  var targets = correctTargets(parentNode, Array.isArray(originalTarget) ? originalTarget : [originalTarget]);
+  if (!markerMap[markerName]) {
+    markerMap[markerName] = /* @__PURE__ */ new WeakMap();
+  }
+  var markerCounter = markerMap[markerName];
+  var hiddenNodes = [];
+  var elementsToKeep = /* @__PURE__ */ new Set();
+  var elementsToStop = new Set(targets);
+  var keep = function(el) {
+    if (!el || elementsToKeep.has(el)) {
+      return;
+    }
+    elementsToKeep.add(el);
+    keep(el.parentNode);
+  };
+  targets.forEach(keep);
+  var deep = function(parent) {
+    if (!parent || elementsToStop.has(parent)) {
+      return;
+    }
+    Array.prototype.forEach.call(parent.children, function(node) {
+      if (elementsToKeep.has(node)) {
+        deep(node);
+      } else {
+        try {
+          var attr = node.getAttribute(controlAttribute);
+          var alreadyHidden = attr !== null && attr !== "false";
+          var counterValue = (counterMap.get(node) || 0) + 1;
+          var markerValue = (markerCounter.get(node) || 0) + 1;
+          counterMap.set(node, counterValue);
+          markerCounter.set(node, markerValue);
+          hiddenNodes.push(node);
+          if (counterValue === 1 && alreadyHidden) {
+            uncontrolledNodes.set(node, true);
+          }
+          if (markerValue === 1) {
+            node.setAttribute(markerName, "true");
+          }
+          if (!alreadyHidden) {
+            node.setAttribute(controlAttribute, "true");
+          }
+        } catch (e) {
+          console.error("aria-hidden: cannot operate on ", node, e);
+        }
+      }
+    });
+  };
+  deep(parentNode);
+  elementsToKeep.clear();
+  lockCount++;
+  return function() {
+    hiddenNodes.forEach(function(node) {
+      var counterValue = counterMap.get(node) - 1;
+      var markerValue = markerCounter.get(node) - 1;
+      counterMap.set(node, counterValue);
+      markerCounter.set(node, markerValue);
+      if (!counterValue) {
+        if (!uncontrolledNodes.has(node)) {
+          node.removeAttribute(controlAttribute);
+        }
+        uncontrolledNodes.delete(node);
+      }
+      if (!markerValue) {
+        node.removeAttribute(markerName);
+      }
+    });
+    lockCount--;
+    if (!lockCount) {
+      counterMap = /* @__PURE__ */ new WeakMap();
+      counterMap = /* @__PURE__ */ new WeakMap();
+      uncontrolledNodes = /* @__PURE__ */ new WeakMap();
+      markerMap = {};
+    }
+  };
+};
+var hideOthers = function(originalTarget, parentNode, markerName) {
+  if (markerName === void 0) {
+    markerName = "data-aria-hidden";
+  }
+  var targets = Array.from(Array.isArray(originalTarget) ? originalTarget : [originalTarget]);
+  var activeParentNode = getDefaultParent(originalTarget);
+  if (!activeParentNode) {
+    return function() {
+      return null;
+    };
+  }
+  targets.push.apply(targets, Array.from(activeParentNode.querySelectorAll("[aria-live], script")));
+  return applyAttributeToOthers(targets, activeParentNode, markerName, "aria-hidden");
+};
+var DIALOG_NAME = "Dialog";
+var [createDialogContext, createDialogScope] = createContextScope(DIALOG_NAME);
+var [DialogProvider, useDialogContext] = createDialogContext(DIALOG_NAME);
+var Dialog$1 = (props) => {
+  const {
+    __scopeDialog,
+    children,
+    open: openProp,
+    defaultOpen,
+    onOpenChange,
+    modal = true
+  } = props;
+  const triggerRef = reactExports.useRef(null);
+  const contentRef = reactExports.useRef(null);
+  const [open = false, setOpen] = useControllableState({
+    prop: openProp,
+    defaultProp: defaultOpen,
+    onChange: onOpenChange
+  });
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    DialogProvider,
+    {
+      scope: __scopeDialog,
+      triggerRef,
+      contentRef,
+      contentId: useId(),
+      titleId: useId(),
+      descriptionId: useId(),
+      open,
+      onOpenChange: setOpen,
+      onOpenToggle: reactExports.useCallback(() => setOpen((prevOpen) => !prevOpen), [setOpen]),
+      modal,
+      children
+    }
+  );
+};
+Dialog$1.displayName = DIALOG_NAME;
+var TRIGGER_NAME$4 = "DialogTrigger";
+var DialogTrigger = reactExports.forwardRef(
+  (props, forwardedRef) => {
+    const { __scopeDialog, ...triggerProps } = props;
+    const context = useDialogContext(TRIGGER_NAME$4, __scopeDialog);
+    const composedTriggerRef = useComposedRefs(forwardedRef, context.triggerRef);
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(
+      Primitive.button,
+      {
+        type: "button",
+        "aria-haspopup": "dialog",
+        "aria-expanded": context.open,
+        "aria-controls": context.contentId,
+        "data-state": getState$1(context.open),
+        ...triggerProps,
+        ref: composedTriggerRef,
+        onClick: composeEventHandlers(props.onClick, context.onOpenToggle)
+      }
+    );
+  }
+);
+DialogTrigger.displayName = TRIGGER_NAME$4;
+var PORTAL_NAME$5 = "DialogPortal";
+var [PortalProvider$2, usePortalContext$2] = createDialogContext(PORTAL_NAME$5, {
+  forceMount: void 0
+});
+var DialogPortal$1 = (props) => {
+  const { __scopeDialog, forceMount, children, container } = props;
+  const context = useDialogContext(PORTAL_NAME$5, __scopeDialog);
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(PortalProvider$2, { scope: __scopeDialog, forceMount, children: reactExports.Children.map(children, (child) => /* @__PURE__ */ jsxRuntimeExports.jsx(Presence, { present: forceMount || context.open, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Portal$4, { asChild: true, container, children: child }) })) });
+};
+DialogPortal$1.displayName = PORTAL_NAME$5;
+var OVERLAY_NAME$1 = "DialogOverlay";
+var DialogOverlay$1 = reactExports.forwardRef(
+  (props, forwardedRef) => {
+    const portalContext = usePortalContext$2(OVERLAY_NAME$1, props.__scopeDialog);
+    const { forceMount = portalContext.forceMount, ...overlayProps } = props;
+    const context = useDialogContext(OVERLAY_NAME$1, props.__scopeDialog);
+    return context.modal ? /* @__PURE__ */ jsxRuntimeExports.jsx(Presence, { present: forceMount || context.open, children: /* @__PURE__ */ jsxRuntimeExports.jsx(DialogOverlayImpl, { ...overlayProps, ref: forwardedRef }) }) : null;
+  }
+);
+DialogOverlay$1.displayName = OVERLAY_NAME$1;
+var DialogOverlayImpl = reactExports.forwardRef(
+  (props, forwardedRef) => {
+    const { __scopeDialog, ...overlayProps } = props;
+    const context = useDialogContext(OVERLAY_NAME$1, __scopeDialog);
+    return (
+      // Make sure `Content` is scrollable even when it doesn't live inside `RemoveScroll`
+      // ie. when `Overlay` and `Content` are siblings
+      /* @__PURE__ */ jsxRuntimeExports.jsx(ReactRemoveScroll, { as: Slot, allowPinchZoom: true, shards: [context.contentRef], children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+        Primitive.div,
+        {
+          "data-state": getState$1(context.open),
+          ...overlayProps,
+          ref: forwardedRef,
+          style: { pointerEvents: "auto", ...overlayProps.style }
+        }
+      ) })
+    );
+  }
+);
+var CONTENT_NAME$6 = "DialogContent";
+var DialogContent$1 = reactExports.forwardRef(
+  (props, forwardedRef) => {
+    const portalContext = usePortalContext$2(CONTENT_NAME$6, props.__scopeDialog);
+    const { forceMount = portalContext.forceMount, ...contentProps } = props;
+    const context = useDialogContext(CONTENT_NAME$6, props.__scopeDialog);
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(Presence, { present: forceMount || context.open, children: context.modal ? /* @__PURE__ */ jsxRuntimeExports.jsx(DialogContentModal, { ...contentProps, ref: forwardedRef }) : /* @__PURE__ */ jsxRuntimeExports.jsx(DialogContentNonModal, { ...contentProps, ref: forwardedRef }) });
+  }
+);
+DialogContent$1.displayName = CONTENT_NAME$6;
+var DialogContentModal = reactExports.forwardRef(
+  (props, forwardedRef) => {
+    const context = useDialogContext(CONTENT_NAME$6, props.__scopeDialog);
+    const contentRef = reactExports.useRef(null);
+    const composedRefs = useComposedRefs(forwardedRef, context.contentRef, contentRef);
+    reactExports.useEffect(() => {
+      const content = contentRef.current;
+      if (content) return hideOthers(content);
+    }, []);
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(
+      DialogContentImpl,
+      {
+        ...props,
+        ref: composedRefs,
+        trapFocus: context.open,
+        disableOutsidePointerEvents: true,
+        onCloseAutoFocus: composeEventHandlers(props.onCloseAutoFocus, (event) => {
+          event.preventDefault();
+          context.triggerRef.current?.focus();
+        }),
+        onPointerDownOutside: composeEventHandlers(props.onPointerDownOutside, (event) => {
+          const originalEvent = event.detail.originalEvent;
+          const ctrlLeftClick = originalEvent.button === 0 && originalEvent.ctrlKey === true;
+          const isRightClick = originalEvent.button === 2 || ctrlLeftClick;
+          if (isRightClick) event.preventDefault();
+        }),
+        onFocusOutside: composeEventHandlers(
+          props.onFocusOutside,
+          (event) => event.preventDefault()
+        )
+      }
+    );
+  }
+);
+var DialogContentNonModal = reactExports.forwardRef(
+  (props, forwardedRef) => {
+    const context = useDialogContext(CONTENT_NAME$6, props.__scopeDialog);
+    const hasInteractedOutsideRef = reactExports.useRef(false);
+    const hasPointerDownOutsideRef = reactExports.useRef(false);
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(
+      DialogContentImpl,
+      {
+        ...props,
+        ref: forwardedRef,
+        trapFocus: false,
+        disableOutsidePointerEvents: false,
+        onCloseAutoFocus: (event) => {
+          props.onCloseAutoFocus?.(event);
+          if (!event.defaultPrevented) {
+            if (!hasInteractedOutsideRef.current) context.triggerRef.current?.focus();
+            event.preventDefault();
+          }
+          hasInteractedOutsideRef.current = false;
+          hasPointerDownOutsideRef.current = false;
+        },
+        onInteractOutside: (event) => {
+          props.onInteractOutside?.(event);
+          if (!event.defaultPrevented) {
+            hasInteractedOutsideRef.current = true;
+            if (event.detail.originalEvent.type === "pointerdown") {
+              hasPointerDownOutsideRef.current = true;
+            }
+          }
+          const target = event.target;
+          const targetIsTrigger = context.triggerRef.current?.contains(target);
+          if (targetIsTrigger) event.preventDefault();
+          if (event.detail.originalEvent.type === "focusin" && hasPointerDownOutsideRef.current) {
+            event.preventDefault();
+          }
+        }
+      }
+    );
+  }
+);
+var DialogContentImpl = reactExports.forwardRef(
+  (props, forwardedRef) => {
+    const { __scopeDialog, trapFocus, onOpenAutoFocus, onCloseAutoFocus, ...contentProps } = props;
+    const context = useDialogContext(CONTENT_NAME$6, __scopeDialog);
+    const contentRef = reactExports.useRef(null);
+    const composedRefs = useComposedRefs(forwardedRef, contentRef);
+    useFocusGuards();
+    return /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx(
+        FocusScope,
+        {
+          asChild: true,
+          loop: true,
+          trapped: trapFocus,
+          onMountAutoFocus: onOpenAutoFocus,
+          onUnmountAutoFocus: onCloseAutoFocus,
+          children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+            DismissableLayer,
+            {
+              role: "dialog",
+              id: context.contentId,
+              "aria-describedby": context.descriptionId,
+              "aria-labelledby": context.titleId,
+              "data-state": getState$1(context.open),
+              ...contentProps,
+              ref: composedRefs,
+              onDismiss: () => context.onOpenChange(false)
+            }
+          )
+        }
+      ),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(TitleWarning, { titleId: context.titleId }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(DescriptionWarning$1, { contentRef, descriptionId: context.descriptionId })
+      ] })
+    ] });
+  }
+);
+var TITLE_NAME$1 = "DialogTitle";
+var DialogTitle$1 = reactExports.forwardRef(
+  (props, forwardedRef) => {
+    const { __scopeDialog, ...titleProps } = props;
+    const context = useDialogContext(TITLE_NAME$1, __scopeDialog);
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(Primitive.h2, { id: context.titleId, ...titleProps, ref: forwardedRef });
+  }
+);
+DialogTitle$1.displayName = TITLE_NAME$1;
+var DESCRIPTION_NAME$1 = "DialogDescription";
+var DialogDescription$1 = reactExports.forwardRef(
+  (props, forwardedRef) => {
+    const { __scopeDialog, ...descriptionProps } = props;
+    const context = useDialogContext(DESCRIPTION_NAME$1, __scopeDialog);
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(Primitive.p, { id: context.descriptionId, ...descriptionProps, ref: forwardedRef });
+  }
+);
+DialogDescription$1.displayName = DESCRIPTION_NAME$1;
+var CLOSE_NAME = "DialogClose";
+var DialogClose = reactExports.forwardRef(
+  (props, forwardedRef) => {
+    const { __scopeDialog, ...closeProps } = props;
+    const context = useDialogContext(CLOSE_NAME, __scopeDialog);
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(
+      Primitive.button,
+      {
+        type: "button",
+        ...closeProps,
+        ref: forwardedRef,
+        onClick: composeEventHandlers(props.onClick, () => context.onOpenChange(false))
+      }
+    );
+  }
+);
+DialogClose.displayName = CLOSE_NAME;
+function getState$1(open) {
+  return open ? "open" : "closed";
+}
+var TITLE_WARNING_NAME = "DialogTitleWarning";
+var [WarningProvider, useWarningContext] = createContext2(TITLE_WARNING_NAME, {
+  contentName: CONTENT_NAME$6,
+  titleName: TITLE_NAME$1,
+  docsSlug: "dialog"
+});
+var TitleWarning = ({ titleId }) => {
+  const titleWarningContext = useWarningContext(TITLE_WARNING_NAME);
+  const MESSAGE = `\`${titleWarningContext.contentName}\` requires a \`${titleWarningContext.titleName}\` for the component to be accessible for screen reader users.
+
+If you want to hide the \`${titleWarningContext.titleName}\`, you can wrap it with our VisuallyHidden component.
+
+For more information, see https://radix-ui.com/primitives/docs/components/${titleWarningContext.docsSlug}`;
+  reactExports.useEffect(() => {
+    if (titleId) {
+      const hasTitle = document.getElementById(titleId);
+      if (!hasTitle) console.error(MESSAGE);
+    }
+  }, [MESSAGE, titleId]);
+  return null;
+};
+var DESCRIPTION_WARNING_NAME = "DialogDescriptionWarning";
+var DescriptionWarning$1 = ({ contentRef, descriptionId }) => {
+  const descriptionWarningContext = useWarningContext(DESCRIPTION_WARNING_NAME);
+  const MESSAGE = `Warning: Missing \`Description\` or \`aria-describedby={undefined}\` for {${descriptionWarningContext.contentName}}.`;
+  reactExports.useEffect(() => {
+    const describedById = contentRef.current?.getAttribute("aria-describedby");
+    if (descriptionId && describedById) {
+      const hasDescription = document.getElementById(descriptionId);
+      if (!hasDescription) console.warn(MESSAGE);
+    }
+  }, [MESSAGE, contentRef, descriptionId]);
+  return null;
+};
+var Root$5 = Dialog$1;
+var Trigger$3 = DialogTrigger;
+var Portal$3 = DialogPortal$1;
+var Overlay = DialogOverlay$1;
+var Content$1 = DialogContent$1;
+var Title = DialogTitle$1;
+var Description = DialogDescription$1;
+var Close = DialogClose;
+function Sheet({ ...props }) {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(Root$5, { "data-slot": "sheet", ...props });
+}
+function SheetPortal({
+  ...props
+}) {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(Portal$3, { "data-slot": "sheet-portal", ...props });
+}
+function SheetOverlay({
+  className,
+  ...props
+}) {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    Overlay,
+    {
+      "data-slot": "sheet-overlay",
+      className: cn(
+        "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-black/50",
+        className
+      ),
+      ...props
+    }
+  );
+}
+function SheetContent({
+  className,
+  children,
+  side = "right",
+  ...props
+}) {
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs(SheetPortal, { children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx(SheetOverlay, {}),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs(
+      Content$1,
+      {
+        "data-slot": "sheet-content",
+        className: cn(
+          "bg-background data-[state=open]:animate-in data-[state=closed]:animate-out fixed z-50 flex flex-col gap-4 shadow-lg transition ease-in-out data-[state=closed]:duration-300 data-[state=open]:duration-500",
+          side === "right" && "data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right inset-y-0 right-0 h-full w-3/4 border-l sm:max-w-sm",
+          side === "left" && "data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left inset-y-0 left-0 h-full w-3/4 border-r sm:max-w-sm",
+          side === "top" && "data-[state=closed]:slide-out-to-top data-[state=open]:slide-in-from-top inset-x-0 top-0 h-auto border-b",
+          side === "bottom" && "data-[state=closed]:slide-out-to-bottom data-[state=open]:slide-in-from-bottom inset-x-0 bottom-0 h-auto border-t",
+          className
+        ),
+        ...props,
+        children: [
+          children,
+          /* @__PURE__ */ jsxRuntimeExports.jsxs(Close, { className: "ring-offset-background focus:ring-ring data-[state=open]:bg-secondary absolute top-4 right-4 rounded-xs opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(X$1, { className: "size-4" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "sr-only", children: "Close" })
+          ] })
+        ]
+      }
+    )
+  ] });
+}
+function SheetHeader({ className, ...props }) {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    "div",
+    {
+      "data-slot": "sheet-header",
+      className: cn("flex flex-col gap-1.5 p-4", className),
+      ...props
+    }
+  );
+}
+function SheetTitle({
+  className,
+  ...props
+}) {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    Title,
+    {
+      "data-slot": "sheet-title",
+      className: cn("text-foreground font-semibold", className),
+      ...props
+    }
+  );
+}
+function SheetDescription({
+  className,
+  ...props
+}) {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    Description,
+    {
+      "data-slot": "sheet-description",
+      className: cn("text-muted-foreground text-sm", className),
+      ...props
+    }
+  );
 }
 const sides = ["top", "right", "bottom", "left"];
 const min = Math.min;
@@ -26851,42 +32032,42 @@ function hasWindow() {
   return typeof window !== "undefined";
 }
 function getNodeName(node) {
-  if (isNode$1(node)) {
+  if (isNode(node)) {
     return (node.nodeName || "").toLowerCase();
   }
   return "#document";
 }
-function getWindow$1(node) {
+function getWindow(node) {
   var _node$ownerDocument;
   return (node == null || (_node$ownerDocument = node.ownerDocument) == null ? void 0 : _node$ownerDocument.defaultView) || window;
 }
 function getDocumentElement(node) {
   var _ref;
-  return (_ref = (isNode$1(node) ? node.ownerDocument : node.document) || window.document) == null ? void 0 : _ref.documentElement;
+  return (_ref = (isNode(node) ? node.ownerDocument : node.document) || window.document) == null ? void 0 : _ref.documentElement;
 }
-function isNode$1(value) {
+function isNode(value) {
   if (!hasWindow()) {
     return false;
   }
-  return value instanceof Node || value instanceof getWindow$1(value).Node;
+  return value instanceof Node || value instanceof getWindow(value).Node;
 }
 function isElement(value) {
   if (!hasWindow()) {
     return false;
   }
-  return value instanceof Element || value instanceof getWindow$1(value).Element;
+  return value instanceof Element || value instanceof getWindow(value).Element;
 }
-function isHTMLElement$1(value) {
+function isHTMLElement(value) {
   if (!hasWindow()) {
     return false;
   }
-  return value instanceof HTMLElement || value instanceof getWindow$1(value).HTMLElement;
+  return value instanceof HTMLElement || value instanceof getWindow(value).HTMLElement;
 }
 function isShadowRoot(value) {
   if (!hasWindow() || typeof ShadowRoot === "undefined") {
     return false;
   }
-  return value instanceof ShadowRoot || value instanceof getWindow$1(value).ShadowRoot;
+  return value instanceof ShadowRoot || value instanceof getWindow(value).ShadowRoot;
 }
 function isOverflowElement(element) {
   const {
@@ -26905,11 +32086,11 @@ function isTopLayer(element) {
     if (element.matches(":popover-open")) {
       return true;
     }
-  } catch (_e) {
+  } catch (_e2) {
   }
   try {
     return element.matches(":modal");
-  } catch (_e) {
+  } catch (_e2) {
     return false;
   }
 }
@@ -26923,7 +32104,7 @@ function isContainingBlock(elementOrCss) {
 }
 function getContainingBlock(element) {
   let currentNode = getParentNode(element);
-  while (isHTMLElement$1(currentNode) && !isLastTraversableNode(currentNode)) {
+  while (isHTMLElement(currentNode) && !isLastTraversableNode(currentNode)) {
     if (isContainingBlock(currentNode)) {
       return currentNode;
     } else if (isTopLayer(currentNode)) {
@@ -26943,7 +32124,7 @@ function isLastTraversableNode(node) {
   return /^(html|body|#document)$/.test(getNodeName(node));
 }
 function getComputedStyle$1(element) {
-  return getWindow$1(element).getComputedStyle(element);
+  return getWindow(element).getComputedStyle(element);
 }
 function getNodeScroll(element) {
   if (isElement(element)) {
@@ -26975,7 +32156,7 @@ function getNearestOverflowAncestor(node) {
   if (isLastTraversableNode(parentNode)) {
     return node.ownerDocument ? node.ownerDocument.body : node.body;
   }
-  if (isHTMLElement$1(parentNode) && isOverflowElement(parentNode)) {
+  if (isHTMLElement(parentNode) && isOverflowElement(parentNode)) {
     return parentNode;
   }
   return getNearestOverflowAncestor(parentNode);
@@ -26990,7 +32171,7 @@ function getOverflowAncestors(node, list, traverseIframes) {
   }
   const scrollableAncestor = getNearestOverflowAncestor(node);
   const isBody = scrollableAncestor === ((_node$ownerDocument2 = node.ownerDocument) == null ? void 0 : _node$ownerDocument2.body);
-  const win = getWindow$1(scrollableAncestor);
+  const win = getWindow(scrollableAncestor);
   if (isBody) {
     const frameElement = getFrameElement(win);
     return list.concat(win, win.visualViewport || [], isOverflowElement(scrollableAncestor) ? scrollableAncestor : [], frameElement && traverseIframes ? getOverflowAncestors(frameElement) : []);
@@ -27005,7 +32186,7 @@ function getCssDimensions(element) {
   const css = getComputedStyle$1(element);
   let width = parseFloat(css.width) || 0;
   let height = parseFloat(css.height) || 0;
-  const hasOffset = isHTMLElement$1(element);
+  const hasOffset = isHTMLElement(element);
   const offsetWidth = hasOffset ? element.offsetWidth : width;
   const offsetHeight = hasOffset ? element.offsetHeight : height;
   const shouldFallback = round(width) !== offsetWidth || round(height) !== offsetHeight;
@@ -27024,17 +32205,17 @@ function unwrapElement(element) {
 }
 function getScale(element) {
   const domElement = unwrapElement(element);
-  if (!isHTMLElement$1(domElement)) {
+  if (!isHTMLElement(domElement)) {
     return createCoords(1);
   }
   const rect = domElement.getBoundingClientRect();
   const {
     width,
     height,
-    $
+    $: $2
   } = getCssDimensions(domElement);
-  let x2 = ($ ? round(rect.width) : rect.width) / width;
-  let y = ($ ? round(rect.height) : rect.height) / height;
+  let x2 = ($2 ? round(rect.width) : rect.width) / width;
+  let y = ($2 ? round(rect.height) : rect.height) / height;
   if (!x2 || !Number.isFinite(x2)) {
     x2 = 1;
   }
@@ -27048,7 +32229,7 @@ function getScale(element) {
 }
 const noOffsets = /* @__PURE__ */ createCoords(0);
 function getVisualOffsets(element) {
-  const win = getWindow$1(element);
+  const win = getWindow(element);
   if (!isWebKit() || !win.visualViewport) {
     return noOffsets;
   }
@@ -27061,7 +32242,7 @@ function shouldAddVisualOffsets(element, isFixed2, floatingOffsetParent) {
   if (isFixed2 === void 0) {
     isFixed2 = false;
   }
-  if (!floatingOffsetParent || isFixed2 && floatingOffsetParent !== getWindow$1(element)) {
+  if (!floatingOffsetParent || isFixed2 && floatingOffsetParent !== getWindow(element)) {
     return false;
   }
   return isFixed2;
@@ -27091,8 +32272,8 @@ function getBoundingClientRect(element, includeScale, isFixedStrategy, offsetPar
   let width = clientRect.width / scale2.x;
   let height = clientRect.height / scale2.y;
   if (domElement) {
-    const win = getWindow$1(domElement);
-    const offsetWin = offsetParent && isElement(offsetParent) ? getWindow$1(offsetParent) : offsetParent;
+    const win = getWindow(domElement);
+    const offsetWin = offsetParent && isElement(offsetParent) ? getWindow(offsetParent) : offsetParent;
     let currentWin = win;
     let currentIFrame = getFrameElement(currentWin);
     while (currentIFrame && offsetParent && offsetWin !== currentWin) {
@@ -27107,7 +32288,7 @@ function getBoundingClientRect(element, includeScale, isFixedStrategy, offsetPar
       height *= iframeScale.y;
       x2 += left;
       y += top;
-      currentWin = getWindow$1(currentIFrame);
+      currentWin = getWindow(currentIFrame);
       currentIFrame = getFrameElement(currentWin);
     }
   }
@@ -27153,7 +32334,7 @@ function convertOffsetParentRelativeRectToViewportRelativeRect(_ref) {
   };
   let scale2 = createCoords(1);
   const offsets = createCoords(0);
-  const isOffsetParentAnElement = isHTMLElement$1(offsetParent);
+  const isOffsetParentAnElement = isHTMLElement(offsetParent);
   if (isOffsetParentAnElement || !isOffsetParentAnElement && !isFixed2) {
     if (getNodeName(offsetParent) !== "body" || isOverflowElement(documentElement)) {
       scroll = getNodeScroll(offsetParent);
@@ -27196,7 +32377,7 @@ function getDocumentRect(element) {
 }
 const SCROLLBAR_MAX = 25;
 function getViewportRect(element, strategy) {
-  const win = getWindow$1(element);
+  const win = getWindow(element);
   const html = getDocumentElement(element);
   const visualViewport = win.visualViewport;
   let width = html.clientWidth;
@@ -27236,7 +32417,7 @@ function getInnerBoundingClientRect(element, strategy) {
   const clientRect = getBoundingClientRect(element, true, strategy === "fixed");
   const top = clientRect.top + element.clientTop;
   const left = clientRect.left + element.clientLeft;
-  const scale2 = isHTMLElement$1(element) ? getScale(element) : createCoords(1);
+  const scale2 = isHTMLElement(element) ? getScale(element) : createCoords(1);
   const width = element.clientWidth * scale2.x;
   const height = element.clientHeight * scale2.y;
   const x2 = left * scale2.x;
@@ -27339,7 +32520,7 @@ function getDimensions(element) {
   };
 }
 function getRectRelativeToOffsetParent(element, offsetParent, strategy) {
-  const isOffsetParentAnElement = isHTMLElement$1(offsetParent);
+  const isOffsetParentAnElement = isHTMLElement(offsetParent);
   const documentElement = getDocumentElement(offsetParent);
   const isFixed2 = strategy === "fixed";
   const rect = getBoundingClientRect(element, true, isFixed2, offsetParent);
@@ -27380,7 +32561,7 @@ function isStaticPositioned(element) {
   return getComputedStyle$1(element).position === "static";
 }
 function getTrueOffsetParent(element, polyfill) {
-  if (!isHTMLElement$1(element) || getComputedStyle$1(element).position === "fixed") {
+  if (!isHTMLElement(element) || getComputedStyle$1(element).position === "fixed") {
     return null;
   }
   if (polyfill) {
@@ -27393,11 +32574,11 @@ function getTrueOffsetParent(element, polyfill) {
   return rawOffsetParent;
 }
 function getOffsetParent(element, polyfill) {
-  const win = getWindow$1(element);
+  const win = getWindow(element);
   if (isTopLayer(element)) {
     return win;
   }
-  if (!isHTMLElement$1(element)) {
+  if (!isHTMLElement(element)) {
     let svgOffsetParent = getParentNode(element);
     while (svgOffsetParent && !isLastTraversableNode(svgOffsetParent)) {
       if (isElement(svgOffsetParent) && !isStaticPositioned(svgOffsetParent)) {
@@ -27514,7 +32695,7 @@ function observeMove(element, onMove) {
         // Handle <iframe>s
         root: root2.ownerDocument
       });
-    } catch (_e) {
+    } catch (_e2) {
       io = new IntersectionObserver(handleObserve, options);
     }
     io.observe(element);
@@ -27615,9 +32796,9 @@ const computePosition = (reference, floating, options) => {
   });
 };
 var isClient = typeof document !== "undefined";
-var noop$1 = function noop() {
+var noop = function noop2() {
 };
-var index = isClient ? reactExports.useLayoutEffect : noop$1;
+var index = isClient ? reactExports.useLayoutEffect : noop;
 function deepEqual(a, b) {
   if (a === b) {
     return true;
@@ -27920,7 +33101,7 @@ const arrow = (options, deps) => {
     options: [options, deps]
   };
 };
-var NAME$3 = "Arrow";
+var NAME$2 = "Arrow";
 var Arrow$1 = reactExports.forwardRef((props, forwardedRef) => {
   const { children, width = 10, height = 5, ...arrowProps } = props;
   return /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -27936,8 +33117,8 @@ var Arrow$1 = reactExports.forwardRef((props, forwardedRef) => {
     }
   );
 });
-Arrow$1.displayName = NAME$3;
-var Root$6 = Arrow$1;
+Arrow$1.displayName = NAME$2;
+var Root$4 = Arrow$1;
 function useSize(element) {
   const [size2, setSize] = reactExports.useState(void 0);
   useLayoutEffect2(() => {
@@ -27987,7 +33168,7 @@ var PopperAnchor = reactExports.forwardRef(
     const { __scopePopper, virtualRef, ...anchorProps } = props;
     const context = usePopperContext(ANCHOR_NAME$1, __scopePopper);
     const ref = reactExports.useRef(null);
-    const composedRefs = useComposedRefs$1(forwardedRef, ref);
+    const composedRefs = useComposedRefs(forwardedRef, ref);
     reactExports.useEffect(() => {
       context.onAnchorChange(virtualRef?.current || ref.current);
     });
@@ -27995,8 +33176,8 @@ var PopperAnchor = reactExports.forwardRef(
   }
 );
 PopperAnchor.displayName = ANCHOR_NAME$1;
-var CONTENT_NAME$6 = "PopperContent";
-var [PopperContentProvider, useContentContext] = createPopperContext(CONTENT_NAME$6);
+var CONTENT_NAME$5 = "PopperContent";
+var [PopperContentProvider, useContentContext] = createPopperContext(CONTENT_NAME$5);
 var PopperContent = reactExports.forwardRef(
   (props, forwardedRef) => {
     const {
@@ -28015,9 +33196,9 @@ var PopperContent = reactExports.forwardRef(
       onPlaced,
       ...contentProps
     } = props;
-    const context = usePopperContext(CONTENT_NAME$6, __scopePopper);
+    const context = usePopperContext(CONTENT_NAME$5, __scopePopper);
     const [content, setContent] = reactExports.useState(null);
-    const composedRefs = useComposedRefs$1(forwardedRef, (node) => setContent(node));
+    const composedRefs = useComposedRefs(forwardedRef, (node) => setContent(node));
     const [arrow$12, setArrow] = reactExports.useState(null);
     const arrowSize = useSize(arrow$12);
     const arrowWidth = arrowSize?.width ?? 0;
@@ -28138,7 +33319,7 @@ var PopperContent = reactExports.forwardRef(
     );
   }
 );
-PopperContent.displayName = CONTENT_NAME$6;
+PopperContent.displayName = CONTENT_NAME$5;
 var ARROW_NAME$4 = "PopperArrow";
 var OPPOSITE_SIDE = {
   top: "bottom",
@@ -28178,7 +33359,7 @@ var PopperArrow = reactExports.forwardRef(function PopperArrow2(props, forwarded
           visibility: contentContext.shouldHideArrow ? "hidden" : void 0
         },
         children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-          Root$6,
+          Root$4,
           {
             ...arrowProps,
             ref: forwardedRef,
@@ -28234,180 +33415,9 @@ function getSideAndAlignFromPlacement(placement) {
 }
 var Root2$3 = Popper;
 var Anchor = PopperAnchor;
-var Content$1 = PopperContent;
+var Content = PopperContent;
 var Arrow = PopperArrow;
-var PORTAL_NAME$6 = "Portal";
-var Portal$4 = reactExports.forwardRef((props, forwardedRef) => {
-  const { container: containerProp, ...portalProps } = props;
-  const [mounted, setMounted] = reactExports.useState(false);
-  useLayoutEffect2(() => setMounted(true), []);
-  const container = containerProp || mounted && globalThis?.document?.body;
-  return container ? ReactDOM$1.createPortal(/* @__PURE__ */ jsxRuntimeExports.jsx(Primitive.div, { ...portalProps, ref: forwardedRef }), container) : null;
-});
-Portal$4.displayName = PORTAL_NAME$6;
-function useStateMachine(initialState, machine) {
-  return reactExports.useReducer((state, event) => {
-    const nextState = machine[state][event];
-    return nextState ?? state;
-  }, initialState);
-}
-var Presence = (props) => {
-  const { present, children } = props;
-  const presence = usePresence(present);
-  const child = typeof children === "function" ? children({ present: presence.isPresent }) : reactExports.Children.only(children);
-  const ref = useComposedRefs$1(presence.ref, getElementRef(child));
-  const forceMount = typeof children === "function";
-  return forceMount || presence.isPresent ? reactExports.cloneElement(child, { ref }) : null;
-};
-Presence.displayName = "Presence";
-function usePresence(present) {
-  const [node, setNode] = reactExports.useState();
-  const stylesRef = reactExports.useRef({});
-  const prevPresentRef = reactExports.useRef(present);
-  const prevAnimationNameRef = reactExports.useRef("none");
-  const initialState = present ? "mounted" : "unmounted";
-  const [state, send] = useStateMachine(initialState, {
-    mounted: {
-      UNMOUNT: "unmounted",
-      ANIMATION_OUT: "unmountSuspended"
-    },
-    unmountSuspended: {
-      MOUNT: "mounted",
-      ANIMATION_END: "unmounted"
-    },
-    unmounted: {
-      MOUNT: "mounted"
-    }
-  });
-  reactExports.useEffect(() => {
-    const currentAnimationName = getAnimationName(stylesRef.current);
-    prevAnimationNameRef.current = state === "mounted" ? currentAnimationName : "none";
-  }, [state]);
-  useLayoutEffect2(() => {
-    const styles = stylesRef.current;
-    const wasPresent = prevPresentRef.current;
-    const hasPresentChanged = wasPresent !== present;
-    if (hasPresentChanged) {
-      const prevAnimationName = prevAnimationNameRef.current;
-      const currentAnimationName = getAnimationName(styles);
-      if (present) {
-        send("MOUNT");
-      } else if (currentAnimationName === "none" || styles?.display === "none") {
-        send("UNMOUNT");
-      } else {
-        const isAnimating = prevAnimationName !== currentAnimationName;
-        if (wasPresent && isAnimating) {
-          send("ANIMATION_OUT");
-        } else {
-          send("UNMOUNT");
-        }
-      }
-      prevPresentRef.current = present;
-    }
-  }, [present, send]);
-  useLayoutEffect2(() => {
-    if (node) {
-      let timeoutId;
-      const ownerWindow = node.ownerDocument.defaultView ?? window;
-      const handleAnimationEnd = (event) => {
-        const currentAnimationName = getAnimationName(stylesRef.current);
-        const isCurrentAnimation = currentAnimationName.includes(event.animationName);
-        if (event.target === node && isCurrentAnimation) {
-          send("ANIMATION_END");
-          if (!prevPresentRef.current) {
-            const currentFillMode = node.style.animationFillMode;
-            node.style.animationFillMode = "forwards";
-            timeoutId = ownerWindow.setTimeout(() => {
-              if (node.style.animationFillMode === "forwards") {
-                node.style.animationFillMode = currentFillMode;
-              }
-            });
-          }
-        }
-      };
-      const handleAnimationStart = (event) => {
-        if (event.target === node) {
-          prevAnimationNameRef.current = getAnimationName(stylesRef.current);
-        }
-      };
-      node.addEventListener("animationstart", handleAnimationStart);
-      node.addEventListener("animationcancel", handleAnimationEnd);
-      node.addEventListener("animationend", handleAnimationEnd);
-      return () => {
-        ownerWindow.clearTimeout(timeoutId);
-        node.removeEventListener("animationstart", handleAnimationStart);
-        node.removeEventListener("animationcancel", handleAnimationEnd);
-        node.removeEventListener("animationend", handleAnimationEnd);
-      };
-    } else {
-      send("ANIMATION_END");
-    }
-  }, [node, send]);
-  return {
-    isPresent: ["mounted", "unmountSuspended"].includes(state),
-    ref: reactExports.useCallback((node2) => {
-      if (node2) stylesRef.current = getComputedStyle(node2);
-      setNode(node2);
-    }, [])
-  };
-}
-function getAnimationName(styles) {
-  return styles?.animationName || "none";
-}
-function getElementRef(element) {
-  let getter = Object.getOwnPropertyDescriptor(element.props, "ref")?.get;
-  let mayWarn = getter && "isReactWarning" in getter && getter.isReactWarning;
-  if (mayWarn) {
-    return element.ref;
-  }
-  getter = Object.getOwnPropertyDescriptor(element, "ref")?.get;
-  mayWarn = getter && "isReactWarning" in getter && getter.isReactWarning;
-  if (mayWarn) {
-    return element.props.ref;
-  }
-  return element.props.ref || element.ref;
-}
-function useControllableState({
-  prop,
-  defaultProp,
-  onChange = () => {
-  }
-}) {
-  const [uncontrolledProp, setUncontrolledProp] = useUncontrolledState({ defaultProp, onChange });
-  const isControlled = prop !== void 0;
-  const value = isControlled ? prop : uncontrolledProp;
-  const handleChange = useCallbackRef$1(onChange);
-  const setValue = reactExports.useCallback(
-    (nextValue) => {
-      if (isControlled) {
-        const setter = nextValue;
-        const value2 = typeof nextValue === "function" ? setter(prop) : nextValue;
-        if (value2 !== prop) handleChange(value2);
-      } else {
-        setUncontrolledProp(nextValue);
-      }
-    },
-    [isControlled, prop, setUncontrolledProp, handleChange]
-  );
-  return [value, setValue];
-}
-function useUncontrolledState({
-  defaultProp,
-  onChange
-}) {
-  const uncontrolledState = reactExports.useState(defaultProp);
-  const [value] = uncontrolledState;
-  const prevValueRef = reactExports.useRef(value);
-  const handleChange = useCallbackRef$1(onChange);
-  reactExports.useEffect(() => {
-    if (prevValueRef.current !== value) {
-      handleChange(value);
-      prevValueRef.current = value;
-    }
-  }, [value, prevValueRef, handleChange]);
-  return uncontrolledState;
-}
-var NAME$2 = "VisuallyHidden";
+var NAME$1 = "VisuallyHidden";
 var VisuallyHidden = reactExports.forwardRef(
   (props, forwardedRef) => {
     return /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -28433,8 +33443,8 @@ var VisuallyHidden = reactExports.forwardRef(
     );
   }
 );
-VisuallyHidden.displayName = NAME$2;
-var Root$5 = VisuallyHidden;
+VisuallyHidden.displayName = NAME$1;
+var Root$3 = VisuallyHidden;
 var [createTooltipContext] = createContextScope("Tooltip", [
   createPopperScope
 ]);
@@ -28577,15 +33587,15 @@ var Tooltip$1 = (props) => {
   ) });
 };
 Tooltip$1.displayName = TOOLTIP_NAME;
-var TRIGGER_NAME$4 = "TooltipTrigger";
+var TRIGGER_NAME$3 = "TooltipTrigger";
 var TooltipTrigger$1 = reactExports.forwardRef(
   (props, forwardedRef) => {
     const { __scopeTooltip, ...triggerProps } = props;
-    const context = useTooltipContext(TRIGGER_NAME$4, __scopeTooltip);
-    const providerContext = useTooltipProviderContext(TRIGGER_NAME$4, __scopeTooltip);
+    const context = useTooltipContext(TRIGGER_NAME$3, __scopeTooltip);
+    const providerContext = useTooltipProviderContext(TRIGGER_NAME$3, __scopeTooltip);
     const popperScope = usePopperScope$2(__scopeTooltip);
     const ref = reactExports.useRef(null);
-    const composedRefs = useComposedRefs$1(forwardedRef, ref, context.onTriggerChange);
+    const composedRefs = useComposedRefs(forwardedRef, ref, context.onTriggerChange);
     const isPointerDownRef = reactExports.useRef(false);
     const hasPointerMoveOpenedRef = reactExports.useRef(false);
     const handlePointerUp = reactExports.useCallback(() => isPointerDownRef.current = false, []);
@@ -28623,31 +33633,31 @@ var TooltipTrigger$1 = reactExports.forwardRef(
     ) });
   }
 );
-TooltipTrigger$1.displayName = TRIGGER_NAME$4;
-var PORTAL_NAME$5 = "TooltipPortal";
-var [PortalProvider$2, usePortalContext$2] = createTooltipContext(PORTAL_NAME$5, {
+TooltipTrigger$1.displayName = TRIGGER_NAME$3;
+var PORTAL_NAME$4 = "TooltipPortal";
+var [PortalProvider$1, usePortalContext$1] = createTooltipContext(PORTAL_NAME$4, {
   forceMount: void 0
 });
 var TooltipPortal = (props) => {
   const { __scopeTooltip, forceMount, children, container } = props;
-  const context = useTooltipContext(PORTAL_NAME$5, __scopeTooltip);
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(PortalProvider$2, { scope: __scopeTooltip, forceMount, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Presence, { present: forceMount || context.open, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Portal$4, { asChild: true, container, children }) }) });
+  const context = useTooltipContext(PORTAL_NAME$4, __scopeTooltip);
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(PortalProvider$1, { scope: __scopeTooltip, forceMount, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Presence, { present: forceMount || context.open, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Portal$4, { asChild: true, container, children }) }) });
 };
-TooltipPortal.displayName = PORTAL_NAME$5;
-var CONTENT_NAME$5 = "TooltipContent";
+TooltipPortal.displayName = PORTAL_NAME$4;
+var CONTENT_NAME$4 = "TooltipContent";
 var TooltipContent$1 = reactExports.forwardRef(
   (props, forwardedRef) => {
-    const portalContext = usePortalContext$2(CONTENT_NAME$5, props.__scopeTooltip);
+    const portalContext = usePortalContext$1(CONTENT_NAME$4, props.__scopeTooltip);
     const { forceMount = portalContext.forceMount, side = "top", ...contentProps } = props;
-    const context = useTooltipContext(CONTENT_NAME$5, props.__scopeTooltip);
+    const context = useTooltipContext(CONTENT_NAME$4, props.__scopeTooltip);
     return /* @__PURE__ */ jsxRuntimeExports.jsx(Presence, { present: forceMount || context.open, children: context.disableHoverableContent ? /* @__PURE__ */ jsxRuntimeExports.jsx(TooltipContentImpl, { side, ...contentProps, ref: forwardedRef }) : /* @__PURE__ */ jsxRuntimeExports.jsx(TooltipContentHoverable, { side, ...contentProps, ref: forwardedRef }) });
   }
 );
 var TooltipContentHoverable = reactExports.forwardRef((props, forwardedRef) => {
-  const context = useTooltipContext(CONTENT_NAME$5, props.__scopeTooltip);
-  const providerContext = useTooltipProviderContext(CONTENT_NAME$5, props.__scopeTooltip);
+  const context = useTooltipContext(CONTENT_NAME$4, props.__scopeTooltip);
+  const providerContext = useTooltipProviderContext(CONTENT_NAME$4, props.__scopeTooltip);
   const ref = reactExports.useRef(null);
-  const composedRefs = useComposedRefs$1(forwardedRef, ref);
+  const composedRefs = useComposedRefs(forwardedRef, ref);
   const [pointerGraceArea, setPointerGraceArea] = reactExports.useState(null);
   const { trigger, onClose } = context;
   const content = ref.current;
@@ -28715,7 +33725,7 @@ var TooltipContentImpl = reactExports.forwardRef(
       onPointerDownOutside,
       ...contentProps
     } = props;
-    const context = useTooltipContext(CONTENT_NAME$5, __scopeTooltip);
+    const context = useTooltipContext(CONTENT_NAME$4, __scopeTooltip);
     const popperScope = usePopperScope$2(__scopeTooltip);
     const { onClose } = context;
     reactExports.useEffect(() => {
@@ -28742,7 +33752,7 @@ var TooltipContentImpl = reactExports.forwardRef(
         onFocusOutside: (event) => event.preventDefault(),
         onDismiss: onClose,
         children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
-          Content$1,
+          Content,
           {
             "data-state": context.stateAttribute,
             ...popperScope,
@@ -28761,7 +33771,7 @@ var TooltipContentImpl = reactExports.forwardRef(
             },
             children: [
               /* @__PURE__ */ jsxRuntimeExports.jsx(Slottable, { children }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx(VisuallyHiddenContentContextProvider, { scope: __scopeTooltip, isInside: true, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Root$5, { id: context.contentId, role: "tooltip", children: ariaLabel || children }) })
+              /* @__PURE__ */ jsxRuntimeExports.jsx(VisuallyHiddenContentContextProvider, { scope: __scopeTooltip, isInside: true, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Root$3, { id: context.contentId, role: "tooltip", children: ariaLabel || children }) })
             ]
           }
         )
@@ -28769,7 +33779,7 @@ var TooltipContentImpl = reactExports.forwardRef(
     );
   }
 );
-TooltipContent$1.displayName = CONTENT_NAME$5;
+TooltipContent$1.displayName = CONTENT_NAME$4;
 var ARROW_NAME$3 = "TooltipArrow";
 var TooltipArrow = reactExports.forwardRef(
   (props, forwardedRef) => {
@@ -28868,26 +33878,26 @@ function getHullPresorted(points) {
   if (points.length <= 1) return points.slice();
   const upperHull = [];
   for (let i = 0; i < points.length; i++) {
-    const p = points[i];
+    const p2 = points[i];
     while (upperHull.length >= 2) {
       const q = upperHull[upperHull.length - 1];
       const r2 = upperHull[upperHull.length - 2];
-      if ((q.x - r2.x) * (p.y - r2.y) >= (q.y - r2.y) * (p.x - r2.x)) upperHull.pop();
+      if ((q.x - r2.x) * (p2.y - r2.y) >= (q.y - r2.y) * (p2.x - r2.x)) upperHull.pop();
       else break;
     }
-    upperHull.push(p);
+    upperHull.push(p2);
   }
   upperHull.pop();
   const lowerHull = [];
   for (let i = points.length - 1; i >= 0; i--) {
-    const p = points[i];
+    const p2 = points[i];
     while (lowerHull.length >= 2) {
       const q = lowerHull[lowerHull.length - 1];
       const r2 = lowerHull[lowerHull.length - 2];
-      if ((q.x - r2.x) * (p.y - r2.y) >= (q.y - r2.y) * (p.x - r2.x)) lowerHull.pop();
+      if ((q.x - r2.x) * (p2.y - r2.y) >= (q.y - r2.y) * (p2.x - r2.x)) lowerHull.pop();
       else break;
     }
-    lowerHull.push(p);
+    lowerHull.push(p2);
   }
   lowerHull.pop();
   if (upperHull.length === 1 && lowerHull.length === 1 && upperHull[0].x === lowerHull[0].x && upperHull[0].y === lowerHull[0].y) {
@@ -28898,8 +33908,8 @@ function getHullPresorted(points) {
 }
 var Provider = TooltipProvider$1;
 var Root3$1 = Tooltip$1;
-var Trigger$3 = TooltipTrigger$1;
-var Portal$3 = TooltipPortal;
+var Trigger$2 = TooltipTrigger$1;
+var Portal$2 = TooltipPortal;
 var Content2$4 = TooltipContent$1;
 var Arrow2$1 = TooltipArrow;
 function TooltipProvider({
@@ -28923,7 +33933,7 @@ function Tooltip({
 function TooltipTrigger({
   ...props
 }) {
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(Trigger$3, { "data-slot": "tooltip-trigger", ...props });
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(Trigger$2, { "data-slot": "tooltip-trigger", ...props });
 }
 function TooltipContent({
   className,
@@ -28931,7 +33941,7 @@ function TooltipContent({
   children,
   ...props
 }) {
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(Portal$3, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(Portal$2, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
     Content2$4,
     {
       "data-slot": "tooltip-content",
@@ -28947,6 +33957,428 @@ function TooltipContent({
       ]
     }
   ) });
+}
+const SIDEBAR_COOKIE_NAME = "sidebar_state";
+const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;
+const SIDEBAR_WIDTH = "16rem";
+const SIDEBAR_WIDTH_MOBILE = "18rem";
+const SIDEBAR_WIDTH_ICON = "3rem";
+const SIDEBAR_KEYBOARD_SHORTCUT = "b";
+const SidebarContext = reactExports.createContext(null);
+function useSidebar() {
+  const context = reactExports.useContext(SidebarContext);
+  if (!context) {
+    throw new Error("useSidebar must be used within a SidebarProvider.");
+  }
+  return context;
+}
+function SidebarProvider({
+  defaultOpen = true,
+  open: openProp,
+  onOpenChange: setOpenProp,
+  className,
+  style: style2,
+  children,
+  ...props
+}) {
+  const isMobile = useIsMobile();
+  const [openMobile, setOpenMobile] = reactExports.useState(false);
+  const [_open, _setOpen] = reactExports.useState(defaultOpen);
+  const open = openProp ?? _open;
+  const setOpen = reactExports.useCallback(
+    (value) => {
+      const openState = typeof value === "function" ? value(open) : value;
+      if (setOpenProp) {
+        setOpenProp(openState);
+      } else {
+        _setOpen(openState);
+      }
+      document.cookie = `${SIDEBAR_COOKIE_NAME}=${openState}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}`;
+    },
+    [setOpenProp, open]
+  );
+  const toggleSidebar = reactExports.useCallback(() => {
+    return isMobile ? setOpenMobile((open2) => !open2) : setOpen((open2) => !open2);
+  }, [isMobile, setOpen, setOpenMobile]);
+  reactExports.useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === SIDEBAR_KEYBOARD_SHORTCUT && (event.metaKey || event.ctrlKey)) {
+        event.preventDefault();
+        toggleSidebar();
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [toggleSidebar]);
+  const state = open ? "expanded" : "collapsed";
+  const contextValue = reactExports.useMemo(
+    () => ({
+      state,
+      open,
+      setOpen,
+      isMobile,
+      openMobile,
+      setOpenMobile,
+      toggleSidebar
+    }),
+    [state, open, setOpen, isMobile, openMobile, setOpenMobile, toggleSidebar]
+  );
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(SidebarContext.Provider, { value: contextValue, children: /* @__PURE__ */ jsxRuntimeExports.jsx(TooltipProvider, { delayDuration: 0, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+    "div",
+    {
+      "data-slot": "sidebar-wrapper",
+      style: {
+        "--sidebar-width": SIDEBAR_WIDTH,
+        "--sidebar-width-icon": SIDEBAR_WIDTH_ICON,
+        ...style2
+      },
+      className: cn(
+        "group/sidebar-wrapper has-data-[variant=inset]:bg-sidebar flex min-h-svh w-full",
+        className
+      ),
+      ...props,
+      children
+    }
+  ) }) });
+}
+function Sidebar({
+  side = "left",
+  variant = "sidebar",
+  collapsible = "offcanvas",
+  className,
+  children,
+  ...props
+}) {
+  const { isMobile, state, openMobile, setOpenMobile } = useSidebar();
+  if (collapsible === "none") {
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(
+      "div",
+      {
+        "data-slot": "sidebar",
+        className: cn(
+          "bg-sidebar text-sidebar-foreground flex h-full w-(--sidebar-width) flex-col",
+          className
+        ),
+        ...props,
+        children
+      }
+    );
+  }
+  if (isMobile) {
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(Sheet, { open: openMobile, onOpenChange: setOpenMobile, ...props, children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
+      SheetContent,
+      {
+        "data-sidebar": "sidebar",
+        "data-slot": "sidebar",
+        "data-mobile": "true",
+        className: "bg-sidebar text-sidebar-foreground w-(--sidebar-width) p-0 [&>button]:hidden",
+        style: {
+          "--sidebar-width": SIDEBAR_WIDTH_MOBILE
+        },
+        side,
+        children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs(SheetHeader, { className: "sr-only", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(SheetTitle, { children: "Sidebar" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx(SheetDescription, { children: "Displays the mobile sidebar." })
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex h-full w-full flex-col", children })
+        ]
+      }
+    ) });
+  }
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs(
+    "div",
+    {
+      className: "group peer text-sidebar-foreground hidden md:block",
+      "data-state": state,
+      "data-collapsible": state === "collapsed" ? collapsible : "",
+      "data-variant": variant,
+      "data-side": side,
+      "data-slot": "sidebar",
+      children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          "div",
+          {
+            "data-slot": "sidebar-gap",
+            className: cn(
+              "relative w-(--sidebar-width) bg-transparent transition-[width] duration-200 ease-linear",
+              "group-data-[collapsible=offcanvas]:w-0",
+              "group-data-[side=right]:rotate-180",
+              variant === "floating" || variant === "inset" ? "group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)+(--spacing(4)))]" : "group-data-[collapsible=icon]:w-(--sidebar-width-icon)"
+            )
+          }
+        ),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          "div",
+          {
+            "data-slot": "sidebar-container",
+            className: cn(
+              "fixed inset-y-0 z-10 hidden h-svh w-(--sidebar-width) transition-[left,right,width] duration-200 ease-linear md:flex",
+              side === "left" ? "left-0 group-data-[collapsible=offcanvas]:left-[calc(var(--sidebar-width)*-1)]" : "right-0 group-data-[collapsible=offcanvas]:right-[calc(var(--sidebar-width)*-1)]",
+              // Adjust the padding for floating and inset variants.
+              variant === "floating" || variant === "inset" ? "p-2 group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)+(--spacing(4))+2px)]" : "group-data-[collapsible=icon]:w-(--sidebar-width-icon) group-data-[side=left]:border-r group-data-[side=right]:border-l",
+              className
+            ),
+            ...props,
+            children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+              "div",
+              {
+                "data-sidebar": "sidebar",
+                "data-slot": "sidebar-inner",
+                className: "bg-sidebar group-data-[variant=floating]:border-sidebar-border flex h-full w-full flex-col group-data-[variant=floating]:rounded-lg group-data-[variant=floating]:border group-data-[variant=floating]:shadow-sm",
+                children
+              }
+            )
+          }
+        )
+      ]
+    }
+  );
+}
+function SidebarTrigger({
+  className,
+  onClick,
+  ...props
+}) {
+  const { toggleSidebar } = useSidebar();
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs(
+    Button,
+    {
+      "data-sidebar": "trigger",
+      "data-slot": "sidebar-trigger",
+      variant: "ghost",
+      size: "icon",
+      className: cn("size-7", className),
+      onClick: (event) => {
+        onClick?.(event);
+        toggleSidebar();
+      },
+      ...props,
+      children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(PanelLeft, {}),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "sr-only", children: "Toggle Sidebar" })
+      ]
+    }
+  );
+}
+function SidebarRail({ className, ...props }) {
+  const { toggleSidebar } = useSidebar();
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    "button",
+    {
+      "data-sidebar": "rail",
+      "data-slot": "sidebar-rail",
+      "aria-label": "Toggle Sidebar",
+      tabIndex: -1,
+      onClick: toggleSidebar,
+      title: "Toggle Sidebar",
+      className: cn(
+        "hover:after:bg-sidebar-border absolute inset-y-0 z-20 hidden w-4 -translate-x-1/2 transition-all ease-linear group-data-[side=left]:-right-4 group-data-[side=right]:left-0 after:absolute after:inset-y-0 after:left-1/2 after:w-[2px] sm:flex",
+        "in-data-[side=left]:cursor-w-resize in-data-[side=right]:cursor-e-resize",
+        "[[data-side=left][data-state=collapsed]_&]:cursor-e-resize [[data-side=right][data-state=collapsed]_&]:cursor-w-resize",
+        "hover:group-data-[collapsible=offcanvas]:bg-sidebar group-data-[collapsible=offcanvas]:translate-x-0 group-data-[collapsible=offcanvas]:after:left-full",
+        "[[data-side=left][data-collapsible=offcanvas]_&]:-right-2",
+        "[[data-side=right][data-collapsible=offcanvas]_&]:-left-2",
+        className
+      ),
+      ...props
+    }
+  );
+}
+function SidebarInset({ className, ...props }) {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    "main",
+    {
+      "data-slot": "sidebar-inset",
+      className: cn(
+        "bg-background relative flex w-full flex-1 flex-col",
+        "md:peer-data-[variant=inset]:m-2 md:peer-data-[variant=inset]:ml-0 md:peer-data-[variant=inset]:rounded-xl md:peer-data-[variant=inset]:shadow-sm md:peer-data-[variant=inset]:peer-data-[state=collapsed]:ml-2",
+        className
+      ),
+      ...props
+    }
+  );
+}
+function SidebarHeader({ className, ...props }) {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    "div",
+    {
+      "data-slot": "sidebar-header",
+      "data-sidebar": "header",
+      className: cn("flex flex-col gap-2 p-2", className),
+      ...props
+    }
+  );
+}
+function SidebarFooter({ className, ...props }) {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    "div",
+    {
+      "data-slot": "sidebar-footer",
+      "data-sidebar": "footer",
+      className: cn("flex flex-col gap-2 p-2", className),
+      ...props
+    }
+  );
+}
+function SidebarContent({ className, ...props }) {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    "div",
+    {
+      "data-slot": "sidebar-content",
+      "data-sidebar": "content",
+      className: cn(
+        "flex min-h-0 flex-1 flex-col gap-2 overflow-y-auto overflow-x-hidden [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden group-data-[collapsible=icon]:overflow-hidden",
+        className
+      ),
+      ...props
+    }
+  );
+}
+function SidebarGroup({ className, ...props }) {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    "div",
+    {
+      "data-slot": "sidebar-group",
+      "data-sidebar": "group",
+      className: cn("relative flex w-full min-w-0 flex-col p-2", className),
+      ...props
+    }
+  );
+}
+function SidebarGroupLabel({
+  className,
+  asChild = false,
+  ...props
+}) {
+  const Comp = asChild ? Slot : "div";
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    Comp,
+    {
+      "data-slot": "sidebar-group-label",
+      "data-sidebar": "group-label",
+      className: cn(
+        "text-sidebar-foreground/70 ring-sidebar-ring flex h-8 shrink-0 items-center rounded-md px-2 text-xs font-medium outline-hidden transition-[margin,opacity] duration-200 ease-linear focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0",
+        "group-data-[collapsible=icon]:-mt-8 group-data-[collapsible=icon]:opacity-0",
+        className
+      ),
+      ...props
+    }
+  );
+}
+function SidebarMenu({ className, ...props }) {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    "ul",
+    {
+      "data-slot": "sidebar-menu",
+      "data-sidebar": "menu",
+      className: cn("flex w-full min-w-0 flex-col gap-1", className),
+      ...props
+    }
+  );
+}
+const SidebarMenuItem = reactExports.forwardRef(({ className, ...props }, ref) => {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    "li",
+    {
+      ref,
+      "data-slot": "sidebar-menu-item",
+      "data-sidebar": "menu-item",
+      className: cn("group/menu-item relative", className),
+      ...props
+    }
+  );
+});
+SidebarMenuItem.displayName = "SidebarMenuItem";
+const sidebarMenuButtonVariants = cva(
+  "peer/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left text-sm outline-hidden ring-sidebar-ring transition-[width,height,padding] hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 active:bg-sidebar-accent active:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 group-has-data-[sidebar=menu-action]/menu-item:pr-8 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:bg-sidebar-accent data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2! [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0",
+  {
+    variants: {
+      variant: {
+        default: "hover:bg-sidebar-accent hover:text-sidebar-accent-foreground",
+        outline: "bg-background shadow-[0_0_0_1px_hsl(var(--sidebar-border))] hover:bg-sidebar-accent hover:text-sidebar-accent-foreground hover:shadow-[0_0_0_1px_hsl(var(--sidebar-accent))]"
+      },
+      size: {
+        default: "h-8 text-sm",
+        sm: "h-7 text-xs",
+        lg: "h-12 text-sm group-data-[collapsible=icon]:p-0!"
+      }
+    },
+    defaultVariants: {
+      variant: "default",
+      size: "default"
+    }
+  }
+);
+function SidebarMenuButton({
+  asChild = false,
+  isActive = false,
+  variant = "default",
+  size: size2 = "default",
+  tooltip,
+  className,
+  ...props
+}) {
+  const Comp = asChild ? Slot : "button";
+  const { isMobile, state } = useSidebar();
+  const button = /* @__PURE__ */ jsxRuntimeExports.jsx(
+    Comp,
+    {
+      "data-slot": "sidebar-menu-button",
+      "data-sidebar": "menu-button",
+      "data-size": size2,
+      "data-active": isActive,
+      className: cn(sidebarMenuButtonVariants({ variant, size: size2 }), className),
+      ...props
+    }
+  );
+  if (!tooltip) {
+    return button;
+  }
+  if (typeof tooltip === "string") {
+    tooltip = {
+      children: tooltip
+    };
+  }
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs(Tooltip, { children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx(TooltipTrigger, { asChild: true, children: button }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(
+      TooltipContent,
+      {
+        side: "right",
+        align: "center",
+        hidden: state !== "collapsed" || isMobile,
+        ...tooltip
+      }
+    )
+  ] });
+}
+function SidebarMenuAction({
+  className,
+  asChild = false,
+  showOnHover = false,
+  ...props
+}) {
+  const Comp = asChild ? Slot : "button";
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    Comp,
+    {
+      "data-slot": "sidebar-menu-action",
+      "data-sidebar": "menu-action",
+      className: cn(
+        "text-sidebar-foreground ring-sidebar-ring hover:bg-sidebar-accent hover:text-sidebar-accent-foreground peer-hover/menu-button:text-sidebar-accent-foreground absolute top-1.5 right-1 flex aspect-square w-5 items-center justify-center rounded-md p-0 outline-hidden transition-transform focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0",
+        // Increases the hit area of the button on mobile.
+        "after:absolute after:-inset-2 md:after:hidden",
+        "peer-data-[size=sm]/menu-button:top-1",
+        "peer-data-[size=default]/menu-button:top-1.5",
+        "peer-data-[size=lg]/menu-button:top-2.5",
+        "group-data-[collapsible=icon]:hidden",
+        showOnHover && "peer-data-[active=true]/menu-button:text-sidebar-accent-foreground group-focus-within/menu-item:opacity-100 group-hover/menu-item:opacity-100 data-[state=open]:opacity-100 md:opacity-0",
+        className
+      ),
+      ...props
+    }
+  );
 }
 function createCollection(name) {
   const PROVIDER_NAME2 = name + "CollectionProvider";
@@ -28967,7 +34399,7 @@ function createCollection(name) {
     (props, forwardedRef) => {
       const { scope, children } = props;
       const context = useCollectionContext(COLLECTION_SLOT_NAME, scope);
-      const composedRefs = useComposedRefs$1(forwardedRef, context.collectionRef);
+      const composedRefs = useComposedRefs(forwardedRef, context.collectionRef);
       return /* @__PURE__ */ jsxRuntimeExports.jsx(Slot, { ref: composedRefs, children });
     }
   );
@@ -28978,7 +34410,7 @@ function createCollection(name) {
     (props, forwardedRef) => {
       const { scope, children, ...itemData } = props;
       const ref = React$2.useRef(null);
-      const composedRefs = useComposedRefs$1(forwardedRef, ref);
+      const composedRefs = useComposedRefs(forwardedRef, ref);
       const context = useCollectionContext(ITEM_SLOT_NAME, scope);
       React$2.useEffect(() => {
         context.itemMap.set(ref, { ref, ...itemData });
@@ -29013,230 +34445,6 @@ function useDirection(localDir) {
   const globalDir = reactExports.useContext(DirectionContext);
   return localDir || globalDir || "ltr";
 }
-var count = 0;
-function useFocusGuards() {
-  reactExports.useEffect(() => {
-    const edgeGuards = document.querySelectorAll("[data-radix-focus-guard]");
-    document.body.insertAdjacentElement("afterbegin", edgeGuards[0] ?? createFocusGuard());
-    document.body.insertAdjacentElement("beforeend", edgeGuards[1] ?? createFocusGuard());
-    count++;
-    return () => {
-      if (count === 1) {
-        document.querySelectorAll("[data-radix-focus-guard]").forEach((node) => node.remove());
-      }
-      count--;
-    };
-  }, []);
-}
-function createFocusGuard() {
-  const element = document.createElement("span");
-  element.setAttribute("data-radix-focus-guard", "");
-  element.tabIndex = 0;
-  element.style.outline = "none";
-  element.style.opacity = "0";
-  element.style.position = "fixed";
-  element.style.pointerEvents = "none";
-  return element;
-}
-var AUTOFOCUS_ON_MOUNT = "focusScope.autoFocusOnMount";
-var AUTOFOCUS_ON_UNMOUNT = "focusScope.autoFocusOnUnmount";
-var EVENT_OPTIONS$1 = { bubbles: false, cancelable: true };
-var FOCUS_SCOPE_NAME = "FocusScope";
-var FocusScope = reactExports.forwardRef((props, forwardedRef) => {
-  const {
-    loop = false,
-    trapped = false,
-    onMountAutoFocus: onMountAutoFocusProp,
-    onUnmountAutoFocus: onUnmountAutoFocusProp,
-    ...scopeProps
-  } = props;
-  const [container, setContainer] = reactExports.useState(null);
-  const onMountAutoFocus = useCallbackRef$1(onMountAutoFocusProp);
-  const onUnmountAutoFocus = useCallbackRef$1(onUnmountAutoFocusProp);
-  const lastFocusedElementRef = reactExports.useRef(null);
-  const composedRefs = useComposedRefs$1(forwardedRef, (node) => setContainer(node));
-  const focusScope = reactExports.useRef({
-    paused: false,
-    pause() {
-      this.paused = true;
-    },
-    resume() {
-      this.paused = false;
-    }
-  }).current;
-  reactExports.useEffect(() => {
-    if (trapped) {
-      let handleFocusIn2 = function(event) {
-        if (focusScope.paused || !container) return;
-        const target = event.target;
-        if (container.contains(target)) {
-          lastFocusedElementRef.current = target;
-        } else {
-          focus(lastFocusedElementRef.current, { select: true });
-        }
-      }, handleFocusOut2 = function(event) {
-        if (focusScope.paused || !container) return;
-        const relatedTarget = event.relatedTarget;
-        if (relatedTarget === null) return;
-        if (!container.contains(relatedTarget)) {
-          focus(lastFocusedElementRef.current, { select: true });
-        }
-      }, handleMutations2 = function(mutations) {
-        const focusedElement = document.activeElement;
-        if (focusedElement !== document.body) return;
-        for (const mutation of mutations) {
-          if (mutation.removedNodes.length > 0) focus(container);
-        }
-      };
-      document.addEventListener("focusin", handleFocusIn2);
-      document.addEventListener("focusout", handleFocusOut2);
-      const mutationObserver = new MutationObserver(handleMutations2);
-      if (container) mutationObserver.observe(container, { childList: true, subtree: true });
-      return () => {
-        document.removeEventListener("focusin", handleFocusIn2);
-        document.removeEventListener("focusout", handleFocusOut2);
-        mutationObserver.disconnect();
-      };
-    }
-  }, [trapped, container, focusScope.paused]);
-  reactExports.useEffect(() => {
-    if (container) {
-      focusScopesStack.add(focusScope);
-      const previouslyFocusedElement = document.activeElement;
-      const hasFocusedCandidate = container.contains(previouslyFocusedElement);
-      if (!hasFocusedCandidate) {
-        const mountEvent = new CustomEvent(AUTOFOCUS_ON_MOUNT, EVENT_OPTIONS$1);
-        container.addEventListener(AUTOFOCUS_ON_MOUNT, onMountAutoFocus);
-        container.dispatchEvent(mountEvent);
-        if (!mountEvent.defaultPrevented) {
-          focusFirst$2(removeLinks(getTabbableCandidates(container)), { select: true });
-          if (document.activeElement === previouslyFocusedElement) {
-            focus(container);
-          }
-        }
-      }
-      return () => {
-        container.removeEventListener(AUTOFOCUS_ON_MOUNT, onMountAutoFocus);
-        setTimeout(() => {
-          const unmountEvent = new CustomEvent(AUTOFOCUS_ON_UNMOUNT, EVENT_OPTIONS$1);
-          container.addEventListener(AUTOFOCUS_ON_UNMOUNT, onUnmountAutoFocus);
-          container.dispatchEvent(unmountEvent);
-          if (!unmountEvent.defaultPrevented) {
-            focus(previouslyFocusedElement ?? document.body, { select: true });
-          }
-          container.removeEventListener(AUTOFOCUS_ON_UNMOUNT, onUnmountAutoFocus);
-          focusScopesStack.remove(focusScope);
-        }, 0);
-      };
-    }
-  }, [container, onMountAutoFocus, onUnmountAutoFocus, focusScope]);
-  const handleKeyDown = reactExports.useCallback(
-    (event) => {
-      if (!loop && !trapped) return;
-      if (focusScope.paused) return;
-      const isTabKey = event.key === "Tab" && !event.altKey && !event.ctrlKey && !event.metaKey;
-      const focusedElement = document.activeElement;
-      if (isTabKey && focusedElement) {
-        const container2 = event.currentTarget;
-        const [first, last] = getTabbableEdges(container2);
-        const hasTabbableElementsInside = first && last;
-        if (!hasTabbableElementsInside) {
-          if (focusedElement === container2) event.preventDefault();
-        } else {
-          if (!event.shiftKey && focusedElement === last) {
-            event.preventDefault();
-            if (loop) focus(first, { select: true });
-          } else if (event.shiftKey && focusedElement === first) {
-            event.preventDefault();
-            if (loop) focus(last, { select: true });
-          }
-        }
-      }
-    },
-    [loop, trapped, focusScope.paused]
-  );
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(Primitive.div, { tabIndex: -1, ...scopeProps, ref: composedRefs, onKeyDown: handleKeyDown });
-});
-FocusScope.displayName = FOCUS_SCOPE_NAME;
-function focusFirst$2(candidates, { select = false } = {}) {
-  const previouslyFocusedElement = document.activeElement;
-  for (const candidate of candidates) {
-    focus(candidate, { select });
-    if (document.activeElement !== previouslyFocusedElement) return;
-  }
-}
-function getTabbableEdges(container) {
-  const candidates = getTabbableCandidates(container);
-  const first = findVisible(candidates, container);
-  const last = findVisible(candidates.reverse(), container);
-  return [first, last];
-}
-function getTabbableCandidates(container) {
-  const nodes = [];
-  const walker = document.createTreeWalker(container, NodeFilter.SHOW_ELEMENT, {
-    acceptNode: (node) => {
-      const isHiddenInput = node.tagName === "INPUT" && node.type === "hidden";
-      if (node.disabled || node.hidden || isHiddenInput) return NodeFilter.FILTER_SKIP;
-      return node.tabIndex >= 0 ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
-    }
-  });
-  while (walker.nextNode()) nodes.push(walker.currentNode);
-  return nodes;
-}
-function findVisible(elements, container) {
-  for (const element of elements) {
-    if (!isHidden(element, { upTo: container })) return element;
-  }
-}
-function isHidden(node, { upTo }) {
-  if (getComputedStyle(node).visibility === "hidden") return true;
-  while (node) {
-    if (upTo !== void 0 && node === upTo) return false;
-    if (getComputedStyle(node).display === "none") return true;
-    node = node.parentElement;
-  }
-  return false;
-}
-function isSelectableInput(element) {
-  return element instanceof HTMLInputElement && "select" in element;
-}
-function focus(element, { select = false } = {}) {
-  if (element && element.focus) {
-    const previouslyFocusedElement = document.activeElement;
-    element.focus({ preventScroll: true });
-    if (element !== previouslyFocusedElement && isSelectableInput(element) && select)
-      element.select();
-  }
-}
-var focusScopesStack = createFocusScopesStack();
-function createFocusScopesStack() {
-  let stack = [];
-  return {
-    add(focusScope) {
-      const activeFocusScope = stack[0];
-      if (focusScope !== activeFocusScope) {
-        activeFocusScope?.pause();
-      }
-      stack = arrayRemove(stack, focusScope);
-      stack.unshift(focusScope);
-    },
-    remove(focusScope) {
-      stack = arrayRemove(stack, focusScope);
-      stack[0]?.resume();
-    }
-  };
-}
-function arrayRemove(array, item) {
-  const updatedArray = [...array];
-  const index2 = updatedArray.indexOf(item);
-  if (index2 !== -1) {
-    updatedArray.splice(index2, 1);
-  }
-  return updatedArray;
-}
-function removeLinks(items) {
-  return items.filter((item) => item.tagName !== "A");
-}
 var ENTRY_FOCUS = "rovingFocusGroup.onEntryFocus";
 var EVENT_OPTIONS = { bubbles: false, cancelable: true };
 var GROUP_NAME$3 = "RovingFocusGroup";
@@ -29266,7 +34474,7 @@ var RovingFocusGroupImpl = reactExports.forwardRef((props, forwardedRef) => {
     ...groupProps
   } = props;
   const ref = reactExports.useRef(null);
-  const composedRefs = useComposedRefs$1(forwardedRef, ref);
+  const composedRefs = useComposedRefs(forwardedRef, ref);
   const direction = useDirection(dir);
   const [currentTabStopId = null, setCurrentTabStopId] = useControllableState({
     prop: currentTabStopIdProp,
@@ -29441,787 +34649,8 @@ function focusFirst$1(candidates, preventScroll = false) {
 function wrapArray$2(array, startIndex) {
   return array.map((_, index2) => array[(startIndex + index2) % array.length]);
 }
-var Root$4 = RovingFocusGroup;
+var Root$2 = RovingFocusGroup;
 var Item$1 = RovingFocusGroupItem;
-var getDefaultParent = function(originalTarget) {
-  if (typeof document === "undefined") {
-    return null;
-  }
-  var sampleTarget = Array.isArray(originalTarget) ? originalTarget[0] : originalTarget;
-  return sampleTarget.ownerDocument.body;
-};
-var counterMap = /* @__PURE__ */ new WeakMap();
-var uncontrolledNodes = /* @__PURE__ */ new WeakMap();
-var markerMap = {};
-var lockCount = 0;
-var unwrapHost = function(node) {
-  return node && (node.host || unwrapHost(node.parentNode));
-};
-var correctTargets = function(parent, targets) {
-  return targets.map(function(target) {
-    if (parent.contains(target)) {
-      return target;
-    }
-    var correctedTarget = unwrapHost(target);
-    if (correctedTarget && parent.contains(correctedTarget)) {
-      return correctedTarget;
-    }
-    console.error("aria-hidden", target, "in not contained inside", parent, ". Doing nothing");
-    return null;
-  }).filter(function(x2) {
-    return Boolean(x2);
-  });
-};
-var applyAttributeToOthers = function(originalTarget, parentNode, markerName, controlAttribute) {
-  var targets = correctTargets(parentNode, Array.isArray(originalTarget) ? originalTarget : [originalTarget]);
-  if (!markerMap[markerName]) {
-    markerMap[markerName] = /* @__PURE__ */ new WeakMap();
-  }
-  var markerCounter = markerMap[markerName];
-  var hiddenNodes = [];
-  var elementsToKeep = /* @__PURE__ */ new Set();
-  var elementsToStop = new Set(targets);
-  var keep = function(el) {
-    if (!el || elementsToKeep.has(el)) {
-      return;
-    }
-    elementsToKeep.add(el);
-    keep(el.parentNode);
-  };
-  targets.forEach(keep);
-  var deep = function(parent) {
-    if (!parent || elementsToStop.has(parent)) {
-      return;
-    }
-    Array.prototype.forEach.call(parent.children, function(node) {
-      if (elementsToKeep.has(node)) {
-        deep(node);
-      } else {
-        try {
-          var attr = node.getAttribute(controlAttribute);
-          var alreadyHidden = attr !== null && attr !== "false";
-          var counterValue = (counterMap.get(node) || 0) + 1;
-          var markerValue = (markerCounter.get(node) || 0) + 1;
-          counterMap.set(node, counterValue);
-          markerCounter.set(node, markerValue);
-          hiddenNodes.push(node);
-          if (counterValue === 1 && alreadyHidden) {
-            uncontrolledNodes.set(node, true);
-          }
-          if (markerValue === 1) {
-            node.setAttribute(markerName, "true");
-          }
-          if (!alreadyHidden) {
-            node.setAttribute(controlAttribute, "true");
-          }
-        } catch (e) {
-          console.error("aria-hidden: cannot operate on ", node, e);
-        }
-      }
-    });
-  };
-  deep(parentNode);
-  elementsToKeep.clear();
-  lockCount++;
-  return function() {
-    hiddenNodes.forEach(function(node) {
-      var counterValue = counterMap.get(node) - 1;
-      var markerValue = markerCounter.get(node) - 1;
-      counterMap.set(node, counterValue);
-      markerCounter.set(node, markerValue);
-      if (!counterValue) {
-        if (!uncontrolledNodes.has(node)) {
-          node.removeAttribute(controlAttribute);
-        }
-        uncontrolledNodes.delete(node);
-      }
-      if (!markerValue) {
-        node.removeAttribute(markerName);
-      }
-    });
-    lockCount--;
-    if (!lockCount) {
-      counterMap = /* @__PURE__ */ new WeakMap();
-      counterMap = /* @__PURE__ */ new WeakMap();
-      uncontrolledNodes = /* @__PURE__ */ new WeakMap();
-      markerMap = {};
-    }
-  };
-};
-var hideOthers = function(originalTarget, parentNode, markerName) {
-  if (markerName === void 0) {
-    markerName = "data-aria-hidden";
-  }
-  var targets = Array.from(Array.isArray(originalTarget) ? originalTarget : [originalTarget]);
-  var activeParentNode = getDefaultParent(originalTarget);
-  if (!activeParentNode) {
-    return function() {
-      return null;
-    };
-  }
-  targets.push.apply(targets, Array.from(activeParentNode.querySelectorAll("[aria-live], script")));
-  return applyAttributeToOthers(targets, activeParentNode, markerName, "aria-hidden");
-};
-var __assign = function() {
-  __assign = Object.assign || function __assign2(t) {
-    for (var s, i = 1, n = arguments.length; i < n; i++) {
-      s = arguments[i];
-      for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
-    }
-    return t;
-  };
-  return __assign.apply(this, arguments);
-};
-function __rest(s, e) {
-  var t = {};
-  for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
-    t[p] = s[p];
-  if (s != null && typeof Object.getOwnPropertySymbols === "function")
-    for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
-      if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
-        t[p[i]] = s[p[i]];
-    }
-  return t;
-}
-function __spreadArray(to, from, pack) {
-  if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-    if (ar || !(i in from)) {
-      if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-      ar[i] = from[i];
-    }
-  }
-  return to.concat(ar || Array.prototype.slice.call(from));
-}
-typeof SuppressedError === "function" ? SuppressedError : function(error, suppressed, message2) {
-  var e = new Error(message2);
-  return e.name = "SuppressedError", e.error = error, e.suppressed = suppressed, e;
-};
-var zeroRightClassName = "right-scroll-bar-position";
-var fullWidthClassName = "width-before-scroll-bar";
-var noScrollbarsClassName = "with-scroll-bars-hidden";
-var removedBarSizeVariable = "--removed-body-scroll-bar-size";
-function assignRef(ref, value) {
-  if (typeof ref === "function") {
-    ref(value);
-  } else if (ref) {
-    ref.current = value;
-  }
-  return ref;
-}
-function useCallbackRef(initialValue, callback) {
-  var ref = reactExports.useState(function() {
-    return {
-      // value
-      value: initialValue,
-      // last callback
-      callback,
-      // "memoized" public interface
-      facade: {
-        get current() {
-          return ref.value;
-        },
-        set current(value) {
-          var last = ref.value;
-          if (last !== value) {
-            ref.value = value;
-            ref.callback(value, last);
-          }
-        }
-      }
-    };
-  })[0];
-  ref.callback = callback;
-  return ref.facade;
-}
-var useIsomorphicLayoutEffect$1 = typeof window !== "undefined" ? reactExports.useLayoutEffect : reactExports.useEffect;
-var currentValues = /* @__PURE__ */ new WeakMap();
-function useMergeRefs(refs, defaultValue2) {
-  var callbackRef = useCallbackRef(null, function(newValue) {
-    return refs.forEach(function(ref) {
-      return assignRef(ref, newValue);
-    });
-  });
-  useIsomorphicLayoutEffect$1(function() {
-    var oldValue = currentValues.get(callbackRef);
-    if (oldValue) {
-      var prevRefs_1 = new Set(oldValue);
-      var nextRefs_1 = new Set(refs);
-      var current_1 = callbackRef.current;
-      prevRefs_1.forEach(function(ref) {
-        if (!nextRefs_1.has(ref)) {
-          assignRef(ref, null);
-        }
-      });
-      nextRefs_1.forEach(function(ref) {
-        if (!prevRefs_1.has(ref)) {
-          assignRef(ref, current_1);
-        }
-      });
-    }
-    currentValues.set(callbackRef, refs);
-  }, [refs]);
-  return callbackRef;
-}
-function ItoI(a) {
-  return a;
-}
-function innerCreateMedium(defaults, middleware) {
-  if (middleware === void 0) {
-    middleware = ItoI;
-  }
-  var buffer = [];
-  var assigned = false;
-  var medium = {
-    read: function() {
-      if (assigned) {
-        throw new Error("Sidecar: could not `read` from an `assigned` medium. `read` could be used only with `useMedium`.");
-      }
-      if (buffer.length) {
-        return buffer[buffer.length - 1];
-      }
-      return defaults;
-    },
-    useMedium: function(data) {
-      var item = middleware(data, assigned);
-      buffer.push(item);
-      return function() {
-        buffer = buffer.filter(function(x2) {
-          return x2 !== item;
-        });
-      };
-    },
-    assignSyncMedium: function(cb) {
-      assigned = true;
-      while (buffer.length) {
-        var cbs = buffer;
-        buffer = [];
-        cbs.forEach(cb);
-      }
-      buffer = {
-        push: function(x2) {
-          return cb(x2);
-        },
-        filter: function() {
-          return buffer;
-        }
-      };
-    },
-    assignMedium: function(cb) {
-      assigned = true;
-      var pendingQueue = [];
-      if (buffer.length) {
-        var cbs = buffer;
-        buffer = [];
-        cbs.forEach(cb);
-        pendingQueue = buffer;
-      }
-      var executeQueue = function() {
-        var cbs2 = pendingQueue;
-        pendingQueue = [];
-        cbs2.forEach(cb);
-      };
-      var cycle = function() {
-        return Promise.resolve().then(executeQueue);
-      };
-      cycle();
-      buffer = {
-        push: function(x2) {
-          pendingQueue.push(x2);
-          cycle();
-        },
-        filter: function(filter2) {
-          pendingQueue = pendingQueue.filter(filter2);
-          return buffer;
-        }
-      };
-    }
-  };
-  return medium;
-}
-function createSidecarMedium(options) {
-  if (options === void 0) {
-    options = {};
-  }
-  var medium = innerCreateMedium(null);
-  medium.options = __assign({ async: true, ssr: false }, options);
-  return medium;
-}
-var SideCar$1 = function(_a) {
-  var sideCar = _a.sideCar, rest = __rest(_a, ["sideCar"]);
-  if (!sideCar) {
-    throw new Error("Sidecar: please provide `sideCar` property to import the right car");
-  }
-  var Target = sideCar.read();
-  if (!Target) {
-    throw new Error("Sidecar medium not found");
-  }
-  return reactExports.createElement(Target, __assign({}, rest));
-};
-SideCar$1.isSideCarExport = true;
-function exportSidecar(medium, exported) {
-  medium.useMedium(exported);
-  return SideCar$1;
-}
-var effectCar = createSidecarMedium();
-var nothing = function() {
-  return;
-};
-var RemoveScroll = reactExports.forwardRef(function(props, parentRef) {
-  var ref = reactExports.useRef(null);
-  var _a = reactExports.useState({
-    onScrollCapture: nothing,
-    onWheelCapture: nothing,
-    onTouchMoveCapture: nothing
-  }), callbacks = _a[0], setCallbacks = _a[1];
-  var forwardProps = props.forwardProps, children = props.children, className = props.className, removeScrollBar = props.removeScrollBar, enabled = props.enabled, shards = props.shards, sideCar = props.sideCar, noRelative = props.noRelative, noIsolation = props.noIsolation, inert = props.inert, allowPinchZoom = props.allowPinchZoom, _b = props.as, Container = _b === void 0 ? "div" : _b, gapMode = props.gapMode, rest = __rest(props, ["forwardProps", "children", "className", "removeScrollBar", "enabled", "shards", "sideCar", "noRelative", "noIsolation", "inert", "allowPinchZoom", "as", "gapMode"]);
-  var SideCar2 = sideCar;
-  var containerRef = useMergeRefs([ref, parentRef]);
-  var containerProps = __assign(__assign({}, rest), callbacks);
-  return reactExports.createElement(
-    reactExports.Fragment,
-    null,
-    enabled && reactExports.createElement(SideCar2, { sideCar: effectCar, removeScrollBar, shards, noRelative, noIsolation, inert, setCallbacks, allowPinchZoom: !!allowPinchZoom, lockRef: ref, gapMode }),
-    forwardProps ? reactExports.cloneElement(reactExports.Children.only(children), __assign(__assign({}, containerProps), { ref: containerRef })) : reactExports.createElement(Container, __assign({}, containerProps, { className, ref: containerRef }), children)
-  );
-});
-RemoveScroll.defaultProps = {
-  enabled: true,
-  removeScrollBar: true,
-  inert: false
-};
-RemoveScroll.classNames = {
-  fullWidth: fullWidthClassName,
-  zeroRight: zeroRightClassName
-};
-var getNonce = function() {
-  if (typeof __webpack_nonce__ !== "undefined") {
-    return __webpack_nonce__;
-  }
-  return void 0;
-};
-function makeStyleTag() {
-  if (!document)
-    return null;
-  var tag = document.createElement("style");
-  tag.type = "text/css";
-  var nonce = getNonce();
-  if (nonce) {
-    tag.setAttribute("nonce", nonce);
-  }
-  return tag;
-}
-function injectStyles(tag, css) {
-  if (tag.styleSheet) {
-    tag.styleSheet.cssText = css;
-  } else {
-    tag.appendChild(document.createTextNode(css));
-  }
-}
-function insertStyleTag(tag) {
-  var head = document.head || document.getElementsByTagName("head")[0];
-  head.appendChild(tag);
-}
-var stylesheetSingleton = function() {
-  var counter = 0;
-  var stylesheet = null;
-  return {
-    add: function(style2) {
-      if (counter == 0) {
-        if (stylesheet = makeStyleTag()) {
-          injectStyles(stylesheet, style2);
-          insertStyleTag(stylesheet);
-        }
-      }
-      counter++;
-    },
-    remove: function() {
-      counter--;
-      if (!counter && stylesheet) {
-        stylesheet.parentNode && stylesheet.parentNode.removeChild(stylesheet);
-        stylesheet = null;
-      }
-    }
-  };
-};
-var styleHookSingleton = function() {
-  var sheet = stylesheetSingleton();
-  return function(styles, isDynamic) {
-    reactExports.useEffect(function() {
-      sheet.add(styles);
-      return function() {
-        sheet.remove();
-      };
-    }, [styles && isDynamic]);
-  };
-};
-var styleSingleton = function() {
-  var useStyle2 = styleHookSingleton();
-  var Sheet = function(_a) {
-    var styles = _a.styles, dynamic = _a.dynamic;
-    useStyle2(styles, dynamic);
-    return null;
-  };
-  return Sheet;
-};
-var zeroGap = {
-  left: 0,
-  top: 0,
-  right: 0,
-  gap: 0
-};
-var parse = function(x2) {
-  return parseInt(x2 || "", 10) || 0;
-};
-var getOffset = function(gapMode) {
-  var cs = window.getComputedStyle(document.body);
-  var left = cs[gapMode === "padding" ? "paddingLeft" : "marginLeft"];
-  var top = cs[gapMode === "padding" ? "paddingTop" : "marginTop"];
-  var right = cs[gapMode === "padding" ? "paddingRight" : "marginRight"];
-  return [parse(left), parse(top), parse(right)];
-};
-var getGapWidth = function(gapMode) {
-  if (gapMode === void 0) {
-    gapMode = "margin";
-  }
-  if (typeof window === "undefined") {
-    return zeroGap;
-  }
-  var offsets = getOffset(gapMode);
-  var documentWidth = document.documentElement.clientWidth;
-  var windowWidth = window.innerWidth;
-  return {
-    left: offsets[0],
-    top: offsets[1],
-    right: offsets[2],
-    gap: Math.max(0, windowWidth - documentWidth + offsets[2] - offsets[0])
-  };
-};
-var Style = styleSingleton();
-var lockAttribute = "data-scroll-locked";
-var getStyles = function(_a, allowRelative, gapMode, important) {
-  var left = _a.left, top = _a.top, right = _a.right, gap = _a.gap;
-  if (gapMode === void 0) {
-    gapMode = "margin";
-  }
-  return "\n  .".concat(noScrollbarsClassName, " {\n   overflow: hidden ").concat(important, ";\n   padding-right: ").concat(gap, "px ").concat(important, ";\n  }\n  body[").concat(lockAttribute, "] {\n    overflow: hidden ").concat(important, ";\n    overscroll-behavior: contain;\n    ").concat([
-    allowRelative && "position: relative ".concat(important, ";"),
-    gapMode === "margin" && "\n    padding-left: ".concat(left, "px;\n    padding-top: ").concat(top, "px;\n    padding-right: ").concat(right, "px;\n    margin-left:0;\n    margin-top:0;\n    margin-right: ").concat(gap, "px ").concat(important, ";\n    "),
-    gapMode === "padding" && "padding-right: ".concat(gap, "px ").concat(important, ";")
-  ].filter(Boolean).join(""), "\n  }\n  \n  .").concat(zeroRightClassName, " {\n    right: ").concat(gap, "px ").concat(important, ";\n  }\n  \n  .").concat(fullWidthClassName, " {\n    margin-right: ").concat(gap, "px ").concat(important, ";\n  }\n  \n  .").concat(zeroRightClassName, " .").concat(zeroRightClassName, " {\n    right: 0 ").concat(important, ";\n  }\n  \n  .").concat(fullWidthClassName, " .").concat(fullWidthClassName, " {\n    margin-right: 0 ").concat(important, ";\n  }\n  \n  body[").concat(lockAttribute, "] {\n    ").concat(removedBarSizeVariable, ": ").concat(gap, "px;\n  }\n");
-};
-var getCurrentUseCounter = function() {
-  var counter = parseInt(document.body.getAttribute(lockAttribute) || "0", 10);
-  return isFinite(counter) ? counter : 0;
-};
-var useLockAttribute = function() {
-  reactExports.useEffect(function() {
-    document.body.setAttribute(lockAttribute, (getCurrentUseCounter() + 1).toString());
-    return function() {
-      var newCounter = getCurrentUseCounter() - 1;
-      if (newCounter <= 0) {
-        document.body.removeAttribute(lockAttribute);
-      } else {
-        document.body.setAttribute(lockAttribute, newCounter.toString());
-      }
-    };
-  }, []);
-};
-var RemoveScrollBar = function(_a) {
-  var noRelative = _a.noRelative, noImportant = _a.noImportant, _b = _a.gapMode, gapMode = _b === void 0 ? "margin" : _b;
-  useLockAttribute();
-  var gap = reactExports.useMemo(function() {
-    return getGapWidth(gapMode);
-  }, [gapMode]);
-  return reactExports.createElement(Style, { styles: getStyles(gap, !noRelative, gapMode, !noImportant ? "!important" : "") });
-};
-var passiveSupported = false;
-if (typeof window !== "undefined") {
-  try {
-    var options = Object.defineProperty({}, "passive", {
-      get: function() {
-        passiveSupported = true;
-        return true;
-      }
-    });
-    window.addEventListener("test", options, options);
-    window.removeEventListener("test", options, options);
-  } catch (err) {
-    passiveSupported = false;
-  }
-}
-var nonPassive = passiveSupported ? { passive: false } : false;
-var alwaysContainsScroll = function(node) {
-  return node.tagName === "TEXTAREA";
-};
-var elementCanBeScrolled = function(node, overflow) {
-  if (!(node instanceof Element)) {
-    return false;
-  }
-  var styles = window.getComputedStyle(node);
-  return (
-    // not-not-scrollable
-    styles[overflow] !== "hidden" && // contains scroll inside self
-    !(styles.overflowY === styles.overflowX && !alwaysContainsScroll(node) && styles[overflow] === "visible")
-  );
-};
-var elementCouldBeVScrolled = function(node) {
-  return elementCanBeScrolled(node, "overflowY");
-};
-var elementCouldBeHScrolled = function(node) {
-  return elementCanBeScrolled(node, "overflowX");
-};
-var locationCouldBeScrolled = function(axis, node) {
-  var ownerDocument = node.ownerDocument;
-  var current = node;
-  do {
-    if (typeof ShadowRoot !== "undefined" && current instanceof ShadowRoot) {
-      current = current.host;
-    }
-    var isScrollable2 = elementCouldBeScrolled(axis, current);
-    if (isScrollable2) {
-      var _a = getScrollVariables(axis, current), scrollHeight = _a[1], clientHeight = _a[2];
-      if (scrollHeight > clientHeight) {
-        return true;
-      }
-    }
-    current = current.parentNode;
-  } while (current && current !== ownerDocument.body);
-  return false;
-};
-var getVScrollVariables = function(_a) {
-  var scrollTop = _a.scrollTop, scrollHeight = _a.scrollHeight, clientHeight = _a.clientHeight;
-  return [
-    scrollTop,
-    scrollHeight,
-    clientHeight
-  ];
-};
-var getHScrollVariables = function(_a) {
-  var scrollLeft = _a.scrollLeft, scrollWidth = _a.scrollWidth, clientWidth = _a.clientWidth;
-  return [
-    scrollLeft,
-    scrollWidth,
-    clientWidth
-  ];
-};
-var elementCouldBeScrolled = function(axis, node) {
-  return axis === "v" ? elementCouldBeVScrolled(node) : elementCouldBeHScrolled(node);
-};
-var getScrollVariables = function(axis, node) {
-  return axis === "v" ? getVScrollVariables(node) : getHScrollVariables(node);
-};
-var getDirectionFactor = function(axis, direction) {
-  return axis === "h" && direction === "rtl" ? -1 : 1;
-};
-var handleScroll = function(axis, endTarget, event, sourceDelta, noOverscroll) {
-  var directionFactor = getDirectionFactor(axis, window.getComputedStyle(endTarget).direction);
-  var delta = directionFactor * sourceDelta;
-  var target = event.target;
-  var targetInLock = endTarget.contains(target);
-  var shouldCancelScroll = false;
-  var isDeltaPositive = delta > 0;
-  var availableScroll = 0;
-  var availableScrollTop = 0;
-  do {
-    if (!target) {
-      break;
-    }
-    var _a = getScrollVariables(axis, target), position = _a[0], scroll_1 = _a[1], capacity = _a[2];
-    var elementScroll = scroll_1 - capacity - directionFactor * position;
-    if (position || elementScroll) {
-      if (elementCouldBeScrolled(axis, target)) {
-        availableScroll += elementScroll;
-        availableScrollTop += position;
-      }
-    }
-    var parent_1 = target.parentNode;
-    target = parent_1 && parent_1.nodeType === Node.DOCUMENT_FRAGMENT_NODE ? parent_1.host : parent_1;
-  } while (
-    // portaled content
-    !targetInLock && target !== document.body || // self content
-    targetInLock && (endTarget.contains(target) || endTarget === target)
-  );
-  if (isDeltaPositive && (Math.abs(availableScroll) < 1 || false)) {
-    shouldCancelScroll = true;
-  } else if (!isDeltaPositive && (Math.abs(availableScrollTop) < 1 || false)) {
-    shouldCancelScroll = true;
-  }
-  return shouldCancelScroll;
-};
-var getTouchXY = function(event) {
-  return "changedTouches" in event ? [event.changedTouches[0].clientX, event.changedTouches[0].clientY] : [0, 0];
-};
-var getDeltaXY = function(event) {
-  return [event.deltaX, event.deltaY];
-};
-var extractRef = function(ref) {
-  return ref && "current" in ref ? ref.current : ref;
-};
-var deltaCompare = function(x2, y) {
-  return x2[0] === y[0] && x2[1] === y[1];
-};
-var generateStyle = function(id2) {
-  return "\n  .block-interactivity-".concat(id2, " {pointer-events: none;}\n  .allow-interactivity-").concat(id2, " {pointer-events: all;}\n");
-};
-var idCounter = 0;
-var lockStack = [];
-function RemoveScrollSideCar(props) {
-  var shouldPreventQueue = reactExports.useRef([]);
-  var touchStartRef = reactExports.useRef([0, 0]);
-  var activeAxis = reactExports.useRef();
-  var id2 = reactExports.useState(idCounter++)[0];
-  var Style2 = reactExports.useState(styleSingleton)[0];
-  var lastProps = reactExports.useRef(props);
-  reactExports.useEffect(function() {
-    lastProps.current = props;
-  }, [props]);
-  reactExports.useEffect(function() {
-    if (props.inert) {
-      document.body.classList.add("block-interactivity-".concat(id2));
-      var allow_1 = __spreadArray([props.lockRef.current], (props.shards || []).map(extractRef), true).filter(Boolean);
-      allow_1.forEach(function(el) {
-        return el.classList.add("allow-interactivity-".concat(id2));
-      });
-      return function() {
-        document.body.classList.remove("block-interactivity-".concat(id2));
-        allow_1.forEach(function(el) {
-          return el.classList.remove("allow-interactivity-".concat(id2));
-        });
-      };
-    }
-    return;
-  }, [props.inert, props.lockRef.current, props.shards]);
-  var shouldCancelEvent = reactExports.useCallback(function(event, parent) {
-    if ("touches" in event && event.touches.length === 2 || event.type === "wheel" && event.ctrlKey) {
-      return !lastProps.current.allowPinchZoom;
-    }
-    var touch = getTouchXY(event);
-    var touchStart = touchStartRef.current;
-    var deltaX = "deltaX" in event ? event.deltaX : touchStart[0] - touch[0];
-    var deltaY = "deltaY" in event ? event.deltaY : touchStart[1] - touch[1];
-    var currentAxis;
-    var target = event.target;
-    var moveDirection = Math.abs(deltaX) > Math.abs(deltaY) ? "h" : "v";
-    if ("touches" in event && moveDirection === "h" && target.type === "range") {
-      return false;
-    }
-    var selection = window.getSelection();
-    var anchorNode = selection && selection.anchorNode;
-    var isTouchingSelection = anchorNode ? anchorNode === target || anchorNode.contains(target) : false;
-    if (isTouchingSelection) {
-      return false;
-    }
-    var canBeScrolledInMainDirection = locationCouldBeScrolled(moveDirection, target);
-    if (!canBeScrolledInMainDirection) {
-      return true;
-    }
-    if (canBeScrolledInMainDirection) {
-      currentAxis = moveDirection;
-    } else {
-      currentAxis = moveDirection === "v" ? "h" : "v";
-      canBeScrolledInMainDirection = locationCouldBeScrolled(moveDirection, target);
-    }
-    if (!canBeScrolledInMainDirection) {
-      return false;
-    }
-    if (!activeAxis.current && "changedTouches" in event && (deltaX || deltaY)) {
-      activeAxis.current = currentAxis;
-    }
-    if (!currentAxis) {
-      return true;
-    }
-    var cancelingAxis = activeAxis.current || currentAxis;
-    return handleScroll(cancelingAxis, parent, event, cancelingAxis === "h" ? deltaX : deltaY);
-  }, []);
-  var shouldPrevent = reactExports.useCallback(function(_event) {
-    var event = _event;
-    if (!lockStack.length || lockStack[lockStack.length - 1] !== Style2) {
-      return;
-    }
-    var delta = "deltaY" in event ? getDeltaXY(event) : getTouchXY(event);
-    var sourceEvent = shouldPreventQueue.current.filter(function(e) {
-      return e.name === event.type && (e.target === event.target || event.target === e.shadowParent) && deltaCompare(e.delta, delta);
-    })[0];
-    if (sourceEvent && sourceEvent.should) {
-      if (event.cancelable) {
-        event.preventDefault();
-      }
-      return;
-    }
-    if (!sourceEvent) {
-      var shardNodes = (lastProps.current.shards || []).map(extractRef).filter(Boolean).filter(function(node) {
-        return node.contains(event.target);
-      });
-      var shouldStop = shardNodes.length > 0 ? shouldCancelEvent(event, shardNodes[0]) : !lastProps.current.noIsolation;
-      if (shouldStop) {
-        if (event.cancelable) {
-          event.preventDefault();
-        }
-      }
-    }
-  }, []);
-  var shouldCancel = reactExports.useCallback(function(name, delta, target, should) {
-    var event = { name, delta, target, should, shadowParent: getOutermostShadowParent(target) };
-    shouldPreventQueue.current.push(event);
-    setTimeout(function() {
-      shouldPreventQueue.current = shouldPreventQueue.current.filter(function(e) {
-        return e !== event;
-      });
-    }, 1);
-  }, []);
-  var scrollTouchStart = reactExports.useCallback(function(event) {
-    touchStartRef.current = getTouchXY(event);
-    activeAxis.current = void 0;
-  }, []);
-  var scrollWheel = reactExports.useCallback(function(event) {
-    shouldCancel(event.type, getDeltaXY(event), event.target, shouldCancelEvent(event, props.lockRef.current));
-  }, []);
-  var scrollTouchMove = reactExports.useCallback(function(event) {
-    shouldCancel(event.type, getTouchXY(event), event.target, shouldCancelEvent(event, props.lockRef.current));
-  }, []);
-  reactExports.useEffect(function() {
-    lockStack.push(Style2);
-    props.setCallbacks({
-      onScrollCapture: scrollWheel,
-      onWheelCapture: scrollWheel,
-      onTouchMoveCapture: scrollTouchMove
-    });
-    document.addEventListener("wheel", shouldPrevent, nonPassive);
-    document.addEventListener("touchmove", shouldPrevent, nonPassive);
-    document.addEventListener("touchstart", scrollTouchStart, nonPassive);
-    return function() {
-      lockStack = lockStack.filter(function(inst) {
-        return inst !== Style2;
-      });
-      document.removeEventListener("wheel", shouldPrevent, nonPassive);
-      document.removeEventListener("touchmove", shouldPrevent, nonPassive);
-      document.removeEventListener("touchstart", scrollTouchStart, nonPassive);
-    };
-  }, []);
-  var removeScrollBar = props.removeScrollBar, inert = props.inert;
-  return reactExports.createElement(
-    reactExports.Fragment,
-    null,
-    inert ? reactExports.createElement(Style2, { styles: generateStyle(id2) }) : null,
-    removeScrollBar ? reactExports.createElement(RemoveScrollBar, { noRelative: props.noRelative, gapMode: props.gapMode }) : null
-  );
-}
-function getOutermostShadowParent(node) {
-  var shadowParent = null;
-  while (node !== null) {
-    if (node instanceof ShadowRoot) {
-      shadowParent = node.host;
-      node = node.host;
-    }
-    node = node.parentNode;
-  }
-  return shadowParent;
-}
-const SideCar = exportSidecar(effectCar, RemoveScrollSideCar);
-var ReactRemoveScroll = reactExports.forwardRef(function(props, ref) {
-  return reactExports.createElement(RemoveScroll, __assign({}, props, { ref, sideCar: SideCar }));
-});
-ReactRemoveScroll.classNames = RemoveScroll.classNames;
 var SELECTION_KEYS$1 = ["Enter", " "];
 var FIRST_KEYS = ["ArrowDown", "PageUp", "Home"];
 var LAST_KEYS = ["ArrowUp", "PageDown", "End"];
@@ -30298,32 +34727,32 @@ var MenuAnchor = reactExports.forwardRef(
   }
 );
 MenuAnchor.displayName = ANCHOR_NAME;
-var PORTAL_NAME$4 = "MenuPortal";
-var [PortalProvider$1, usePortalContext$1] = createMenuContext(PORTAL_NAME$4, {
+var PORTAL_NAME$3 = "MenuPortal";
+var [PortalProvider, usePortalContext] = createMenuContext(PORTAL_NAME$3, {
   forceMount: void 0
 });
 var MenuPortal = (props) => {
   const { __scopeMenu, forceMount, children, container } = props;
-  const context = useMenuContext(PORTAL_NAME$4, __scopeMenu);
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(PortalProvider$1, { scope: __scopeMenu, forceMount, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Presence, { present: forceMount || context.open, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Portal$4, { asChild: true, container, children }) }) });
+  const context = useMenuContext(PORTAL_NAME$3, __scopeMenu);
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(PortalProvider, { scope: __scopeMenu, forceMount, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Presence, { present: forceMount || context.open, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Portal$4, { asChild: true, container, children }) }) });
 };
-MenuPortal.displayName = PORTAL_NAME$4;
-var CONTENT_NAME$4 = "MenuContent";
-var [MenuContentProvider, useMenuContentContext] = createMenuContext(CONTENT_NAME$4);
+MenuPortal.displayName = PORTAL_NAME$3;
+var CONTENT_NAME$3 = "MenuContent";
+var [MenuContentProvider, useMenuContentContext] = createMenuContext(CONTENT_NAME$3);
 var MenuContent = reactExports.forwardRef(
   (props, forwardedRef) => {
-    const portalContext = usePortalContext$1(CONTENT_NAME$4, props.__scopeMenu);
+    const portalContext = usePortalContext(CONTENT_NAME$3, props.__scopeMenu);
     const { forceMount = portalContext.forceMount, ...contentProps } = props;
-    const context = useMenuContext(CONTENT_NAME$4, props.__scopeMenu);
-    const rootContext = useMenuRootContext(CONTENT_NAME$4, props.__scopeMenu);
+    const context = useMenuContext(CONTENT_NAME$3, props.__scopeMenu);
+    const rootContext = useMenuRootContext(CONTENT_NAME$3, props.__scopeMenu);
     return /* @__PURE__ */ jsxRuntimeExports.jsx(Collection$1.Provider, { scope: props.__scopeMenu, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Presence, { present: forceMount || context.open, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Collection$1.Slot, { scope: props.__scopeMenu, children: rootContext.modal ? /* @__PURE__ */ jsxRuntimeExports.jsx(MenuRootContentModal, { ...contentProps, ref: forwardedRef }) : /* @__PURE__ */ jsxRuntimeExports.jsx(MenuRootContentNonModal, { ...contentProps, ref: forwardedRef }) }) }) });
   }
 );
 var MenuRootContentModal = reactExports.forwardRef(
   (props, forwardedRef) => {
-    const context = useMenuContext(CONTENT_NAME$4, props.__scopeMenu);
+    const context = useMenuContext(CONTENT_NAME$3, props.__scopeMenu);
     const ref = reactExports.useRef(null);
-    const composedRefs = useComposedRefs$1(forwardedRef, ref);
+    const composedRefs = useComposedRefs(forwardedRef, ref);
     reactExports.useEffect(() => {
       const content = ref.current;
       if (content) return hideOthers(content);
@@ -30347,7 +34776,7 @@ var MenuRootContentModal = reactExports.forwardRef(
   }
 );
 var MenuRootContentNonModal = reactExports.forwardRef((props, forwardedRef) => {
-  const context = useMenuContext(CONTENT_NAME$4, props.__scopeMenu);
+  const context = useMenuContext(CONTENT_NAME$3, props.__scopeMenu);
   return /* @__PURE__ */ jsxRuntimeExports.jsx(
     MenuContentImpl,
     {
@@ -30378,14 +34807,14 @@ var MenuContentImpl = reactExports.forwardRef(
       disableOutsideScroll,
       ...contentProps
     } = props;
-    const context = useMenuContext(CONTENT_NAME$4, __scopeMenu);
-    const rootContext = useMenuRootContext(CONTENT_NAME$4, __scopeMenu);
+    const context = useMenuContext(CONTENT_NAME$3, __scopeMenu);
+    const rootContext = useMenuRootContext(CONTENT_NAME$3, __scopeMenu);
     const popperScope = usePopperScope$1(__scopeMenu);
     const rovingFocusGroupScope = useRovingFocusGroupScope(__scopeMenu);
     const getItems = useCollection$1(__scopeMenu);
     const [currentItemId, setCurrentItemId] = reactExports.useState(null);
     const contentRef = reactExports.useRef(null);
-    const composedRefs = useComposedRefs$1(forwardedRef, contentRef, context.onContentChange);
+    const composedRefs = useComposedRefs(forwardedRef, contentRef, context.onContentChange);
     const timerRef = reactExports.useRef(0);
     const searchRef = reactExports.useRef("");
     const pointerGraceTimerRef = reactExports.useRef(0);
@@ -30469,7 +34898,7 @@ var MenuContentImpl = reactExports.forwardRef(
                 onInteractOutside,
                 onDismiss,
                 children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-                  Root$4,
+                  Root$2,
                   {
                     asChild: true,
                     ...rovingFocusGroupScope,
@@ -30483,7 +34912,7 @@ var MenuContentImpl = reactExports.forwardRef(
                     }),
                     preventScrollOnEntryFocus: true,
                     children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-                      Content$1,
+                      Content,
                       {
                         role: "menu",
                         "aria-orientation": "vertical",
@@ -30542,7 +34971,7 @@ var MenuContentImpl = reactExports.forwardRef(
     );
   }
 );
-MenuContent.displayName = CONTENT_NAME$4;
+MenuContent.displayName = CONTENT_NAME$3;
 var GROUP_NAME$2 = "MenuGroup";
 var MenuGroup = reactExports.forwardRef(
   (props, forwardedRef) => {
@@ -30567,7 +34996,7 @@ var MenuItem = reactExports.forwardRef(
     const ref = reactExports.useRef(null);
     const rootContext = useMenuRootContext(ITEM_NAME$2, props.__scopeMenu);
     const contentContext = useMenuContentContext(ITEM_NAME$2, props.__scopeMenu);
-    const composedRefs = useComposedRefs$1(forwardedRef, ref);
+    const composedRefs = useComposedRefs(forwardedRef, ref);
     const isPointerDownRef = reactExports.useRef(false);
     const handleSelect = () => {
       const menuItem = ref.current;
@@ -30615,7 +35044,7 @@ var MenuItemImpl = reactExports.forwardRef(
     const contentContext = useMenuContentContext(ITEM_NAME$2, __scopeMenu);
     const rovingFocusGroupScope = useRovingFocusGroupScope(__scopeMenu);
     const ref = reactExports.useRef(null);
-    const composedRefs = useComposedRefs$1(forwardedRef, ref);
+    const composedRefs = useComposedRefs(forwardedRef, ref);
     const [isFocused, setIsFocused] = reactExports.useState(false);
     const [textContent, setTextContent2] = reactExports.useState("");
     reactExports.useEffect(() => {
@@ -30778,40 +35207,6 @@ var MenuArrow = reactExports.forwardRef(
 MenuArrow.displayName = ARROW_NAME$2;
 var SUB_NAME = "MenuSub";
 var [MenuSubProvider, useMenuSubContext] = createMenuContext(SUB_NAME);
-var MenuSub = (props) => {
-  const { __scopeMenu, children, open = false, onOpenChange } = props;
-  const parentMenuContext = useMenuContext(SUB_NAME, __scopeMenu);
-  const popperScope = usePopperScope$1(__scopeMenu);
-  const [trigger, setTrigger] = reactExports.useState(null);
-  const [content, setContent] = reactExports.useState(null);
-  const handleOpenChange = useCallbackRef$1(onOpenChange);
-  reactExports.useEffect(() => {
-    if (parentMenuContext.open === false) handleOpenChange(false);
-    return () => handleOpenChange(false);
-  }, [parentMenuContext.open, handleOpenChange]);
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(Root2$3, { ...popperScope, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-    MenuProvider,
-    {
-      scope: __scopeMenu,
-      open,
-      onOpenChange: handleOpenChange,
-      content,
-      onContentChange: setContent,
-      children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-        MenuSubProvider,
-        {
-          scope: __scopeMenu,
-          contentId: useId(),
-          triggerId: useId(),
-          trigger,
-          onTriggerChange: setTrigger,
-          children
-        }
-      )
-    }
-  ) });
-};
-MenuSub.displayName = SUB_NAME;
 var SUB_TRIGGER_NAME$1 = "MenuSubTrigger";
 var MenuSubTrigger = reactExports.forwardRef(
   (props, forwardedRef) => {
@@ -30843,7 +35238,7 @@ var MenuSubTrigger = reactExports.forwardRef(
         "aria-controls": subContext.contentId,
         "data-state": getOpenState(context.open),
         ...props,
-        ref: composeRefs$1(forwardedRef, subContext.onTriggerChange),
+        ref: composeRefs(forwardedRef, subContext.onTriggerChange),
         onClick: (event) => {
           props.onClick?.(event);
           if (props.disabled || event.defaultPrevented) return;
@@ -30916,13 +35311,13 @@ MenuSubTrigger.displayName = SUB_TRIGGER_NAME$1;
 var SUB_CONTENT_NAME$1 = "MenuSubContent";
 var MenuSubContent = reactExports.forwardRef(
   (props, forwardedRef) => {
-    const portalContext = usePortalContext$1(CONTENT_NAME$4, props.__scopeMenu);
+    const portalContext = usePortalContext(CONTENT_NAME$3, props.__scopeMenu);
     const { forceMount = portalContext.forceMount, ...subContentProps } = props;
-    const context = useMenuContext(CONTENT_NAME$4, props.__scopeMenu);
-    const rootContext = useMenuRootContext(CONTENT_NAME$4, props.__scopeMenu);
+    const context = useMenuContext(CONTENT_NAME$3, props.__scopeMenu);
+    const rootContext = useMenuRootContext(CONTENT_NAME$3, props.__scopeMenu);
     const subContext = useMenuSubContext(SUB_CONTENT_NAME$1, props.__scopeMenu);
     const ref = reactExports.useRef(null);
-    const composedRefs = useComposedRefs$1(forwardedRef, ref);
+    const composedRefs = useComposedRefs(forwardedRef, ref);
     return /* @__PURE__ */ jsxRuntimeExports.jsx(Collection$1.Provider, { scope: props.__scopeMenu, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Presence, { present: forceMount || context.open, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Collection$1.Slot, { scope: props.__scopeMenu, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
       MenuContentImpl,
       {
@@ -31016,7 +35411,7 @@ function whenMouse(handler) {
 }
 var Root3 = Menu;
 var Anchor2 = MenuAnchor;
-var Portal$2 = MenuPortal;
+var Portal$1 = MenuPortal;
 var Content2$3 = MenuContent;
 var Group = MenuGroup;
 var Label$2 = MenuLabel;
@@ -31025,9 +35420,8 @@ var CheckboxItem = MenuCheckboxItem;
 var RadioGroup = MenuRadioGroup;
 var RadioItem = MenuRadioItem;
 var ItemIndicator$1 = MenuItemIndicator;
-var Separator$2 = MenuSeparator;
+var Separator = MenuSeparator;
 var Arrow2 = MenuArrow;
-var Sub = MenuSub;
 var SubTrigger = MenuSubTrigger;
 var SubContent = MenuSubContent;
 var DROPDOWN_MENU_NAME = "DropdownMenu";
@@ -31070,11 +35464,11 @@ var DropdownMenu$1 = (props) => {
   );
 };
 DropdownMenu$1.displayName = DROPDOWN_MENU_NAME;
-var TRIGGER_NAME$3 = "DropdownMenuTrigger";
+var TRIGGER_NAME$2 = "DropdownMenuTrigger";
 var DropdownMenuTrigger$1 = reactExports.forwardRef(
   (props, forwardedRef) => {
     const { __scopeDropdownMenu, disabled = false, ...triggerProps } = props;
-    const context = useDropdownMenuContext(TRIGGER_NAME$3, __scopeDropdownMenu);
+    const context = useDropdownMenuContext(TRIGGER_NAME$2, __scopeDropdownMenu);
     const menuScope = useMenuScope(__scopeDropdownMenu);
     return /* @__PURE__ */ jsxRuntimeExports.jsx(Anchor2, { asChild: true, ...menuScope, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
       Primitive.button,
@@ -31088,7 +35482,7 @@ var DropdownMenuTrigger$1 = reactExports.forwardRef(
         "data-disabled": disabled ? "" : void 0,
         disabled,
         ...triggerProps,
-        ref: composeRefs$1(forwardedRef, context.triggerRef),
+        ref: composeRefs(forwardedRef, context.triggerRef),
         onPointerDown: composeEventHandlers(props.onPointerDown, (event) => {
           if (!disabled && event.button === 0 && event.ctrlKey === false) {
             context.onOpenToggle();
@@ -31105,19 +35499,19 @@ var DropdownMenuTrigger$1 = reactExports.forwardRef(
     ) });
   }
 );
-DropdownMenuTrigger$1.displayName = TRIGGER_NAME$3;
-var PORTAL_NAME$3 = "DropdownMenuPortal";
+DropdownMenuTrigger$1.displayName = TRIGGER_NAME$2;
+var PORTAL_NAME$2 = "DropdownMenuPortal";
 var DropdownMenuPortal = (props) => {
   const { __scopeDropdownMenu, ...portalProps } = props;
   const menuScope = useMenuScope(__scopeDropdownMenu);
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(Portal$2, { ...menuScope, ...portalProps });
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(Portal$1, { ...menuScope, ...portalProps });
 };
-DropdownMenuPortal.displayName = PORTAL_NAME$3;
-var CONTENT_NAME$3 = "DropdownMenuContent";
+DropdownMenuPortal.displayName = PORTAL_NAME$2;
+var CONTENT_NAME$2 = "DropdownMenuContent";
 var DropdownMenuContent$1 = reactExports.forwardRef(
   (props, forwardedRef) => {
     const { __scopeDropdownMenu, ...contentProps } = props;
-    const context = useDropdownMenuContext(CONTENT_NAME$3, __scopeDropdownMenu);
+    const context = useDropdownMenuContext(CONTENT_NAME$2, __scopeDropdownMenu);
     const menuScope = useMenuScope(__scopeDropdownMenu);
     const hasInteractedOutsideRef = reactExports.useRef(false);
     return /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -31154,7 +35548,7 @@ var DropdownMenuContent$1 = reactExports.forwardRef(
     );
   }
 );
-DropdownMenuContent$1.displayName = CONTENT_NAME$3;
+DropdownMenuContent$1.displayName = CONTENT_NAME$2;
 var GROUP_NAME$1 = "DropdownMenuGroup";
 var DropdownMenuGroup = reactExports.forwardRef(
   (props, forwardedRef) => {
@@ -31214,7 +35608,7 @@ var SEPARATOR_NAME$1 = "DropdownMenuSeparator";
 var DropdownMenuSeparator$1 = reactExports.forwardRef((props, forwardedRef) => {
   const { __scopeDropdownMenu, ...separatorProps } = props;
   const menuScope = useMenuScope(__scopeDropdownMenu);
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(Separator$2, { ...menuScope, ...separatorProps, ref: forwardedRef });
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(Separator, { ...menuScope, ...separatorProps, ref: forwardedRef });
 });
 DropdownMenuSeparator$1.displayName = SEPARATOR_NAME$1;
 var ARROW_NAME$1 = "DropdownMenuArrow";
@@ -31226,25 +35620,15 @@ var DropdownMenuArrow = reactExports.forwardRef(
   }
 );
 DropdownMenuArrow.displayName = ARROW_NAME$1;
-var DropdownMenuSub$1 = (props) => {
-  const { __scopeDropdownMenu, children, open: openProp, onOpenChange, defaultOpen } = props;
-  const menuScope = useMenuScope(__scopeDropdownMenu);
-  const [open = false, setOpen] = useControllableState({
-    prop: openProp,
-    defaultProp: defaultOpen,
-    onChange: onOpenChange
-  });
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(Sub, { ...menuScope, open, onOpenChange: setOpen, children });
-};
 var SUB_TRIGGER_NAME = "DropdownMenuSubTrigger";
-var DropdownMenuSubTrigger$1 = reactExports.forwardRef((props, forwardedRef) => {
+var DropdownMenuSubTrigger = reactExports.forwardRef((props, forwardedRef) => {
   const { __scopeDropdownMenu, ...subTriggerProps } = props;
   const menuScope = useMenuScope(__scopeDropdownMenu);
   return /* @__PURE__ */ jsxRuntimeExports.jsx(SubTrigger, { ...menuScope, ...subTriggerProps, ref: forwardedRef });
 });
-DropdownMenuSubTrigger$1.displayName = SUB_TRIGGER_NAME;
+DropdownMenuSubTrigger.displayName = SUB_TRIGGER_NAME;
 var SUB_CONTENT_NAME = "DropdownMenuSubContent";
-var DropdownMenuSubContent$1 = reactExports.forwardRef((props, forwardedRef) => {
+var DropdownMenuSubContent = reactExports.forwardRef((props, forwardedRef) => {
   const { __scopeDropdownMenu, ...subContentProps } = props;
   const menuScope = useMenuScope(__scopeDropdownMenu);
   return /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -31267,16 +35651,13 @@ var DropdownMenuSubContent$1 = reactExports.forwardRef((props, forwardedRef) => 
     }
   );
 });
-DropdownMenuSubContent$1.displayName = SUB_CONTENT_NAME;
+DropdownMenuSubContent.displayName = SUB_CONTENT_NAME;
 var Root2$2 = DropdownMenu$1;
-var Trigger$2 = DropdownMenuTrigger$1;
+var Trigger$1 = DropdownMenuTrigger$1;
 var Portal2$1 = DropdownMenuPortal;
 var Content2$2 = DropdownMenuContent$1;
 var Item2 = DropdownMenuItem$1;
 var Separator2 = DropdownMenuSeparator$1;
-var Sub2 = DropdownMenuSub$1;
-var SubTrigger2 = DropdownMenuSubTrigger$1;
-var SubContent2 = DropdownMenuSubContent$1;
 function DropdownMenu({
   ...props
 }) {
@@ -31286,7 +35667,7 @@ function DropdownMenuTrigger({
   ...props
 }) {
   return /* @__PURE__ */ jsxRuntimeExports.jsx(
-    Trigger$2,
+    Trigger$1,
     {
       "data-slot": "dropdown-menu-trigger",
       ...props
@@ -31344,75 +35725,474 @@ function DropdownMenuSeparator({
     }
   );
 }
-function DropdownMenuSub({
-  ...props
-}) {
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(Sub2, { "data-slot": "dropdown-menu-sub", ...props });
-}
-function DropdownMenuSubTrigger({
-  className,
-  inset,
-  children,
-  ...props
-}) {
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs(
-    SubTrigger2,
-    {
-      "data-slot": "dropdown-menu-sub-trigger",
-      "data-inset": inset,
-      className: cn(
-        "focus:bg-accent focus:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground flex cursor-default items-center rounded-sm px-2 py-1.5 text-sm outline-hidden select-none data-[inset]:pl-8",
-        className
-      ),
-      ...props,
-      children: [
-        children,
-        /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronRight, { className: "ml-auto size-4" })
-      ]
+const createStoreImpl = (createState2) => {
+  let state;
+  const listeners = /* @__PURE__ */ new Set();
+  const setState = (partial, replace) => {
+    const nextState = typeof partial === "function" ? partial(state) : partial;
+    if (!Object.is(nextState, state)) {
+      const previousState = state;
+      state = (replace != null ? replace : typeof nextState !== "object" || nextState === null) ? nextState : Object.assign({}, state, nextState);
+      listeners.forEach((listener) => listener(state, previousState));
     }
+  };
+  const getState2 = () => state;
+  const getInitialState2 = () => initialState;
+  const subscribe = (listener) => {
+    listeners.add(listener);
+    return () => listeners.delete(listener);
+  };
+  const api = { setState, getState: getState2, getInitialState: getInitialState2, subscribe };
+  const initialState = state = createState2(setState, getState2, api);
+  return api;
+};
+const createStore = (createState2) => createState2 ? createStoreImpl(createState2) : createStoreImpl;
+const identity = (arg) => arg;
+function useStore$1(api, selector = identity) {
+  const slice = React$2.useSyncExternalStore(
+    api.subscribe,
+    React$2.useCallback(() => selector(api.getState()), [api, selector]),
+    React$2.useCallback(() => selector(api.getInitialState()), [api, selector])
   );
+  React$2.useDebugValue(slice);
+  return slice;
 }
-function DropdownMenuSubContent({
-  className,
-  ...props
-}) {
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(
-    SubContent2,
-    {
-      "data-slot": "dropdown-menu-sub-content",
-      className: cn(
-        "bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 min-w-[8rem] origin-(--radix-dropdown-menu-content-transform-origin) overflow-hidden rounded-md border p-1 shadow-lg",
-        className
-      ),
-      ...props
+const createImpl = (createState2) => {
+  const api = createStore(createState2);
+  const useBoundStore = (selector) => useStore$1(api, selector);
+  Object.assign(useBoundStore, api);
+  return useBoundStore;
+};
+const create = (createState2) => createImpl;
+const uid = () => globalThis.crypto?.randomUUID?.() ?? `id_${Date.now()}_${Math.random().toString(36).slice(2, 9)}`;
+const DEFAULT_SETTINGS = {
+  density: "comfortable",
+  sidebarWidth: 264,
+  showCounts: true,
+  moveCompletedDown: false,
+  showCompleted: true,
+  defaultDueDate: "today",
+  confirmDelete: true,
+  overdueRed: true,
+  notificationsEnabled: false,
+  remindBefore: "30",
+  notifSound: true,
+  dndHours: "22-08",
+  autoBackup: true,
+  launchAtLogin: false,
+  startMinimized: false,
+  closeToTray: true,
+  rememberWindow: true
+};
+async function invokePersist(op) {
+  if (typeof window === "undefined" || !window.api) return;
+  try {
+    await op();
+  } catch (err) {
+    console.error("Persistence failed:", err);
+  }
+}
+const useStore = create()((set, get) => ({
+  theme: "system",
+  sidebarCollapsed: false,
+  activeGroupId: null,
+  selectedTaskId: null,
+  searchQuery: "",
+  statusFilter: "all",
+  tagFilter: [],
+  helpOpen: false,
+  settingsOpen: false,
+  commandPaletteOpen: false,
+  groupDialog: { open: false, editingId: null },
+  settings: DEFAULT_SETTINGS,
+  groups: [],
+  tasks: [],
+  isHydrated: false,
+  hydrate: async () => {
+    try {
+      if (typeof window !== "undefined" && window.api) {
+        const { groups, tasks, settings: rawSettings } = await window.api.getInitialState();
+        const { lastActiveGroupId, ...prefs } = rawSettings;
+        const merged = { ...DEFAULT_SETTINGS, ...prefs };
+        const preferred = typeof lastActiveGroupId === "string" && lastActiveGroupId.length > 0 && groups.some((g) => g.id === lastActiveGroupId) ? lastActiveGroupId : null;
+        set({
+          groups,
+          tasks,
+          settings: merged,
+          activeGroupId: preferred ?? groups[0]?.id ?? null,
+          isHydrated: true
+        });
+        return;
+      }
+      set({
+        groups: [],
+        tasks: [],
+        settings: DEFAULT_SETTINGS,
+        activeGroupId: null,
+        isHydrated: true
+      });
+    } catch (error) {
+      console.error("Failed to hydrate app state:", error);
+      set({
+        groups: [],
+        tasks: [],
+        settings: DEFAULT_SETTINGS,
+        activeGroupId: null,
+        isHydrated: true
+      });
     }
-  );
-}
-const ThemeToggle = ({ compact = false }) => {
-  const { theme, setTheme } = useTheme();
-  const Icon2 = theme === "dark" ? Moon : theme === "light" ? Sun : Monitor;
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs(DropdownMenu, { children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx(DropdownMenuTrigger, { asChild: true, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { variant: "ghost", size: "icon", className: "size-8", "aria-label": "Theme", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Icon2, { className: "size-4" }) }) }),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs(DropdownMenuContent, { align: compact ? "start" : "end", side: "top", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsxs(DropdownMenuItem, { onClick: () => setTheme("light"), children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx(Sun, { className: "size-4 mr-2" }),
-        " Light"
-      ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs(DropdownMenuItem, { onClick: () => setTheme("dark"), children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx(Moon, { className: "size-4 mr-2" }),
-        " Dark"
-      ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs(DropdownMenuItem, { onClick: () => setTheme("system"), children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx(Monitor, { className: "size-4 mr-2" }),
-        " System"
+  },
+  setTheme: (theme) => {
+    set({ theme });
+    void invokePersist(() => window.api.saveSetting("theme", theme));
+  },
+  toggleSidebar: () => {
+    const next = !get().sidebarCollapsed;
+    set({ sidebarCollapsed: next });
+    void invokePersist(() => window.api.saveSetting("sidebarCollapsed", next));
+  },
+  setActiveGroup: async (id2) => {
+    set({ activeGroupId: id2, selectedTaskId: null });
+    await invokePersist(() => window.api.saveSetting("lastActiveGroupId", id2 ?? ""));
+  },
+  selectTask: (id2) => set({ selectedTaskId: id2 }),
+  setSearch: (q) => set({ searchQuery: q }),
+  setStatusFilter: (statusFilter) => set({ statusFilter }),
+  toggleTagFilter: (tag) => set((s) => ({
+    tagFilter: s.tagFilter.includes(tag) ? s.tagFilter.filter((t) => t !== tag) : [...s.tagFilter, tag]
+  })),
+  clearFilters: () => set({ statusFilter: "all", tagFilter: [], searchQuery: "" }),
+  setHelpOpen: (helpOpen) => set({ helpOpen }),
+  setSettingsOpen: (settingsOpen) => set({ settingsOpen }),
+  setCommandPaletteOpen: (commandPaletteOpen) => set({ commandPaletteOpen }),
+  saveSettings: async (settings) => {
+    set({ settings });
+    await invokePersist(() => window.api.saveSetting("settings", settings));
+  },
+  resetSettings: async () => {
+    set({ settings: DEFAULT_SETTINGS });
+    await invokePersist(() => window.api.saveSetting("settings", DEFAULT_SETTINGS));
+  },
+  openGroupDialog: (editingId = null) => set({ groupDialog: { open: true, editingId } }),
+  closeGroupDialog: () => set({ groupDialog: { open: false, editingId: null } }),
+  createGroup: async ({ name, emoji, accent }) => {
+    const group = {
+      id: uid(),
+      name,
+      emoji,
+      accent,
+      position: get().groups.length,
+      createdAt: Date.now()
+    };
+    set((s) => ({ groups: [...s.groups, group], activeGroupId: group.id }));
+    await invokePersist(() => window.api.createGroup(group));
+    await invokePersist(() => window.api.saveSetting("lastActiveGroupId", group.id));
+    return group;
+  },
+  updateGroup: async (id2, patch) => {
+    set((s) => ({ groups: s.groups.map((g) => g.id === id2 ? { ...g, ...patch } : g) }));
+    await invokePersist(() => window.api.updateGroup(id2, patch));
+  },
+  deleteGroup: async (id2) => {
+    set((s) => {
+      const groups = s.groups.filter((g) => g.id !== id2);
+      const tasks = s.tasks.filter((t) => t.groupId !== id2);
+      const activeGroupId = s.activeGroupId === id2 ? groups[0]?.id ?? null : s.activeGroupId;
+      return { groups, tasks, activeGroupId };
+    });
+    await invokePersist(() => window.api.deleteGroup(id2));
+    const next = get().activeGroupId;
+    await invokePersist(() => window.api.saveSetting("lastActiveGroupId", next ?? ""));
+  },
+  reorderGroups: async (orderedIds) => {
+    set((s) => ({
+      groups: orderedIds.map((id2, i) => {
+        const g = s.groups.find((x2) => x2.id === id2);
+        return g ? { ...g, position: i } : null;
+      }).filter((g) => g !== null)
+    }));
+    await invokePersist(() => window.api.reorderGroups(orderedIds));
+  },
+  createTask: async ({ groupId, title }) => {
+    const existing = get().tasks.filter((t) => t.groupId === groupId);
+    const pref = get().settings.defaultDueDate;
+    let due = null;
+    if (pref !== "none") {
+      const d = /* @__PURE__ */ new Date();
+      d.setHours(12, 0, 0, 0);
+      if (pref === "tomorrow") d.setDate(d.getDate() + 1);
+      if (pref === "next-week") d.setDate(d.getDate() + 7);
+      due = d.toISOString();
+    }
+    const task = {
+      id: uid(),
+      groupId,
+      title,
+      notes: "",
+      status: "todo",
+      dueDate: due,
+      tags: [],
+      subtasks: [],
+      position: existing.length,
+      createdAt: Date.now(),
+      completedAt: null
+    };
+    set((s) => ({ tasks: [...s.tasks, task] }));
+    await invokePersist(() => window.api.createTask(task));
+    return task;
+  },
+  updateTask: async (id2, patch) => {
+    set((s) => ({ tasks: s.tasks.map((t) => t.id === id2 ? { ...t, ...patch } : t) }));
+    await invokePersist(() => window.api.updateTask(id2, patch));
+  },
+  toggleTaskDone: async (id2) => {
+    const task = get().tasks.find((t) => t.id === id2);
+    if (!task) return;
+    const isDone = task.status === "done";
+    const patch = isDone ? { status: "todo", completedAt: null } : { status: "done", completedAt: Date.now() };
+    set((s) => ({
+      tasks: s.tasks.map(
+        (t) => t.id === id2 ? { ...t, ...patch } : t
+      )
+    }));
+    await invokePersist(() => window.api.updateTask(id2, patch));
+  },
+  deleteTask: async (id2) => {
+    set((s) => ({
+      tasks: s.tasks.filter((t) => t.id !== id2),
+      selectedTaskId: s.selectedTaskId === id2 ? null : s.selectedTaskId
+    }));
+    await invokePersist(() => window.api.deleteTask(id2));
+  },
+  reorderTasks: async (groupId, orderedIds) => {
+    set((s) => ({
+      tasks: s.tasks.map((t) => {
+        if (t.groupId !== groupId) return t;
+        const idx = orderedIds.indexOf(t.id);
+        return idx === -1 ? t : { ...t, position: idx };
+      })
+    }));
+    await invokePersist(() => window.api.reorderTasks(groupId, orderedIds));
+  },
+  addSubtask: async (taskId, title) => {
+    const subtask = { id: uid(), title, done: false, position: 0 };
+    set((s) => ({
+      tasks: s.tasks.map(
+        (t) => t.id === taskId ? { ...t, subtasks: [...t.subtasks, subtask] } : t
+      )
+    }));
+    await invokePersist(() => window.api.addSubtask(taskId, subtask));
+  },
+  toggleSubtask: async (taskId, subtaskId) => {
+    const task = get().tasks.find((t) => t.id === taskId);
+    const subtask = task?.subtasks.find((st) => st.id === subtaskId);
+    if (!subtask) return;
+    set((s) => ({
+      tasks: s.tasks.map(
+        (t) => t.id === taskId ? {
+          ...t,
+          subtasks: t.subtasks.map(
+            (st) => st.id === subtaskId ? { ...st, done: !st.done } : st
+          )
+        } : t
+      )
+    }));
+    await invokePersist(() => window.api.updateSubtask(subtaskId, { done: !subtask.done }));
+  },
+  updateSubtask: async (taskId, subtaskId, title) => {
+    set((s) => ({
+      tasks: s.tasks.map(
+        (t) => t.id === taskId ? {
+          ...t,
+          subtasks: t.subtasks.map(
+            (st) => st.id === subtaskId ? { ...st, title } : st
+          )
+        } : t
+      )
+    }));
+    await invokePersist(() => window.api.updateSubtask(subtaskId, { title }));
+  },
+  deleteSubtask: async (taskId, subtaskId) => {
+    set((s) => ({
+      tasks: s.tasks.map(
+        (t) => t.id === taskId ? { ...t, subtasks: t.subtasks.filter((st) => st.id !== subtaskId) } : t
+      )
+    }));
+    await invokePersist(() => window.api.deleteSubtask(subtaskId));
+  },
+  addTagToTask: async (taskId, tag) => {
+    const clean = tag.trim().toLowerCase();
+    if (!clean) return;
+    const task = get().tasks.find((t) => t.id === taskId);
+    if (task && !task.tags.includes(clean)) {
+      set((s) => ({
+        tasks: s.tasks.map(
+          (t) => t.id === taskId ? { ...t, tags: [...t.tags, clean] } : t
+        )
+      }));
+      await invokePersist(() => window.api.addTagToTask(taskId, clean));
+    }
+  },
+  removeTagFromTask: async (taskId, tag) => {
+    set((s) => ({
+      tasks: s.tasks.map(
+        (t) => t.id === taskId ? { ...t, tags: t.tags.filter((x2) => x2 !== tag) } : t
+      )
+    }));
+    await invokePersist(() => window.api.removeTagFromTask(taskId, tag));
+  },
+  exportGroup: (groupId, format2) => {
+    const { groups, tasks } = get();
+    const group = groups.find((g) => g.id === groupId);
+    if (!group) return;
+    const groupTasks = tasks.filter((t) => t.groupId === groupId).sort((a2, b) => a2.position - b.position);
+    let content;
+    let mime;
+    let ext;
+    if (format2 === "json") {
+      content = JSON.stringify({ group, tasks: groupTasks }, null, 2);
+      mime = "application/json";
+      ext = "json";
+    } else {
+      const headers = ["id", "title", "status", "due_date", "tags", "notes"];
+      const escape2 = (v) => `"${v.replace(/"/g, '""')}"`;
+      const rows = groupTasks.map(
+        (t) => [t.id, t.title, t.status, t.dueDate ?? "", t.tags.join("|"), t.notes].map((v) => escape2(String(v))).join(",")
+      );
+      content = [headers.join(","), ...rows].join("\n");
+      mime = "text/csv";
+      ext = "csv";
+    }
+    const blob = new Blob([content], { type: mime });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `${group.name.replace(/\s+/g, "-").toLowerCase()}.${ext}`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+  }
+}));
+const ACCENT_PALETTE = {
+  slate: { name: "Slate", hex: "#64748b", ring: "ring-slate-400", fill: "bg-slate-500", soft: "bg-slate-500/10" },
+  rose: { name: "Rose", hex: "#f43f5e", ring: "ring-rose-400", fill: "bg-rose-500", soft: "bg-rose-500/10" },
+  red: { name: "Red", hex: "#ef4444", ring: "ring-red-400", fill: "bg-red-500", soft: "bg-red-500/10" },
+  orange: { name: "Orange", hex: "#f97316", ring: "ring-orange-400", fill: "bg-orange-500", soft: "bg-orange-500/10" },
+  amber: { name: "Amber", hex: "#f59e0b", ring: "ring-amber-400", fill: "bg-amber-500", soft: "bg-amber-500/10" },
+  lime: { name: "Lime", hex: "#84cc16", ring: "ring-lime-400", fill: "bg-lime-500", soft: "bg-lime-500/10" },
+  emerald: { name: "Emerald", hex: "#10b981", ring: "ring-emerald-400", fill: "bg-emerald-500", soft: "bg-emerald-500/10" },
+  teal: { name: "Teal", hex: "#14b8a6", ring: "ring-teal-400", fill: "bg-teal-500", soft: "bg-teal-500/10" },
+  sky: { name: "Sky", hex: "#0ea5e9", ring: "ring-sky-400", fill: "bg-sky-500", soft: "bg-sky-500/10" },
+  blue: { name: "Blue", hex: "#3b82f6", ring: "ring-blue-400", fill: "bg-blue-500", soft: "bg-blue-500/10" },
+  violet: { name: "Violet", hex: "#8b5cf6", ring: "ring-violet-400", fill: "bg-violet-500", soft: "bg-violet-500/10" },
+  fuchsia: { name: "Fuchsia", hex: "#d946ef", ring: "ring-fuchsia-400", fill: "bg-fuchsia-500", soft: "bg-fuchsia-500/10" }
+};
+const ACCENT_KEYS = Object.keys(ACCENT_PALETTE);
+const useTheme = () => {
+  const theme = useStore((s) => s.theme);
+  const setTheme = useStore((s) => s.setTheme);
+  const [resolvedTheme, setResolvedTheme] = reactExports.useState("light");
+  reactExports.useEffect(() => {
+    const root2 = document.documentElement;
+    const mql = window.matchMedia("(prefers-color-scheme: dark)");
+    const apply = () => {
+      const resolved = theme === "system" ? mql.matches ? "dark" : "light" : theme;
+      setResolvedTheme(resolved);
+      root2.classList.toggle("dark", resolved === "dark");
+    };
+    apply();
+    if (theme === "system") {
+      mql.addEventListener("change", apply);
+      return () => mql.removeEventListener("change", apply);
+    }
+  }, [theme]);
+  return { theme, setTheme, resolvedTheme };
+};
+const taskOverflowDarkIcon = "data:image/svg+xml,%3csvg%20width='512'%20height='512'%20viewBox='0%200%20512%20512'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3crect%20width='512'%20height='512'%20rx='115'%20fill='url(%23darkGradient)'/%3e%3crect%20x='154'%20y='154'%20width='204'%20height='204'%20rx='8'%20stroke='white'%20stroke-width='16'%20fill='none'/%3e%3cpolyline%20points='194,256%20234,296%20318,212'%20stroke='white'%20stroke-width='16'%20fill='none'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cdefs%3e%3clinearGradient%20id='darkGradient'%20x1='0'%20y1='0'%20x2='512'%20y2='512'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0%25'%20stop-color='%231f2937'/%3e%3cstop%20offset='100%25'%20stop-color='%23000000'/%3e%3c/linearGradient%3e%3c/defs%3e%3c/svg%3e";
+const taskOverflowLightIcon = "data:image/svg+xml,%3csvg%20width='512'%20height='512'%20viewBox='0%200%20512%20512'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3crect%20width='512'%20height='512'%20rx='115'%20fill='url(%23lightGradient)'%20stroke='%23e5e7eb'%20stroke-width='4'/%3e%3crect%20x='154'%20y='154'%20width='204'%20height='204'%20rx='8'%20stroke='%23111827'%20stroke-width='16'%20fill='none'/%3e%3cpolyline%20points='194,256%20234,296%20318,212'%20stroke='%23111827'%20stroke-width='16'%20fill='none'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cdefs%3e%3clinearGradient%20id='lightGradient'%20x1='0'%20y1='0'%20x2='512'%20y2='512'%20gradientUnits='userSpaceOnUse'%3e%3cstop%20offset='0%25'%20stop-color='%23ffffff'/%3e%3cstop%20offset='100%25'%20stop-color='%23f9fafb'/%3e%3c/linearGradient%3e%3c/defs%3e%3c/svg%3e";
+const SortableGroupItem = ({
+  group,
+  active,
+  count: count2,
+  showCounts,
+  onSelect,
+  onEdit,
+  onDelete
+}) => {
+  const {
+    attributes,
+    listeners,
+    setNodeRef,
+    transform,
+    transition,
+    isDragging: isDragging2
+  } = useSortable({ id: group.id });
+  const style2 = {
+    transform: CSS$1.Transform.toString(transform),
+    transition,
+    zIndex: isDragging2 ? 50 : void 0,
+    opacity: isDragging2 ? 0.5 : 1
+  };
+  const accent = ACCENT_PALETTE[group.accent];
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs(SidebarMenuItem, { ref: setNodeRef, style: style2, children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs(
+      SidebarMenuButton,
+      {
+        ...attributes,
+        ...listeners,
+        tooltip: group.name,
+        isActive: active,
+        onClick: () => onSelect(group.id),
+        className: "group relative group-data-[state=collapsed]:justify-center",
+        children: [
+          active && /* @__PURE__ */ jsxRuntimeExports.jsx(
+            motion.div,
+            {
+              layoutId: "active-group-indicator",
+              className: "absolute inset-0 bg-sidebar-accent rounded-md z-0",
+              initial: false,
+              transition: {
+                type: "spring",
+                stiffness: 400,
+                damping: 38
+              }
+            }
+          ),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: cn("size-2 rounded-full shrink-0 relative z-10", accent.fill) }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "relative z-10 group-data-[state=collapsed]:hidden", children: group.name }),
+          showCounts && count2 > 0 && /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "ml-auto text-[10px] font-medium tabular-nums text-muted-foreground/70 relative z-10 group-data-[state=collapsed]:hidden", children: count2 })
+        ]
+      }
+    ),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs(DropdownMenu, { children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx(DropdownMenuTrigger, { asChild: true, children: /* @__PURE__ */ jsxRuntimeExports.jsxs(SidebarMenuAction, { showOnHover: true, children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Ellipsis, {}),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "sr-only", children: "More" })
+      ] }) }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs(DropdownMenuContent, { side: "right", align: "start", className: "w-48", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs(DropdownMenuItem, { onClick: () => onEdit(group.id), children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Folder, { className: "mr-2 size-4 text-muted-foreground" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "Edit" })
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(DropdownMenuSeparator, {}),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs(
+          DropdownMenuItem,
+          {
+            className: "text-destructive focus:text-destructive",
+            onClick: () => onDelete(group.id),
+            children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx(Trash2, { className: "mr-2 size-4" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "Delete Group" })
+            ]
+          }
+        )
       ] })
     ] })
   ] });
 };
-const Sidebar = () => {
+const AppSidebar = () => {
   const { resolvedTheme } = useTheme();
-  const collapsed = useStore((s) => s.sidebarCollapsed);
-  const toggle = useStore((s) => s.toggleSidebar);
   const groups = useStore((s) => s.groups);
   const tasks = useStore((s) => s.tasks);
   const activeGroupId = useStore((s) => s.activeGroupId);
@@ -31421,150 +36201,192 @@ const Sidebar = () => {
   const setHelpOpen = useStore((s) => s.setHelpOpen);
   const setSettingsOpen = useStore((s) => s.setSettingsOpen);
   const settings = useStore((s) => s.settings);
+  const deleteGroup = useStore((s) => s.deleteGroup);
+  const reorderGroups = useStore((s) => s.reorderGroups);
+  const sensors = useSensors(
+    useSensor(PointerSensor, { activationConstraint: { distance: 4 } }),
+    useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates })
+  );
   const countFor = (id2) => tasks.filter((t) => t.groupId === id2 && t.status !== "done").length;
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(TooltipProvider, { delayDuration: 200, children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
-    motion.aside,
-    {
-      initial: false,
-      animate: { width: collapsed ? 72 : settings.sidebarWidth },
-      transition: { duration: 0.2, ease: [0.16, 1, 0.3, 1] },
-      className: "relative shrink-0 h-full border-r border-border bg-sidebar text-sidebar-foreground flex flex-col",
-      style: { borderTopRightRadius: 16, borderBottomRightRadius: 16 },
-      children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsxs(
-          "div",
+  const sortedGroups = [...groups].sort((a, b) => a.position - b.position);
+  const handleDragEnd = async (event) => {
+    const { active, over } = event;
+    if (!over || active.id === over.id) return;
+    const oldIndex = sortedGroups.findIndex((g) => g.id === active.id);
+    const newIndex = sortedGroups.findIndex((g) => g.id === over.id);
+    if (oldIndex === -1 || newIndex === -1) return;
+    const next = arrayMove(sortedGroups, oldIndex, newIndex);
+    await reorderGroups(next.map((g) => g.id));
+  };
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs(Sidebar, { collapsible: "icon", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx(SidebarHeader, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(SidebarMenu, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(SidebarMenuItem, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs(SidebarMenuButton, { size: "lg", className: "hover:bg-transparent cursor-default group-data-[state=collapsed]:justify-center", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex aspect-square size-8 items-center justify-center rounded-lg bg-primary/10 ring-1 ring-border/60 overflow-hidden shrink-0", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+        "img",
+        {
+          src: resolvedTheme === "dark" ? taskOverflowDarkIcon : taskOverflowLightIcon,
+          alt: "",
+          className: "size-full object-cover"
+        }
+      ) }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "grid flex-1 text-left text-sm leading-tight group-data-[state=collapsed]:hidden", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "truncate font-semibold text-foreground", children: "TaskOverflow" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "truncate text-xs text-muted-foreground", children: "Minimal Tasks" })
+      ] })
+    ] }) }) }) }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs(SidebarContent, { children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs(SidebarGroup, { children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(SidebarGroupLabel, { children: "Workspace" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(SidebarMenu, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(SidebarMenuItem, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
+          SidebarMenuButton,
           {
-            className: cn(
-              "flex items-center h-14 shrink-0 gap-2",
-              collapsed ? "justify-center px-2" : "justify-between px-4"
-            ),
+            tooltip: "All Groups",
+            onClick: () => setActiveGroup(null),
+            isActive: !activeGroupId,
+            className: "group-data-[state=collapsed]:justify-center",
             children: [
-              !collapsed && /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2 overflow-hidden", children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "size-8 rounded-lg bg-primary/10 ring-1 ring-border/60 flex items-center justify-center shrink-0 overflow-hidden", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-                  "img",
-                  {
-                    src: resolvedTheme === "dark" ? taskOverflowDarkIcon : taskOverflowLightIcon,
-                    alt: "",
-                    "aria-hidden": "true",
-                    className: "size-full object-cover"
-                  }
-                ) }),
-                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "truncate", children: "TaskOverflow" })
-              ] }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx(
-                Button,
-                {
-                  variant: "ghost",
-                  size: "icon",
-                  onClick: toggle,
-                  className: "size-8 shrink-0",
-                  "aria-label": collapsed ? "Expand sidebar" : "Collapse sidebar",
-                  children: collapsed ? /* @__PURE__ */ jsxRuntimeExports.jsx(PanelLeft, { className: "size-4" }) : /* @__PURE__ */ jsxRuntimeExports.jsx(PanelLeftClose, { className: "size-4" })
-                }
-              )
+              /* @__PURE__ */ jsxRuntimeExports.jsx(LayoutDashboard, { className: "size-4 shrink-0" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "group-data-[state=collapsed]:hidden", children: "Overview" })
             ]
           }
-        ),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "px-3 pb-2", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(Tooltip, { children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx(TooltipTrigger, { asChild: true, children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
-            Button,
+        ) }) })
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs(SidebarGroup, { children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between pr-2 group-data-[state=collapsed]:hidden", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(SidebarGroupLabel, { children: "Groups" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "button",
             {
-              variant: "outline",
               onClick: () => openGroupDialog(),
-              className: cn(
-                "w-full justify-start gap-2 h-9",
-                collapsed && "justify-center px-0"
-              ),
-              children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsx(Plus, { className: "size-4 shrink-0" }),
-                !collapsed && /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "New Group" })
-              ]
-            }
-          ) }),
-          collapsed && /* @__PURE__ */ jsxRuntimeExports.jsx(TooltipContent, { side: "right", children: "New Group · G" })
-        ] }) }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex-1 overflow-y-auto px-2 py-1", children: /* @__PURE__ */ jsxRuntimeExports.jsx("nav", { className: "flex flex-col gap-1", children: [...groups].sort((a, b) => a.position - b.position).map((g) => {
-          const accent = ACCENT_PALETTE[g.accent];
-          const active = g.id === activeGroupId;
-          const count2 = countFor(g.id);
-          return /* @__PURE__ */ jsxRuntimeExports.jsxs(Tooltip, { children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx(TooltipTrigger, { asChild: true, children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
-              "button",
-              {
-                type: "button",
-                onClick: () => setActiveGroup(g.id),
-                className: cn(
-                  "group relative flex items-center gap-3 rounded-lg px-2 h-9 transition-colors text-left",
-                  active ? "bg-sidebar-accent text-sidebar-accent-foreground" : "hover:bg-sidebar-accent/60",
-                  collapsed && "justify-center"
-                ),
-                children: [
-                  /* @__PURE__ */ jsxRuntimeExports.jsx(
-                    "span",
-                    {
-                      className: cn(
-                        "absolute left-0 top-1/2 -translate-y-1/2 h-5 w-[3px] rounded-r-full transition-opacity",
-                        accent.fill,
-                        active ? "opacity-100" : "opacity-0"
-                      )
-                    }
-                  ),
-                  /* @__PURE__ */ jsxRuntimeExports.jsx(
-                    "span",
-                    {
-                      className: cn(
-                        "size-2 shrink-0 rounded-full transition-transform",
-                        accent.fill,
-                        active ? "scale-110" : "opacity-80"
-                      ),
-                      "aria-hidden": true
-                    }
-                  ),
-                  !collapsed && /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
-                    /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "flex-1 truncate", children: g.name }),
-                    settings.showCounts && count2 > 0 && /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-xs text-muted-foreground tabular-nums", children: count2 })
-                  ] })
-                ]
-              }
-            ) }),
-            collapsed && /* @__PURE__ */ jsxRuntimeExports.jsxs(TooltipContent, { side: "right", children: [
-              g.name,
-              count2 > 0 && ` · ${count2}`
-            ] })
-          ] }, g.id);
-        }) }) }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "border-t border-border px-3 py-3 flex items-center gap-2", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx(ThemeToggle, { compact: collapsed }),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs(Tooltip, { children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx(TooltipTrigger, { asChild: true, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-              Button,
-              {
-                variant: "ghost",
-                size: "icon",
-                className: "size-8",
-                onClick: () => setHelpOpen(true),
-                "aria-label": "Keyboard shortcuts",
-                children: /* @__PURE__ */ jsxRuntimeExports.jsx(CircleHelp, { className: "size-4" })
-              }
-            ) }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx(TooltipContent, { side: "top", children: "Shortcuts · ?" })
-          ] }),
-          !collapsed && /* @__PURE__ */ jsxRuntimeExports.jsx(
-            Button,
-            {
-              variant: "ghost",
-              size: "icon",
-              className: "size-8 ml-auto",
-              "aria-label": "Settings",
-              onClick: () => setSettingsOpen(true),
-              children: /* @__PURE__ */ jsxRuntimeExports.jsx(Settings, { className: "size-4" })
+              className: "text-muted-foreground hover:text-foreground transition-colors",
+              title: "Add Group",
+              children: /* @__PURE__ */ jsxRuntimeExports.jsx(Plus, { className: "size-3.5" })
             }
           )
-        ] })
-      ]
-    }
-  ) });
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          DndContext,
+          {
+            sensors,
+            collisionDetection: closestCenter,
+            onDragEnd: handleDragEnd,
+            autoScroll: false,
+            children: /* @__PURE__ */ jsxRuntimeExports.jsx(SortableContext, { items: sortedGroups.map((g) => g.id), strategy: verticalListSortingStrategy, children: /* @__PURE__ */ jsxRuntimeExports.jsx(SidebarMenu, { children: sortedGroups.map((g) => /* @__PURE__ */ jsxRuntimeExports.jsx(
+              SortableGroupItem,
+              {
+                group: g,
+                active: g.id === activeGroupId,
+                count: countFor(g.id),
+                showCounts: settings.showCounts,
+                onSelect: setActiveGroup,
+                onEdit: openGroupDialog,
+                onDelete: deleteGroup
+              },
+              g.id
+            )) }) })
+          }
+        )
+      ] })
+    ] }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(SidebarFooter, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs(SidebarMenu, { children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx(SidebarMenuItem, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
+        SidebarMenuButton,
+        {
+          tooltip: "Settings",
+          onClick: () => setSettingsOpen(true),
+          className: "group-data-[state=collapsed]:justify-center",
+          children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(Settings, { className: "size-4 shrink-0" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "group-data-[state=collapsed]:hidden", children: "Settings" })
+          ]
+        }
+      ) }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(SidebarMenuItem, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
+        SidebarMenuButton,
+        {
+          tooltip: "Help & Shortcuts",
+          onClick: () => setHelpOpen(true),
+          className: "group-data-[state=collapsed]:justify-center",
+          children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(CircleHelp, { className: "size-4 shrink-0" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "group-data-[state=collapsed]:hidden", children: "Help & Shortcuts" })
+          ]
+        }
+      ) })
+    ] }) }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(SidebarRail, {})
+  ] });
 };
+function Breadcrumb({ ...props }) {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx("nav", { "aria-label": "breadcrumb", "data-slot": "breadcrumb", ...props });
+}
+function BreadcrumbList({ className, ...props }) {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    "ol",
+    {
+      "data-slot": "breadcrumb-list",
+      className: cn(
+        "text-muted-foreground flex flex-wrap items-center gap-1.5 text-sm break-words sm:gap-2.5",
+        className
+      ),
+      ...props
+    }
+  );
+}
+function BreadcrumbItem({ className, ...props }) {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    "li",
+    {
+      "data-slot": "breadcrumb-item",
+      className: cn("inline-flex items-center gap-1.5", className),
+      ...props
+    }
+  );
+}
+function BreadcrumbLink({
+  asChild,
+  className,
+  ...props
+}) {
+  const Comp = asChild ? Slot : "a";
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    Comp,
+    {
+      "data-slot": "breadcrumb-link",
+      className: cn("hover:text-foreground transition-colors", className),
+      ...props
+    }
+  );
+}
+function BreadcrumbPage({ className, ...props }) {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    "span",
+    {
+      "data-slot": "breadcrumb-page",
+      role: "link",
+      "aria-disabled": "true",
+      "aria-current": "page",
+      className: cn("text-foreground font-normal", className),
+      ...props
+    }
+  );
+}
+function BreadcrumbSeparator({
+  children,
+  className,
+  ...props
+}) {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    "li",
+    {
+      "data-slot": "breadcrumb-separator",
+      role: "presentation",
+      "aria-hidden": "true",
+      className: cn("[&>svg]:size-3.5", className),
+      ...props,
+      children: children ?? /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronRight, {})
+    }
+  );
+}
 const SearchBar = reactExports.forwardRef((_, ref) => {
   const query = useStore((s) => s.searchQuery);
   const setSearch = useStore((s) => s.setSearch);
@@ -31598,7 +36420,7 @@ const SearchBar = reactExports.forwardRef((_, ref) => {
             onClick: () => setSearch(""),
             className: "mr-1 size-7 rounded-md flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-accent",
             "aria-label": "Clear search",
-            children: /* @__PURE__ */ jsxRuntimeExports.jsx(X, { className: "size-3.5" })
+            children: /* @__PURE__ */ jsxRuntimeExports.jsx(X$1, { className: "size-3.5" })
           }
         )
       ]
@@ -31607,7 +36429,6 @@ const SearchBar = reactExports.forwardRef((_, ref) => {
 });
 SearchBar.displayName = "SearchBar";
 const GroupHeader = ({ group, totalCount, doneCount }) => {
-  const openGroupDialog = useStore((s) => s.openGroupDialog);
   const exportGroup = useStore((s) => s.exportGroup);
   const palette = ACCENT_PALETTE[group.accent];
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-3", children: [
@@ -31617,28 +36438,27 @@ const GroupHeader = ({ group, totalCount, doneCount }) => {
       /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-muted-foreground tabular-nums", children: totalCount === 0 ? "No tasks yet" : `${doneCount} of ${totalCount} complete` })
     ] }),
     /* @__PURE__ */ jsxRuntimeExports.jsxs(DropdownMenu, { children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx(DropdownMenuTrigger, { asChild: true, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { variant: "ghost", size: "icon", className: "size-9", "aria-label": "Group options", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Ellipsis, { className: "size-4" }) }) }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(DropdownMenuTrigger, { asChild: true, children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
+        Button,
+        {
+          variant: "ghost",
+          className: "h-9 gap-2 px-3",
+          "aria-label": "Export group",
+          title: "Export group",
+          children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(Download, { className: "size-4" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "Export" })
+          ]
+        }
+      ) }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs(DropdownMenuContent, { align: "end", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsxs(DropdownMenuItem, { onClick: () => openGroupDialog(group.id), children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx(Pencil, { className: "size-4 mr-2" }),
-          " Edit group"
+        /* @__PURE__ */ jsxRuntimeExports.jsxs(DropdownMenuItem, { onClick: () => exportGroup(group.id, "json"), children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Download, { className: "mr-2 size-4" }),
+          "JSON"
         ] }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx(DropdownMenuSeparator, {}),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs(DropdownMenuSub, { children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsxs(DropdownMenuSubTrigger, { children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx(Download, { className: "size-4 mr-2" }),
-            " Export"
-          ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs(DropdownMenuSubContent, { children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsxs(DropdownMenuItem, { onClick: () => exportGroup(group.id, "json"), children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx(FileJson, { className: "size-4 mr-2" }),
-              " JSON"
-            ] }),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs(DropdownMenuItem, { onClick: () => exportGroup(group.id, "csv"), children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx(FileText, { className: "size-4 mr-2" }),
-              " CSV"
-            ] })
-          ] })
+        /* @__PURE__ */ jsxRuntimeExports.jsxs(DropdownMenuItem, { onClick: () => exportGroup(group.id, "csv"), children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Download, { className: "mr-2 size-4" }),
+          "CSV"
         ] })
       ] })
     ] })
@@ -31675,7 +36495,7 @@ const TagBadge = ({ tag, onRemove, active, onClick }) => {
               }
             },
             className: "opacity-60 hover:opacity-100",
-            children: /* @__PURE__ */ jsxRuntimeExports.jsx(X, { className: "size-3" })
+            children: /* @__PURE__ */ jsxRuntimeExports.jsx(X$1, { className: "size-3" })
           }
         )
       ]
@@ -31718,3970 +36538,6 @@ const FilterBar = ({ availableTags }) => {
     )) })
   ] });
 };
-function useCombinedRefs() {
-  for (var _len = arguments.length, refs = new Array(_len), _key = 0; _key < _len; _key++) {
-    refs[_key] = arguments[_key];
-  }
-  return reactExports.useMemo(
-    () => (node) => {
-      refs.forEach((ref) => ref(node));
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    refs
-  );
-}
-const canUseDOM = typeof window !== "undefined" && typeof window.document !== "undefined" && typeof window.document.createElement !== "undefined";
-function isWindow(element) {
-  const elementString = Object.prototype.toString.call(element);
-  return elementString === "[object Window]" || // In Electron context the Window object serializes to [object global]
-  elementString === "[object global]";
-}
-function isNode(node) {
-  return "nodeType" in node;
-}
-function getWindow(target) {
-  var _target$ownerDocument, _target$ownerDocument2;
-  if (!target) {
-    return window;
-  }
-  if (isWindow(target)) {
-    return target;
-  }
-  if (!isNode(target)) {
-    return window;
-  }
-  return (_target$ownerDocument = (_target$ownerDocument2 = target.ownerDocument) == null ? void 0 : _target$ownerDocument2.defaultView) != null ? _target$ownerDocument : window;
-}
-function isDocument(node) {
-  const {
-    Document
-  } = getWindow(node);
-  return node instanceof Document;
-}
-function isHTMLElement(node) {
-  if (isWindow(node)) {
-    return false;
-  }
-  return node instanceof getWindow(node).HTMLElement;
-}
-function isSVGElement(node) {
-  return node instanceof getWindow(node).SVGElement;
-}
-function getOwnerDocument(target) {
-  if (!target) {
-    return document;
-  }
-  if (isWindow(target)) {
-    return target.document;
-  }
-  if (!isNode(target)) {
-    return document;
-  }
-  if (isDocument(target)) {
-    return target;
-  }
-  if (isHTMLElement(target) || isSVGElement(target)) {
-    return target.ownerDocument;
-  }
-  return document;
-}
-const useIsomorphicLayoutEffect = canUseDOM ? reactExports.useLayoutEffect : reactExports.useEffect;
-function useEvent(handler) {
-  const handlerRef = reactExports.useRef(handler);
-  useIsomorphicLayoutEffect(() => {
-    handlerRef.current = handler;
-  });
-  return reactExports.useCallback(function() {
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-    return handlerRef.current == null ? void 0 : handlerRef.current(...args);
-  }, []);
-}
-function useInterval() {
-  const intervalRef = reactExports.useRef(null);
-  const set = reactExports.useCallback((listener, duration) => {
-    intervalRef.current = setInterval(listener, duration);
-  }, []);
-  const clear = reactExports.useCallback(() => {
-    if (intervalRef.current !== null) {
-      clearInterval(intervalRef.current);
-      intervalRef.current = null;
-    }
-  }, []);
-  return [set, clear];
-}
-function useLatestValue(value, dependencies) {
-  if (dependencies === void 0) {
-    dependencies = [value];
-  }
-  const valueRef = reactExports.useRef(value);
-  useIsomorphicLayoutEffect(() => {
-    if (valueRef.current !== value) {
-      valueRef.current = value;
-    }
-  }, dependencies);
-  return valueRef;
-}
-function useLazyMemo(callback, dependencies) {
-  const valueRef = reactExports.useRef();
-  return reactExports.useMemo(
-    () => {
-      const newValue = callback(valueRef.current);
-      valueRef.current = newValue;
-      return newValue;
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [...dependencies]
-  );
-}
-function useNodeRef(onChange) {
-  const onChangeHandler = useEvent(onChange);
-  const node = reactExports.useRef(null);
-  const setNodeRef = reactExports.useCallback(
-    (element) => {
-      if (element !== node.current) {
-        onChangeHandler == null ? void 0 : onChangeHandler(element, node.current);
-      }
-      node.current = element;
-    },
-    //eslint-disable-next-line
-    []
-  );
-  return [node, setNodeRef];
-}
-function usePrevious$1(value) {
-  const ref = reactExports.useRef();
-  reactExports.useEffect(() => {
-    ref.current = value;
-  }, [value]);
-  return ref.current;
-}
-let ids = {};
-function useUniqueId(prefix2, value) {
-  return reactExports.useMemo(() => {
-    if (value) {
-      return value;
-    }
-    const id2 = ids[prefix2] == null ? 0 : ids[prefix2] + 1;
-    ids[prefix2] = id2;
-    return prefix2 + "-" + id2;
-  }, [prefix2, value]);
-}
-function createAdjustmentFn(modifier) {
-  return function(object) {
-    for (var _len = arguments.length, adjustments = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-      adjustments[_key - 1] = arguments[_key];
-    }
-    return adjustments.reduce((accumulator, adjustment) => {
-      const entries = Object.entries(adjustment);
-      for (const [key, valueAdjustment] of entries) {
-        const value = accumulator[key];
-        if (value != null) {
-          accumulator[key] = value + modifier * valueAdjustment;
-        }
-      }
-      return accumulator;
-    }, {
-      ...object
-    });
-  };
-}
-const add = /* @__PURE__ */ createAdjustmentFn(1);
-const subtract = /* @__PURE__ */ createAdjustmentFn(-1);
-function hasViewportRelativeCoordinates(event) {
-  return "clientX" in event && "clientY" in event;
-}
-function isKeyboardEvent(event) {
-  if (!event) {
-    return false;
-  }
-  const {
-    KeyboardEvent
-  } = getWindow(event.target);
-  return KeyboardEvent && event instanceof KeyboardEvent;
-}
-function isTouchEvent(event) {
-  if (!event) {
-    return false;
-  }
-  const {
-    TouchEvent
-  } = getWindow(event.target);
-  return TouchEvent && event instanceof TouchEvent;
-}
-function getEventCoordinates(event) {
-  if (isTouchEvent(event)) {
-    if (event.touches && event.touches.length) {
-      const {
-        clientX: x2,
-        clientY: y
-      } = event.touches[0];
-      return {
-        x: x2,
-        y
-      };
-    } else if (event.changedTouches && event.changedTouches.length) {
-      const {
-        clientX: x2,
-        clientY: y
-      } = event.changedTouches[0];
-      return {
-        x: x2,
-        y
-      };
-    }
-  }
-  if (hasViewportRelativeCoordinates(event)) {
-    return {
-      x: event.clientX,
-      y: event.clientY
-    };
-  }
-  return null;
-}
-const CSS$1 = /* @__PURE__ */ Object.freeze({
-  Translate: {
-    toString(transform) {
-      if (!transform) {
-        return;
-      }
-      const {
-        x: x2,
-        y
-      } = transform;
-      return "translate3d(" + (x2 ? Math.round(x2) : 0) + "px, " + (y ? Math.round(y) : 0) + "px, 0)";
-    }
-  },
-  Scale: {
-    toString(transform) {
-      if (!transform) {
-        return;
-      }
-      const {
-        scaleX: scaleX2,
-        scaleY: scaleY2
-      } = transform;
-      return "scaleX(" + scaleX2 + ") scaleY(" + scaleY2 + ")";
-    }
-  },
-  Transform: {
-    toString(transform) {
-      if (!transform) {
-        return;
-      }
-      return [CSS$1.Translate.toString(transform), CSS$1.Scale.toString(transform)].join(" ");
-    }
-  },
-  Transition: {
-    toString(_ref) {
-      let {
-        property,
-        duration,
-        easing
-      } = _ref;
-      return property + " " + duration + "ms " + easing;
-    }
-  }
-});
-const SELECTOR = "a,frame,iframe,input:not([type=hidden]):not(:disabled),select:not(:disabled),textarea:not(:disabled),button:not(:disabled),*[tabindex]";
-function findFirstFocusableNode(element) {
-  if (element.matches(SELECTOR)) {
-    return element;
-  }
-  return element.querySelector(SELECTOR);
-}
-const hiddenStyles = {
-  display: "none"
-};
-function HiddenText(_ref) {
-  let {
-    id: id2,
-    value
-  } = _ref;
-  return React$2.createElement("div", {
-    id: id2,
-    style: hiddenStyles
-  }, value);
-}
-function LiveRegion(_ref) {
-  let {
-    id: id2,
-    announcement,
-    ariaLiveType = "assertive"
-  } = _ref;
-  const visuallyHidden = {
-    position: "fixed",
-    top: 0,
-    left: 0,
-    width: 1,
-    height: 1,
-    margin: -1,
-    border: 0,
-    padding: 0,
-    overflow: "hidden",
-    clip: "rect(0 0 0 0)",
-    clipPath: "inset(100%)",
-    whiteSpace: "nowrap"
-  };
-  return React$2.createElement("div", {
-    id: id2,
-    style: visuallyHidden,
-    role: "status",
-    "aria-live": ariaLiveType,
-    "aria-atomic": true
-  }, announcement);
-}
-function useAnnouncement() {
-  const [announcement, setAnnouncement] = reactExports.useState("");
-  const announce = reactExports.useCallback((value) => {
-    if (value != null) {
-      setAnnouncement(value);
-    }
-  }, []);
-  return {
-    announce,
-    announcement
-  };
-}
-const DndMonitorContext = /* @__PURE__ */ reactExports.createContext(null);
-function useDndMonitor(listener) {
-  const registerListener = reactExports.useContext(DndMonitorContext);
-  reactExports.useEffect(() => {
-    if (!registerListener) {
-      throw new Error("useDndMonitor must be used within a children of <DndContext>");
-    }
-    const unsubscribe = registerListener(listener);
-    return unsubscribe;
-  }, [listener, registerListener]);
-}
-function useDndMonitorProvider() {
-  const [listeners] = reactExports.useState(() => /* @__PURE__ */ new Set());
-  const registerListener = reactExports.useCallback((listener) => {
-    listeners.add(listener);
-    return () => listeners.delete(listener);
-  }, [listeners]);
-  const dispatch = reactExports.useCallback((_ref) => {
-    let {
-      type,
-      event
-    } = _ref;
-    listeners.forEach((listener) => {
-      var _listener$type;
-      return (_listener$type = listener[type]) == null ? void 0 : _listener$type.call(listener, event);
-    });
-  }, [listeners]);
-  return [dispatch, registerListener];
-}
-const defaultScreenReaderInstructions = {
-  draggable: "\n    To pick up a draggable item, press the space bar.\n    While dragging, use the arrow keys to move the item.\n    Press space again to drop the item in its new position, or press escape to cancel.\n  "
-};
-const defaultAnnouncements = {
-  onDragStart(_ref) {
-    let {
-      active
-    } = _ref;
-    return "Picked up draggable item " + active.id + ".";
-  },
-  onDragOver(_ref2) {
-    let {
-      active,
-      over
-    } = _ref2;
-    if (over) {
-      return "Draggable item " + active.id + " was moved over droppable area " + over.id + ".";
-    }
-    return "Draggable item " + active.id + " is no longer over a droppable area.";
-  },
-  onDragEnd(_ref3) {
-    let {
-      active,
-      over
-    } = _ref3;
-    if (over) {
-      return "Draggable item " + active.id + " was dropped over droppable area " + over.id;
-    }
-    return "Draggable item " + active.id + " was dropped.";
-  },
-  onDragCancel(_ref4) {
-    let {
-      active
-    } = _ref4;
-    return "Dragging was cancelled. Draggable item " + active.id + " was dropped.";
-  }
-};
-function Accessibility(_ref) {
-  let {
-    announcements = defaultAnnouncements,
-    container,
-    hiddenTextDescribedById,
-    screenReaderInstructions = defaultScreenReaderInstructions
-  } = _ref;
-  const {
-    announce,
-    announcement
-  } = useAnnouncement();
-  const liveRegionId = useUniqueId("DndLiveRegion");
-  const [mounted, setMounted] = reactExports.useState(false);
-  reactExports.useEffect(() => {
-    setMounted(true);
-  }, []);
-  useDndMonitor(reactExports.useMemo(() => ({
-    onDragStart(_ref2) {
-      let {
-        active
-      } = _ref2;
-      announce(announcements.onDragStart({
-        active
-      }));
-    },
-    onDragMove(_ref3) {
-      let {
-        active,
-        over
-      } = _ref3;
-      if (announcements.onDragMove) {
-        announce(announcements.onDragMove({
-          active,
-          over
-        }));
-      }
-    },
-    onDragOver(_ref4) {
-      let {
-        active,
-        over
-      } = _ref4;
-      announce(announcements.onDragOver({
-        active,
-        over
-      }));
-    },
-    onDragEnd(_ref5) {
-      let {
-        active,
-        over
-      } = _ref5;
-      announce(announcements.onDragEnd({
-        active,
-        over
-      }));
-    },
-    onDragCancel(_ref6) {
-      let {
-        active,
-        over
-      } = _ref6;
-      announce(announcements.onDragCancel({
-        active,
-        over
-      }));
-    }
-  }), [announce, announcements]));
-  if (!mounted) {
-    return null;
-  }
-  const markup = React$2.createElement(React$2.Fragment, null, React$2.createElement(HiddenText, {
-    id: hiddenTextDescribedById,
-    value: screenReaderInstructions.draggable
-  }), React$2.createElement(LiveRegion, {
-    id: liveRegionId,
-    announcement
-  }));
-  return container ? reactDomExports.createPortal(markup, container) : markup;
-}
-var Action$1;
-(function(Action2) {
-  Action2["DragStart"] = "dragStart";
-  Action2["DragMove"] = "dragMove";
-  Action2["DragEnd"] = "dragEnd";
-  Action2["DragCancel"] = "dragCancel";
-  Action2["DragOver"] = "dragOver";
-  Action2["RegisterDroppable"] = "registerDroppable";
-  Action2["SetDroppableDisabled"] = "setDroppableDisabled";
-  Action2["UnregisterDroppable"] = "unregisterDroppable";
-})(Action$1 || (Action$1 = {}));
-function noop2() {
-}
-function useSensor(sensor, options) {
-  return reactExports.useMemo(
-    () => ({
-      sensor,
-      options: options != null ? options : {}
-    }),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [sensor, options]
-  );
-}
-function useSensors() {
-  for (var _len = arguments.length, sensors = new Array(_len), _key = 0; _key < _len; _key++) {
-    sensors[_key] = arguments[_key];
-  }
-  return reactExports.useMemo(
-    () => [...sensors].filter((sensor) => sensor != null),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [...sensors]
-  );
-}
-const defaultCoordinates = /* @__PURE__ */ Object.freeze({
-  x: 0,
-  y: 0
-});
-function distanceBetween(p1, p2) {
-  return Math.sqrt(Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2));
-}
-function sortCollisionsAsc(_ref, _ref2) {
-  let {
-    data: {
-      value: a
-    }
-  } = _ref;
-  let {
-    data: {
-      value: b
-    }
-  } = _ref2;
-  return a - b;
-}
-function sortCollisionsDesc(_ref3, _ref4) {
-  let {
-    data: {
-      value: a
-    }
-  } = _ref3;
-  let {
-    data: {
-      value: b
-    }
-  } = _ref4;
-  return b - a;
-}
-function cornersOfRectangle(_ref5) {
-  let {
-    left,
-    top,
-    height,
-    width
-  } = _ref5;
-  return [{
-    x: left,
-    y: top
-  }, {
-    x: left + width,
-    y: top
-  }, {
-    x: left,
-    y: top + height
-  }, {
-    x: left + width,
-    y: top + height
-  }];
-}
-function getFirstCollision(collisions, property) {
-  if (!collisions || collisions.length === 0) {
-    return null;
-  }
-  const [firstCollision] = collisions;
-  return firstCollision[property];
-}
-function centerOfRectangle(rect, left, top) {
-  if (left === void 0) {
-    left = rect.left;
-  }
-  if (top === void 0) {
-    top = rect.top;
-  }
-  return {
-    x: left + rect.width * 0.5,
-    y: top + rect.height * 0.5
-  };
-}
-const closestCenter = (_ref) => {
-  let {
-    collisionRect,
-    droppableRects,
-    droppableContainers
-  } = _ref;
-  const centerRect = centerOfRectangle(collisionRect, collisionRect.left, collisionRect.top);
-  const collisions = [];
-  for (const droppableContainer of droppableContainers) {
-    const {
-      id: id2
-    } = droppableContainer;
-    const rect = droppableRects.get(id2);
-    if (rect) {
-      const distBetween = distanceBetween(centerOfRectangle(rect), centerRect);
-      collisions.push({
-        id: id2,
-        data: {
-          droppableContainer,
-          value: distBetween
-        }
-      });
-    }
-  }
-  return collisions.sort(sortCollisionsAsc);
-};
-const closestCorners = (_ref) => {
-  let {
-    collisionRect,
-    droppableRects,
-    droppableContainers
-  } = _ref;
-  const corners = cornersOfRectangle(collisionRect);
-  const collisions = [];
-  for (const droppableContainer of droppableContainers) {
-    const {
-      id: id2
-    } = droppableContainer;
-    const rect = droppableRects.get(id2);
-    if (rect) {
-      const rectCorners = cornersOfRectangle(rect);
-      const distances = corners.reduce((accumulator, corner, index2) => {
-        return accumulator + distanceBetween(rectCorners[index2], corner);
-      }, 0);
-      const effectiveDistance = Number((distances / 4).toFixed(4));
-      collisions.push({
-        id: id2,
-        data: {
-          droppableContainer,
-          value: effectiveDistance
-        }
-      });
-    }
-  }
-  return collisions.sort(sortCollisionsAsc);
-};
-function getIntersectionRatio(entry, target) {
-  const top = Math.max(target.top, entry.top);
-  const left = Math.max(target.left, entry.left);
-  const right = Math.min(target.left + target.width, entry.left + entry.width);
-  const bottom = Math.min(target.top + target.height, entry.top + entry.height);
-  const width = right - left;
-  const height = bottom - top;
-  if (left < right && top < bottom) {
-    const targetArea = target.width * target.height;
-    const entryArea = entry.width * entry.height;
-    const intersectionArea = width * height;
-    const intersectionRatio = intersectionArea / (targetArea + entryArea - intersectionArea);
-    return Number(intersectionRatio.toFixed(4));
-  }
-  return 0;
-}
-const rectIntersection = (_ref) => {
-  let {
-    collisionRect,
-    droppableRects,
-    droppableContainers
-  } = _ref;
-  const collisions = [];
-  for (const droppableContainer of droppableContainers) {
-    const {
-      id: id2
-    } = droppableContainer;
-    const rect = droppableRects.get(id2);
-    if (rect) {
-      const intersectionRatio = getIntersectionRatio(rect, collisionRect);
-      if (intersectionRatio > 0) {
-        collisions.push({
-          id: id2,
-          data: {
-            droppableContainer,
-            value: intersectionRatio
-          }
-        });
-      }
-    }
-  }
-  return collisions.sort(sortCollisionsDesc);
-};
-function adjustScale(transform, rect1, rect2) {
-  return {
-    ...transform,
-    scaleX: rect1 && rect2 ? rect1.width / rect2.width : 1,
-    scaleY: rect1 && rect2 ? rect1.height / rect2.height : 1
-  };
-}
-function getRectDelta(rect1, rect2) {
-  return rect1 && rect2 ? {
-    x: rect1.left - rect2.left,
-    y: rect1.top - rect2.top
-  } : defaultCoordinates;
-}
-function createRectAdjustmentFn(modifier) {
-  return function adjustClientRect(rect) {
-    for (var _len = arguments.length, adjustments = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-      adjustments[_key - 1] = arguments[_key];
-    }
-    return adjustments.reduce((acc, adjustment) => ({
-      ...acc,
-      top: acc.top + modifier * adjustment.y,
-      bottom: acc.bottom + modifier * adjustment.y,
-      left: acc.left + modifier * adjustment.x,
-      right: acc.right + modifier * adjustment.x
-    }), {
-      ...rect
-    });
-  };
-}
-const getAdjustedRect = /* @__PURE__ */ createRectAdjustmentFn(1);
-function parseTransform(transform) {
-  if (transform.startsWith("matrix3d(")) {
-    const transformArray = transform.slice(9, -1).split(/, /);
-    return {
-      x: +transformArray[12],
-      y: +transformArray[13],
-      scaleX: +transformArray[0],
-      scaleY: +transformArray[5]
-    };
-  } else if (transform.startsWith("matrix(")) {
-    const transformArray = transform.slice(7, -1).split(/, /);
-    return {
-      x: +transformArray[4],
-      y: +transformArray[5],
-      scaleX: +transformArray[0],
-      scaleY: +transformArray[3]
-    };
-  }
-  return null;
-}
-function inverseTransform(rect, transform, transformOrigin2) {
-  const parsedTransform = parseTransform(transform);
-  if (!parsedTransform) {
-    return rect;
-  }
-  const {
-    scaleX: scaleX2,
-    scaleY: scaleY2,
-    x: translateX,
-    y: translateY
-  } = parsedTransform;
-  const x2 = rect.left - translateX - (1 - scaleX2) * parseFloat(transformOrigin2);
-  const y = rect.top - translateY - (1 - scaleY2) * parseFloat(transformOrigin2.slice(transformOrigin2.indexOf(" ") + 1));
-  const w = scaleX2 ? rect.width / scaleX2 : rect.width;
-  const h = scaleY2 ? rect.height / scaleY2 : rect.height;
-  return {
-    width: w,
-    height: h,
-    top: y,
-    right: x2 + w,
-    bottom: y + h,
-    left: x2
-  };
-}
-const defaultOptions$1 = {
-  ignoreTransform: false
-};
-function getClientRect(element, options) {
-  if (options === void 0) {
-    options = defaultOptions$1;
-  }
-  let rect = element.getBoundingClientRect();
-  if (options.ignoreTransform) {
-    const {
-      transform,
-      transformOrigin: transformOrigin2
-    } = getWindow(element).getComputedStyle(element);
-    if (transform) {
-      rect = inverseTransform(rect, transform, transformOrigin2);
-    }
-  }
-  const {
-    top,
-    left,
-    width,
-    height,
-    bottom,
-    right
-  } = rect;
-  return {
-    top,
-    left,
-    width,
-    height,
-    bottom,
-    right
-  };
-}
-function getTransformAgnosticClientRect(element) {
-  return getClientRect(element, {
-    ignoreTransform: true
-  });
-}
-function getWindowClientRect(element) {
-  const width = element.innerWidth;
-  const height = element.innerHeight;
-  return {
-    top: 0,
-    left: 0,
-    right: width,
-    bottom: height,
-    width,
-    height
-  };
-}
-function isFixed(node, computedStyle) {
-  if (computedStyle === void 0) {
-    computedStyle = getWindow(node).getComputedStyle(node);
-  }
-  return computedStyle.position === "fixed";
-}
-function isScrollable(element, computedStyle) {
-  if (computedStyle === void 0) {
-    computedStyle = getWindow(element).getComputedStyle(element);
-  }
-  const overflowRegex = /(auto|scroll|overlay)/;
-  const properties2 = ["overflow", "overflowX", "overflowY"];
-  return properties2.some((property) => {
-    const value = computedStyle[property];
-    return typeof value === "string" ? overflowRegex.test(value) : false;
-  });
-}
-function getScrollableAncestors(element, limit) {
-  const scrollParents = [];
-  function findScrollableAncestors(node) {
-    if (limit != null && scrollParents.length >= limit) {
-      return scrollParents;
-    }
-    if (!node) {
-      return scrollParents;
-    }
-    if (isDocument(node) && node.scrollingElement != null && !scrollParents.includes(node.scrollingElement)) {
-      scrollParents.push(node.scrollingElement);
-      return scrollParents;
-    }
-    if (!isHTMLElement(node) || isSVGElement(node)) {
-      return scrollParents;
-    }
-    if (scrollParents.includes(node)) {
-      return scrollParents;
-    }
-    const computedStyle = getWindow(element).getComputedStyle(node);
-    if (node !== element) {
-      if (isScrollable(node, computedStyle)) {
-        scrollParents.push(node);
-      }
-    }
-    if (isFixed(node, computedStyle)) {
-      return scrollParents;
-    }
-    return findScrollableAncestors(node.parentNode);
-  }
-  if (!element) {
-    return scrollParents;
-  }
-  return findScrollableAncestors(element);
-}
-function getFirstScrollableAncestor(node) {
-  const [firstScrollableAncestor] = getScrollableAncestors(node, 1);
-  return firstScrollableAncestor != null ? firstScrollableAncestor : null;
-}
-function getScrollableElement(element) {
-  if (!canUseDOM || !element) {
-    return null;
-  }
-  if (isWindow(element)) {
-    return element;
-  }
-  if (!isNode(element)) {
-    return null;
-  }
-  if (isDocument(element) || element === getOwnerDocument(element).scrollingElement) {
-    return window;
-  }
-  if (isHTMLElement(element)) {
-    return element;
-  }
-  return null;
-}
-function getScrollXCoordinate(element) {
-  if (isWindow(element)) {
-    return element.scrollX;
-  }
-  return element.scrollLeft;
-}
-function getScrollYCoordinate(element) {
-  if (isWindow(element)) {
-    return element.scrollY;
-  }
-  return element.scrollTop;
-}
-function getScrollCoordinates(element) {
-  return {
-    x: getScrollXCoordinate(element),
-    y: getScrollYCoordinate(element)
-  };
-}
-var Direction;
-(function(Direction2) {
-  Direction2[Direction2["Forward"] = 1] = "Forward";
-  Direction2[Direction2["Backward"] = -1] = "Backward";
-})(Direction || (Direction = {}));
-function isDocumentScrollingElement(element) {
-  if (!canUseDOM || !element) {
-    return false;
-  }
-  return element === document.scrollingElement;
-}
-function getScrollPosition(scrollingContainer) {
-  const minScroll = {
-    x: 0,
-    y: 0
-  };
-  const dimensions = isDocumentScrollingElement(scrollingContainer) ? {
-    height: window.innerHeight,
-    width: window.innerWidth
-  } : {
-    height: scrollingContainer.clientHeight,
-    width: scrollingContainer.clientWidth
-  };
-  const maxScroll = {
-    x: scrollingContainer.scrollWidth - dimensions.width,
-    y: scrollingContainer.scrollHeight - dimensions.height
-  };
-  const isTop = scrollingContainer.scrollTop <= minScroll.y;
-  const isLeft = scrollingContainer.scrollLeft <= minScroll.x;
-  const isBottom = scrollingContainer.scrollTop >= maxScroll.y;
-  const isRight = scrollingContainer.scrollLeft >= maxScroll.x;
-  return {
-    isTop,
-    isLeft,
-    isBottom,
-    isRight,
-    maxScroll,
-    minScroll
-  };
-}
-const defaultThreshold = {
-  x: 0.2,
-  y: 0.2
-};
-function getScrollDirectionAndSpeed(scrollContainer, scrollContainerRect, _ref, acceleration, thresholdPercentage) {
-  let {
-    top,
-    left,
-    right,
-    bottom
-  } = _ref;
-  if (acceleration === void 0) {
-    acceleration = 10;
-  }
-  if (thresholdPercentage === void 0) {
-    thresholdPercentage = defaultThreshold;
-  }
-  const {
-    isTop,
-    isBottom,
-    isLeft,
-    isRight
-  } = getScrollPosition(scrollContainer);
-  const direction = {
-    x: 0,
-    y: 0
-  };
-  const speed = {
-    x: 0,
-    y: 0
-  };
-  const threshold = {
-    height: scrollContainerRect.height * thresholdPercentage.y,
-    width: scrollContainerRect.width * thresholdPercentage.x
-  };
-  if (!isTop && top <= scrollContainerRect.top + threshold.height) {
-    direction.y = Direction.Backward;
-    speed.y = acceleration * Math.abs((scrollContainerRect.top + threshold.height - top) / threshold.height);
-  } else if (!isBottom && bottom >= scrollContainerRect.bottom - threshold.height) {
-    direction.y = Direction.Forward;
-    speed.y = acceleration * Math.abs((scrollContainerRect.bottom - threshold.height - bottom) / threshold.height);
-  }
-  if (!isRight && right >= scrollContainerRect.right - threshold.width) {
-    direction.x = Direction.Forward;
-    speed.x = acceleration * Math.abs((scrollContainerRect.right - threshold.width - right) / threshold.width);
-  } else if (!isLeft && left <= scrollContainerRect.left + threshold.width) {
-    direction.x = Direction.Backward;
-    speed.x = acceleration * Math.abs((scrollContainerRect.left + threshold.width - left) / threshold.width);
-  }
-  return {
-    direction,
-    speed
-  };
-}
-function getScrollElementRect(element) {
-  if (element === document.scrollingElement) {
-    const {
-      innerWidth,
-      innerHeight
-    } = window;
-    return {
-      top: 0,
-      left: 0,
-      right: innerWidth,
-      bottom: innerHeight,
-      width: innerWidth,
-      height: innerHeight
-    };
-  }
-  const {
-    top,
-    left,
-    right,
-    bottom
-  } = element.getBoundingClientRect();
-  return {
-    top,
-    left,
-    right,
-    bottom,
-    width: element.clientWidth,
-    height: element.clientHeight
-  };
-}
-function getScrollOffsets(scrollableAncestors) {
-  return scrollableAncestors.reduce((acc, node) => {
-    return add(acc, getScrollCoordinates(node));
-  }, defaultCoordinates);
-}
-function getScrollXOffset(scrollableAncestors) {
-  return scrollableAncestors.reduce((acc, node) => {
-    return acc + getScrollXCoordinate(node);
-  }, 0);
-}
-function getScrollYOffset(scrollableAncestors) {
-  return scrollableAncestors.reduce((acc, node) => {
-    return acc + getScrollYCoordinate(node);
-  }, 0);
-}
-function scrollIntoViewIfNeeded(element, measure) {
-  if (measure === void 0) {
-    measure = getClientRect;
-  }
-  if (!element) {
-    return;
-  }
-  const {
-    top,
-    left,
-    bottom,
-    right
-  } = measure(element);
-  const firstScrollableAncestor = getFirstScrollableAncestor(element);
-  if (!firstScrollableAncestor) {
-    return;
-  }
-  if (bottom <= 0 || right <= 0 || top >= window.innerHeight || left >= window.innerWidth) {
-    element.scrollIntoView({
-      block: "center",
-      inline: "center"
-    });
-  }
-}
-const properties = [["x", ["left", "right"], getScrollXOffset], ["y", ["top", "bottom"], getScrollYOffset]];
-class Rect {
-  constructor(rect, element) {
-    this.rect = void 0;
-    this.width = void 0;
-    this.height = void 0;
-    this.top = void 0;
-    this.bottom = void 0;
-    this.right = void 0;
-    this.left = void 0;
-    const scrollableAncestors = getScrollableAncestors(element);
-    const scrollOffsets = getScrollOffsets(scrollableAncestors);
-    this.rect = {
-      ...rect
-    };
-    this.width = rect.width;
-    this.height = rect.height;
-    for (const [axis, keys, getScrollOffset] of properties) {
-      for (const key of keys) {
-        Object.defineProperty(this, key, {
-          get: () => {
-            const currentOffsets = getScrollOffset(scrollableAncestors);
-            const scrollOffsetsDeltla = scrollOffsets[axis] - currentOffsets;
-            return this.rect[key] + scrollOffsetsDeltla;
-          },
-          enumerable: true
-        });
-      }
-    }
-    Object.defineProperty(this, "rect", {
-      enumerable: false
-    });
-  }
-}
-class Listeners {
-  constructor(target) {
-    this.target = void 0;
-    this.listeners = [];
-    this.removeAll = () => {
-      this.listeners.forEach((listener) => {
-        var _this$target;
-        return (_this$target = this.target) == null ? void 0 : _this$target.removeEventListener(...listener);
-      });
-    };
-    this.target = target;
-  }
-  add(eventName, handler, options) {
-    var _this$target2;
-    (_this$target2 = this.target) == null ? void 0 : _this$target2.addEventListener(eventName, handler, options);
-    this.listeners.push([eventName, handler, options]);
-  }
-}
-function getEventListenerTarget(target) {
-  const {
-    EventTarget: EventTarget2
-  } = getWindow(target);
-  return target instanceof EventTarget2 ? target : getOwnerDocument(target);
-}
-function hasExceededDistance(delta, measurement) {
-  const dx = Math.abs(delta.x);
-  const dy = Math.abs(delta.y);
-  if (typeof measurement === "number") {
-    return Math.sqrt(dx ** 2 + dy ** 2) > measurement;
-  }
-  if ("x" in measurement && "y" in measurement) {
-    return dx > measurement.x && dy > measurement.y;
-  }
-  if ("x" in measurement) {
-    return dx > measurement.x;
-  }
-  if ("y" in measurement) {
-    return dy > measurement.y;
-  }
-  return false;
-}
-var EventName;
-(function(EventName2) {
-  EventName2["Click"] = "click";
-  EventName2["DragStart"] = "dragstart";
-  EventName2["Keydown"] = "keydown";
-  EventName2["ContextMenu"] = "contextmenu";
-  EventName2["Resize"] = "resize";
-  EventName2["SelectionChange"] = "selectionchange";
-  EventName2["VisibilityChange"] = "visibilitychange";
-})(EventName || (EventName = {}));
-function preventDefault(event) {
-  event.preventDefault();
-}
-function stopPropagation(event) {
-  event.stopPropagation();
-}
-var KeyboardCode;
-(function(KeyboardCode2) {
-  KeyboardCode2["Space"] = "Space";
-  KeyboardCode2["Down"] = "ArrowDown";
-  KeyboardCode2["Right"] = "ArrowRight";
-  KeyboardCode2["Left"] = "ArrowLeft";
-  KeyboardCode2["Up"] = "ArrowUp";
-  KeyboardCode2["Esc"] = "Escape";
-  KeyboardCode2["Enter"] = "Enter";
-  KeyboardCode2["Tab"] = "Tab";
-})(KeyboardCode || (KeyboardCode = {}));
-const defaultKeyboardCodes = {
-  start: [KeyboardCode.Space, KeyboardCode.Enter],
-  cancel: [KeyboardCode.Esc],
-  end: [KeyboardCode.Space, KeyboardCode.Enter, KeyboardCode.Tab]
-};
-const defaultKeyboardCoordinateGetter = (event, _ref) => {
-  let {
-    currentCoordinates
-  } = _ref;
-  switch (event.code) {
-    case KeyboardCode.Right:
-      return {
-        ...currentCoordinates,
-        x: currentCoordinates.x + 25
-      };
-    case KeyboardCode.Left:
-      return {
-        ...currentCoordinates,
-        x: currentCoordinates.x - 25
-      };
-    case KeyboardCode.Down:
-      return {
-        ...currentCoordinates,
-        y: currentCoordinates.y + 25
-      };
-    case KeyboardCode.Up:
-      return {
-        ...currentCoordinates,
-        y: currentCoordinates.y - 25
-      };
-  }
-  return void 0;
-};
-class KeyboardSensor {
-  constructor(props) {
-    this.props = void 0;
-    this.autoScrollEnabled = false;
-    this.referenceCoordinates = void 0;
-    this.listeners = void 0;
-    this.windowListeners = void 0;
-    this.props = props;
-    const {
-      event: {
-        target
-      }
-    } = props;
-    this.props = props;
-    this.listeners = new Listeners(getOwnerDocument(target));
-    this.windowListeners = new Listeners(getWindow(target));
-    this.handleKeyDown = this.handleKeyDown.bind(this);
-    this.handleCancel = this.handleCancel.bind(this);
-    this.attach();
-  }
-  attach() {
-    this.handleStart();
-    this.windowListeners.add(EventName.Resize, this.handleCancel);
-    this.windowListeners.add(EventName.VisibilityChange, this.handleCancel);
-    setTimeout(() => this.listeners.add(EventName.Keydown, this.handleKeyDown));
-  }
-  handleStart() {
-    const {
-      activeNode,
-      onStart
-    } = this.props;
-    const node = activeNode.node.current;
-    if (node) {
-      scrollIntoViewIfNeeded(node);
-    }
-    onStart(defaultCoordinates);
-  }
-  handleKeyDown(event) {
-    if (isKeyboardEvent(event)) {
-      const {
-        active,
-        context,
-        options
-      } = this.props;
-      const {
-        keyboardCodes = defaultKeyboardCodes,
-        coordinateGetter = defaultKeyboardCoordinateGetter,
-        scrollBehavior = "smooth"
-      } = options;
-      const {
-        code
-      } = event;
-      if (keyboardCodes.end.includes(code)) {
-        this.handleEnd(event);
-        return;
-      }
-      if (keyboardCodes.cancel.includes(code)) {
-        this.handleCancel(event);
-        return;
-      }
-      const {
-        collisionRect
-      } = context.current;
-      const currentCoordinates = collisionRect ? {
-        x: collisionRect.left,
-        y: collisionRect.top
-      } : defaultCoordinates;
-      if (!this.referenceCoordinates) {
-        this.referenceCoordinates = currentCoordinates;
-      }
-      const newCoordinates = coordinateGetter(event, {
-        active,
-        context: context.current,
-        currentCoordinates
-      });
-      if (newCoordinates) {
-        const coordinatesDelta = subtract(newCoordinates, currentCoordinates);
-        const scrollDelta = {
-          x: 0,
-          y: 0
-        };
-        const {
-          scrollableAncestors
-        } = context.current;
-        for (const scrollContainer of scrollableAncestors) {
-          const direction = event.code;
-          const {
-            isTop,
-            isRight,
-            isLeft,
-            isBottom,
-            maxScroll,
-            minScroll
-          } = getScrollPosition(scrollContainer);
-          const scrollElementRect = getScrollElementRect(scrollContainer);
-          const clampedCoordinates = {
-            x: Math.min(direction === KeyboardCode.Right ? scrollElementRect.right - scrollElementRect.width / 2 : scrollElementRect.right, Math.max(direction === KeyboardCode.Right ? scrollElementRect.left : scrollElementRect.left + scrollElementRect.width / 2, newCoordinates.x)),
-            y: Math.min(direction === KeyboardCode.Down ? scrollElementRect.bottom - scrollElementRect.height / 2 : scrollElementRect.bottom, Math.max(direction === KeyboardCode.Down ? scrollElementRect.top : scrollElementRect.top + scrollElementRect.height / 2, newCoordinates.y))
-          };
-          const canScrollX = direction === KeyboardCode.Right && !isRight || direction === KeyboardCode.Left && !isLeft;
-          const canScrollY = direction === KeyboardCode.Down && !isBottom || direction === KeyboardCode.Up && !isTop;
-          if (canScrollX && clampedCoordinates.x !== newCoordinates.x) {
-            const newScrollCoordinates = scrollContainer.scrollLeft + coordinatesDelta.x;
-            const canScrollToNewCoordinates = direction === KeyboardCode.Right && newScrollCoordinates <= maxScroll.x || direction === KeyboardCode.Left && newScrollCoordinates >= minScroll.x;
-            if (canScrollToNewCoordinates && !coordinatesDelta.y) {
-              scrollContainer.scrollTo({
-                left: newScrollCoordinates,
-                behavior: scrollBehavior
-              });
-              return;
-            }
-            if (canScrollToNewCoordinates) {
-              scrollDelta.x = scrollContainer.scrollLeft - newScrollCoordinates;
-            } else {
-              scrollDelta.x = direction === KeyboardCode.Right ? scrollContainer.scrollLeft - maxScroll.x : scrollContainer.scrollLeft - minScroll.x;
-            }
-            if (scrollDelta.x) {
-              scrollContainer.scrollBy({
-                left: -scrollDelta.x,
-                behavior: scrollBehavior
-              });
-            }
-            break;
-          } else if (canScrollY && clampedCoordinates.y !== newCoordinates.y) {
-            const newScrollCoordinates = scrollContainer.scrollTop + coordinatesDelta.y;
-            const canScrollToNewCoordinates = direction === KeyboardCode.Down && newScrollCoordinates <= maxScroll.y || direction === KeyboardCode.Up && newScrollCoordinates >= minScroll.y;
-            if (canScrollToNewCoordinates && !coordinatesDelta.x) {
-              scrollContainer.scrollTo({
-                top: newScrollCoordinates,
-                behavior: scrollBehavior
-              });
-              return;
-            }
-            if (canScrollToNewCoordinates) {
-              scrollDelta.y = scrollContainer.scrollTop - newScrollCoordinates;
-            } else {
-              scrollDelta.y = direction === KeyboardCode.Down ? scrollContainer.scrollTop - maxScroll.y : scrollContainer.scrollTop - minScroll.y;
-            }
-            if (scrollDelta.y) {
-              scrollContainer.scrollBy({
-                top: -scrollDelta.y,
-                behavior: scrollBehavior
-              });
-            }
-            break;
-          }
-        }
-        this.handleMove(event, add(subtract(newCoordinates, this.referenceCoordinates), scrollDelta));
-      }
-    }
-  }
-  handleMove(event, coordinates) {
-    const {
-      onMove
-    } = this.props;
-    event.preventDefault();
-    onMove(coordinates);
-  }
-  handleEnd(event) {
-    const {
-      onEnd
-    } = this.props;
-    event.preventDefault();
-    this.detach();
-    onEnd();
-  }
-  handleCancel(event) {
-    const {
-      onCancel
-    } = this.props;
-    event.preventDefault();
-    this.detach();
-    onCancel();
-  }
-  detach() {
-    this.listeners.removeAll();
-    this.windowListeners.removeAll();
-  }
-}
-KeyboardSensor.activators = [{
-  eventName: "onKeyDown",
-  handler: (event, _ref, _ref2) => {
-    let {
-      keyboardCodes = defaultKeyboardCodes,
-      onActivation
-    } = _ref;
-    let {
-      active
-    } = _ref2;
-    const {
-      code
-    } = event.nativeEvent;
-    if (keyboardCodes.start.includes(code)) {
-      const activator = active.activatorNode.current;
-      if (activator && event.target !== activator) {
-        return false;
-      }
-      event.preventDefault();
-      onActivation == null ? void 0 : onActivation({
-        event: event.nativeEvent
-      });
-      return true;
-    }
-    return false;
-  }
-}];
-function isDistanceConstraint(constraint) {
-  return Boolean(constraint && "distance" in constraint);
-}
-function isDelayConstraint(constraint) {
-  return Boolean(constraint && "delay" in constraint);
-}
-class AbstractPointerSensor {
-  constructor(props, events2, listenerTarget) {
-    var _getEventCoordinates;
-    if (listenerTarget === void 0) {
-      listenerTarget = getEventListenerTarget(props.event.target);
-    }
-    this.props = void 0;
-    this.events = void 0;
-    this.autoScrollEnabled = true;
-    this.document = void 0;
-    this.activated = false;
-    this.initialCoordinates = void 0;
-    this.timeoutId = null;
-    this.listeners = void 0;
-    this.documentListeners = void 0;
-    this.windowListeners = void 0;
-    this.props = props;
-    this.events = events2;
-    const {
-      event
-    } = props;
-    const {
-      target
-    } = event;
-    this.props = props;
-    this.events = events2;
-    this.document = getOwnerDocument(target);
-    this.documentListeners = new Listeners(this.document);
-    this.listeners = new Listeners(listenerTarget);
-    this.windowListeners = new Listeners(getWindow(target));
-    this.initialCoordinates = (_getEventCoordinates = getEventCoordinates(event)) != null ? _getEventCoordinates : defaultCoordinates;
-    this.handleStart = this.handleStart.bind(this);
-    this.handleMove = this.handleMove.bind(this);
-    this.handleEnd = this.handleEnd.bind(this);
-    this.handleCancel = this.handleCancel.bind(this);
-    this.handleKeydown = this.handleKeydown.bind(this);
-    this.removeTextSelection = this.removeTextSelection.bind(this);
-    this.attach();
-  }
-  attach() {
-    const {
-      events: events2,
-      props: {
-        options: {
-          activationConstraint,
-          bypassActivationConstraint
-        }
-      }
-    } = this;
-    this.listeners.add(events2.move.name, this.handleMove, {
-      passive: false
-    });
-    this.listeners.add(events2.end.name, this.handleEnd);
-    if (events2.cancel) {
-      this.listeners.add(events2.cancel.name, this.handleCancel);
-    }
-    this.windowListeners.add(EventName.Resize, this.handleCancel);
-    this.windowListeners.add(EventName.DragStart, preventDefault);
-    this.windowListeners.add(EventName.VisibilityChange, this.handleCancel);
-    this.windowListeners.add(EventName.ContextMenu, preventDefault);
-    this.documentListeners.add(EventName.Keydown, this.handleKeydown);
-    if (activationConstraint) {
-      if (bypassActivationConstraint != null && bypassActivationConstraint({
-        event: this.props.event,
-        activeNode: this.props.activeNode,
-        options: this.props.options
-      })) {
-        return this.handleStart();
-      }
-      if (isDelayConstraint(activationConstraint)) {
-        this.timeoutId = setTimeout(this.handleStart, activationConstraint.delay);
-        this.handlePending(activationConstraint);
-        return;
-      }
-      if (isDistanceConstraint(activationConstraint)) {
-        this.handlePending(activationConstraint);
-        return;
-      }
-    }
-    this.handleStart();
-  }
-  detach() {
-    this.listeners.removeAll();
-    this.windowListeners.removeAll();
-    setTimeout(this.documentListeners.removeAll, 50);
-    if (this.timeoutId !== null) {
-      clearTimeout(this.timeoutId);
-      this.timeoutId = null;
-    }
-  }
-  handlePending(constraint, offset2) {
-    const {
-      active,
-      onPending
-    } = this.props;
-    onPending(active, constraint, this.initialCoordinates, offset2);
-  }
-  handleStart() {
-    const {
-      initialCoordinates
-    } = this;
-    const {
-      onStart
-    } = this.props;
-    if (initialCoordinates) {
-      this.activated = true;
-      this.documentListeners.add(EventName.Click, stopPropagation, {
-        capture: true
-      });
-      this.removeTextSelection();
-      this.documentListeners.add(EventName.SelectionChange, this.removeTextSelection);
-      onStart(initialCoordinates);
-    }
-  }
-  handleMove(event) {
-    var _getEventCoordinates2;
-    const {
-      activated,
-      initialCoordinates,
-      props
-    } = this;
-    const {
-      onMove,
-      options: {
-        activationConstraint
-      }
-    } = props;
-    if (!initialCoordinates) {
-      return;
-    }
-    const coordinates = (_getEventCoordinates2 = getEventCoordinates(event)) != null ? _getEventCoordinates2 : defaultCoordinates;
-    const delta = subtract(initialCoordinates, coordinates);
-    if (!activated && activationConstraint) {
-      if (isDistanceConstraint(activationConstraint)) {
-        if (activationConstraint.tolerance != null && hasExceededDistance(delta, activationConstraint.tolerance)) {
-          return this.handleCancel();
-        }
-        if (hasExceededDistance(delta, activationConstraint.distance)) {
-          return this.handleStart();
-        }
-      }
-      if (isDelayConstraint(activationConstraint)) {
-        if (hasExceededDistance(delta, activationConstraint.tolerance)) {
-          return this.handleCancel();
-        }
-      }
-      this.handlePending(activationConstraint, delta);
-      return;
-    }
-    if (event.cancelable) {
-      event.preventDefault();
-    }
-    onMove(coordinates);
-  }
-  handleEnd() {
-    const {
-      onAbort,
-      onEnd
-    } = this.props;
-    this.detach();
-    if (!this.activated) {
-      onAbort(this.props.active);
-    }
-    onEnd();
-  }
-  handleCancel() {
-    const {
-      onAbort,
-      onCancel
-    } = this.props;
-    this.detach();
-    if (!this.activated) {
-      onAbort(this.props.active);
-    }
-    onCancel();
-  }
-  handleKeydown(event) {
-    if (event.code === KeyboardCode.Esc) {
-      this.handleCancel();
-    }
-  }
-  removeTextSelection() {
-    var _this$document$getSel;
-    (_this$document$getSel = this.document.getSelection()) == null ? void 0 : _this$document$getSel.removeAllRanges();
-  }
-}
-const events = {
-  cancel: {
-    name: "pointercancel"
-  },
-  move: {
-    name: "pointermove"
-  },
-  end: {
-    name: "pointerup"
-  }
-};
-class PointerSensor extends AbstractPointerSensor {
-  constructor(props) {
-    const {
-      event
-    } = props;
-    const listenerTarget = getOwnerDocument(event.target);
-    super(props, events, listenerTarget);
-  }
-}
-PointerSensor.activators = [{
-  eventName: "onPointerDown",
-  handler: (_ref, _ref2) => {
-    let {
-      nativeEvent: event
-    } = _ref;
-    let {
-      onActivation
-    } = _ref2;
-    if (!event.isPrimary || event.button !== 0) {
-      return false;
-    }
-    onActivation == null ? void 0 : onActivation({
-      event
-    });
-    return true;
-  }
-}];
-const events$1 = {
-  move: {
-    name: "mousemove"
-  },
-  end: {
-    name: "mouseup"
-  }
-};
-var MouseButton;
-(function(MouseButton2) {
-  MouseButton2[MouseButton2["RightClick"] = 2] = "RightClick";
-})(MouseButton || (MouseButton = {}));
-class MouseSensor extends AbstractPointerSensor {
-  constructor(props) {
-    super(props, events$1, getOwnerDocument(props.event.target));
-  }
-}
-MouseSensor.activators = [{
-  eventName: "onMouseDown",
-  handler: (_ref, _ref2) => {
-    let {
-      nativeEvent: event
-    } = _ref;
-    let {
-      onActivation
-    } = _ref2;
-    if (event.button === MouseButton.RightClick) {
-      return false;
-    }
-    onActivation == null ? void 0 : onActivation({
-      event
-    });
-    return true;
-  }
-}];
-const events$2 = {
-  cancel: {
-    name: "touchcancel"
-  },
-  move: {
-    name: "touchmove"
-  },
-  end: {
-    name: "touchend"
-  }
-};
-class TouchSensor extends AbstractPointerSensor {
-  constructor(props) {
-    super(props, events$2);
-  }
-  static setup() {
-    window.addEventListener(events$2.move.name, noop3, {
-      capture: false,
-      passive: false
-    });
-    return function teardown() {
-      window.removeEventListener(events$2.move.name, noop3);
-    };
-    function noop3() {
-    }
-  }
-}
-TouchSensor.activators = [{
-  eventName: "onTouchStart",
-  handler: (_ref, _ref2) => {
-    let {
-      nativeEvent: event
-    } = _ref;
-    let {
-      onActivation
-    } = _ref2;
-    const {
-      touches
-    } = event;
-    if (touches.length > 1) {
-      return false;
-    }
-    onActivation == null ? void 0 : onActivation({
-      event
-    });
-    return true;
-  }
-}];
-var AutoScrollActivator;
-(function(AutoScrollActivator2) {
-  AutoScrollActivator2[AutoScrollActivator2["Pointer"] = 0] = "Pointer";
-  AutoScrollActivator2[AutoScrollActivator2["DraggableRect"] = 1] = "DraggableRect";
-})(AutoScrollActivator || (AutoScrollActivator = {}));
-var TraversalOrder;
-(function(TraversalOrder2) {
-  TraversalOrder2[TraversalOrder2["TreeOrder"] = 0] = "TreeOrder";
-  TraversalOrder2[TraversalOrder2["ReversedTreeOrder"] = 1] = "ReversedTreeOrder";
-})(TraversalOrder || (TraversalOrder = {}));
-function useAutoScroller(_ref) {
-  let {
-    acceleration,
-    activator = AutoScrollActivator.Pointer,
-    canScroll,
-    draggingRect,
-    enabled,
-    interval = 5,
-    order = TraversalOrder.TreeOrder,
-    pointerCoordinates,
-    scrollableAncestors,
-    scrollableAncestorRects,
-    delta,
-    threshold
-  } = _ref;
-  const scrollIntent = useScrollIntent({
-    delta,
-    disabled: !enabled
-  });
-  const [setAutoScrollInterval, clearAutoScrollInterval] = useInterval();
-  const scrollSpeed = reactExports.useRef({
-    x: 0,
-    y: 0
-  });
-  const scrollDirection = reactExports.useRef({
-    x: 0,
-    y: 0
-  });
-  const rect = reactExports.useMemo(() => {
-    switch (activator) {
-      case AutoScrollActivator.Pointer:
-        return pointerCoordinates ? {
-          top: pointerCoordinates.y,
-          bottom: pointerCoordinates.y,
-          left: pointerCoordinates.x,
-          right: pointerCoordinates.x
-        } : null;
-      case AutoScrollActivator.DraggableRect:
-        return draggingRect;
-    }
-  }, [activator, draggingRect, pointerCoordinates]);
-  const scrollContainerRef = reactExports.useRef(null);
-  const autoScroll = reactExports.useCallback(() => {
-    const scrollContainer = scrollContainerRef.current;
-    if (!scrollContainer) {
-      return;
-    }
-    const scrollLeft = scrollSpeed.current.x * scrollDirection.current.x;
-    const scrollTop = scrollSpeed.current.y * scrollDirection.current.y;
-    scrollContainer.scrollBy(scrollLeft, scrollTop);
-  }, []);
-  const sortedScrollableAncestors = reactExports.useMemo(() => order === TraversalOrder.TreeOrder ? [...scrollableAncestors].reverse() : scrollableAncestors, [order, scrollableAncestors]);
-  reactExports.useEffect(
-    () => {
-      if (!enabled || !scrollableAncestors.length || !rect) {
-        clearAutoScrollInterval();
-        return;
-      }
-      for (const scrollContainer of sortedScrollableAncestors) {
-        if ((canScroll == null ? void 0 : canScroll(scrollContainer)) === false) {
-          continue;
-        }
-        const index2 = scrollableAncestors.indexOf(scrollContainer);
-        const scrollContainerRect = scrollableAncestorRects[index2];
-        if (!scrollContainerRect) {
-          continue;
-        }
-        const {
-          direction,
-          speed
-        } = getScrollDirectionAndSpeed(scrollContainer, scrollContainerRect, rect, acceleration, threshold);
-        for (const axis of ["x", "y"]) {
-          if (!scrollIntent[axis][direction[axis]]) {
-            speed[axis] = 0;
-            direction[axis] = 0;
-          }
-        }
-        if (speed.x > 0 || speed.y > 0) {
-          clearAutoScrollInterval();
-          scrollContainerRef.current = scrollContainer;
-          setAutoScrollInterval(autoScroll, interval);
-          scrollSpeed.current = speed;
-          scrollDirection.current = direction;
-          return;
-        }
-      }
-      scrollSpeed.current = {
-        x: 0,
-        y: 0
-      };
-      scrollDirection.current = {
-        x: 0,
-        y: 0
-      };
-      clearAutoScrollInterval();
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [
-      acceleration,
-      autoScroll,
-      canScroll,
-      clearAutoScrollInterval,
-      enabled,
-      interval,
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      JSON.stringify(rect),
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      JSON.stringify(scrollIntent),
-      setAutoScrollInterval,
-      scrollableAncestors,
-      sortedScrollableAncestors,
-      scrollableAncestorRects,
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      JSON.stringify(threshold)
-    ]
-  );
-}
-const defaultScrollIntent = {
-  x: {
-    [Direction.Backward]: false,
-    [Direction.Forward]: false
-  },
-  y: {
-    [Direction.Backward]: false,
-    [Direction.Forward]: false
-  }
-};
-function useScrollIntent(_ref2) {
-  let {
-    delta,
-    disabled
-  } = _ref2;
-  const previousDelta = usePrevious$1(delta);
-  return useLazyMemo((previousIntent) => {
-    if (disabled || !previousDelta || !previousIntent) {
-      return defaultScrollIntent;
-    }
-    const direction = {
-      x: Math.sign(delta.x - previousDelta.x),
-      y: Math.sign(delta.y - previousDelta.y)
-    };
-    return {
-      x: {
-        [Direction.Backward]: previousIntent.x[Direction.Backward] || direction.x === -1,
-        [Direction.Forward]: previousIntent.x[Direction.Forward] || direction.x === 1
-      },
-      y: {
-        [Direction.Backward]: previousIntent.y[Direction.Backward] || direction.y === -1,
-        [Direction.Forward]: previousIntent.y[Direction.Forward] || direction.y === 1
-      }
-    };
-  }, [disabled, delta, previousDelta]);
-}
-function useCachedNode(draggableNodes, id2) {
-  const draggableNode = id2 != null ? draggableNodes.get(id2) : void 0;
-  const node = draggableNode ? draggableNode.node.current : null;
-  return useLazyMemo((cachedNode) => {
-    var _ref;
-    if (id2 == null) {
-      return null;
-    }
-    return (_ref = node != null ? node : cachedNode) != null ? _ref : null;
-  }, [node, id2]);
-}
-function useCombineActivators(sensors, getSyntheticHandler) {
-  return reactExports.useMemo(() => sensors.reduce((accumulator, sensor) => {
-    const {
-      sensor: Sensor
-    } = sensor;
-    const sensorActivators = Sensor.activators.map((activator) => ({
-      eventName: activator.eventName,
-      handler: getSyntheticHandler(activator.handler, sensor)
-    }));
-    return [...accumulator, ...sensorActivators];
-  }, []), [sensors, getSyntheticHandler]);
-}
-var MeasuringStrategy;
-(function(MeasuringStrategy2) {
-  MeasuringStrategy2[MeasuringStrategy2["Always"] = 0] = "Always";
-  MeasuringStrategy2[MeasuringStrategy2["BeforeDragging"] = 1] = "BeforeDragging";
-  MeasuringStrategy2[MeasuringStrategy2["WhileDragging"] = 2] = "WhileDragging";
-})(MeasuringStrategy || (MeasuringStrategy = {}));
-var MeasuringFrequency;
-(function(MeasuringFrequency2) {
-  MeasuringFrequency2["Optimized"] = "optimized";
-})(MeasuringFrequency || (MeasuringFrequency = {}));
-const defaultValue = /* @__PURE__ */ new Map();
-function useDroppableMeasuring(containers, _ref) {
-  let {
-    dragging,
-    dependencies,
-    config
-  } = _ref;
-  const [queue, setQueue] = reactExports.useState(null);
-  const {
-    frequency,
-    measure,
-    strategy
-  } = config;
-  const containersRef = reactExports.useRef(containers);
-  const disabled = isDisabled();
-  const disabledRef = useLatestValue(disabled);
-  const measureDroppableContainers = reactExports.useCallback(function(ids2) {
-    if (ids2 === void 0) {
-      ids2 = [];
-    }
-    if (disabledRef.current) {
-      return;
-    }
-    setQueue((value) => {
-      if (value === null) {
-        return ids2;
-      }
-      return value.concat(ids2.filter((id2) => !value.includes(id2)));
-    });
-  }, [disabledRef]);
-  const timeoutId = reactExports.useRef(null);
-  const droppableRects = useLazyMemo((previousValue) => {
-    if (disabled && !dragging) {
-      return defaultValue;
-    }
-    if (!previousValue || previousValue === defaultValue || containersRef.current !== containers || queue != null) {
-      const map = /* @__PURE__ */ new Map();
-      for (let container of containers) {
-        if (!container) {
-          continue;
-        }
-        if (queue && queue.length > 0 && !queue.includes(container.id) && container.rect.current) {
-          map.set(container.id, container.rect.current);
-          continue;
-        }
-        const node = container.node.current;
-        const rect = node ? new Rect(measure(node), node) : null;
-        container.rect.current = rect;
-        if (rect) {
-          map.set(container.id, rect);
-        }
-      }
-      return map;
-    }
-    return previousValue;
-  }, [containers, queue, dragging, disabled, measure]);
-  reactExports.useEffect(() => {
-    containersRef.current = containers;
-  }, [containers]);
-  reactExports.useEffect(
-    () => {
-      if (disabled) {
-        return;
-      }
-      measureDroppableContainers();
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [dragging, disabled]
-  );
-  reactExports.useEffect(
-    () => {
-      if (queue && queue.length > 0) {
-        setQueue(null);
-      }
-    },
-    //eslint-disable-next-line react-hooks/exhaustive-deps
-    [JSON.stringify(queue)]
-  );
-  reactExports.useEffect(
-    () => {
-      if (disabled || typeof frequency !== "number" || timeoutId.current !== null) {
-        return;
-      }
-      timeoutId.current = setTimeout(() => {
-        measureDroppableContainers();
-        timeoutId.current = null;
-      }, frequency);
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [frequency, disabled, measureDroppableContainers, ...dependencies]
-  );
-  return {
-    droppableRects,
-    measureDroppableContainers,
-    measuringScheduled: queue != null
-  };
-  function isDisabled() {
-    switch (strategy) {
-      case MeasuringStrategy.Always:
-        return false;
-      case MeasuringStrategy.BeforeDragging:
-        return dragging;
-      default:
-        return !dragging;
-    }
-  }
-}
-function useInitialValue(value, computeFn) {
-  return useLazyMemo((previousValue) => {
-    if (!value) {
-      return null;
-    }
-    if (previousValue) {
-      return previousValue;
-    }
-    return typeof computeFn === "function" ? computeFn(value) : value;
-  }, [computeFn, value]);
-}
-function useInitialRect(node, measure) {
-  return useInitialValue(node, measure);
-}
-function useMutationObserver(_ref) {
-  let {
-    callback,
-    disabled
-  } = _ref;
-  const handleMutations = useEvent(callback);
-  const mutationObserver = reactExports.useMemo(() => {
-    if (disabled || typeof window === "undefined" || typeof window.MutationObserver === "undefined") {
-      return void 0;
-    }
-    const {
-      MutationObserver: MutationObserver2
-    } = window;
-    return new MutationObserver2(handleMutations);
-  }, [handleMutations, disabled]);
-  reactExports.useEffect(() => {
-    return () => mutationObserver == null ? void 0 : mutationObserver.disconnect();
-  }, [mutationObserver]);
-  return mutationObserver;
-}
-function useResizeObserver(_ref) {
-  let {
-    callback,
-    disabled
-  } = _ref;
-  const handleResize = useEvent(callback);
-  const resizeObserver = reactExports.useMemo(
-    () => {
-      if (disabled || typeof window === "undefined" || typeof window.ResizeObserver === "undefined") {
-        return void 0;
-      }
-      const {
-        ResizeObserver: ResizeObserver2
-      } = window;
-      return new ResizeObserver2(handleResize);
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [disabled]
-  );
-  reactExports.useEffect(() => {
-    return () => resizeObserver == null ? void 0 : resizeObserver.disconnect();
-  }, [resizeObserver]);
-  return resizeObserver;
-}
-function defaultMeasure(element) {
-  return new Rect(getClientRect(element), element);
-}
-function useRect(element, measure, fallbackRect) {
-  if (measure === void 0) {
-    measure = defaultMeasure;
-  }
-  const [rect, setRect] = reactExports.useState(null);
-  function measureRect() {
-    setRect((currentRect) => {
-      if (!element) {
-        return null;
-      }
-      if (element.isConnected === false) {
-        var _ref;
-        return (_ref = currentRect != null ? currentRect : fallbackRect) != null ? _ref : null;
-      }
-      const newRect = measure(element);
-      if (JSON.stringify(currentRect) === JSON.stringify(newRect)) {
-        return currentRect;
-      }
-      return newRect;
-    });
-  }
-  const mutationObserver = useMutationObserver({
-    callback(records) {
-      if (!element) {
-        return;
-      }
-      for (const record of records) {
-        const {
-          type,
-          target
-        } = record;
-        if (type === "childList" && target instanceof HTMLElement && target.contains(element)) {
-          measureRect();
-          break;
-        }
-      }
-    }
-  });
-  const resizeObserver = useResizeObserver({
-    callback: measureRect
-  });
-  useIsomorphicLayoutEffect(() => {
-    measureRect();
-    if (element) {
-      resizeObserver == null ? void 0 : resizeObserver.observe(element);
-      mutationObserver == null ? void 0 : mutationObserver.observe(document.body, {
-        childList: true,
-        subtree: true
-      });
-    } else {
-      resizeObserver == null ? void 0 : resizeObserver.disconnect();
-      mutationObserver == null ? void 0 : mutationObserver.disconnect();
-    }
-  }, [element]);
-  return rect;
-}
-function useRectDelta(rect) {
-  const initialRect = useInitialValue(rect);
-  return getRectDelta(rect, initialRect);
-}
-const defaultValue$1 = [];
-function useScrollableAncestors(node) {
-  const previousNode = reactExports.useRef(node);
-  const ancestors = useLazyMemo((previousValue) => {
-    if (!node) {
-      return defaultValue$1;
-    }
-    if (previousValue && previousValue !== defaultValue$1 && node && previousNode.current && node.parentNode === previousNode.current.parentNode) {
-      return previousValue;
-    }
-    return getScrollableAncestors(node);
-  }, [node]);
-  reactExports.useEffect(() => {
-    previousNode.current = node;
-  }, [node]);
-  return ancestors;
-}
-function useScrollOffsets(elements) {
-  const [scrollCoordinates, setScrollCoordinates] = reactExports.useState(null);
-  const prevElements = reactExports.useRef(elements);
-  const handleScroll2 = reactExports.useCallback((event) => {
-    const scrollingElement = getScrollableElement(event.target);
-    if (!scrollingElement) {
-      return;
-    }
-    setScrollCoordinates((scrollCoordinates2) => {
-      if (!scrollCoordinates2) {
-        return null;
-      }
-      scrollCoordinates2.set(scrollingElement, getScrollCoordinates(scrollingElement));
-      return new Map(scrollCoordinates2);
-    });
-  }, []);
-  reactExports.useEffect(() => {
-    const previousElements = prevElements.current;
-    if (elements !== previousElements) {
-      cleanup(previousElements);
-      const entries = elements.map((element) => {
-        const scrollableElement = getScrollableElement(element);
-        if (scrollableElement) {
-          scrollableElement.addEventListener("scroll", handleScroll2, {
-            passive: true
-          });
-          return [scrollableElement, getScrollCoordinates(scrollableElement)];
-        }
-        return null;
-      }).filter((entry) => entry != null);
-      setScrollCoordinates(entries.length ? new Map(entries) : null);
-      prevElements.current = elements;
-    }
-    return () => {
-      cleanup(elements);
-      cleanup(previousElements);
-    };
-    function cleanup(elements2) {
-      elements2.forEach((element) => {
-        const scrollableElement = getScrollableElement(element);
-        scrollableElement == null ? void 0 : scrollableElement.removeEventListener("scroll", handleScroll2);
-      });
-    }
-  }, [handleScroll2, elements]);
-  return reactExports.useMemo(() => {
-    if (elements.length) {
-      return scrollCoordinates ? Array.from(scrollCoordinates.values()).reduce((acc, coordinates) => add(acc, coordinates), defaultCoordinates) : getScrollOffsets(elements);
-    }
-    return defaultCoordinates;
-  }, [elements, scrollCoordinates]);
-}
-function useScrollOffsetsDelta(scrollOffsets, dependencies) {
-  if (dependencies === void 0) {
-    dependencies = [];
-  }
-  const initialScrollOffsets = reactExports.useRef(null);
-  reactExports.useEffect(
-    () => {
-      initialScrollOffsets.current = null;
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    dependencies
-  );
-  reactExports.useEffect(() => {
-    const hasScrollOffsets = scrollOffsets !== defaultCoordinates;
-    if (hasScrollOffsets && !initialScrollOffsets.current) {
-      initialScrollOffsets.current = scrollOffsets;
-    }
-    if (!hasScrollOffsets && initialScrollOffsets.current) {
-      initialScrollOffsets.current = null;
-    }
-  }, [scrollOffsets]);
-  return initialScrollOffsets.current ? subtract(scrollOffsets, initialScrollOffsets.current) : defaultCoordinates;
-}
-function useSensorSetup(sensors) {
-  reactExports.useEffect(
-    () => {
-      if (!canUseDOM) {
-        return;
-      }
-      const teardownFns = sensors.map((_ref) => {
-        let {
-          sensor
-        } = _ref;
-        return sensor.setup == null ? void 0 : sensor.setup();
-      });
-      return () => {
-        for (const teardown of teardownFns) {
-          teardown == null ? void 0 : teardown();
-        }
-      };
-    },
-    // TO-DO: Sensors length could theoretically change which would not be a valid dependency
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    sensors.map((_ref2) => {
-      let {
-        sensor
-      } = _ref2;
-      return sensor;
-    })
-  );
-}
-function useSyntheticListeners(listeners, id2) {
-  return reactExports.useMemo(() => {
-    return listeners.reduce((acc, _ref) => {
-      let {
-        eventName,
-        handler
-      } = _ref;
-      acc[eventName] = (event) => {
-        handler(event, id2);
-      };
-      return acc;
-    }, {});
-  }, [listeners, id2]);
-}
-function useWindowRect(element) {
-  return reactExports.useMemo(() => element ? getWindowClientRect(element) : null, [element]);
-}
-const defaultValue$2 = [];
-function useRects(elements, measure) {
-  if (measure === void 0) {
-    measure = getClientRect;
-  }
-  const [firstElement] = elements;
-  const windowRect = useWindowRect(firstElement ? getWindow(firstElement) : null);
-  const [rects, setRects] = reactExports.useState(defaultValue$2);
-  function measureRects() {
-    setRects(() => {
-      if (!elements.length) {
-        return defaultValue$2;
-      }
-      return elements.map((element) => isDocumentScrollingElement(element) ? windowRect : new Rect(measure(element), element));
-    });
-  }
-  const resizeObserver = useResizeObserver({
-    callback: measureRects
-  });
-  useIsomorphicLayoutEffect(() => {
-    resizeObserver == null ? void 0 : resizeObserver.disconnect();
-    measureRects();
-    elements.forEach((element) => resizeObserver == null ? void 0 : resizeObserver.observe(element));
-  }, [elements]);
-  return rects;
-}
-function getMeasurableNode(node) {
-  if (!node) {
-    return null;
-  }
-  if (node.children.length > 1) {
-    return node;
-  }
-  const firstChild = node.children[0];
-  return isHTMLElement(firstChild) ? firstChild : node;
-}
-function useDragOverlayMeasuring(_ref) {
-  let {
-    measure
-  } = _ref;
-  const [rect, setRect] = reactExports.useState(null);
-  const handleResize = reactExports.useCallback((entries) => {
-    for (const {
-      target
-    } of entries) {
-      if (isHTMLElement(target)) {
-        setRect((rect2) => {
-          const newRect = measure(target);
-          return rect2 ? {
-            ...rect2,
-            width: newRect.width,
-            height: newRect.height
-          } : newRect;
-        });
-        break;
-      }
-    }
-  }, [measure]);
-  const resizeObserver = useResizeObserver({
-    callback: handleResize
-  });
-  const handleNodeChange = reactExports.useCallback((element) => {
-    const node = getMeasurableNode(element);
-    resizeObserver == null ? void 0 : resizeObserver.disconnect();
-    if (node) {
-      resizeObserver == null ? void 0 : resizeObserver.observe(node);
-    }
-    setRect(node ? measure(node) : null);
-  }, [measure, resizeObserver]);
-  const [nodeRef, setRef2] = useNodeRef(handleNodeChange);
-  return reactExports.useMemo(() => ({
-    nodeRef,
-    rect,
-    setRef: setRef2
-  }), [rect, nodeRef, setRef2]);
-}
-const defaultSensors = [{
-  sensor: PointerSensor,
-  options: {}
-}, {
-  sensor: KeyboardSensor,
-  options: {}
-}];
-const defaultData = {
-  current: {}
-};
-const defaultMeasuringConfiguration = {
-  draggable: {
-    measure: getTransformAgnosticClientRect
-  },
-  droppable: {
-    measure: getTransformAgnosticClientRect,
-    strategy: MeasuringStrategy.WhileDragging,
-    frequency: MeasuringFrequency.Optimized
-  },
-  dragOverlay: {
-    measure: getClientRect
-  }
-};
-class DroppableContainersMap extends Map {
-  get(id2) {
-    var _super$get;
-    return id2 != null ? (_super$get = super.get(id2)) != null ? _super$get : void 0 : void 0;
-  }
-  toArray() {
-    return Array.from(this.values());
-  }
-  getEnabled() {
-    return this.toArray().filter((_ref) => {
-      let {
-        disabled
-      } = _ref;
-      return !disabled;
-    });
-  }
-  getNodeFor(id2) {
-    var _this$get$node$curren, _this$get;
-    return (_this$get$node$curren = (_this$get = this.get(id2)) == null ? void 0 : _this$get.node.current) != null ? _this$get$node$curren : void 0;
-  }
-}
-const defaultPublicContext = {
-  activatorEvent: null,
-  active: null,
-  activeNode: null,
-  activeNodeRect: null,
-  collisions: null,
-  containerNodeRect: null,
-  draggableNodes: /* @__PURE__ */ new Map(),
-  droppableRects: /* @__PURE__ */ new Map(),
-  droppableContainers: /* @__PURE__ */ new DroppableContainersMap(),
-  over: null,
-  dragOverlay: {
-    nodeRef: {
-      current: null
-    },
-    rect: null,
-    setRef: noop2
-  },
-  scrollableAncestors: [],
-  scrollableAncestorRects: [],
-  measuringConfiguration: defaultMeasuringConfiguration,
-  measureDroppableContainers: noop2,
-  windowRect: null,
-  measuringScheduled: false
-};
-const defaultInternalContext = {
-  activatorEvent: null,
-  activators: [],
-  active: null,
-  activeNodeRect: null,
-  ariaDescribedById: {
-    draggable: ""
-  },
-  dispatch: noop2,
-  draggableNodes: /* @__PURE__ */ new Map(),
-  over: null,
-  measureDroppableContainers: noop2
-};
-const InternalContext = /* @__PURE__ */ reactExports.createContext(defaultInternalContext);
-const PublicContext = /* @__PURE__ */ reactExports.createContext(defaultPublicContext);
-function getInitialState() {
-  return {
-    draggable: {
-      active: null,
-      initialCoordinates: {
-        x: 0,
-        y: 0
-      },
-      nodes: /* @__PURE__ */ new Map(),
-      translate: {
-        x: 0,
-        y: 0
-      }
-    },
-    droppable: {
-      containers: new DroppableContainersMap()
-    }
-  };
-}
-function reducer(state, action) {
-  switch (action.type) {
-    case Action$1.DragStart:
-      return {
-        ...state,
-        draggable: {
-          ...state.draggable,
-          initialCoordinates: action.initialCoordinates,
-          active: action.active
-        }
-      };
-    case Action$1.DragMove:
-      if (state.draggable.active == null) {
-        return state;
-      }
-      return {
-        ...state,
-        draggable: {
-          ...state.draggable,
-          translate: {
-            x: action.coordinates.x - state.draggable.initialCoordinates.x,
-            y: action.coordinates.y - state.draggable.initialCoordinates.y
-          }
-        }
-      };
-    case Action$1.DragEnd:
-    case Action$1.DragCancel:
-      return {
-        ...state,
-        draggable: {
-          ...state.draggable,
-          active: null,
-          initialCoordinates: {
-            x: 0,
-            y: 0
-          },
-          translate: {
-            x: 0,
-            y: 0
-          }
-        }
-      };
-    case Action$1.RegisterDroppable: {
-      const {
-        element
-      } = action;
-      const {
-        id: id2
-      } = element;
-      const containers = new DroppableContainersMap(state.droppable.containers);
-      containers.set(id2, element);
-      return {
-        ...state,
-        droppable: {
-          ...state.droppable,
-          containers
-        }
-      };
-    }
-    case Action$1.SetDroppableDisabled: {
-      const {
-        id: id2,
-        key,
-        disabled
-      } = action;
-      const element = state.droppable.containers.get(id2);
-      if (!element || key !== element.key) {
-        return state;
-      }
-      const containers = new DroppableContainersMap(state.droppable.containers);
-      containers.set(id2, {
-        ...element,
-        disabled
-      });
-      return {
-        ...state,
-        droppable: {
-          ...state.droppable,
-          containers
-        }
-      };
-    }
-    case Action$1.UnregisterDroppable: {
-      const {
-        id: id2,
-        key
-      } = action;
-      const element = state.droppable.containers.get(id2);
-      if (!element || key !== element.key) {
-        return state;
-      }
-      const containers = new DroppableContainersMap(state.droppable.containers);
-      containers.delete(id2);
-      return {
-        ...state,
-        droppable: {
-          ...state.droppable,
-          containers
-        }
-      };
-    }
-    default: {
-      return state;
-    }
-  }
-}
-function RestoreFocus(_ref) {
-  let {
-    disabled
-  } = _ref;
-  const {
-    active,
-    activatorEvent,
-    draggableNodes
-  } = reactExports.useContext(InternalContext);
-  const previousActivatorEvent = usePrevious$1(activatorEvent);
-  const previousActiveId = usePrevious$1(active == null ? void 0 : active.id);
-  reactExports.useEffect(() => {
-    if (disabled) {
-      return;
-    }
-    if (!activatorEvent && previousActivatorEvent && previousActiveId != null) {
-      if (!isKeyboardEvent(previousActivatorEvent)) {
-        return;
-      }
-      if (document.activeElement === previousActivatorEvent.target) {
-        return;
-      }
-      const draggableNode = draggableNodes.get(previousActiveId);
-      if (!draggableNode) {
-        return;
-      }
-      const {
-        activatorNode,
-        node
-      } = draggableNode;
-      if (!activatorNode.current && !node.current) {
-        return;
-      }
-      requestAnimationFrame(() => {
-        for (const element of [activatorNode.current, node.current]) {
-          if (!element) {
-            continue;
-          }
-          const focusableNode = findFirstFocusableNode(element);
-          if (focusableNode) {
-            focusableNode.focus();
-            break;
-          }
-        }
-      });
-    }
-  }, [activatorEvent, disabled, draggableNodes, previousActiveId, previousActivatorEvent]);
-  return null;
-}
-function applyModifiers(modifiers, _ref) {
-  let {
-    transform,
-    ...args
-  } = _ref;
-  return modifiers != null && modifiers.length ? modifiers.reduce((accumulator, modifier) => {
-    return modifier({
-      transform: accumulator,
-      ...args
-    });
-  }, transform) : transform;
-}
-function useMeasuringConfiguration(config) {
-  return reactExports.useMemo(
-    () => ({
-      draggable: {
-        ...defaultMeasuringConfiguration.draggable,
-        ...config == null ? void 0 : config.draggable
-      },
-      droppable: {
-        ...defaultMeasuringConfiguration.droppable,
-        ...config == null ? void 0 : config.droppable
-      },
-      dragOverlay: {
-        ...defaultMeasuringConfiguration.dragOverlay,
-        ...config == null ? void 0 : config.dragOverlay
-      }
-    }),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [config == null ? void 0 : config.draggable, config == null ? void 0 : config.droppable, config == null ? void 0 : config.dragOverlay]
-  );
-}
-function useLayoutShiftScrollCompensation(_ref) {
-  let {
-    activeNode,
-    measure,
-    initialRect,
-    config = true
-  } = _ref;
-  const initialized = reactExports.useRef(false);
-  const {
-    x: x2,
-    y
-  } = typeof config === "boolean" ? {
-    x: config,
-    y: config
-  } : config;
-  useIsomorphicLayoutEffect(() => {
-    const disabled = !x2 && !y;
-    if (disabled || !activeNode) {
-      initialized.current = false;
-      return;
-    }
-    if (initialized.current || !initialRect) {
-      return;
-    }
-    const node = activeNode == null ? void 0 : activeNode.node.current;
-    if (!node || node.isConnected === false) {
-      return;
-    }
-    const rect = measure(node);
-    const rectDelta = getRectDelta(rect, initialRect);
-    if (!x2) {
-      rectDelta.x = 0;
-    }
-    if (!y) {
-      rectDelta.y = 0;
-    }
-    initialized.current = true;
-    if (Math.abs(rectDelta.x) > 0 || Math.abs(rectDelta.y) > 0) {
-      const firstScrollableAncestor = getFirstScrollableAncestor(node);
-      if (firstScrollableAncestor) {
-        firstScrollableAncestor.scrollBy({
-          top: rectDelta.y,
-          left: rectDelta.x
-        });
-      }
-    }
-  }, [activeNode, x2, y, initialRect, measure]);
-}
-const ActiveDraggableContext = /* @__PURE__ */ reactExports.createContext({
-  ...defaultCoordinates,
-  scaleX: 1,
-  scaleY: 1
-});
-var Status;
-(function(Status2) {
-  Status2[Status2["Uninitialized"] = 0] = "Uninitialized";
-  Status2[Status2["Initializing"] = 1] = "Initializing";
-  Status2[Status2["Initialized"] = 2] = "Initialized";
-})(Status || (Status = {}));
-const DndContext = /* @__PURE__ */ reactExports.memo(function DndContext2(_ref) {
-  var _sensorContext$curren, _dragOverlay$nodeRef$, _dragOverlay$rect, _over$rect;
-  let {
-    id: id2,
-    accessibility,
-    autoScroll = true,
-    children,
-    sensors = defaultSensors,
-    collisionDetection = rectIntersection,
-    measuring,
-    modifiers,
-    ...props
-  } = _ref;
-  const store = reactExports.useReducer(reducer, void 0, getInitialState);
-  const [state, dispatch] = store;
-  const [dispatchMonitorEvent, registerMonitorListener] = useDndMonitorProvider();
-  const [status, setStatus] = reactExports.useState(Status.Uninitialized);
-  const isInitialized2 = status === Status.Initialized;
-  const {
-    draggable: {
-      active: activeId,
-      nodes: draggableNodes,
-      translate
-    },
-    droppable: {
-      containers: droppableContainers
-    }
-  } = state;
-  const node = activeId != null ? draggableNodes.get(activeId) : null;
-  const activeRects = reactExports.useRef({
-    initial: null,
-    translated: null
-  });
-  const active = reactExports.useMemo(() => {
-    var _node$data;
-    return activeId != null ? {
-      id: activeId,
-      // It's possible for the active node to unmount while dragging
-      data: (_node$data = node == null ? void 0 : node.data) != null ? _node$data : defaultData,
-      rect: activeRects
-    } : null;
-  }, [activeId, node]);
-  const activeRef = reactExports.useRef(null);
-  const [activeSensor, setActiveSensor] = reactExports.useState(null);
-  const [activatorEvent, setActivatorEvent] = reactExports.useState(null);
-  const latestProps = useLatestValue(props, Object.values(props));
-  const draggableDescribedById = useUniqueId("DndDescribedBy", id2);
-  const enabledDroppableContainers = reactExports.useMemo(() => droppableContainers.getEnabled(), [droppableContainers]);
-  const measuringConfiguration = useMeasuringConfiguration(measuring);
-  const {
-    droppableRects,
-    measureDroppableContainers,
-    measuringScheduled
-  } = useDroppableMeasuring(enabledDroppableContainers, {
-    dragging: isInitialized2,
-    dependencies: [translate.x, translate.y],
-    config: measuringConfiguration.droppable
-  });
-  const activeNode = useCachedNode(draggableNodes, activeId);
-  const activationCoordinates = reactExports.useMemo(() => activatorEvent ? getEventCoordinates(activatorEvent) : null, [activatorEvent]);
-  const autoScrollOptions = getAutoScrollerOptions();
-  const initialActiveNodeRect = useInitialRect(activeNode, measuringConfiguration.draggable.measure);
-  useLayoutShiftScrollCompensation({
-    activeNode: activeId != null ? draggableNodes.get(activeId) : null,
-    config: autoScrollOptions.layoutShiftCompensation,
-    initialRect: initialActiveNodeRect,
-    measure: measuringConfiguration.draggable.measure
-  });
-  const activeNodeRect = useRect(activeNode, measuringConfiguration.draggable.measure, initialActiveNodeRect);
-  const containerNodeRect = useRect(activeNode ? activeNode.parentElement : null);
-  const sensorContext = reactExports.useRef({
-    activatorEvent: null,
-    active: null,
-    activeNode,
-    collisionRect: null,
-    collisions: null,
-    droppableRects,
-    draggableNodes,
-    draggingNode: null,
-    draggingNodeRect: null,
-    droppableContainers,
-    over: null,
-    scrollableAncestors: [],
-    scrollAdjustedTranslate: null
-  });
-  const overNode = droppableContainers.getNodeFor((_sensorContext$curren = sensorContext.current.over) == null ? void 0 : _sensorContext$curren.id);
-  const dragOverlay = useDragOverlayMeasuring({
-    measure: measuringConfiguration.dragOverlay.measure
-  });
-  const draggingNode = (_dragOverlay$nodeRef$ = dragOverlay.nodeRef.current) != null ? _dragOverlay$nodeRef$ : activeNode;
-  const draggingNodeRect = isInitialized2 ? (_dragOverlay$rect = dragOverlay.rect) != null ? _dragOverlay$rect : activeNodeRect : null;
-  const usesDragOverlay = Boolean(dragOverlay.nodeRef.current && dragOverlay.rect);
-  const nodeRectDelta = useRectDelta(usesDragOverlay ? null : activeNodeRect);
-  const windowRect = useWindowRect(draggingNode ? getWindow(draggingNode) : null);
-  const scrollableAncestors = useScrollableAncestors(isInitialized2 ? overNode != null ? overNode : activeNode : null);
-  const scrollableAncestorRects = useRects(scrollableAncestors);
-  const modifiedTranslate = applyModifiers(modifiers, {
-    transform: {
-      x: translate.x - nodeRectDelta.x,
-      y: translate.y - nodeRectDelta.y,
-      scaleX: 1,
-      scaleY: 1
-    },
-    activatorEvent,
-    active,
-    activeNodeRect,
-    containerNodeRect,
-    draggingNodeRect,
-    over: sensorContext.current.over,
-    overlayNodeRect: dragOverlay.rect,
-    scrollableAncestors,
-    scrollableAncestorRects,
-    windowRect
-  });
-  const pointerCoordinates = activationCoordinates ? add(activationCoordinates, translate) : null;
-  const scrollOffsets = useScrollOffsets(scrollableAncestors);
-  const scrollAdjustment = useScrollOffsetsDelta(scrollOffsets);
-  const activeNodeScrollDelta = useScrollOffsetsDelta(scrollOffsets, [activeNodeRect]);
-  const scrollAdjustedTranslate = add(modifiedTranslate, scrollAdjustment);
-  const collisionRect = draggingNodeRect ? getAdjustedRect(draggingNodeRect, modifiedTranslate) : null;
-  const collisions = active && collisionRect ? collisionDetection({
-    active,
-    collisionRect,
-    droppableRects,
-    droppableContainers: enabledDroppableContainers,
-    pointerCoordinates
-  }) : null;
-  const overId = getFirstCollision(collisions, "id");
-  const [over, setOver] = reactExports.useState(null);
-  const appliedTranslate = usesDragOverlay ? modifiedTranslate : add(modifiedTranslate, activeNodeScrollDelta);
-  const transform = adjustScale(appliedTranslate, (_over$rect = over == null ? void 0 : over.rect) != null ? _over$rect : null, activeNodeRect);
-  const activeSensorRef = reactExports.useRef(null);
-  const instantiateSensor = reactExports.useCallback(
-    (event, _ref2) => {
-      let {
-        sensor: Sensor,
-        options
-      } = _ref2;
-      if (activeRef.current == null) {
-        return;
-      }
-      const activeNode2 = draggableNodes.get(activeRef.current);
-      if (!activeNode2) {
-        return;
-      }
-      const activatorEvent2 = event.nativeEvent;
-      const sensorInstance = new Sensor({
-        active: activeRef.current,
-        activeNode: activeNode2,
-        event: activatorEvent2,
-        options,
-        // Sensors need to be instantiated with refs for arguments that change over time
-        // otherwise they are frozen in time with the stale arguments
-        context: sensorContext,
-        onAbort(id3) {
-          const draggableNode = draggableNodes.get(id3);
-          if (!draggableNode) {
-            return;
-          }
-          const {
-            onDragAbort
-          } = latestProps.current;
-          const event2 = {
-            id: id3
-          };
-          onDragAbort == null ? void 0 : onDragAbort(event2);
-          dispatchMonitorEvent({
-            type: "onDragAbort",
-            event: event2
-          });
-        },
-        onPending(id3, constraint, initialCoordinates, offset2) {
-          const draggableNode = draggableNodes.get(id3);
-          if (!draggableNode) {
-            return;
-          }
-          const {
-            onDragPending
-          } = latestProps.current;
-          const event2 = {
-            id: id3,
-            constraint,
-            initialCoordinates,
-            offset: offset2
-          };
-          onDragPending == null ? void 0 : onDragPending(event2);
-          dispatchMonitorEvent({
-            type: "onDragPending",
-            event: event2
-          });
-        },
-        onStart(initialCoordinates) {
-          const id3 = activeRef.current;
-          if (id3 == null) {
-            return;
-          }
-          const draggableNode = draggableNodes.get(id3);
-          if (!draggableNode) {
-            return;
-          }
-          const {
-            onDragStart
-          } = latestProps.current;
-          const event2 = {
-            activatorEvent: activatorEvent2,
-            active: {
-              id: id3,
-              data: draggableNode.data,
-              rect: activeRects
-            }
-          };
-          reactDomExports.unstable_batchedUpdates(() => {
-            onDragStart == null ? void 0 : onDragStart(event2);
-            setStatus(Status.Initializing);
-            dispatch({
-              type: Action$1.DragStart,
-              initialCoordinates,
-              active: id3
-            });
-            dispatchMonitorEvent({
-              type: "onDragStart",
-              event: event2
-            });
-            setActiveSensor(activeSensorRef.current);
-            setActivatorEvent(activatorEvent2);
-          });
-        },
-        onMove(coordinates) {
-          dispatch({
-            type: Action$1.DragMove,
-            coordinates
-          });
-        },
-        onEnd: createHandler(Action$1.DragEnd),
-        onCancel: createHandler(Action$1.DragCancel)
-      });
-      activeSensorRef.current = sensorInstance;
-      function createHandler(type) {
-        return async function handler() {
-          const {
-            active: active2,
-            collisions: collisions2,
-            over: over2,
-            scrollAdjustedTranslate: scrollAdjustedTranslate2
-          } = sensorContext.current;
-          let event2 = null;
-          if (active2 && scrollAdjustedTranslate2) {
-            const {
-              cancelDrop
-            } = latestProps.current;
-            event2 = {
-              activatorEvent: activatorEvent2,
-              active: active2,
-              collisions: collisions2,
-              delta: scrollAdjustedTranslate2,
-              over: over2
-            };
-            if (type === Action$1.DragEnd && typeof cancelDrop === "function") {
-              const shouldCancel = await Promise.resolve(cancelDrop(event2));
-              if (shouldCancel) {
-                type = Action$1.DragCancel;
-              }
-            }
-          }
-          activeRef.current = null;
-          reactDomExports.unstable_batchedUpdates(() => {
-            dispatch({
-              type
-            });
-            setStatus(Status.Uninitialized);
-            setOver(null);
-            setActiveSensor(null);
-            setActivatorEvent(null);
-            activeSensorRef.current = null;
-            const eventName = type === Action$1.DragEnd ? "onDragEnd" : "onDragCancel";
-            if (event2) {
-              const handler2 = latestProps.current[eventName];
-              handler2 == null ? void 0 : handler2(event2);
-              dispatchMonitorEvent({
-                type: eventName,
-                event: event2
-              });
-            }
-          });
-        };
-      }
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [draggableNodes]
-  );
-  const bindActivatorToSensorInstantiator = reactExports.useCallback((handler, sensor) => {
-    return (event, active2) => {
-      const nativeEvent = event.nativeEvent;
-      const activeDraggableNode = draggableNodes.get(active2);
-      if (
-        // Another sensor is already instantiating
-        activeRef.current !== null || // No active draggable
-        !activeDraggableNode || // Event has already been captured
-        nativeEvent.dndKit || nativeEvent.defaultPrevented
-      ) {
-        return;
-      }
-      const activationContext = {
-        active: activeDraggableNode
-      };
-      const shouldActivate = handler(event, sensor.options, activationContext);
-      if (shouldActivate === true) {
-        nativeEvent.dndKit = {
-          capturedBy: sensor.sensor
-        };
-        activeRef.current = active2;
-        instantiateSensor(event, sensor);
-      }
-    };
-  }, [draggableNodes, instantiateSensor]);
-  const activators = useCombineActivators(sensors, bindActivatorToSensorInstantiator);
-  useSensorSetup(sensors);
-  useIsomorphicLayoutEffect(() => {
-    if (activeNodeRect && status === Status.Initializing) {
-      setStatus(Status.Initialized);
-    }
-  }, [activeNodeRect, status]);
-  reactExports.useEffect(
-    () => {
-      const {
-        onDragMove
-      } = latestProps.current;
-      const {
-        active: active2,
-        activatorEvent: activatorEvent2,
-        collisions: collisions2,
-        over: over2
-      } = sensorContext.current;
-      if (!active2 || !activatorEvent2) {
-        return;
-      }
-      const event = {
-        active: active2,
-        activatorEvent: activatorEvent2,
-        collisions: collisions2,
-        delta: {
-          x: scrollAdjustedTranslate.x,
-          y: scrollAdjustedTranslate.y
-        },
-        over: over2
-      };
-      reactDomExports.unstable_batchedUpdates(() => {
-        onDragMove == null ? void 0 : onDragMove(event);
-        dispatchMonitorEvent({
-          type: "onDragMove",
-          event
-        });
-      });
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [scrollAdjustedTranslate.x, scrollAdjustedTranslate.y]
-  );
-  reactExports.useEffect(
-    () => {
-      const {
-        active: active2,
-        activatorEvent: activatorEvent2,
-        collisions: collisions2,
-        droppableContainers: droppableContainers2,
-        scrollAdjustedTranslate: scrollAdjustedTranslate2
-      } = sensorContext.current;
-      if (!active2 || activeRef.current == null || !activatorEvent2 || !scrollAdjustedTranslate2) {
-        return;
-      }
-      const {
-        onDragOver
-      } = latestProps.current;
-      const overContainer = droppableContainers2.get(overId);
-      const over2 = overContainer && overContainer.rect.current ? {
-        id: overContainer.id,
-        rect: overContainer.rect.current,
-        data: overContainer.data,
-        disabled: overContainer.disabled
-      } : null;
-      const event = {
-        active: active2,
-        activatorEvent: activatorEvent2,
-        collisions: collisions2,
-        delta: {
-          x: scrollAdjustedTranslate2.x,
-          y: scrollAdjustedTranslate2.y
-        },
-        over: over2
-      };
-      reactDomExports.unstable_batchedUpdates(() => {
-        setOver(over2);
-        onDragOver == null ? void 0 : onDragOver(event);
-        dispatchMonitorEvent({
-          type: "onDragOver",
-          event
-        });
-      });
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [overId]
-  );
-  useIsomorphicLayoutEffect(() => {
-    sensorContext.current = {
-      activatorEvent,
-      active,
-      activeNode,
-      collisionRect,
-      collisions,
-      droppableRects,
-      draggableNodes,
-      draggingNode,
-      draggingNodeRect,
-      droppableContainers,
-      over,
-      scrollableAncestors,
-      scrollAdjustedTranslate
-    };
-    activeRects.current = {
-      initial: draggingNodeRect,
-      translated: collisionRect
-    };
-  }, [active, activeNode, collisions, collisionRect, draggableNodes, draggingNode, draggingNodeRect, droppableRects, droppableContainers, over, scrollableAncestors, scrollAdjustedTranslate]);
-  useAutoScroller({
-    ...autoScrollOptions,
-    delta: translate,
-    draggingRect: collisionRect,
-    pointerCoordinates,
-    scrollableAncestors,
-    scrollableAncestorRects
-  });
-  const publicContext = reactExports.useMemo(() => {
-    const context = {
-      active,
-      activeNode,
-      activeNodeRect,
-      activatorEvent,
-      collisions,
-      containerNodeRect,
-      dragOverlay,
-      draggableNodes,
-      droppableContainers,
-      droppableRects,
-      over,
-      measureDroppableContainers,
-      scrollableAncestors,
-      scrollableAncestorRects,
-      measuringConfiguration,
-      measuringScheduled,
-      windowRect
-    };
-    return context;
-  }, [active, activeNode, activeNodeRect, activatorEvent, collisions, containerNodeRect, dragOverlay, draggableNodes, droppableContainers, droppableRects, over, measureDroppableContainers, scrollableAncestors, scrollableAncestorRects, measuringConfiguration, measuringScheduled, windowRect]);
-  const internalContext = reactExports.useMemo(() => {
-    const context = {
-      activatorEvent,
-      activators,
-      active,
-      activeNodeRect,
-      ariaDescribedById: {
-        draggable: draggableDescribedById
-      },
-      dispatch,
-      draggableNodes,
-      over,
-      measureDroppableContainers
-    };
-    return context;
-  }, [activatorEvent, activators, active, activeNodeRect, dispatch, draggableDescribedById, draggableNodes, over, measureDroppableContainers]);
-  return React$2.createElement(DndMonitorContext.Provider, {
-    value: registerMonitorListener
-  }, React$2.createElement(InternalContext.Provider, {
-    value: internalContext
-  }, React$2.createElement(PublicContext.Provider, {
-    value: publicContext
-  }, React$2.createElement(ActiveDraggableContext.Provider, {
-    value: transform
-  }, children)), React$2.createElement(RestoreFocus, {
-    disabled: (accessibility == null ? void 0 : accessibility.restoreFocus) === false
-  })), React$2.createElement(Accessibility, {
-    ...accessibility,
-    hiddenTextDescribedById: draggableDescribedById
-  }));
-  function getAutoScrollerOptions() {
-    const activeSensorDisablesAutoscroll = (activeSensor == null ? void 0 : activeSensor.autoScrollEnabled) === false;
-    const autoScrollGloballyDisabled = typeof autoScroll === "object" ? autoScroll.enabled === false : autoScroll === false;
-    const enabled = isInitialized2 && !activeSensorDisablesAutoscroll && !autoScrollGloballyDisabled;
-    if (typeof autoScroll === "object") {
-      return {
-        ...autoScroll,
-        enabled
-      };
-    }
-    return {
-      enabled
-    };
-  }
-});
-const NullContext = /* @__PURE__ */ reactExports.createContext(null);
-const defaultRole = "button";
-const ID_PREFIX$1 = "Draggable";
-function useDraggable(_ref) {
-  let {
-    id: id2,
-    data,
-    disabled = false,
-    attributes
-  } = _ref;
-  const key = useUniqueId(ID_PREFIX$1);
-  const {
-    activators,
-    activatorEvent,
-    active,
-    activeNodeRect,
-    ariaDescribedById,
-    draggableNodes,
-    over
-  } = reactExports.useContext(InternalContext);
-  const {
-    role = defaultRole,
-    roleDescription = "draggable",
-    tabIndex = 0
-  } = attributes != null ? attributes : {};
-  const isDragging2 = (active == null ? void 0 : active.id) === id2;
-  const transform = reactExports.useContext(isDragging2 ? ActiveDraggableContext : NullContext);
-  const [node, setNodeRef] = useNodeRef();
-  const [activatorNode, setActivatorNodeRef] = useNodeRef();
-  const listeners = useSyntheticListeners(activators, id2);
-  const dataRef = useLatestValue(data);
-  useIsomorphicLayoutEffect(
-    () => {
-      draggableNodes.set(id2, {
-        id: id2,
-        key,
-        node,
-        activatorNode,
-        data: dataRef
-      });
-      return () => {
-        const node2 = draggableNodes.get(id2);
-        if (node2 && node2.key === key) {
-          draggableNodes.delete(id2);
-        }
-      };
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [draggableNodes, id2]
-  );
-  const memoizedAttributes = reactExports.useMemo(() => ({
-    role,
-    tabIndex,
-    "aria-disabled": disabled,
-    "aria-pressed": isDragging2 && role === defaultRole ? true : void 0,
-    "aria-roledescription": roleDescription,
-    "aria-describedby": ariaDescribedById.draggable
-  }), [disabled, role, tabIndex, isDragging2, roleDescription, ariaDescribedById.draggable]);
-  return {
-    active,
-    activatorEvent,
-    activeNodeRect,
-    attributes: memoizedAttributes,
-    isDragging: isDragging2,
-    listeners: disabled ? void 0 : listeners,
-    node,
-    over,
-    setNodeRef,
-    setActivatorNodeRef,
-    transform
-  };
-}
-function useDndContext() {
-  return reactExports.useContext(PublicContext);
-}
-const ID_PREFIX$1$1 = "Droppable";
-const defaultResizeObserverConfig = {
-  timeout: 25
-};
-function useDroppable(_ref) {
-  let {
-    data,
-    disabled = false,
-    id: id2,
-    resizeObserverConfig
-  } = _ref;
-  const key = useUniqueId(ID_PREFIX$1$1);
-  const {
-    active,
-    dispatch,
-    over,
-    measureDroppableContainers
-  } = reactExports.useContext(InternalContext);
-  const previous = reactExports.useRef({
-    disabled
-  });
-  const resizeObserverConnected = reactExports.useRef(false);
-  const rect = reactExports.useRef(null);
-  const callbackId = reactExports.useRef(null);
-  const {
-    disabled: resizeObserverDisabled,
-    updateMeasurementsFor,
-    timeout: resizeObserverTimeout
-  } = {
-    ...defaultResizeObserverConfig,
-    ...resizeObserverConfig
-  };
-  const ids2 = useLatestValue(updateMeasurementsFor != null ? updateMeasurementsFor : id2);
-  const handleResize = reactExports.useCallback(
-    () => {
-      if (!resizeObserverConnected.current) {
-        resizeObserverConnected.current = true;
-        return;
-      }
-      if (callbackId.current != null) {
-        clearTimeout(callbackId.current);
-      }
-      callbackId.current = setTimeout(() => {
-        measureDroppableContainers(Array.isArray(ids2.current) ? ids2.current : [ids2.current]);
-        callbackId.current = null;
-      }, resizeObserverTimeout);
-    },
-    //eslint-disable-next-line react-hooks/exhaustive-deps
-    [resizeObserverTimeout]
-  );
-  const resizeObserver = useResizeObserver({
-    callback: handleResize,
-    disabled: resizeObserverDisabled || !active
-  });
-  const handleNodeChange = reactExports.useCallback((newElement, previousElement) => {
-    if (!resizeObserver) {
-      return;
-    }
-    if (previousElement) {
-      resizeObserver.unobserve(previousElement);
-      resizeObserverConnected.current = false;
-    }
-    if (newElement) {
-      resizeObserver.observe(newElement);
-    }
-  }, [resizeObserver]);
-  const [nodeRef, setNodeRef] = useNodeRef(handleNodeChange);
-  const dataRef = useLatestValue(data);
-  reactExports.useEffect(() => {
-    if (!resizeObserver || !nodeRef.current) {
-      return;
-    }
-    resizeObserver.disconnect();
-    resizeObserverConnected.current = false;
-    resizeObserver.observe(nodeRef.current);
-  }, [nodeRef, resizeObserver]);
-  reactExports.useEffect(
-    () => {
-      dispatch({
-        type: Action$1.RegisterDroppable,
-        element: {
-          id: id2,
-          key,
-          disabled,
-          node: nodeRef,
-          rect,
-          data: dataRef
-        }
-      });
-      return () => dispatch({
-        type: Action$1.UnregisterDroppable,
-        key,
-        id: id2
-      });
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [id2]
-  );
-  reactExports.useEffect(() => {
-    if (disabled !== previous.current.disabled) {
-      dispatch({
-        type: Action$1.SetDroppableDisabled,
-        id: id2,
-        key,
-        disabled
-      });
-      previous.current.disabled = disabled;
-    }
-  }, [id2, key, disabled, dispatch]);
-  return {
-    active,
-    rect,
-    isOver: (over == null ? void 0 : over.id) === id2,
-    node: nodeRef,
-    over,
-    setNodeRef
-  };
-}
-function arrayMove(array, from, to) {
-  const newArray = array.slice();
-  newArray.splice(to < 0 ? newArray.length + to : to, 0, newArray.splice(from, 1)[0]);
-  return newArray;
-}
-function getSortedRects(items, rects) {
-  return items.reduce((accumulator, id2, index2) => {
-    const rect = rects.get(id2);
-    if (rect) {
-      accumulator[index2] = rect;
-    }
-    return accumulator;
-  }, Array(items.length));
-}
-function isValidIndex(index2) {
-  return index2 !== null && index2 >= 0;
-}
-function itemsEqual(a, b) {
-  if (a === b) {
-    return true;
-  }
-  if (a.length !== b.length) {
-    return false;
-  }
-  for (let i = 0; i < a.length; i++) {
-    if (a[i] !== b[i]) {
-      return false;
-    }
-  }
-  return true;
-}
-function normalizeDisabled(disabled) {
-  if (typeof disabled === "boolean") {
-    return {
-      draggable: disabled,
-      droppable: disabled
-    };
-  }
-  return disabled;
-}
-const rectSortingStrategy = (_ref) => {
-  let {
-    rects,
-    activeIndex,
-    overIndex,
-    index: index2
-  } = _ref;
-  const newRects = arrayMove(rects, overIndex, activeIndex);
-  const oldRect = rects[index2];
-  const newRect = newRects[index2];
-  if (!newRect || !oldRect) {
-    return null;
-  }
-  return {
-    x: newRect.left - oldRect.left,
-    y: newRect.top - oldRect.top,
-    scaleX: newRect.width / oldRect.width,
-    scaleY: newRect.height / oldRect.height
-  };
-};
-const defaultScale$1 = {
-  scaleX: 1,
-  scaleY: 1
-};
-const verticalListSortingStrategy = (_ref) => {
-  var _rects$activeIndex;
-  let {
-    activeIndex,
-    activeNodeRect: fallbackActiveRect,
-    index: index2,
-    rects,
-    overIndex
-  } = _ref;
-  const activeNodeRect = (_rects$activeIndex = rects[activeIndex]) != null ? _rects$activeIndex : fallbackActiveRect;
-  if (!activeNodeRect) {
-    return null;
-  }
-  if (index2 === activeIndex) {
-    const overIndexRect = rects[overIndex];
-    if (!overIndexRect) {
-      return null;
-    }
-    return {
-      x: 0,
-      y: activeIndex < overIndex ? overIndexRect.top + overIndexRect.height - (activeNodeRect.top + activeNodeRect.height) : overIndexRect.top - activeNodeRect.top,
-      ...defaultScale$1
-    };
-  }
-  const itemGap = getItemGap$1(rects, index2, activeIndex);
-  if (index2 > activeIndex && index2 <= overIndex) {
-    return {
-      x: 0,
-      y: -activeNodeRect.height - itemGap,
-      ...defaultScale$1
-    };
-  }
-  if (index2 < activeIndex && index2 >= overIndex) {
-    return {
-      x: 0,
-      y: activeNodeRect.height + itemGap,
-      ...defaultScale$1
-    };
-  }
-  return {
-    x: 0,
-    y: 0,
-    ...defaultScale$1
-  };
-};
-function getItemGap$1(clientRects, index2, activeIndex) {
-  const currentRect = clientRects[index2];
-  const previousRect = clientRects[index2 - 1];
-  const nextRect = clientRects[index2 + 1];
-  if (!currentRect) {
-    return 0;
-  }
-  if (activeIndex < index2) {
-    return previousRect ? currentRect.top - (previousRect.top + previousRect.height) : nextRect ? nextRect.top - (currentRect.top + currentRect.height) : 0;
-  }
-  return nextRect ? nextRect.top - (currentRect.top + currentRect.height) : previousRect ? currentRect.top - (previousRect.top + previousRect.height) : 0;
-}
-const ID_PREFIX = "Sortable";
-const Context = /* @__PURE__ */ React$2.createContext({
-  activeIndex: -1,
-  containerId: ID_PREFIX,
-  disableTransforms: false,
-  items: [],
-  overIndex: -1,
-  useDragOverlay: false,
-  sortedRects: [],
-  strategy: rectSortingStrategy,
-  disabled: {
-    draggable: false,
-    droppable: false
-  }
-});
-function SortableContext(_ref) {
-  let {
-    children,
-    id: id2,
-    items: userDefinedItems,
-    strategy = rectSortingStrategy,
-    disabled: disabledProp = false
-  } = _ref;
-  const {
-    active,
-    dragOverlay,
-    droppableRects,
-    over,
-    measureDroppableContainers
-  } = useDndContext();
-  const containerId = useUniqueId(ID_PREFIX, id2);
-  const useDragOverlay = Boolean(dragOverlay.rect !== null);
-  const items = reactExports.useMemo(() => userDefinedItems.map((item) => typeof item === "object" && "id" in item ? item.id : item), [userDefinedItems]);
-  const isDragging2 = active != null;
-  const activeIndex = active ? items.indexOf(active.id) : -1;
-  const overIndex = over ? items.indexOf(over.id) : -1;
-  const previousItemsRef = reactExports.useRef(items);
-  const itemsHaveChanged = !itemsEqual(items, previousItemsRef.current);
-  const disableTransforms = overIndex !== -1 && activeIndex === -1 || itemsHaveChanged;
-  const disabled = normalizeDisabled(disabledProp);
-  useIsomorphicLayoutEffect(() => {
-    if (itemsHaveChanged && isDragging2) {
-      measureDroppableContainers(items);
-    }
-  }, [itemsHaveChanged, items, isDragging2, measureDroppableContainers]);
-  reactExports.useEffect(() => {
-    previousItemsRef.current = items;
-  }, [items]);
-  const contextValue = reactExports.useMemo(
-    () => ({
-      activeIndex,
-      containerId,
-      disabled,
-      disableTransforms,
-      items,
-      overIndex,
-      useDragOverlay,
-      sortedRects: getSortedRects(items, droppableRects),
-      strategy
-    }),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [activeIndex, containerId, disabled.draggable, disabled.droppable, disableTransforms, items, overIndex, droppableRects, useDragOverlay, strategy]
-  );
-  return React$2.createElement(Context.Provider, {
-    value: contextValue
-  }, children);
-}
-const defaultNewIndexGetter = (_ref) => {
-  let {
-    id: id2,
-    items,
-    activeIndex,
-    overIndex
-  } = _ref;
-  return arrayMove(items, activeIndex, overIndex).indexOf(id2);
-};
-const defaultAnimateLayoutChanges = (_ref2) => {
-  let {
-    containerId,
-    isSorting,
-    wasDragging,
-    index: index2,
-    items,
-    newIndex,
-    previousItems,
-    previousContainerId,
-    transition
-  } = _ref2;
-  if (!transition || !wasDragging) {
-    return false;
-  }
-  if (previousItems !== items && index2 === newIndex) {
-    return false;
-  }
-  if (isSorting) {
-    return true;
-  }
-  return newIndex !== index2 && containerId === previousContainerId;
-};
-const defaultTransition = {
-  duration: 200,
-  easing: "ease"
-};
-const transitionProperty = "transform";
-const disabledTransition = /* @__PURE__ */ CSS$1.Transition.toString({
-  property: transitionProperty,
-  duration: 0,
-  easing: "linear"
-});
-const defaultAttributes = {
-  roleDescription: "sortable"
-};
-function useDerivedTransform(_ref) {
-  let {
-    disabled,
-    index: index2,
-    node,
-    rect
-  } = _ref;
-  const [derivedTransform, setDerivedtransform] = reactExports.useState(null);
-  const previousIndex = reactExports.useRef(index2);
-  useIsomorphicLayoutEffect(() => {
-    if (!disabled && index2 !== previousIndex.current && node.current) {
-      const initial = rect.current;
-      if (initial) {
-        const current = getClientRect(node.current, {
-          ignoreTransform: true
-        });
-        const delta = {
-          x: initial.left - current.left,
-          y: initial.top - current.top,
-          scaleX: initial.width / current.width,
-          scaleY: initial.height / current.height
-        };
-        if (delta.x || delta.y) {
-          setDerivedtransform(delta);
-        }
-      }
-    }
-    if (index2 !== previousIndex.current) {
-      previousIndex.current = index2;
-    }
-  }, [disabled, index2, node, rect]);
-  reactExports.useEffect(() => {
-    if (derivedTransform) {
-      setDerivedtransform(null);
-    }
-  }, [derivedTransform]);
-  return derivedTransform;
-}
-function useSortable(_ref) {
-  let {
-    animateLayoutChanges = defaultAnimateLayoutChanges,
-    attributes: userDefinedAttributes,
-    disabled: localDisabled,
-    data: customData,
-    getNewIndex = defaultNewIndexGetter,
-    id: id2,
-    strategy: localStrategy,
-    resizeObserverConfig,
-    transition = defaultTransition
-  } = _ref;
-  const {
-    items,
-    containerId,
-    activeIndex,
-    disabled: globalDisabled,
-    disableTransforms,
-    sortedRects,
-    overIndex,
-    useDragOverlay,
-    strategy: globalStrategy
-  } = reactExports.useContext(Context);
-  const disabled = normalizeLocalDisabled(localDisabled, globalDisabled);
-  const index2 = items.indexOf(id2);
-  const data = reactExports.useMemo(() => ({
-    sortable: {
-      containerId,
-      index: index2,
-      items
-    },
-    ...customData
-  }), [containerId, customData, index2, items]);
-  const itemsAfterCurrentSortable = reactExports.useMemo(() => items.slice(items.indexOf(id2)), [items, id2]);
-  const {
-    rect,
-    node,
-    isOver,
-    setNodeRef: setDroppableNodeRef
-  } = useDroppable({
-    id: id2,
-    data,
-    disabled: disabled.droppable,
-    resizeObserverConfig: {
-      updateMeasurementsFor: itemsAfterCurrentSortable,
-      ...resizeObserverConfig
-    }
-  });
-  const {
-    active,
-    activatorEvent,
-    activeNodeRect,
-    attributes,
-    setNodeRef: setDraggableNodeRef,
-    listeners,
-    isDragging: isDragging2,
-    over,
-    setActivatorNodeRef,
-    transform
-  } = useDraggable({
-    id: id2,
-    data,
-    attributes: {
-      ...defaultAttributes,
-      ...userDefinedAttributes
-    },
-    disabled: disabled.draggable
-  });
-  const setNodeRef = useCombinedRefs(setDroppableNodeRef, setDraggableNodeRef);
-  const isSorting = Boolean(active);
-  const displaceItem = isSorting && !disableTransforms && isValidIndex(activeIndex) && isValidIndex(overIndex);
-  const shouldDisplaceDragSource = !useDragOverlay && isDragging2;
-  const dragSourceDisplacement = shouldDisplaceDragSource && displaceItem ? transform : null;
-  const strategy = localStrategy != null ? localStrategy : globalStrategy;
-  const finalTransform = displaceItem ? dragSourceDisplacement != null ? dragSourceDisplacement : strategy({
-    rects: sortedRects,
-    activeNodeRect,
-    activeIndex,
-    overIndex,
-    index: index2
-  }) : null;
-  const newIndex = isValidIndex(activeIndex) && isValidIndex(overIndex) ? getNewIndex({
-    id: id2,
-    items,
-    activeIndex,
-    overIndex
-  }) : index2;
-  const activeId = active == null ? void 0 : active.id;
-  const previous = reactExports.useRef({
-    activeId,
-    items,
-    newIndex,
-    containerId
-  });
-  const itemsHaveChanged = items !== previous.current.items;
-  const shouldAnimateLayoutChanges = animateLayoutChanges({
-    active,
-    containerId,
-    isDragging: isDragging2,
-    isSorting,
-    id: id2,
-    index: index2,
-    items,
-    newIndex: previous.current.newIndex,
-    previousItems: previous.current.items,
-    previousContainerId: previous.current.containerId,
-    transition,
-    wasDragging: previous.current.activeId != null
-  });
-  const derivedTransform = useDerivedTransform({
-    disabled: !shouldAnimateLayoutChanges,
-    index: index2,
-    node,
-    rect
-  });
-  reactExports.useEffect(() => {
-    if (isSorting && previous.current.newIndex !== newIndex) {
-      previous.current.newIndex = newIndex;
-    }
-    if (containerId !== previous.current.containerId) {
-      previous.current.containerId = containerId;
-    }
-    if (items !== previous.current.items) {
-      previous.current.items = items;
-    }
-  }, [isSorting, newIndex, containerId, items]);
-  reactExports.useEffect(() => {
-    if (activeId === previous.current.activeId) {
-      return;
-    }
-    if (activeId != null && previous.current.activeId == null) {
-      previous.current.activeId = activeId;
-      return;
-    }
-    const timeoutId = setTimeout(() => {
-      previous.current.activeId = activeId;
-    }, 50);
-    return () => clearTimeout(timeoutId);
-  }, [activeId]);
-  return {
-    active,
-    activeIndex,
-    attributes,
-    data,
-    rect,
-    index: index2,
-    newIndex,
-    items,
-    isOver,
-    isSorting,
-    isDragging: isDragging2,
-    listeners,
-    node,
-    overIndex,
-    over,
-    setNodeRef,
-    setActivatorNodeRef,
-    setDroppableNodeRef,
-    setDraggableNodeRef,
-    transform: derivedTransform != null ? derivedTransform : finalTransform,
-    transition: getTransition()
-  };
-  function getTransition() {
-    if (
-      // Temporarily disable transitions for a single frame to set up derived transforms
-      derivedTransform || // Or to prevent items jumping to back to their "new" position when items change
-      itemsHaveChanged && previous.current.newIndex === index2
-    ) {
-      return disabledTransition;
-    }
-    if (shouldDisplaceDragSource && !isKeyboardEvent(activatorEvent) || !transition) {
-      return void 0;
-    }
-    if (isSorting || shouldAnimateLayoutChanges) {
-      return CSS$1.Transition.toString({
-        ...transition,
-        property: transitionProperty
-      });
-    }
-    return void 0;
-  }
-}
-function normalizeLocalDisabled(localDisabled, globalDisabled) {
-  var _localDisabled$dragga, _localDisabled$droppa;
-  if (typeof localDisabled === "boolean") {
-    return {
-      draggable: localDisabled,
-      // Backwards compatibility
-      droppable: false
-    };
-  }
-  return {
-    draggable: (_localDisabled$dragga = localDisabled == null ? void 0 : localDisabled.draggable) != null ? _localDisabled$dragga : globalDisabled.draggable,
-    droppable: (_localDisabled$droppa = localDisabled == null ? void 0 : localDisabled.droppable) != null ? _localDisabled$droppa : globalDisabled.droppable
-  };
-}
-function hasSortableData(entry) {
-  if (!entry) {
-    return false;
-  }
-  const data = entry.data.current;
-  if (data && "sortable" in data && typeof data.sortable === "object" && "containerId" in data.sortable && "items" in data.sortable && "index" in data.sortable) {
-    return true;
-  }
-  return false;
-}
-const directions = [KeyboardCode.Down, KeyboardCode.Right, KeyboardCode.Up, KeyboardCode.Left];
-const sortableKeyboardCoordinates = (event, _ref) => {
-  let {
-    context: {
-      active,
-      collisionRect,
-      droppableRects,
-      droppableContainers,
-      over,
-      scrollableAncestors
-    }
-  } = _ref;
-  if (directions.includes(event.code)) {
-    event.preventDefault();
-    if (!active || !collisionRect) {
-      return;
-    }
-    const filteredContainers = [];
-    droppableContainers.getEnabled().forEach((entry) => {
-      if (!entry || entry != null && entry.disabled) {
-        return;
-      }
-      const rect = droppableRects.get(entry.id);
-      if (!rect) {
-        return;
-      }
-      switch (event.code) {
-        case KeyboardCode.Down:
-          if (collisionRect.top < rect.top) {
-            filteredContainers.push(entry);
-          }
-          break;
-        case KeyboardCode.Up:
-          if (collisionRect.top > rect.top) {
-            filteredContainers.push(entry);
-          }
-          break;
-        case KeyboardCode.Left:
-          if (collisionRect.left > rect.left) {
-            filteredContainers.push(entry);
-          }
-          break;
-        case KeyboardCode.Right:
-          if (collisionRect.left < rect.left) {
-            filteredContainers.push(entry);
-          }
-          break;
-      }
-    });
-    const collisions = closestCorners({
-      collisionRect,
-      droppableRects,
-      droppableContainers: filteredContainers
-    });
-    let closestId = getFirstCollision(collisions, "id");
-    if (closestId === (over == null ? void 0 : over.id) && collisions.length > 1) {
-      closestId = collisions[1].id;
-    }
-    if (closestId != null) {
-      const activeDroppable = droppableContainers.get(active.id);
-      const newDroppable = droppableContainers.get(closestId);
-      const newRect = newDroppable ? droppableRects.get(newDroppable.id) : null;
-      const newNode = newDroppable == null ? void 0 : newDroppable.node.current;
-      if (newNode && newRect && activeDroppable && newDroppable) {
-        const newScrollAncestors = getScrollableAncestors(newNode);
-        const hasDifferentScrollAncestors = newScrollAncestors.some((element, index2) => scrollableAncestors[index2] !== element);
-        const hasSameContainer = isSameContainer(activeDroppable, newDroppable);
-        const isAfterActive = isAfter(activeDroppable, newDroppable);
-        const offset2 = hasDifferentScrollAncestors || !hasSameContainer ? {
-          x: 0,
-          y: 0
-        } : {
-          x: isAfterActive ? collisionRect.width - newRect.width : 0,
-          y: isAfterActive ? collisionRect.height - newRect.height : 0
-        };
-        const rectCoordinates = {
-          x: newRect.left,
-          y: newRect.top
-        };
-        const newCoordinates = offset2.x && offset2.y ? rectCoordinates : subtract(rectCoordinates, offset2);
-        return newCoordinates;
-      }
-    }
-  }
-  return void 0;
-};
-function isSameContainer(a, b) {
-  if (!hasSortableData(a) || !hasSortableData(b)) {
-    return false;
-  }
-  return a.data.current.sortable.containerId === b.data.current.sortable.containerId;
-}
-function isAfter(a, b) {
-  if (!hasSortableData(a) || !hasSortableData(b)) {
-    return false;
-  }
-  if (!isSameContainer(a, b)) {
-    return false;
-  }
-  return a.data.current.sortable.index < b.data.current.sortable.index;
-}
 const TaskCheckbox = ({ checked, onToggle, accent, size: size2 = "md" }) => {
   const palette = ACCENT_PALETTE[accent];
   const dimension = size2 === "sm" ? "size-4" : "size-5";
@@ -37305,7 +38161,27 @@ const TaskRow = ({ task, accent }) => {
   });
   const style2 = {
     transform: CSS$1.Transform.toString(transform),
-    transition
+    transition,
+    zIndex: isDragging2 ? 50 : void 0
+  };
+  const itemVariants = {
+    hidden: { opacity: 0, y: 8 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.25,
+        ease: "easeOut"
+      }
+    },
+    exit: {
+      opacity: 0,
+      height: 0,
+      transition: {
+        duration: 0.15,
+        ease: "easeIn"
+      }
+    }
   };
   const subtaskProgress = task.subtasks.length > 0 ? `${task.subtasks.filter((s) => s.done).length}/${task.subtasks.length}` : null;
   const done = task.status === "done";
@@ -37314,35 +38190,22 @@ const TaskRow = ({ task, accent }) => {
     {
       ref: setNodeRef,
       style: style2,
-      layout: true,
-      initial: { opacity: 0, y: 4 },
-      animate: { opacity: 1, y: 0 },
-      exit: { opacity: 0, height: 0 },
-      transition: { duration: 0.2, ease: [0.16, 1, 0.3, 1] },
+      variants: itemVariants,
+      exit: "exit",
       onClick: () => selectTask(task.id),
+      ...attributes,
+      ...listeners,
       className: cn(
-        "group relative flex items-start gap-3 px-3 cursor-pointer transition-colors",
+        "group relative flex items-start gap-3 px-3 cursor-grab active:cursor-grabbing transition-colors",
         density === "compact" && "py-1.5",
         density === "comfortable" && "py-3",
         density === "spacious" && "py-4",
         "hover:bg-accent/40",
         selected && "bg-accent/60",
-        isDragging2 && "opacity-50 z-10"
+        isDragging2 && "shadow-lg bg-background ring-1 ring-border/50 scale-[1.02] z-50"
       ),
       children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx(
-          "button",
-          {
-            type: "button",
-            ...attributes,
-            ...listeners,
-            onClick: (e) => e.stopPropagation(),
-            className: "opacity-0 group-hover:opacity-100 transition-opacity cursor-grab active:cursor-grabbing self-center -ml-1",
-            "aria-label": "Drag to reorder",
-            children: /* @__PURE__ */ jsxRuntimeExports.jsx(GripVertical, { className: "size-4 text-muted-foreground" })
-          }
-        ),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "pt-0.5", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "pt-0.5 relative z-10", onClick: (e) => e.stopPropagation(), children: /* @__PURE__ */ jsxRuntimeExports.jsx(
           TaskCheckbox,
           {
             checked: done,
@@ -37350,7 +38213,7 @@ const TaskRow = ({ task, accent }) => {
             accent
           }
         ) }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex-1 min-w-0", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex-1 min-w-0 pointer-events-none", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center gap-2 min-w-0", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
             "span",
             {
@@ -37384,6 +38247,22 @@ const TaskList = ({ tasks, accent, groupId }) => {
     useSensor(PointerSensor, { activationConstraint: { distance: 4 } }),
     useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates })
   );
+  const restrictToVerticalAxis = ({ transform }) => {
+    return {
+      ...transform,
+      x: 0
+    };
+  };
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.01,
+        delayChildren: 0.05
+      }
+    }
+  };
   const handleDragEnd = async (event) => {
     const { active, over } = event;
     if (!over || active.id === over.id) return;
@@ -37396,7 +38275,26 @@ const TaskList = ({ tasks, accent, groupId }) => {
       next.map((t) => t.id)
     );
   };
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(DndContext, { sensors, collisionDetection: closestCenter, onDragEnd: handleDragEnd, children: /* @__PURE__ */ jsxRuntimeExports.jsx(SortableContext, { items: tasks.map((t) => t.id), strategy: verticalListSortingStrategy, children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex flex-col divide-y divide-border/60", children: /* @__PURE__ */ jsxRuntimeExports.jsx(AnimatePresence, { initial: false, children: tasks.map((t) => /* @__PURE__ */ jsxRuntimeExports.jsx(TaskRow, { task: t, accent }, t.id)) }) }) }) });
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    DndContext,
+    {
+      sensors,
+      collisionDetection: closestCenter,
+      onDragEnd: handleDragEnd,
+      modifiers: [restrictToVerticalAxis],
+      autoScroll: false,
+      children: /* @__PURE__ */ jsxRuntimeExports.jsx(SortableContext, { items: tasks.map((t) => t.id), strategy: verticalListSortingStrategy, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+        motion.div,
+        {
+          variants: containerVariants,
+          initial: "hidden",
+          animate: "visible",
+          className: "flex flex-col divide-y divide-border/60",
+          children: /* @__PURE__ */ jsxRuntimeExports.jsx(AnimatePresence, { initial: false, children: tasks.map((t) => /* @__PURE__ */ jsxRuntimeExports.jsx(TaskRow, { task: t, accent }, t.id)) })
+        }
+      ) })
+    }
+  );
 };
 const AddTaskInline = reactExports.forwardRef(
   ({ groupId, accent }, ref) => {
@@ -37441,22 +38339,6 @@ const AddTaskInline = reactExports.forwardRef(
   }
 );
 AddTaskInline.displayName = "AddTaskInline";
-function Input({ className, type, ...props }) {
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(
-    "input",
-    {
-      type,
-      "data-slot": "input",
-      className: cn(
-        "file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input flex h-9 w-full min-w-0 rounded-md border px-3 py-1 text-base bg-input-background transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
-        "focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]",
-        "aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
-        className
-      ),
-      ...props
-    }
-  );
-}
 function Textarea({ className, ...props }) {
   return /* @__PURE__ */ jsxRuntimeExports.jsx(
     "textarea",
@@ -37470,7 +38352,7 @@ function Textarea({ className, ...props }) {
     }
   );
 }
-var NAME$1 = "Label";
+var NAME = "Label";
 var Label$1 = reactExports.forwardRef((props, forwardedRef) => {
   return /* @__PURE__ */ jsxRuntimeExports.jsx(
     Primitive.label,
@@ -37486,14 +38368,14 @@ var Label$1 = reactExports.forwardRef((props, forwardedRef) => {
     }
   );
 });
-Label$1.displayName = NAME$1;
-var Root$3 = Label$1;
+Label$1.displayName = NAME;
+var Root$1 = Label$1;
 function Label({
   className,
   ...props
 }) {
   return /* @__PURE__ */ jsxRuntimeExports.jsx(
-    Root$3,
+    Root$1,
     {
       "data-slot": "label",
       className: cn(
@@ -37625,14 +38507,14 @@ var Select$1 = (props) => {
   ) });
 };
 Select$1.displayName = SELECT_NAME;
-var TRIGGER_NAME$2 = "SelectTrigger";
+var TRIGGER_NAME$1 = "SelectTrigger";
 var SelectTrigger$1 = reactExports.forwardRef(
   (props, forwardedRef) => {
     const { __scopeSelect, disabled = false, ...triggerProps } = props;
     const popperScope = usePopperScope(__scopeSelect);
-    const context = useSelectContext(TRIGGER_NAME$2, __scopeSelect);
+    const context = useSelectContext(TRIGGER_NAME$1, __scopeSelect);
     const isDisabled = context.disabled || disabled;
-    const composedRefs = useComposedRefs$1(forwardedRef, context.onTriggerChange);
+    const composedRefs = useComposedRefs(forwardedRef, context.onTriggerChange);
     const getItems = useCollection(__scopeSelect);
     const pointerTypeRef = reactExports.useRef("touch");
     const [searchRef, handleTypeaheadSearch, resetTypeahead] = useTypeaheadSearch((search) => {
@@ -37702,7 +38584,7 @@ var SelectTrigger$1 = reactExports.forwardRef(
     ) });
   }
 );
-SelectTrigger$1.displayName = TRIGGER_NAME$2;
+SelectTrigger$1.displayName = TRIGGER_NAME$1;
 var VALUE_NAME = "SelectValue";
 var SelectValue$1 = reactExports.forwardRef(
   (props, forwardedRef) => {
@@ -37710,7 +38592,7 @@ var SelectValue$1 = reactExports.forwardRef(
     const context = useSelectContext(VALUE_NAME, __scopeSelect);
     const { onValueNodeHasChildrenChange } = context;
     const hasChildren = children !== void 0;
-    const composedRefs = useComposedRefs$1(forwardedRef, context.onValueNodeChange);
+    const composedRefs = useComposedRefs(forwardedRef, context.onValueNodeChange);
     useLayoutEffect2(() => {
       onValueNodeHasChildrenChange(hasChildren);
     }, [onValueNodeHasChildrenChange, hasChildren]);
@@ -37734,15 +38616,15 @@ var SelectIcon = reactExports.forwardRef(
   }
 );
 SelectIcon.displayName = ICON_NAME;
-var PORTAL_NAME$2 = "SelectPortal";
+var PORTAL_NAME$1 = "SelectPortal";
 var SelectPortal = (props) => {
   return /* @__PURE__ */ jsxRuntimeExports.jsx(Portal$4, { asChild: true, ...props });
 };
-SelectPortal.displayName = PORTAL_NAME$2;
-var CONTENT_NAME$2 = "SelectContent";
+SelectPortal.displayName = PORTAL_NAME$1;
+var CONTENT_NAME$1 = "SelectContent";
 var SelectContent$1 = reactExports.forwardRef(
   (props, forwardedRef) => {
-    const context = useSelectContext(CONTENT_NAME$2, props.__scopeSelect);
+    const context = useSelectContext(CONTENT_NAME$1, props.__scopeSelect);
     const [fragment, setFragment] = reactExports.useState();
     useLayoutEffect2(() => {
       setFragment(new DocumentFragment());
@@ -37757,9 +38639,9 @@ var SelectContent$1 = reactExports.forwardRef(
     return /* @__PURE__ */ jsxRuntimeExports.jsx(SelectContentImpl, { ...props, ref: forwardedRef });
   }
 );
-SelectContent$1.displayName = CONTENT_NAME$2;
+SelectContent$1.displayName = CONTENT_NAME$1;
 var CONTENT_MARGIN = 10;
-var [SelectContentProvider, useSelectContentContext] = createSelectContext(CONTENT_NAME$2);
+var [SelectContentProvider, useSelectContentContext] = createSelectContext(CONTENT_NAME$1);
 var CONTENT_IMPL_NAME = "SelectContentImpl";
 var SelectContentImpl = reactExports.forwardRef(
   (props, forwardedRef) => {
@@ -37784,10 +38666,10 @@ var SelectContentImpl = reactExports.forwardRef(
       //
       ...contentProps
     } = props;
-    const context = useSelectContext(CONTENT_NAME$2, __scopeSelect);
+    const context = useSelectContext(CONTENT_NAME$1, __scopeSelect);
     const [content, setContent] = reactExports.useState(null);
     const [viewport, setViewport] = reactExports.useState(null);
-    const composedRefs = useComposedRefs$1(forwardedRef, (node) => setContent(node));
+    const composedRefs = useComposedRefs(forwardedRef, (node) => setContent(node));
     const [selectedItem, setSelectedItem] = reactExports.useState(null);
     const [selectedItemText, setSelectedItemText] = reactExports.useState(
       null
@@ -37997,11 +38879,11 @@ SelectContentImpl.displayName = CONTENT_IMPL_NAME;
 var ITEM_ALIGNED_POSITION_NAME = "SelectItemAlignedPosition";
 var SelectItemAlignedPosition = reactExports.forwardRef((props, forwardedRef) => {
   const { __scopeSelect, onPlaced, ...popperProps } = props;
-  const context = useSelectContext(CONTENT_NAME$2, __scopeSelect);
-  const contentContext = useSelectContentContext(CONTENT_NAME$2, __scopeSelect);
+  const context = useSelectContext(CONTENT_NAME$1, __scopeSelect);
+  const contentContext = useSelectContentContext(CONTENT_NAME$1, __scopeSelect);
   const [contentWrapper, setContentWrapper] = reactExports.useState(null);
   const [content, setContent] = reactExports.useState(null);
-  const composedRefs = useComposedRefs$1(forwardedRef, (node) => setContent(node));
+  const composedRefs = useComposedRefs(forwardedRef, (node) => setContent(node));
   const getItems = useCollection(__scopeSelect);
   const shouldExpandOnScrollRef = reactExports.useRef(false);
   const shouldRepositionRef = reactExports.useRef(true);
@@ -38168,7 +39050,7 @@ var SelectPopperPosition = reactExports.forwardRef((props, forwardedRef) => {
   } = props;
   const popperScope = usePopperScope(__scopeSelect);
   return /* @__PURE__ */ jsxRuntimeExports.jsx(
-    Content$1,
+    Content,
     {
       ...popperScope,
       ...popperProps,
@@ -38192,14 +39074,14 @@ var SelectPopperPosition = reactExports.forwardRef((props, forwardedRef) => {
   );
 });
 SelectPopperPosition.displayName = POPPER_POSITION_NAME;
-var [SelectViewportProvider, useSelectViewportContext] = createSelectContext(CONTENT_NAME$2, {});
+var [SelectViewportProvider, useSelectViewportContext] = createSelectContext(CONTENT_NAME$1, {});
 var VIEWPORT_NAME = "SelectViewport";
 var SelectViewport = reactExports.forwardRef(
   (props, forwardedRef) => {
     const { __scopeSelect, nonce, ...viewportProps } = props;
     const contentContext = useSelectContentContext(VIEWPORT_NAME, __scopeSelect);
     const viewportContext = useSelectViewportContext(VIEWPORT_NAME, __scopeSelect);
-    const composedRefs = useComposedRefs$1(forwardedRef, contentContext.onViewportChange);
+    const composedRefs = useComposedRefs(forwardedRef, contentContext.onViewportChange);
     const prevScrollTopRef = reactExports.useRef(0);
     return /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -38296,7 +39178,7 @@ var SelectItem$1 = reactExports.forwardRef(
     const isSelected = context.value === value;
     const [textValue, setTextValue] = reactExports.useState(textValueProp ?? "");
     const [isFocused, setIsFocused] = reactExports.useState(false);
-    const composedRefs = useComposedRefs$1(
+    const composedRefs = useComposedRefs(
       forwardedRef,
       (node) => contentContext.itemRefCallback?.(node, value, disabled)
     );
@@ -38392,7 +39274,7 @@ var SelectItemText = reactExports.forwardRef(
     const itemContext = useSelectItemContext(ITEM_TEXT_NAME, __scopeSelect);
     const nativeOptionsContext = useSelectNativeOptionsContext(ITEM_TEXT_NAME, __scopeSelect);
     const [itemTextNode, setItemTextNode] = reactExports.useState(null);
-    const composedRefs = useComposedRefs$1(
+    const composedRefs = useComposedRefs(
       forwardedRef,
       (node) => setItemTextNode(node),
       itemContext.onItemTextChange,
@@ -38429,7 +39311,7 @@ var SelectScrollUpButton$1 = reactExports.forwardRef((props, forwardedRef) => {
   const contentContext = useSelectContentContext(SCROLL_UP_BUTTON_NAME, props.__scopeSelect);
   const viewportContext = useSelectViewportContext(SCROLL_UP_BUTTON_NAME, props.__scopeSelect);
   const [canScrollUp, setCanScrollUp] = reactExports.useState(false);
-  const composedRefs = useComposedRefs$1(forwardedRef, viewportContext.onScrollButtonChange);
+  const composedRefs = useComposedRefs(forwardedRef, viewportContext.onScrollButtonChange);
   useLayoutEffect2(() => {
     if (contentContext.viewport && contentContext.isPositioned) {
       let handleScroll2 = function() {
@@ -38462,7 +39344,7 @@ var SelectScrollDownButton$1 = reactExports.forwardRef((props, forwardedRef) => 
   const contentContext = useSelectContentContext(SCROLL_DOWN_BUTTON_NAME, props.__scopeSelect);
   const viewportContext = useSelectViewportContext(SCROLL_DOWN_BUTTON_NAME, props.__scopeSelect);
   const [canScrollDown, setCanScrollDown] = reactExports.useState(false);
-  const composedRefs = useComposedRefs$1(forwardedRef, viewportContext.onScrollButtonChange);
+  const composedRefs = useComposedRefs(forwardedRef, viewportContext.onScrollButtonChange);
   useLayoutEffect2(() => {
     if (contentContext.viewport && contentContext.isPositioned) {
       let handleScroll2 = function() {
@@ -38559,7 +39441,7 @@ var BubbleSelect = reactExports.forwardRef(
   (props, forwardedRef) => {
     const { value, ...selectProps } = props;
     const ref = reactExports.useRef(null);
-    const composedRefs = useComposedRefs$1(forwardedRef, ref);
+    const composedRefs = useComposedRefs(forwardedRef, ref);
     const prevValue = usePrevious(value);
     reactExports.useEffect(() => {
       const select = ref.current;
@@ -38620,10 +39502,10 @@ function wrapArray(array, startIndex) {
   return array.map((_, index2) => array[(startIndex + index2) % array.length]);
 }
 var Root2$1 = Select$1;
-var Trigger$1 = SelectTrigger$1;
+var Trigger = SelectTrigger$1;
 var Value = SelectValue$1;
 var Icon = SelectIcon;
-var Portal$1 = SelectPortal;
+var Portal = SelectPortal;
 var Content2$1 = SelectContent$1;
 var Viewport = SelectViewport;
 var Item = SelectItem$1;
@@ -38648,7 +39530,7 @@ function SelectTrigger({
   ...props
 }) {
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(
-    Trigger$1,
+    Trigger,
     {
       "data-slot": "select-trigger",
       "data-size": size2,
@@ -38670,7 +39552,7 @@ function SelectContent({
   position = "popper",
   ...props
 }) {
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(Portal$1, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(Portal, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
     Content2$1,
     {
       "data-slot": "select-content",
@@ -38753,306 +39635,6 @@ function SelectScrollDownButton({
     }
   );
 }
-var DIALOG_NAME = "Dialog";
-var [createDialogContext, createDialogScope] = createContextScope(DIALOG_NAME);
-var [DialogProvider, useDialogContext] = createDialogContext(DIALOG_NAME);
-var Dialog$1 = (props) => {
-  const {
-    __scopeDialog,
-    children,
-    open: openProp,
-    defaultOpen,
-    onOpenChange,
-    modal = true
-  } = props;
-  const triggerRef = reactExports.useRef(null);
-  const contentRef = reactExports.useRef(null);
-  const [open = false, setOpen] = useControllableState({
-    prop: openProp,
-    defaultProp: defaultOpen,
-    onChange: onOpenChange
-  });
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(
-    DialogProvider,
-    {
-      scope: __scopeDialog,
-      triggerRef,
-      contentRef,
-      contentId: useId(),
-      titleId: useId(),
-      descriptionId: useId(),
-      open,
-      onOpenChange: setOpen,
-      onOpenToggle: reactExports.useCallback(() => setOpen((prevOpen) => !prevOpen), [setOpen]),
-      modal,
-      children
-    }
-  );
-};
-Dialog$1.displayName = DIALOG_NAME;
-var TRIGGER_NAME$1 = "DialogTrigger";
-var DialogTrigger = reactExports.forwardRef(
-  (props, forwardedRef) => {
-    const { __scopeDialog, ...triggerProps } = props;
-    const context = useDialogContext(TRIGGER_NAME$1, __scopeDialog);
-    const composedTriggerRef = useComposedRefs$1(forwardedRef, context.triggerRef);
-    return /* @__PURE__ */ jsxRuntimeExports.jsx(
-      Primitive.button,
-      {
-        type: "button",
-        "aria-haspopup": "dialog",
-        "aria-expanded": context.open,
-        "aria-controls": context.contentId,
-        "data-state": getState$1(context.open),
-        ...triggerProps,
-        ref: composedTriggerRef,
-        onClick: composeEventHandlers(props.onClick, context.onOpenToggle)
-      }
-    );
-  }
-);
-DialogTrigger.displayName = TRIGGER_NAME$1;
-var PORTAL_NAME$1 = "DialogPortal";
-var [PortalProvider, usePortalContext] = createDialogContext(PORTAL_NAME$1, {
-  forceMount: void 0
-});
-var DialogPortal$1 = (props) => {
-  const { __scopeDialog, forceMount, children, container } = props;
-  const context = useDialogContext(PORTAL_NAME$1, __scopeDialog);
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(PortalProvider, { scope: __scopeDialog, forceMount, children: reactExports.Children.map(children, (child) => /* @__PURE__ */ jsxRuntimeExports.jsx(Presence, { present: forceMount || context.open, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Portal$4, { asChild: true, container, children: child }) })) });
-};
-DialogPortal$1.displayName = PORTAL_NAME$1;
-var OVERLAY_NAME$1 = "DialogOverlay";
-var DialogOverlay$1 = reactExports.forwardRef(
-  (props, forwardedRef) => {
-    const portalContext = usePortalContext(OVERLAY_NAME$1, props.__scopeDialog);
-    const { forceMount = portalContext.forceMount, ...overlayProps } = props;
-    const context = useDialogContext(OVERLAY_NAME$1, props.__scopeDialog);
-    return context.modal ? /* @__PURE__ */ jsxRuntimeExports.jsx(Presence, { present: forceMount || context.open, children: /* @__PURE__ */ jsxRuntimeExports.jsx(DialogOverlayImpl, { ...overlayProps, ref: forwardedRef }) }) : null;
-  }
-);
-DialogOverlay$1.displayName = OVERLAY_NAME$1;
-var DialogOverlayImpl = reactExports.forwardRef(
-  (props, forwardedRef) => {
-    const { __scopeDialog, ...overlayProps } = props;
-    const context = useDialogContext(OVERLAY_NAME$1, __scopeDialog);
-    return (
-      // Make sure `Content` is scrollable even when it doesn't live inside `RemoveScroll`
-      // ie. when `Overlay` and `Content` are siblings
-      /* @__PURE__ */ jsxRuntimeExports.jsx(ReactRemoveScroll, { as: Slot, allowPinchZoom: true, shards: [context.contentRef], children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-        Primitive.div,
-        {
-          "data-state": getState$1(context.open),
-          ...overlayProps,
-          ref: forwardedRef,
-          style: { pointerEvents: "auto", ...overlayProps.style }
-        }
-      ) })
-    );
-  }
-);
-var CONTENT_NAME$1 = "DialogContent";
-var DialogContent$1 = reactExports.forwardRef(
-  (props, forwardedRef) => {
-    const portalContext = usePortalContext(CONTENT_NAME$1, props.__scopeDialog);
-    const { forceMount = portalContext.forceMount, ...contentProps } = props;
-    const context = useDialogContext(CONTENT_NAME$1, props.__scopeDialog);
-    return /* @__PURE__ */ jsxRuntimeExports.jsx(Presence, { present: forceMount || context.open, children: context.modal ? /* @__PURE__ */ jsxRuntimeExports.jsx(DialogContentModal, { ...contentProps, ref: forwardedRef }) : /* @__PURE__ */ jsxRuntimeExports.jsx(DialogContentNonModal, { ...contentProps, ref: forwardedRef }) });
-  }
-);
-DialogContent$1.displayName = CONTENT_NAME$1;
-var DialogContentModal = reactExports.forwardRef(
-  (props, forwardedRef) => {
-    const context = useDialogContext(CONTENT_NAME$1, props.__scopeDialog);
-    const contentRef = reactExports.useRef(null);
-    const composedRefs = useComposedRefs$1(forwardedRef, context.contentRef, contentRef);
-    reactExports.useEffect(() => {
-      const content = contentRef.current;
-      if (content) return hideOthers(content);
-    }, []);
-    return /* @__PURE__ */ jsxRuntimeExports.jsx(
-      DialogContentImpl,
-      {
-        ...props,
-        ref: composedRefs,
-        trapFocus: context.open,
-        disableOutsidePointerEvents: true,
-        onCloseAutoFocus: composeEventHandlers(props.onCloseAutoFocus, (event) => {
-          event.preventDefault();
-          context.triggerRef.current?.focus();
-        }),
-        onPointerDownOutside: composeEventHandlers(props.onPointerDownOutside, (event) => {
-          const originalEvent = event.detail.originalEvent;
-          const ctrlLeftClick = originalEvent.button === 0 && originalEvent.ctrlKey === true;
-          const isRightClick = originalEvent.button === 2 || ctrlLeftClick;
-          if (isRightClick) event.preventDefault();
-        }),
-        onFocusOutside: composeEventHandlers(
-          props.onFocusOutside,
-          (event) => event.preventDefault()
-        )
-      }
-    );
-  }
-);
-var DialogContentNonModal = reactExports.forwardRef(
-  (props, forwardedRef) => {
-    const context = useDialogContext(CONTENT_NAME$1, props.__scopeDialog);
-    const hasInteractedOutsideRef = reactExports.useRef(false);
-    const hasPointerDownOutsideRef = reactExports.useRef(false);
-    return /* @__PURE__ */ jsxRuntimeExports.jsx(
-      DialogContentImpl,
-      {
-        ...props,
-        ref: forwardedRef,
-        trapFocus: false,
-        disableOutsidePointerEvents: false,
-        onCloseAutoFocus: (event) => {
-          props.onCloseAutoFocus?.(event);
-          if (!event.defaultPrevented) {
-            if (!hasInteractedOutsideRef.current) context.triggerRef.current?.focus();
-            event.preventDefault();
-          }
-          hasInteractedOutsideRef.current = false;
-          hasPointerDownOutsideRef.current = false;
-        },
-        onInteractOutside: (event) => {
-          props.onInteractOutside?.(event);
-          if (!event.defaultPrevented) {
-            hasInteractedOutsideRef.current = true;
-            if (event.detail.originalEvent.type === "pointerdown") {
-              hasPointerDownOutsideRef.current = true;
-            }
-          }
-          const target = event.target;
-          const targetIsTrigger = context.triggerRef.current?.contains(target);
-          if (targetIsTrigger) event.preventDefault();
-          if (event.detail.originalEvent.type === "focusin" && hasPointerDownOutsideRef.current) {
-            event.preventDefault();
-          }
-        }
-      }
-    );
-  }
-);
-var DialogContentImpl = reactExports.forwardRef(
-  (props, forwardedRef) => {
-    const { __scopeDialog, trapFocus, onOpenAutoFocus, onCloseAutoFocus, ...contentProps } = props;
-    const context = useDialogContext(CONTENT_NAME$1, __scopeDialog);
-    const contentRef = reactExports.useRef(null);
-    const composedRefs = useComposedRefs$1(forwardedRef, contentRef);
-    useFocusGuards();
-    return /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx(
-        FocusScope,
-        {
-          asChild: true,
-          loop: true,
-          trapped: trapFocus,
-          onMountAutoFocus: onOpenAutoFocus,
-          onUnmountAutoFocus: onCloseAutoFocus,
-          children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-            DismissableLayer,
-            {
-              role: "dialog",
-              id: context.contentId,
-              "aria-describedby": context.descriptionId,
-              "aria-labelledby": context.titleId,
-              "data-state": getState$1(context.open),
-              ...contentProps,
-              ref: composedRefs,
-              onDismiss: () => context.onOpenChange(false)
-            }
-          )
-        }
-      ),
-      /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx(TitleWarning, { titleId: context.titleId }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx(DescriptionWarning$1, { contentRef, descriptionId: context.descriptionId })
-      ] })
-    ] });
-  }
-);
-var TITLE_NAME$1 = "DialogTitle";
-var DialogTitle$1 = reactExports.forwardRef(
-  (props, forwardedRef) => {
-    const { __scopeDialog, ...titleProps } = props;
-    const context = useDialogContext(TITLE_NAME$1, __scopeDialog);
-    return /* @__PURE__ */ jsxRuntimeExports.jsx(Primitive.h2, { id: context.titleId, ...titleProps, ref: forwardedRef });
-  }
-);
-DialogTitle$1.displayName = TITLE_NAME$1;
-var DESCRIPTION_NAME$1 = "DialogDescription";
-var DialogDescription$1 = reactExports.forwardRef(
-  (props, forwardedRef) => {
-    const { __scopeDialog, ...descriptionProps } = props;
-    const context = useDialogContext(DESCRIPTION_NAME$1, __scopeDialog);
-    return /* @__PURE__ */ jsxRuntimeExports.jsx(Primitive.p, { id: context.descriptionId, ...descriptionProps, ref: forwardedRef });
-  }
-);
-DialogDescription$1.displayName = DESCRIPTION_NAME$1;
-var CLOSE_NAME = "DialogClose";
-var DialogClose = reactExports.forwardRef(
-  (props, forwardedRef) => {
-    const { __scopeDialog, ...closeProps } = props;
-    const context = useDialogContext(CLOSE_NAME, __scopeDialog);
-    return /* @__PURE__ */ jsxRuntimeExports.jsx(
-      Primitive.button,
-      {
-        type: "button",
-        ...closeProps,
-        ref: forwardedRef,
-        onClick: composeEventHandlers(props.onClick, () => context.onOpenChange(false))
-      }
-    );
-  }
-);
-DialogClose.displayName = CLOSE_NAME;
-function getState$1(open) {
-  return open ? "open" : "closed";
-}
-var TITLE_WARNING_NAME = "DialogTitleWarning";
-var [WarningProvider, useWarningContext] = createContext2(TITLE_WARNING_NAME, {
-  contentName: CONTENT_NAME$1,
-  titleName: TITLE_NAME$1,
-  docsSlug: "dialog"
-});
-var TitleWarning = ({ titleId }) => {
-  const titleWarningContext = useWarningContext(TITLE_WARNING_NAME);
-  const MESSAGE = `\`${titleWarningContext.contentName}\` requires a \`${titleWarningContext.titleName}\` for the component to be accessible for screen reader users.
-
-If you want to hide the \`${titleWarningContext.titleName}\`, you can wrap it with our VisuallyHidden component.
-
-For more information, see https://radix-ui.com/primitives/docs/components/${titleWarningContext.docsSlug}`;
-  reactExports.useEffect(() => {
-    if (titleId) {
-      const hasTitle = document.getElementById(titleId);
-      if (!hasTitle) console.error(MESSAGE);
-    }
-  }, [MESSAGE, titleId]);
-  return null;
-};
-var DESCRIPTION_WARNING_NAME = "DialogDescriptionWarning";
-var DescriptionWarning$1 = ({ contentRef, descriptionId }) => {
-  const descriptionWarningContext = useWarningContext(DESCRIPTION_WARNING_NAME);
-  const MESSAGE = `Warning: Missing \`Description\` or \`aria-describedby={undefined}\` for {${descriptionWarningContext.contentName}}.`;
-  reactExports.useEffect(() => {
-    const describedById = contentRef.current?.getAttribute("aria-describedby");
-    if (descriptionId && describedById) {
-      const hasDescription = document.getElementById(descriptionId);
-      if (!hasDescription) console.warn(MESSAGE);
-    }
-  }, [MESSAGE, contentRef, descriptionId]);
-  return null;
-};
-var Root$2 = Dialog$1;
-var Trigger = DialogTrigger;
-var Portal = DialogPortal$1;
-var Overlay = DialogOverlay$1;
-var Content = DialogContent$1;
-var Title = DialogTitle$1;
-var Description = DialogDescription$1;
-var Close = DialogClose;
 var ROOT_NAME = "AlertDialog";
 var [createAlertDialogContext] = createContextScope(ROOT_NAME, [
   createDialogScope
@@ -39061,7 +39643,7 @@ var useDialogScope = createDialogScope();
 var AlertDialog$1 = (props) => {
   const { __scopeAlertDialog, ...alertDialogProps } = props;
   const dialogScope = useDialogScope(__scopeAlertDialog);
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(Root$2, { ...dialogScope, ...alertDialogProps, modal: true });
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(Root$5, { ...dialogScope, ...alertDialogProps, modal: true });
 };
 AlertDialog$1.displayName = ROOT_NAME;
 var TRIGGER_NAME = "AlertDialogTrigger";
@@ -39069,7 +39651,7 @@ var AlertDialogTrigger$1 = reactExports.forwardRef(
   (props, forwardedRef) => {
     const { __scopeAlertDialog, ...triggerProps } = props;
     const dialogScope = useDialogScope(__scopeAlertDialog);
-    return /* @__PURE__ */ jsxRuntimeExports.jsx(Trigger, { ...dialogScope, ...triggerProps, ref: forwardedRef });
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(Trigger$3, { ...dialogScope, ...triggerProps, ref: forwardedRef });
   }
 );
 AlertDialogTrigger$1.displayName = TRIGGER_NAME;
@@ -39077,7 +39659,7 @@ var PORTAL_NAME = "AlertDialogPortal";
 var AlertDialogPortal$1 = (props) => {
   const { __scopeAlertDialog, ...portalProps } = props;
   const dialogScope = useDialogScope(__scopeAlertDialog);
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(Portal, { ...dialogScope, ...portalProps });
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(Portal$3, { ...dialogScope, ...portalProps });
 };
 AlertDialogPortal$1.displayName = PORTAL_NAME;
 var OVERLAY_NAME = "AlertDialogOverlay";
@@ -39096,7 +39678,7 @@ var AlertDialogContent$1 = reactExports.forwardRef(
     const { __scopeAlertDialog, children, ...contentProps } = props;
     const dialogScope = useDialogScope(__scopeAlertDialog);
     const contentRef = reactExports.useRef(null);
-    const composedRefs = useComposedRefs$1(forwardedRef, contentRef);
+    const composedRefs = useComposedRefs(forwardedRef, contentRef);
     const cancelRef = reactExports.useRef(null);
     return /* @__PURE__ */ jsxRuntimeExports.jsx(
       WarningProvider,
@@ -39105,7 +39687,7 @@ var AlertDialogContent$1 = reactExports.forwardRef(
         titleName: TITLE_NAME,
         docsSlug: "alert-dialog",
         children: /* @__PURE__ */ jsxRuntimeExports.jsx(AlertDialogContentProvider, { scope: __scopeAlertDialog, cancelRef, children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
-          Content,
+          Content$1,
           {
             role: "alertdialog",
             ...dialogScope,
@@ -39159,7 +39741,7 @@ var AlertDialogCancel$1 = reactExports.forwardRef(
     const { __scopeAlertDialog, ...cancelProps } = props;
     const { cancelRef } = useAlertDialogContentContext(CANCEL_NAME, __scopeAlertDialog);
     const dialogScope = useDialogScope(__scopeAlertDialog);
-    const ref = useComposedRefs$1(forwardedRef, cancelRef);
+    const ref = useComposedRefs(forwardedRef, cancelRef);
     return /* @__PURE__ */ jsxRuntimeExports.jsx(Close, { ...dialogScope, ...cancelProps, ref });
   }
 );
@@ -39413,7 +39995,7 @@ const TaskDetailPanel = ({ accent }) => {
                   className: "size-8",
                   onClick: () => close(null),
                   "aria-label": "Close",
-                  children: /* @__PURE__ */ jsxRuntimeExports.jsx(X, { className: "size-4" })
+                  children: /* @__PURE__ */ jsxRuntimeExports.jsx(X$1, { className: "size-4" })
                 }
               )
             ] })
@@ -39555,7 +40137,7 @@ const TaskDetailPanel = ({ accent }) => {
                       onClick: () => deleteSubtask(task.id, st.id),
                       className: "opacity-0 group-hover:opacity-100 text-muted-foreground hover:text-destructive transition-opacity",
                       "aria-label": "Delete subtask",
-                      children: /* @__PURE__ */ jsxRuntimeExports.jsx(X, { className: "size-3.5" })
+                      children: /* @__PURE__ */ jsxRuntimeExports.jsx(X$1, { className: "size-3.5" })
                     }
                   )
                 ] }, st.id)),
@@ -39647,12 +40229,12 @@ const EmptyState = ({
 function Dialog({
   ...props
 }) {
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(Root$2, { "data-slot": "dialog", ...props });
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(Root$5, { "data-slot": "dialog", ...props });
 }
 function DialogPortal({
   ...props
 }) {
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(Portal, { "data-slot": "dialog-portal", ...props });
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(Portal$3, { "data-slot": "dialog-portal", ...props });
 }
 function DialogOverlay({
   className,
@@ -39678,7 +40260,7 @@ function DialogContent({
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(DialogPortal, { "data-slot": "dialog-portal", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx(DialogOverlay, {}),
     /* @__PURE__ */ jsxRuntimeExports.jsxs(
-      Content,
+      Content$1,
       {
         "data-slot": "dialog-content",
         className: cn(
@@ -39689,7 +40271,7 @@ function DialogContent({
         children: [
           children,
           /* @__PURE__ */ jsxRuntimeExports.jsxs(Close, { className: "ring-offset-background focus:ring-ring data-[state=open]:bg-accent data-[state=open]:text-muted-foreground absolute top-4 right-4 rounded-xs opacity-70 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx(X, {}),
+            /* @__PURE__ */ jsxRuntimeExports.jsx(X$1, {}),
             /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "sr-only", children: "Close" })
           ] })
         ]
@@ -39798,21 +40380,21 @@ const GroupDialog = () => {
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-2", children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { children: "Accent" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex flex-wrap gap-2", children: ACCENT_KEYS.map((k) => {
-          const p = ACCENT_PALETTE[k];
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex flex-wrap gap-2", children: ACCENT_KEYS.map((k2) => {
+          const p2 = ACCENT_PALETTE[k2];
           return /* @__PURE__ */ jsxRuntimeExports.jsx(
             "button",
             {
               type: "button",
-              onClick: () => setAccent(k),
-              "aria-label": p.name,
+              onClick: () => setAccent(k2),
+              "aria-label": p2.name,
               className: cn(
                 "size-7 rounded-full transition-transform",
-                p.fill,
-                accent === k ? "ring-2 ring-offset-2 ring-offset-background ring-ring scale-110" : "hover:scale-105"
+                p2.fill,
+                accent === k2 ? "ring-2 ring-offset-2 ring-offset-background ring-ring scale-110" : "hover:scale-105"
               )
             },
-            k
+            k2
           );
         }) })
       ] })
@@ -39871,13 +40453,13 @@ const HelpModal = () => {
     ] }),
     /* @__PURE__ */ jsxRuntimeExports.jsx("ul", { className: "space-y-2 py-2", children: SHORTCUTS.map((s) => /* @__PURE__ */ jsxRuntimeExports.jsxs("li", { className: "flex items-center justify-between", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-sm text-muted-foreground", children: s.label }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "flex items-center gap-1", children: s.keys.map((k) => /* @__PURE__ */ jsxRuntimeExports.jsx(
+      /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "flex items-center gap-1", children: s.keys.map((k2) => /* @__PURE__ */ jsxRuntimeExports.jsx(
         "kbd",
         {
           className: "inline-flex items-center justify-center min-w-7 h-7 px-2 rounded-md border border-border bg-muted text-xs",
-          children: k
+          children: k2
         },
-        k
+        k2
       )) })
     ] }, s.label)) })
   ] }) });
@@ -39900,7 +40482,7 @@ var Switch$1 = reactExports.forwardRef(
       ...switchProps
     } = props;
     const [button, setButton] = reactExports.useState(null);
-    const composedRefs = useComposedRefs$1(forwardedRef, (node) => setButton(node));
+    const composedRefs = useComposedRefs(forwardedRef, (node) => setButton(node));
     const hasConsumerStoppedPropagationRef = reactExports.useRef(false);
     const isFormControl = button ? form || !!button.closest("form") : true;
     const [checked = false, setChecked] = useControllableState({
@@ -40005,14 +40587,14 @@ var BubbleInput = (props) => {
 function getState(checked) {
   return checked ? "checked" : "unchecked";
 }
-var Root$1 = Switch$1;
+var Root = Switch$1;
 var Thumb = SwitchThumb;
 function Switch({
   className,
   ...props
 }) {
   return /* @__PURE__ */ jsxRuntimeExports.jsx(
-    Root$1,
+    Root,
     {
       "data-slot": "switch",
       className: cn(
@@ -40029,49 +40611,6 @@ function Switch({
           )
         }
       )
-    }
-  );
-}
-var NAME = "Separator";
-var DEFAULT_ORIENTATION = "horizontal";
-var ORIENTATIONS = ["horizontal", "vertical"];
-var Separator$1 = reactExports.forwardRef((props, forwardedRef) => {
-  const { decorative, orientation: orientationProp = DEFAULT_ORIENTATION, ...domProps } = props;
-  const orientation = isValidOrientation(orientationProp) ? orientationProp : DEFAULT_ORIENTATION;
-  const ariaOrientation = orientation === "vertical" ? orientation : void 0;
-  const semanticProps = decorative ? { role: "none" } : { "aria-orientation": ariaOrientation, role: "separator" };
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(
-    Primitive.div,
-    {
-      "data-orientation": orientation,
-      ...semanticProps,
-      ...domProps,
-      ref: forwardedRef
-    }
-  );
-});
-Separator$1.displayName = NAME;
-function isValidOrientation(orientation) {
-  return ORIENTATIONS.includes(orientation);
-}
-var Root = Separator$1;
-function Separator({
-  className,
-  orientation = "horizontal",
-  decorative = true,
-  ...props
-}) {
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(
-    Root,
-    {
-      "data-slot": "separator-root",
-      decorative,
-      orientation,
-      className: cn(
-        "bg-border shrink-0 data-[orientation=horizontal]:h-px data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-px",
-        className
-      ),
-      ...props
     }
   );
 }
@@ -40103,13 +40642,13 @@ const SectionHeader = ({
   /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { style: { fontSize: "1.5rem" }, className: "text-foreground", children: title }),
   /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-sm text-muted-foreground/80 mt-1", children: description })
 ] });
-const KeyHint = ({ keys }) => /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "flex items-center gap-1", children: keys.map((k) => /* @__PURE__ */ jsxRuntimeExports.jsx(
+const KeyHint = ({ keys }) => /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "flex items-center gap-1", children: keys.map((k2) => /* @__PURE__ */ jsxRuntimeExports.jsx(
   "kbd",
   {
     className: "inline-flex items-center justify-center min-w-6 h-6 px-1.5 rounded-md border border-border bg-muted text-xs",
-    children: k
+    children: k2
   },
-  k
+  k2
 )) });
 const SettingsDialog = () => {
   const open = useStore((s) => s.settingsOpen);
@@ -40142,7 +40681,7 @@ const SettingsDialog = () => {
     }
   }, [open]);
   const update = (key, value) => setDraft((d) => ({ ...d, [key]: value }));
-  const dirty = draftTheme !== theme || Object.keys(draft).some((k) => draft[k] !== savedSettings[k]);
+  const dirty = draftTheme !== theme || Object.keys(draft).some((k2) => draft[k2] !== savedSettings[k2]);
   const handleSave = async () => {
     await saveSettings(draft);
     if (draftTheme !== theme) setTheme(draftTheme);
@@ -40193,7 +40732,7 @@ const SettingsDialog = () => {
             id2
           );
         }) }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx(Separator, { className: "bg-border/60" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Separator$1, { className: "bg-border/60" }),
         /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "px-5 py-3 text-[11px] text-muted-foreground/70 leading-snug", children: "Created for you by Eduard King." })
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex-1 overflow-y-auto bg-background", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "px-10 py-8 max-w-[640px]", children: [
@@ -40208,7 +40747,7 @@ const SettingsDialog = () => {
                 /* @__PURE__ */ jsxRuntimeExports.jsx(SelectItem, { value: "dark", children: "Dark" })
               ] })
             ] }) }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx(Row, { title: "Accent color palette", description: "Colors available when creating groups", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex gap-1.5", children: ACCENT_KEYS.map((k) => /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: cn("size-4 rounded-full", ACCENT_PALETTE[k].fill) }, k)) }) }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx(Row, { title: "Accent color palette", description: "Colors available when creating groups", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex gap-1.5", children: ACCENT_KEYS.map((k2) => /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: cn("size-4 rounded-full", ACCENT_PALETTE[k2].fill) }, k2)) }) }),
             /* @__PURE__ */ jsxRuntimeExports.jsx(Row, { title: "Layout density", description: "Controls task row height and spacing", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(Select, { value: draft.density, onValueChange: (v) => update("density", v), children: [
               /* @__PURE__ */ jsxRuntimeExports.jsx(SelectTrigger, { className: "w-44 h-8", children: /* @__PURE__ */ jsxRuntimeExports.jsx(SelectValue, {}) }),
               /* @__PURE__ */ jsxRuntimeExports.jsxs(SelectContent, { children: [
@@ -40672,6 +41211,588 @@ const ImportButton = () => {
     ] }) })
   ] });
 };
+var U = 1, Y$1 = 0.9, H = 0.8, J = 0.17, p = 0.1, u = 0.999, $ = 0.9999;
+var k$1 = 0.99, m = /[\\\/_+.#"@\[\(\{&]/, B$1 = /[\\\/_+.#"@\[\(\{&]/g, K$1 = /[\s-]/, X = /[\s-]/g;
+function G(_, C, h, P2, A, f, O) {
+  if (f === C.length) return A === _.length ? U : k$1;
+  var T2 = `${A},${f}`;
+  if (O[T2] !== void 0) return O[T2];
+  for (var L2 = P2.charAt(f), c = h.indexOf(L2, A), S = 0, E, N2, R, M2; c >= 0; ) E = G(_, C, h, P2, c + 1, f + 1, O), E > S && (c === A ? E *= U : m.test(_.charAt(c - 1)) ? (E *= H, R = _.slice(A, c - 1).match(B$1), R && A > 0 && (E *= Math.pow(u, R.length))) : K$1.test(_.charAt(c - 1)) ? (E *= Y$1, M2 = _.slice(A, c - 1).match(X), M2 && A > 0 && (E *= Math.pow(u, M2.length))) : (E *= J, A > 0 && (E *= Math.pow(u, c - A))), _.charAt(c) !== C.charAt(f) && (E *= $)), (E < p && h.charAt(c - 1) === P2.charAt(f + 1) || P2.charAt(f + 1) === P2.charAt(f) && h.charAt(c - 1) !== P2.charAt(f)) && (N2 = G(_, C, h, P2, c + 1, f + 2, O), N2 * p > E && (E = N2 * p)), E > S && (S = E), c = h.indexOf(L2, c + 1);
+  return O[T2] = S, S;
+}
+function D(_) {
+  return _.toLowerCase().replace(X, " ");
+}
+function W(_, C, h) {
+  return _ = h && h.length > 0 ? `${_ + " " + h.join(" ")}` : _, G(_, C, D(_), D(C), 0, 0, {});
+}
+var N = '[cmdk-group=""]', Y = '[cmdk-group-items=""]', be = '[cmdk-group-heading=""]', le = '[cmdk-item=""]', ce = `${le}:not([aria-disabled="true"])`, Z = "cmdk-item-select", T = "data-value", Re = (r2, o, n) => W(r2, o, n), ue = reactExports.createContext(void 0), K = () => reactExports.useContext(ue), de = reactExports.createContext(void 0), ee = () => reactExports.useContext(de), fe = reactExports.createContext(void 0), me = reactExports.forwardRef((r2, o) => {
+  let n = L(() => {
+    var e, a;
+    return { search: "", value: (a = (e = r2.value) != null ? e : r2.defaultValue) != null ? a : "", selectedItemId: void 0, filtered: { count: 0, items: /* @__PURE__ */ new Map(), groups: /* @__PURE__ */ new Set() } };
+  }), u2 = L(() => /* @__PURE__ */ new Set()), c = L(() => /* @__PURE__ */ new Map()), d = L(() => /* @__PURE__ */ new Map()), f = L(() => /* @__PURE__ */ new Set()), p2 = pe(r2), { label: b, children: m2, value: R, onValueChange: x2, filter: C, shouldFilter: S, loop: A, disablePointerSelection: ge = false, vimBindings: j = true, ...O } = r2, $2 = useId(), q = useId(), _ = useId(), I = reactExports.useRef(null), v = ke();
+  k(() => {
+    if (R !== void 0) {
+      let e = R.trim();
+      n.current.value = e, E.emit();
+    }
+  }, [R]), k(() => {
+    v(6, ne);
+  }, []);
+  let E = reactExports.useMemo(() => ({ subscribe: (e) => (f.current.add(e), () => f.current.delete(e)), snapshot: () => n.current, setState: (e, a, s) => {
+    var i, l, g, y;
+    if (!Object.is(n.current[e], a)) {
+      if (n.current[e] = a, e === "search") J2(), z2(), v(1, W2);
+      else if (e === "value") {
+        if (document.activeElement.hasAttribute("cmdk-input") || document.activeElement.hasAttribute("cmdk-root")) {
+          let h = document.getElementById(_);
+          h ? h.focus() : (i = document.getElementById($2)) == null || i.focus();
+        }
+        if (v(7, () => {
+          var h;
+          n.current.selectedItemId = (h = M2()) == null ? void 0 : h.id, E.emit();
+        }), s || v(5, ne), ((l = p2.current) == null ? void 0 : l.value) !== void 0) {
+          let h = a != null ? a : "";
+          (y = (g = p2.current).onValueChange) == null || y.call(g, h);
+          return;
+        }
+      }
+      E.emit();
+    }
+  }, emit: () => {
+    f.current.forEach((e) => e());
+  } }), []), U2 = reactExports.useMemo(() => ({ value: (e, a, s) => {
+    var i;
+    a !== ((i = d.current.get(e)) == null ? void 0 : i.value) && (d.current.set(e, { value: a, keywords: s }), n.current.filtered.items.set(e, te(a, s)), v(2, () => {
+      z2(), E.emit();
+    }));
+  }, item: (e, a) => (u2.current.add(e), a && (c.current.has(a) ? c.current.get(a).add(e) : c.current.set(a, /* @__PURE__ */ new Set([e]))), v(3, () => {
+    J2(), z2(), n.current.value || W2(), E.emit();
+  }), () => {
+    d.current.delete(e), u2.current.delete(e), n.current.filtered.items.delete(e);
+    let s = M2();
+    v(4, () => {
+      J2(), (s == null ? void 0 : s.getAttribute("id")) === e && W2(), E.emit();
+    });
+  }), group: (e) => (c.current.has(e) || c.current.set(e, /* @__PURE__ */ new Set()), () => {
+    d.current.delete(e), c.current.delete(e);
+  }), filter: () => p2.current.shouldFilter, label: b || r2["aria-label"], getDisablePointerSelection: () => p2.current.disablePointerSelection, listId: $2, inputId: _, labelId: q, listInnerRef: I }), []);
+  function te(e, a) {
+    var i, l;
+    let s = (l = (i = p2.current) == null ? void 0 : i.filter) != null ? l : Re;
+    return e ? s(e, n.current.search, a) : 0;
+  }
+  function z2() {
+    if (!n.current.search || p2.current.shouldFilter === false) return;
+    let e = n.current.filtered.items, a = [];
+    n.current.filtered.groups.forEach((i) => {
+      let l = c.current.get(i), g = 0;
+      l.forEach((y) => {
+        let h = e.get(y);
+        g = Math.max(h, g);
+      }), a.push([i, g]);
+    });
+    let s = I.current;
+    V().sort((i, l) => {
+      var h, F;
+      let g = i.getAttribute("id"), y = l.getAttribute("id");
+      return ((h = e.get(y)) != null ? h : 0) - ((F = e.get(g)) != null ? F : 0);
+    }).forEach((i) => {
+      let l = i.closest(Y);
+      l ? l.appendChild(i.parentElement === l ? i : i.closest(`${Y} > *`)) : s.appendChild(i.parentElement === s ? i : i.closest(`${Y} > *`));
+    }), a.sort((i, l) => l[1] - i[1]).forEach((i) => {
+      var g;
+      let l = (g = I.current) == null ? void 0 : g.querySelector(`${N}[${T}="${encodeURIComponent(i[0])}"]`);
+      l == null || l.parentElement.appendChild(l);
+    });
+  }
+  function W2() {
+    let e = V().find((s) => s.getAttribute("aria-disabled") !== "true"), a = e == null ? void 0 : e.getAttribute(T);
+    E.setState("value", a || void 0);
+  }
+  function J2() {
+    var a, s, i, l;
+    if (!n.current.search || p2.current.shouldFilter === false) {
+      n.current.filtered.count = u2.current.size;
+      return;
+    }
+    n.current.filtered.groups = /* @__PURE__ */ new Set();
+    let e = 0;
+    for (let g of u2.current) {
+      let y = (s = (a = d.current.get(g)) == null ? void 0 : a.value) != null ? s : "", h = (l = (i = d.current.get(g)) == null ? void 0 : i.keywords) != null ? l : [], F = te(y, h);
+      n.current.filtered.items.set(g, F), F > 0 && e++;
+    }
+    for (let [g, y] of c.current) for (let h of y) if (n.current.filtered.items.get(h) > 0) {
+      n.current.filtered.groups.add(g);
+      break;
+    }
+    n.current.filtered.count = e;
+  }
+  function ne() {
+    var a, s, i;
+    let e = M2();
+    e && (((a = e.parentElement) == null ? void 0 : a.firstChild) === e && ((i = (s = e.closest(N)) == null ? void 0 : s.querySelector(be)) == null || i.scrollIntoView({ block: "nearest" })), e.scrollIntoView({ block: "nearest" }));
+  }
+  function M2() {
+    var e;
+    return (e = I.current) == null ? void 0 : e.querySelector(`${le}[aria-selected="true"]`);
+  }
+  function V() {
+    var e;
+    return Array.from(((e = I.current) == null ? void 0 : e.querySelectorAll(ce)) || []);
+  }
+  function X2(e) {
+    let s = V()[e];
+    s && E.setState("value", s.getAttribute(T));
+  }
+  function Q(e) {
+    var g;
+    let a = M2(), s = V(), i = s.findIndex((y) => y === a), l = s[i + e];
+    (g = p2.current) != null && g.loop && (l = i + e < 0 ? s[s.length - 1] : i + e === s.length ? s[0] : s[i + e]), l && E.setState("value", l.getAttribute(T));
+  }
+  function re(e) {
+    let a = M2(), s = a == null ? void 0 : a.closest(N), i;
+    for (; s && !i; ) s = e > 0 ? we(s, N) : De(s, N), i = s == null ? void 0 : s.querySelector(ce);
+    i ? E.setState("value", i.getAttribute(T)) : Q(e);
+  }
+  let oe = () => X2(V().length - 1), ie = (e) => {
+    e.preventDefault(), e.metaKey ? oe() : e.altKey ? re(1) : Q(1);
+  }, se = (e) => {
+    e.preventDefault(), e.metaKey ? X2(0) : e.altKey ? re(-1) : Q(-1);
+  };
+  return reactExports.createElement(Primitive.div, { ref: o, tabIndex: -1, ...O, "cmdk-root": "", onKeyDown: (e) => {
+    var s;
+    (s = O.onKeyDown) == null || s.call(O, e);
+    let a = e.nativeEvent.isComposing || e.keyCode === 229;
+    if (!(e.defaultPrevented || a)) switch (e.key) {
+      case "n":
+      case "j": {
+        j && e.ctrlKey && ie(e);
+        break;
+      }
+      case "ArrowDown": {
+        ie(e);
+        break;
+      }
+      case "p":
+      case "k": {
+        j && e.ctrlKey && se(e);
+        break;
+      }
+      case "ArrowUp": {
+        se(e);
+        break;
+      }
+      case "Home": {
+        e.preventDefault(), X2(0);
+        break;
+      }
+      case "End": {
+        e.preventDefault(), oe();
+        break;
+      }
+      case "Enter": {
+        e.preventDefault();
+        let i = M2();
+        if (i) {
+          let l = new Event(Z);
+          i.dispatchEvent(l);
+        }
+      }
+    }
+  } }, reactExports.createElement("label", { "cmdk-label": "", htmlFor: U2.inputId, id: U2.labelId, style: Te }, b), B(r2, (e) => reactExports.createElement(de.Provider, { value: E }, reactExports.createElement(ue.Provider, { value: U2 }, e))));
+}), he = reactExports.forwardRef((r2, o) => {
+  var _, I;
+  let n = useId(), u2 = reactExports.useRef(null), c = reactExports.useContext(fe), d = K(), f = pe(r2), p2 = (I = (_ = f.current) == null ? void 0 : _.forceMount) != null ? I : c == null ? void 0 : c.forceMount;
+  k(() => {
+    if (!p2) return d.item(n, c == null ? void 0 : c.id);
+  }, [p2]);
+  let b = ve(n, u2, [r2.value, r2.children, u2], r2.keywords), m2 = ee(), R = P((v) => v.value && v.value === b.current), x2 = P((v) => p2 || d.filter() === false ? true : v.search ? v.filtered.items.get(n) > 0 : true);
+  reactExports.useEffect(() => {
+    let v = u2.current;
+    if (!(!v || r2.disabled)) return v.addEventListener(Z, C), () => v.removeEventListener(Z, C);
+  }, [x2, r2.onSelect, r2.disabled]);
+  function C() {
+    var v, E;
+    S(), (E = (v = f.current).onSelect) == null || E.call(v, b.current);
+  }
+  function S() {
+    m2.setState("value", b.current, true);
+  }
+  if (!x2) return null;
+  let { disabled: A, value: ge, onSelect: j, forceMount: O, keywords: $2, ...q } = r2;
+  return reactExports.createElement(Primitive.div, { ref: composeRefs(u2, o), ...q, id: n, "cmdk-item": "", role: "option", "aria-disabled": !!A, "aria-selected": !!R, "data-disabled": !!A, "data-selected": !!R, onPointerMove: A || d.getDisablePointerSelection() ? void 0 : S, onClick: A ? void 0 : C }, r2.children);
+}), Ee = reactExports.forwardRef((r2, o) => {
+  let { heading: n, children: u2, forceMount: c, ...d } = r2, f = useId(), p2 = reactExports.useRef(null), b = reactExports.useRef(null), m2 = useId(), R = K(), x2 = P((S) => c || R.filter() === false ? true : S.search ? S.filtered.groups.has(f) : true);
+  k(() => R.group(f), []), ve(f, p2, [r2.value, r2.heading, b]);
+  let C = reactExports.useMemo(() => ({ id: f, forceMount: c }), [c]);
+  return reactExports.createElement(Primitive.div, { ref: composeRefs(p2, o), ...d, "cmdk-group": "", role: "presentation", hidden: x2 ? void 0 : true }, n && reactExports.createElement("div", { ref: b, "cmdk-group-heading": "", "aria-hidden": true, id: m2 }, n), B(r2, (S) => reactExports.createElement("div", { "cmdk-group-items": "", role: "group", "aria-labelledby": n ? m2 : void 0 }, reactExports.createElement(fe.Provider, { value: C }, S))));
+}), ye = reactExports.forwardRef((r2, o) => {
+  let { alwaysRender: n, ...u2 } = r2, c = reactExports.useRef(null), d = P((f) => !f.search);
+  return !n && !d ? null : reactExports.createElement(Primitive.div, { ref: composeRefs(c, o), ...u2, "cmdk-separator": "", role: "separator" });
+}), Se = reactExports.forwardRef((r2, o) => {
+  let { onValueChange: n, ...u2 } = r2, c = r2.value != null, d = ee(), f = P((m2) => m2.search), p2 = P((m2) => m2.selectedItemId), b = K();
+  return reactExports.useEffect(() => {
+    r2.value != null && d.setState("search", r2.value);
+  }, [r2.value]), reactExports.createElement(Primitive.input, { ref: o, ...u2, "cmdk-input": "", autoComplete: "off", autoCorrect: "off", spellCheck: false, "aria-autocomplete": "list", role: "combobox", "aria-expanded": true, "aria-controls": b.listId, "aria-labelledby": b.labelId, "aria-activedescendant": p2, id: b.inputId, type: "text", value: c ? r2.value : f, onChange: (m2) => {
+    c || d.setState("search", m2.target.value), n == null || n(m2.target.value);
+  } });
+}), Ce = reactExports.forwardRef((r2, o) => {
+  let { children: n, label: u2 = "Suggestions", ...c } = r2, d = reactExports.useRef(null), f = reactExports.useRef(null), p2 = P((m2) => m2.selectedItemId), b = K();
+  return reactExports.useEffect(() => {
+    if (f.current && d.current) {
+      let m2 = f.current, R = d.current, x2, C = new ResizeObserver(() => {
+        x2 = requestAnimationFrame(() => {
+          let S = m2.offsetHeight;
+          R.style.setProperty("--cmdk-list-height", S.toFixed(1) + "px");
+        });
+      });
+      return C.observe(m2), () => {
+        cancelAnimationFrame(x2), C.unobserve(m2);
+      };
+    }
+  }, []), reactExports.createElement(Primitive.div, { ref: composeRefs(d, o), ...c, "cmdk-list": "", role: "listbox", tabIndex: -1, "aria-activedescendant": p2, "aria-label": u2, id: b.listId }, B(r2, (m2) => reactExports.createElement("div", { ref: composeRefs(f, b.listInnerRef), "cmdk-list-sizer": "" }, m2)));
+}), xe = reactExports.forwardRef((r2, o) => {
+  let { open: n, onOpenChange: u2, overlayClassName: c, contentClassName: d, container: f, ...p2 } = r2;
+  return reactExports.createElement(Root$5, { open: n, onOpenChange: u2 }, reactExports.createElement(Portal$3, { container: f }, reactExports.createElement(Overlay, { "cmdk-overlay": "", className: c }), reactExports.createElement(Content$1, { "aria-label": r2.label, "cmdk-dialog": "", className: d }, reactExports.createElement(me, { ref: o, ...p2 }))));
+}), Ie = reactExports.forwardRef((r2, o) => P((u2) => u2.filtered.count === 0) ? reactExports.createElement(Primitive.div, { ref: o, ...r2, "cmdk-empty": "", role: "presentation" }) : null), Pe = reactExports.forwardRef((r2, o) => {
+  let { progress: n, children: u2, label: c = "Loading...", ...d } = r2;
+  return reactExports.createElement(Primitive.div, { ref: o, ...d, "cmdk-loading": "", role: "progressbar", "aria-valuenow": n, "aria-valuemin": 0, "aria-valuemax": 100, "aria-label": c }, B(r2, (f) => reactExports.createElement("div", { "aria-hidden": true }, f)));
+}), _e = Object.assign(me, { List: Ce, Item: he, Input: Se, Group: Ee, Separator: ye, Dialog: xe, Empty: Ie, Loading: Pe });
+function we(r2, o) {
+  let n = r2.nextElementSibling;
+  for (; n; ) {
+    if (n.matches(o)) return n;
+    n = n.nextElementSibling;
+  }
+}
+function De(r2, o) {
+  let n = r2.previousElementSibling;
+  for (; n; ) {
+    if (n.matches(o)) return n;
+    n = n.previousElementSibling;
+  }
+}
+function pe(r2) {
+  let o = reactExports.useRef(r2);
+  return k(() => {
+    o.current = r2;
+  }), o;
+}
+var k = typeof window == "undefined" ? reactExports.useEffect : reactExports.useLayoutEffect;
+function L(r2) {
+  let o = reactExports.useRef();
+  return o.current === void 0 && (o.current = r2()), o;
+}
+function P(r2) {
+  let o = ee(), n = () => r2(o.snapshot());
+  return reactExports.useSyncExternalStore(o.subscribe, n, n);
+}
+function ve(r2, o, n, u2 = []) {
+  let c = reactExports.useRef(), d = K();
+  return k(() => {
+    var b;
+    let f = (() => {
+      var m2;
+      for (let R of n) {
+        if (typeof R == "string") return R.trim();
+        if (typeof R == "object" && "current" in R) return R.current ? (m2 = R.current.textContent) == null ? void 0 : m2.trim() : c.current;
+      }
+    })(), p2 = u2.map((m2) => m2.trim());
+    d.value(r2, f, p2), (b = o.current) == null || b.setAttribute(T, f), c.current = f;
+  }), c;
+}
+var ke = () => {
+  let [r2, o] = reactExports.useState(), n = L(() => /* @__PURE__ */ new Map());
+  return k(() => {
+    n.current.forEach((u2) => u2()), n.current = /* @__PURE__ */ new Map();
+  }, [r2]), (u2, c) => {
+    n.current.set(u2, c), o({});
+  };
+};
+function Me(r2) {
+  let o = r2.type;
+  return typeof o == "function" ? o(r2.props) : "render" in o ? o.render(r2.props) : r2;
+}
+function B({ asChild: r2, children: o }, n) {
+  return r2 && reactExports.isValidElement(o) ? reactExports.cloneElement(Me(o), { ref: o.ref }, n(o.props.children)) : n(o);
+}
+var Te = { position: "absolute", width: "1px", height: "1px", padding: "0", margin: "-1px", overflow: "hidden", clip: "rect(0, 0, 0, 0)", whiteSpace: "nowrap", borderWidth: "0" };
+function Command({
+  className,
+  ...props
+}) {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    _e,
+    {
+      "data-slot": "command",
+      className: cn(
+        "bg-popover text-popover-foreground flex h-full w-full flex-col overflow-hidden rounded-md",
+        className
+      ),
+      ...props
+    }
+  );
+}
+function CommandDialog({
+  title = "Command Palette",
+  description = "Search for a command to run...",
+  children,
+  ...props
+}) {
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs(Dialog, { ...props, children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs(DialogHeader, { className: "sr-only", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx(DialogTitle, { children: title }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(DialogDescription, { children: description })
+    ] }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(DialogContent, { className: "overflow-hidden p-0", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Command, { className: "[&_[cmdk-group-heading]]:text-muted-foreground **:data-[slot=command-input-wrapper]:h-12 [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group]]:px-2 [&_[cmdk-group]:not([hidden])_~[cmdk-group]]:pt-0 [&_[cmdk-input-wrapper]_svg]:h-5 [&_[cmdk-input-wrapper]_svg]:w-5 [&_[cmdk-input]]:h-12 [&_[cmdk-item]]:px-2 [&_[cmdk-item]]:py-3 [&_[cmdk-item]_svg]:h-5 [&_[cmdk-item]_svg]:w-5", children }) })
+  ] });
+}
+function CommandInput({
+  className,
+  ...props
+}) {
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs(
+    "div",
+    {
+      "data-slot": "command-input-wrapper",
+      className: "flex h-9 items-center gap-2 border-b px-3",
+      children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Search, { className: "size-4 shrink-0 opacity-50" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          _e.Input,
+          {
+            "data-slot": "command-input",
+            className: cn(
+              "placeholder:text-muted-foreground flex h-10 w-full rounded-md bg-transparent py-3 text-sm outline-hidden disabled:cursor-not-allowed disabled:opacity-50",
+              className
+            ),
+            ...props
+          }
+        )
+      ]
+    }
+  );
+}
+function CommandList({
+  className,
+  ...props
+}) {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    _e.List,
+    {
+      "data-slot": "command-list",
+      className: cn(
+        "max-h-[300px] scroll-py-1 overflow-x-hidden overflow-y-auto",
+        className
+      ),
+      ...props
+    }
+  );
+}
+function CommandEmpty({
+  ...props
+}) {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    _e.Empty,
+    {
+      "data-slot": "command-empty",
+      className: "py-6 text-center text-sm",
+      ...props
+    }
+  );
+}
+function CommandGroup({
+  className,
+  ...props
+}) {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    _e.Group,
+    {
+      "data-slot": "command-group",
+      className: cn(
+        "text-foreground [&_[cmdk-group-heading]]:text-muted-foreground overflow-hidden p-1 [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:text-xs [&_[cmdk-group-heading]]:font-medium",
+        className
+      ),
+      ...props
+    }
+  );
+}
+function CommandSeparator({
+  className,
+  ...props
+}) {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    _e.Separator,
+    {
+      "data-slot": "command-separator",
+      className: cn("bg-border -mx-1 h-px", className),
+      ...props
+    }
+  );
+}
+function CommandItem({
+  className,
+  ...props
+}) {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    _e.Item,
+    {
+      "data-slot": "command-item",
+      className: cn(
+        "data-[selected=true]:bg-accent data-[selected=true]:text-accent-foreground [&_svg:not([class*='text-'])]:text-muted-foreground relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        className
+      ),
+      ...props
+    }
+  );
+}
+function CommandPaletteDialog() {
+  const open = useStore((s) => s.commandPaletteOpen);
+  const setOpen = useStore((s) => s.setCommandPaletteOpen);
+  const groups = useStore((s) => s.groups);
+  const tasks = useStore((s) => s.tasks);
+  const setActiveGroup = useStore((s) => s.setActiveGroup);
+  const selectTask = useStore((s) => s.selectTask);
+  const toggleSidebar = useStore((s) => s.toggleSidebar);
+  const setSettingsOpen = useStore((s) => s.setSettingsOpen);
+  const setHelpOpen = useStore((s) => s.setHelpOpen);
+  const openGroupDialog = useStore((s) => s.openGroupDialog);
+  const { setTheme } = useTheme();
+  reactExports.useEffect(() => {
+    const down = (e) => {
+      if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault();
+        setOpen(!open);
+      }
+    };
+    document.addEventListener("keydown", down);
+    return () => document.removeEventListener("keydown", down);
+  }, [open, setOpen]);
+  const runCommand = (command) => {
+    setOpen(false);
+    command();
+  };
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs(CommandDialog, { open, onOpenChange: setOpen, children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx(CommandInput, { placeholder: "Type a command or search..." }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs(CommandList, { children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx(CommandEmpty, { children: "No results found." }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs(CommandGroup, { heading: "Navigation", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs(
+          CommandItem,
+          {
+            onSelect: () => runCommand(() => setActiveGroup(null)),
+            children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx(LayoutDashboard, { className: "mr-2 h-4 w-4" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "Overview" })
+            ]
+          }
+        ),
+        groups.map((group) => /* @__PURE__ */ jsxRuntimeExports.jsx(
+          CommandItem,
+          {
+            onSelect: () => runCommand(() => setActiveGroup(group.id)),
+            children: /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: group.name })
+          },
+          group.id
+        ))
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(CommandGroup, { heading: "Tasks", children: tasks.filter((t) => t.status !== "done").slice(0, 5).map((task) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
+        CommandItem,
+        {
+          onSelect: () => runCommand(() => {
+            setActiveGroup(task.groupId);
+            selectTask(task.id);
+          }),
+          children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(Circle, { className: "mr-2 h-4 w-4 text-muted-foreground" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "truncate", children: task.title })
+          ]
+        },
+        task.id
+      )) }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(CommandSeparator, {}),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs(CommandGroup, { heading: "Settings & Actions", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs(CommandItem, { onSelect: () => runCommand(() => openGroupDialog()), children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Plus, { className: "mr-2 h-4 w-4" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "New Group" })
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs(CommandItem, { onSelect: () => runCommand(() => toggleSidebar()), children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(PanelLeft, { className: "mr-2 h-4 w-4" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "Toggle Sidebar" })
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs(CommandItem, { onSelect: () => runCommand(() => setSettingsOpen(true)), children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Settings, { className: "mr-2 h-4 w-4" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "Settings" })
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs(CommandItem, { onSelect: () => runCommand(() => setHelpOpen(true)), children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(CircleHelp, { className: "mr-2 h-4 w-4" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "Help & Shortcuts" })
+        ] })
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs(CommandGroup, { heading: "Appearance", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs(CommandItem, { onSelect: () => runCommand(() => setTheme("light")), children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Sun, { className: "mr-2 h-4 w-4" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "Light Mode" })
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs(CommandItem, { onSelect: () => runCommand(() => setTheme("dark")), children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Moon, { className: "mr-2 h-4 w-4" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "Dark Mode" })
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs(CommandItem, { onSelect: () => runCommand(() => setTheme("system")), children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Monitor, { className: "mr-2 h-4 w-4" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "System Theme" })
+        ] })
+      ] })
+    ] })
+  ] });
+}
+function Card({ className, ...props }) {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    "div",
+    {
+      "data-slot": "card",
+      className: cn(
+        "bg-card text-card-foreground flex flex-col gap-6 rounded-xl border",
+        className
+      ),
+      ...props
+    }
+  );
+}
+function CardHeader({ className, ...props }) {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    "div",
+    {
+      "data-slot": "card-header",
+      className: cn(
+        "@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 px-6 pt-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6",
+        className
+      ),
+      ...props
+    }
+  );
+}
+function CardTitle({ className, ...props }) {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    "h4",
+    {
+      "data-slot": "card-title",
+      className: cn("leading-none", className),
+      ...props
+    }
+  );
+}
+function CardContent({ className, ...props }) {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    "div",
+    {
+      "data-slot": "card-content",
+      className: cn("px-6 [&:last-child]:pb-6", className),
+      ...props
+    }
+  );
+}
 const isTypingTarget = (el) => {
   if (!(el instanceof HTMLElement)) return false;
   if (el.isContentEditable) return true;
@@ -40683,6 +41804,7 @@ const useKeyboardShortcuts = (onNewTask, onFocusSearch) => {
   const setHelpOpen = useStore((s) => s.setHelpOpen);
   const selectTask = useStore((s) => s.selectTask);
   const openGroupDialog = useStore((s) => s.openGroupDialog);
+  const setCommandPaletteOpen = useStore((s) => s.setCommandPaletteOpen);
   reactExports.useEffect(() => {
     const handler = (e) => {
       const meta = e.metaKey || e.ctrlKey;
@@ -40693,7 +41815,7 @@ const useKeyboardShortcuts = (onNewTask, onFocusSearch) => {
       }
       if (meta && e.key === "k") {
         e.preventDefault();
-        onFocusSearch();
+        setCommandPaletteOpen(true);
         return;
       }
       if (meta && e.key.toLowerCase() === "b") {
@@ -40723,10 +41845,10 @@ const useKeyboardShortcuts = (onNewTask, onFocusSearch) => {
 };
 function isDndActive(dndHours, now2) {
   if (dndHours === "off") return false;
-  const m = /^(\d{1,2})-(\d{1,2})$/.exec(dndHours);
-  if (!m) return false;
-  const start = parseInt(m[1], 10);
-  const end = parseInt(m[2], 10);
+  const m2 = /^(\d{1,2})-(\d{1,2})$/.exec(dndHours);
+  if (!m2) return false;
+  const start = parseInt(m2[1], 10);
+  const end = parseInt(m2[2], 10);
   const h = now2.getHours();
   if (Number.isNaN(start) || Number.isNaN(end)) return false;
   if (start > end) return h >= start || h < end;
@@ -40796,6 +41918,7 @@ function App() {
   const tagFilter = useStore((s) => s.tagFilter);
   const clearFilters = useStore((s) => s.clearFilters);
   const openGroupDialog = useStore((s) => s.openGroupDialog);
+  const setActiveGroup = useStore((s) => s.setActiveGroup);
   const showCompleted = useStore(
     (s) => s.settings.showCompleted
   );
@@ -40873,16 +41996,57 @@ function App() {
   );
   const main = reactExports.useMemo(() => {
     if (!activeGroup) {
-      return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex-1 flex items-center justify-center", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-        EmptyState,
-        {
-          illustration: "groups",
-          title: "No groups yet",
-          description: "Groups keep separate projects in their own focused workspace.",
-          actionLabel: "Create your first group",
-          onAction: () => openGroupDialog()
-        }
-      ) });
+      if (groups.length === 0) {
+        return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex-1 flex items-center justify-center", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+          EmptyState,
+          {
+            illustration: "groups",
+            title: "No groups yet",
+            description: "Groups keep separate projects in their own focused workspace.",
+            actionLabel: "Create your first group",
+            onAction: () => openGroupDialog()
+          }
+        ) });
+      }
+      return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex-1 flex flex-col overflow-hidden", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "px-8 pt-6 pb-4 shrink-0", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("h1", { className: "text-3xl font-bold tracking-tight", children: "Overview" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-muted-foreground mt-1", children: "Select a group to start managing your tasks." })
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex-1 overflow-y-auto px-8 pb-8 mt-4", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "grid gap-4 md:grid-cols-2 lg:grid-cols-3", children: [
+          groups.map((group) => {
+            const count2 = tasks.filter(
+              (t) => t.groupId === group.id && t.status !== "done"
+            ).length;
+            return /* @__PURE__ */ jsxRuntimeExports.jsxs(
+              Card,
+              {
+                className: "cursor-pointer hover:bg-accent/50 transition-colors group relative overflow-hidden",
+                onClick: () => setActiveGroup(group.id),
+                children: [
+                  /* @__PURE__ */ jsxRuntimeExports.jsx(CardHeader, { className: "flex flex-row items-center justify-between space-y-0 pb-2", children: /* @__PURE__ */ jsxRuntimeExports.jsx(CardTitle, { className: "text-sm font-medium", children: group.name }) }),
+                  /* @__PURE__ */ jsxRuntimeExports.jsxs(CardContent, { children: [
+                    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "text-2xl font-bold", children: count2 }),
+                    /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-muted-foreground", children: "pending tasks" })
+                  ] })
+                ]
+              },
+              group.id
+            );
+          }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs(
+            Card,
+            {
+              className: "cursor-pointer border-dashed hover:bg-accent/50 transition-colors flex flex-col items-center justify-center p-6 text-center",
+              onClick: () => openGroupDialog(),
+              children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx(Plus, { className: "size-8 text-muted-foreground mb-2" }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx(CardTitle, { className: "text-sm font-medium", children: "Add Group" })
+              ]
+            }
+          )
+        ] }) })
+      ] });
     }
     return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex-1 flex flex-col overflow-hidden", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "px-8 pt-4 pb-4 space-y-5 shrink-0", children: [
@@ -40896,88 +42060,116 @@ function App() {
         ),
         /* @__PURE__ */ jsxRuntimeExports.jsx(FilterBar, { availableTags })
       ] }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex-1 overflow-y-auto px-8 pb-8", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "max-w-3xl mx-auto space-y-2", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx(
-          AddTaskInline,
-          {
-            ref: addTaskRef,
-            groupId: activeGroup.id,
-            accent: activeGroup.accent
-          }
-        ),
-        visibleTasks.length > 0 ? /* @__PURE__ */ jsxRuntimeExports.jsx(
-          TaskList,
-          {
-            tasks: visibleTasks,
-            accent: activeGroup.accent,
-            groupId: activeGroup.id
-          }
-        ) : hasFilters ? /* @__PURE__ */ jsxRuntimeExports.jsx(
-          EmptyState,
-          {
-            illustration: "search",
-            title: "No matching tasks",
-            description: "Try clearing filters or adjusting your search.",
-            actionLabel: "Clear filters",
-            onAction: clearFilters
-          }
-        ) : totalInGroup === 0 ? /* @__PURE__ */ jsxRuntimeExports.jsx(
-          EmptyState,
-          {
-            illustration: "tasks",
-            title: `Welcome to ${activeGroup.name}`,
-            description: "Capture your next task above, or press N to focus the quick-add input."
-          }
-        ) : /* @__PURE__ */ jsxRuntimeExports.jsx(
-          EmptyState,
-          {
-            illustration: "tasks",
-            title: "All caught up",
-            description: "Every task in this view is complete. Nice work."
-          }
-        )
-      ] }) })
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex-1 overflow-y-auto overflow-x-hidden px-8 pb-8 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden", children: /* @__PURE__ */ jsxRuntimeExports.jsx(AnimatePresence, { mode: "popLayout", initial: false, children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
+        motion.div,
+        {
+          layoutId: "task-content-container",
+          initial: { opacity: 0, x: 10 },
+          animate: { opacity: 1, x: 0 },
+          exit: { opacity: 0, x: -10 },
+          transition: {
+            type: "spring",
+            stiffness: 350,
+            damping: 35
+          },
+          className: "space-y-6",
+          children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(
+              AddTaskInline,
+              {
+                ref: addTaskRef,
+                groupId: activeGroup.id,
+                accent: activeGroup.accent
+              }
+            ),
+            visibleTasks.length > 0 ? /* @__PURE__ */ jsxRuntimeExports.jsx(
+              TaskList,
+              {
+                tasks: visibleTasks,
+                accent: activeGroup.accent,
+                groupId: activeGroup.id
+              }
+            ) : hasFilters ? /* @__PURE__ */ jsxRuntimeExports.jsx(
+              EmptyState,
+              {
+                illustration: "search",
+                title: "No matching tasks",
+                description: "Try clearing filters or adjusting your search.",
+                actionLabel: "Clear filters",
+                onAction: clearFilters
+              }
+            ) : totalInGroup === 0 ? /* @__PURE__ */ jsxRuntimeExports.jsx(
+              EmptyState,
+              {
+                illustration: "tasks",
+                title: `Welcome to ${activeGroup.name}`,
+                description: "Capture your next task above, or press N to focus the quick-add input."
+              }
+            ) : /* @__PURE__ */ jsxRuntimeExports.jsx(
+              EmptyState,
+              {
+                illustration: "tasks",
+                title: "All caught up",
+                description: "Every task in this view is complete. Nice work."
+              }
+            )
+          ]
+        },
+        activeGroup.id
+      ) }) })
     ] });
   }, [
     activeGroup,
+    groups,
+    tasks,
     availableTags,
     clearFilters,
     doneInGroup,
     hasFilters,
     openGroupDialog,
+    setActiveGroup,
     totalInGroup,
     visibleTasks
   ]);
   if (!isHydrated) {
     return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex h-screen items-center justify-center bg-background text-muted-foreground animate-in fade-in duration-500", children: "Loading..." });
   }
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "h-full w-full flex bg-background text-foreground overflow-hidden", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx(Sidebar, {}),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative flex-1 flex flex-col overflow-hidden", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsxs("header", { className: "h-14 shrink-0 flex items-center justify-between px-6 gap-4", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx(SearchBar, { ref: searchRef }),
-        /* @__PURE__ */ jsxRuntimeExports.jsxs(
-          Button,
-          {
-            onClick: () => addTaskRef.current?.focus(),
-            size: "sm",
-            variant: "ghost",
-            className: "gap-1.5 text-muted-foreground hover:text-foreground",
-            children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx(Plus, { className: "size-4" }),
-              "Add Task"
-            ]
-          }
-        )
-      ] }),
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(SidebarProvider, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "h-full w-full flex bg-background text-foreground overflow-hidden", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx(AppSidebar, {}),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(SidebarInset, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative flex-1 flex flex-col overflow-hidden", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx("header", { className: "flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12 border-b", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-1 items-center gap-2 px-4", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(SidebarTrigger, { className: "-ml-1" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Separator$1, { orientation: "vertical", className: "mr-2 h-4" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Breadcrumb, { className: "flex-1", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(BreadcrumbList, { children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(BreadcrumbItem, { className: "hidden md:block", children: /* @__PURE__ */ jsxRuntimeExports.jsx(BreadcrumbLink, { href: "#", onClick: (e) => {
+            e.preventDefault();
+            useStore.getState().setActiveGroup(null);
+          }, children: "Workspace" }) }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(BreadcrumbSeparator, { className: "hidden md:block" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(BreadcrumbItem, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(BreadcrumbPage, { className: "relative", children: /* @__PURE__ */ jsxRuntimeExports.jsx(AnimatePresence, { mode: "popLayout", initial: false, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+            motion.span,
+            {
+              initial: { opacity: 0, y: 5 },
+              animate: { opacity: 1, y: 0 },
+              exit: { opacity: 0, y: -5 },
+              transition: { duration: 0.15 },
+              className: "block",
+              children: activeGroup?.name ?? "Overview"
+            },
+            activeGroup?.id ?? "overview"
+          ) }) }) })
+        ] }) }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center gap-4", children: /* @__PURE__ */ jsxRuntimeExports.jsx(SearchBar, { ref: searchRef }) })
+      ] }) }),
       main,
       activeGroup && /* @__PURE__ */ jsxRuntimeExports.jsx(TaskDetailPanel, { accent: activeGroup.accent })
-    ] }),
+    ] }) }),
     /* @__PURE__ */ jsxRuntimeExports.jsx(GroupDialog, {}),
     /* @__PURE__ */ jsxRuntimeExports.jsx(HelpModal, {}),
     /* @__PURE__ */ jsxRuntimeExports.jsx(SettingsDialog, {}),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(CommandPaletteDialog, {}),
     /* @__PURE__ */ jsxRuntimeExports.jsx(Toaster2, { position: "bottom-right" })
-  ] });
+  ] }) });
 }
 function QuickAddApp() {
   const hydrate = useStore((s) => s.hydrate);

@@ -66,7 +66,7 @@ function getIconPath(): { win: string; other: string } {
 }
 
 function loadTrayImage(): Electron.NativeImage {
-  const iconPath = resolve(__dirname, '../../src/renderer/taskoverflow-dark-icon.svg');
+  const iconPath = resolve(app.getAppPath(), 'src/renderer/taskoverflow-dark-icon.svg');
   try {
     return nativeImage.createFromPath(iconPath);
   } catch {

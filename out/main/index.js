@@ -290,7 +290,7 @@ function getIconPath() {
   };
 }
 function loadTrayImage() {
-  const iconPath = path.resolve(__dirname, "../../src/renderer/taskoverflow-dark-icon.svg");
+  const iconPath = path.resolve(electron.app.getAppPath(), "src/renderer/taskoverflow-dark-icon.svg");
   try {
     return electron.nativeImage.createFromPath(iconPath);
   } catch {
