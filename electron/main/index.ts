@@ -1,4 +1,4 @@
-// ── Catch-all error handlers (must be first) ─────────────────────────────
+// â”€â”€ Catch-all error handlers (must be first) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 process.on('uncaughtException', (err) => {
   console.error('[UNCAUGHT EXCEPTION]', err);
 });
@@ -343,7 +343,7 @@ function createMainWindow(): void {
     console.error('[RENDERER] render-process-gone', details);
   });
   win.webContents.on('did-finish-load', () => {
-    console.log('[RENDERER] did-finish-load — page loaded successfully');
+    console.log('[RENDERER] did-finish-load â€” page loaded successfully');
   });
 
   loadMainWindowUrl(win);
@@ -370,7 +370,7 @@ function createQuickAddWindow(): BrowserWindow {
     maximizable: false,
     minimizable: true,
     autoHideMenuBar: true,
-    title: 'Quick Add — TaskOverflow',
+    title: 'Quick Add â€” TaskOverflow',
     icon: iconPath,
     webPreferences: {
       preload: join(__dirname, '../preload/index.js'),
@@ -458,12 +458,18 @@ function syncPrefsAfterSettingsSave(value: unknown): void {
   }
 }
 
-if (!app.requestSingleInstanceLock()) {
+// In dev mode, skip the single-instance lock so `npm run dev` works even when
+// a production build is already running in the system tray.
+const shouldLock = !is.dev;
+
+if (shouldLock && !app.requestSingleInstanceLock()) {
   app.quit();
 } else {
-  app.on('second-instance', () => {
-    showMainWindow();
-  });
+  if (shouldLock) {
+    app.on('second-instance', () => {
+      showMainWindow();
+    });
+  }
 
   app.whenReady().then(() => {
     electronApp.setAppUserModelId('com.taskoverflow');
