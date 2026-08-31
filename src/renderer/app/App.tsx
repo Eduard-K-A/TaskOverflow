@@ -372,8 +372,8 @@ export default function App() {
   }
 
   return (
-    <SidebarProvider>
-      <div className="h-full w-full flex bg-background text-foreground overflow-hidden">
+    <SidebarProvider className="h-full min-h-0 overflow-hidden">
+      <div className="h-full min-h-0 w-full flex bg-background text-foreground overflow-hidden">
         <AppSidebar />
 
         <SidebarInset className="min-h-0 overflow-hidden">
