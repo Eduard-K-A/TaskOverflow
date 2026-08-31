@@ -32,6 +32,7 @@ import {
   settingsRepo,
   maintenanceRepo
 } from './db';
+import { TRAY_ICON_32, TRAY_ICON_64 } from './trayIcon';
 
 const QUICK_ADD_QUERY = { quickadd: '1' };
 const GLOBAL_SHORTCUT = 'CommandOrControl+Shift+N';
@@ -73,11 +74,26 @@ function getIconPath(): { win: string; other: string } {
   };
 }
 
+/**
+ * The dark-mode app icon, as bitmaps the tray can actually draw.
+ *
+ * nativeImage cannot rasterise SVG — createFromPath on the .svg returned an
+ * empty 0x0 image, which is why the tray came up blank. The PNGs are inlined
+ * (see scripts/generate-tray-icon.cjs) because build/ is the electron-builder
+ * resources directory and is not shipped inside the packaged app.
+ */
 function loadTrayImage(): Electron.NativeImage {
-  const iconPath = resolve(app.getAppPath(), 'src/renderer/taskoverflow-dark-icon.svg');
   try {
-    return nativeImage.createFromPath(iconPath);
-  } catch {
+    const image = nativeImage.createFromDataURL(TRAY_ICON_32);
+    if (image.isEmpty()) return nativeImage.createEmpty();
+    // Lets Windows and macOS pick the crisper bitmap on HiDPI displays.
+    image.addRepresentation({
+      scaleFactor: 2,
+      dataURL: TRAY_ICON_64
+    });
+    return image;
+  } catch (e) {
+    console.error('Tray icon load failed:', e);
     return nativeImage.createEmpty();
   }
 }
