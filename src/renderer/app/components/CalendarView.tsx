@@ -18,6 +18,7 @@ import { dateKeyFromDate, dateKeyFromIso } from "../lib/date";
 import { Button } from "./ui/button";
 import { DataExportImportActions } from "./DataExportImportActions";
 import { CalendarDayDialog } from "./CalendarDayDialog";
+import { MonthYearPicker } from "./MonthYearPicker";
 import { cn } from "./ui/utils";
 import type { Group, Task } from "../types";
 
@@ -100,6 +101,7 @@ export const CalendarView = () => {
 
   const [month, setMonth] = useState(() => startOfMonth(new Date()));
   const [dayModalDate, setDayModalDate] = useState<string | null>(null);
+  const [pickerOpen, setPickerOpen] = useState(false);
 
   const gridRef = useRef<HTMLDivElement>(null);
   const [rowHeight, setRowHeight] = useState(MIN_ROW_HEIGHT);
@@ -157,7 +159,7 @@ export const CalendarView = () => {
 
   // Month navigation from the keyboard, but only while the calendar owns the screen.
   useEffect(() => {
-    if (dayModalDate !== null || taskDialogOpen) return;
+    if (dayModalDate !== null || taskDialogOpen || pickerOpen) return;
     const handler = (e: KeyboardEvent) => {
       if (e.metaKey || e.ctrlKey || e.altKey || isTypingTarget(e.target)) return;
       if (e.key === "ArrowLeft") {
@@ -173,7 +175,7 @@ export const CalendarView = () => {
     };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
-  }, [dayModalDate, taskDialogOpen]);
+  }, [dayModalDate, taskDialogOpen, pickerOpen]);
 
   return (
     <div className="flex-1 flex flex-col overflow-hidden">
@@ -198,12 +200,11 @@ export const CalendarView = () => {
             >
               <ChevronLeft className="size-4" />
             </Button>
-            <span
-              className="min-w-[140px] text-center text-sm font-medium tabular-nums"
-              aria-live="polite"
-            >
-              {format(month, "MMMM yyyy")}
-            </span>
+            <MonthYearPicker
+              value={month}
+              onChange={setMonth}
+              onOpenChange={setPickerOpen}
+            />
             <Button
               variant="outline"
               size="icon"
