@@ -1,5 +1,17 @@
 import { format, formatDistanceToNowStrict, isToday, isTomorrow, isYesterday, isPast } from "date-fns";
 
+/** Local calendar day key `yyyy-MM-dd`. */
+export const dateKeyFromDate = (d: Date): string => format(d, "yyyy-MM-dd");
+
+export const dateKeyFromIso = (iso: string | null): string | null => {
+  if (!iso) return null;
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return null;
+  return dateKeyFromDate(d);
+};
+
+export const dateFromDateKey = (key: string): Date => new Date(`${key}T12:00:00`);
+
 export const formatDueDate = (iso: string | null): { label: string; overdue: boolean } | null => {
   if (!iso) return null;
   const d = new Date(iso);
