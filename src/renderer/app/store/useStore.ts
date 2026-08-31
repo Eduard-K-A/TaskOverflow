@@ -127,6 +127,7 @@ interface Actions {
   setCommandPaletteOpen: (open: boolean) => void;
   saveSettings: (next: Settings) => Promise<void>;
   resetSettings: () => Promise<void>;
+  wipeAllData: () => Promise<void>;
   openGroupDialog: (editingId?: string | null) => void;
   closeGroupDialog: () => void;
   openCalendarTaskDialog: (defaultDate: string) => void;
@@ -289,6 +290,23 @@ export const useStore = create<Store>()((set, get) => ({
   resetSettings: async () => {
     set({ settings: DEFAULT_SETTINGS });
     await invokePersist(() => window.api!.saveSetting('settings', DEFAULT_SETTINGS));
+  },
+  wipeAllData: async () => {
+    // One transactional delete in the main process; a no-op without the Electron bridge.
+    await invokePersist(() => window.api!.wipeAllData());
+    set({
+      groups: [],
+      tasks: [],
+      settings: DEFAULT_SETTINGS,
+      theme: "system",
+      sidebarCollapsed: false,
+      mainView: "overview",
+      activeGroupId: null,
+      selectedTaskId: null,
+      searchQuery: "",
+      statusFilter: "all",
+      tagFilter: [],
+    });
   },
   openGroupDialog: (editingId = null) => set({ groupDialog: { open: true, editingId } }),
   closeGroupDialog: () => set({ groupDialog: { open: false, editingId: null } }),

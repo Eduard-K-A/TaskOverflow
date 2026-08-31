@@ -1,4 +1,5 @@
 import { useMemo, useRef, useEffect } from "react";
+import type React from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Plus } from "lucide-react";
 import { Toaster } from "./components/ui/sonner";
@@ -82,6 +83,7 @@ export default function App() {
   const moveCompletedDown = useStore(
     (s) => s.settings.moveCompletedDown,
   );
+  const sidebarWidth = useStore((s) => s.settings.sidebarWidth);
 
   const activeGroup = useMemo(
     () => groups.find((g) => g.id === activeGroupId) ?? null,
@@ -372,7 +374,10 @@ export default function App() {
   }
 
   return (
-    <SidebarProvider className="h-full min-h-0 overflow-hidden">
+    <SidebarProvider
+      className="h-full min-h-0 overflow-hidden"
+      style={{ "--sidebar-width": `${sidebarWidth}px` } as React.CSSProperties}
+    >
       <div className="h-full min-h-0 w-full flex bg-background text-foreground overflow-hidden">
         <AppSidebar />
 

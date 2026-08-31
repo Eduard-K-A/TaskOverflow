@@ -36,6 +36,17 @@ const api = {
       dbSizeKb: number | null;
     }>,
   revealDbInFolder: () => ipcRenderer.invoke('paths:revealDb'),
+  wipeAllData: () => ipcRenderer.invoke('db:wipeAll'),
+
+  getAppVersion: () => ipcRenderer.invoke('app:getVersion') as Promise<string>,
+  openExternal: (url: string) => ipcRenderer.invoke('app:openExternal', url),
+  checkForUpdates: () =>
+    ipcRenderer.invoke('app:checkForUpdates') as Promise<{
+      status: 'current' | 'outdated' | 'no-releases' | 'error';
+      current: string;
+      latest?: string;
+      releasesUrl: string;
+    }>,
   closeQuickAddWindow: () => ipcRenderer.invoke('windows:closeQuickAdd'),
 
   onQuickAddPrepare: (callback: () => void) => {

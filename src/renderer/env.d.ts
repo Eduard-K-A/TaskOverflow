@@ -27,6 +27,15 @@ declare global {
       saveSetting: (key: string, value: any) => Promise<void>;
       getDataPaths: () => Promise<{ userData: string; dbFile: string; dbSizeKb: number | null }>;
       revealDbInFolder: () => Promise<void>;
+      wipeAllData: () => Promise<void>;
+      getAppVersion: () => Promise<string>;
+      openExternal: (url: string) => Promise<void>;
+      checkForUpdates: () => Promise<{
+        status: 'current' | 'outdated' | 'no-releases' | 'error';
+        current: string;
+        latest?: string;
+        releasesUrl: string;
+      }>;
       closeQuickAddWindow: () => Promise<void>;
       onQuickAddPrepare: (callback: () => void) => () => void;
       broadcastStateReload: () => Promise<void>;

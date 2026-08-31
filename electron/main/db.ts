@@ -282,3 +282,26 @@ export const settingsRepo = {
     return db.prepare('INSERT OR REPLACE INTO settings (key, value) VALUES (?, ?)').run(key, JSON.stringify(value));
   }
 };
+
+/**
+ * Maintenance operations that span every table.
+ */
+export const maintenanceRepo = {
+  /**
+   * Erase all user content. Groups cascade to tasks, subtasks and task_tags,
+   * but tag names and settings live outside that chain and are cleared here.
+   */
+  wipeAll: () => {
+    if (!db) throw new Error('Database not initialized');
+    const database = db;
+    const transaction = database.transaction(() => {
+      database.prepare('DELETE FROM task_tags').run();
+      database.prepare('DELETE FROM subtasks').run();
+      database.prepare('DELETE FROM tasks').run();
+      database.prepare('DELETE FROM groups').run();
+      database.prepare('DELETE FROM tags').run();
+      database.prepare('DELETE FROM settings').run();
+    });
+    transaction();
+  }
+};

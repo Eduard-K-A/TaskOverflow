@@ -1,4 +1,4 @@
-// â”€â”€ Catch-all error handlers (must be first) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Catch-all error handlers (must be first) ─────────────────────────────
 process.on('uncaughtException', (err) => {
   console.error('[UNCAUGHT EXCEPTION]', err);
 });
@@ -29,11 +29,19 @@ import {
   tasksRepo,
   subtasksRepo,
   tagsRepo,
-  settingsRepo
+  settingsRepo,
+  maintenanceRepo
 } from './db';
 
 const QUICK_ADD_QUERY = { quickadd: '1' };
 const GLOBAL_SHORTCUT = 'CommandOrControl+Shift+N';
+
+const REPO_URL = 'https://github.com/Eduard-K-A/TaskOverflow';
+const RELEASES_URL = `${REPO_URL}/releases`;
+const LATEST_RELEASE_API = 'https://api.github.com/repos/Eduard-K-A/TaskOverflow/releases/latest';
+
+/** Only project-owned https destinations may be handed to the OS browser. */
+const EXTERNAL_URL_ALLOWLIST = new Set([REPO_URL, RELEASES_URL]);
 
 interface AppPrefs {
   launchAtLogin: boolean;
@@ -343,7 +351,7 @@ function createMainWindow(): void {
     console.error('[RENDERER] render-process-gone', details);
   });
   win.webContents.on('did-finish-load', () => {
-    console.log('[RENDERER] did-finish-load â€” page loaded successfully');
+    console.log('[RENDERER] did-finish-load — page loaded successfully');
   });
 
   loadMainWindowUrl(win);
@@ -370,7 +378,7 @@ function createQuickAddWindow(): BrowserWindow {
     maximizable: false,
     minimizable: true,
     autoHideMenuBar: true,
-    title: 'Quick Add â€” TaskOverflow',
+    title: 'Quick Add — TaskOverflow',
     icon: iconPath,
     webPreferences: {
       preload: join(__dirname, '../preload/index.js'),
@@ -438,6 +446,17 @@ function runDailyAutoBackup(): void {
   } catch (e) {
     console.error('Auto-backup failed:', e);
   }
+}
+
+/** Numeric-segment semver compare; returns >0 when `a` is newer than `b`. */
+function compareVersions(a: string, b: string): number {
+  const pa = a.split('.').map((n) => parseInt(n, 10) || 0);
+  const pb = b.split('.').map((n) => parseInt(n, 10) || 0);
+  for (let i = 0; i < Math.max(pa.length, pb.length); i++) {
+    const diff = (pa[i] ?? 0) - (pb[i] ?? 0);
+    if (diff !== 0) return diff;
+  }
+  return 0;
 }
 
 function applyPrefsSideEffects(): void {
@@ -538,6 +557,50 @@ if (shouldLock && !app.requestSingleInstanceLock()) {
 
     ipcMain.handle('paths:revealDb', () => {
       shell.showItemInFolder(getDbFilePath());
+    });
+
+    ipcMain.handle('db:wipeAll', () => {
+      maintenanceRepo.wipeAll();
+      refreshPrefsFromDb();
+      applyPrefsSideEffects();
+    });
+
+    ipcMain.handle('app:getVersion', () => app.getVersion());
+
+    ipcMain.handle('app:openExternal', (_, url: string) => {
+      if (!EXTERNAL_URL_ALLOWLIST.has(url)) {
+        throw new Error(`Refusing to open non-allowlisted URL: ${url}`);
+      }
+      return shell.openExternal(url);
+    });
+
+    ipcMain.handle('app:checkForUpdates', async () => {
+      const current = app.getVersion();
+      try {
+        const response = await fetch(LATEST_RELEASE_API, {
+          headers: { Accept: 'application/vnd.github+json' },
+          signal: AbortSignal.timeout(8000)
+        });
+        if (response.status === 404) {
+          return { status: 'no-releases' as const, current, releasesUrl: RELEASES_URL };
+        }
+        if (!response.ok) {
+          return { status: 'error' as const, current, releasesUrl: RELEASES_URL };
+        }
+        const body = (await response.json()) as { tag_name?: string; name?: string };
+        const latest = (body.tag_name ?? body.name ?? '').replace(/^v/, '');
+        if (!latest) {
+          return { status: 'no-releases' as const, current, releasesUrl: RELEASES_URL };
+        }
+        return {
+          status: compareVersions(latest, current) > 0 ? ('outdated' as const) : ('current' as const),
+          current,
+          latest,
+          releasesUrl: RELEASES_URL
+        };
+      } catch {
+        return { status: 'error' as const, current, releasesUrl: RELEASES_URL };
+      }
     });
 
     ipcMain.handle('windows:closeQuickAdd', () => {
