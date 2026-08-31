@@ -24,6 +24,10 @@ const api = {
   saveSetting: (key, value) => electron.ipcRenderer.invoke("settings:save", key, value),
   getDataPaths: () => electron.ipcRenderer.invoke("paths:getData"),
   revealDbInFolder: () => electron.ipcRenderer.invoke("paths:revealDb"),
+  wipeAllData: () => electron.ipcRenderer.invoke("db:wipeAll"),
+  getAppVersion: () => electron.ipcRenderer.invoke("app:getVersion"),
+  openExternal: (url) => electron.ipcRenderer.invoke("app:openExternal", url),
+  checkForUpdates: () => electron.ipcRenderer.invoke("app:checkForUpdates"),
   closeQuickAddWindow: () => electron.ipcRenderer.invoke("windows:closeQuickAdd"),
   onQuickAddPrepare: (callback) => {
     const listener = () => {

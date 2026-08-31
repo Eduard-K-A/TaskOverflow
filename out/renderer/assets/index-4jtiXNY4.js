@@ -20566,7 +20566,7 @@ const createLucideIcon = (iconName, iconNode) => {
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$u = [
+const __iconNode$w = [
   ["path", { d: "M10.268 21a2 2 0 0 0 3.464 0", key: "vwvbt9" }],
   [
     "path",
@@ -20576,36 +20576,63 @@ const __iconNode$u = [
     }
   ]
 ];
-const Bell = createLucideIcon("bell", __iconNode$u);
+const Bell = createLucideIcon("bell", __iconNode$w);
 /**
  * @license lucide-react v0.487.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$t = [
+const __iconNode$v = [
+  ["path", { d: "M8 2v4", key: "1cmpym" }],
+  ["path", { d: "M16 2v4", key: "4m81vk" }],
+  ["rect", { width: "18", height: "18", x: "3", y: "4", rx: "2", key: "1hopcy" }],
+  ["path", { d: "M3 10h18", key: "8toen8" }],
+  ["path", { d: "M8 14h.01", key: "6423bh" }],
+  ["path", { d: "M12 14h.01", key: "1etili" }],
+  ["path", { d: "M16 14h.01", key: "1gbofw" }],
+  ["path", { d: "M8 18h.01", key: "lrp35t" }],
+  ["path", { d: "M12 18h.01", key: "mhygvu" }],
+  ["path", { d: "M16 18h.01", key: "kzsmim" }]
+];
+const CalendarDays = createLucideIcon("calendar-days", __iconNode$v);
+/**
+ * @license lucide-react v0.487.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$u = [
   ["path", { d: "M8 2v4", key: "1cmpym" }],
   ["path", { d: "M16 2v4", key: "4m81vk" }],
   ["rect", { width: "18", height: "18", x: "3", y: "4", rx: "2", key: "1hopcy" }],
   ["path", { d: "M3 10h18", key: "8toen8" }]
 ];
-const Calendar = createLucideIcon("calendar", __iconNode$t);
+const Calendar = createLucideIcon("calendar", __iconNode$u);
 /**
  * @license lucide-react v0.487.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$s = [["path", { d: "M20 6 9 17l-5-5", key: "1gmf2c" }]];
-const Check = createLucideIcon("check", __iconNode$s);
+const __iconNode$t = [["path", { d: "M20 6 9 17l-5-5", key: "1gmf2c" }]];
+const Check = createLucideIcon("check", __iconNode$t);
 /**
  * @license lucide-react v0.487.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$r = [["path", { d: "m6 9 6 6 6-6", key: "qrunsl" }]];
-const ChevronDown = createLucideIcon("chevron-down", __iconNode$r);
+const __iconNode$s = [["path", { d: "m6 9 6 6 6-6", key: "qrunsl" }]];
+const ChevronDown = createLucideIcon("chevron-down", __iconNode$s);
+/**
+ * @license lucide-react v0.487.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$r = [["path", { d: "m15 18-6-6 6-6", key: "1wnfg3" }]];
+const ChevronLeft = createLucideIcon("chevron-left", __iconNode$r);
 /**
  * @license lucide-react v0.487.0 - ISC
  *
@@ -29287,7 +29314,7 @@ Separator$2.displayName = NAME$3;
 function isValidOrientation(orientation) {
   return ORIENTATIONS.includes(orientation);
 }
-var Root$6 = Separator$2;
+var Root$7 = Separator$2;
 function Separator$1({
   className,
   orientation = "horizontal",
@@ -29295,7 +29322,7 @@ function Separator$1({
   ...props
 }) {
   return /* @__PURE__ */ jsxRuntimeExports.jsx(
-    Root$6,
+    Root$7,
     {
       "data-slot": "separator-root",
       decorative,
@@ -29859,15 +29886,15 @@ function arrayRemove(array, item) {
 function removeLinks(items) {
   return items.filter((item) => item.tagName !== "A");
 }
-var PORTAL_NAME$6 = "Portal";
-var Portal$4 = reactExports.forwardRef((props, forwardedRef) => {
+var PORTAL_NAME$7 = "Portal";
+var Portal$5 = reactExports.forwardRef((props, forwardedRef) => {
   const { container: containerProp, ...portalProps } = props;
   const [mounted, setMounted] = reactExports.useState(false);
   useLayoutEffect2(() => setMounted(true), []);
   const container = containerProp || mounted && globalThis?.document?.body;
   return container ? ReactDOM$1.createPortal(/* @__PURE__ */ jsxRuntimeExports.jsx(Primitive.div, { ...portalProps, ref: forwardedRef }), container) : null;
 });
-Portal$4.displayName = PORTAL_NAME$6;
+Portal$5.displayName = PORTAL_NAME$7;
 function useStateMachine(initialState, machine) {
   return reactExports.useReducer((state, event) => {
     const nextState = machine[state][event];
@@ -30831,11 +30858,11 @@ var Dialog$1 = (props) => {
   );
 };
 Dialog$1.displayName = DIALOG_NAME;
-var TRIGGER_NAME$4 = "DialogTrigger";
+var TRIGGER_NAME$5 = "DialogTrigger";
 var DialogTrigger = reactExports.forwardRef(
   (props, forwardedRef) => {
     const { __scopeDialog, ...triggerProps } = props;
-    const context = useDialogContext(TRIGGER_NAME$4, __scopeDialog);
+    const context = useDialogContext(TRIGGER_NAME$5, __scopeDialog);
     const composedTriggerRef = useComposedRefs(forwardedRef, context.triggerRef);
     return /* @__PURE__ */ jsxRuntimeExports.jsx(
       Primitive.button,
@@ -30844,7 +30871,7 @@ var DialogTrigger = reactExports.forwardRef(
         "aria-haspopup": "dialog",
         "aria-expanded": context.open,
         "aria-controls": context.contentId,
-        "data-state": getState$1(context.open),
+        "data-state": getState$3(context.open),
         ...triggerProps,
         ref: composedTriggerRef,
         onClick: composeEventHandlers(props.onClick, context.onOpenToggle)
@@ -30852,21 +30879,21 @@ var DialogTrigger = reactExports.forwardRef(
     );
   }
 );
-DialogTrigger.displayName = TRIGGER_NAME$4;
-var PORTAL_NAME$5 = "DialogPortal";
-var [PortalProvider$2, usePortalContext$2] = createDialogContext(PORTAL_NAME$5, {
+DialogTrigger.displayName = TRIGGER_NAME$5;
+var PORTAL_NAME$6 = "DialogPortal";
+var [PortalProvider$3, usePortalContext$3] = createDialogContext(PORTAL_NAME$6, {
   forceMount: void 0
 });
 var DialogPortal$1 = (props) => {
   const { __scopeDialog, forceMount, children, container } = props;
-  const context = useDialogContext(PORTAL_NAME$5, __scopeDialog);
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(PortalProvider$2, { scope: __scopeDialog, forceMount, children: reactExports.Children.map(children, (child) => /* @__PURE__ */ jsxRuntimeExports.jsx(Presence, { present: forceMount || context.open, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Portal$4, { asChild: true, container, children: child }) })) });
+  const context = useDialogContext(PORTAL_NAME$6, __scopeDialog);
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(PortalProvider$3, { scope: __scopeDialog, forceMount, children: reactExports.Children.map(children, (child) => /* @__PURE__ */ jsxRuntimeExports.jsx(Presence, { present: forceMount || context.open, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Portal$5, { asChild: true, container, children: child }) })) });
 };
-DialogPortal$1.displayName = PORTAL_NAME$5;
+DialogPortal$1.displayName = PORTAL_NAME$6;
 var OVERLAY_NAME$1 = "DialogOverlay";
 var DialogOverlay$1 = reactExports.forwardRef(
   (props, forwardedRef) => {
-    const portalContext = usePortalContext$2(OVERLAY_NAME$1, props.__scopeDialog);
+    const portalContext = usePortalContext$3(OVERLAY_NAME$1, props.__scopeDialog);
     const { forceMount = portalContext.forceMount, ...overlayProps } = props;
     const context = useDialogContext(OVERLAY_NAME$1, props.__scopeDialog);
     return context.modal ? /* @__PURE__ */ jsxRuntimeExports.jsx(Presence, { present: forceMount || context.open, children: /* @__PURE__ */ jsxRuntimeExports.jsx(DialogOverlayImpl, { ...overlayProps, ref: forwardedRef }) }) : null;
@@ -30883,7 +30910,7 @@ var DialogOverlayImpl = reactExports.forwardRef(
       /* @__PURE__ */ jsxRuntimeExports.jsx(ReactRemoveScroll, { as: Slot, allowPinchZoom: true, shards: [context.contentRef], children: /* @__PURE__ */ jsxRuntimeExports.jsx(
         Primitive.div,
         {
-          "data-state": getState$1(context.open),
+          "data-state": getState$3(context.open),
           ...overlayProps,
           ref: forwardedRef,
           style: { pointerEvents: "auto", ...overlayProps.style }
@@ -30892,19 +30919,19 @@ var DialogOverlayImpl = reactExports.forwardRef(
     );
   }
 );
-var CONTENT_NAME$6 = "DialogContent";
+var CONTENT_NAME$7 = "DialogContent";
 var DialogContent$1 = reactExports.forwardRef(
   (props, forwardedRef) => {
-    const portalContext = usePortalContext$2(CONTENT_NAME$6, props.__scopeDialog);
+    const portalContext = usePortalContext$3(CONTENT_NAME$7, props.__scopeDialog);
     const { forceMount = portalContext.forceMount, ...contentProps } = props;
-    const context = useDialogContext(CONTENT_NAME$6, props.__scopeDialog);
+    const context = useDialogContext(CONTENT_NAME$7, props.__scopeDialog);
     return /* @__PURE__ */ jsxRuntimeExports.jsx(Presence, { present: forceMount || context.open, children: context.modal ? /* @__PURE__ */ jsxRuntimeExports.jsx(DialogContentModal, { ...contentProps, ref: forwardedRef }) : /* @__PURE__ */ jsxRuntimeExports.jsx(DialogContentNonModal, { ...contentProps, ref: forwardedRef }) });
   }
 );
-DialogContent$1.displayName = CONTENT_NAME$6;
+DialogContent$1.displayName = CONTENT_NAME$7;
 var DialogContentModal = reactExports.forwardRef(
   (props, forwardedRef) => {
-    const context = useDialogContext(CONTENT_NAME$6, props.__scopeDialog);
+    const context = useDialogContext(CONTENT_NAME$7, props.__scopeDialog);
     const contentRef = reactExports.useRef(null);
     const composedRefs = useComposedRefs(forwardedRef, context.contentRef, contentRef);
     reactExports.useEffect(() => {
@@ -30938,7 +30965,7 @@ var DialogContentModal = reactExports.forwardRef(
 );
 var DialogContentNonModal = reactExports.forwardRef(
   (props, forwardedRef) => {
-    const context = useDialogContext(CONTENT_NAME$6, props.__scopeDialog);
+    const context = useDialogContext(CONTENT_NAME$7, props.__scopeDialog);
     const hasInteractedOutsideRef = reactExports.useRef(false);
     const hasPointerDownOutsideRef = reactExports.useRef(false);
     return /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -30979,7 +31006,7 @@ var DialogContentNonModal = reactExports.forwardRef(
 var DialogContentImpl = reactExports.forwardRef(
   (props, forwardedRef) => {
     const { __scopeDialog, trapFocus, onOpenAutoFocus, onCloseAutoFocus, ...contentProps } = props;
-    const context = useDialogContext(CONTENT_NAME$6, __scopeDialog);
+    const context = useDialogContext(CONTENT_NAME$7, __scopeDialog);
     const contentRef = reactExports.useRef(null);
     const composedRefs = useComposedRefs(forwardedRef, contentRef);
     useFocusGuards();
@@ -30999,7 +31026,7 @@ var DialogContentImpl = reactExports.forwardRef(
               id: context.contentId,
               "aria-describedby": context.descriptionId,
               "aria-labelledby": context.titleId,
-              "data-state": getState$1(context.open),
+              "data-state": getState$3(context.open),
               ...contentProps,
               ref: composedRefs,
               onDismiss: () => context.onOpenChange(false)
@@ -31032,11 +31059,11 @@ var DialogDescription$1 = reactExports.forwardRef(
   }
 );
 DialogDescription$1.displayName = DESCRIPTION_NAME$1;
-var CLOSE_NAME = "DialogClose";
+var CLOSE_NAME$1 = "DialogClose";
 var DialogClose = reactExports.forwardRef(
   (props, forwardedRef) => {
     const { __scopeDialog, ...closeProps } = props;
-    const context = useDialogContext(CLOSE_NAME, __scopeDialog);
+    const context = useDialogContext(CLOSE_NAME$1, __scopeDialog);
     return /* @__PURE__ */ jsxRuntimeExports.jsx(
       Primitive.button,
       {
@@ -31048,13 +31075,13 @@ var DialogClose = reactExports.forwardRef(
     );
   }
 );
-DialogClose.displayName = CLOSE_NAME;
-function getState$1(open) {
+DialogClose.displayName = CLOSE_NAME$1;
+function getState$3(open) {
   return open ? "open" : "closed";
 }
 var TITLE_WARNING_NAME = "DialogTitleWarning";
 var [WarningProvider, useWarningContext] = createContext2(TITLE_WARNING_NAME, {
-  contentName: CONTENT_NAME$6,
+  contentName: CONTENT_NAME$7,
   titleName: TITLE_NAME$1,
   docsSlug: "dialog"
 });
@@ -31086,21 +31113,21 @@ var DescriptionWarning$1 = ({ contentRef, descriptionId }) => {
   }, [MESSAGE, contentRef, descriptionId]);
   return null;
 };
-var Root$5 = Dialog$1;
-var Trigger$3 = DialogTrigger;
-var Portal$3 = DialogPortal$1;
+var Root$6 = Dialog$1;
+var Trigger$4 = DialogTrigger;
+var Portal$4 = DialogPortal$1;
 var Overlay = DialogOverlay$1;
 var Content$1 = DialogContent$1;
 var Title = DialogTitle$1;
 var Description = DialogDescription$1;
 var Close = DialogClose;
 function Sheet({ ...props }) {
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(Root$5, { "data-slot": "sheet", ...props });
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(Root$6, { "data-slot": "sheet", ...props });
 }
 function SheetPortal({
   ...props
 }) {
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(Portal$3, { "data-slot": "sheet-portal", ...props });
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(Portal$4, { "data-slot": "sheet-portal", ...props });
 }
 function SheetOverlay({
   className,
@@ -33118,7 +33145,7 @@ var Arrow$1 = reactExports.forwardRef((props, forwardedRef) => {
   );
 });
 Arrow$1.displayName = NAME$2;
-var Root$4 = Arrow$1;
+var Root$5 = Arrow$1;
 function useSize(element) {
   const [size2, setSize] = reactExports.useState(void 0);
   useLayoutEffect2(() => {
@@ -33162,11 +33189,11 @@ var Popper = (props) => {
   return /* @__PURE__ */ jsxRuntimeExports.jsx(PopperProvider, { scope: __scopePopper, anchor, onAnchorChange: setAnchor, children });
 };
 Popper.displayName = POPPER_NAME;
-var ANCHOR_NAME$1 = "PopperAnchor";
+var ANCHOR_NAME$2 = "PopperAnchor";
 var PopperAnchor = reactExports.forwardRef(
   (props, forwardedRef) => {
     const { __scopePopper, virtualRef, ...anchorProps } = props;
-    const context = usePopperContext(ANCHOR_NAME$1, __scopePopper);
+    const context = usePopperContext(ANCHOR_NAME$2, __scopePopper);
     const ref = reactExports.useRef(null);
     const composedRefs = useComposedRefs(forwardedRef, ref);
     reactExports.useEffect(() => {
@@ -33175,9 +33202,9 @@ var PopperAnchor = reactExports.forwardRef(
     return virtualRef ? null : /* @__PURE__ */ jsxRuntimeExports.jsx(Primitive.div, { ...anchorProps, ref: composedRefs });
   }
 );
-PopperAnchor.displayName = ANCHOR_NAME$1;
-var CONTENT_NAME$5 = "PopperContent";
-var [PopperContentProvider, useContentContext] = createPopperContext(CONTENT_NAME$5);
+PopperAnchor.displayName = ANCHOR_NAME$2;
+var CONTENT_NAME$6 = "PopperContent";
+var [PopperContentProvider, useContentContext] = createPopperContext(CONTENT_NAME$6);
 var PopperContent = reactExports.forwardRef(
   (props, forwardedRef) => {
     const {
@@ -33196,7 +33223,7 @@ var PopperContent = reactExports.forwardRef(
       onPlaced,
       ...contentProps
     } = props;
-    const context = usePopperContext(CONTENT_NAME$5, __scopePopper);
+    const context = usePopperContext(CONTENT_NAME$6, __scopePopper);
     const [content, setContent] = reactExports.useState(null);
     const composedRefs = useComposedRefs(forwardedRef, (node) => setContent(node));
     const [arrow$12, setArrow] = reactExports.useState(null);
@@ -33319,8 +33346,8 @@ var PopperContent = reactExports.forwardRef(
     );
   }
 );
-PopperContent.displayName = CONTENT_NAME$5;
-var ARROW_NAME$4 = "PopperArrow";
+PopperContent.displayName = CONTENT_NAME$6;
+var ARROW_NAME$5 = "PopperArrow";
 var OPPOSITE_SIDE = {
   top: "bottom",
   right: "left",
@@ -33329,7 +33356,7 @@ var OPPOSITE_SIDE = {
 };
 var PopperArrow = reactExports.forwardRef(function PopperArrow2(props, forwardedRef) {
   const { __scopePopper, ...arrowProps } = props;
-  const contentContext = useContentContext(ARROW_NAME$4, __scopePopper);
+  const contentContext = useContentContext(ARROW_NAME$5, __scopePopper);
   const baseSide = OPPOSITE_SIDE[contentContext.placedSide];
   return (
     // we have to use an extra wrapper because `ResizeObserver` (used by `useSize`)
@@ -33359,7 +33386,7 @@ var PopperArrow = reactExports.forwardRef(function PopperArrow2(props, forwarded
           visibility: contentContext.shouldHideArrow ? "hidden" : void 0
         },
         children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-          Root$4,
+          Root$5,
           {
             ...arrowProps,
             ref: forwardedRef,
@@ -33374,7 +33401,7 @@ var PopperArrow = reactExports.forwardRef(function PopperArrow2(props, forwarded
     )
   );
 });
-PopperArrow.displayName = ARROW_NAME$4;
+PopperArrow.displayName = ARROW_NAME$5;
 function isNotNull(value) {
   return value !== null;
 }
@@ -33413,7 +33440,7 @@ function getSideAndAlignFromPlacement(placement) {
   const [side, align = "center"] = placement.split("-");
   return [side, align];
 }
-var Root2$3 = Popper;
+var Root2$4 = Popper;
 var Anchor = PopperAnchor;
 var Content = PopperContent;
 var Arrow = PopperArrow;
@@ -33444,11 +33471,11 @@ var VisuallyHidden = reactExports.forwardRef(
   }
 );
 VisuallyHidden.displayName = NAME$1;
-var Root$3 = VisuallyHidden;
+var Root$4 = VisuallyHidden;
 var [createTooltipContext] = createContextScope("Tooltip", [
   createPopperScope
 ]);
-var usePopperScope$2 = createPopperScope();
+var usePopperScope$3 = createPopperScope();
 var PROVIDER_NAME = "TooltipProvider";
 var DEFAULT_DELAY_DURATION = 700;
 var TOOLTIP_OPEN = "tooltip.open";
@@ -33508,7 +33535,7 @@ var Tooltip$1 = (props) => {
     delayDuration: delayDurationProp
   } = props;
   const providerContext = useTooltipProviderContext(TOOLTIP_NAME, props.__scopeTooltip);
-  const popperScope = usePopperScope$2(__scopeTooltip);
+  const popperScope = usePopperScope$3(__scopeTooltip);
   const [trigger, setTrigger] = reactExports.useState(null);
   const contentId = useId();
   const openTimerRef = reactExports.useRef(0);
@@ -33558,7 +33585,7 @@ var Tooltip$1 = (props) => {
       }
     };
   }, []);
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(Root2$3, { ...popperScope, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(Root2$4, { ...popperScope, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
     TooltipContextProvider,
     {
       scope: __scopeTooltip,
@@ -33587,13 +33614,13 @@ var Tooltip$1 = (props) => {
   ) });
 };
 Tooltip$1.displayName = TOOLTIP_NAME;
-var TRIGGER_NAME$3 = "TooltipTrigger";
+var TRIGGER_NAME$4 = "TooltipTrigger";
 var TooltipTrigger$1 = reactExports.forwardRef(
   (props, forwardedRef) => {
     const { __scopeTooltip, ...triggerProps } = props;
-    const context = useTooltipContext(TRIGGER_NAME$3, __scopeTooltip);
-    const providerContext = useTooltipProviderContext(TRIGGER_NAME$3, __scopeTooltip);
-    const popperScope = usePopperScope$2(__scopeTooltip);
+    const context = useTooltipContext(TRIGGER_NAME$4, __scopeTooltip);
+    const providerContext = useTooltipProviderContext(TRIGGER_NAME$4, __scopeTooltip);
+    const popperScope = usePopperScope$3(__scopeTooltip);
     const ref = reactExports.useRef(null);
     const composedRefs = useComposedRefs(forwardedRef, ref, context.onTriggerChange);
     const isPointerDownRef = reactExports.useRef(false);
@@ -33633,29 +33660,29 @@ var TooltipTrigger$1 = reactExports.forwardRef(
     ) });
   }
 );
-TooltipTrigger$1.displayName = TRIGGER_NAME$3;
-var PORTAL_NAME$4 = "TooltipPortal";
-var [PortalProvider$1, usePortalContext$1] = createTooltipContext(PORTAL_NAME$4, {
+TooltipTrigger$1.displayName = TRIGGER_NAME$4;
+var PORTAL_NAME$5 = "TooltipPortal";
+var [PortalProvider$2, usePortalContext$2] = createTooltipContext(PORTAL_NAME$5, {
   forceMount: void 0
 });
 var TooltipPortal = (props) => {
   const { __scopeTooltip, forceMount, children, container } = props;
-  const context = useTooltipContext(PORTAL_NAME$4, __scopeTooltip);
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(PortalProvider$1, { scope: __scopeTooltip, forceMount, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Presence, { present: forceMount || context.open, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Portal$4, { asChild: true, container, children }) }) });
+  const context = useTooltipContext(PORTAL_NAME$5, __scopeTooltip);
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(PortalProvider$2, { scope: __scopeTooltip, forceMount, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Presence, { present: forceMount || context.open, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Portal$5, { asChild: true, container, children }) }) });
 };
-TooltipPortal.displayName = PORTAL_NAME$4;
-var CONTENT_NAME$4 = "TooltipContent";
+TooltipPortal.displayName = PORTAL_NAME$5;
+var CONTENT_NAME$5 = "TooltipContent";
 var TooltipContent$1 = reactExports.forwardRef(
   (props, forwardedRef) => {
-    const portalContext = usePortalContext$1(CONTENT_NAME$4, props.__scopeTooltip);
+    const portalContext = usePortalContext$2(CONTENT_NAME$5, props.__scopeTooltip);
     const { forceMount = portalContext.forceMount, side = "top", ...contentProps } = props;
-    const context = useTooltipContext(CONTENT_NAME$4, props.__scopeTooltip);
+    const context = useTooltipContext(CONTENT_NAME$5, props.__scopeTooltip);
     return /* @__PURE__ */ jsxRuntimeExports.jsx(Presence, { present: forceMount || context.open, children: context.disableHoverableContent ? /* @__PURE__ */ jsxRuntimeExports.jsx(TooltipContentImpl, { side, ...contentProps, ref: forwardedRef }) : /* @__PURE__ */ jsxRuntimeExports.jsx(TooltipContentHoverable, { side, ...contentProps, ref: forwardedRef }) });
   }
 );
 var TooltipContentHoverable = reactExports.forwardRef((props, forwardedRef) => {
-  const context = useTooltipContext(CONTENT_NAME$4, props.__scopeTooltip);
-  const providerContext = useTooltipProviderContext(CONTENT_NAME$4, props.__scopeTooltip);
+  const context = useTooltipContext(CONTENT_NAME$5, props.__scopeTooltip);
+  const providerContext = useTooltipProviderContext(CONTENT_NAME$5, props.__scopeTooltip);
   const ref = reactExports.useRef(null);
   const composedRefs = useComposedRefs(forwardedRef, ref);
   const [pointerGraceArea, setPointerGraceArea] = reactExports.useState(null);
@@ -33725,8 +33752,8 @@ var TooltipContentImpl = reactExports.forwardRef(
       onPointerDownOutside,
       ...contentProps
     } = props;
-    const context = useTooltipContext(CONTENT_NAME$4, __scopeTooltip);
-    const popperScope = usePopperScope$2(__scopeTooltip);
+    const context = useTooltipContext(CONTENT_NAME$5, __scopeTooltip);
+    const popperScope = usePopperScope$3(__scopeTooltip);
     const { onClose } = context;
     reactExports.useEffect(() => {
       document.addEventListener(TOOLTIP_OPEN, onClose);
@@ -33771,7 +33798,7 @@ var TooltipContentImpl = reactExports.forwardRef(
             },
             children: [
               /* @__PURE__ */ jsxRuntimeExports.jsx(Slottable, { children }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx(VisuallyHiddenContentContextProvider, { scope: __scopeTooltip, isInside: true, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Root$3, { id: context.contentId, role: "tooltip", children: ariaLabel || children }) })
+              /* @__PURE__ */ jsxRuntimeExports.jsx(VisuallyHiddenContentContextProvider, { scope: __scopeTooltip, isInside: true, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Root$4, { id: context.contentId, role: "tooltip", children: ariaLabel || children }) })
             ]
           }
         )
@@ -33779,20 +33806,20 @@ var TooltipContentImpl = reactExports.forwardRef(
     );
   }
 );
-TooltipContent$1.displayName = CONTENT_NAME$4;
-var ARROW_NAME$3 = "TooltipArrow";
+TooltipContent$1.displayName = CONTENT_NAME$5;
+var ARROW_NAME$4 = "TooltipArrow";
 var TooltipArrow = reactExports.forwardRef(
   (props, forwardedRef) => {
     const { __scopeTooltip, ...arrowProps } = props;
-    const popperScope = usePopperScope$2(__scopeTooltip);
+    const popperScope = usePopperScope$3(__scopeTooltip);
     const visuallyHiddenContentContext = useVisuallyHiddenContentContext(
-      ARROW_NAME$3,
+      ARROW_NAME$4,
       __scopeTooltip
     );
     return visuallyHiddenContentContext.isInside ? null : /* @__PURE__ */ jsxRuntimeExports.jsx(Arrow, { ...popperScope, ...arrowProps, ref: forwardedRef });
   }
 );
-TooltipArrow.displayName = ARROW_NAME$3;
+TooltipArrow.displayName = ARROW_NAME$4;
 function getExitSideFromRect(point, rect) {
   const top = Math.abs(rect.top - point.y);
   const bottom = Math.abs(rect.bottom - point.y);
@@ -33908,9 +33935,9 @@ function getHullPresorted(points) {
 }
 var Provider = TooltipProvider$1;
 var Root3$1 = Tooltip$1;
-var Trigger$2 = TooltipTrigger$1;
-var Portal$2 = TooltipPortal;
-var Content2$4 = TooltipContent$1;
+var Trigger$3 = TooltipTrigger$1;
+var Portal$3 = TooltipPortal;
+var Content2$5 = TooltipContent$1;
 var Arrow2$1 = TooltipArrow;
 function TooltipProvider({
   delayDuration = 0,
@@ -33933,7 +33960,7 @@ function Tooltip({
 function TooltipTrigger({
   ...props
 }) {
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(Trigger$2, { "data-slot": "tooltip-trigger", ...props });
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(Trigger$3, { "data-slot": "tooltip-trigger", ...props });
 }
 function TooltipContent({
   className,
@@ -33941,8 +33968,8 @@ function TooltipContent({
   children,
   ...props
 }) {
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(Portal$2, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
-    Content2$4,
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(Portal$3, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
+    Content2$5,
     {
       "data-slot": "tooltip-content",
       sideOffset,
@@ -34649,7 +34676,7 @@ function focusFirst$1(candidates, preventScroll = false) {
 function wrapArray$2(array, startIndex) {
   return array.map((_, index2) => array[(startIndex + index2) % array.length]);
 }
-var Root$2 = RovingFocusGroup;
+var Root$3 = RovingFocusGroup;
 var Item$1 = RovingFocusGroupItem;
 var SELECTION_KEYS$1 = ["Enter", " "];
 var FIRST_KEYS = ["ArrowDown", "PageUp", "Home"];
@@ -34670,13 +34697,13 @@ var [createMenuContext, createMenuScope] = createContextScope(MENU_NAME, [
   createPopperScope,
   createRovingFocusGroupScope
 ]);
-var usePopperScope$1 = createPopperScope();
+var usePopperScope$2 = createPopperScope();
 var useRovingFocusGroupScope = createRovingFocusGroupScope();
 var [MenuProvider, useMenuContext] = createMenuContext(MENU_NAME);
 var [MenuRootProvider, useMenuRootContext] = createMenuContext(MENU_NAME);
 var Menu = (props) => {
   const { __scopeMenu, open = false, children, dir, onOpenChange, modal = true } = props;
-  const popperScope = usePopperScope$1(__scopeMenu);
+  const popperScope = usePopperScope$2(__scopeMenu);
   const [content, setContent] = reactExports.useState(null);
   const isUsingKeyboardRef = reactExports.useRef(false);
   const handleOpenChange = useCallbackRef$1(onOpenChange);
@@ -34695,7 +34722,7 @@ var Menu = (props) => {
       document.removeEventListener("pointermove", handlePointer, { capture: true });
     };
   }, []);
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(Root2$3, { ...popperScope, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(Root2$4, { ...popperScope, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
     MenuProvider,
     {
       scope: __scopeMenu,
@@ -34718,39 +34745,39 @@ var Menu = (props) => {
   ) });
 };
 Menu.displayName = MENU_NAME;
-var ANCHOR_NAME = "MenuAnchor";
+var ANCHOR_NAME$1 = "MenuAnchor";
 var MenuAnchor = reactExports.forwardRef(
   (props, forwardedRef) => {
     const { __scopeMenu, ...anchorProps } = props;
-    const popperScope = usePopperScope$1(__scopeMenu);
+    const popperScope = usePopperScope$2(__scopeMenu);
     return /* @__PURE__ */ jsxRuntimeExports.jsx(Anchor, { ...popperScope, ...anchorProps, ref: forwardedRef });
   }
 );
-MenuAnchor.displayName = ANCHOR_NAME;
-var PORTAL_NAME$3 = "MenuPortal";
-var [PortalProvider, usePortalContext] = createMenuContext(PORTAL_NAME$3, {
+MenuAnchor.displayName = ANCHOR_NAME$1;
+var PORTAL_NAME$4 = "MenuPortal";
+var [PortalProvider$1, usePortalContext$1] = createMenuContext(PORTAL_NAME$4, {
   forceMount: void 0
 });
 var MenuPortal = (props) => {
   const { __scopeMenu, forceMount, children, container } = props;
-  const context = useMenuContext(PORTAL_NAME$3, __scopeMenu);
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(PortalProvider, { scope: __scopeMenu, forceMount, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Presence, { present: forceMount || context.open, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Portal$4, { asChild: true, container, children }) }) });
+  const context = useMenuContext(PORTAL_NAME$4, __scopeMenu);
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(PortalProvider$1, { scope: __scopeMenu, forceMount, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Presence, { present: forceMount || context.open, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Portal$5, { asChild: true, container, children }) }) });
 };
-MenuPortal.displayName = PORTAL_NAME$3;
-var CONTENT_NAME$3 = "MenuContent";
-var [MenuContentProvider, useMenuContentContext] = createMenuContext(CONTENT_NAME$3);
+MenuPortal.displayName = PORTAL_NAME$4;
+var CONTENT_NAME$4 = "MenuContent";
+var [MenuContentProvider, useMenuContentContext] = createMenuContext(CONTENT_NAME$4);
 var MenuContent = reactExports.forwardRef(
   (props, forwardedRef) => {
-    const portalContext = usePortalContext(CONTENT_NAME$3, props.__scopeMenu);
+    const portalContext = usePortalContext$1(CONTENT_NAME$4, props.__scopeMenu);
     const { forceMount = portalContext.forceMount, ...contentProps } = props;
-    const context = useMenuContext(CONTENT_NAME$3, props.__scopeMenu);
-    const rootContext = useMenuRootContext(CONTENT_NAME$3, props.__scopeMenu);
+    const context = useMenuContext(CONTENT_NAME$4, props.__scopeMenu);
+    const rootContext = useMenuRootContext(CONTENT_NAME$4, props.__scopeMenu);
     return /* @__PURE__ */ jsxRuntimeExports.jsx(Collection$1.Provider, { scope: props.__scopeMenu, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Presence, { present: forceMount || context.open, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Collection$1.Slot, { scope: props.__scopeMenu, children: rootContext.modal ? /* @__PURE__ */ jsxRuntimeExports.jsx(MenuRootContentModal, { ...contentProps, ref: forwardedRef }) : /* @__PURE__ */ jsxRuntimeExports.jsx(MenuRootContentNonModal, { ...contentProps, ref: forwardedRef }) }) }) });
   }
 );
 var MenuRootContentModal = reactExports.forwardRef(
   (props, forwardedRef) => {
-    const context = useMenuContext(CONTENT_NAME$3, props.__scopeMenu);
+    const context = useMenuContext(CONTENT_NAME$4, props.__scopeMenu);
     const ref = reactExports.useRef(null);
     const composedRefs = useComposedRefs(forwardedRef, ref);
     reactExports.useEffect(() => {
@@ -34776,7 +34803,7 @@ var MenuRootContentModal = reactExports.forwardRef(
   }
 );
 var MenuRootContentNonModal = reactExports.forwardRef((props, forwardedRef) => {
-  const context = useMenuContext(CONTENT_NAME$3, props.__scopeMenu);
+  const context = useMenuContext(CONTENT_NAME$4, props.__scopeMenu);
   return /* @__PURE__ */ jsxRuntimeExports.jsx(
     MenuContentImpl,
     {
@@ -34807,9 +34834,9 @@ var MenuContentImpl = reactExports.forwardRef(
       disableOutsideScroll,
       ...contentProps
     } = props;
-    const context = useMenuContext(CONTENT_NAME$3, __scopeMenu);
-    const rootContext = useMenuRootContext(CONTENT_NAME$3, __scopeMenu);
-    const popperScope = usePopperScope$1(__scopeMenu);
+    const context = useMenuContext(CONTENT_NAME$4, __scopeMenu);
+    const rootContext = useMenuRootContext(CONTENT_NAME$4, __scopeMenu);
+    const popperScope = usePopperScope$2(__scopeMenu);
     const rovingFocusGroupScope = useRovingFocusGroupScope(__scopeMenu);
     const getItems = useCollection$1(__scopeMenu);
     const [currentItemId, setCurrentItemId] = reactExports.useState(null);
@@ -34898,7 +34925,7 @@ var MenuContentImpl = reactExports.forwardRef(
                 onInteractOutside,
                 onDismiss,
                 children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-                  Root$2,
+                  Root$3,
                   {
                     asChild: true,
                     ...rovingFocusGroupScope,
@@ -34971,7 +34998,7 @@ var MenuContentImpl = reactExports.forwardRef(
     );
   }
 );
-MenuContent.displayName = CONTENT_NAME$3;
+MenuContent.displayName = CONTENT_NAME$4;
 var GROUP_NAME$2 = "MenuGroup";
 var MenuGroup = reactExports.forwardRef(
   (props, forwardedRef) => {
@@ -35102,13 +35129,13 @@ var MenuCheckboxItem = reactExports.forwardRef(
       MenuItem,
       {
         role: "menuitemcheckbox",
-        "aria-checked": isIndeterminate(checked) ? "mixed" : checked,
+        "aria-checked": isIndeterminate$1(checked) ? "mixed" : checked,
         ...checkboxItemProps,
         ref: forwardedRef,
         "data-state": getCheckedState(checked),
         onSelect: composeEventHandlers(
           checkboxItemProps.onSelect,
-          () => onCheckedChange?.(isIndeterminate(checked) ? true : !checked),
+          () => onCheckedChange?.(isIndeterminate$1(checked) ? true : !checked),
           { checkForDefaultPrevented: false }
         )
       }
@@ -35166,7 +35193,7 @@ var MenuItemIndicator = reactExports.forwardRef(
     return /* @__PURE__ */ jsxRuntimeExports.jsx(
       Presence,
       {
-        present: forceMount || isIndeterminate(indicatorContext.checked) || indicatorContext.checked === true,
+        present: forceMount || isIndeterminate$1(indicatorContext.checked) || indicatorContext.checked === true,
         children: /* @__PURE__ */ jsxRuntimeExports.jsx(
           Primitive.span,
           {
@@ -35196,15 +35223,15 @@ var MenuSeparator = reactExports.forwardRef(
   }
 );
 MenuSeparator.displayName = SEPARATOR_NAME$2;
-var ARROW_NAME$2 = "MenuArrow";
+var ARROW_NAME$3 = "MenuArrow";
 var MenuArrow = reactExports.forwardRef(
   (props, forwardedRef) => {
     const { __scopeMenu, ...arrowProps } = props;
-    const popperScope = usePopperScope$1(__scopeMenu);
+    const popperScope = usePopperScope$2(__scopeMenu);
     return /* @__PURE__ */ jsxRuntimeExports.jsx(Arrow, { ...popperScope, ...arrowProps, ref: forwardedRef });
   }
 );
-MenuArrow.displayName = ARROW_NAME$2;
+MenuArrow.displayName = ARROW_NAME$3;
 var SUB_NAME = "MenuSub";
 var [MenuSubProvider, useMenuSubContext] = createMenuContext(SUB_NAME);
 var SUB_TRIGGER_NAME$1 = "MenuSubTrigger";
@@ -35311,10 +35338,10 @@ MenuSubTrigger.displayName = SUB_TRIGGER_NAME$1;
 var SUB_CONTENT_NAME$1 = "MenuSubContent";
 var MenuSubContent = reactExports.forwardRef(
   (props, forwardedRef) => {
-    const portalContext = usePortalContext(CONTENT_NAME$3, props.__scopeMenu);
+    const portalContext = usePortalContext$1(CONTENT_NAME$4, props.__scopeMenu);
     const { forceMount = portalContext.forceMount, ...subContentProps } = props;
-    const context = useMenuContext(CONTENT_NAME$3, props.__scopeMenu);
-    const rootContext = useMenuRootContext(CONTENT_NAME$3, props.__scopeMenu);
+    const context = useMenuContext(CONTENT_NAME$4, props.__scopeMenu);
+    const rootContext = useMenuRootContext(CONTENT_NAME$4, props.__scopeMenu);
     const subContext = useMenuSubContext(SUB_CONTENT_NAME$1, props.__scopeMenu);
     const ref = reactExports.useRef(null);
     const composedRefs = useComposedRefs(forwardedRef, ref);
@@ -35359,11 +35386,11 @@ MenuSubContent.displayName = SUB_CONTENT_NAME$1;
 function getOpenState(open) {
   return open ? "open" : "closed";
 }
-function isIndeterminate(checked) {
+function isIndeterminate$1(checked) {
   return checked === "indeterminate";
 }
 function getCheckedState(checked) {
-  return isIndeterminate(checked) ? "indeterminate" : checked ? "checked" : "unchecked";
+  return isIndeterminate$1(checked) ? "indeterminate" : checked ? "checked" : "unchecked";
 }
 function focusFirst(candidates) {
   const PREVIOUSLY_FOCUSED_ELEMENT = document.activeElement;
@@ -35411,8 +35438,8 @@ function whenMouse(handler) {
 }
 var Root3 = Menu;
 var Anchor2 = MenuAnchor;
-var Portal$1 = MenuPortal;
-var Content2$3 = MenuContent;
+var Portal$2 = MenuPortal;
+var Content2$4 = MenuContent;
 var Group = MenuGroup;
 var Label$2 = MenuLabel;
 var Item2$1 = MenuItem;
@@ -35464,11 +35491,11 @@ var DropdownMenu$1 = (props) => {
   );
 };
 DropdownMenu$1.displayName = DROPDOWN_MENU_NAME;
-var TRIGGER_NAME$2 = "DropdownMenuTrigger";
+var TRIGGER_NAME$3 = "DropdownMenuTrigger";
 var DropdownMenuTrigger$1 = reactExports.forwardRef(
   (props, forwardedRef) => {
     const { __scopeDropdownMenu, disabled = false, ...triggerProps } = props;
-    const context = useDropdownMenuContext(TRIGGER_NAME$2, __scopeDropdownMenu);
+    const context = useDropdownMenuContext(TRIGGER_NAME$3, __scopeDropdownMenu);
     const menuScope = useMenuScope(__scopeDropdownMenu);
     return /* @__PURE__ */ jsxRuntimeExports.jsx(Anchor2, { asChild: true, ...menuScope, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
       Primitive.button,
@@ -35499,23 +35526,23 @@ var DropdownMenuTrigger$1 = reactExports.forwardRef(
     ) });
   }
 );
-DropdownMenuTrigger$1.displayName = TRIGGER_NAME$2;
-var PORTAL_NAME$2 = "DropdownMenuPortal";
+DropdownMenuTrigger$1.displayName = TRIGGER_NAME$3;
+var PORTAL_NAME$3 = "DropdownMenuPortal";
 var DropdownMenuPortal = (props) => {
   const { __scopeDropdownMenu, ...portalProps } = props;
   const menuScope = useMenuScope(__scopeDropdownMenu);
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(Portal$1, { ...menuScope, ...portalProps });
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(Portal$2, { ...menuScope, ...portalProps });
 };
-DropdownMenuPortal.displayName = PORTAL_NAME$2;
-var CONTENT_NAME$2 = "DropdownMenuContent";
+DropdownMenuPortal.displayName = PORTAL_NAME$3;
+var CONTENT_NAME$3 = "DropdownMenuContent";
 var DropdownMenuContent$1 = reactExports.forwardRef(
   (props, forwardedRef) => {
     const { __scopeDropdownMenu, ...contentProps } = props;
-    const context = useDropdownMenuContext(CONTENT_NAME$2, __scopeDropdownMenu);
+    const context = useDropdownMenuContext(CONTENT_NAME$3, __scopeDropdownMenu);
     const menuScope = useMenuScope(__scopeDropdownMenu);
     const hasInteractedOutsideRef = reactExports.useRef(false);
     return /* @__PURE__ */ jsxRuntimeExports.jsx(
-      Content2$3,
+      Content2$4,
       {
         id: context.contentId,
         "aria-labelledby": context.triggerId,
@@ -35548,7 +35575,7 @@ var DropdownMenuContent$1 = reactExports.forwardRef(
     );
   }
 );
-DropdownMenuContent$1.displayName = CONTENT_NAME$2;
+DropdownMenuContent$1.displayName = CONTENT_NAME$3;
 var GROUP_NAME$1 = "DropdownMenuGroup";
 var DropdownMenuGroup = reactExports.forwardRef(
   (props, forwardedRef) => {
@@ -35597,13 +35624,13 @@ var DropdownMenuRadioItem = reactExports.forwardRef((props, forwardedRef) => {
   return /* @__PURE__ */ jsxRuntimeExports.jsx(RadioItem, { ...menuScope, ...radioItemProps, ref: forwardedRef });
 });
 DropdownMenuRadioItem.displayName = RADIO_ITEM_NAME;
-var INDICATOR_NAME = "DropdownMenuItemIndicator";
+var INDICATOR_NAME$1 = "DropdownMenuItemIndicator";
 var DropdownMenuItemIndicator = reactExports.forwardRef((props, forwardedRef) => {
   const { __scopeDropdownMenu, ...itemIndicatorProps } = props;
   const menuScope = useMenuScope(__scopeDropdownMenu);
   return /* @__PURE__ */ jsxRuntimeExports.jsx(ItemIndicator$1, { ...menuScope, ...itemIndicatorProps, ref: forwardedRef });
 });
-DropdownMenuItemIndicator.displayName = INDICATOR_NAME;
+DropdownMenuItemIndicator.displayName = INDICATOR_NAME$1;
 var SEPARATOR_NAME$1 = "DropdownMenuSeparator";
 var DropdownMenuSeparator$1 = reactExports.forwardRef((props, forwardedRef) => {
   const { __scopeDropdownMenu, ...separatorProps } = props;
@@ -35611,7 +35638,7 @@ var DropdownMenuSeparator$1 = reactExports.forwardRef((props, forwardedRef) => {
   return /* @__PURE__ */ jsxRuntimeExports.jsx(Separator, { ...menuScope, ...separatorProps, ref: forwardedRef });
 });
 DropdownMenuSeparator$1.displayName = SEPARATOR_NAME$1;
-var ARROW_NAME$1 = "DropdownMenuArrow";
+var ARROW_NAME$2 = "DropdownMenuArrow";
 var DropdownMenuArrow = reactExports.forwardRef(
   (props, forwardedRef) => {
     const { __scopeDropdownMenu, ...arrowProps } = props;
@@ -35619,7 +35646,7 @@ var DropdownMenuArrow = reactExports.forwardRef(
     return /* @__PURE__ */ jsxRuntimeExports.jsx(Arrow2, { ...menuScope, ...arrowProps, ref: forwardedRef });
   }
 );
-DropdownMenuArrow.displayName = ARROW_NAME$1;
+DropdownMenuArrow.displayName = ARROW_NAME$2;
 var SUB_TRIGGER_NAME = "DropdownMenuSubTrigger";
 var DropdownMenuSubTrigger = reactExports.forwardRef((props, forwardedRef) => {
   const { __scopeDropdownMenu, ...subTriggerProps } = props;
@@ -35652,22 +35679,22 @@ var DropdownMenuSubContent = reactExports.forwardRef((props, forwardedRef) => {
   );
 });
 DropdownMenuSubContent.displayName = SUB_CONTENT_NAME;
-var Root2$2 = DropdownMenu$1;
-var Trigger$1 = DropdownMenuTrigger$1;
+var Root2$3 = DropdownMenu$1;
+var Trigger$2 = DropdownMenuTrigger$1;
 var Portal2$1 = DropdownMenuPortal;
-var Content2$2 = DropdownMenuContent$1;
+var Content2$3 = DropdownMenuContent$1;
 var Item2 = DropdownMenuItem$1;
 var Separator2 = DropdownMenuSeparator$1;
 function DropdownMenu({
   ...props
 }) {
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(Root2$2, { "data-slot": "dropdown-menu", ...props });
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(Root2$3, { "data-slot": "dropdown-menu", ...props });
 }
 function DropdownMenuTrigger({
   ...props
 }) {
   return /* @__PURE__ */ jsxRuntimeExports.jsx(
-    Trigger$1,
+    Trigger$2,
     {
       "data-slot": "dropdown-menu-trigger",
       ...props
@@ -35680,7 +35707,7 @@ function DropdownMenuContent({
   ...props
 }) {
   return /* @__PURE__ */ jsxRuntimeExports.jsx(Portal2$1, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-    Content2$2,
+    Content2$3,
     {
       "data-slot": "dropdown-menu-content",
       sideOffset,
@@ -35764,6 +35791,237 @@ const createImpl = (createState2) => {
   return useBoundStore;
 };
 const create = (createState2) => createImpl;
+const ACCENT_PALETTE = {
+  slate: { name: "Slate", hex: "#64748b", ring: "ring-slate-400", fill: "bg-slate-500", soft: "bg-slate-500/10" },
+  rose: { name: "Rose", hex: "#f43f5e", ring: "ring-rose-400", fill: "bg-rose-500", soft: "bg-rose-500/10" },
+  red: { name: "Red", hex: "#ef4444", ring: "ring-red-400", fill: "bg-red-500", soft: "bg-red-500/10" },
+  orange: { name: "Orange", hex: "#f97316", ring: "ring-orange-400", fill: "bg-orange-500", soft: "bg-orange-500/10" },
+  amber: { name: "Amber", hex: "#f59e0b", ring: "ring-amber-400", fill: "bg-amber-500", soft: "bg-amber-500/10" },
+  lime: { name: "Lime", hex: "#84cc16", ring: "ring-lime-400", fill: "bg-lime-500", soft: "bg-lime-500/10" },
+  emerald: { name: "Emerald", hex: "#10b981", ring: "ring-emerald-400", fill: "bg-emerald-500", soft: "bg-emerald-500/10" },
+  teal: { name: "Teal", hex: "#14b8a6", ring: "ring-teal-400", fill: "bg-teal-500", soft: "bg-teal-500/10" },
+  sky: { name: "Sky", hex: "#0ea5e9", ring: "ring-sky-400", fill: "bg-sky-500", soft: "bg-sky-500/10" },
+  blue: { name: "Blue", hex: "#3b82f6", ring: "ring-blue-400", fill: "bg-blue-500", soft: "bg-blue-500/10" },
+  violet: { name: "Violet", hex: "#8b5cf6", ring: "ring-violet-400", fill: "bg-violet-500", soft: "bg-violet-500/10" },
+  fuchsia: { name: "Fuchsia", hex: "#d946ef", ring: "ring-fuchsia-400", fill: "bg-fuchsia-500", soft: "bg-fuchsia-500/10" }
+};
+const ACCENT_KEYS = Object.keys(ACCENT_PALETTE);
+const uid$1 = () => globalThis.crypto?.randomUUID?.() ?? `import_${Date.now()}_${Math.random().toString(36).slice(2, 9)}`;
+function isAccentColor(v) {
+  return typeof v === "string" && ACCENT_KEYS.includes(v);
+}
+function normalizeStatus(v) {
+  return v === "done" ? "done" : "todo";
+}
+function normalizeTask(raw, id2) {
+  const title = typeof raw.title === "string" ? raw.title.trim() : "";
+  if (!title) return null;
+  const tags = Array.isArray(raw.tags) ? raw.tags.filter((t) => typeof t === "string").map((t) => t.trim().toLowerCase()).filter(Boolean) : typeof raw.tags === "string" ? raw.tags.split("|").map((t) => t.trim().toLowerCase()).filter(Boolean) : [];
+  const subtasks = Array.isArray(raw.subtasks) ? raw.subtasks.map((st) => {
+    if (typeof st === "string") return st.trim() ? { title: st.trim() } : null;
+    if (st && typeof st === "object" && typeof st.title === "string") {
+      const t = st.title.trim();
+      return t ? { title: t } : null;
+    }
+    return null;
+  }).filter((s) => s !== null) : [];
+  return {
+    id: uid$1(),
+    title,
+    notes: typeof raw.notes === "string" ? raw.notes : "",
+    status: normalizeStatus(raw.status),
+    dueDate: typeof raw.dueDate === "string" ? raw.dueDate : typeof raw.due_date === "string" ? raw.due_date : null,
+    tags,
+    subtasks
+  };
+}
+function normalizeGroup(raw, tasks) {
+  const name = typeof raw.name === "string" ? raw.name.trim() : "";
+  if (!name) return null;
+  return {
+    id: uid$1(),
+    name,
+    emoji: typeof raw.emoji === "string" ? raw.emoji : "",
+    accent: isAccentColor(raw.accent) ? raw.accent : "blue",
+    tasks
+  };
+}
+function entriesFromJson(data) {
+  const entries = [];
+  const pushEntry = (groupRaw, tasksRaw) => {
+    if (!groupRaw || typeof groupRaw !== "object") return;
+    const tasks = Array.isArray(tasksRaw) ? tasksRaw.map((t) => t && typeof t === "object" ? normalizeTask(t) : null).filter((t) => t !== null) : [];
+    const group = normalizeGroup(groupRaw, tasks);
+    if (group) entries.push(group);
+  };
+  if (Array.isArray(data)) {
+    for (const item of data) {
+      if (item && typeof item === "object") {
+        pushEntry(item.group, item.tasks);
+      }
+    }
+    return entries;
+  }
+  if (data && typeof data === "object") {
+    const obj = data;
+    if (Array.isArray(obj.entries)) {
+      for (const item of obj.entries) {
+        if (item && typeof item === "object") {
+          pushEntry(item.group, item.tasks);
+        }
+      }
+      return entries;
+    }
+    if (Array.isArray(obj.groups) && Array.isArray(obj.tasks)) {
+      const tasks = obj.tasks;
+      for (const g of obj.groups) {
+        const gid = typeof g.id === "string" ? g.id : "";
+        const groupTasks = tasks.filter((t) => t.groupId === gid || t.group_id === gid).map((t) => normalizeTask(t)).filter((t) => t !== null);
+        const group = normalizeGroup(g, groupTasks);
+        if (group) entries.push(group);
+      }
+      return entries;
+    }
+    pushEntry(obj.group, obj.tasks);
+  }
+  return entries;
+}
+function parseCsvLine(line) {
+  const out = [];
+  let cur = "";
+  let inQuotes = false;
+  for (let i = 0; i < line.length; i++) {
+    const ch = line[i];
+    if (inQuotes) {
+      if (ch === '"' && line[i + 1] === '"') {
+        cur += '"';
+        i++;
+      } else if (ch === '"') {
+        inQuotes = false;
+      } else {
+        cur += ch;
+      }
+    } else if (ch === '"') {
+      inQuotes = true;
+    } else if (ch === ",") {
+      out.push(cur);
+      cur = "";
+    } else {
+      cur += ch;
+    }
+  }
+  out.push(cur);
+  return out;
+}
+function entriesFromCsv(text) {
+  const lines = text.split(/\r?\n/).filter((l) => l.trim());
+  if (lines.length < 2) return [];
+  const headers = parseCsvLine(lines[0]).map((h) => h.trim().toLowerCase());
+  const idx = (name) => headers.indexOf(name);
+  const groupNameIdx = idx("group_name");
+  const groupAccentIdx = idx("group_accent");
+  const titleIdx = idx("title");
+  if (titleIdx === -1) return [];
+  const statusIdx = idx("status");
+  const dueIdx = idx("due_date") !== -1 ? idx("due_date") : idx("due date");
+  const tagsIdx = idx("tags");
+  const notesIdx = idx("notes");
+  const byGroup = /* @__PURE__ */ new Map();
+  for (let i = 1; i < lines.length; i++) {
+    const cols = parseCsvLine(lines[i]);
+    const title = cols[titleIdx]?.trim();
+    if (!title) continue;
+    const groupName = (groupNameIdx !== -1 ? cols[groupNameIdx]?.trim() : "") || "Imported";
+    const accentRaw = groupAccentIdx !== -1 ? cols[groupAccentIdx]?.trim() : "blue";
+    let group = byGroup.get(groupName);
+    if (!group) {
+      group = {
+        id: uid$1(),
+        name: groupName,
+        emoji: "",
+        accent: isAccentColor(accentRaw) ? accentRaw : "blue",
+        tasks: []
+      };
+      byGroup.set(groupName, group);
+    }
+    const task = normalizeTask({
+      title,
+      status: statusIdx !== -1 ? cols[statusIdx] : "todo",
+      due_date: dueIdx !== -1 ? cols[dueIdx] : null,
+      tags: tagsIdx !== -1 ? cols[tagsIdx] : "",
+      notes: notesIdx !== -1 ? cols[notesIdx] : ""
+    });
+    if (task) group.tasks.push(task);
+  }
+  return Array.from(byGroup.values());
+}
+function parseImportFile(text, filename) {
+  const lower = filename.toLowerCase();
+  if (lower.endsWith(".csv")) {
+    return entriesFromCsv(text);
+  }
+  const data = JSON.parse(text);
+  return entriesFromJson(data);
+}
+function buildExportJson(groups, tasks) {
+  const entries = groups.sort((a, b) => a.position - b.position).map((group) => ({
+    group: {
+      name: group.name,
+      emoji: group.emoji,
+      accent: group.accent
+    },
+    tasks: tasks.filter((t) => t.groupId === group.id).sort((a, b) => a.position - b.position).map((t) => ({
+      title: t.title,
+      notes: t.notes,
+      status: t.status,
+      dueDate: t.dueDate,
+      tags: t.tags,
+      subtasks: t.subtasks.map((s) => ({ title: s.title, done: s.done }))
+    }))
+  }));
+  return JSON.stringify(
+    {
+      version: 1,
+      exportedAt: (/* @__PURE__ */ new Date()).toISOString(),
+      entries
+    },
+    null,
+    2
+  );
+}
+function buildExportCsv(groups, tasks) {
+  const headers = ["group_name", "group_accent", "title", "status", "due_date", "tags", "notes"];
+  const escape2 = (v) => `"${v.replace(/"/g, '""')}"`;
+  const rows = [headers.join(",")];
+  for (const group of groups.sort((a, b) => a.position - b.position)) {
+    const groupTasks = tasks.filter((t) => t.groupId === group.id).sort((a, b) => a.position - b.position);
+    for (const t of groupTasks) {
+      rows.push(
+        [
+          group.name,
+          group.accent,
+          t.title,
+          t.status,
+          t.dueDate ?? "",
+          t.tags.join("|"),
+          t.notes
+        ].map((v) => escape2(String(v))).join(",")
+      );
+    }
+  }
+  return rows.join("\n");
+}
+function downloadDataFile(content, filename, mime) {
+  const blob = new Blob([content], { type: mime });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+}
 const uid = () => globalThis.crypto?.randomUUID?.() ?? `id_${Date.now()}_${Math.random().toString(36).slice(2, 9)}`;
 const DEFAULT_SETTINGS = {
   density: "comfortable",
@@ -35792,9 +36050,30 @@ async function invokePersist(op) {
     console.error("Persistence failed:", err);
   }
 }
+const SETTINGS_KEYS = Object.keys(DEFAULT_SETTINGS);
+function parseStoredSettings(raw) {
+  const blob = raw.settings;
+  if (blob && typeof blob === "object" && !Array.isArray(blob)) {
+    return { ...DEFAULT_SETTINGS, ...blob };
+  }
+  const legacy = {};
+  for (const key of SETTINGS_KEYS) {
+    if (key in raw && raw[key] !== void 0) {
+      legacy[key] = raw[key];
+    }
+  }
+  if (Object.keys(legacy).length > 0) {
+    return { ...DEFAULT_SETTINGS, ...legacy };
+  }
+  return DEFAULT_SETTINGS;
+}
+function parseStoredTheme(raw) {
+  return raw === "light" || raw === "dark" || raw === "system" ? raw : "system";
+}
 const useStore = create()((set, get) => ({
   theme: "system",
   sidebarCollapsed: false,
+  mainView: "group",
   activeGroupId: null,
   selectedTaskId: null,
   searchQuery: "",
@@ -35804,6 +36083,7 @@ const useStore = create()((set, get) => ({
   settingsOpen: false,
   commandPaletteOpen: false,
   groupDialog: { open: false, editingId: null },
+  calendarTaskDialog: { open: false, defaultDate: null },
   settings: DEFAULT_SETTINGS,
   groups: [],
   tasks: [],
@@ -35812,14 +36092,20 @@ const useStore = create()((set, get) => ({
     try {
       if (typeof window !== "undefined" && window.api) {
         const { groups, tasks, settings: rawSettings } = await window.api.getInitialState();
-        const { lastActiveGroupId, ...prefs } = rawSettings;
-        const merged = { ...DEFAULT_SETTINGS, ...prefs };
+        const raw = rawSettings ?? {};
+        const merged = parseStoredSettings(raw);
+        const theme = parseStoredTheme(raw.theme);
+        const sidebarCollapsed = typeof raw.sidebarCollapsed === "boolean" ? raw.sidebarCollapsed : false;
+        const lastActiveGroupId = raw.lastActiveGroupId;
         const preferred = typeof lastActiveGroupId === "string" && lastActiveGroupId.length > 0 && groups.some((g) => g.id === lastActiveGroupId) ? lastActiveGroupId : null;
         set({
           groups,
           tasks,
           settings: merged,
+          theme,
+          sidebarCollapsed,
           activeGroupId: preferred ?? groups[0]?.id ?? null,
+          mainView: preferred ? "group" : groups.length > 0 ? "group" : "overview",
           isHydrated: true
         });
         return;
@@ -35852,10 +36138,26 @@ const useStore = create()((set, get) => ({
     void invokePersist(() => window.api.saveSetting("sidebarCollapsed", next));
   },
   setActiveGroup: async (id2) => {
-    set({ activeGroupId: id2, selectedTaskId: null });
+    set({
+      activeGroupId: id2,
+      selectedTaskId: null,
+      mainView: id2 ? "group" : "overview"
+    });
     await invokePersist(() => window.api.saveSetting("lastActiveGroupId", id2 ?? ""));
   },
+  setCalendarView: () => {
+    set({ mainView: "calendar", selectedTaskId: null });
+  },
   selectTask: (id2) => set({ selectedTaskId: id2 }),
+  selectCalendarTask: (id2) => {
+    const task = get().tasks.find((t) => t.id === id2);
+    if (!task) return;
+    set({
+      selectedTaskId: id2,
+      activeGroupId: task.groupId,
+      mainView: "calendar"
+    });
+  },
   setSearch: (q) => set({ searchQuery: q }),
   setStatusFilter: (statusFilter) => set({ statusFilter }),
   toggleTagFilter: (tag) => set((s) => ({
@@ -35873,9 +36175,27 @@ const useStore = create()((set, get) => ({
     set({ settings: DEFAULT_SETTINGS });
     await invokePersist(() => window.api.saveSetting("settings", DEFAULT_SETTINGS));
   },
+  wipeAllData: async () => {
+    await invokePersist(() => window.api.wipeAllData());
+    set({
+      groups: [],
+      tasks: [],
+      settings: DEFAULT_SETTINGS,
+      theme: "system",
+      sidebarCollapsed: false,
+      mainView: "overview",
+      activeGroupId: null,
+      selectedTaskId: null,
+      searchQuery: "",
+      statusFilter: "all",
+      tagFilter: []
+    });
+  },
   openGroupDialog: (editingId = null) => set({ groupDialog: { open: true, editingId } }),
   closeGroupDialog: () => set({ groupDialog: { open: false, editingId: null } }),
-  createGroup: async ({ name, emoji, accent }) => {
+  openCalendarTaskDialog: (defaultDate) => set({ calendarTaskDialog: { open: true, defaultDate } }),
+  closeCalendarTaskDialog: () => set({ calendarTaskDialog: { open: false, defaultDate: null } }),
+  createGroup: async ({ name, emoji, accent }, options) => {
     const group = {
       id: uid(),
       name,
@@ -35884,9 +36204,15 @@ const useStore = create()((set, get) => ({
       position: get().groups.length,
       createdAt: Date.now()
     };
-    set((s) => ({ groups: [...s.groups, group], activeGroupId: group.id }));
+    const activate = options?.activate !== false;
+    set((s) => ({
+      groups: [...s.groups, group],
+      ...activate ? { activeGroupId: group.id, mainView: "group" } : {}
+    }));
     await invokePersist(() => window.api.createGroup(group));
-    await invokePersist(() => window.api.saveSetting("lastActiveGroupId", group.id));
+    if (activate) {
+      await invokePersist(() => window.api.saveSetting("lastActiveGroupId", group.id));
+    }
     return group;
   },
   updateGroup: async (id2, patch) => {
@@ -35940,6 +36266,54 @@ const useStore = create()((set, get) => ({
     set((s) => ({ tasks: [...s.tasks, task] }));
     await invokePersist(() => window.api.createTask(task));
     return task;
+  },
+  createTaskWithDetails: async ({
+    groupId,
+    title,
+    status = "todo",
+    dueDate = null,
+    notes = "",
+    tags = [],
+    subtaskTitles = []
+  }) => {
+    const existing = get().tasks.filter((t) => t.groupId === groupId);
+    const task = {
+      id: uid(),
+      groupId,
+      title,
+      notes,
+      status,
+      dueDate,
+      tags: [],
+      subtasks: [],
+      position: existing.length,
+      createdAt: Date.now(),
+      completedAt: status === "done" ? Date.now() : null
+    };
+    set((s) => ({ tasks: [...s.tasks, task] }));
+    await invokePersist(() => window.api.createTask(task));
+    for (const tag of tags) {
+      const clean = tag.trim().toLowerCase();
+      if (!clean) continue;
+      set((s) => ({
+        tasks: s.tasks.map(
+          (t) => t.id === task.id && !t.tags.includes(clean) ? { ...t, tags: [...t.tags, clean] } : t
+        )
+      }));
+      await invokePersist(() => window.api.addTagToTask(task.id, clean));
+    }
+    for (const [i, stTitle] of subtaskTitles.entries()) {
+      const trimmed = stTitle.trim();
+      if (!trimmed) continue;
+      const subtask = { id: uid(), title: trimmed, done: false, position: i };
+      set((s) => ({
+        tasks: s.tasks.map(
+          (t) => t.id === task.id ? { ...t, subtasks: [...t.subtasks, subtask] } : t
+        )
+      }));
+      await invokePersist(() => window.api.addSubtask(task.id, subtask));
+    }
+    return get().tasks.find((t) => t.id === task.id) ?? task;
   },
   updateTask: async (id2, patch) => {
     set((s) => ({ tasks: s.tasks.map((t) => t.id === id2 ? { ...t, ...patch } : t) }));
@@ -36072,23 +36446,54 @@ const useStore = create()((set, get) => ({
     a.click();
     a.remove();
     URL.revokeObjectURL(url);
+  },
+  exportAllData: (format2) => {
+    const { groups, tasks } = get();
+    const stamp = (/* @__PURE__ */ new Date()).toISOString().slice(0, 10);
+    if (format2 === "json") {
+      downloadDataFile(
+        buildExportJson(groups, tasks),
+        `taskoverflow-export-${stamp}.json`,
+        "application/json"
+      );
+      return;
+    }
+    downloadDataFile(
+      buildExportCsv(groups, tasks),
+      `taskoverflow-export-${stamp}.csv`,
+      "text/csv"
+    );
+  },
+  importSelectedDrafts: async (drafts) => {
+    let groupsCreated = 0;
+    let tasksCreated = 0;
+    for (const draft of drafts) {
+      if (draft.tasks.length === 0) continue;
+      const group = await get().createGroup(
+        {
+          name: draft.name,
+          emoji: draft.emoji,
+          accent: draft.accent
+        },
+        { activate: false }
+      );
+      groupsCreated += 1;
+      for (const task of draft.tasks) {
+        await get().createTaskWithDetails({
+          groupId: group.id,
+          title: task.title,
+          status: task.status,
+          dueDate: task.dueDate,
+          notes: task.notes,
+          tags: task.tags,
+          subtaskTitles: task.subtasks.map((s) => s.title)
+        });
+        tasksCreated += 1;
+      }
+    }
+    return { groups: groupsCreated, tasks: tasksCreated };
   }
 }));
-const ACCENT_PALETTE = {
-  slate: { name: "Slate", hex: "#64748b", ring: "ring-slate-400", fill: "bg-slate-500", soft: "bg-slate-500/10" },
-  rose: { name: "Rose", hex: "#f43f5e", ring: "ring-rose-400", fill: "bg-rose-500", soft: "bg-rose-500/10" },
-  red: { name: "Red", hex: "#ef4444", ring: "ring-red-400", fill: "bg-red-500", soft: "bg-red-500/10" },
-  orange: { name: "Orange", hex: "#f97316", ring: "ring-orange-400", fill: "bg-orange-500", soft: "bg-orange-500/10" },
-  amber: { name: "Amber", hex: "#f59e0b", ring: "ring-amber-400", fill: "bg-amber-500", soft: "bg-amber-500/10" },
-  lime: { name: "Lime", hex: "#84cc16", ring: "ring-lime-400", fill: "bg-lime-500", soft: "bg-lime-500/10" },
-  emerald: { name: "Emerald", hex: "#10b981", ring: "ring-emerald-400", fill: "bg-emerald-500", soft: "bg-emerald-500/10" },
-  teal: { name: "Teal", hex: "#14b8a6", ring: "ring-teal-400", fill: "bg-teal-500", soft: "bg-teal-500/10" },
-  sky: { name: "Sky", hex: "#0ea5e9", ring: "ring-sky-400", fill: "bg-sky-500", soft: "bg-sky-500/10" },
-  blue: { name: "Blue", hex: "#3b82f6", ring: "ring-blue-400", fill: "bg-blue-500", soft: "bg-blue-500/10" },
-  violet: { name: "Violet", hex: "#8b5cf6", ring: "ring-violet-400", fill: "bg-violet-500", soft: "bg-violet-500/10" },
-  fuchsia: { name: "Fuchsia", hex: "#d946ef", ring: "ring-fuchsia-400", fill: "bg-fuchsia-500", soft: "bg-fuchsia-500/10" }
-};
-const ACCENT_KEYS = Object.keys(ACCENT_PALETTE);
 const useTheme = () => {
   const theme = useStore((s) => s.theme);
   const setTheme = useStore((s) => s.setTheme);
@@ -36196,7 +36601,9 @@ const AppSidebar = () => {
   const groups = useStore((s) => s.groups);
   const tasks = useStore((s) => s.tasks);
   const activeGroupId = useStore((s) => s.activeGroupId);
+  const mainView = useStore((s) => s.mainView);
   const setActiveGroup = useStore((s) => s.setActiveGroup);
+  const setCalendarView = useStore((s) => s.setCalendarView);
   const openGroupDialog = useStore((s) => s.openGroupDialog);
   const setHelpOpen = useStore((s) => s.setHelpOpen);
   const setSettingsOpen = useStore((s) => s.setSettingsOpen);
@@ -36236,19 +36643,34 @@ const AppSidebar = () => {
     /* @__PURE__ */ jsxRuntimeExports.jsxs(SidebarContent, { children: [
       /* @__PURE__ */ jsxRuntimeExports.jsxs(SidebarGroup, { children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(SidebarGroupLabel, { children: "Workspace" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx(SidebarMenu, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(SidebarMenuItem, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
-          SidebarMenuButton,
-          {
-            tooltip: "All Groups",
-            onClick: () => setActiveGroup(null),
-            isActive: !activeGroupId,
-            className: "group-data-[state=collapsed]:justify-center",
-            children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx(LayoutDashboard, { className: "size-4 shrink-0" }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "group-data-[state=collapsed]:hidden", children: "Overview" })
-            ]
-          }
-        ) }) })
+        /* @__PURE__ */ jsxRuntimeExports.jsxs(SidebarMenu, { children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(SidebarMenuItem, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
+            SidebarMenuButton,
+            {
+              tooltip: "All Groups",
+              onClick: () => setActiveGroup(null),
+              isActive: mainView === "overview",
+              className: "group-data-[state=collapsed]:justify-center",
+              children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx(LayoutDashboard, { className: "size-4 shrink-0" }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "group-data-[state=collapsed]:hidden", children: "Overview" })
+              ]
+            }
+          ) }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(SidebarMenuItem, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
+            SidebarMenuButton,
+            {
+              tooltip: "Calendar",
+              onClick: () => setCalendarView(),
+              isActive: mainView === "calendar",
+              className: "group-data-[state=collapsed]:justify-center",
+              children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx(CalendarDays, { className: "size-4 shrink-0" }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "group-data-[state=collapsed]:hidden", children: "Calendar" })
+              ]
+            }
+          ) })
+        ] })
       ] }),
       /* @__PURE__ */ jsxRuntimeExports.jsxs(SidebarGroup, { children: [
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between pr-2 group-data-[state=collapsed]:hidden", children: [
@@ -36274,7 +36696,7 @@ const AppSidebar = () => {
               SortableGroupItem,
               {
                 group: g,
-                active: g.id === activeGroupId,
+                active: mainView === "group" && g.id === activeGroupId,
                 count: countFor(g.id),
                 showCounts: settings.showCounts,
                 onSelect: setActiveGroup,
@@ -36596,6 +37018,27 @@ function addDays(date, amount) {
   _date.setDate(_date.getDate() + amount);
   return _date;
 }
+function addMonths(date, amount) {
+  const _date = toDate(date);
+  if (isNaN(amount)) return constructFrom(date, NaN);
+  if (!amount) {
+    return _date;
+  }
+  const dayOfMonth = _date.getDate();
+  const endOfDesiredMonth = constructFrom(date, _date.getTime());
+  endOfDesiredMonth.setMonth(_date.getMonth() + amount + 1, 0);
+  const daysInMonth = endOfDesiredMonth.getDate();
+  if (dayOfMonth >= daysInMonth) {
+    return endOfDesiredMonth;
+  } else {
+    _date.setFullYear(
+      endOfDesiredMonth.getFullYear(),
+      endOfDesiredMonth.getMonth(),
+      dayOfMonth
+    );
+    return _date;
+  }
+}
 const millisecondsInWeek = 6048e5;
 const millisecondsInDay = 864e5;
 const millisecondsInMinute = 6e4;
@@ -36710,11 +37153,49 @@ function getRoundingMethod(method) {
     return result === 0 ? 0 : result;
   };
 }
+function endOfMonth(date) {
+  const _date = toDate(date);
+  const month = _date.getMonth();
+  _date.setFullYear(_date.getFullYear(), month + 1, 0);
+  _date.setHours(23, 59, 59, 999);
+  return _date;
+}
+function eachDayOfInterval(interval, options) {
+  const startDate = toDate(interval.start);
+  const endDate = toDate(interval.end);
+  let reversed = +startDate > +endDate;
+  const endTime = reversed ? +startDate : +endDate;
+  const currentDate = reversed ? endDate : startDate;
+  currentDate.setHours(0, 0, 0, 0);
+  let step = 1;
+  const dates = [];
+  while (+currentDate <= endTime) {
+    dates.push(toDate(currentDate));
+    currentDate.setDate(currentDate.getDate() + step);
+    currentDate.setHours(0, 0, 0, 0);
+  }
+  return reversed ? dates.reverse() : dates;
+}
+function startOfMonth(date) {
+  const _date = toDate(date);
+  _date.setDate(1);
+  _date.setHours(0, 0, 0, 0);
+  return _date;
+}
 function startOfYear(date) {
   const cleanDate = toDate(date);
   const _date = constructFrom(date, 0);
   _date.setFullYear(cleanDate.getFullYear(), 0, 1);
   _date.setHours(0, 0, 0, 0);
+  return _date;
+}
+function endOfWeek(date, options) {
+  const weekStartsOn = options?.weekStartsOn;
+  const _date = toDate(date);
+  const day = _date.getDay();
+  const diff = (day < weekStartsOn ? -7 : 0) + 6 - (day - weekStartsOn);
+  _date.setDate(_date.getDate() + diff);
+  _date.setHours(23, 59, 59, 999);
   return _date;
 }
 const formatDistanceLocale = {
@@ -38095,8 +38576,21 @@ function formatDistanceStrict(date, baseDate, options) {
 function formatDistanceToNowStrict(date, options) {
   return formatDistanceStrict(date, constructNow(date), options);
 }
+function getMonth(date) {
+  const _date = toDate(date);
+  const month = _date.getMonth();
+  return month;
+}
+function getYear(date) {
+  return toDate(date).getFullYear();
+}
 function isPast(date) {
   return +toDate(date) < Date.now();
+}
+function isSameMonth(dateLeft, dateRight) {
+  const _dateLeft = toDate(dateLeft);
+  const _dateRight = toDate(dateRight);
+  return _dateLeft.getFullYear() === _dateRight.getFullYear() && _dateLeft.getMonth() === _dateRight.getMonth();
 }
 function isToday(date) {
   return isSameDay(date, constructNow(date));
@@ -38110,6 +38604,17 @@ function subDays(date, amount) {
 function isYesterday(date) {
   return isSameDay(date, subDays(constructNow(date)));
 }
+function subMonths(date, amount) {
+  return addMonths(date, -1);
+}
+const dateKeyFromDate = (d) => format(d, "yyyy-MM-dd");
+const dateKeyFromIso = (iso) => {
+  if (!iso) return null;
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return null;
+  return dateKeyFromDate(d);
+};
+const dateFromDateKey = (key) => /* @__PURE__ */ new Date(`${key}T12:00:00`);
 const formatDueDate = (iso) => {
   if (!iso) return null;
   const d = new Date(iso);
@@ -38369,13 +38874,13 @@ var Label$1 = reactExports.forwardRef((props, forwardedRef) => {
   );
 });
 Label$1.displayName = NAME;
-var Root$1 = Label$1;
+var Root$2 = Label$1;
 function Label({
   className,
   ...props
 }) {
   return /* @__PURE__ */ jsxRuntimeExports.jsx(
-    Root$1,
+    Root$2,
     {
       "data-slot": "label",
       className: cn(
@@ -38407,7 +38912,7 @@ var [createSelectContext] = createContextScope(SELECT_NAME, [
   createCollectionScope,
   createPopperScope
 ]);
-var usePopperScope = createPopperScope();
+var usePopperScope$1 = createPopperScope();
 var [SelectProvider, useSelectContext] = createSelectContext(SELECT_NAME);
 var [SelectNativeOptionsProvider, useSelectNativeOptionsContext] = createSelectContext(SELECT_NAME);
 var Select$1 = (props) => {
@@ -38427,7 +38932,7 @@ var Select$1 = (props) => {
     required,
     form
   } = props;
-  const popperScope = usePopperScope(__scopeSelect);
+  const popperScope = usePopperScope$1(__scopeSelect);
   const [trigger, setTrigger] = reactExports.useState(null);
   const [valueNode, setValueNode] = reactExports.useState(null);
   const [valueNodeHasChildren, setValueNodeHasChildren] = reactExports.useState(false);
@@ -38446,7 +38951,7 @@ var Select$1 = (props) => {
   const isFormControl = trigger ? form || !!trigger.closest("form") : true;
   const [nativeOptionsSet, setNativeOptionsSet] = reactExports.useState(/* @__PURE__ */ new Set());
   const nativeSelectKey = Array.from(nativeOptionsSet).map((option) => option.props.value).join(";");
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(Root2$3, { ...popperScope, children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(Root2$4, { ...popperScope, children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
     SelectProvider,
     {
       required,
@@ -38507,12 +39012,12 @@ var Select$1 = (props) => {
   ) });
 };
 Select$1.displayName = SELECT_NAME;
-var TRIGGER_NAME$1 = "SelectTrigger";
+var TRIGGER_NAME$2 = "SelectTrigger";
 var SelectTrigger$1 = reactExports.forwardRef(
   (props, forwardedRef) => {
     const { __scopeSelect, disabled = false, ...triggerProps } = props;
-    const popperScope = usePopperScope(__scopeSelect);
-    const context = useSelectContext(TRIGGER_NAME$1, __scopeSelect);
+    const popperScope = usePopperScope$1(__scopeSelect);
+    const context = useSelectContext(TRIGGER_NAME$2, __scopeSelect);
     const isDisabled = context.disabled || disabled;
     const composedRefs = useComposedRefs(forwardedRef, context.onTriggerChange);
     const getItems = useCollection(__scopeSelect);
@@ -38584,7 +39089,7 @@ var SelectTrigger$1 = reactExports.forwardRef(
     ) });
   }
 );
-SelectTrigger$1.displayName = TRIGGER_NAME$1;
+SelectTrigger$1.displayName = TRIGGER_NAME$2;
 var VALUE_NAME = "SelectValue";
 var SelectValue$1 = reactExports.forwardRef(
   (props, forwardedRef) => {
@@ -38616,15 +39121,15 @@ var SelectIcon = reactExports.forwardRef(
   }
 );
 SelectIcon.displayName = ICON_NAME;
-var PORTAL_NAME$1 = "SelectPortal";
+var PORTAL_NAME$2 = "SelectPortal";
 var SelectPortal = (props) => {
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(Portal$4, { asChild: true, ...props });
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(Portal$5, { asChild: true, ...props });
 };
-SelectPortal.displayName = PORTAL_NAME$1;
-var CONTENT_NAME$1 = "SelectContent";
+SelectPortal.displayName = PORTAL_NAME$2;
+var CONTENT_NAME$2 = "SelectContent";
 var SelectContent$1 = reactExports.forwardRef(
   (props, forwardedRef) => {
-    const context = useSelectContext(CONTENT_NAME$1, props.__scopeSelect);
+    const context = useSelectContext(CONTENT_NAME$2, props.__scopeSelect);
     const [fragment, setFragment] = reactExports.useState();
     useLayoutEffect2(() => {
       setFragment(new DocumentFragment());
@@ -38639,9 +39144,9 @@ var SelectContent$1 = reactExports.forwardRef(
     return /* @__PURE__ */ jsxRuntimeExports.jsx(SelectContentImpl, { ...props, ref: forwardedRef });
   }
 );
-SelectContent$1.displayName = CONTENT_NAME$1;
+SelectContent$1.displayName = CONTENT_NAME$2;
 var CONTENT_MARGIN = 10;
-var [SelectContentProvider, useSelectContentContext] = createSelectContext(CONTENT_NAME$1);
+var [SelectContentProvider, useSelectContentContext] = createSelectContext(CONTENT_NAME$2);
 var CONTENT_IMPL_NAME = "SelectContentImpl";
 var SelectContentImpl = reactExports.forwardRef(
   (props, forwardedRef) => {
@@ -38666,7 +39171,7 @@ var SelectContentImpl = reactExports.forwardRef(
       //
       ...contentProps
     } = props;
-    const context = useSelectContext(CONTENT_NAME$1, __scopeSelect);
+    const context = useSelectContext(CONTENT_NAME$2, __scopeSelect);
     const [content, setContent] = reactExports.useState(null);
     const [viewport, setViewport] = reactExports.useState(null);
     const composedRefs = useComposedRefs(forwardedRef, (node) => setContent(node));
@@ -38879,8 +39384,8 @@ SelectContentImpl.displayName = CONTENT_IMPL_NAME;
 var ITEM_ALIGNED_POSITION_NAME = "SelectItemAlignedPosition";
 var SelectItemAlignedPosition = reactExports.forwardRef((props, forwardedRef) => {
   const { __scopeSelect, onPlaced, ...popperProps } = props;
-  const context = useSelectContext(CONTENT_NAME$1, __scopeSelect);
-  const contentContext = useSelectContentContext(CONTENT_NAME$1, __scopeSelect);
+  const context = useSelectContext(CONTENT_NAME$2, __scopeSelect);
+  const contentContext = useSelectContentContext(CONTENT_NAME$2, __scopeSelect);
   const [contentWrapper, setContentWrapper] = reactExports.useState(null);
   const [content, setContent] = reactExports.useState(null);
   const composedRefs = useComposedRefs(forwardedRef, (node) => setContent(node));
@@ -39048,7 +39553,7 @@ var SelectPopperPosition = reactExports.forwardRef((props, forwardedRef) => {
     collisionPadding = CONTENT_MARGIN,
     ...popperProps
   } = props;
-  const popperScope = usePopperScope(__scopeSelect);
+  const popperScope = usePopperScope$1(__scopeSelect);
   return /* @__PURE__ */ jsxRuntimeExports.jsx(
     Content,
     {
@@ -39074,7 +39579,7 @@ var SelectPopperPosition = reactExports.forwardRef((props, forwardedRef) => {
   );
 });
 SelectPopperPosition.displayName = POPPER_POSITION_NAME;
-var [SelectViewportProvider, useSelectViewportContext] = createSelectContext(CONTENT_NAME$1, {});
+var [SelectViewportProvider, useSelectViewportContext] = createSelectContext(CONTENT_NAME$2, {});
 var VIEWPORT_NAME = "SelectViewport";
 var SelectViewport = reactExports.forwardRef(
   (props, forwardedRef) => {
@@ -39423,17 +39928,17 @@ var SelectSeparator = reactExports.forwardRef(
   }
 );
 SelectSeparator.displayName = SEPARATOR_NAME;
-var ARROW_NAME = "SelectArrow";
+var ARROW_NAME$1 = "SelectArrow";
 var SelectArrow = reactExports.forwardRef(
   (props, forwardedRef) => {
     const { __scopeSelect, ...arrowProps } = props;
-    const popperScope = usePopperScope(__scopeSelect);
-    const context = useSelectContext(ARROW_NAME, __scopeSelect);
-    const contentContext = useSelectContentContext(ARROW_NAME, __scopeSelect);
+    const popperScope = usePopperScope$1(__scopeSelect);
+    const context = useSelectContext(ARROW_NAME$1, __scopeSelect);
+    const contentContext = useSelectContentContext(ARROW_NAME$1, __scopeSelect);
     return context.open && contentContext.position === "popper" ? /* @__PURE__ */ jsxRuntimeExports.jsx(Arrow, { ...popperScope, ...arrowProps, ref: forwardedRef }) : null;
   }
 );
-SelectArrow.displayName = ARROW_NAME;
+SelectArrow.displayName = ARROW_NAME$1;
 function shouldShowPlaceholder(value) {
   return value === "" || value === void 0;
 }
@@ -39501,12 +40006,12 @@ function findNextItem(items, search, currentItem) {
 function wrapArray(array, startIndex) {
   return array.map((_, index2) => array[(startIndex + index2) % array.length]);
 }
-var Root2$1 = Select$1;
-var Trigger = SelectTrigger$1;
+var Root2$2 = Select$1;
+var Trigger$1 = SelectTrigger$1;
 var Value = SelectValue$1;
 var Icon = SelectIcon;
-var Portal = SelectPortal;
-var Content2$1 = SelectContent$1;
+var Portal$1 = SelectPortal;
+var Content2$2 = SelectContent$1;
 var Viewport = SelectViewport;
 var Item = SelectItem$1;
 var ItemText = SelectItemText;
@@ -39516,7 +40021,7 @@ var ScrollDownButton = SelectScrollDownButton$1;
 function Select({
   ...props
 }) {
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(Root2$1, { "data-slot": "select", ...props });
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(Root2$2, { "data-slot": "select", ...props });
 }
 function SelectValue({
   ...props
@@ -39530,7 +40035,7 @@ function SelectTrigger({
   ...props
 }) {
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(
-    Trigger,
+    Trigger$1,
     {
       "data-slot": "select-trigger",
       "data-size": size2,
@@ -39552,8 +40057,8 @@ function SelectContent({
   position = "popper",
   ...props
 }) {
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(Portal, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
-    Content2$1,
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(Portal$1, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
+    Content2$2,
     {
       "data-slot": "select-content",
       className: cn(
@@ -39643,25 +40148,25 @@ var useDialogScope = createDialogScope();
 var AlertDialog$1 = (props) => {
   const { __scopeAlertDialog, ...alertDialogProps } = props;
   const dialogScope = useDialogScope(__scopeAlertDialog);
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(Root$5, { ...dialogScope, ...alertDialogProps, modal: true });
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(Root$6, { ...dialogScope, ...alertDialogProps, modal: true });
 };
 AlertDialog$1.displayName = ROOT_NAME;
-var TRIGGER_NAME = "AlertDialogTrigger";
+var TRIGGER_NAME$1 = "AlertDialogTrigger";
 var AlertDialogTrigger$1 = reactExports.forwardRef(
   (props, forwardedRef) => {
     const { __scopeAlertDialog, ...triggerProps } = props;
     const dialogScope = useDialogScope(__scopeAlertDialog);
-    return /* @__PURE__ */ jsxRuntimeExports.jsx(Trigger$3, { ...dialogScope, ...triggerProps, ref: forwardedRef });
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(Trigger$4, { ...dialogScope, ...triggerProps, ref: forwardedRef });
   }
 );
-AlertDialogTrigger$1.displayName = TRIGGER_NAME;
-var PORTAL_NAME = "AlertDialogPortal";
+AlertDialogTrigger$1.displayName = TRIGGER_NAME$1;
+var PORTAL_NAME$1 = "AlertDialogPortal";
 var AlertDialogPortal$1 = (props) => {
   const { __scopeAlertDialog, ...portalProps } = props;
   const dialogScope = useDialogScope(__scopeAlertDialog);
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(Portal$3, { ...dialogScope, ...portalProps });
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(Portal$4, { ...dialogScope, ...portalProps });
 };
-AlertDialogPortal$1.displayName = PORTAL_NAME;
+AlertDialogPortal$1.displayName = PORTAL_NAME$1;
 var OVERLAY_NAME = "AlertDialogOverlay";
 var AlertDialogOverlay$1 = reactExports.forwardRef(
   (props, forwardedRef) => {
@@ -39671,8 +40176,8 @@ var AlertDialogOverlay$1 = reactExports.forwardRef(
   }
 );
 AlertDialogOverlay$1.displayName = OVERLAY_NAME;
-var CONTENT_NAME = "AlertDialogContent";
-var [AlertDialogContentProvider, useAlertDialogContentContext] = createAlertDialogContext(CONTENT_NAME);
+var CONTENT_NAME$1 = "AlertDialogContent";
+var [AlertDialogContentProvider, useAlertDialogContentContext] = createAlertDialogContext(CONTENT_NAME$1);
 var AlertDialogContent$1 = reactExports.forwardRef(
   (props, forwardedRef) => {
     const { __scopeAlertDialog, children, ...contentProps } = props;
@@ -39683,7 +40188,7 @@ var AlertDialogContent$1 = reactExports.forwardRef(
     return /* @__PURE__ */ jsxRuntimeExports.jsx(
       WarningProvider,
       {
-        contentName: CONTENT_NAME,
+        contentName: CONTENT_NAME$1,
         titleName: TITLE_NAME,
         docsSlug: "alert-dialog",
         children: /* @__PURE__ */ jsxRuntimeExports.jsx(AlertDialogContentProvider, { scope: __scopeAlertDialog, cancelRef, children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
@@ -39709,7 +40214,7 @@ var AlertDialogContent$1 = reactExports.forwardRef(
     );
   }
 );
-AlertDialogContent$1.displayName = CONTENT_NAME;
+AlertDialogContent$1.displayName = CONTENT_NAME$1;
 var TITLE_NAME = "AlertDialogTitle";
 var AlertDialogTitle$1 = reactExports.forwardRef(
   (props, forwardedRef) => {
@@ -39747,11 +40252,11 @@ var AlertDialogCancel$1 = reactExports.forwardRef(
 );
 AlertDialogCancel$1.displayName = CANCEL_NAME;
 var DescriptionWarning = ({ contentRef }) => {
-  const MESSAGE = `\`${CONTENT_NAME}\` requires a description for the component to be accessible for screen reader users.
+  const MESSAGE = `\`${CONTENT_NAME$1}\` requires a description for the component to be accessible for screen reader users.
 
-You can add a description to the \`${CONTENT_NAME}\` by passing a \`${DESCRIPTION_NAME}\` component as a child, which also benefits sighted users by adding visible context to the dialog.
+You can add a description to the \`${CONTENT_NAME$1}\` by passing a \`${DESCRIPTION_NAME}\` component as a child, which also benefits sighted users by adding visible context to the dialog.
 
-Alternatively, you can use your own component as a description by assigning it an \`id\` and passing the same value to the \`aria-describedby\` prop in \`${CONTENT_NAME}\`. If the description is confusing or duplicative for sighted users, you can use the \`@radix-ui/react-visually-hidden\` primitive as a wrapper around your description component.
+Alternatively, you can use your own component as a description by assigning it an \`id\` and passing the same value to the \`aria-describedby\` prop in \`${CONTENT_NAME$1}\`. If the description is confusing or duplicative for sighted users, you can use the \`@radix-ui/react-visually-hidden\` primitive as a wrapper around your description component.
 
 For more information, see https://radix-ui.com/primitives/docs/components/alert-dialog`;
   reactExports.useEffect(() => {
@@ -39762,11 +40267,11 @@ For more information, see https://radix-ui.com/primitives/docs/components/alert-
   }, [MESSAGE, contentRef]);
   return null;
 };
-var Root2 = AlertDialog$1;
+var Root2$1 = AlertDialog$1;
 var Trigger2 = AlertDialogTrigger$1;
 var Portal2 = AlertDialogPortal$1;
 var Overlay2 = AlertDialogOverlay$1;
-var Content2 = AlertDialogContent$1;
+var Content2$1 = AlertDialogContent$1;
 var Action = AlertDialogAction$1;
 var Cancel = AlertDialogCancel$1;
 var Title2 = AlertDialogTitle$1;
@@ -39774,7 +40279,7 @@ var Description2 = AlertDialogDescription$1;
 function AlertDialog({
   ...props
 }) {
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(Root2, { "data-slot": "alert-dialog", ...props });
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(Root2$1, { "data-slot": "alert-dialog", ...props });
 }
 function AlertDialogTrigger({
   ...props
@@ -39809,7 +40314,7 @@ function AlertDialogContent({
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(AlertDialogPortal, { children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx(AlertDialogOverlay, {}),
     /* @__PURE__ */ jsxRuntimeExports.jsx(
-      Content2,
+      Content2$1,
       {
         "data-slot": "alert-dialog-content",
         className: cn(
@@ -39900,10 +40405,14 @@ function AlertDialogCancel({
     }
   );
 }
+const NOTES_COMMIT_DELAY = 400;
 const TaskDetailPanel = ({ accent }) => {
   const selectedId = useStore((s) => s.selectedTaskId);
   const close = useStore((s) => s.selectTask);
   const task = useStore((s) => s.tasks.find((t) => t.id === selectedId) ?? null);
+  const group = useStore(
+    (s) => task ? s.groups.find((g) => g.id === task.groupId) ?? null : null
+  );
   const updateTask = useStore((s) => s.updateTask);
   const deleteTask = useStore((s) => s.deleteTask);
   const toggleDone = useStore((s) => s.toggleTaskDone);
@@ -39917,11 +40426,51 @@ const TaskDetailPanel = ({ accent }) => {
   const [tagInput, setTagInput] = reactExports.useState("");
   const [subtaskInput, setSubtaskInput] = reactExports.useState("");
   const [title, setTitle] = reactExports.useState("");
+  const [notes, setNotes] = reactExports.useState("");
+  const titleRef = reactExports.useRef(null);
+  const pendingNotes = reactExports.useRef(null);
+  const notesTimer = reactExports.useRef(null);
+  const taskId = task?.id;
+  const flushNotes = reactExports.useCallback(() => {
+    if (notesTimer.current) {
+      clearTimeout(notesTimer.current);
+      notesTimer.current = null;
+    }
+    const pending = pendingNotes.current;
+    pendingNotes.current = null;
+    if (pending) updateTask(pending.id, { notes: pending.notes });
+  }, [updateTask]);
+  reactExports.useEffect(() => flushNotes, [taskId, flushNotes]);
   reactExports.useEffect(() => {
     setTitle(task?.title ?? "");
+    setNotes(task?.notes ?? "");
     setTagInput("");
     setSubtaskInput("");
-  }, [task?.id]);
+  }, [taskId]);
+  reactExports.useLayoutEffect(() => {
+    const el = titleRef.current;
+    if (!el) return;
+    el.style.height = "auto";
+    el.style.height = `${el.scrollHeight}px`;
+  }, [title, taskId]);
+  const commitTitle = () => {
+    if (!task) return;
+    const trimmed = title.trim();
+    if (trimmed && trimmed !== task.title) {
+      updateTask(task.id, { title: trimmed });
+    } else if (!trimmed) {
+      setTitle(task.title);
+    }
+  };
+  const onNotesChange = (value) => {
+    if (!task) return;
+    setNotes(value);
+    pendingNotes.current = { id: task.id, notes: value };
+    if (notesTimer.current) clearTimeout(notesTimer.current);
+    notesTimer.current = setTimeout(flushNotes, NOTES_COMMIT_DELAY);
+  };
+  const due = task ? formatDueDate(task.dueDate) : null;
+  const accentTokens = ACCENT_PALETTE[group?.accent ?? accent] ?? ACCENT_PALETTE.blue;
   const open = Boolean(task);
   return /* @__PURE__ */ jsxRuntimeExports.jsx(AnimatePresence, { children: open && task && /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -39938,6 +40487,8 @@ const TaskDetailPanel = ({ accent }) => {
     /* @__PURE__ */ jsxRuntimeExports.jsxs(
       motion.aside,
       {
+        role: "dialog",
+        "aria-label": `Task details: ${task.title}`,
         initial: { x: 480 },
         animate: { x: 0 },
         exit: { x: 480 },
@@ -39945,12 +40496,19 @@ const TaskDetailPanel = ({ accent }) => {
         className: "absolute right-0 top-0 bottom-0 w-[480px] max-w-[92vw] bg-card border-l border-border z-40 flex flex-col",
         style: { borderTopLeftRadius: 12, borderBottomLeftRadius: 12 },
         children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between px-5 h-14 border-b border-border", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "text-sm text-muted-foreground", children: [
-              "Created ",
-              relativeFromNow(new Date(task.createdAt).toISOString())
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between gap-3 px-5 h-14 shrink-0 border-b border-border", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "min-w-0 flex items-center gap-2", children: [
+              group && /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: cn("size-2 rounded-full shrink-0", accentTokens.fill) }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-sm font-medium truncate", children: group.name }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-muted-foreground/50", children: "·" })
+              ] }),
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "text-sm text-muted-foreground truncate", children: [
+                "Created ",
+                relativeFromNow(new Date(task.createdAt).toISOString())
+              ] })
             ] }),
-            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-1", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-1 shrink-0", children: [
               confirmDelete ? /* @__PURE__ */ jsxRuntimeExports.jsxs(AlertDialog, { children: [
                 /* @__PURE__ */ jsxRuntimeExports.jsx(AlertDialogTrigger, { asChild: true, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
                   Button,
@@ -40000,9 +40558,9 @@ const TaskDetailPanel = ({ accent }) => {
               )
             ] })
           ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex-1 overflow-y-auto px-5 py-5 space-y-6", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex-1 min-h-0 overflow-y-auto themed-scrollbar px-5 pt-5 pb-10 space-y-6", children: [
             /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-start gap-3", children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "pt-2", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+              /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "pt-1.5", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
                 TaskCheckbox,
                 {
                   checked: task.status === "done",
@@ -40011,20 +40569,22 @@ const TaskDetailPanel = ({ accent }) => {
                 }
               ) }),
               /* @__PURE__ */ jsxRuntimeExports.jsx(
-                Input,
+                "textarea",
                 {
+                  ref: titleRef,
                   value: title,
+                  rows: 1,
+                  "aria-label": "Task title",
                   onChange: (e) => setTitle(e.target.value),
-                  onBlur: () => {
-                    const trimmed = title.trim();
-                    if (trimmed && trimmed !== task.title) {
-                      updateTask(task.id, { title: trimmed });
-                    } else if (!trimmed) {
-                      setTitle(task.title);
+                  onBlur: commitTitle,
+                  onKeyDown: (e) => {
+                    if (e.key === "Enter") {
+                      e.preventDefault();
+                      e.currentTarget.blur();
                     }
                   },
                   className: cn(
-                    "border-0 bg-transparent px-0 h-auto py-1 focus-visible:ring-0",
+                    "flex-1 resize-none bg-transparent outline-none py-0.5 leading-snug",
                     task.status === "done" && "line-through text-muted-foreground"
                   ),
                   style: { fontSize: "1.125rem" }
@@ -40040,7 +40600,7 @@ const TaskDetailPanel = ({ accent }) => {
                     value: task.status,
                     onValueChange: (v) => updateTask(task.id, { status: v }),
                     children: [
-                      /* @__PURE__ */ jsxRuntimeExports.jsx(SelectTrigger, { id: "task-status", children: /* @__PURE__ */ jsxRuntimeExports.jsx(SelectValue, {}) }),
+                      /* @__PURE__ */ jsxRuntimeExports.jsx(SelectTrigger, { id: "task-status", className: "w-full", children: /* @__PURE__ */ jsxRuntimeExports.jsx(SelectValue, {}) }),
                       /* @__PURE__ */ jsxRuntimeExports.jsxs(SelectContent, { children: [
                         /* @__PURE__ */ jsxRuntimeExports.jsx(SelectItem, { value: "todo", children: "To-Do" }),
                         /* @__PURE__ */ jsxRuntimeExports.jsx(SelectItem, { value: "done", children: "Done" })
@@ -40050,7 +40610,18 @@ const TaskDetailPanel = ({ accent }) => {
                 )
               ] }),
               /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-1.5", children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { htmlFor: "task-due", className: "text-xs text-muted-foreground", children: "Due date" }),
+                /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-baseline justify-between gap-2", children: [
+                  /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { htmlFor: "task-due", className: "text-xs text-muted-foreground", children: "Due date" }),
+                  task.dueDate && /* @__PURE__ */ jsxRuntimeExports.jsx(
+                    "button",
+                    {
+                      type: "button",
+                      onClick: () => updateTask(task.id, { dueDate: null }),
+                      className: "text-xs text-muted-foreground hover:text-foreground transition-colors",
+                      children: "Clear"
+                    }
+                  )
+                ] }),
                 /* @__PURE__ */ jsxRuntimeExports.jsx(
                   Input,
                   {
@@ -40058,6 +40629,16 @@ const TaskDetailPanel = ({ accent }) => {
                     type: "date",
                     value: toDateInputValue(task.dueDate),
                     onChange: (e) => updateTask(task.id, { dueDate: fromDateInputValue(e.target.value) })
+                  }
+                ),
+                due && /* @__PURE__ */ jsxRuntimeExports.jsx(
+                  "p",
+                  {
+                    className: cn(
+                      "text-xs",
+                      due.overdue && task.status !== "done" ? "text-destructive" : "text-muted-foreground"
+                    ),
+                    children: due.overdue && task.status !== "done" ? `Overdue · ${due.label}` : due.label
                   }
                 )
               ] })
@@ -40078,8 +40659,9 @@ const TaskDetailPanel = ({ accent }) => {
                         setTagInput("");
                       }
                     },
+                    "aria-label": "Add tag",
                     placeholder: "Add tag…",
-                    className: "bg-transparent outline-none text-sm px-2 h-7 min-w-[100px]"
+                    className: "bg-transparent outline-none text-sm px-2 h-7 min-w-[100px] flex-1"
                   }
                 )
               ] })
@@ -40090,10 +40672,12 @@ const TaskDetailPanel = ({ accent }) => {
                 Textarea,
                 {
                   id: "task-notes",
-                  value: task.notes,
-                  onChange: (e) => updateTask(task.id, { notes: e.target.value }),
+                  value: notes,
+                  onChange: (e) => onNotesChange(e.target.value),
+                  onBlur: flushNotes,
                   placeholder: "Add notes, context, or links…",
-                  rows: 5
+                  rows: 5,
+                  className: "resize-y themed-scrollbar"
                 }
               )
             ] }),
@@ -40120,12 +40704,20 @@ const TaskDetailPanel = ({ accent }) => {
                     "input",
                     {
                       defaultValue: st.title,
+                      "aria-label": "Subtask title",
                       onBlur: (e) => {
                         const v = e.target.value.trim();
                         if (v && v !== st.title) updateSubtask(task.id, st.id, v);
+                        else if (!v) e.target.value = st.title;
+                      },
+                      onKeyDown: (e) => {
+                        if (e.key === "Enter") {
+                          e.preventDefault();
+                          e.currentTarget.blur();
+                        }
                       },
                       className: cn(
-                        "flex-1 bg-transparent outline-none py-1 text-sm",
+                        "flex-1 min-w-0 bg-transparent outline-none py-1 text-sm",
                         st.done && "line-through text-muted-foreground"
                       )
                     }
@@ -40135,8 +40727,8 @@ const TaskDetailPanel = ({ accent }) => {
                     {
                       type: "button",
                       onClick: () => deleteSubtask(task.id, st.id),
-                      className: "opacity-0 group-hover:opacity-100 text-muted-foreground hover:text-destructive transition-opacity",
-                      "aria-label": "Delete subtask",
+                      className: "opacity-0 group-hover:opacity-100 focus-visible:opacity-100 text-muted-foreground hover:text-destructive transition-opacity",
+                      "aria-label": `Delete subtask ${st.title}`,
                       children: /* @__PURE__ */ jsxRuntimeExports.jsx(X$1, { className: "size-3.5" })
                     }
                   )
@@ -40155,8 +40747,9 @@ const TaskDetailPanel = ({ accent }) => {
                           setSubtaskInput("");
                         }
                       },
+                      "aria-label": "Add subtask",
                       placeholder: "Add subtask…",
-                      className: "flex-1 bg-transparent outline-none py-1 text-sm"
+                      className: "flex-1 min-w-0 bg-transparent outline-none py-1 text-sm"
                     }
                   )
                 ] })
@@ -40229,12 +40822,12 @@ const EmptyState = ({
 function Dialog({
   ...props
 }) {
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(Root$5, { "data-slot": "dialog", ...props });
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(Root$6, { "data-slot": "dialog", ...props });
 }
 function DialogPortal({
   ...props
 }) {
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(Portal$3, { "data-slot": "dialog-portal", ...props });
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(Portal$4, { "data-slot": "dialog-portal", ...props });
 }
 function DialogOverlay({
   className,
@@ -40438,7 +41031,8 @@ const SHORTCUTS = [
   { keys: ["N"], label: "New task in current group" },
   { keys: ["G"], label: "New group" },
   { keys: ["Ctrl", "Shift", "N"], label: "Quick Add (global mini window)" },
-  { keys: ["Ctrl", "K"], label: "Focus search" },
+  { keys: ["Ctrl", "K"], label: "Command palette" },
+  { keys: ["Ctrl", "F"], label: "Focus search" },
   { keys: ["Ctrl", "B"], label: "Toggle sidebar" },
   { keys: ["?"], label: "Show this help" },
   { keys: ["Esc"], label: "Close panel or dialog" }
@@ -40498,7 +41092,7 @@ var Switch$1 = reactExports.forwardRef(
           role: "switch",
           "aria-checked": checked,
           "aria-required": required,
-          "data-state": getState(checked),
+          "data-state": getState$2(checked),
           "data-disabled": disabled ? "" : void 0,
           disabled,
           value,
@@ -40514,7 +41108,7 @@ var Switch$1 = reactExports.forwardRef(
         }
       ),
       isFormControl && /* @__PURE__ */ jsxRuntimeExports.jsx(
-        BubbleInput,
+        BubbleInput$1,
         {
           control: button,
           bubbles: !hasConsumerStoppedPropagationRef.current,
@@ -40539,7 +41133,7 @@ var SwitchThumb = reactExports.forwardRef(
     return /* @__PURE__ */ jsxRuntimeExports.jsx(
       Primitive.span,
       {
-        "data-state": getState(context.checked),
+        "data-state": getState$2(context.checked),
         "data-disabled": context.disabled ? "" : void 0,
         ...thumbProps,
         ref: forwardedRef
@@ -40548,7 +41142,7 @@ var SwitchThumb = reactExports.forwardRef(
   }
 );
 SwitchThumb.displayName = THUMB_NAME;
-var BubbleInput = (props) => {
+var BubbleInput$1 = (props) => {
   const { control, checked, bubbles = true, ...inputProps } = props;
   const ref = reactExports.useRef(null);
   const prevChecked = usePrevious(checked);
@@ -40584,17 +41178,17 @@ var BubbleInput = (props) => {
     }
   );
 };
-function getState(checked) {
+function getState$2(checked) {
   return checked ? "checked" : "unchecked";
 }
-var Root = Switch$1;
+var Root$1 = Switch$1;
 var Thumb = SwitchThumb;
 function Switch({
   className,
   ...props
 }) {
   return /* @__PURE__ */ jsxRuntimeExports.jsx(
-    Root,
+    Root$1,
     {
       "data-slot": "switch",
       className: cn(
@@ -40614,6 +41208,7 @@ function Switch({
     }
   );
 }
+const RELEASES_URL = "https://github.com/Eduard-K-A/TaskOverflow/releases";
 const SECTIONS = [
   { id: "appearance", label: "Appearance", icon: Palette },
   { id: "tasks", label: "Tasks & behaviour", icon: ListTodo },
@@ -40655,17 +41250,22 @@ const SettingsDialog = () => {
   const setOpen = useStore((s) => s.setSettingsOpen);
   const savedSettings = useStore((s) => s.settings);
   const saveSettings = useStore((s) => s.saveSettings);
-  const resetSettingsStore = useStore((s) => s.resetSettings);
   const { theme, setTheme } = useTheme();
-  const exportGroup = useStore((s) => s.exportGroup);
+  const exportAllData = useStore((s) => s.exportAllData);
   const groups = useStore((s) => s.groups);
   const deleteGroup = useStore((s) => s.deleteGroup);
+  const wipeAllData = useStore((s) => s.wipeAllData);
   const tasks = useStore((s) => s.tasks);
   const [active, setActive] = reactExports.useState("appearance");
   const [draft, setDraft] = reactExports.useState(savedSettings);
   const [draftTheme, setDraftTheme] = reactExports.useState(theme);
   const [deleteGroupChoice, setDeleteGroupChoice] = reactExports.useState("");
   const [dataPaths, setDataPaths] = reactExports.useState(null);
+  const [appVersion, setAppVersion] = reactExports.useState(null);
+  const [checkingUpdate, setCheckingUpdate] = reactExports.useState(false);
+  const [updateStatus, setUpdateStatus] = reactExports.useState(
+    "Compares this build against the latest published release"
+  );
   reactExports.useEffect(() => {
     if (!open || active !== "data") return;
     if (typeof window === "undefined" || !window.api?.getDataPaths) {
@@ -40675,11 +41275,42 @@ const SettingsDialog = () => {
     void window.api.getDataPaths().then(setDataPaths).catch(() => setDataPaths(null));
   }, [open, active]);
   reactExports.useEffect(() => {
+    if (!open || active !== "about") return;
+    if (typeof window === "undefined" || !window.api?.getAppVersion) {
+      setAppVersion(null);
+      return;
+    }
+    void window.api.getAppVersion().then(setAppVersion).catch(() => setAppVersion(null));
+  }, [open, active]);
+  reactExports.useEffect(() => {
     if (open) {
       setDraft(savedSettings);
       setDraftTheme(theme);
     }
-  }, [open]);
+  }, [open, savedSettings, theme]);
+  const handleCheckForUpdates = async () => {
+    if (!window.api?.checkForUpdates) return;
+    setCheckingUpdate(true);
+    try {
+      const result = await window.api.checkForUpdates();
+      setAppVersion(result.current);
+      if (result.status === "outdated") {
+        setUpdateStatus(`Version ${result.latest} is available`);
+        toast.success(`Update available: v${result.latest}`);
+      } else if (result.status === "current") {
+        setUpdateStatus(`You are on the latest version (v${result.current})`);
+        toast.success("You are on the latest version");
+      } else if (result.status === "no-releases") {
+        setUpdateStatus("No releases have been published yet");
+        toast.info("No releases have been published yet");
+      } else {
+        setUpdateStatus("Could not reach the update server");
+        toast.error("Could not check for updates");
+      }
+    } finally {
+      setCheckingUpdate(false);
+    }
+  };
   const update = (key, value) => setDraft((d) => ({ ...d, [key]: value }));
   const dirty = draftTheme !== theme || Object.keys(draft).some((k2) => draft[k2] !== savedSettings[k2]);
   const handleSave = async () => {
@@ -40747,7 +41378,14 @@ const SettingsDialog = () => {
                 /* @__PURE__ */ jsxRuntimeExports.jsx(SelectItem, { value: "dark", children: "Dark" })
               ] })
             ] }) }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx(Row, { title: "Accent color palette", description: "Colors available when creating groups", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex gap-1.5", children: ACCENT_KEYS.map((k2) => /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: cn("size-4 rounded-full", ACCENT_PALETTE[k2].fill) }, k2)) }) }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx(Row, { title: "Accent color palette", description: "Preview of the colors offered when you create a group", children: /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex gap-1.5", "aria-hidden": "true", children: ACCENT_KEYS.map((k2) => /* @__PURE__ */ jsxRuntimeExports.jsx(
+              "span",
+              {
+                title: ACCENT_PALETTE[k2].name,
+                className: cn("size-4 rounded-full", ACCENT_PALETTE[k2].fill)
+              },
+              k2
+            )) }) }),
             /* @__PURE__ */ jsxRuntimeExports.jsx(Row, { title: "Layout density", description: "Controls task row height and spacing", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(Select, { value: draft.density, onValueChange: (v) => update("density", v), children: [
               /* @__PURE__ */ jsxRuntimeExports.jsx(SelectTrigger, { className: "w-44 h-8", children: /* @__PURE__ */ jsxRuntimeExports.jsx(SelectValue, {}) }),
               /* @__PURE__ */ jsxRuntimeExports.jsxs(SelectContent, { children: [
@@ -40899,15 +41537,18 @@ const SettingsDialog = () => {
                 }
               )
             ] }) }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx(Row, { title: "Export all data", description: "Download every group and task as JSON", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
+            /* @__PURE__ */ jsxRuntimeExports.jsx(Row, { title: "Export all data", description: "One JSON file containing every group and task", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
               Button,
               {
                 variant: "outline",
                 size: "sm",
                 className: "h-8",
+                disabled: groups.length === 0,
                 onClick: () => {
-                  groups.forEach((g) => exportGroup(g.id, "json"));
-                  toast.success(`Exported ${groups.length} group${groups.length === 1 ? "" : "s"} as JSON`);
+                  exportAllData("json");
+                  toast.success(
+                    `Exported ${groups.length} group${groups.length === 1 ? "" : "s"} as JSON`
+                  );
                 },
                 children: [
                   /* @__PURE__ */ jsxRuntimeExports.jsx(Download, { className: "size-3.5 mr-1.5" }),
@@ -40921,9 +41562,12 @@ const SettingsDialog = () => {
                 variant: "outline",
                 size: "sm",
                 className: "h-8",
+                disabled: groups.length === 0,
                 onClick: () => {
-                  groups.forEach((g) => exportGroup(g.id, "csv"));
-                  toast.success(`Exported ${groups.length} group${groups.length === 1 ? "" : "s"} as CSV`);
+                  exportAllData("csv");
+                  toast.success(
+                    `Exported ${groups.length} group${groups.length === 1 ? "" : "s"} as CSV`
+                  );
                 },
                 children: [
                   /* @__PURE__ */ jsxRuntimeExports.jsx(Download, { className: "size-3.5 mr-1.5" }),
@@ -40980,7 +41624,8 @@ const SettingsDialog = () => {
           /* @__PURE__ */ jsxRuntimeExports.jsx(SectionHeader, { icon: Keyboard, title: "Shortcuts", description: "In-app keyboard shortcut reference" }),
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "rounded-xl border border-border/60 bg-card/40 divide-y divide-border/40 overflow-hidden", children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx(Row, { title: "Focus quick-add task input", children: /* @__PURE__ */ jsxRuntimeExports.jsx(KeyHint, { keys: ["N"] }) }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx(Row, { title: "Open search", children: /* @__PURE__ */ jsxRuntimeExports.jsx(KeyHint, { keys: ["Ctrl", "K"] }) }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx(Row, { title: "Command palette", children: /* @__PURE__ */ jsxRuntimeExports.jsx(KeyHint, { keys: ["Ctrl", "K"] }) }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx(Row, { title: "Focus search", children: /* @__PURE__ */ jsxRuntimeExports.jsx(KeyHint, { keys: ["Ctrl", "F"] }) }),
             /* @__PURE__ */ jsxRuntimeExports.jsx(Row, { title: "Toggle sidebar", children: /* @__PURE__ */ jsxRuntimeExports.jsx(KeyHint, { keys: ["Ctrl", "B"] }) }),
             /* @__PURE__ */ jsxRuntimeExports.jsx(Row, { title: "New group", children: /* @__PURE__ */ jsxRuntimeExports.jsx(KeyHint, { keys: ["G"] }) }),
             /* @__PURE__ */ jsxRuntimeExports.jsx(Row, { title: "Quick Add (global)", children: /* @__PURE__ */ jsxRuntimeExports.jsx(KeyHint, { keys: ["Ctrl", "Shift", "N"] }) }),
@@ -40991,24 +41636,30 @@ const SettingsDialog = () => {
         active === "about" && /* @__PURE__ */ jsxRuntimeExports.jsxs("section", { children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx(SectionHeader, { icon: Info, title: "About TaskOverflow", description: "Version info and update channel" }),
           /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "rounded-xl border border-border/60 bg-card/40 divide-y divide-border/40 overflow-hidden", children: [
-            /* @__PURE__ */ jsxRuntimeExports.jsx(Row, { title: "Version", children: /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-sm text-muted-foreground tabular-nums", children: "v1.0.0" }) }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx(Row, { title: "Check for updates", description: "You are on the latest version", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+            /* @__PURE__ */ jsxRuntimeExports.jsx(Row, { title: "Version", children: /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-sm text-muted-foreground tabular-nums", children: appVersion ? `v${appVersion}` : "—" }) }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx(Row, { title: "Check for updates", description: updateStatus, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
               Button,
               {
                 variant: "outline",
                 size: "sm",
                 className: "h-8",
-                onClick: () => toast.success("You are on the latest version"),
-                children: "Check now"
+                disabled: !window.api?.checkForUpdates || checkingUpdate,
+                onClick: () => void handleCheckForUpdates(),
+                children: checkingUpdate ? "Checking…" : "Check now"
               }
             ) }),
-            /* @__PURE__ */ jsxRuntimeExports.jsx(Row, { title: "Release notes", description: "View changelog", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
+            /* @__PURE__ */ jsxRuntimeExports.jsx(Row, { title: "Release notes", description: "Opens the releases page in your browser", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
               Button,
               {
                 variant: "ghost",
                 size: "sm",
                 className: "h-8",
-                onClick: () => toast.info("No changelog available yet"),
+                disabled: !window.api?.openExternal,
+                onClick: () => {
+                  void window.api?.openExternal?.(RELEASES_URL).catch(
+                    () => toast.error("Could not open the releases page")
+                  );
+                },
                 children: [
                   "Open",
                   /* @__PURE__ */ jsxRuntimeExports.jsx(ExternalLink, { className: "size-3.5 ml-1.5" })
@@ -41085,13 +41736,12 @@ const SettingsDialog = () => {
                 label: "Wipe data",
                 title: "Wipe all data?",
                 body: "Every group, task, tag, and setting will be erased. This action cannot be undone.",
-                onConfirm: () => {
-                  try {
-                    localStorage.removeItem("taskoverflow-state");
-                  } catch {
-                  }
-                  resetSettingsStore();
-                  location.reload();
+                onConfirm: async () => {
+                  await wipeAllData();
+                  setDraft(DEFAULT_SETTINGS);
+                  setDraftTheme("system");
+                  setOpen(false);
+                  toast.success("All data erased");
                 }
               }
             ) })
@@ -41148,67 +41798,92 @@ const DangerConfirm = ({
   ] })
 ] });
 const ImportButton = () => {
-  useStore((s) => s.groups);
-  const onImport = (file) => {
+  const inputRef = reactExports.useRef(null);
+  const [importing, setImporting] = reactExports.useState(false);
+  const readFile = (file) => new Promise((resolve, reject) => {
     const reader = new FileReader();
-    reader.onload = async () => {
-      try {
-        const text = String(reader.result ?? "");
-        const data = JSON.parse(text);
-        const incoming = Array.isArray(data) ? data : [data];
-        let imported = 0;
-        for (const entry of incoming) {
-          const group = entry?.group;
-          const tasks = entry?.tasks;
-          if (!group?.name) continue;
-          const created = await useStore.getState().createGroup({
+    reader.onload = () => resolve(String(reader.result ?? ""));
+    reader.onerror = () => reject(reader.error);
+    reader.readAsText(file);
+  });
+  const onImport = async (file) => {
+    setImporting(true);
+    try {
+      const data = JSON.parse(await readFile(file));
+      const incoming = Array.isArray(data) ? data : [data];
+      let groupsImported = 0;
+      let tasksImported = 0;
+      for (const entry of incoming) {
+        const group = entry?.group;
+        if (!group?.name) continue;
+        const created = await useStore.getState().createGroup(
+          {
             name: group.name,
             emoji: group.emoji ?? "",
-            accent: group.accent ?? "blue"
+            accent: isAccentColor(group.accent) ? group.accent : "blue"
+          },
+          { activate: false }
+        );
+        groupsImported += 1;
+        for (const t of Array.isArray(entry?.tasks) ? entry.tasks : []) {
+          if (typeof t?.title !== "string") continue;
+          await useStore.getState().createTaskWithDetails({
+            groupId: created.id,
+            title: t.title,
+            status: t.status === "done" ? "done" : "todo",
+            dueDate: typeof t.dueDate === "string" ? t.dueDate : null,
+            notes: typeof t.notes === "string" ? t.notes : "",
+            tags: Array.isArray(t.tags) ? t.tags.filter((x2) => typeof x2 === "string") : [],
+            subtaskTitles: Array.isArray(t.subtasks) ? t.subtasks.map(
+              (st) => typeof st === "string" ? st : st?.title
+            ).filter((title) => typeof title === "string") : []
           });
-          if (Array.isArray(tasks)) {
-            for (const t of tasks) {
-              if (typeof t?.title === "string") {
-                const task = await useStore.getState().createTask({
-                  groupId: created.id,
-                  title: t.title
-                });
-                await useStore.getState().updateTask(task.id, {
-                  notes: t.notes ?? "",
-                  status: t.status === "done" ? "done" : "todo",
-                  dueDate: t.dueDate ?? null,
-                  tags: Array.isArray(t.tags) ? t.tags : []
-                });
-              }
-            }
-          }
-          imported += 1;
+          tasksImported += 1;
         }
-        toast.success(`Imported ${imported} group${imported === 1 ? "" : "s"}`);
-      } catch {
-        toast.error("Could not parse JSON file");
       }
-    };
-    reader.readAsText(file);
+      if (groupsImported === 0) {
+        toast.error("No groups found in that file");
+        return;
+      }
+      toast.success(
+        `Imported ${groupsImported} group${groupsImported === 1 ? "" : "s"} · ${tasksImported} task${tasksImported === 1 ? "" : "s"}`
+      );
+    } catch {
+      toast.error("Could not parse JSON file");
+    } finally {
+      setImporting(false);
+    }
   };
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("label", { className: "inline-flex", children: [
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx(
       "input",
       {
+        ref: inputRef,
         type: "file",
         accept: "application/json,.json",
         className: "sr-only",
+        tabIndex: -1,
         onChange: (e) => {
           const f = e.target.files?.[0];
-          if (f) onImport(f);
+          if (f) void onImport(f);
           e.target.value = "";
         }
       }
     ),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { variant: "outline", size: "sm", className: "h-8", asChild: true, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "cursor-pointer", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx(Upload, { className: "size-3.5 mr-1.5" }),
-      "Import"
-    ] }) })
+    /* @__PURE__ */ jsxRuntimeExports.jsxs(
+      Button,
+      {
+        variant: "outline",
+        size: "sm",
+        className: "h-8",
+        disabled: importing,
+        onClick: () => inputRef.current?.click(),
+        children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Upload, { className: "size-3.5 mr-1.5" }),
+          importing ? "Importing…" : "Import"
+        ]
+      }
+    )
   ] });
 };
 var U = 1, Y$1 = 0.9, H = 0.8, J = 0.17, p = 0.1, u = 0.999, $ = 0.9999;
@@ -41454,7 +42129,7 @@ var N = '[cmdk-group=""]', Y = '[cmdk-group-items=""]', be = '[cmdk-group-headin
   }, []), reactExports.createElement(Primitive.div, { ref: composeRefs(d, o), ...c, "cmdk-list": "", role: "listbox", tabIndex: -1, "aria-activedescendant": p2, "aria-label": u2, id: b.listId }, B(r2, (m2) => reactExports.createElement("div", { ref: composeRefs(f, b.listInnerRef), "cmdk-list-sizer": "" }, m2)));
 }), xe = reactExports.forwardRef((r2, o) => {
   let { open: n, onOpenChange: u2, overlayClassName: c, contentClassName: d, container: f, ...p2 } = r2;
-  return reactExports.createElement(Root$5, { open: n, onOpenChange: u2 }, reactExports.createElement(Portal$3, { container: f }, reactExports.createElement(Overlay, { "cmdk-overlay": "", className: c }), reactExports.createElement(Content$1, { "aria-label": r2.label, "cmdk-dialog": "", className: d }, reactExports.createElement(me, { ref: o, ...p2 }))));
+  return reactExports.createElement(Root$6, { open: n, onOpenChange: u2 }, reactExports.createElement(Portal$4, { container: f }, reactExports.createElement(Overlay, { "cmdk-overlay": "", className: c }), reactExports.createElement(Content$1, { "aria-label": r2.label, "cmdk-dialog": "", className: d }, reactExports.createElement(me, { ref: o, ...p2 }))));
 }), Ie = reactExports.forwardRef((r2, o) => P((u2) => u2.filtered.count === 0) ? reactExports.createElement(Primitive.div, { ref: o, ...r2, "cmdk-empty": "", role: "presentation" }) : null), Pe = reactExports.forwardRef((r2, o) => {
   let { progress: n, children: u2, label: c = "Loading...", ...d } = r2;
   return reactExports.createElement(Primitive.div, { ref: o, ...d, "cmdk-loading": "", role: "progressbar", "aria-valuenow": n, "aria-valuemin": 0, "aria-valuemax": 100, "aria-label": c }, B(r2, (f) => reactExports.createElement("div", { "aria-hidden": true }, f)));
@@ -41747,6 +42422,1507 @@ function CommandPaletteDialog() {
     ] })
   ] });
 }
+var CHECKBOX_NAME = "Checkbox";
+var [createCheckboxContext] = createContextScope(CHECKBOX_NAME);
+var [CheckboxProvider, useCheckboxContext] = createCheckboxContext(CHECKBOX_NAME);
+var Checkbox$1 = reactExports.forwardRef(
+  (props, forwardedRef) => {
+    const {
+      __scopeCheckbox,
+      name,
+      checked: checkedProp,
+      defaultChecked,
+      required,
+      disabled,
+      value = "on",
+      onCheckedChange,
+      form,
+      ...checkboxProps
+    } = props;
+    const [button, setButton] = reactExports.useState(null);
+    const composedRefs = useComposedRefs(forwardedRef, (node) => setButton(node));
+    const hasConsumerStoppedPropagationRef = reactExports.useRef(false);
+    const isFormControl = button ? form || !!button.closest("form") : true;
+    const [checked = false, setChecked] = useControllableState({
+      prop: checkedProp,
+      defaultProp: defaultChecked,
+      onChange: onCheckedChange
+    });
+    const initialCheckedStateRef = reactExports.useRef(checked);
+    reactExports.useEffect(() => {
+      const form2 = button?.form;
+      if (form2) {
+        const reset = () => setChecked(initialCheckedStateRef.current);
+        form2.addEventListener("reset", reset);
+        return () => form2.removeEventListener("reset", reset);
+      }
+    }, [button, setChecked]);
+    return /* @__PURE__ */ jsxRuntimeExports.jsxs(CheckboxProvider, { scope: __scopeCheckbox, state: checked, disabled, children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx(
+        Primitive.button,
+        {
+          type: "button",
+          role: "checkbox",
+          "aria-checked": isIndeterminate(checked) ? "mixed" : checked,
+          "aria-required": required,
+          "data-state": getState$1(checked),
+          "data-disabled": disabled ? "" : void 0,
+          disabled,
+          value,
+          ...checkboxProps,
+          ref: composedRefs,
+          onKeyDown: composeEventHandlers(props.onKeyDown, (event) => {
+            if (event.key === "Enter") event.preventDefault();
+          }),
+          onClick: composeEventHandlers(props.onClick, (event) => {
+            setChecked((prevChecked) => isIndeterminate(prevChecked) ? true : !prevChecked);
+            if (isFormControl) {
+              hasConsumerStoppedPropagationRef.current = event.isPropagationStopped();
+              if (!hasConsumerStoppedPropagationRef.current) event.stopPropagation();
+            }
+          })
+        }
+      ),
+      isFormControl && /* @__PURE__ */ jsxRuntimeExports.jsx(
+        BubbleInput,
+        {
+          control: button,
+          bubbles: !hasConsumerStoppedPropagationRef.current,
+          name,
+          value,
+          checked,
+          required,
+          disabled,
+          form,
+          style: { transform: "translateX(-100%)" },
+          defaultChecked: isIndeterminate(defaultChecked) ? false : defaultChecked
+        }
+      )
+    ] });
+  }
+);
+Checkbox$1.displayName = CHECKBOX_NAME;
+var INDICATOR_NAME = "CheckboxIndicator";
+var CheckboxIndicator = reactExports.forwardRef(
+  (props, forwardedRef) => {
+    const { __scopeCheckbox, forceMount, ...indicatorProps } = props;
+    const context = useCheckboxContext(INDICATOR_NAME, __scopeCheckbox);
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(Presence, { present: forceMount || isIndeterminate(context.state) || context.state === true, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+      Primitive.span,
+      {
+        "data-state": getState$1(context.state),
+        "data-disabled": context.disabled ? "" : void 0,
+        ...indicatorProps,
+        ref: forwardedRef,
+        style: { pointerEvents: "none", ...props.style }
+      }
+    ) });
+  }
+);
+CheckboxIndicator.displayName = INDICATOR_NAME;
+var BubbleInput = (props) => {
+  const { control, checked, bubbles = true, defaultChecked, ...inputProps } = props;
+  const ref = reactExports.useRef(null);
+  const prevChecked = usePrevious(checked);
+  const controlSize = useSize(control);
+  reactExports.useEffect(() => {
+    const input = ref.current;
+    const inputProto = window.HTMLInputElement.prototype;
+    const descriptor = Object.getOwnPropertyDescriptor(inputProto, "checked");
+    const setChecked = descriptor.set;
+    if (prevChecked !== checked && setChecked) {
+      const event = new Event("click", { bubbles });
+      input.indeterminate = isIndeterminate(checked);
+      setChecked.call(input, isIndeterminate(checked) ? false : checked);
+      input.dispatchEvent(event);
+    }
+  }, [prevChecked, checked, bubbles]);
+  const defaultCheckedRef = reactExports.useRef(isIndeterminate(checked) ? false : checked);
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    "input",
+    {
+      type: "checkbox",
+      "aria-hidden": true,
+      defaultChecked: defaultChecked ?? defaultCheckedRef.current,
+      ...inputProps,
+      tabIndex: -1,
+      ref,
+      style: {
+        ...props.style,
+        ...controlSize,
+        position: "absolute",
+        pointerEvents: "none",
+        opacity: 0,
+        margin: 0
+      }
+    }
+  );
+};
+function isIndeterminate(checked) {
+  return checked === "indeterminate";
+}
+function getState$1(checked) {
+  return isIndeterminate(checked) ? "indeterminate" : checked ? "checked" : "unchecked";
+}
+var Root = Checkbox$1;
+var Indicator = CheckboxIndicator;
+function Checkbox({
+  className,
+  ...props
+}) {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    Root,
+    {
+      "data-slot": "checkbox",
+      className: cn(
+        "peer border bg-input-background dark:bg-input/30 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground dark:data-[state=checked]:bg-primary data-[state=checked]:border-primary focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive size-4 shrink-0 rounded-[4px] border shadow-xs transition-shadow outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50",
+        className
+      ),
+      ...props,
+      children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+        Indicator,
+        {
+          "data-slot": "checkbox-indicator",
+          className: "flex items-center justify-center text-current transition-none",
+          children: /* @__PURE__ */ jsxRuntimeExports.jsx(Check, { className: "size-3.5" })
+        }
+      )
+    }
+  );
+}
+function emptySelection() {
+  return { groups: /* @__PURE__ */ new Set(), tasks: /* @__PURE__ */ new Set() };
+}
+function allSelected(drafts) {
+  const groups = new Set(drafts.map((g) => g.id));
+  const tasks = new Set(drafts.flatMap((g) => g.tasks.map((t) => t.id)));
+  return { groups, tasks };
+}
+const DataImportDialog = ({ open, onOpenChange }) => {
+  const importDrafts = useStore((s) => s.importSelectedDrafts);
+  const [drafts, setDrafts] = reactExports.useState([]);
+  const [selection, setSelection] = reactExports.useState(emptySelection);
+  const [filename, setFilename] = reactExports.useState("");
+  const [importing, setImporting] = reactExports.useState(false);
+  const totalTasks = reactExports.useMemo(
+    () => drafts.reduce((n, g) => n + g.tasks.length, 0),
+    [drafts]
+  );
+  const selectedTaskCount = selection.tasks.size;
+  const reset = () => {
+    setDrafts([]);
+    setSelection(emptySelection());
+    setFilename("");
+  };
+  const handleClose = (next) => {
+    if (!next) reset();
+    onOpenChange(next);
+  };
+  const onFile = (file) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      try {
+        const text = String(reader.result ?? "");
+        const parsed = parseImportFile(text, file.name);
+        if (parsed.length === 0) {
+          toast.error("No groups or tasks found in file");
+          return;
+        }
+        setDrafts(parsed);
+        setSelection(allSelected(parsed));
+        setFilename(file.name);
+        onOpenChange(true);
+      } catch {
+        toast.error("Could not parse file — use JSON or CSV export format");
+      }
+    };
+    reader.readAsText(file);
+  };
+  const toggleGroup = (groupId, checked) => {
+    const group = drafts.find((g) => g.id === groupId);
+    if (!group) return;
+    setSelection((prev) => {
+      const groups = new Set(prev.groups);
+      const tasks = new Set(prev.tasks);
+      if (checked) {
+        groups.add(groupId);
+        for (const t of group.tasks) tasks.add(t.id);
+      } else {
+        groups.delete(groupId);
+        for (const t of group.tasks) tasks.delete(t.id);
+      }
+      return { groups, tasks };
+    });
+  };
+  const toggleTask = (groupId, taskId, checked) => {
+    const group = drafts.find((g) => g.id === groupId);
+    if (!group) return;
+    setSelection((prev) => {
+      const groups = new Set(prev.groups);
+      const tasks = new Set(prev.tasks);
+      if (checked) {
+        tasks.add(taskId);
+        if (group.tasks.every((t) => tasks.has(t.id) || t.id === taskId)) {
+          groups.add(groupId);
+        }
+      } else {
+        tasks.delete(taskId);
+        groups.delete(groupId);
+      }
+      return { groups, tasks };
+    });
+  };
+  const selectAll = (checked) => {
+    setSelection(checked ? allSelected(drafts) : emptySelection());
+  };
+  const submit = async () => {
+    const payload = drafts.filter((g) => g.tasks.some((t) => selection.tasks.has(t.id))).map((g) => ({
+      ...g,
+      tasks: g.tasks.filter((t) => selection.tasks.has(t.id))
+    }));
+    if (payload.length === 0) {
+      toast.error("Select at least one task to import");
+      return;
+    }
+    setImporting(true);
+    try {
+      const { groups: createdGroups, tasks: createdTasks } = await importDrafts(payload);
+      toast.success(
+        `Imported ${createdTasks} task${createdTasks === 1 ? "" : "s"} into ${createdGroups} group${createdGroups === 1 ? "" : "s"}`
+      );
+      handleClose(false);
+    } catch {
+      toast.error("Import failed");
+    } finally {
+      setImporting(false);
+    }
+  };
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("label", { className: "inline-flex", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx(
+        "input",
+        {
+          type: "file",
+          accept: "application/json,.json,text/csv,.csv",
+          className: "sr-only",
+          onChange: (e) => {
+            const f = e.target.files?.[0];
+            if (f) onFile(f);
+            e.target.value = "";
+          }
+        }
+      ),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { variant: "outline", size: "sm", className: "h-8", asChild: true, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "cursor-pointer", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Upload, { className: "size-3.5 mr-1.5" }),
+        "Import"
+      ] }) })
+    ] }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(Dialog, { open, onOpenChange: handleClose, children: /* @__PURE__ */ jsxRuntimeExports.jsxs(DialogContent, { className: "sm:max-w-[720px] w-[94vw] max-h-[88vh] flex flex-col gap-0 p-0", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs(DialogHeader, { className: "px-6 pt-6 pb-2", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(DialogTitle, { children: "Import data" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(DialogDescription, { children: filename ? `Previewing ${filename} — select groups and tasks to add to your workspace.` : "Choose a JSON or CSV file exported from TaskOverflow." })
+      ] }),
+      drafts.length > 0 && /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "px-6 py-2 flex items-center justify-between text-xs text-muted-foreground border-y border-border/60 bg-muted/20", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
+            drafts.length,
+            " group",
+            drafts.length === 1 ? "" : "s",
+            " · ",
+            totalTasks,
+            " task",
+            totalTasks === 1 ? "" : "s"
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("label", { className: "flex items-center gap-2 cursor-pointer", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(
+              Checkbox,
+              {
+                checked: selectedTaskCount === totalTasks && totalTasks > 0,
+                onCheckedChange: (v) => selectAll(v === true)
+              }
+            ),
+            "Select all"
+          ] })
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex-1 overflow-y-auto themed-scrollbar px-6 py-4 space-y-4 min-h-0 max-h-[50vh]", children: drafts.map((group) => {
+          const groupChecked = group.tasks.length > 0 && group.tasks.every((t) => selection.tasks.has(t.id));
+          const partial = !groupChecked && group.tasks.some((t) => selection.tasks.has(t.id));
+          return /* @__PURE__ */ jsxRuntimeExports.jsxs(
+            "div",
+            {
+              className: "rounded-lg border border-border/60 bg-card/40 overflow-hidden",
+              children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-3 px-3 py-2.5 bg-muted/30 border-b border-border/40", children: [
+                  /* @__PURE__ */ jsxRuntimeExports.jsx(
+                    Checkbox,
+                    {
+                      checked: partial ? "indeterminate" : groupChecked,
+                      onCheckedChange: (v) => toggleGroup(group.id, v === true)
+                    }
+                  ),
+                  /* @__PURE__ */ jsxRuntimeExports.jsx(
+                    "span",
+                    {
+                      className: cn(
+                        "size-2 rounded-full shrink-0",
+                        ACCENT_PALETTE[group.accent].fill
+                      )
+                    }
+                  ),
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-sm font-medium flex-1 truncate", children: group.name }),
+                  /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "text-xs text-muted-foreground tabular-nums", children: [
+                    group.tasks.length,
+                    " task",
+                    group.tasks.length === 1 ? "" : "s"
+                  ] })
+                ] }),
+                group.tasks.length === 0 ? /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "px-3 py-2 text-xs text-muted-foreground", children: "No tasks in this group" }) : /* @__PURE__ */ jsxRuntimeExports.jsx("ul", { className: "divide-y divide-border/40", children: group.tasks.map((task) => /* @__PURE__ */ jsxRuntimeExports.jsxs("li", { className: "flex items-start gap-3 px-3 py-2", children: [
+                  /* @__PURE__ */ jsxRuntimeExports.jsx(
+                    Checkbox,
+                    {
+                      className: "mt-0.5",
+                      checked: selection.tasks.has(task.id),
+                      onCheckedChange: (v) => toggleTask(group.id, task.id, v === true)
+                    }
+                  ),
+                  /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "min-w-0 flex-1", children: [
+                    /* @__PURE__ */ jsxRuntimeExports.jsx(
+                      "p",
+                      {
+                        className: cn(
+                          "text-sm truncate",
+                          task.status === "done" && "line-through text-muted-foreground"
+                        ),
+                        children: task.title
+                      }
+                    ),
+                    /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-[11px] text-muted-foreground mt-0.5 flex flex-wrap gap-x-2", children: [
+                      /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "capitalize", children: task.status === "done" ? "Done" : "To-Do" }),
+                      task.dueDate && /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { children: [
+                        "Due ",
+                        dateKeyFromIso(task.dueDate)
+                      ] }),
+                      task.tags.length > 0 && /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: task.tags.join(", ") })
+                    ] })
+                  ] })
+                ] }, task.id)) })
+              ]
+            },
+            group.id
+          );
+        }) }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs(DialogFooter, { className: "px-6 py-4 border-t border-border/60", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { variant: "outline", onClick: () => handleClose(false), disabled: importing, children: "Cancel" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { onClick: () => void submit(), disabled: importing || selectedTaskCount === 0, children: importing ? "Importing…" : `Import ${selectedTaskCount} task${selectedTaskCount === 1 ? "" : "s"}` })
+        ] })
+      ] })
+    ] }) })
+  ] });
+};
+const DataExportImportActions = () => {
+  const exportAllData = useStore((s) => s.exportAllData);
+  const [importOpen, setImportOpen] = reactExports.useState(false);
+  const handleExport = (format2) => {
+    exportAllData(format2);
+    toast.success(`Exported all data as ${format2.toUpperCase()}`);
+  };
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs(DropdownMenu, { children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx(DropdownMenuTrigger, { asChild: true, children: /* @__PURE__ */ jsxRuntimeExports.jsxs(Button, { variant: "outline", size: "sm", className: "h-8", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Download, { className: "mr-1.5 size-3.5" }),
+        "Export",
+        /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronDown, { className: "ml-1 size-3.5 opacity-60" })
+      ] }) }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs(DropdownMenuContent, { align: "end", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(DropdownMenuItem, { onClick: () => handleExport("json"), children: "Export as JSON" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(DropdownMenuItem, { onClick: () => handleExport("csv"), children: "Export as CSV" })
+      ] })
+    ] }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(DataImportDialog, { open: importOpen, onOpenChange: setImportOpen })
+  ] });
+};
+const CalendarDayDialog = ({ dateKey, tasks, groupById, onClose }) => {
+  const selectCalendarTask = useStore((s) => s.selectCalendarTask);
+  const openCalendarTaskDialog = useStore((s) => s.openCalendarTaskDialog);
+  const toggleTaskDone = useStore((s) => s.toggleTaskDone);
+  const selectedTaskId = useStore((s) => s.selectedTaskId);
+  const open = dateKey !== null;
+  const label = dateKey ? format(dateFromDateKey(dateKey), "EEEE, MMMM d, yyyy") : "";
+  const doneCount = tasks.filter((t) => t.status === "done").length;
+  const handleAddTask = () => {
+    if (!dateKey) return;
+    onClose();
+    openCalendarTaskDialog(dateKey);
+  };
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(Dialog, { open, onOpenChange: (o) => !o && onClose(), children: /* @__PURE__ */ jsxRuntimeExports.jsxs(DialogContent, { className: "sm:max-w-[720px] w-[94vw] max-h-[88vh] flex flex-col gap-5 p-8", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs(DialogHeader, { className: "shrink-0", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx(DialogTitle, { children: label }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(DialogDescription, { children: tasks.length === 0 ? "No tasks due on this date." : `${tasks.length} task${tasks.length === 1 ? "" : "s"} due · ${doneCount} complete` })
+    ] }),
+    tasks.length > 0 ? /* @__PURE__ */ jsxRuntimeExports.jsx("ul", { className: "flex-1 min-h-0 max-h-[min(58vh,560px)] overflow-y-auto themed-scrollbar rounded-xl border border-border/60 divide-y divide-border/40", children: tasks.map((task) => {
+      const group = groupById.get(task.groupId);
+      const accent = ACCENT_PALETTE[group?.accent ?? "blue"] ?? ACCENT_PALETTE.blue;
+      const done = task.status === "done";
+      return /* @__PURE__ */ jsxRuntimeExports.jsxs(
+        "li",
+        {
+          className: cn(
+            "flex items-start gap-3 px-4 py-3 transition-colors hover:bg-accent/50",
+            selectedTaskId === task.id && "bg-accent/40"
+          ),
+          children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "pt-0.5 shrink-0", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+              TaskCheckbox,
+              {
+                checked: done,
+                onToggle: () => toggleTaskDone(task.id),
+                accent: group?.accent ?? "blue",
+                size: "sm"
+              }
+            ) }),
+            /* @__PURE__ */ jsxRuntimeExports.jsxs(
+              "button",
+              {
+                type: "button",
+                onClick: () => {
+                  selectCalendarTask(task.id);
+                  onClose();
+                },
+                className: "min-w-0 flex-1 text-left rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+                children: [
+                  /* @__PURE__ */ jsxRuntimeExports.jsx(
+                    "p",
+                    {
+                      className: cn(
+                        "text-sm font-medium truncate",
+                        done && "line-through text-muted-foreground"
+                      ),
+                      children: task.title
+                    }
+                  ),
+                  /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-xs text-muted-foreground mt-0.5 flex items-center gap-1.5", children: [
+                    /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: cn("size-1.5 rounded-full shrink-0", accent.fill) }),
+                    group?.name ?? "Unknown group",
+                    " · ",
+                    done ? "Done" : "To-Do"
+                  ] }),
+                  task.notes && /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-xs text-muted-foreground/80 mt-1 line-clamp-2", children: task.notes })
+                ]
+              }
+            )
+          ]
+        },
+        task.id
+      );
+    }) }) : /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "rounded-xl border border-dashed border-border/60 py-12 text-center text-sm text-muted-foreground", children: "Nothing scheduled yet." }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs(Button, { type: "button", className: "w-full shrink-0", onClick: handleAddTask, children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx(Plus, { className: "size-4 mr-2" }),
+      "Add task"
+    ] })
+  ] }) });
+};
+var POPOVER_NAME = "Popover";
+var [createPopoverContext] = createContextScope(POPOVER_NAME, [
+  createPopperScope
+]);
+var usePopperScope = createPopperScope();
+var [PopoverProvider, usePopoverContext] = createPopoverContext(POPOVER_NAME);
+var Popover$1 = (props) => {
+  const {
+    __scopePopover,
+    children,
+    open: openProp,
+    defaultOpen,
+    onOpenChange,
+    modal = false
+  } = props;
+  const popperScope = usePopperScope(__scopePopover);
+  const triggerRef = reactExports.useRef(null);
+  const [hasCustomAnchor, setHasCustomAnchor] = reactExports.useState(false);
+  const [open = false, setOpen] = useControllableState({
+    prop: openProp,
+    defaultProp: defaultOpen,
+    onChange: onOpenChange
+  });
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(Root2$4, { ...popperScope, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+    PopoverProvider,
+    {
+      scope: __scopePopover,
+      contentId: useId(),
+      triggerRef,
+      open,
+      onOpenChange: setOpen,
+      onOpenToggle: reactExports.useCallback(() => setOpen((prevOpen) => !prevOpen), [setOpen]),
+      hasCustomAnchor,
+      onCustomAnchorAdd: reactExports.useCallback(() => setHasCustomAnchor(true), []),
+      onCustomAnchorRemove: reactExports.useCallback(() => setHasCustomAnchor(false), []),
+      modal,
+      children
+    }
+  ) });
+};
+Popover$1.displayName = POPOVER_NAME;
+var ANCHOR_NAME = "PopoverAnchor";
+var PopoverAnchor = reactExports.forwardRef(
+  (props, forwardedRef) => {
+    const { __scopePopover, ...anchorProps } = props;
+    const context = usePopoverContext(ANCHOR_NAME, __scopePopover);
+    const popperScope = usePopperScope(__scopePopover);
+    const { onCustomAnchorAdd, onCustomAnchorRemove } = context;
+    reactExports.useEffect(() => {
+      onCustomAnchorAdd();
+      return () => onCustomAnchorRemove();
+    }, [onCustomAnchorAdd, onCustomAnchorRemove]);
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(Anchor, { ...popperScope, ...anchorProps, ref: forwardedRef });
+  }
+);
+PopoverAnchor.displayName = ANCHOR_NAME;
+var TRIGGER_NAME = "PopoverTrigger";
+var PopoverTrigger$1 = reactExports.forwardRef(
+  (props, forwardedRef) => {
+    const { __scopePopover, ...triggerProps } = props;
+    const context = usePopoverContext(TRIGGER_NAME, __scopePopover);
+    const popperScope = usePopperScope(__scopePopover);
+    const composedTriggerRef = useComposedRefs(forwardedRef, context.triggerRef);
+    const trigger = /* @__PURE__ */ jsxRuntimeExports.jsx(
+      Primitive.button,
+      {
+        type: "button",
+        "aria-haspopup": "dialog",
+        "aria-expanded": context.open,
+        "aria-controls": context.contentId,
+        "data-state": getState(context.open),
+        ...triggerProps,
+        ref: composedTriggerRef,
+        onClick: composeEventHandlers(props.onClick, context.onOpenToggle)
+      }
+    );
+    return context.hasCustomAnchor ? trigger : /* @__PURE__ */ jsxRuntimeExports.jsx(Anchor, { asChild: true, ...popperScope, children: trigger });
+  }
+);
+PopoverTrigger$1.displayName = TRIGGER_NAME;
+var PORTAL_NAME = "PopoverPortal";
+var [PortalProvider, usePortalContext] = createPopoverContext(PORTAL_NAME, {
+  forceMount: void 0
+});
+var PopoverPortal = (props) => {
+  const { __scopePopover, forceMount, children, container } = props;
+  const context = usePopoverContext(PORTAL_NAME, __scopePopover);
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(PortalProvider, { scope: __scopePopover, forceMount, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Presence, { present: forceMount || context.open, children: /* @__PURE__ */ jsxRuntimeExports.jsx(Portal$5, { asChild: true, container, children }) }) });
+};
+PopoverPortal.displayName = PORTAL_NAME;
+var CONTENT_NAME = "PopoverContent";
+var PopoverContent$1 = reactExports.forwardRef(
+  (props, forwardedRef) => {
+    const portalContext = usePortalContext(CONTENT_NAME, props.__scopePopover);
+    const { forceMount = portalContext.forceMount, ...contentProps } = props;
+    const context = usePopoverContext(CONTENT_NAME, props.__scopePopover);
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(Presence, { present: forceMount || context.open, children: context.modal ? /* @__PURE__ */ jsxRuntimeExports.jsx(PopoverContentModal, { ...contentProps, ref: forwardedRef }) : /* @__PURE__ */ jsxRuntimeExports.jsx(PopoverContentNonModal, { ...contentProps, ref: forwardedRef }) });
+  }
+);
+PopoverContent$1.displayName = CONTENT_NAME;
+var PopoverContentModal = reactExports.forwardRef(
+  (props, forwardedRef) => {
+    const context = usePopoverContext(CONTENT_NAME, props.__scopePopover);
+    const contentRef = reactExports.useRef(null);
+    const composedRefs = useComposedRefs(forwardedRef, contentRef);
+    const isRightClickOutsideRef = reactExports.useRef(false);
+    reactExports.useEffect(() => {
+      const content = contentRef.current;
+      if (content) return hideOthers(content);
+    }, []);
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(ReactRemoveScroll, { as: Slot, allowPinchZoom: true, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+      PopoverContentImpl,
+      {
+        ...props,
+        ref: composedRefs,
+        trapFocus: context.open,
+        disableOutsidePointerEvents: true,
+        onCloseAutoFocus: composeEventHandlers(props.onCloseAutoFocus, (event) => {
+          event.preventDefault();
+          if (!isRightClickOutsideRef.current) context.triggerRef.current?.focus();
+        }),
+        onPointerDownOutside: composeEventHandlers(
+          props.onPointerDownOutside,
+          (event) => {
+            const originalEvent = event.detail.originalEvent;
+            const ctrlLeftClick = originalEvent.button === 0 && originalEvent.ctrlKey === true;
+            const isRightClick = originalEvent.button === 2 || ctrlLeftClick;
+            isRightClickOutsideRef.current = isRightClick;
+          },
+          { checkForDefaultPrevented: false }
+        ),
+        onFocusOutside: composeEventHandlers(
+          props.onFocusOutside,
+          (event) => event.preventDefault(),
+          { checkForDefaultPrevented: false }
+        )
+      }
+    ) });
+  }
+);
+var PopoverContentNonModal = reactExports.forwardRef(
+  (props, forwardedRef) => {
+    const context = usePopoverContext(CONTENT_NAME, props.__scopePopover);
+    const hasInteractedOutsideRef = reactExports.useRef(false);
+    const hasPointerDownOutsideRef = reactExports.useRef(false);
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(
+      PopoverContentImpl,
+      {
+        ...props,
+        ref: forwardedRef,
+        trapFocus: false,
+        disableOutsidePointerEvents: false,
+        onCloseAutoFocus: (event) => {
+          props.onCloseAutoFocus?.(event);
+          if (!event.defaultPrevented) {
+            if (!hasInteractedOutsideRef.current) context.triggerRef.current?.focus();
+            event.preventDefault();
+          }
+          hasInteractedOutsideRef.current = false;
+          hasPointerDownOutsideRef.current = false;
+        },
+        onInteractOutside: (event) => {
+          props.onInteractOutside?.(event);
+          if (!event.defaultPrevented) {
+            hasInteractedOutsideRef.current = true;
+            if (event.detail.originalEvent.type === "pointerdown") {
+              hasPointerDownOutsideRef.current = true;
+            }
+          }
+          const target = event.target;
+          const targetIsTrigger = context.triggerRef.current?.contains(target);
+          if (targetIsTrigger) event.preventDefault();
+          if (event.detail.originalEvent.type === "focusin" && hasPointerDownOutsideRef.current) {
+            event.preventDefault();
+          }
+        }
+      }
+    );
+  }
+);
+var PopoverContentImpl = reactExports.forwardRef(
+  (props, forwardedRef) => {
+    const {
+      __scopePopover,
+      trapFocus,
+      onOpenAutoFocus,
+      onCloseAutoFocus,
+      disableOutsidePointerEvents,
+      onEscapeKeyDown,
+      onPointerDownOutside,
+      onFocusOutside,
+      onInteractOutside,
+      ...contentProps
+    } = props;
+    const context = usePopoverContext(CONTENT_NAME, __scopePopover);
+    const popperScope = usePopperScope(__scopePopover);
+    useFocusGuards();
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(
+      FocusScope,
+      {
+        asChild: true,
+        loop: true,
+        trapped: trapFocus,
+        onMountAutoFocus: onOpenAutoFocus,
+        onUnmountAutoFocus: onCloseAutoFocus,
+        children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+          DismissableLayer,
+          {
+            asChild: true,
+            disableOutsidePointerEvents,
+            onInteractOutside,
+            onEscapeKeyDown,
+            onPointerDownOutside,
+            onFocusOutside,
+            onDismiss: () => context.onOpenChange(false),
+            children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+              Content,
+              {
+                "data-state": getState(context.open),
+                role: "dialog",
+                id: context.contentId,
+                ...popperScope,
+                ...contentProps,
+                ref: forwardedRef,
+                style: {
+                  ...contentProps.style,
+                  // re-namespace exposed content custom properties
+                  ...{
+                    "--radix-popover-content-transform-origin": "var(--radix-popper-transform-origin)",
+                    "--radix-popover-content-available-width": "var(--radix-popper-available-width)",
+                    "--radix-popover-content-available-height": "var(--radix-popper-available-height)",
+                    "--radix-popover-trigger-width": "var(--radix-popper-anchor-width)",
+                    "--radix-popover-trigger-height": "var(--radix-popper-anchor-height)"
+                  }
+                }
+              }
+            )
+          }
+        )
+      }
+    );
+  }
+);
+var CLOSE_NAME = "PopoverClose";
+var PopoverClose = reactExports.forwardRef(
+  (props, forwardedRef) => {
+    const { __scopePopover, ...closeProps } = props;
+    const context = usePopoverContext(CLOSE_NAME, __scopePopover);
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(
+      Primitive.button,
+      {
+        type: "button",
+        ...closeProps,
+        ref: forwardedRef,
+        onClick: composeEventHandlers(props.onClick, () => context.onOpenChange(false))
+      }
+    );
+  }
+);
+PopoverClose.displayName = CLOSE_NAME;
+var ARROW_NAME = "PopoverArrow";
+var PopoverArrow = reactExports.forwardRef(
+  (props, forwardedRef) => {
+    const { __scopePopover, ...arrowProps } = props;
+    const popperScope = usePopperScope(__scopePopover);
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(Arrow, { ...popperScope, ...arrowProps, ref: forwardedRef });
+  }
+);
+PopoverArrow.displayName = ARROW_NAME;
+function getState(open) {
+  return open ? "open" : "closed";
+}
+var Root2 = Popover$1;
+var Trigger = PopoverTrigger$1;
+var Portal = PopoverPortal;
+var Content2 = PopoverContent$1;
+function Popover({
+  ...props
+}) {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(Root2, { "data-slot": "popover", ...props });
+}
+function PopoverTrigger({
+  ...props
+}) {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(Trigger, { "data-slot": "popover-trigger", ...props });
+}
+function PopoverContent({
+  className,
+  align = "center",
+  sideOffset = 4,
+  ...props
+}) {
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(Portal, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+    Content2,
+    {
+      "data-slot": "popover-content",
+      align,
+      sideOffset,
+      className: cn(
+        "bg-popover text-popover-foreground data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 w-72 origin-(--radix-popover-content-transform-origin) rounded-md border p-4 shadow-md outline-hidden",
+        className
+      ),
+      ...props
+    }
+  ) });
+}
+const MONTH_LABELS = Array.from({ length: 12 }, (_, i) => format(new Date(2e3, i, 1), "MMM"));
+const YEAR_PAGE = 12;
+const yearPageStart = (year) => Math.floor(year / YEAR_PAGE) * YEAR_PAGE;
+const MonthYearPicker = ({ value, onChange, onOpenChange }) => {
+  const [open, setOpen] = reactExports.useState(false);
+  const [pane, setPane] = reactExports.useState("month");
+  const [year, setYear] = reactExports.useState(() => getYear(value));
+  const [pageStart, setPageStart] = reactExports.useState(() => yearPageStart(getYear(value)));
+  const today = /* @__PURE__ */ new Date();
+  const selectedYear = getYear(value);
+  const selectedMonth = getMonth(value);
+  reactExports.useEffect(() => {
+    if (!open) return;
+    setPane("month");
+    setYear(selectedYear);
+    setPageStart(yearPageStart(selectedYear));
+  }, [open, selectedYear]);
+  const setOpenState = (next) => {
+    setOpen(next);
+    onOpenChange?.(next);
+  };
+  const step = (direction) => {
+    if (pane === "month") setYear((y) => y + direction);
+    else setPageStart((s) => s + direction * YEAR_PAGE);
+  };
+  const pickMonth = (monthIndex) => {
+    onChange(startOfMonth(new Date(year, monthIndex, 1)));
+    setOpenState(false);
+  };
+  const cellClass = (selected, isCurrent) => cn(
+    "h-9 rounded-md text-sm tabular-nums transition-colors",
+    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+    selected ? "bg-primary text-primary-foreground font-medium" : "hover:bg-accent hover:text-accent-foreground",
+    !selected && isCurrent && "ring-1 ring-primary/40 font-medium"
+  );
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs(Popover, { open, onOpenChange: setOpenState, children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx(PopoverTrigger, { asChild: true, children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
+      Button,
+      {
+        variant: "ghost",
+        size: "sm",
+        className: "min-w-[160px] justify-center gap-2 px-2 font-medium",
+        "aria-label": `${format(value, "MMMM yyyy")} — choose a different month`,
+        children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(CalendarDays, { className: "size-4 text-muted-foreground" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "tabular-nums", "aria-live": "polite", children: format(value, "MMMM yyyy") }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronDown, { className: "size-3.5 text-muted-foreground" })
+        ]
+      }
+    ) }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs(PopoverContent, { align: "center", className: "w-64 p-3", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between gap-2 mb-3", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          Button,
+          {
+            variant: "ghost",
+            size: "icon",
+            className: "size-7",
+            onClick: () => step(-1),
+            "aria-label": pane === "month" ? "Previous year" : "Earlier years",
+            children: /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronLeft, { className: "size-4" })
+          }
+        ),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          "button",
+          {
+            type: "button",
+            onClick: () => setPane((p2) => p2 === "month" ? "year" : "month"),
+            className: cn(
+              "flex-1 rounded-md px-2 py-1 text-sm font-medium tabular-nums transition-colors",
+              "hover:bg-accent hover:text-accent-foreground",
+              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            ),
+            "aria-label": pane === "month" ? "Choose a year" : "Back to months",
+            children: pane === "month" ? year : `${pageStart} – ${pageStart + YEAR_PAGE - 1}`
+          }
+        ),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          Button,
+          {
+            variant: "ghost",
+            size: "icon",
+            className: "size-7",
+            onClick: () => step(1),
+            "aria-label": pane === "month" ? "Next year" : "Later years",
+            children: /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronRight, { className: "size-4" })
+          }
+        )
+      ] }),
+      pane === "month" ? /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grid grid-cols-3 gap-1", children: MONTH_LABELS.map((label, index2) => /* @__PURE__ */ jsxRuntimeExports.jsx(
+        "button",
+        {
+          type: "button",
+          onClick: () => pickMonth(index2),
+          "aria-current": year === selectedYear && index2 === selectedMonth ? "true" : void 0,
+          className: cellClass(
+            year === selectedYear && index2 === selectedMonth,
+            year === getYear(today) && index2 === getMonth(today)
+          ),
+          children: label
+        },
+        label
+      )) }) : /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grid grid-cols-3 gap-1", children: Array.from({ length: YEAR_PAGE }, (_, i) => pageStart + i).map((y) => /* @__PURE__ */ jsxRuntimeExports.jsx(
+        "button",
+        {
+          type: "button",
+          onClick: () => {
+            setYear(y);
+            setPane("month");
+          },
+          className: cellClass(y === year, y === getYear(today)),
+          children: y
+        },
+        y
+      )) }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(
+        Button,
+        {
+          variant: "outline",
+          size: "sm",
+          className: "w-full mt-3",
+          onClick: () => {
+            onChange(startOfMonth(/* @__PURE__ */ new Date()));
+            setOpenState(false);
+          },
+          children: "Jump to today"
+        }
+      )
+    ] })
+  ] });
+};
+const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+const MIN_ROW_HEIGHT = 96;
+const CELL_PADDING = 12;
+const DAY_NUMBER_ROW = 28;
+const PILL_HEIGHT = 20;
+const MORE_ROW_HEIGHT = 14;
+const MIN_VISIBLE_TASKS = 1;
+function groupTasksByDate(tasks) {
+  const map = /* @__PURE__ */ new Map();
+  for (const task of tasks) {
+    const key = dateKeyFromIso(task.dueDate);
+    if (!key) continue;
+    const list = map.get(key) ?? [];
+    list.push(task);
+    map.set(key, list);
+  }
+  for (const [, list] of map) {
+    list.sort((a, b) => {
+      const aDone = a.status === "done" ? 1 : 0;
+      const bDone = b.status === "done" ? 1 : 0;
+      if (aDone !== bDone) return aDone - bDone;
+      return a.title.localeCompare(b.title);
+    });
+  }
+  return map;
+}
+const isTypingTarget$1 = (el) => {
+  if (!(el instanceof HTMLElement)) return false;
+  if (el.isContentEditable) return true;
+  return el.tagName === "INPUT" || el.tagName === "TEXTAREA" || el.tagName === "SELECT";
+};
+const DayTaskPill = ({ task, group, selected, onSelect }) => {
+  const accent = ACCENT_PALETTE[group?.accent ?? "blue"] ?? ACCENT_PALETTE.blue;
+  const done = task.status === "done";
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs(
+    "button",
+    {
+      type: "button",
+      onClick: (e) => {
+        e.stopPropagation();
+        onSelect(task.id);
+      },
+      className: cn(
+        "w-full shrink-0 text-left rounded px-1.5 py-0.5 text-[11px] leading-tight truncate transition-colors",
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+        accent.soft,
+        selected && "ring-1 ring-foreground/40",
+        done ? "text-muted-foreground line-through opacity-70" : "text-foreground"
+      ),
+      title: group ? `${group.name}: ${task.title}` : task.title,
+      children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: cn("inline-block size-1.5 rounded-full mr-1 align-middle", accent.fill) }),
+        task.title
+      ]
+    }
+  );
+};
+const CalendarView = () => {
+  const tasks = useStore((s) => s.tasks);
+  const groups = useStore((s) => s.groups);
+  const selectedTaskId = useStore((s) => s.selectedTaskId);
+  const selectCalendarTask = useStore((s) => s.selectCalendarTask);
+  const openCalendarTaskDialog = useStore((s) => s.openCalendarTaskDialog);
+  const taskDialogOpen = useStore((s) => s.calendarTaskDialog.open);
+  const [month, setMonth] = reactExports.useState(() => startOfMonth(/* @__PURE__ */ new Date()));
+  const [dayModalDate, setDayModalDate] = reactExports.useState(null);
+  const [pickerOpen, setPickerOpen] = reactExports.useState(false);
+  const gridRef = reactExports.useRef(null);
+  const [rowHeight, setRowHeight] = reactExports.useState(MIN_ROW_HEIGHT);
+  const groupById = reactExports.useMemo(() => new Map(groups.map((g) => [g.id, g])), [groups]);
+  const tasksByDate = reactExports.useMemo(() => groupTasksByDate(tasks), [tasks]);
+  const dayModalTasks = reactExports.useMemo(() => {
+    if (!dayModalDate) return [];
+    return tasksByDate.get(dayModalDate) ?? [];
+  }, [dayModalDate, tasksByDate]);
+  const calendarDays = reactExports.useMemo(() => {
+    const start = startOfWeek(startOfMonth(month), { weekStartsOn: 0 });
+    const end = endOfWeek(endOfMonth(month), { weekStartsOn: 0 });
+    return eachDayOfInterval({ start, end });
+  }, [month]);
+  const weekCount = Math.ceil(calendarDays.length / 7);
+  const monthTaskCount = reactExports.useMemo(
+    () => calendarDays.reduce(
+      (sum, day) => sum + (isSameMonth(day, month) ? tasksByDate.get(dateKeyFromDate(day))?.length ?? 0 : 0),
+      0
+    ),
+    [calendarDays, month, tasksByDate]
+  );
+  reactExports.useEffect(() => {
+    const el = gridRef.current;
+    if (!el) return;
+    const measure = () => setRowHeight(el.clientHeight / weekCount);
+    measure();
+    const observer2 = new ResizeObserver(measure);
+    observer2.observe(el);
+    return () => observer2.disconnect();
+  }, [weekCount]);
+  const pillSpace = rowHeight - CELL_PADDING - DAY_NUMBER_ROW;
+  const capacity = Math.max(MIN_VISIBLE_TASKS, Math.floor(pillSpace / PILL_HEIGHT));
+  const capacityWithMore = Math.max(
+    MIN_VISIBLE_TASKS,
+    Math.floor((pillSpace - MORE_ROW_HEIGHT) / PILL_HEIGHT)
+  );
+  const addTaskOnDay = reactExports.useCallback(
+    (key) => openCalendarTaskDialog(key),
+    [openCalendarTaskDialog]
+  );
+  reactExports.useEffect(() => {
+    if (dayModalDate !== null || taskDialogOpen || pickerOpen) return;
+    const handler = (e) => {
+      if (e.metaKey || e.ctrlKey || e.altKey || isTypingTarget$1(e.target)) return;
+      if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        setMonth((m2) => subMonths(m2));
+      } else if (e.key === "ArrowRight") {
+        e.preventDefault();
+        setMonth((m2) => addMonths(m2, 1));
+      } else if (e.key.toLowerCase() === "t") {
+        e.preventDefault();
+        setMonth(startOfMonth(/* @__PURE__ */ new Date()));
+      }
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [dayModalDate, taskDialogOpen, pickerOpen]);
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex-1 flex flex-col overflow-hidden", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "px-8 pt-6 pb-4 shrink-0", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "grid grid-cols-[1fr_auto_1fr] items-center gap-4", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "min-w-0", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("h1", { className: "text-3xl font-bold tracking-tight", children: "Calendar" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-muted-foreground mt-1 truncate", children: monthTaskCount === 0 ? "Nothing scheduled this month." : `${monthTaskCount} task${monthTaskCount === 1 ? "" : "s"} scheduled this month.` })
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-center gap-2", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          Button,
+          {
+            variant: "outline",
+            size: "icon",
+            className: "size-8",
+            onClick: () => setMonth((m2) => subMonths(m2)),
+            "aria-label": "Previous month",
+            children: /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronLeft, { className: "size-4" })
+          }
+        ),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          MonthYearPicker,
+          {
+            value: month,
+            onChange: setMonth,
+            onOpenChange: setPickerOpen
+          }
+        ),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          Button,
+          {
+            variant: "outline",
+            size: "icon",
+            className: "size-8",
+            onClick: () => setMonth((m2) => addMonths(m2, 1)),
+            "aria-label": "Next month",
+            children: /* @__PURE__ */ jsxRuntimeExports.jsx(ChevronRight, { className: "size-4" })
+          }
+        ),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          Button,
+          {
+            variant: "outline",
+            size: "sm",
+            onClick: () => setMonth(startOfMonth(/* @__PURE__ */ new Date())),
+            children: "Today"
+          }
+        )
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex justify-end items-center gap-2", children: /* @__PURE__ */ jsxRuntimeExports.jsx(DataExportImportActions, {}) })
+    ] }) }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex-1 min-h-0 overflow-y-auto themed-scrollbar px-8 pb-8", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
+      "div",
+      {
+        className: "h-full flex flex-col rounded-xl border border-border/60 bg-card/30 overflow-hidden",
+        style: { minHeight: MIN_ROW_HEIGHT * weekCount + 36 },
+        children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grid grid-cols-7 border-b border-border/60 bg-muted/30 shrink-0", children: WEEKDAYS.map((day) => /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "div",
+            {
+              className: "py-2 text-center text-xs font-medium text-muted-foreground",
+              children: day
+            },
+            day
+          )) }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "div",
+            {
+              ref: gridRef,
+              role: "grid",
+              "aria-label": `${format(month, "MMMM yyyy")} calendar`,
+              className: "flex-1 min-h-0 grid grid-cols-7",
+              style: { gridTemplateRows: `repeat(${weekCount}, minmax(0, 1fr))` },
+              children: calendarDays.map((day, index2) => {
+                const key = dateKeyFromDate(day);
+                const dayTasks = tasksByDate.get(key) ?? [];
+                const inMonth = isSameMonth(day, month);
+                const today = isToday(day);
+                const weekend = index2 % 7 === 0 || index2 % 7 === 6;
+                const lastColumn = index2 % 7 === 6;
+                const lastRow = index2 >= calendarDays.length - 7;
+                const visibleCount = dayTasks.length > capacity ? Math.min(capacityWithMore, dayTasks.length - 1) : dayTasks.length;
+                const hiddenCount = dayTasks.length - visibleCount;
+                const openDay = () => setDayModalDate(key);
+                return /* @__PURE__ */ jsxRuntimeExports.jsxs(
+                  "div",
+                  {
+                    role: "gridcell",
+                    tabIndex: 0,
+                    "aria-label": `${format(day, "EEEE, MMMM d, yyyy")}, ${dayTasks.length} task${dayTasks.length === 1 ? "" : "s"}`,
+                    onClick: openDay,
+                    onKeyDown: (e) => {
+                      if (e.target !== e.currentTarget) return;
+                      if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        openDay();
+                      }
+                    },
+                    className: cn(
+                      "group/day relative min-h-0 p-1.5 border-b border-r border-border/40 text-left cursor-pointer transition-colors",
+                      "flex flex-col items-stretch overflow-hidden",
+                      "hover:bg-accent/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-inset",
+                      lastColumn && "border-r-0",
+                      lastRow && "border-b-0",
+                      weekend && "bg-muted/15",
+                      !inMonth && "bg-muted/25 text-muted-foreground/60",
+                      inMonth && !weekend && "bg-card/30",
+                      today && (inMonth ? "bg-primary/5" : "bg-primary/[0.03]")
+                    ),
+                    children: [
+                      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between shrink-0 mb-1", children: [
+                        /* @__PURE__ */ jsxRuntimeExports.jsx(
+                          "span",
+                          {
+                            className: cn(
+                              "text-xs font-medium tabular-nums size-6 inline-flex items-center justify-center rounded-full",
+                              today && inMonth && "bg-primary text-primary-foreground",
+                              today && !inMonth && "ring-1 ring-primary/40 text-foreground"
+                            ),
+                            children: format(day, "d")
+                          }
+                        ),
+                        /* @__PURE__ */ jsxRuntimeExports.jsx(
+                          "button",
+                          {
+                            type: "button",
+                            onClick: (e) => {
+                              e.stopPropagation();
+                              addTaskOnDay(key);
+                            },
+                            "aria-label": `Add task on ${format(day, "MMMM d, yyyy")}`,
+                            className: cn(
+                              "size-5 rounded inline-flex items-center justify-center text-muted-foreground",
+                              "opacity-0 group-hover/day:opacity-100 focus-visible:opacity-100",
+                              "hover:bg-accent hover:text-foreground transition-opacity",
+                              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                            ),
+                            children: /* @__PURE__ */ jsxRuntimeExports.jsx(Plus, { className: "size-3.5" })
+                          }
+                        )
+                      ] }),
+                      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col gap-0.5 w-full min-h-0 flex-1 overflow-hidden", children: [
+                        dayTasks.slice(0, visibleCount).map((task) => /* @__PURE__ */ jsxRuntimeExports.jsx(
+                          DayTaskPill,
+                          {
+                            task,
+                            group: groupById.get(task.groupId),
+                            selected: selectedTaskId === task.id,
+                            onSelect: selectCalendarTask
+                          },
+                          task.id
+                        )),
+                        hiddenCount > 0 && /* @__PURE__ */ jsxRuntimeExports.jsxs(
+                          "button",
+                          {
+                            type: "button",
+                            onClick: (e) => {
+                              e.stopPropagation();
+                              openDay();
+                            },
+                            className: cn(
+                              "shrink-0 text-[10px] text-muted-foreground px-1 text-left rounded",
+                              "hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                            ),
+                            children: [
+                              "+",
+                              hiddenCount,
+                              " more"
+                            ]
+                          }
+                        )
+                      ] })
+                    ]
+                  },
+                  key
+                );
+              })
+            }
+          )
+        ]
+      }
+    ) }),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(
+      CalendarDayDialog,
+      {
+        dateKey: dayModalDate,
+        tasks: dayModalTasks,
+        groupById,
+        onClose: () => setDayModalDate(null)
+      }
+    )
+  ] });
+};
+const NEW_GROUP = "__new__";
+const CalendarTaskDialog = () => {
+  const { open, defaultDate } = useStore((s) => s.calendarTaskDialog);
+  const close = useStore((s) => s.closeCalendarTaskDialog);
+  const groups = useStore((s) => s.groups);
+  const activeGroupId = useStore((s) => s.activeGroupId);
+  const createGroup = useStore((s) => s.createGroup);
+  const createTaskWithDetails = useStore((s) => s.createTaskWithDetails);
+  const selectCalendarTask = useStore((s) => s.selectCalendarTask);
+  const [groupChoice, setGroupChoice] = reactExports.useState("");
+  const [newGroupName, setNewGroupName] = reactExports.useState("");
+  const [title, setTitle] = reactExports.useState("");
+  const [status, setStatus] = reactExports.useState("todo");
+  const [dueDate, setDueDate] = reactExports.useState("");
+  const [notes, setNotes] = reactExports.useState("");
+  const [tagInput, setTagInput] = reactExports.useState("");
+  const [tags, setTags] = reactExports.useState([]);
+  const [subtasks, setSubtasks] = reactExports.useState([""]);
+  const [saving, setSaving] = reactExports.useState(false);
+  const latest = reactExports.useRef({ activeGroupId, groups });
+  latest.current = { activeGroupId, groups };
+  reactExports.useEffect(() => {
+    if (!open) return;
+    const { activeGroupId: active, groups: list } = latest.current;
+    const fallback = active ?? list[0]?.id ?? NEW_GROUP;
+    setGroupChoice(list.length > 0 ? fallback : NEW_GROUP);
+    setNewGroupName("");
+    setTitle("");
+    setStatus("todo");
+    setDueDate(defaultDate ?? "");
+    setNotes("");
+    setTagInput("");
+    setTags([]);
+    setSubtasks([""]);
+  }, [open, defaultDate]);
+  const addTag = () => {
+    const clean = tagInput.trim().toLowerCase();
+    if (!clean || tags.includes(clean)) return;
+    setTags((t) => [...t, clean]);
+    setTagInput("");
+  };
+  const submit = async () => {
+    const trimmedTitle = title.trim();
+    if (!trimmedTitle) {
+      toast.error("Task title is required");
+      return;
+    }
+    setSaving(true);
+    try {
+      let groupId = groupChoice;
+      if (groupChoice === NEW_GROUP) {
+        const name = newGroupName.trim();
+        if (!name) {
+          toast.error("Group name is required");
+          setSaving(false);
+          return;
+        }
+        const group = await createGroup({ name, emoji: "", accent: "blue" });
+        groupId = group.id;
+      }
+      const task = await createTaskWithDetails({
+        groupId,
+        title: trimmedTitle,
+        status,
+        dueDate: fromDateInputValue(dueDate),
+        notes: notes.trim(),
+        tags,
+        subtaskTitles: subtasks.filter((s) => s.trim())
+      });
+      selectCalendarTask(task.id);
+      toast.success("Task created");
+      close();
+    } catch {
+      toast.error("Failed to create task");
+    } finally {
+      setSaving(false);
+    }
+  };
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(Dialog, { open, onOpenChange: (o) => o ? null : close(), children: /* @__PURE__ */ jsxRuntimeExports.jsxs(DialogContent, { className: "sm:max-w-[720px] w-[94vw] max-h-[88vh] overflow-y-auto themed-scrollbar p-8 gap-5", children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsxs(DialogHeader, { children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx(DialogTitle, { children: "Add task" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(DialogDescription, { children: "Create a task on the selected date. Pick an existing group or create a new one." })
+    ] }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-4 py-1", children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-2", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { children: "Group" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs(Select, { value: groupChoice, onValueChange: setGroupChoice, children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(SelectTrigger, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(SelectValue, { placeholder: "Select group" }) }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs(SelectContent, { children: [
+            groups.map((g) => /* @__PURE__ */ jsxRuntimeExports.jsx(SelectItem, { value: g.id, children: /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "flex items-center gap-2", children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: cn("size-2 rounded-full", ACCENT_PALETTE[g.accent].fill) }),
+              g.name
+            ] }) }, g.id)),
+            /* @__PURE__ */ jsxRuntimeExports.jsx(SelectItem, { value: NEW_GROUP, children: "+ New group…" })
+          ] })
+        ] }),
+        groupChoice === NEW_GROUP && /* @__PURE__ */ jsxRuntimeExports.jsx(
+          Input,
+          {
+            value: newGroupName,
+            onChange: (e) => setNewGroupName(e.target.value),
+            placeholder: "New group name",
+            autoFocus: true
+          }
+        )
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-2", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { htmlFor: "cal-task-title", children: "Task" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          Input,
+          {
+            id: "cal-task-title",
+            value: title,
+            onChange: (e) => setTitle(e.target.value),
+            placeholder: "What needs to be done?",
+            onKeyDown: (e) => {
+              if (e.key === "Enter" && !e.shiftKey) {
+                e.preventDefault();
+                void submit();
+              }
+            }
+          }
+        )
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "grid grid-cols-2 gap-4", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-2", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { children: "Status" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs(Select, { value: status, onValueChange: (v) => setStatus(v), children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(SelectTrigger, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(SelectValue, {}) }),
+            /* @__PURE__ */ jsxRuntimeExports.jsxs(SelectContent, { children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx(SelectItem, { value: "todo", children: "To-Do" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(SelectItem, { value: "done", children: "Done" })
+            ] })
+          ] })
+        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-2", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { htmlFor: "cal-task-due", children: "Due date" }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            Input,
+            {
+              id: "cal-task-due",
+              type: "date",
+              value: dueDate,
+              onChange: (e) => setDueDate(e.target.value)
+            }
+          )
+        ] })
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-2", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { children: "Tags" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-wrap gap-1.5 items-center min-h-8", children: [
+          tags.map((tag) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
+            "span",
+            {
+              className: "inline-flex items-center gap-1 rounded-md bg-muted px-2 py-0.5 text-xs",
+              children: [
+                tag,
+                /* @__PURE__ */ jsxRuntimeExports.jsx(
+                  "button",
+                  {
+                    type: "button",
+                    onClick: () => setTags((t) => t.filter((x2) => x2 !== tag)),
+                    className: "text-muted-foreground hover:text-foreground",
+                    "aria-label": `Remove tag ${tag}`,
+                    children: /* @__PURE__ */ jsxRuntimeExports.jsx(X$1, { className: "size-3" })
+                  }
+                )
+              ]
+            },
+            tag
+          )),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            Input,
+            {
+              value: tagInput,
+              onChange: (e) => setTagInput(e.target.value),
+              onKeyDown: (e) => {
+                if (e.key === "Enter") {
+                  e.preventDefault();
+                  addTag();
+                }
+              },
+              placeholder: "Add tag…",
+              className: "h-8 flex-1 min-w-[120px]"
+            }
+          )
+        ] })
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-2", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { htmlFor: "cal-task-notes", children: "Notes" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          Textarea,
+          {
+            id: "cal-task-notes",
+            value: notes,
+            onChange: (e) => setNotes(e.target.value),
+            placeholder: "Optional context or links…",
+            rows: 3
+          }
+        )
+      ] }),
+      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-2", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Label, { children: "Subtasks" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "space-y-2", children: [
+          subtasks.map((st, i) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(
+              Input,
+              {
+                value: st,
+                onChange: (e) => setSubtasks((list) => list.map((v, j) => j === i ? e.target.value : v)),
+                placeholder: `Subtask ${i + 1}`
+              }
+            ),
+            subtasks.length > 1 && /* @__PURE__ */ jsxRuntimeExports.jsx(
+              Button,
+              {
+                type: "button",
+                variant: "ghost",
+                size: "icon",
+                className: "size-8 shrink-0",
+                onClick: () => setSubtasks((list) => list.filter((_, j) => j !== i)),
+                "aria-label": "Remove subtask",
+                children: /* @__PURE__ */ jsxRuntimeExports.jsx(Trash2, { className: "size-3.5" })
+              }
+            )
+          ] }, i)),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs(
+            Button,
+            {
+              type: "button",
+              variant: "outline",
+              size: "sm",
+              className: "h-8",
+              onClick: () => setSubtasks((list) => [...list, ""]),
+              children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx(Plus, { className: "size-3.5 mr-1" }),
+                "Add subtask"
+              ]
+            }
+          )
+        ] })
+      ] })
+    ] }),
+    /* @__PURE__ */ jsxRuntimeExports.jsxs(DialogFooter, { children: [
+      /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { type: "button", variant: "outline", onClick: close, disabled: saving, children: "Cancel" }),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(Button, { type: "button", onClick: () => void submit(), disabled: saving, children: saving ? "Creating…" : "Create task" })
+    ] })
+  ] }) });
+};
 function Card({ className, ...props }) {
   return /* @__PURE__ */ jsxRuntimeExports.jsx(
     "div",
@@ -41821,6 +43997,11 @@ const useKeyboardShortcuts = (onNewTask, onFocusSearch) => {
       if (meta && e.key.toLowerCase() === "b") {
         e.preventDefault();
         toggleSidebar();
+        return;
+      }
+      if (meta && e.key.toLowerCase() === "f") {
+        e.preventDefault();
+        onFocusSearch();
         return;
       }
       if (isTypingTarget(e.target)) return;
@@ -41910,7 +44091,9 @@ function App() {
   }, [resolvedTheme]);
   const hydrate = useStore((s) => s.hydrate);
   const isHydrated = useStore((s) => s.isHydrated);
+  const mainView = useStore((s) => s.mainView);
   const activeGroupId = useStore((s) => s.activeGroupId);
+  const selectedTaskId = useStore((s) => s.selectedTaskId);
   const groups = useStore((s) => s.groups);
   const tasks = useStore((s) => s.tasks);
   const searchQuery = useStore((s) => s.searchQuery);
@@ -41925,10 +44108,21 @@ function App() {
   const moveCompletedDown = useStore(
     (s) => s.settings.moveCompletedDown
   );
+  const sidebarWidth = useStore((s) => s.settings.sidebarWidth);
   const activeGroup = reactExports.useMemo(
     () => groups.find((g) => g.id === activeGroupId) ?? null,
     [groups, activeGroupId]
   );
+  const selectedTask = reactExports.useMemo(
+    () => tasks.find((t) => t.id === selectedTaskId) ?? null,
+    [tasks, selectedTaskId]
+  );
+  const detailAccent = reactExports.useMemo(() => {
+    if (selectedTask) {
+      return groups.find((g) => g.id === selectedTask.groupId)?.accent ?? "blue";
+    }
+    return activeGroup?.accent ?? "blue";
+  }, [selectedTask, activeGroup, groups]);
   const groupTasks = reactExports.useMemo(
     () => activeGroup ? tasks.filter((t) => t.groupId === activeGroup.id) : [],
     [tasks, activeGroup]
@@ -41995,24 +44189,39 @@ function App() {
     () => searchRef.current?.focus()
   );
   const main = reactExports.useMemo(() => {
+    if (mainView === "calendar") {
+      return /* @__PURE__ */ jsxRuntimeExports.jsx(CalendarView, {});
+    }
     if (!activeGroup) {
       if (groups.length === 0) {
-        return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex-1 flex items-center justify-center", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-          EmptyState,
-          {
-            illustration: "groups",
-            title: "No groups yet",
-            description: "Groups keep separate projects in their own focused workspace.",
-            actionLabel: "Create your first group",
-            onAction: () => openGroupDialog()
-          }
-        ) });
+        return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex-1 flex flex-col overflow-hidden", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "px-8 pt-6 pb-4 shrink-0 flex items-start justify-between gap-4", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx("h1", { className: "text-3xl font-bold tracking-tight", children: "Overview" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-muted-foreground mt-1", children: "Create a group or import existing data to get started." })
+            ] }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center gap-2 shrink-0 pt-1", children: /* @__PURE__ */ jsxRuntimeExports.jsx(DataExportImportActions, {}) })
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex-1 flex items-center justify-center", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+            EmptyState,
+            {
+              illustration: "groups",
+              title: "No groups yet",
+              description: "Groups keep separate projects in their own focused workspace.",
+              actionLabel: "Create your first group",
+              onAction: () => openGroupDialog()
+            }
+          ) })
+        ] });
       }
       return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex-1 flex flex-col overflow-hidden", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "px-8 pt-6 pb-4 shrink-0", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("h1", { className: "text-3xl font-bold tracking-tight", children: "Overview" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-muted-foreground mt-1", children: "Select a group to start managing your tasks." })
-        ] }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "px-8 pt-6 pb-4 shrink-0", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "grid grid-cols-[1fr_auto] items-start gap-4", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("h1", { className: "text-3xl font-bold tracking-tight", children: "Overview" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-muted-foreground mt-1", children: "Select a group to start managing your tasks." })
+          ] }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center gap-2 self-start pt-1", children: /* @__PURE__ */ jsxRuntimeExports.jsx(DataExportImportActions, {}) })
+        ] }) }),
         /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex-1 overflow-y-auto px-8 pb-8 mt-4", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "grid gap-4 md:grid-cols-2 lg:grid-cols-3", children: [
           groups.map((group) => {
             const count2 = tasks.filter(
@@ -42119,6 +44328,7 @@ function App() {
       ) }) })
     ] });
   }, [
+    mainView,
     activeGroup,
     groups,
     tasks,
@@ -42134,42 +44344,50 @@ function App() {
   if (!isHydrated) {
     return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex h-screen items-center justify-center bg-background text-muted-foreground animate-in fade-in duration-500", children: "Loading..." });
   }
-  return /* @__PURE__ */ jsxRuntimeExports.jsx(SidebarProvider, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "h-full w-full flex bg-background text-foreground overflow-hidden", children: [
-    /* @__PURE__ */ jsxRuntimeExports.jsx(AppSidebar, {}),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(SidebarInset, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative flex-1 flex flex-col overflow-hidden", children: [
-      /* @__PURE__ */ jsxRuntimeExports.jsx("header", { className: "flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12 border-b", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-1 items-center gap-2 px-4", children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx(SidebarTrigger, { className: "-ml-1" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx(Separator$1, { orientation: "vertical", className: "mr-2 h-4" }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx(Breadcrumb, { className: "flex-1", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(BreadcrumbList, { children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx(BreadcrumbItem, { className: "hidden md:block", children: /* @__PURE__ */ jsxRuntimeExports.jsx(BreadcrumbLink, { href: "#", onClick: (e) => {
-            e.preventDefault();
-            useStore.getState().setActiveGroup(null);
-          }, children: "Workspace" }) }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(BreadcrumbSeparator, { className: "hidden md:block" }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(BreadcrumbItem, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(BreadcrumbPage, { className: "relative", children: /* @__PURE__ */ jsxRuntimeExports.jsx(AnimatePresence, { mode: "popLayout", initial: false, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-            motion.span,
-            {
-              initial: { opacity: 0, y: 5 },
-              animate: { opacity: 1, y: 0 },
-              exit: { opacity: 0, y: -5 },
-              transition: { duration: 0.15 },
-              className: "block",
-              children: activeGroup?.name ?? "Overview"
-            },
-            activeGroup?.id ?? "overview"
-          ) }) }) })
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    SidebarProvider,
+    {
+      className: "h-full min-h-0 overflow-hidden",
+      style: { "--sidebar-width": `${sidebarWidth}px` },
+      children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "h-full min-h-0 w-full flex bg-background text-foreground overflow-hidden", children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(AppSidebar, {}),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(SidebarInset, { className: "min-h-0 overflow-hidden", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative flex-1 flex flex-col overflow-hidden", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("header", { className: "flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12 border-b", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-1 items-center gap-2 px-4", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx(SidebarTrigger, { className: "-ml-1" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx(Separator$1, { orientation: "vertical", className: "mr-2 h-4" }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx(Breadcrumb, { className: "flex-1", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(BreadcrumbList, { children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx(BreadcrumbItem, { className: "hidden md:block", children: /* @__PURE__ */ jsxRuntimeExports.jsx(BreadcrumbLink, { href: "#", onClick: (e) => {
+                e.preventDefault();
+                useStore.getState().setActiveGroup(null);
+              }, children: "Workspace" }) }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(BreadcrumbSeparator, { className: "hidden md:block" }),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(BreadcrumbItem, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(BreadcrumbPage, { className: "relative", children: /* @__PURE__ */ jsxRuntimeExports.jsx(AnimatePresence, { mode: "popLayout", initial: false, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+                motion.span,
+                {
+                  initial: { opacity: 0, y: 5 },
+                  animate: { opacity: 1, y: 0 },
+                  exit: { opacity: 0, y: -5 },
+                  transition: { duration: 0.15 },
+                  className: "block",
+                  children: mainView === "calendar" ? "Calendar" : activeGroup?.name ?? "Overview"
+                },
+                mainView === "calendar" ? "calendar" : activeGroup?.id ?? "overview"
+              ) }) }) })
+            ] }) }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center gap-4", children: /* @__PURE__ */ jsxRuntimeExports.jsx(SearchBar, { ref: searchRef }) })
+          ] }) }),
+          main,
+          (activeGroup || selectedTask) && /* @__PURE__ */ jsxRuntimeExports.jsx(TaskDetailPanel, { accent: detailAccent })
         ] }) }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex items-center gap-4", children: /* @__PURE__ */ jsxRuntimeExports.jsx(SearchBar, { ref: searchRef }) })
-      ] }) }),
-      main,
-      activeGroup && /* @__PURE__ */ jsxRuntimeExports.jsx(TaskDetailPanel, { accent: activeGroup.accent })
-    ] }) }),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(GroupDialog, {}),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(HelpModal, {}),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(SettingsDialog, {}),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(CommandPaletteDialog, {}),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(Toaster2, { position: "bottom-right" })
-  ] }) });
+        /* @__PURE__ */ jsxRuntimeExports.jsx(GroupDialog, {}),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(HelpModal, {}),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(SettingsDialog, {}),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(CommandPaletteDialog, {}),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(CalendarTaskDialog, {}),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(Toaster2, { position: "bottom-right" })
+      ] })
+    }
+  );
 }
 function QuickAddApp() {
   const hydrate = useStore((s) => s.hydrate);

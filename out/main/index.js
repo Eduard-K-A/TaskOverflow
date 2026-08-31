@@ -87,7 +87,7 @@ function migrate() {
       FOREIGN KEY (tag_id) REFERENCES tags(id) ON DELETE CASCADE
     );
 
-    CREATE TABLE IF NOT EXISTS settings (
+    CREATE TABLE IF NOT EXISTS settings ( 
       key TEXT PRIMARY KEY,
       value TEXT NOT NULL
     );
@@ -262,6 +262,25 @@ const settingsRepo = {
     return db.prepare("INSERT OR REPLACE INTO settings (key, value) VALUES (?, ?)").run(key, JSON.stringify(value));
   }
 };
+const maintenanceRepo = {
+  /**
+   * Erase all user content. Groups cascade to tasks, subtasks and task_tags,
+   * but tag names and settings live outside that chain and are cleared here.
+   */
+  wipeAll: () => {
+    if (!db) throw new Error("Database not initialized");
+    const database = db;
+    const transaction = database.transaction(() => {
+      database.prepare("DELETE FROM task_tags").run();
+      database.prepare("DELETE FROM subtasks").run();
+      database.prepare("DELETE FROM tasks").run();
+      database.prepare("DELETE FROM groups").run();
+      database.prepare("DELETE FROM tags").run();
+      database.prepare("DELETE FROM settings").run();
+    });
+    transaction();
+  }
+};
 process.on("uncaughtException", (err) => {
   console.error("[UNCAUGHT EXCEPTION]", err);
 });
@@ -270,6 +289,10 @@ process.on("unhandledRejection", (reason) => {
 });
 const QUICK_ADD_QUERY = { quickadd: "1" };
 const GLOBAL_SHORTCUT = "CommandOrControl+Shift+N";
+const REPO_URL = "https://github.com/Eduard-K-A/TaskOverflow";
+const RELEASES_URL = `${REPO_URL}/releases`;
+const LATEST_RELEASE_API = "https://api.github.com/repos/Eduard-K-A/TaskOverflow/releases/latest";
+const EXTERNAL_URL_ALLOWLIST = /* @__PURE__ */ new Set([REPO_URL, RELEASES_URL]);
 const DEFAULT_PREFS = {
   launchAtLogin: false,
   startMinimized: false,
@@ -628,6 +651,15 @@ function runDailyAutoBackup() {
     console.error("Auto-backup failed:", e);
   }
 }
+function compareVersions(a, b) {
+  const pa = a.split(".").map((n) => parseInt(n, 10) || 0);
+  const pb = b.split(".").map((n) => parseInt(n, 10) || 0);
+  for (let i = 0; i < Math.max(pa.length, pb.length); i++) {
+    const diff = (pa[i] ?? 0) - (pb[i] ?? 0);
+    if (diff !== 0) return diff;
+  }
+  return 0;
+}
 function applyPrefsSideEffects() {
   applyLaunchAtLogin(currentPrefs.launchAtLogin);
   ensureTray();
@@ -644,12 +676,15 @@ function syncPrefsAfterSettingsSave(value) {
     }
   }
 }
-if (!electron.app.requestSingleInstanceLock()) {
+const shouldLock = !utils.is.dev;
+if (shouldLock && !electron.app.requestSingleInstanceLock()) {
   electron.app.quit();
 } else {
-  electron.app.on("second-instance", () => {
-    showMainWindow();
-  });
+  if (shouldLock) {
+    electron.app.on("second-instance", () => {
+      showMainWindow();
+    });
+  }
   electron.app.whenReady().then(() => {
     utils.electronApp.setAppUserModelId("com.taskoverflow");
     if (process.platform === "darwin") {
@@ -705,6 +740,46 @@ if (!electron.app.requestSingleInstanceLock()) {
     });
     electron.ipcMain.handle("paths:revealDb", () => {
       electron.shell.showItemInFolder(getDbFilePath());
+    });
+    electron.ipcMain.handle("db:wipeAll", () => {
+      maintenanceRepo.wipeAll();
+      refreshPrefsFromDb();
+      applyPrefsSideEffects();
+    });
+    electron.ipcMain.handle("app:getVersion", () => electron.app.getVersion());
+    electron.ipcMain.handle("app:openExternal", (_, url) => {
+      if (!EXTERNAL_URL_ALLOWLIST.has(url)) {
+        throw new Error(`Refusing to open non-allowlisted URL: ${url}`);
+      }
+      return electron.shell.openExternal(url);
+    });
+    electron.ipcMain.handle("app:checkForUpdates", async () => {
+      const current = electron.app.getVersion();
+      try {
+        const response = await fetch(LATEST_RELEASE_API, {
+          headers: { Accept: "application/vnd.github+json" },
+          signal: AbortSignal.timeout(8e3)
+        });
+        if (response.status === 404) {
+          return { status: "no-releases", current, releasesUrl: RELEASES_URL };
+        }
+        if (!response.ok) {
+          return { status: "error", current, releasesUrl: RELEASES_URL };
+        }
+        const body = await response.json();
+        const latest = (body.tag_name ?? body.name ?? "").replace(/^v/, "");
+        if (!latest) {
+          return { status: "no-releases", current, releasesUrl: RELEASES_URL };
+        }
+        return {
+          status: compareVersions(latest, current) > 0 ? "outdated" : "current",
+          current,
+          latest,
+          releasesUrl: RELEASES_URL
+        };
+      } catch {
+        return { status: "error", current, releasesUrl: RELEASES_URL };
+      }
     });
     electron.ipcMain.handle("windows:closeQuickAdd", () => {
       if (quickAddWindow && !quickAddWindow.isDestroyed()) {
