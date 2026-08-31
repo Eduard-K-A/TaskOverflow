@@ -11,6 +11,7 @@ import {
   Settings,
   HelpCircle,
   LayoutDashboard,
+  CalendarDays,
 } from "lucide-react";
 import {
   DndContext,
@@ -156,7 +157,9 @@ export const AppSidebar = () => {
   const groups = useStore((s) => s.groups);
   const tasks = useStore((s) => s.tasks);
   const activeGroupId = useStore((s) => s.activeGroupId);
+  const mainView = useStore((s) => s.mainView);
   const setActiveGroup = useStore((s) => s.setActiveGroup);
+  const setCalendarView = useStore((s) => s.setCalendarView);
   const openGroupDialog = useStore((s) => s.openGroupDialog);
   const setHelpOpen = useStore((s) => s.setHelpOpen);
   const setSettingsOpen = useStore((s) => s.setSettingsOpen);
@@ -214,11 +217,22 @@ export const AppSidebar = () => {
               <SidebarMenuButton 
                 tooltip="All Groups" 
                 onClick={() => setActiveGroup(null)} 
-                isActive={!activeGroupId}
+                isActive={mainView === "overview"}
                 className="group-data-[state=collapsed]:justify-center"
               >
                 <LayoutDashboard className="size-4 shrink-0" />
                 <span className="group-data-[state=collapsed]:hidden">Overview</span>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+            <SidebarMenuItem>
+              <SidebarMenuButton
+                tooltip="Calendar"
+                onClick={() => setCalendarView()}
+                isActive={mainView === "calendar"}
+                className="group-data-[state=collapsed]:justify-center"
+              >
+                <CalendarDays className="size-4 shrink-0" />
+                <span className="group-data-[state=collapsed]:hidden">Calendar</span>
               </SidebarMenuButton>
             </SidebarMenuItem>
           </SidebarMenu>
@@ -247,7 +261,7 @@ export const AppSidebar = () => {
                   <SortableGroupItem
                     key={g.id}
                     group={g}
-                    active={g.id === activeGroupId}
+                    active={mainView === "group" && g.id === activeGroupId}
                     count={countFor(g.id)}
                     showCounts={settings.showCounts}
                     onSelect={setActiveGroup}
