@@ -29,11 +29,20 @@ import {
   tasksRepo,
   subtasksRepo,
   tagsRepo,
-  settingsRepo
+  settingsRepo,
+  maintenanceRepo
 } from './db';
+import { TRAY_ICON_32, TRAY_ICON_64 } from './trayIcon';
 
 const QUICK_ADD_QUERY = { quickadd: '1' };
 const GLOBAL_SHORTCUT = 'CommandOrControl+Shift+N';
+
+const REPO_URL = 'https://github.com/Eduard-K-A/TaskOverflow';
+const RELEASES_URL = `${REPO_URL}/releases`;
+const LATEST_RELEASE_API = 'https://api.github.com/repos/Eduard-K-A/TaskOverflow/releases/latest';
+
+/** Only project-owned https destinations may be handed to the OS browser. */
+const EXTERNAL_URL_ALLOWLIST = new Set([REPO_URL, RELEASES_URL]);
 
 interface AppPrefs {
   launchAtLogin: boolean;
@@ -65,11 +74,26 @@ function getIconPath(): { win: string; other: string } {
   };
 }
 
+/**
+ * The dark-mode app icon, as bitmaps the tray can actually draw.
+ *
+ * nativeImage cannot rasterise SVG — createFromPath on the .svg returned an
+ * empty 0x0 image, which is why the tray came up blank. The PNGs are inlined
+ * (see scripts/generate-tray-icon.cjs) because build/ is the electron-builder
+ * resources directory and is not shipped inside the packaged app.
+ */
 function loadTrayImage(): Electron.NativeImage {
-  const iconPath = resolve(__dirname, '../../src/renderer/taskoverflow-dark-icon.svg');
   try {
-    return nativeImage.createFromPath(iconPath);
-  } catch {
+    const image = nativeImage.createFromDataURL(TRAY_ICON_32);
+    if (image.isEmpty()) return nativeImage.createEmpty();
+    // Lets Windows and macOS pick the crisper bitmap on HiDPI displays.
+    image.addRepresentation({
+      scaleFactor: 2,
+      dataURL: TRAY_ICON_64
+    });
+    return image;
+  } catch (e) {
+    console.error('Tray icon load failed:', e);
     return nativeImage.createEmpty();
   }
 }
@@ -440,6 +464,17 @@ function runDailyAutoBackup(): void {
   }
 }
 
+/** Numeric-segment semver compare; returns >0 when `a` is newer than `b`. */
+function compareVersions(a: string, b: string): number {
+  const pa = a.split('.').map((n) => parseInt(n, 10) || 0);
+  const pb = b.split('.').map((n) => parseInt(n, 10) || 0);
+  for (let i = 0; i < Math.max(pa.length, pb.length); i++) {
+    const diff = (pa[i] ?? 0) - (pb[i] ?? 0);
+    if (diff !== 0) return diff;
+  }
+  return 0;
+}
+
 function applyPrefsSideEffects(): void {
   applyLaunchAtLogin(currentPrefs.launchAtLogin);
   ensureTray();
@@ -458,12 +493,18 @@ function syncPrefsAfterSettingsSave(value: unknown): void {
   }
 }
 
-if (!app.requestSingleInstanceLock()) {
+// In dev mode, skip the single-instance lock so `npm run dev` works even when
+// a production build is already running in the system tray.
+const shouldLock = !is.dev;
+
+if (shouldLock && !app.requestSingleInstanceLock()) {
   app.quit();
 } else {
-  app.on('second-instance', () => {
-    showMainWindow();
-  });
+  if (shouldLock) {
+    app.on('second-instance', () => {
+      showMainWindow();
+    });
+  }
 
   app.whenReady().then(() => {
     electronApp.setAppUserModelId('com.taskoverflow');
@@ -532,6 +573,50 @@ if (!app.requestSingleInstanceLock()) {
 
     ipcMain.handle('paths:revealDb', () => {
       shell.showItemInFolder(getDbFilePath());
+    });
+
+    ipcMain.handle('db:wipeAll', () => {
+      maintenanceRepo.wipeAll();
+      refreshPrefsFromDb();
+      applyPrefsSideEffects();
+    });
+
+    ipcMain.handle('app:getVersion', () => app.getVersion());
+
+    ipcMain.handle('app:openExternal', (_, url: string) => {
+      if (!EXTERNAL_URL_ALLOWLIST.has(url)) {
+        throw new Error(`Refusing to open non-allowlisted URL: ${url}`);
+      }
+      return shell.openExternal(url);
+    });
+
+    ipcMain.handle('app:checkForUpdates', async () => {
+      const current = app.getVersion();
+      try {
+        const response = await fetch(LATEST_RELEASE_API, {
+          headers: { Accept: 'application/vnd.github+json' },
+          signal: AbortSignal.timeout(8000)
+        });
+        if (response.status === 404) {
+          return { status: 'no-releases' as const, current, releasesUrl: RELEASES_URL };
+        }
+        if (!response.ok) {
+          return { status: 'error' as const, current, releasesUrl: RELEASES_URL };
+        }
+        const body = (await response.json()) as { tag_name?: string; name?: string };
+        const latest = (body.tag_name ?? body.name ?? '').replace(/^v/, '');
+        if (!latest) {
+          return { status: 'no-releases' as const, current, releasesUrl: RELEASES_URL };
+        }
+        return {
+          status: compareVersions(latest, current) > 0 ? ('outdated' as const) : ('current' as const),
+          current,
+          latest,
+          releasesUrl: RELEASES_URL
+        };
+      } catch {
+        return { status: 'error' as const, current, releasesUrl: RELEASES_URL };
+      }
     });
 
     ipcMain.handle('windows:closeQuickAdd', () => {

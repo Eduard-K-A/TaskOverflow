@@ -1,4 +1,5 @@
 import { useMemo, useRef, useEffect } from "react";
+import type React from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Plus } from "lucide-react";
 import { Toaster } from "./components/ui/sonner";
@@ -35,6 +36,9 @@ import { GroupDialog } from "./components/GroupDialog";
 import { HelpModal } from "./components/HelpModal";
 import { SettingsDialog } from "./components/SettingsDialog";
 import { CommandPaletteDialog } from "./components/CommandPaletteDialog";
+import { CalendarView } from "./components/CalendarView";
+import { CalendarTaskDialog } from "./components/CalendarTaskDialog";
+import { DataExportImportActions } from "./components/DataExportImportActions";
 import {
   Card,
   CardContent,
@@ -62,7 +66,9 @@ export default function App() {
 
   const hydrate = useStore((s) => s.hydrate);
   const isHydrated = useStore((s) => s.isHydrated);
+  const mainView = useStore((s) => s.mainView);
   const activeGroupId = useStore((s) => s.activeGroupId);
+  const selectedTaskId = useStore((s) => s.selectedTaskId);
   const groups = useStore((s) => s.groups);
   const tasks = useStore((s) => s.tasks);
   const searchQuery = useStore((s) => s.searchQuery);
@@ -77,11 +83,24 @@ export default function App() {
   const moveCompletedDown = useStore(
     (s) => s.settings.moveCompletedDown,
   );
+  const sidebarWidth = useStore((s) => s.settings.sidebarWidth);
 
   const activeGroup = useMemo(
     () => groups.find((g) => g.id === activeGroupId) ?? null,
     [groups, activeGroupId],
   );
+
+  const selectedTask = useMemo(
+    () => tasks.find((t) => t.id === selectedTaskId) ?? null,
+    [tasks, selectedTaskId],
+  );
+
+  const detailAccent = useMemo(() => {
+    if (selectedTask) {
+      return groups.find((g) => g.id === selectedTask.groupId)?.accent ?? "blue";
+    }
+    return activeGroup?.accent ?? "blue";
+  }, [selectedTask, activeGroup, groups]);
 
   const groupTasks = useMemo(
     () =>
@@ -178,17 +197,34 @@ export default function App() {
   );
 
   const main = useMemo(() => {
+    if (mainView === "calendar") {
+      return <CalendarView />;
+    }
+
     if (!activeGroup) {
       if (groups.length === 0) {
         return (
-          <div className="flex-1 flex items-center justify-center">
-            <EmptyState
-              illustration="groups"
-              title="No groups yet"
-              description="Groups keep separate projects in their own focused workspace."
-              actionLabel="Create your first group"
-              onAction={() => openGroupDialog()}
-            />
+          <div className="flex-1 flex flex-col overflow-hidden">
+            <div className="px-8 pt-6 pb-4 shrink-0 flex items-start justify-between gap-4">
+              <div>
+                <h1 className="text-3xl font-bold tracking-tight">Overview</h1>
+                <p className="text-muted-foreground mt-1">
+                  Create a group or import existing data to get started.
+                </p>
+              </div>
+              <div className="flex items-center gap-2 shrink-0 pt-1">
+                <DataExportImportActions />
+              </div>
+            </div>
+            <div className="flex-1 flex items-center justify-center">
+              <EmptyState
+                illustration="groups"
+                title="No groups yet"
+                description="Groups keep separate projects in their own focused workspace."
+                actionLabel="Create your first group"
+                onAction={() => openGroupDialog()}
+              />
+            </div>
           </div>
         );
       }
@@ -196,10 +232,17 @@ export default function App() {
       return (
         <div className="flex-1 flex flex-col overflow-hidden">
           <div className="px-8 pt-6 pb-4 shrink-0">
-            <h1 className="text-3xl font-bold tracking-tight">Overview</h1>
-            <p className="text-muted-foreground mt-1">
-              Select a group to start managing your tasks.
-            </p>
+            <div className="grid grid-cols-[1fr_auto] items-start gap-4">
+              <div>
+                <h1 className="text-3xl font-bold tracking-tight">Overview</h1>
+                <p className="text-muted-foreground mt-1">
+                  Select a group to start managing your tasks.
+                </p>
+              </div>
+              <div className="flex items-center gap-2 self-start pt-1">
+                <DataExportImportActions />
+              </div>
+            </div>
           </div>
 
           <div className="flex-1 overflow-y-auto px-8 pb-8 mt-4">
@@ -308,6 +351,7 @@ export default function App() {
       </div>
     );
   }, [
+    mainView,
     activeGroup,
     groups,
     tasks,
@@ -330,11 +374,14 @@ export default function App() {
   }
 
   return (
-    <SidebarProvider>
-      <div className="h-full w-full flex bg-background text-foreground overflow-hidden">
+    <SidebarProvider
+      className="h-full min-h-0 overflow-hidden"
+      style={{ "--sidebar-width": `${sidebarWidth}px` } as React.CSSProperties}
+    >
+      <div className="h-full min-h-0 w-full flex bg-background text-foreground overflow-hidden">
         <AppSidebar />
 
-        <SidebarInset>
+        <SidebarInset className="min-h-0 overflow-hidden">
           <div className="relative flex-1 flex flex-col overflow-hidden">
             <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12 border-b">
               <div className="flex flex-1 items-center gap-2 px-4">
@@ -352,14 +399,20 @@ export default function App() {
                       <BreadcrumbPage className="relative">
                         <AnimatePresence mode="popLayout" initial={false}>
                           <motion.span
-                            key={activeGroup?.id ?? "overview"}
+                            key={
+                              mainView === "calendar"
+                                ? "calendar"
+                                : activeGroup?.id ?? "overview"
+                            }
                             initial={{ opacity: 0, y: 5 }}
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -5 }}
                             transition={{ duration: 0.15 }}
                             className="block"
                           >
-                            {activeGroup?.name ?? "Overview"}
+                            {mainView === "calendar"
+                              ? "Calendar"
+                              : activeGroup?.name ?? "Overview"}
                           </motion.span>
                         </AnimatePresence>
                       </BreadcrumbPage>
@@ -375,8 +428,8 @@ export default function App() {
 
             {main}
 
-            {activeGroup && (
-              <TaskDetailPanel accent={activeGroup.accent} />
+            {(activeGroup || selectedTask) && (
+              <TaskDetailPanel accent={detailAccent} />
             )}
           </div>
         </SidebarInset>
@@ -385,6 +438,7 @@ export default function App() {
         <HelpModal />
         <SettingsDialog />
         <CommandPaletteDialog />
+        <CalendarTaskDialog />
         <Toaster position="bottom-right" />
       </div>
     </SidebarProvider>

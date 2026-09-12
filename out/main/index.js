@@ -87,7 +87,7 @@ function migrate() {
       FOREIGN KEY (tag_id) REFERENCES tags(id) ON DELETE CASCADE
     );
 
-    CREATE TABLE IF NOT EXISTS settings (
+    CREATE TABLE IF NOT EXISTS settings ( 
       key TEXT PRIMARY KEY,
       value TEXT NOT NULL
     );
@@ -262,6 +262,27 @@ const settingsRepo = {
     return db.prepare("INSERT OR REPLACE INTO settings (key, value) VALUES (?, ?)").run(key, JSON.stringify(value));
   }
 };
+const maintenanceRepo = {
+  /**
+   * Erase all user content. Groups cascade to tasks, subtasks and task_tags,
+   * but tag names and settings live outside that chain and are cleared here.
+   */
+  wipeAll: () => {
+    if (!db) throw new Error("Database not initialized");
+    const database = db;
+    const transaction = database.transaction(() => {
+      database.prepare("DELETE FROM task_tags").run();
+      database.prepare("DELETE FROM subtasks").run();
+      database.prepare("DELETE FROM tasks").run();
+      database.prepare("DELETE FROM groups").run();
+      database.prepare("DELETE FROM tags").run();
+      database.prepare("DELETE FROM settings").run();
+    });
+    transaction();
+  }
+};
+const TRAY_ICON_32 = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAA/xJREFUWIW1V02IHEUU/qq3N7sayczOBoKSMeCC7MVdEVeGhCwKIZpoFIUcBFFBvAWEXOLFgxICG0hQbyIYxYsnPQiiaBASwrqCOqteQqLozuyQuOzubAwbf6bf56Gruqu6q6cnon2Y6q5679X73ntfvRoF69kxNbV1eHPoiFJqj5DTCrhTKAAAUqAAiOiR1KO4oxAKBElAy0NhicJFKFxYvy18HZcv/2n2VOalfvd9ewm8D2JXrEyABC1joH7X8/E3AIgWT+dj8VQe2g7BS4p4YX2ldT5xYNfkzO4ois4DCFiIrAC5CJTKI6eJnEjijDUvkZLZ33/rXFA7pqa2bvljeJHkhIscAEWD8SAviEiyCWFFKY1A6gx/Gh2KpsMtN8LDRLy5QWjnPB3pjMjUhtlcLHkoJhFLNk8jMrFJdTgE0HA9zHoKd54AYSHMhpeWfC4trj0IG4GADZVZVMZT+pRFI9Uht5AjiYxHT8QDko1QkZM5BPAgd4xl5wXqpvUICiYDIUdoVy37IU+VE+QinvUMcq89Aooj4SA537dvFseOvoRqpaJPDVq/+afb7eLE3Cl8+tnnnoi4+6nb77qHZTw/+8lHOPryK1hbW3Op5uU5URsfw5unT2LvQ/u96bL1wkFyXqluw+rqKlqtdr5WPDwXiVCpVPI590Q6KMp5Ws2mut1qN0YlozccholsPq35mghc5IbHNp9hGdPzBlnC89ipH5tfY/v4uKdw82ky88F/xfMfvlvA/gOHsNzpuIVawobA62GmcKC7VuOBGYyOjrgR05s/fOBxtNsdf8F5kJv1IB+uIp4T8wsLmD/3Ber1nYnR77/9Co8cfALt5Y5bQyYOJSdqYHKu6DvhTEEaY8S9M3vw8YcfoF7ficVv5nHwsSfRai9byBj3ihLkpsZCUvdzxgWV5bkv59P378Z777yFRw89haVWu9jpPsiNU6Ev59meYCzays8+/2LfE85F7rNLKwJweZ7t57DWfSefr9oTt3PIXf0wJ+Tp592NDdRqtYSaWeRp2uKfsdoY1rvr+Zx77g9hFjk81DkxdwpvnJ7DWLWK7EPPW7e7gVdfO94XuflW2++Y4EB3OA/y/uslPUPPh+ZWSwqgCnJalnPvehFy08r1OaAULsYssNnQj8dl6/le4q2xuF4uBhQ2B7/DlZ/tjnNkQUTMnxQ0AwLNPAJfT7hZ5Bk9euxG0gxCwbsArpQjGxT5YHdKkldFemeClZVfrkgUPfO/59yNqAQKTwO4GgDAxury2QjRLMhf/33Os+sFt2XhpUDhwV6v9yUADEE/f21eX6puu/XtvyNcA3iDwC2gVPzI/T3Dx/OYclwCcI4iZ0R6z4nIz2bffwD3qYCCk4GuNwAAAABJRU5ErkJggg==";
+const TRAY_ICON_64 = "data:image/png;base64,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";
 process.on("uncaughtException", (err) => {
   console.error("[UNCAUGHT EXCEPTION]", err);
 });
@@ -270,6 +291,10 @@ process.on("unhandledRejection", (reason) => {
 });
 const QUICK_ADD_QUERY = { quickadd: "1" };
 const GLOBAL_SHORTCUT = "CommandOrControl+Shift+N";
+const REPO_URL = "https://github.com/Eduard-K-A/TaskOverflow";
+const RELEASES_URL = `${REPO_URL}/releases`;
+const LATEST_RELEASE_API = "https://api.github.com/repos/Eduard-K-A/TaskOverflow/releases/latest";
+const EXTERNAL_URL_ALLOWLIST = /* @__PURE__ */ new Set([REPO_URL, RELEASES_URL]);
 const DEFAULT_PREFS = {
   launchAtLogin: false,
   startMinimized: false,
@@ -290,10 +315,16 @@ function getIconPath() {
   };
 }
 function loadTrayImage() {
-  const iconPath = path.resolve(__dirname, "../../src/renderer/taskoverflow-dark-icon.svg");
   try {
-    return electron.nativeImage.createFromPath(iconPath);
-  } catch {
+    const image = electron.nativeImage.createFromDataURL(TRAY_ICON_32);
+    if (image.isEmpty()) return electron.nativeImage.createEmpty();
+    image.addRepresentation({
+      scaleFactor: 2,
+      dataURL: TRAY_ICON_64
+    });
+    return image;
+  } catch (e) {
+    console.error("Tray icon load failed:", e);
     return electron.nativeImage.createEmpty();
   }
 }
@@ -628,6 +659,15 @@ function runDailyAutoBackup() {
     console.error("Auto-backup failed:", e);
   }
 }
+function compareVersions(a, b) {
+  const pa = a.split(".").map((n) => parseInt(n, 10) || 0);
+  const pb = b.split(".").map((n) => parseInt(n, 10) || 0);
+  for (let i = 0; i < Math.max(pa.length, pb.length); i++) {
+    const diff = (pa[i] ?? 0) - (pb[i] ?? 0);
+    if (diff !== 0) return diff;
+  }
+  return 0;
+}
 function applyPrefsSideEffects() {
   applyLaunchAtLogin(currentPrefs.launchAtLogin);
   ensureTray();
@@ -644,12 +684,15 @@ function syncPrefsAfterSettingsSave(value) {
     }
   }
 }
-if (!electron.app.requestSingleInstanceLock()) {
+const shouldLock = !utils.is.dev;
+if (shouldLock && !electron.app.requestSingleInstanceLock()) {
   electron.app.quit();
 } else {
-  electron.app.on("second-instance", () => {
-    showMainWindow();
-  });
+  if (shouldLock) {
+    electron.app.on("second-instance", () => {
+      showMainWindow();
+    });
+  }
   electron.app.whenReady().then(() => {
     utils.electronApp.setAppUserModelId("com.taskoverflow");
     if (process.platform === "darwin") {
@@ -705,6 +748,46 @@ if (!electron.app.requestSingleInstanceLock()) {
     });
     electron.ipcMain.handle("paths:revealDb", () => {
       electron.shell.showItemInFolder(getDbFilePath());
+    });
+    electron.ipcMain.handle("db:wipeAll", () => {
+      maintenanceRepo.wipeAll();
+      refreshPrefsFromDb();
+      applyPrefsSideEffects();
+    });
+    electron.ipcMain.handle("app:getVersion", () => electron.app.getVersion());
+    electron.ipcMain.handle("app:openExternal", (_, url) => {
+      if (!EXTERNAL_URL_ALLOWLIST.has(url)) {
+        throw new Error(`Refusing to open non-allowlisted URL: ${url}`);
+      }
+      return electron.shell.openExternal(url);
+    });
+    electron.ipcMain.handle("app:checkForUpdates", async () => {
+      const current = electron.app.getVersion();
+      try {
+        const response = await fetch(LATEST_RELEASE_API, {
+          headers: { Accept: "application/vnd.github+json" },
+          signal: AbortSignal.timeout(8e3)
+        });
+        if (response.status === 404) {
+          return { status: "no-releases", current, releasesUrl: RELEASES_URL };
+        }
+        if (!response.ok) {
+          return { status: "error", current, releasesUrl: RELEASES_URL };
+        }
+        const body = await response.json();
+        const latest = (body.tag_name ?? body.name ?? "").replace(/^v/, "");
+        if (!latest) {
+          return { status: "no-releases", current, releasesUrl: RELEASES_URL };
+        }
+        return {
+          status: compareVersions(latest, current) > 0 ? "outdated" : "current",
+          current,
+          latest,
+          releasesUrl: RELEASES_URL
+        };
+      } catch {
+        return { status: "error", current, releasesUrl: RELEASES_URL };
+      }
     });
     electron.ipcMain.handle("windows:closeQuickAdd", () => {
       if (quickAddWindow && !quickAddWindow.isDestroyed()) {

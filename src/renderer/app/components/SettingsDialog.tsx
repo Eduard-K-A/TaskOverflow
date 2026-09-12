@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   Palette,
   ListTodo,
@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 import { useStore, DEFAULT_SETTINGS, type Settings } from "../store/useStore";
+import { isAccentColor } from "../lib/dataTransfer";
 import { useTheme } from "../hooks/useTheme";
 import { ACCENT_PALETTE, ACCENT_KEYS } from "../lib/tokens";
 import { Dialog, DialogContent, DialogTitle } from "./ui/dialog";
@@ -49,6 +50,8 @@ type SectionId =
   | "shortcuts"
   | "about"
   | "danger";
+
+const RELEASES_URL = "https://github.com/Eduard-K-A/TaskOverflow/releases";
 
 const SECTIONS: Array<{ id: SectionId; label: string; icon: typeof Palette }> = [
   { id: "appearance", label: "Appearance", icon: Palette },
@@ -135,11 +138,11 @@ export const SettingsDialog = () => {
   const setOpen = useStore((s) => s.setSettingsOpen);
   const savedSettings = useStore((s) => s.settings);
   const saveSettings = useStore((s) => s.saveSettings);
-  const resetSettingsStore = useStore((s) => s.resetSettings);
   const { theme, setTheme } = useTheme();
-  const exportGroup = useStore((s) => s.exportGroup);
+  const exportAllData = useStore((s) => s.exportAllData);
   const groups = useStore((s) => s.groups);
   const deleteGroup = useStore((s) => s.deleteGroup);
+  const wipeAllData = useStore((s) => s.wipeAllData);
   const tasks = useStore((s) => s.tasks);
 
   const [active, setActive] = useState<SectionId>("appearance");
@@ -151,6 +154,11 @@ export const SettingsDialog = () => {
     dbFile: string;
     dbSizeKb: number | null;
   } | null>(null);
+  const [appVersion, setAppVersion] = useState<string | null>(null);
+  const [checkingUpdate, setCheckingUpdate] = useState(false);
+  const [updateStatus, setUpdateStatus] = useState(
+    "Compares this build against the latest published release",
+  );
 
   useEffect(() => {
     if (!open || active !== "data") return;
@@ -164,11 +172,47 @@ export const SettingsDialog = () => {
       .catch(() => setDataPaths(null));
   }, [open, active]);
   useEffect(() => {
+    if (!open || active !== "about") return;
+    if (typeof window === "undefined" || !window.api?.getAppVersion) {
+      setAppVersion(null);
+      return;
+    }
+    void window.api
+      .getAppVersion()
+      .then(setAppVersion)
+      .catch(() => setAppVersion(null));
+  }, [open, active]);
+
+  useEffect(() => {
     if (open) {
       setDraft(savedSettings);
       setDraftTheme(theme);
     }
-  }, [open]);
+  }, [open, savedSettings, theme]);
+
+  const handleCheckForUpdates = async () => {
+    if (!window.api?.checkForUpdates) return;
+    setCheckingUpdate(true);
+    try {
+      const result = await window.api.checkForUpdates();
+      setAppVersion(result.current);
+      if (result.status === "outdated") {
+        setUpdateStatus(`Version ${result.latest} is available`);
+        toast.success(`Update available: v${result.latest}`);
+      } else if (result.status === "current") {
+        setUpdateStatus(`You are on the latest version (v${result.current})`);
+        toast.success("You are on the latest version");
+      } else if (result.status === "no-releases") {
+        setUpdateStatus("No releases have been published yet");
+        toast.info("No releases have been published yet");
+      } else {
+        setUpdateStatus("Could not reach the update server");
+        toast.error("Could not check for updates");
+      }
+    } finally {
+      setCheckingUpdate(false);
+    }
+  };
 
   const update = <K extends keyof Settings>(key: K, value: Settings[K]) =>
     setDraft((d) => ({ ...d, [key]: value }));
@@ -265,10 +309,14 @@ export const SettingsDialog = () => {
                         </SelectContent>
                       </Select>
                     </Row>
-                    <Row title="Accent color palette" description="Colors available when creating groups">
-                      <div className="flex gap-1.5">
+                    <Row title="Accent color palette" description="Preview of the colors offered when you create a group">
+                      <div className="flex gap-1.5" aria-hidden="true">
                         {ACCENT_KEYS.map((k) => (
-                          <span key={k} className={cn("size-4 rounded-full", ACCENT_PALETTE[k].fill)} />
+                          <span
+                            key={k}
+                            title={ACCENT_PALETTE[k].name}
+                            className={cn("size-4 rounded-full", ACCENT_PALETTE[k].fill)}
+                          />
                         ))}
                       </div>
                     </Row>
@@ -434,14 +482,17 @@ export const SettingsDialog = () => {
                         </Button>
                       </div>
                     </Row>
-                    <Row title="Export all data" description="Download every group and task as JSON">
+                    <Row title="Export all data" description="One JSON file containing every group and task">
                       <Button
                         variant="outline"
                         size="sm"
                         className="h-8"
+                        disabled={groups.length === 0}
                         onClick={() => {
-                          groups.forEach((g) => exportGroup(g.id, "json"));
-                          toast.success(`Exported ${groups.length} group${groups.length === 1 ? "" : "s"} as JSON`);
+                          exportAllData("json");
+                          toast.success(
+                            `Exported ${groups.length} group${groups.length === 1 ? "" : "s"} as JSON`,
+                          );
                         }}
                       >
                         <Download className="size-3.5 mr-1.5" />
@@ -453,9 +504,12 @@ export const SettingsDialog = () => {
                         variant="outline"
                         size="sm"
                         className="h-8"
+                        disabled={groups.length === 0}
                         onClick={() => {
-                          groups.forEach((g) => exportGroup(g.id, "csv"));
-                          toast.success(`Exported ${groups.length} group${groups.length === 1 ? "" : "s"} as CSV`);
+                          exportAllData("csv");
+                          toast.success(
+                            `Exported ${groups.length} group${groups.length === 1 ? "" : "s"} as CSV`,
+                          );
                         }}
                       >
                         <Download className="size-3.5 mr-1.5" />
@@ -520,7 +574,8 @@ export const SettingsDialog = () => {
                   <SectionHeader icon={Keyboard} title="Shortcuts" description="In-app keyboard shortcut reference" />
                   <div className="rounded-xl border border-border/60 bg-card/40 divide-y divide-border/40 overflow-hidden">
                     <Row title="Focus quick-add task input"><KeyHint keys={["N"]} /></Row>
-                    <Row title="Open search"><KeyHint keys={["Ctrl", "K"]} /></Row>
+                    <Row title="Command palette"><KeyHint keys={["Ctrl", "K"]} /></Row>
+                    <Row title="Focus search"><KeyHint keys={["Ctrl", "F"]} /></Row>
                     <Row title="Toggle sidebar"><KeyHint keys={["Ctrl", "B"]} /></Row>
                     <Row title="New group"><KeyHint keys={["G"]} /></Row>
                     <Row title="Quick Add (global)"><KeyHint keys={["Ctrl", "Shift", "N"]} /></Row>
@@ -535,24 +590,32 @@ export const SettingsDialog = () => {
                   <SectionHeader icon={Info} title="About TaskOverflow" description="Version info and update channel" />
                   <div className="rounded-xl border border-border/60 bg-card/40 divide-y divide-border/40 overflow-hidden">
                     <Row title="Version">
-                      <span className="text-sm text-muted-foreground tabular-nums">v1.0.0</span>
+                      <span className="text-sm text-muted-foreground tabular-nums">
+                        {appVersion ? `v${appVersion}` : "—"}
+                      </span>
                     </Row>
-                    <Row title="Check for updates" description="You are on the latest version">
+                    <Row title="Check for updates" description={updateStatus}>
                       <Button
                         variant="outline"
                         size="sm"
                         className="h-8"
-                        onClick={() => toast.success("You are on the latest version")}
+                        disabled={!window.api?.checkForUpdates || checkingUpdate}
+                        onClick={() => void handleCheckForUpdates()}
                       >
-                        Check now
+                        {checkingUpdate ? "Checking…" : "Check now"}
                       </Button>
                     </Row>
-                    <Row title="Release notes" description="View changelog">
+                    <Row title="Release notes" description="Opens the releases page in your browser">
                       <Button
                         variant="ghost"
                         size="sm"
                         className="h-8"
-                        onClick={() => toast.info("No changelog available yet")}
+                        disabled={!window.api?.openExternal}
+                        onClick={() => {
+                          void window.api?.openExternal?.(RELEASES_URL).catch(() =>
+                            toast.error("Could not open the releases page"),
+                          );
+                        }}
                       >
                         Open
                         <ExternalLink className="size-3.5 ml-1.5" />
@@ -635,12 +698,12 @@ export const SettingsDialog = () => {
                         label="Wipe data"
                         title="Wipe all data?"
                         body="Every group, task, tag, and setting will be erased. This action cannot be undone."
-                        onConfirm={() => {
-                          try {
-                            localStorage.removeItem("taskoverflow-state");
-                          } catch {}
-                          resetSettingsStore();
-                          location.reload();
+                        onConfirm={async () => {
+                          await wipeAllData();
+                          setDraft(DEFAULT_SETTINGS);
+                          setDraftTheme("system");
+                          setOpen(false);
+                          toast.success("All data erased");
                         }}
                       />
                     </Row>
@@ -713,68 +776,99 @@ const DangerConfirm = ({
 );
 
 const ImportButton = () => {
-  const groups = useStore((s) => s.groups);
-  void groups;
-  const onImport = (file: File) => {
-    const reader = new FileReader();
-    reader.onload = async () => {
-      try {
-        const text = String(reader.result ?? "");
-        const data = JSON.parse(text);
-        const incoming = Array.isArray(data) ? data : [data];
-        let imported = 0;
-        for (const entry of incoming) {
-          const group = entry?.group;
-          const tasks = entry?.tasks;
-          if (!group?.name) continue;
-          const created = await useStore.getState().createGroup({
+  const inputRef = useRef<HTMLInputElement>(null);
+  const [importing, setImporting] = useState(false);
+
+  const readFile = (file: File): Promise<string> =>
+    new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(String(reader.result ?? ""));
+      reader.onerror = () => reject(reader.error);
+      reader.readAsText(file);
+    });
+
+  const onImport = async (file: File) => {
+    setImporting(true);
+    try {
+      const data = JSON.parse(await readFile(file));
+      const incoming = Array.isArray(data) ? data : [data];
+      let groupsImported = 0;
+      let tasksImported = 0;
+
+      for (const entry of incoming) {
+        const group = entry?.group;
+        if (!group?.name) continue;
+        // Keep the user where they were — importing must not switch the workspace.
+        const created = await useStore.getState().createGroup(
+          {
             name: group.name,
             emoji: group.emoji ?? "",
-            accent: group.accent ?? "blue",
+            accent: isAccentColor(group.accent) ? group.accent : "blue",
+          },
+          { activate: false },
+        );
+        groupsImported += 1;
+
+        for (const t of Array.isArray(entry?.tasks) ? entry.tasks : []) {
+          if (typeof t?.title !== "string") continue;
+          // createTaskWithDetails persists tags and subtasks; updateTask drops both.
+          await useStore.getState().createTaskWithDetails({
+            groupId: created.id,
+            title: t.title,
+            status: t.status === "done" ? "done" : "todo",
+            dueDate: typeof t.dueDate === "string" ? t.dueDate : null,
+            notes: typeof t.notes === "string" ? t.notes : "",
+            tags: Array.isArray(t.tags) ? t.tags.filter((x: unknown) => typeof x === "string") : [],
+            subtaskTitles: Array.isArray(t.subtasks)
+              ? t.subtasks
+                  .map((st: unknown) =>
+                    typeof st === "string" ? st : (st as { title?: string })?.title,
+                  )
+                  .filter((title: unknown): title is string => typeof title === "string")
+              : [],
           });
-          if (Array.isArray(tasks)) {
-            for (const t of tasks) {
-              if (typeof t?.title === "string") {
-                const task = await useStore.getState().createTask({
-                  groupId: created.id,
-                  title: t.title,
-                });
-                await useStore.getState().updateTask(task.id, {
-                  notes: t.notes ?? "",
-                  status: t.status === "done" ? "done" : "todo",
-                  dueDate: t.dueDate ?? null,
-                  tags: Array.isArray(t.tags) ? t.tags : [],
-                });
-              }
-            }
-          }
-          imported += 1;
+          tasksImported += 1;
         }
-        toast.success(`Imported ${imported} group${imported === 1 ? "" : "s"}`);
-      } catch {
-        toast.error("Could not parse JSON file");
       }
-    };
-    reader.readAsText(file);
+
+      if (groupsImported === 0) {
+        toast.error("No groups found in that file");
+        return;
+      }
+      toast.success(
+        `Imported ${groupsImported} group${groupsImported === 1 ? "" : "s"} · ${tasksImported} task${tasksImported === 1 ? "" : "s"}`,
+      );
+    } catch {
+      toast.error("Could not parse JSON file");
+    } finally {
+      setImporting(false);
+    }
   };
+
   return (
-    <label className="inline-flex">
+    <>
       <input
+        ref={inputRef}
         type="file"
         accept="application/json,.json"
         className="sr-only"
+        tabIndex={-1}
         onChange={(e) => {
           const f = e.target.files?.[0];
-          if (f) onImport(f);
+          if (f) void onImport(f);
           e.target.value = "";
         }}
       />
-      <Button variant="outline" size="sm" className="h-8" asChild>
-        <span className="cursor-pointer">
-          <Upload className="size-3.5 mr-1.5" />
-          Import
-        </span>
+      <Button
+        variant="outline"
+        size="sm"
+        className="h-8"
+        disabled={importing}
+        onClick={() => inputRef.current?.click()}
+      >
+        <Upload className="size-3.5 mr-1.5" />
+        {importing ? "Importing…" : "Import"}
       </Button>
-    </label>
+    </>
   );
 };

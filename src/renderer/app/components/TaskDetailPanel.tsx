@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { X, Trash2, Plus } from "lucide-react";
 import type { TaskStatus, AccentColor } from "../types";
 import { useStore } from "../store/useStore";
 import { TaskCheckbox } from "./TaskCheckbox";
 import { TagBadge } from "./TagBadge";
+import { ACCENT_PALETTE } from "../lib/tokens";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
@@ -27,17 +28,23 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "./ui/alert-dialog";
-import { toDateInputValue, fromDateInputValue, relativeFromNow } from "../lib/date";
+import { toDateInputValue, fromDateInputValue, relativeFromNow, formatDueDate } from "../lib/date";
 import { cn } from "./ui/utils";
 
 interface Props {
   accent: AccentColor;
 }
 
+/** Notes are typed continuously; persist them on a short idle instead of per keystroke. */
+const NOTES_COMMIT_DELAY = 400;
+
 export const TaskDetailPanel = ({ accent }: Props) => {
   const selectedId = useStore((s) => s.selectedTaskId);
   const close = useStore((s) => s.selectTask);
   const task = useStore((s) => s.tasks.find((t) => t.id === selectedId) ?? null);
+  const group = useStore((s) =>
+    task ? s.groups.find((g) => g.id === task.groupId) ?? null : null,
+  );
 
   const updateTask = useStore((s) => s.updateTask);
   const deleteTask = useStore((s) => s.deleteTask);
@@ -53,13 +60,62 @@ export const TaskDetailPanel = ({ accent }: Props) => {
   const [tagInput, setTagInput] = useState("");
   const [subtaskInput, setSubtaskInput] = useState("");
   const [title, setTitle] = useState("");
+  const [notes, setNotes] = useState("");
+
+  const titleRef = useRef<HTMLTextAreaElement>(null);
+  const pendingNotes = useRef<{ id: string; notes: string } | null>(null);
+  const notesTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const taskId = task?.id;
+
+  const flushNotes = useCallback(() => {
+    if (notesTimer.current) {
+      clearTimeout(notesTimer.current);
+      notesTimer.current = null;
+    }
+    const pending = pendingNotes.current;
+    pendingNotes.current = null;
+    if (pending) updateTask(pending.id, { notes: pending.notes });
+  }, [updateTask]);
+
+  // Write out any unsaved notes before the panel swaps tasks or unmounts.
+  useEffect(() => flushNotes, [taskId, flushNotes]);
 
   useEffect(() => {
     setTitle(task?.title ?? "");
+    setNotes(task?.notes ?? "");
     setTagInput("");
     setSubtaskInput("");
-  }, [task?.id]);
+  }, [taskId]);
 
+  // Keep the title field sized to its content so long titles wrap instead of scrolling.
+  useLayoutEffect(() => {
+    const el = titleRef.current;
+    if (!el) return;
+    el.style.height = "auto";
+    el.style.height = `${el.scrollHeight}px`;
+  }, [title, taskId]);
+
+  const commitTitle = () => {
+    if (!task) return;
+    const trimmed = title.trim();
+    if (trimmed && trimmed !== task.title) {
+      updateTask(task.id, { title: trimmed });
+    } else if (!trimmed) {
+      setTitle(task.title);
+    }
+  };
+
+  const onNotesChange = (value: string) => {
+    if (!task) return;
+    setNotes(value);
+    pendingNotes.current = { id: task.id, notes: value };
+    if (notesTimer.current) clearTimeout(notesTimer.current);
+    notesTimer.current = setTimeout(flushNotes, NOTES_COMMIT_DELAY);
+  };
+
+  const due = task ? formatDueDate(task.dueDate) : null;
+  const accentTokens = ACCENT_PALETTE[group?.accent ?? accent] ?? ACCENT_PALETTE.blue;
   const open = Boolean(task);
 
   return (
@@ -75,6 +131,8 @@ export const TaskDetailPanel = ({ accent }: Props) => {
             className="absolute inset-0 bg-foreground/5 z-30"
           />
           <motion.aside
+            role="dialog"
+            aria-label={`Task details: ${task.title}`}
             initial={{ x: 480 }}
             animate={{ x: 0 }}
             exit={{ x: 480 }}
@@ -82,11 +140,20 @@ export const TaskDetailPanel = ({ accent }: Props) => {
             className="absolute right-0 top-0 bottom-0 w-[480px] max-w-[92vw] bg-card border-l border-border z-40 flex flex-col"
             style={{ borderTopLeftRadius: 12, borderBottomLeftRadius: 12 }}
           >
-            <div className="flex items-center justify-between px-5 h-14 border-b border-border">
-              <span className="text-sm text-muted-foreground">
-                Created {relativeFromNow(new Date(task.createdAt).toISOString())}
-              </span>
-              <div className="flex items-center gap-1">
+            <div className="flex items-center justify-between gap-3 px-5 h-14 shrink-0 border-b border-border">
+              <div className="min-w-0 flex items-center gap-2">
+                {group && (
+                  <>
+                    <span className={cn("size-2 rounded-full shrink-0", accentTokens.fill)} />
+                    <span className="text-sm font-medium truncate">{group.name}</span>
+                    <span className="text-muted-foreground/50">·</span>
+                  </>
+                )}
+                <span className="text-sm text-muted-foreground truncate">
+                  Created {relativeFromNow(new Date(task.createdAt).toISOString())}
+                </span>
+              </div>
+              <div className="flex items-center gap-1 shrink-0">
                 {confirmDelete ? (
                   <AlertDialog>
                     <AlertDialogTrigger asChild>
@@ -137,28 +204,30 @@ export const TaskDetailPanel = ({ accent }: Props) => {
               </div>
             </div>
 
-            <div className="flex-1 overflow-y-auto px-5 py-5 space-y-6">
+            <div className="flex-1 min-h-0 overflow-y-auto themed-scrollbar px-5 pt-5 pb-10 space-y-6">
               <div className="flex items-start gap-3">
-                <div className="pt-2">
+                <div className="pt-1.5">
                   <TaskCheckbox
                     checked={task.status === "done"}
                     onToggle={() => toggleDone(task.id)}
                     accent={accent}
                   />
                 </div>
-                <Input
+                <textarea
+                  ref={titleRef}
                   value={title}
+                  rows={1}
+                  aria-label="Task title"
                   onChange={(e) => setTitle(e.target.value)}
-                  onBlur={() => {
-                    const trimmed = title.trim();
-                    if (trimmed && trimmed !== task.title) {
-                      updateTask(task.id, { title: trimmed });
-                    } else if (!trimmed) {
-                      setTitle(task.title);
+                  onBlur={commitTitle}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      e.preventDefault();
+                      e.currentTarget.blur();
                     }
                   }}
                   className={cn(
-                    "border-0 bg-transparent px-0 h-auto py-1 focus-visible:ring-0",
+                    "flex-1 resize-none bg-transparent outline-none py-0.5 leading-snug",
                     task.status === "done" && "line-through text-muted-foreground",
                   )}
                   style={{ fontSize: "1.125rem" }}
@@ -174,7 +243,7 @@ export const TaskDetailPanel = ({ accent }: Props) => {
                     value={task.status}
                     onValueChange={(v) => updateTask(task.id, { status: v as TaskStatus })}
                   >
-                    <SelectTrigger id="task-status">
+                    <SelectTrigger id="task-status" className="w-full">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
@@ -184,9 +253,20 @@ export const TaskDetailPanel = ({ accent }: Props) => {
                   </Select>
                 </div>
                 <div className="space-y-1.5">
-                  <Label htmlFor="task-due" className="text-xs text-muted-foreground">
-                    Due date
-                  </Label>
+                  <div className="flex items-baseline justify-between gap-2">
+                    <Label htmlFor="task-due" className="text-xs text-muted-foreground">
+                      Due date
+                    </Label>
+                    {task.dueDate && (
+                      <button
+                        type="button"
+                        onClick={() => updateTask(task.id, { dueDate: null })}
+                        className="text-xs text-muted-foreground hover:text-foreground transition-colors"
+                      >
+                        Clear
+                      </button>
+                    )}
+                  </div>
                   <Input
                     id="task-due"
                     type="date"
@@ -195,6 +275,18 @@ export const TaskDetailPanel = ({ accent }: Props) => {
                       updateTask(task.id, { dueDate: fromDateInputValue(e.target.value) })
                     }
                   />
+                  {due && (
+                    <p
+                      className={cn(
+                        "text-xs",
+                        due.overdue && task.status !== "done"
+                          ? "text-destructive"
+                          : "text-muted-foreground",
+                      )}
+                    >
+                      {due.overdue && task.status !== "done" ? `Overdue · ${due.label}` : due.label}
+                    </p>
+                  )}
                 </div>
               </div>
 
@@ -214,8 +306,9 @@ export const TaskDetailPanel = ({ accent }: Props) => {
                         setTagInput("");
                       }
                     }}
+                    aria-label="Add tag"
                     placeholder="Add tag…"
-                    className="bg-transparent outline-none text-sm px-2 h-7 min-w-[100px]"
+                    className="bg-transparent outline-none text-sm px-2 h-7 min-w-[100px] flex-1"
                   />
                 </div>
               </div>
@@ -226,10 +319,12 @@ export const TaskDetailPanel = ({ accent }: Props) => {
                 </Label>
                 <Textarea
                   id="task-notes"
-                  value={task.notes}
-                  onChange={(e) => updateTask(task.id, { notes: e.target.value })}
+                  value={notes}
+                  onChange={(e) => onNotesChange(e.target.value)}
+                  onBlur={flushNotes}
                   placeholder="Add notes, context, or links…"
                   rows={5}
+                  className="resize-y themed-scrollbar"
                 />
               </div>
 
@@ -248,20 +343,28 @@ export const TaskDetailPanel = ({ accent }: Props) => {
                       />
                       <input
                         defaultValue={st.title}
+                        aria-label="Subtask title"
                         onBlur={(e) => {
                           const v = e.target.value.trim();
                           if (v && v !== st.title) updateSubtask(task.id, st.id, v);
+                          else if (!v) e.target.value = st.title;
+                        }}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter") {
+                            e.preventDefault();
+                            e.currentTarget.blur();
+                          }
                         }}
                         className={cn(
-                          "flex-1 bg-transparent outline-none py-1 text-sm",
+                          "flex-1 min-w-0 bg-transparent outline-none py-1 text-sm",
                           st.done && "line-through text-muted-foreground",
                         )}
                       />
                       <button
                         type="button"
                         onClick={() => deleteSubtask(task.id, st.id)}
-                        className="opacity-0 group-hover:opacity-100 text-muted-foreground hover:text-destructive transition-opacity"
-                        aria-label="Delete subtask"
+                        className="opacity-0 group-hover:opacity-100 focus-visible:opacity-100 text-muted-foreground hover:text-destructive transition-opacity"
+                        aria-label={`Delete subtask ${st.title}`}
                       >
                         <X className="size-3.5" />
                       </button>
@@ -281,8 +384,9 @@ export const TaskDetailPanel = ({ accent }: Props) => {
                           setSubtaskInput("");
                         }
                       }}
+                      aria-label="Add subtask"
                       placeholder="Add subtask…"
-                      className="flex-1 bg-transparent outline-none py-1 text-sm"
+                      className="flex-1 min-w-0 bg-transparent outline-none py-1 text-sm"
                     />
                   </div>
                 </div>
